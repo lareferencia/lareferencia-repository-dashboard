@@ -1,0 +1,445 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 350,
+  "height": 350,
+
+  "signals": [
+    {
+      "name": "title",
+      "value": ""
+    },
+    {
+      "name": "showNeedle",
+      "value": true
+    },
+    {
+      "name": "showTicks",
+      "value": true
+    },
+    {
+      "name": "mainValue",
+      "value": 100
+    },
+    {
+      "name": "minValue",
+      "value": 0
+    },
+    {
+      "name": "maxValue",
+      "value": 100
+    },
+    {
+      "name": "targetValue",
+      "value": null
+    },
+    {
+      "name": "unit",
+      "value": ""
+    },
+    {
+      "name": "backgroundColor",
+      "value": "#cbd1d6"
+    },
+    {
+      "name": "fillColor",
+      "value": "#77A7FB"
+    },
+    {
+      "name": "ticksColor",
+      "value": "black"
+    },
+    {
+      "name": "needleColor",
+      "value": "#555"
+    },
+    {
+      "name": "lowIsGood",
+      "value": false
+    },
+    {
+      "name": "centerX",
+      "update": "width/2"
+    },
+    {
+      "name": "radiusRef",
+      "update": "min(width/2, height*0.55)"
+    },
+    {
+      "name": "centerY",
+      "update": "height/2 + radiusRef/2.5"
+    },
+    {
+      "name": "outerRadius",
+      "update": "radiusRef - 10"
+    },
+    {
+      "name": "innerRadius",
+      "update": "radiusRef - radiusRef/4 - 10"
+    },
+    {
+      "name": "fontFactor",
+      "update": "radiusRef/125"
+    },
+    {
+      "name": "needleSize",
+      "update": "innerRadius"
+    },
+    {
+      "name": "targetStatus",
+      "update": "mainValue === targetValue ? 0 : mainValue > targetValue ? lowIsGood ? -1 : 1 : lowIsGood ? 1: -1"
+    }
+  ],
+
+  "data": [
+    {
+      "name": "ticks",
+      "transform": [
+        {
+          "type": "sequence",
+          "as": "data",
+          "start": { "signal": "0" },
+          "stop": {
+            "signal": "(maxValue === minValue ? 1 : (maxValue - minValue)) + 0.1"
+          },
+          "step": {
+            "signal": "(maxValue === minValue ? 1 : (maxValue - minValue))/ 5"
+          }
+        },
+        {
+          "type": "formula",
+          "as": "variance",
+          "expr": "maxValue - minValue >= 5 ? round(datum.data + minValue) : datum.data + minValue"
+        },
+        {
+          "type": "formula",
+          "as": "formatted",
+          "expr": "format(datum.variance, format(datum.variance, '.0f') === toString(datum.variance) ? '^.0f' : '^.1f')"
+        },
+        {
+          "type": "formula",
+          "as": "x",
+          "expr": "centerX - (cos(((datum.data) / (maxValue === minValue ? 1 : maxValue - minValue))*PI) * (outerRadius - radiusRef/7))"
+        },
+        {
+          "type": "formula",
+          "as": "y",
+          "expr": "centerY - (sin(((datum.data) / (maxValue === minValue ? 1: maxValue - minValue))*PI) * (outerRadius - radiusRef/6))"
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "gaugeScale",
+      "type": "linear",
+      "domain": {
+        "data": "ticks",
+        "field": "variance"
+      },
+      "zero": false,
+      "range": [-1.5707, 1.5707]
+    },
+    {
+      "name": "needleScale",
+      "type": "linear",
+      "domain": {
+        "data": "ticks",
+        "field": "variance"
+      },
+      "zero": false,
+      "range": [-90, 90]
+    },
+    {
+      "name": "targetScale",
+      "type": "linear",
+      "domain": {
+        "data": "ticks",
+        "field": "variance"
+      },
+      "zero": false,
+      "range": [0, 180]
+    },
+    {
+      "name": "tickScale",
+      "type": "linear",
+      "domain": {
+        "data": "ticks",
+        "field": "data"
+      },
+      "range": [-1.5707, 1.5707]
+    },
+    {
+      "name": "targetStatusColorScale",
+      "domain": [-1, 0, 1],
+      "range": ["red", "orange", "green"]
+    },
+    {
+      "name": "targetStatusShapeScale",
+      "domain": [-1, 0, 1],
+      "range": ["triangle-down", "circle", "triangle-up"]
+    }
+  ],
+
+  "axes": [],
+
+  "marks": [
+    {
+      "type": "arc",
+      "name": "gauge",
+      "encode": {
+        "enter": {
+          "startAngle": { "value": -1.5707 },
+          "endAngle": { "value": 1.5707 }
+        },
+        "update": {
+          "fill": { "signal": "backgroundColor" },
+          "x": { "signal": "centerX" },
+          "y": { "signal": "centerY" },
+          "innerRadius": { "signal": "innerRadius" },
+          "outerRadius": { "signal": "outerRadius" }
+        }
+      }
+    },
+    {
+      "type": "arc",
+      "encode": {
+        "enter": {
+          "startAngle": { "value": -1.5707 }
+        },
+        "update": {
+          "fill": { "signal": "fillColor" },
+          "x": { "signal": "centerX" },
+          "y": { "signal": "centerY" },
+          "endAngle": {
+            "scale": "gaugeScale",
+            "signal": "mainValue"
+          },
+          "innerRadius": { "signal": "innerRadius" },
+          "outerRadius": { "signal": "outerRadius" }
+        }
+      }
+    },
+
+    {
+      "type": "arc",
+      "from": { "data": "ticks" },
+      "encode": {
+        "update": {
+          "x": { "signal": "centerX" },
+          "y": { "signal": "centerY" },
+          "startAngle": {
+            "scale": "tickScale",
+            "field": "data"
+          },
+          "endAngle": {
+            "scale": "tickScale",
+            "field": "data"
+          },
+          "innerRadius": { "signal": "outerRadius - (radiusRef/20)" },
+          "outerRadius": { "signal": "outerRadius" },
+          "opacity": { "signal": "showTicks?1:0" },
+          "stroke": { "signal": "ticksColor" }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "from": { "data": "ticks" },
+      "encode": {
+        "enter": {
+          "align": { "value": "center" },
+          "baseline": { "value": "alphabetic" }
+        },
+        "update": {
+          "text": { "field": "formatted" },
+          "x": { "field": "x" },
+          "y": { "field": "y" },
+          "fontSize": { "signal": "fontFactor * 11" },
+          "opacity": { "signal": "showTicks ? 1 : 0" },
+          "fill": { "signal": "ticksColor" }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "from": { "data": "gauge" },
+      "encode": {
+        "enter": {
+          "align": { "value": "center" },
+          "baseline": { "value": "top" }
+        },
+        "update": {
+          "text": { "signal": "minValue" },
+          "x": { "signal": "datum.x - datum.outerRadius + width/16" },
+          "y": {
+            "field": "y",
+            "offset": 10
+          },
+          "fontSize": { "signal": "fontFactor * 11" },
+          "opacity": { "signal": "showTicks ? 0 : 1" }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "from": { "data": "gauge" },
+      "encode": {
+        "enter": {
+          "align": { "value": "center" },
+          "baseline": { "value": "top" }
+        },
+        "update": {
+          "text": { "signal": "maxValue" },
+          "x": { "signal": "datum.x + datum.outerRadius - width/16" },
+          "y": {
+            "field": "y",
+            "offset": 10
+          },
+          "fontSize": { "signal": "fontFactor*11" },
+          "opacity": { "signal": "showTicks ? 0 : 1" }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "name": "gaugeValue",
+      "encode": {
+        "enter": {
+          "align": { "value": "center" },
+          "baseline": { "value": "top" }
+        },
+        "update": {
+          "text": {
+            "signal": "format(mainValue, format(mainValue, '.0f') === toString(mainValue) ? '^.0f' : '^.1f') + (unit ? ' ' + unit : '')"
+          },
+          "x": { "signal": "centerX" },
+          "y": {
+            "signal": "centerY",
+            "offset": 10
+          },
+          "fontSize": { "signal": "fontFactor * 14" }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "targetDiff",
+      "from": { "data": "gaugeValue" },
+      "encode": {
+        "enter": {
+          "align": { "value": "center" },
+          "baseline": { "value": "top" }
+        },
+        "update": {
+          "fill": {
+            "signal": "targetStatus",
+            "scale": "targetStatusColorScale"
+          },
+          "text": {
+            "signal": "mainValue - targetValue + ' (' + format(mainValue/targetValue, '.0%')+')'"
+          },
+          "fontSize": { "signal": "fontFactor * 14" },
+          "x": { "signal": "datum.x + (12*fontFactor)" },
+          "y": {
+            "field": "y",
+            "offset": { "signal": "15*fontFactor" }
+          },
+          "opacity": { "signal": "targetValue ? 1:0" }
+        }
+      }
+    },
+
+    {
+      "type": "symbol",
+      "from": { "data": "targetDiff" },
+      "encode": {
+        "update": {
+          "shape": {
+            "signal": "targetStatus === 0 ? 'circle' : targetStatus === 1 ? 'triangle-up' : 'triangle-down'"
+          },
+          "size": {
+            "signal": "targetStatus === 0 ? pow(8*fontFactor, 2) : pow(12*fontFactor, 2)"
+          },
+          "x": { "signal": "datum.bounds.x1 - (12*fontFactor)" },
+          "y": {
+            "field": "y",
+            "offset": { "signal": "(datum.bounds.y2 - datum.bounds.y1)/2" }
+          },
+          "fill": {
+            "signal": "targetStatus",
+            "scale": "targetStatusColorScale"
+          },
+          "opacity": { "signal": "targetValue ? 1:0" }
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "needle",
+      "encode": {
+        "update": {
+          "shape": {
+            "signal": "'M -3 0 a 3 3 0 1.5 0 6 0 l -3 -'+ toString(needleSize)+' l -3 '+ toString(needleSize)"
+          },
+          "size": { "signal": "4" },
+          "fill": { "signal": "needleColor" },
+          "x": { "signal": "centerX" },
+          "y": { "signal": "centerY" },
+          "opacity": { "signal": "showNeedle?1:0" },
+          "angle": {
+            "signal": "mainValue",
+            "scale": "needleScale"
+          }
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "from": { "data": "gauge" },
+      "encode": {
+        "enter": {
+          "shape": { "value": "triangle-right" }
+        },
+        "update": {
+          "angle": {
+            "signal": "targetValue",
+            "scale": "targetScale"
+          },
+          "size": { "signal": "pow(10 * fontFactor, 2)" },
+          "fill": { "signal": "needleColor" },
+          "x": {
+            "signal": "centerX - (cos(((targetValue - minValue) / (maxValue === minValue ? 1 : maxValue - minValue))*PI) * (datum.outerRadius + (5 * fontFactor)))"
+          },
+          "y": {
+            "signal": "centerY - (sin(((targetValue - minValue) / (maxValue === minValue ? 1: maxValue - minValue))*PI) * (datum.outerRadius + (5 * fontFactor)))"
+          },
+          "opacity": { "signal": "targetValue?1:0" }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": { "data": "gauge" },
+      "encode": {
+        "enter": {
+          "align": { "value": "center" },
+          "baseline": { "value": "bottom" }
+        },
+        "update": {
+          "text": { "signal": "title" },
+          "x": { "signal": "datum.x" },
+          "y": {
+            "signal": "datum.y - datum.outerRadius",
+            "offset": { "signal": "-15*fontFactor" }
+          },
+          "fontSize": { "signal": "datum.outerRadius/8" }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<div class="alert alert-danger" role="alert" *ngIf="error" i18n>
+  Harvesting not found
+</div>
+<mat-card *ngIf="!error">
+  <mat-progress-bar
+    mode="indeterminate"
+    *ngIf="isLoadingResults"
+  ></mat-progress-bar>
+  <div *ngIf="harvestingContent">
+    <app-harvesting-source></app-harvesting-source>
+    <div class="harvesting-table">
+      <app-harvesting-table></app-harvesting-table>
+    </div>
+  </div>
+</mat-card>

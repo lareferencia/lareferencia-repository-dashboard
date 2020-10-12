@@ -1,0 +1,53 @@
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.occurrence {
+  margin-left: 5px;
+}
+
+.occurrences {
+  margin-top: 5px;
+}
+
+:host ::ng-deep .mat-dialog-title {
+  display: flex;
+  align-items: center;
+}
+
+.span-record-is-valid {
+  margin-left: 10px;
+}
+
+:host ::ng-deep .mat-card {
+  margin-bottom: 15px;
+}
+
+:host ::ng-deep .mat-card-header-text {
+  width: 100%;
+}
+
+:host ::ng-deep .mat-card-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.green {
+  background-color: #d5f1de;
+  border-color: #c4ebd1;
+}
+
+.yellow {
+  background-color: #feefd0;
+  border-color: #fde9bd;
+}
+
+.red {
+  background-color: #fadddd;
+  border-color: #f8cfcf;
+}
+
+.span-margin-left {
+  margin-left: 25px;
+}

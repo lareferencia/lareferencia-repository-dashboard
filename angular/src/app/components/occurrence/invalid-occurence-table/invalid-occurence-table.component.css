@@ -1,0 +1,17 @@
+.full-width-table {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  color: #5c6873;
+  background-color: #e4e7ea;
+  font-size: 0.9rem;
+}
+
+.table-container {
+  min-width: 500px;
+}

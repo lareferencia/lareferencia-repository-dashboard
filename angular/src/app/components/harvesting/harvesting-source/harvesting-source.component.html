@@ -1,0 +1,13 @@
+<div *ngIf="harvesting">
+  <mat-card-title class="title">
+    {{ harvesting.name }}
+  </mat-card-title>
+  <mat-card-subtitle class="subtitle">
+    {{ harvesting.institutionName }}
+  </mat-card-subtitle>
+  <app-validation-chart
+    *ngIf="harvestingHistory?.content.length > 1"
+    class="col-md-4"
+    [harvestingHistory]="harvestingHistory"
+  ></app-validation-chart>
+</div>

@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-title *ngIf="validation" class="title" i18n>
+    Records that contain the invalid "{{ validation.rulesByID[ruleID].name }}"
+    rule
+  </mat-card-title>
+  <div class="records-invalid-table">
+    <app-records-invalid-table
+      [validation]="validation"
+    ></app-records-invalid-table>
+  </div>
+</mat-card>

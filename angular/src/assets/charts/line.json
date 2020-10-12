@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A basic line chart example.",
+  "width": 1100,
+  "height": 200,
+  "padding": 50,
+  "background": "#edf1f7",
+  "signals": [{ "name": "viz_width", "update": "width" }],
+
+  "data": [
+    {
+      "name": "raw",
+      "values": [],
+      "format": { "type": "json", "parse": { "date": "date" } },
+      "transform": [
+        {
+          "type": "timeunit",
+          "units": ["year", "month", "date"],
+          "field": "date",
+          "signal": "tbin"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "source": "raw",
+      "transform": [
+        {
+          "type": "formula",
+          "as": "color",
+          "expr": "(datum.type == 'transformed') ? '#ffc107': (datum.type == 'harvested') ? '#3498DB' : '#27AE60'"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "time",
+      "range": "width",
+      "padding": 24,
+      "domain": { "data": "table", "field": "date" }
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "range": "height",
+      "nice": true,
+      "zero": true,
+      "domain": { "data": "table", "field": "count" }
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": { "scheme": "category10" },
+      "domain": { "data": "table", "field": "type" }
+    }
+  ],
+  "axes": [
+    {
+      "orient": "bottom",
+      "scale": "x",
+      "grid": true,
+      "formatType": "time",
+      "format": {
+        "signal": "timeUnitSpecifier(tbin.units, {'year-month-date': '%B %e, %Y'})"
+      }
+    },
+    { "orient": "left", "scale": "y", "grid": true }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {
+        "facet": { "name": "series", "data": "table", "groupby": "type" }
+      },
+      "marks": [
+        {
+          "type": "line",
+          "from": { "data": "series" },
+          "encode": {
+            "enter": {
+              "x": { "scale": "x", "field": "date" },
+              "y": { "scale": "y", "field": "count" },
+              "stroke": { "field": "color" },
+              "strokeWidth": { "value": 2 }
+            },
+            "update": { "strokeOpacity": { "value": 1 } },
+            "hover": { "strokeOpacity": { "value": 0.5 } }
+          }
+        },
+        {
+          "type": "symbol",
+          "from": { "data": "series" },
+          "encode": {
+            "enter": {
+              "tooltip": {
+                "signal": "{title: timeFormat(datum.date, '%B %e, %Y'), 'Records': datum.count + ((datum.type == 'transformed') ? ' transformed' : (datum.type == 'harvested') ? ' harvested' :  ' valid'), 'Validation ID': datum.id}"
+              },
+              "x": { "scale": "x", "field": "date" },
+              "y": { "scale": "y", "field": "count" },
+              "fill": { "field": "color" }
+            }
+          },
+          "zindex": 2
+        }
+      ]
+    }
+  ]
+}

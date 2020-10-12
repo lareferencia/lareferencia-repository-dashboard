@@ -1,0 +1,23 @@
+.title {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.validation-table,
+.records-table,
+.records-card {
+  margin-top: 2em;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,182 @@
+<div class="filter-form">
+  <mat-form-field class="col-2">
+    <mat-label i18n>Identifier</mat-label>
+    <input
+      type="text"
+      matInput
+      (keydown.enter)="applyFilter()"
+      [(ngModel)]="filter.oaiIdentifier"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="col-2">
+    <mat-label i18n>Validation</mat-label>
+    <mat-select [(ngModel)]="filter.isValid" (selectionChange)="applyFilter()">
+      <mat-option i18n>None</mat-option>
+      <mat-option i18n value="true">Valid</mat-option>
+      <mat-option i18n value="false">Invalid</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="col-2">
+    <mat-label i18n>Transformed</mat-label>
+    <mat-select
+      [(ngModel)]="filter.isTransformed"
+      (selectionChange)="applyFilter()"
+    >
+      <mat-option i18n>None</mat-option>
+      <mat-option i18n value="true">Yes</mat-option>
+      <mat-option i18n value="false">No</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="col-2">
+    <mat-label i18n>Valid rules</mat-label>
+    <mat-select
+      [(ngModel)]="filter.validRules"
+      (selectionChange)="applyFilter()"
+      multiple
+    >
+      <mat-select-trigger>
+        {{ filter.validRules ? filter.validRules[0]?.name : '' }}
+        <span
+          *ngIf="filter.validRules?.length > 1"
+          class="additional-selection"
+          i18n
+        >
+          (+{{ filter.validRules?.length - 1 }}
+          {filter.validRules?.length === 2, select, true {other} false
+          {others}})
+        </span>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let rule of this.validation.rulesByID"
+        [value]="rule"
+        >{{ rule.name }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="col-2">
+    <mat-label i18n>Invalid rules</mat-label>
+    <mat-select
+      [(ngModel)]="filter.invalidRules"
+      (selectionChange)="applyFilter()"
+      multiple
+    >
+      <mat-select-trigger>
+        {{ filter.invalidRules ? filter.invalidRules[0]?.name : '' }}
+        <span
+          *ngIf="filter.invalidRules?.length > 1"
+          class="additional-selection"
+          i18n
+        >
+          (+{{ filter.invalidRules?.length - 1 }}
+          {filter.invalidRules?.length === 2, select, true {other} false
+          {others}})
+        </span>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let rule of this.validation.rulesByID"
+        [value]="rule"
+        >{{ rule.name }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    class="btn-filter-action"
+    (click)="clearFilter()"
+    mat-raised-button
+    i18n
+  >
+    Clear
+  </button>
+
+  <button
+    class="btn-filter-action"
+    (click)="applyFilter()"
+    mat-raised-button
+    color="primary"
+    i18n
+  >
+    Filter
+  </button>
+</div>
+
+<div class="table-container mat-elevation-z8">
+  <div class="loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <div class="table-content-container">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="full-width-table"
+      matSort
+      aria-label="Elements"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let record">{{ record.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="identifier">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>
+          Identifier
+        </th>
+        <td mat-cell *matCellDef="let record">{{ record.identifier }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="isValid">
+        <th mat-header-cell *matHeaderCellDef i18n>Validation</th>
+        <td mat-cell *matCellDef="let record">
+          <span
+            [ngClass]="[
+              'badge',
+              record.isValid == true ? 'badge-success' : 'badge-danger'
+            ]"
+            i18n
+            >{record.isValid, select, true {Valid} false {Invalid}}</span
+          >
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="isTransformed">
+        <th mat-header-cell *matHeaderCellDef i18n>Transformation</th>
+        <td mat-cell *matCellDef="let record">
+          <span *ngIf="record.isTransformed" class="badge badge-light" i18n
+            >Transformed</span
+          >
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="button-detail">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let record">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="detailClick(record)"
+            i18n
+          >
+            Details
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let record; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      #paginator
+      [pageIndex]="0"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[10, 25, 50, 100, 250]"
+    >
+    </mat-paginator>
+  </div>
+</div>
+<app-table-exporter [data]="csvData"></app-table-exporter>

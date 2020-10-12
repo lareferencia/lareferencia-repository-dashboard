@@ -1,0 +1,109 @@
+<div mat-dialog-title>
+  <ng-container i18n
+    >Result of the evaluation of rules for "{{ record.identifier }}"
+    record</ng-container
+  >
+  <span
+    [ngClass]="[
+      'badge',
+      'span-record-is-valid',
+      record.isValid == true ? 'badge-success' : 'badge-danger'
+    ]"
+    i18n
+    >{record.isValid, select, true {Valid} false {Invalid}}</span
+  >
+</div>
+<mat-dialog-content class="mat-typography">
+  <!-- List invalid rules -->
+  <div *ngFor="let obj of record.invalidRulesID">
+    <div
+      *ngIf="
+        record.validOccurrencesByRuleID[obj] ||
+        record.invalidOccurrencesByRuleID[obj]
+      "
+    >
+      <mat-card [ngClass]="getRule(obj).mandatory == true ? 'red' : 'yellow'">
+        <mat-card-header>
+          <mat-card-title
+            ><div>{{ getRule(obj).name }}</div>
+            <span class="span-margin-left" i18n>
+              {getRule(obj).mandatory, select, true {Required: Yes} false
+              {Required: No}}
+            </span>
+          </mat-card-title>
+          <mat-card-subtitle>{{ getRule(obj).quantifier }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="occurrences">
+            <!-- List valid ocurrences -->
+            <div *ngFor="let x of record.validOccurrencesByRuleID[obj]">
+              <div class="icon">
+                <i class="material-icons">check_circle_outline</i
+                ><span class="occurrence">{{ x }}</span>
+              </div>
+            </div>
+            <!-- List invalid ocurrences -->
+            <div *ngFor="let x of record.invalidOccurrencesByRuleID[obj]">
+              <div class="icon">
+                <i class="material-icons">cancel</i
+                ><span class="occurrence">{{ x }}</span>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <!-- List valid rules -->
+  <div *ngFor="let obj of record.validRulesID">
+    <div
+      *ngIf="
+        record.validOccurrencesByRuleID[obj] ||
+        record.invalidOccurrencesByRuleID[obj]
+      "
+    >
+      <mat-card class="green record-card">
+        <mat-card-header class="record-card-header">
+          <mat-card-title class="record-card-title"
+            ><div>{{ getRule(obj).name }}</div>
+            <div>
+              <span class="span-margin-left" i18n>
+                {getRule(obj).mandatory, select, true {Required: Yes} false
+                {Required: No}}
+              </span>
+            </div>
+          </mat-card-title>
+          <mat-card-subtitle>{{ getRule(obj).quantifier }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="occurrences">
+            <!-- List valid ocurrences -->
+            <div *ngFor="let x of record.validOccurrencesByRuleID[obj]">
+              <div class="icon">
+                <i class="material-icons">check_circle_outline</i
+                ><span class="occurrence">{{ x }}</span>
+              </div>
+            </div>
+            <!-- List invalid ocurrences -->
+            <div *ngFor="let x of record.invalidOccurrencesByRuleID[obj]">
+              <div class="icon">
+                <i class="material-icons">cancel</i
+                ><span class="occurrence">{{ x }}</span>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button
+    mat-dialog-close
+    type="button"
+    class="btn btn-outline-dark"
+    i18n="Button close"
+  >
+    Close
+  </button>
+</mat-dialog-actions>

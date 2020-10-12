@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A basic grouped bar chart example.",
+  "width": 600,
+  "height": 300,
+  "padding": 30,
+  "background": "#edf1f7",
+  "signals": [{ "name": "viz_width", "update": "width" }],
+  "data": [
+    {
+      "name": "raw",
+      "values": []
+    },
+    {
+      "name": "table",
+      "source": "raw",
+      "transform": [
+        {
+          "type": "formula",
+          "as": "percent",
+          "expr": "format(datum.value, '.2f') + '%'"
+        },
+        {
+          "type": "formula",
+          "as": "color",
+          "expr": "(datum.value < 50) ? '#E41A1C': (datum.value == 100) ? '#22964F' : '#FFC107'"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "yscale",
+      "type": "band",
+      "domain": { "data": "table", "field": "position" },
+      "range": "height",
+      "padding": 0.05
+    },
+    {
+      "name": "xscale",
+      "type": "linear",
+      "domain": { "data": "table", "field": "value" },
+      "range": "width",
+      "round": true,
+      "zero": true,
+      "nice": true
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": { "data": "table", "field": "category" },
+      "range": { "scheme": "category20" }
+    }
+  ],
+  "axes": [
+    {
+      "orient": "left",
+      "scale": "yscale",
+      "tickSize": 0,
+      "labelPadding": 4,
+      "zindex": 1
+    },
+    { "orient": "bottom", "scale": "xscale" },
+    { "orient": "top", "scale": "xscale" }
+  ],
+  "marks": [
+    {
+      "name": "all",
+      "from": { "data": "table" },
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "y": { "scale": "yscale", "field": "position", "offset": 0 },
+          "height": { "scale": "yscale", "band": 1 },
+          "x": { "scale": "xscale", "value": 100 },
+          "x2": { "scale": "xscale", "value": 0 },
+          "fill": { "field": "color" },
+          "opacity": { "value": 0.4 }
+        }
+      }
+    },
+    {
+      "name": "bars",
+      "from": { "data": "table" },
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "y": { "scale": "yscale", "field": "position", "offset": 0 },
+          "height": { "scale": "yscale", "band": 1 },
+          "x": { "scale": "xscale", "field": "value" },
+          "x2": { "scale": "xscale", "value": 0 },
+          "fill": { "field": "color" },
+          "opacity": { "value": 0.8 }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": { "data": "bars" },
+      "encode": {
+        "enter": {
+          "x": { "value": 10 },
+          "y": { "field": "y", "offset": { "field": "height", "mult": 0.7 } },
+          "fill": { "value": "black" },
+          "align": { "value": "left" },
+          "baseline": { "value": "bottom" },
+          "text": { "field": "datum.rule" }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": { "data": "all" },
+      "encode": {
+        "enter": {
+          "x": { "field": "x2", "offset": -5 },
+          "y": { "field": "y", "offset": { "field": "height", "mult": 0.7 } },
+          "fill": { "value": "black" },
+          "align": { "value": "right" },
+          "baseline": { "value": "bottom" },
+          "text": { "field": "datum.percent" }
+        }
+      }
+    }
+  ]
+}

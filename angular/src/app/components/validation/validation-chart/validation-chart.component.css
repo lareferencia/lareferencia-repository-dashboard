@@ -1,0 +1,50 @@
+.chart-card {
+  background-color: #eff9fc;
+  height: 95%;
+}
+
+.chart-title {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.red-legend {
+  width: 10px;
+  height: 10px;
+  background-color: #ffc107;
+  margin-right: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.green-legend {
+  width: 10px;
+  height: 10px;
+  background-color: #27ae60;
+  margin-right: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.blue-legend {
+  width: 10px;
+  height: 10px;
+  background-color: #3498db;
+  margin-right: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.legend-div {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-left: 5px;
+  margin-top: 5px;
+}

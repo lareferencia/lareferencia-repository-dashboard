@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #fff;
+}
+
+.bar-green > .mat-progress-bar-fill::after {
+  background-color: #2ecc71;
+}
+
+.bar-red > .mat-progress-bar-fill::after {
+  background-color: #e74c3c;
+}
+
+.bar-yellow > .mat-progress-bar-fill::after {
+  background-color: #f1c40f;
+}
+
+.mat-progress-bar-buffer {
+  background: #e4e8eb;
+}
+
+.mat-progress-bar {
+  border-radius: 2px;
+}
+
+.msg-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.msg-success button {
+  color: white;
+}
+
+.msg-error {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.msg-error button {
+  color: white;
+}
+
+.msg-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.msg-warning button {
+  color: black;
+}

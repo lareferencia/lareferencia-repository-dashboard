@@ -1,0 +1,64 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    class="sidenav"
+    mode="side"
+    opened
+    fixedInViewport="true"
+    fixedTopGap="60"
+    fixedBottomGap="60"
+  >
+    <mat-nav-list class="nav-list">
+      <div class="margin-top"></div>
+      <a
+        class="menu-border semi-bold"
+        mat-list-item
+        routerLink="/{{ acronym }}"
+      >
+        <!-- <i mat-list-icon class="material-icons">home</i> -->
+        <span class="full-width" i18n="Home page">Home</span>
+      </a>
+      <ng-container *ngFor="let repositorie of repositories">
+        <div class="margin-top"></div>
+        <a
+          class="menu-border ligth"
+          mat-list-item
+          (click)="menuClick(repositorie)"
+        >
+          <span class="full-width">{{ repositorie.description }}</span>
+          <!-- <i mat-list-icon class="material-icons">library_books</i> -->
+          <mat-icon
+            class="menu-button"
+            [ngClass]="{ rotated: repositorie.showSubmenu }"
+            *ngIf="isExpanded"
+            >expand_more
+          </mat-icon>
+        </a>
+        <div
+          class="submenu"
+          [ngClass]="{ expanded: repositorie.showSubmenu }"
+          *ngIf="isExpanded"
+        >
+          <a
+            class="sub-menu-border"
+            mat-list-item
+            routerLink="/{{ repositorie.description }}"
+            i18n
+            >History
+          </a>
+          <div class="margin-top-sub-menu"></div>
+          <a
+            class="sub-menu-border"
+            mat-list-item
+            routerLink="validation/{{ harvestingID }}"
+            i18n
+            >Last validation
+          </a>
+        </div>
+      </ng-container>
+      <div class="margin-top"></div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,9 @@
+.export {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+}
+
+button {
+  margin-left: 0.5em;
+}

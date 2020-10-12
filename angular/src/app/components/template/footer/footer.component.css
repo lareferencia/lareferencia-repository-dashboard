@@ -1,0 +1,22 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #f4f4f4;
+}
+
+.footer span {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer .logo {
+  max-height: 39px;
+  margin-right: 1em;
+}

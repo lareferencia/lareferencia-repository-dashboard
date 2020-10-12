@@ -1,0 +1,78 @@
+<div
+  [ngClass]="['alert', error ? 'alert-danger' : 'alert-warning']"
+  role="alert"
+  *ngIf="error || firstAccess"
+  i18n
+>
+  {error, select, true {Validations not found} false {Enter a source acronym in
+  the root URL /:acronym}}
+</div>
+
+<mat-card *ngIf="isLoadingResults">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</mat-card>
+
+<div *ngIf="!firstAccess && !error && validation">
+  <div class="flex-container">
+    <app-dash-mini-card
+      class="col-md-3"
+      icon="library_books"
+      i18n-title
+      title="Harvested records"
+      color="#3498db"
+      [content]="validation.size | number"
+    ></app-dash-mini-card>
+
+    <app-dash-mini-card
+      class="col-md-3"
+      icon="done"
+      i18n-title
+      title="Valid"
+      color="#27ae60"
+      [content]="validation.validSize | number"
+    ></app-dash-mini-card>
+
+    <app-dash-mini-card
+      class="col-md-3"
+      icon="settings"
+      i18n-title
+      title="Transformed"
+      color="#f1c40f"
+      [content]="validation.transformedSize | number"
+    ></app-dash-mini-card>
+
+    <app-dash-mini-card
+      class="col-md-3"
+      icon="clear"
+      i18n-title
+      title="Invalid"
+      color="#e74c3c"
+      [content]="validation.size - validation.validSize | number"
+    ></app-dash-mini-card>
+  </div>
+
+  <div class="flex-container">
+    <app-score-chart
+      class="col-md-4"
+      [validation]="validation"
+    ></app-score-chart>
+    <app-conformity-grouped-chart
+      class="col-md-8"
+      [validation]="validation"
+    ></app-conformity-grouped-chart>
+  </div>
+
+  <mat-card>
+    <mat-card-title class="title" i18n> Validations </mat-card-title>
+    <div class="validation-table">
+      <app-validation-table [validation]="validation"></app-validation-table>
+    </div>
+  </mat-card>
+
+  <mat-card class="records-card">
+    <mat-card-title class="title" i18n> Records </mat-card-title>
+    <div class="records-table">
+      <app-records-table [validation]="validation"></app-records-table>
+    </div>
+  </mat-card>
+</div>

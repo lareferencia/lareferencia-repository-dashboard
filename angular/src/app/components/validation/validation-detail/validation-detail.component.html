@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>
+  <ng-container i18n>Rule</ng-container>: {{ rule.name }}
+</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="occurrences-tables">
+    <div class="valid-occ-table">
+      <h3 i18n>Valid occurrences</h3>
+      <app-valid-occurence-table [rule]="rule"></app-valid-occurence-table>
+    </div>
+    <div class="invalid-occ-table">
+      <h3 i18n>Invalid occurrences</h3>
+      <app-invalid-occurence-table [rule]="rule"></app-invalid-occurence-table>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button
+    mat-dialog-close
+    type="button"
+    class="btn btn-outline-dark"
+    i18n="Button close"
+  >
+    Close
+  </button>
+</mat-dialog-actions>

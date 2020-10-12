@@ -1,0 +1,39 @@
+.chart-card {
+  margin-bottom: 30px;
+  background-color: #eff9fc;
+  height: 95%;
+}
+
+.chart-title {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.red-legend {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+.black-legend {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  margin-right: 5px;
+  margin-left: 10px;
+  border-radius: 2px;
+}
+
+.legend-div {
+  display: flex;
+  align-items: baseline;
+  margin-left: 5px;
+}
