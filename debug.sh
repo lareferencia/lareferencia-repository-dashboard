@@ -20,4 +20,4 @@
 #     For any further information please contact
 #     Lautaro Matas <lmatas@gmail.com>
 #*******************************************************************************
-java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=9000 -jar $1
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8888 -jar $1

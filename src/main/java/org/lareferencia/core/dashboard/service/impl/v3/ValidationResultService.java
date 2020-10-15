@@ -85,9 +85,11 @@ public class ValidationResultService implements IValidationInformationService {
 	 */
 	public ValidationResult validationResultByHarvestingID(Long snapshotID) throws ValidationInformationServiceException {
 				
-		NetworkSnapshot snapshot = snapshotRepository.getOne(snapshotID);
-		if (snapshot == null)
+		Optional<NetworkSnapshot> opSnapshot = snapshotRepository.findById(snapshotID);
+		if (!opSnapshot.isPresent() )
 			throw new ValidationInformationServiceException("Harvesting w/ ID:" + snapshotID + "do not exist");
+		
+		NetworkSnapshot snapshot = opSnapshot.get();
 		
 		ValidationResult result = new ValidationResult();
 
@@ -121,6 +123,10 @@ public class ValidationResultService implements IValidationInformationService {
 		
 		result.validSize = Optional.ofNullable( validRecordMap.get("true") ).orElse(0);
 		result.transformedSize = Optional.ofNullable( transformedRecordMap.get("true") ).orElse(0);
+		
+		if ( snapshot.getNetwork() == null || snapshot.getNetwork().getValidator() == null )
+			throw new ValidationInformationServiceException("Validator of Snapshot w/ ID:" + snapshotID + "do not exist");
+		
 		
 		for (ValidatorRule rule : snapshot.getNetwork().getValidator().getRules() ) {
 

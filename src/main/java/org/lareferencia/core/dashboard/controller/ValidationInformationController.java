@@ -33,7 +33,6 @@ import org.lareferencia.core.dashboard.service.ValueCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,11 +59,19 @@ public class ValidationInformationController {
 	@ApiOperation(value = "Returns validation results info by harvesting id")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Returns validation results info by harvesting id") })  
     @RequestMapping(value = "/by_id/{harvestingID}", method = RequestMethod.GET)
-    HttpEntity<IValidationResult> getValidationResults(@PathVariable("harvestingID")  Long harvestingID) throws ValidationInformationServiceException {
+    HttpEntity<IValidationResult> getValidationResults(@PathVariable("harvestingID")  Long harvestingID) {
 
-    	IValidationResult result = vService.validationResultByHarvestingID(harvestingID);
+		IValidationResult result = null;
+		
+		try {
+		
+			result = vService.validationResultByHarvestingID(harvestingID);
+	        return new ResponseEntity<IValidationResult>(result, HttpStatus.OK);
+
+		} catch (Exception e) {
+	        return new ResponseEntity<IValidationResult>(result, HttpStatus.NOT_FOUND);
+		}
     	
-        return new ResponseEntity<IValidationResult>(result, HttpStatus.OK);
     }
     
 	@ApiOperation(value = "Returns validation results on each record by harvesting id")
