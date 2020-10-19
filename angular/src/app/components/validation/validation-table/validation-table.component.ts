@@ -22,6 +22,7 @@ export class ValidationTableComponent implements OnInit {
   @Input() validation: Validation;
   dataSource: ValidationTableDataSource;
   harvestingID: number;
+  acronym: string;
   csvData: any[];
 
   displayedColumns: string[] = [
@@ -38,9 +39,8 @@ export class ValidationTableComponent implements OnInit {
   constructor(private route: ActivatedRoute, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.harvestingID = Number(
-      this.route.snapshot.paramMap.get('harvestingID')
-    );
+    this.harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
+    this.acronym = this.route.snapshot.paramMap.get('acronym');
   }
 
   ngAfterViewInit() {

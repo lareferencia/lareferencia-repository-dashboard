@@ -45,7 +45,7 @@ export class HarvestingTableComponent implements OnInit {
   }
 
   detailClick(harvestingContent: HarvestingContent): void {
-    this.router.navigate([`/validation/${harvestingContent.id}`]);
+    this.router.navigate([`${this.acronym}/validation/${harvestingContent.id}`]);
   }
 
   ngAfterViewInit() {

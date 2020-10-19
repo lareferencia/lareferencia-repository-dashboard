@@ -1,7 +1,6 @@
 <mat-card>
   <mat-card-title *ngIf="validation" class="title" i18n>
-    Records that contain the valid "{{ validation.rulesByID[ruleID].name }}"
-    rule
+    Records that contain the valid "{{ getRule(ruleID).name }}" rule
   </mat-card-title>
   <div class="records-valid-table">
     <app-records-valid-table

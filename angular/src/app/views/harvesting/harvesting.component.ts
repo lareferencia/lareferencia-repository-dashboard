@@ -1,3 +1,4 @@
+import { Harvesting } from './../../shared/harvesting.model';
 import { HarvestingContent } from './../../shared/harvesting-content.model';
 import { NavService } from './../../services/nav.service';
 import { HarvestingService } from './../../services/harvesting.service';
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./harvesting.component.css']
 })
 export class HarvestingComponent implements OnInit {
-
+  harvesting: Harvesting;
   harvestingContent: HarvestingContent;
   error = false;
   isLoadingResults = true;
@@ -31,7 +32,6 @@ export class HarvestingComponent implements OnInit {
         .getHarvestingLastGoodKnowByAcronym(acronym)
         .subscribe(
           (harvestingContent) => {
-            console.log('Achou');
             this.harvestingContent = harvestingContent;
             this.navService.navData = {
               harvestingID: Number(harvestingContent.id),
@@ -43,6 +43,10 @@ export class HarvestingComponent implements OnInit {
             this.error = true;
           }
         );
+
+        this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
+          this.harvesting = harvesting;
+        })
     });
   }
 }

@@ -1,4 +1,4 @@
-<div class="table-container mat-elevation-z5">
+<div class="table-container">
   <div class="table-content-container">
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="ruleID">
@@ -61,9 +61,9 @@
           <div>
             <a
               target="_blank"
-              routerLink="/validation/{{ this.harvestingID }}/invalid_rule/{{
-                rule.ruleID
-              }}"
+              routerLink="/{{ this.acronym }}/validation/{{
+                this.harvestingID
+              }}/invalid_rule/{{ rule.ruleID }}"
             >
               <button
                 class="btn text-nowrap btn-outline-danger"
@@ -110,5 +110,8 @@
     >
     </mat-paginator>
   </div>
+  <app-table-exporter
+    class="app-exporter"
+    [data]="csvData"
+  ></app-table-exporter>
 </div>
-<app-table-exporter [data]="csvData"></app-table-exporter>

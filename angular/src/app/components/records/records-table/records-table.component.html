@@ -104,7 +104,7 @@
   </button>
 </div>
 
-<div class="table-container mat-elevation-z8">
+<div class="table-container">
   <div class="loading-shade" *ngIf="isLoadingResults">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
@@ -178,5 +178,5 @@
     >
     </mat-paginator>
   </div>
+  <app-table-exporter [data]="csvData"></app-table-exporter>
 </div>
-<app-table-exporter [data]="csvData"></app-table-exporter>

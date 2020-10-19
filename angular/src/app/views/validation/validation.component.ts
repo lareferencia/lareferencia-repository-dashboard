@@ -1,3 +1,5 @@
+import { HarvestingService } from './../../services/harvesting.service';
+import { Harvesting } from './../../shared/harvesting.model';
 import { Validation } from 'src/app/shared/validation.model';
 import { ValidationService } from 'src/app/services/validation.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,22 +15,22 @@ export class ValidationComponent implements OnInit {
   firstAccess = false;
   error = false;
   isLoadingResults = true;
-  harvestingID: number;
   validation: Validation;
+  harvesting: Harvesting;
 
   constructor(
     private route: ActivatedRoute,
-    private validationService: ValidationService
+    private validationService: ValidationService,
+    private harvestingService: HarvestingService
   ) {}
   
   ngOnInit(): void {
-    this.harvestingID = Number(
-      this.route.snapshot.paramMap.get('harvestingID')
-    );
+    const harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
+    const acronym = this.route.snapshot.paramMap.get('acronym');
 
-    if (this.harvestingID != 0) {
+    if (harvestingID != 0) {
       this.validationService
-        .getValidationResultsByHarvestingID(this.harvestingID)
+        .getValidationResultsByHarvestingID(harvestingID)
         .subscribe((result) => {
           this.validation = result;
 
@@ -52,6 +54,11 @@ export class ValidationComponent implements OnInit {
         ()=> {
           this.isLoadingResults = false;
         });
+
+        this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
+          this.harvesting = harvesting;
+        })
+
     } else {
       this.firstAccess = true;
       this.isLoadingResults = false;

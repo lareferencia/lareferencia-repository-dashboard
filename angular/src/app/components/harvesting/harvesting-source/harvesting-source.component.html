@@ -1,13 +1,19 @@
-<div *ngIf="harvesting">
-  <mat-card-title class="title">
-    {{ harvesting.name }}
-  </mat-card-title>
-  <mat-card-subtitle class="subtitle">
-    {{ harvesting.institutionName }}
-  </mat-card-subtitle>
+<app-card
+  *ngIf="harvestingHistory?.content.length > 1"
+  title="Validation evolution"
+  i18n-title
+  description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
+  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+  It was popularised in the 1960s with the release of Letraset sheets containing 
+  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum."
+  i18n-description
+>
   <app-validation-chart
-    *ngIf="harvestingHistory?.content.length > 1"
     class="col-md-4"
     [harvestingHistory]="harvestingHistory"
-  ></app-validation-chart>
-</div>
+  >
+  </app-validation-chart>
+</app-card>

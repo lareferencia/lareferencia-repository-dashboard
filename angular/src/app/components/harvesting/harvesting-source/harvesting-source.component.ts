@@ -22,9 +22,6 @@ export class HarvestingSourceComponent implements OnInit {
 
   ngOnInit(): void {
     const acronym = this.route.snapshot.paramMap.get('acronym');
-    this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
-      this.harvesting = harvesting;
-    })
 
     this.harvestingService
       .getHarvestingHistoryByAcronym(acronym, this.pageNumber, this.pageSize)

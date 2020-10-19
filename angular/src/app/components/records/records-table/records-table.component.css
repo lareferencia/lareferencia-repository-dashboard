@@ -13,6 +13,7 @@ th {
 }
 
 .table-container {
+  padding: 30px 30px 0px 30px;
   position: relative;
   min-height: 200px;
 }
@@ -38,6 +39,7 @@ th {
 .filter-form {
   display: flex;
   align-items: center;
+  padding: 30px 30px 0px 30px;
 }
 
 .additional-selection {

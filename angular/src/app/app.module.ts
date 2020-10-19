@@ -55,6 +55,8 @@ import { RecordsTableComponent } from './components/records/records-table/record
 import { TableExporterComponent } from './components/table-exporter/table-exporter.component';
 import { ConformityGroupedChartComponent } from './components/conformity-grouped-chart/conformity-grouped-chart.component';
 import { ValidationChartComponent } from './components/validation/validation-chart/validation-chart.component';
+import { SubHeaderComponent } from './components/sub-header/sub-header.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +90,8 @@ import { ValidationChartComponent } from './components/validation/validation-cha
     TableExporterComponent,
     ConformityGroupedChartComponent,
     ValidationChartComponent,
+    SubHeaderComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

@@ -31,4 +31,8 @@ export class RecordValidComponent implements OnInit {
         this.validation.rulesByID = Object.values(this.validation.rulesByID);
       });
   }
+  
+  getRule(ruleID: string) {
+    return this.validation.rulesByID.find((x) => x.ruleID === Number(ruleID));
+  }
 }

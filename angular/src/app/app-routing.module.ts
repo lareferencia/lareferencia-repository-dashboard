@@ -13,7 +13,7 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'validation/:harvestingID',
+    path: ':acronym/validation/:harvestingID',
     component: ValidationComponent,
   },
   {
@@ -21,11 +21,11 @@ const routes: Routes = [
     component: HarvestingComponent
   },
   {
-    path: 'validation/:harvestingID/invalid_rule/:ruleID',
+    path: ':acronym/validation/:harvestingID/invalid_rule/:ruleID',
     component: RecordInvalidComponent
   },
   {
-    path: 'validation/:harvestingID/valid_rule/:ruleID',
+    path: ':acronym/validation/:harvestingID/valid_rule/:ruleID',
     component: RecordValidComponent
   },
 ];

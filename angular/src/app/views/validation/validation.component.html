@@ -13,6 +13,11 @@
 </mat-card>
 
 <div *ngIf="!firstAccess && !error && validation">
+  <app-sub-header
+    *ngIf="harvesting"
+    description="{{ harvesting.name }}"
+  ></app-sub-header>
+
   <div class="flex-container">
     <app-dash-mini-card
       class="col-md-3"
@@ -62,17 +67,33 @@
     ></app-conformity-grouped-chart>
   </div>
 
-  <mat-card>
-    <mat-card-title class="title" i18n> Validations </mat-card-title>
-    <div class="validation-table">
-      <app-validation-table [validation]="validation"></app-validation-table>
-    </div>
-  </mat-card>
+  <app-card
+    title="Validations"
+    i18n-title
+    description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
+  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+  It was popularised in the 1960s with the release of Letraset sheets containing 
+  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum."
+    i18n-description
+  >
+    <app-validation-table [validation]="validation"></app-validation-table>
+  </app-card>
 
-  <mat-card class="records-card">
-    <mat-card-title class="title" i18n> Records </mat-card-title>
-    <div class="records-table">
-      <app-records-table [validation]="validation"></app-records-table>
-    </div>
-  </mat-card>
+  <app-card
+    title="Records"
+    i18n-title
+    description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
+  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+  It was popularised in the 1960s with the release of Letraset sheets containing 
+  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum."
+    i18n-description
+  >
+    <app-records-table [validation]="validation"></app-records-table>
+  </app-card>
 </div>
