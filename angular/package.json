@@ -25,6 +25,8 @@
     "@angular/router": "~9.1.11",
     "@types/vega": "^3.2.0",
     "export-to-csv": "^0.2.1",
+    "keycloak-angular": "^8.0.1",
+    "keycloak-js": "^11.0.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "vega": "^5.13.0",

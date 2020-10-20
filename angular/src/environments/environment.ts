@@ -2,10 +2,17 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+export const keycloakConfig: any = {
+  url: 'http://demo.lareferencia.info:8280/auth/',
+  realm: 'lareferencia',
+  clientId: 'dashboard-lareferencia',
+};
+
 export const environment = {
   production: false,
   harvestingService: 'http://200.130.45.74:8082/api/v2/harvesting/source/',
   validationService: 'http://200.130.45.74:8082/api/v2/validation/',
+  keycloakConfig: keycloakConfig,
 };
 
 /*

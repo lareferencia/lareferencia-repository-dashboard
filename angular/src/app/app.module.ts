@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -57,6 +57,9 @@ import { ConformityGroupedChartComponent } from './components/conformity-grouped
 import { ValidationChartComponent } from './components/validation/validation-chart/validation-chart.component';
 import { SubHeaderComponent } from './components/sub-header/sub-header.component';
 import { CardComponent } from './components/card/card.component';
+import { initializeKeycloak } from './keycloak-init';
+import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -118,8 +121,17 @@ import { CardComponent } from './components/card/card.component';
     MatInputModule,
     FormsModule,
     MatSelectModule,
+    KeycloakAngularModule,
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
