@@ -6,12 +6,13 @@ import { map, catchError } from 'rxjs/operators';
 import { Validation } from '../shared/validation.model';
 import { Occurence } from '../shared/occurrence.model';
 import { Records } from '../shared/records.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ValidationService {
-  private baseurl: string = 'http://200.130.45.74:8082/api/v2/validation/';
+  private baseurl: string = environment.validationService;
 
   constructor(private http: HttpClient) { }
 

@@ -5,12 +5,13 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HarvestingService {
-  private baseurl: string = 'http://200.130.45.74:8082/api/v2/harvesting/source/';
+  private baseurl: string = environment.harvestingService;
 
   constructor(private http: HttpClient) {}
 
