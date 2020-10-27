@@ -25,43 +25,49 @@ export class ValidationComponent implements OnInit {
   ) {}
   
   ngOnInit(): void {
-    const harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
-    const acronym = this.route.snapshot.paramMap.get('acronym');
+    this.route.params.subscribe(() => {
+      
+      this.validation = null;
+      this.isLoadingResults = true;
+      const harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
+      const acronym = this.route.snapshot.paramMap.get('acronym');
 
-    if (harvestingID != 0) {
-      this.validationService
-        .getValidationResultsByHarvestingID(harvestingID)
-        .subscribe((result) => {
-          this.validation = result;
+      if (harvestingID != 0) {
+        this.validationService
+          .getValidationResultsByHarvestingID(harvestingID)
+          .subscribe((result) => {
+            this.validation = result;
+            console.log(result);
 
-          let rules: Rule[] = Object.values(this.validation.rulesByID).map(
-            (rule) => {
-              const { validCount, invalidCount } = rule;
-              const total: number = invalidCount + validCount;
-              return {
-                ...rule,
-                conformity: total > 0 ? (validCount * 100) / total : 0,
-              };
-            }
-          );
+            let rules: Rule[] = Object.values(this.validation.rulesByID).map(
+              (rule) => {
+                const { validCount, invalidCount } = rule;
+                const total: number = invalidCount + validCount;
+                return {
+                  ...rule,
+                  conformity: total > 0 ? (validCount * 100) / total : 0,
+                };
+              }
+            );
 
-          this.validation.rulesByID = rules;
-        },
-        () => {
-          this.error = true;
-          this.isLoadingResults = false;
-        },
-        ()=> {
-          this.isLoadingResults = false;
-        });
+            this.validation.rulesByID = rules;
+          },
+          () => {
+            this.error = true;
+            this.isLoadingResults = false;
+          },
+          ()=> {
+            this.isLoadingResults = false;
+          });
 
-        this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
-          this.harvesting = harvesting;
-        })
+          this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
+            this.harvesting = harvesting;
+          })
 
-    } else {
-      this.firstAccess = true;
-      this.isLoadingResults = false;
-    }
+      } else {
+        this.firstAccess = true;
+        this.isLoadingResults = false;
+      }
+   });
   }
 }
