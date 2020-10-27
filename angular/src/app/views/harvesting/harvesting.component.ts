@@ -44,9 +44,9 @@ export class HarvestingComponent implements OnInit {
           }
         );
 
-        this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
-          this.harvesting = harvesting;
-        })
+      this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
+        this.harvesting = harvesting;
+      })
     });
   }
 }
