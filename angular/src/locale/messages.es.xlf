@@ -517,7 +517,7 @@
       </notes>
       <segment>
         <source>{VAR_SELECT, select, true {Required: Yes} false {Required: No} }</source>
-        <target>{VAR_SELECT, select, true {Required: Sim} false {Required: Não} }</target>
+        <target>{VAR_SELECT, select, true {Obrigatório: Sim} false {Obrigatório: Não} }</target>
       </segment>
     </unit>
     <unit id="9171508892369069863">
