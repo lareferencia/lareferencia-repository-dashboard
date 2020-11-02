@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en">
   <file original="ng.template" id="ngi18n">
+    <unit id="5823395783897532746">
+      <notes>
+        <note category="location">src/app/components/template/header/header.component.html:14</note>
+      </notes>
+      <segment>
+        <source>Dashboard for repository managers</source>
+      </segment>
+    </unit>
     <unit id="2821179408673282599">
       <notes>
         <note category="description">Home page</note>

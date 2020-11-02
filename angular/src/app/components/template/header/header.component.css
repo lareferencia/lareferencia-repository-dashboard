@@ -22,7 +22,7 @@
   width: 200px;
 }
 
-.teste {
+.header-description {
   width: 100vw;
   position: relative;
   margin-left: -50vw;
@@ -34,7 +34,7 @@
   justify-content: flex-end;
 }
 
-.interno1 > span {
+.title-description > span {
   margin-left: 30px;
   font-family: Overpass;
   font-weight: 600;
@@ -43,15 +43,15 @@
   color: #f6d67b;
 }
 
-.interno2 {
+.sub-title-description {
   background-color: #555a6d;
 }
 
-.interno1 {
+.title-description {
   margin-bottom: 3px;
 }
 
-.interno2 > span {
+.sub-title-description > span {
   margin-left: 30px;
   font-family: Overpass;
   font-weight: bold;
