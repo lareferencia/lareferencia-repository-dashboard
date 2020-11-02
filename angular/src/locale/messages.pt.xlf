@@ -309,7 +309,7 @@
     </unit>
     <unit id="5662837045345510998">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:75,77</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:77,79</note>
       </notes>
       <segment>
         <source>
@@ -322,7 +322,7 @@
     </unit>
     <unit id="8294105413140648271">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:72</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:74</note>
       </notes>
       <segment>
         <source>Records that contain this invalid rule</source>
@@ -331,7 +331,7 @@
     </unit>
     <unit id="6161624606545961207">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:94,96</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:96,98</note>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:57,59</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:57,59</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:163,165</note>
@@ -347,7 +347,7 @@
     </unit>
     <unit id="677486627395562160">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:91</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:93</note>
       </notes>
       <segment>
         <source>Details about this rule</source>
@@ -420,9 +420,22 @@
         <target>Fim</target>
       </segment>
     </unit>
+    <unit id="4329653390172614983">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:68,70</note>
+      </notes>
+      <segment>
+        <source>
+            Deleted
+          </source>
+          <target>
+            Excluído
+          </target>
+      </segment>
+    </unit>
     <unit id="8441334606065163183">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:74,76</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:77,79</note>
       </notes>
       <segment>
         <source>
