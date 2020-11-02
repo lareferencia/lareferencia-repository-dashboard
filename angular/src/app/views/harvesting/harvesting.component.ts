@@ -24,6 +24,7 @@ export class HarvestingComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(() => {
+      this.error = false;
       this.harvestingContent = null;
       this.isLoadingResults = true;
       const acronym = this.route.snapshot.paramMap.get('acronym');
