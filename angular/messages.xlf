@@ -9,7 +9,6 @@
       </notes>
       <segment>
         <source>Home</source>
-        <target>Home</target>
       </segment>
     </unit>
     <unit id="5229258401533680267">
@@ -19,8 +18,6 @@
       <segment>
         <source>History
           </source>
-        <target>Histórico
-          </target>
       </segment>
     </unit>
     <unit id="8414791111649994722">
@@ -30,8 +27,6 @@
       <segment>
         <source>Last validation
           </source>
-        <target>Última validação
-          </target>
       </segment>
     </unit>
     <unit id="3512676223114154375">
@@ -42,9 +37,6 @@
         <source>
     Welcome!
   </source>
-        <target>
-    Bem-vindo!
-  </target>
       </segment>
     </unit>
     <unit id="9078494337127893740">
@@ -55,9 +47,6 @@
         <source>
     LA Referencia Dashboard
   </source>
-        <target>
-    Dashboard LA Referencia
-  </target>
       </segment>
     </unit>
     <unit id="2180124995485990496">
@@ -68,9 +57,6 @@
         <source>
   <ph id="0" equiv="ICU" disp="{error, select, true {...} false {...}}"/>
 </source>
-        <target>
-  <ph id="0" equiv="ICU" disp="{error, select, true {...} false {...}}"/>
-</target>
       </segment>
     </unit>
     <unit id="7467308342369948080">
@@ -80,8 +66,6 @@
       <segment>
         <source>{VAR_SELECT, select, true {Validations not found} false {Enter a source acronym in
   the root URL /:acronym} }</source>
-        <target>{VAR_SELECT, select, true {Validações não encontradas} false {Entre com um acrônimo de origem na URL
-        raiz /:acrônimo} }</target>
       </segment>
     </unit>
     <unit id="1084183243125905801">
@@ -90,7 +74,6 @@
       </notes>
       <segment>
         <source>Harvested records</source>
-        <target>Registros coletados</target>
       </segment>
     </unit>
     <unit id="2831497907036176442">
@@ -99,8 +82,7 @@
         <note category="location">src/app/components/records/records-table/records-table.component.html:16</note>
       </notes>
       <segment>
-        <source>Valid</source> 
-        <target>Válido</target> 
+        <source>Valid</source>
       </segment>
     </unit>
     <unit id="9048867534521749580">
@@ -113,7 +95,6 @@
       </notes>
       <segment>
         <source>Transformed</source>
-        <target>Transformado</target>
       </segment>
     </unit>
     <unit id="4136129438009397007">
@@ -123,17 +104,16 @@
       </notes>
       <segment>
         <source>Invalid</source>
-        <target>Inválido</target>
       </segment>
     </unit>
     <unit id="4189102578654356532">
       <notes>
         <note category="location">src/app/views/validation/validation.component.html:71</note>
         <note category="location">src/app/components/template/nav-bar/nav-bar.component.html:17</note>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:3</note>
       </notes>
       <segment>
         <source>Validations</source>
-        <target>Validações</target>
       </segment>
     </unit>
     <unit id="8210903900743032826">
@@ -150,13 +130,6 @@
   It was popularised in the 1960s with the release of Letraset sheets containing 
   Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
   PageMaker including versions of Lorem Ipsum.</source>
-        <target>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-  Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown 
-  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
-  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-  It was popularised in the 1960s with the release of Letraset sheets containing 
-  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-  PageMaker including versions of Lorem Ipsum.</target>
       </segment>
     </unit>
     <unit id="3917644028160931566">
@@ -167,7 +140,6 @@
       </notes>
       <segment>
         <source>Records</source>
-        <target>Registros</target>
       </segment>
     </unit>
     <unit id="8462130792607498110">
@@ -176,7 +148,6 @@
       </notes>
       <segment>
         <source>Rule</source>
-        <target>Regra</target>
       </segment>
     </unit>
     <unit id="4065032980887613740">
@@ -185,7 +156,6 @@
       </notes>
       <segment>
         <source>Valid occurrences</source>
-        <target>Ocorrências válidas</target>
       </segment>
     </unit>
     <unit id="4229881712747303763">
@@ -194,7 +164,6 @@
       </notes>
       <segment>
         <source>Invalid occurrences</source>
-        <target>Ocorrências inválidas</target>
       </segment>
     </unit>
     <unit id="1353900317147489199">
@@ -207,9 +176,6 @@
         <source>
     Close
   </source>
-        <target>
-    Fechar
-  </target>
       </segment>
     </unit>
     <unit id="8040881171107393560">
@@ -218,7 +184,6 @@
       </notes>
       <segment>
         <source>ID</source>
-        <target>ID</target>
       </segment>
     </unit>
     <unit id="8953033926734869941">
@@ -227,7 +192,6 @@
       </notes>
       <segment>
         <source>Name</source>
-        <target>Nome</target>
       </segment>
     </unit>
     <unit id="4902817035128594900">
@@ -236,7 +200,6 @@
       </notes>
       <segment>
         <source>Description</source>
-        <target>Descrição</target>
       </segment>
     </unit>
     <unit id="7045123878111147511">
@@ -245,7 +208,6 @@
       </notes>
       <segment>
         <source>Required</source>
-        <target>Obrigatório</target>
       </segment>
     </unit>
     <unit id="8102915832289919728">
@@ -256,9 +218,6 @@
         <source>
           <ph id="0" equiv="ICU" disp="{rule.mandatory, select, true {...} false {...}}"/>
         </source>
-        <target>
-          <ph id="0" equiv="ICU" disp="{rule.mandatory, select, true {...} false {...}}"/>
-        </target>
       </segment>
     </unit>
     <unit id="3416906127672356950">
@@ -267,7 +226,6 @@
       </notes>
       <segment>
         <source>{VAR_SELECT, select, true {Yes} false {No} }</source>
-        <target>{VAR_SELECT, select, true {Sim} false {Não} }</target>
       </segment>
     </unit>
     <unit id="8927692490825452681">
@@ -278,9 +236,6 @@
         <source>
           Conformity
         </source>
-        <target>
-          Conformidade
-        </target>
       </segment>
     </unit>
     <unit id="2351318473718426709">
@@ -292,9 +247,6 @@
         <source>
           Valid records
         </source>
-        <target>
-          Registros válidos
-        </target>
       </segment>
     </unit>
     <unit id="5662837045345510998">
@@ -305,9 +257,6 @@
         <source>
                 Records
               </source>
-        <target>
-                Registros
-              </target>
       </segment>
     </unit>
     <unit id="8294105413140648271">
@@ -316,7 +265,6 @@
       </notes>
       <segment>
         <source>Records that contain this invalid rule</source>
-        <target>Registros que contêm está regra inválida</target>
       </segment>
     </unit>
     <unit id="6161624606545961207">
@@ -330,9 +278,6 @@
         <source>
             Details
           </source>
-        <target>
-            Detalhes
-          </target>
       </segment>
     </unit>
     <unit id="677486627395562160">
@@ -341,7 +286,6 @@
       </notes>
       <segment>
         <source>Details about this rule</source>
-        <target>Detalhes sobre esta regra</target>
       </segment>
     </unit>
     <unit id="2644640411790641675">
@@ -350,7 +294,6 @@
       </notes>
       <segment>
         <source>Validation evolution</source>
-        <target>Evolução das validações</target>
       </segment>
     </unit>
     <unit id="8742130100135598533">
@@ -361,9 +304,6 @@
         <source>
           Harvested records
         </source>
-        <target>
-          Registros coletados
-        </target>
       </segment>
     </unit>
     <unit id="5933137805033862730">
@@ -374,9 +314,6 @@
         <source>
           Invalid records
         </source>
-        <target>
-          Registros inválidos
-        </target>
       </segment>
     </unit>
     <unit id="6269371916922374000">
@@ -387,9 +324,6 @@
         <source>
           Transformed records
         </source>
-        <target>
-          Registros transformados
-        </target>
       </segment>
     </unit>
     <unit id="5162686434580248853">
@@ -398,7 +332,6 @@
       </notes>
       <segment>
         <source>Start</source>
-        <target>Início</target>
       </segment>
     </unit>
     <unit id="1241348629231510663">
@@ -407,7 +340,6 @@
       </notes>
       <segment>
         <source>End</source>
-        <target>Fim</target>
       </segment>
     </unit>
     <unit id="8441334606065163183">
@@ -418,9 +350,6 @@
         <source>
             Validations
           </source>
-        <target>
-            Validações
-          </target>
       </segment>
     </unit>
     <unit id="7660461365638405664">
@@ -431,27 +360,22 @@
         <source>
   Harvesting not found
 </source>
-        <target>
-  Coleta não encontrada
-</target>
       </segment>
     </unit>
     <unit id="4362164183481353668">
       <notes>
-        <note category="location">src/app/views/harvesting/harvesting.component.html:18</note>
+        <note category="location">src/app/views/harvesting/harvesting.component.html:19</note>
       </notes>
       <segment>
         <source>Validation table</source>
-        <target>Tabela de validações</target>
       </segment>
     </unit>
     <unit id="510215860731572676">
       <notes>
-        <note category="location">src/app/views/harvesting/harvesting.component.html:20</note>
+        <note category="location">src/app/views/harvesting/harvesting.component.html:21</note>
       </notes>
       <segment>
         <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</source>
-        <target>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</target>
       </segment>
     </unit>
     <unit id="3400354995808453024">
@@ -461,7 +385,6 @@
       </notes>
       <segment>
         <source>Occurrence</source>
-        <target>Ocorrência</target>
       </segment>
     </unit>
     <unit id="6533918067030990396">
@@ -471,7 +394,6 @@
       </notes>
       <segment>
         <source>Amount</source>
-        <target>Quantidade</target>
       </segment>
     </unit>
     <unit id="7396212938337853335">
@@ -481,8 +403,6 @@
       <segment>
         <source>Result of the evaluation of rules for &quot;<ph id="0" equiv="INTERPOLATION" disp="{{ record.identifier }}"/>&quot;
     record</source>
-        <target>Resultado da avaliação das regras para o registro &quot;<ph id="0" equiv="INTERPOLATION" disp="{{ record.identifier }}"/>&quot;
-    </target>
       </segment>
     </unit>
     <unit id="7317370274961421513">
@@ -494,7 +414,6 @@
       </notes>
       <segment>
         <source>{VAR_SELECT, select, true {Valid} false {Invalid} }</source>
-        <target>{VAR_SELECT, select, true {Válido} false {Inválido} }</target>
       </segment>
     </unit>
     <unit id="5676922037336946281">
@@ -505,9 +424,6 @@
         <source>
               <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {...} false {...}}"/>
             </source>
-        <target>
-              <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {...} false {...}}"/>
-            </target>
       </segment>
     </unit>
     <unit id="359817121528370323">
@@ -517,7 +433,6 @@
       </notes>
       <segment>
         <source>{VAR_SELECT, select, true {Required: Yes} false {Required: No} }</source>
-        <target>{VAR_SELECT, select, true {Required: Sim} false {Required: Não} }</target>
       </segment>
     </unit>
     <unit id="9171508892369069863">
@@ -528,9 +443,6 @@
         <source>
                 <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {...} false {...}}"/>
               </source>
-        <target>
-                <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {...} false {...}}"/>
-              </target>
       </segment>
     </unit>
     <unit id="732432619111661062">
@@ -543,9 +455,6 @@
         <source>
           Identifier
         </source>
-        <target>
-          Identificador
-        </target>
       </segment>
     </unit>
     <unit id="2957163997998056771">
@@ -557,7 +466,6 @@
       </notes>
       <segment>
         <source>Validation</source>
-        <target>Validação</target>
       </segment>
     </unit>
     <unit id="4399330611551184869">
@@ -567,8 +475,7 @@
         <note category="location">src/app/components/records/records-table/records-table.component.html:147</note>
       </notes>
       <segment>
-        <source>Transformation</source> 
-        <target>Transformação</target> 
+        <source>Transformation</source>
       </segment>
     </unit>
     <unit id="5096107754514710030">
@@ -579,9 +486,6 @@
         <source>
     Records that contain the valid &quot;<ph id="0" equiv="INTERPOLATION" disp="{{ getRule(ruleID).name }}"/>&quot; rule
   </source>
-        <target>
-    Registros que contém a regra &quot;<ph id="0" equiv="INTERPOLATION" disp="{{ getRule(ruleID).name }}"/>&quot; inválida
-  </target>
       </segment>
     </unit>
     <unit id="522971211873433922">
@@ -591,8 +495,6 @@
       <segment>
         <source>Records that contain the invalid &apos;&apos;<ph id="0" equiv="INTERPOLATION" disp="{{ getRule(ruleID).name }}"/>&apos;&apos;
     rule</source>
-        <target>Registros que contém a regra &apos;&apos;<ph id="0" equiv="INTERPOLATION" disp="{{ getRule(ruleID).name }}"/>&apos;&apos;
-    inválida</target>
       </segment>
     </unit>
     <unit id="7630457246098294813">
@@ -603,9 +505,6 @@
         <source>
     Score
   </source>
-        <target>
-    Pontuação
-  </target>
       </segment>
     </unit>
     <unit id="5817928445374038037">
@@ -616,9 +515,6 @@
         <source>
     Conformity
   </source>
-        <target>
-    Conformidade
-  </target>
       </segment>
     </unit>
     <unit id="1533389380577466099">
@@ -627,7 +523,6 @@
       </notes>
       <segment>
         <source>Required rules</source>
-        <target>Regras obrigatórias</target>
       </segment>
     </unit>
     <unit id="3414697895342325339">
@@ -636,7 +531,6 @@
       </notes>
       <segment>
         <source>Non-required rules</source>
-        <target>Regras não obrigatórias</target>
       </segment>
     </unit>
     <unit id="4164796296331721280">
@@ -645,7 +539,6 @@
       </notes>
       <segment>
         <source>Identifier</source>
-        <target>Identificador</target>
       </segment>
     </unit>
     <unit id="6252070156626006029">
@@ -655,7 +548,6 @@
       </notes>
       <segment>
         <source>None</source>
-        <target>Nenhum</target>
       </segment>
     </unit>
     <unit id="2807800733729323332">
@@ -664,7 +556,6 @@
       </notes>
       <segment>
         <source>Yes</source>
-        <target>Sim</target>
       </segment>
     </unit>
     <unit id="3542042671420335679">
@@ -673,7 +564,6 @@
       </notes>
       <segment>
         <source>No</source>
-        <target>Não</target>
       </segment>
     </unit>
     <unit id="1199157391035799970">
@@ -681,8 +571,7 @@
         <note category="location">src/app/components/records/records-table/records-table.component.html:34</note>
       </notes>
       <segment>
-        <source>Valid rules</source>  
-        <target>Regras válidas</target>  
+        <source>Valid rules</source>
       </segment>
     </unit>
     <unit id="8569091883467664902">
@@ -694,10 +583,6 @@
           (+<ph id="0" equiv="INTERPOLATION" disp="{{ filter.validRules?.length - 1 }}"/>
           <ph id="1" equiv="ICU" disp="{filter.validRules?.length === 2, select, true {...} false {...}}"/>)
         </source>
-        <target>
-          (+<ph id="0" equiv="INTERPOLATION" disp="{{ filter.validRules?.length - 1 }}"/>
-          <ph id="1" equiv="ICU" disp="{filter.validRules?.length === 2, select, true {...} false {...}}"/>)
-        </target>
       </segment>
     </unit>
     <unit id="4355526113700509146">
@@ -707,7 +592,6 @@
       </notes>
       <segment>
         <source>{VAR_SELECT, select, true {other} false {others} }</source>
-        <target>{VAR_SELECT, select, true {outro} false {outros} }</target>
       </segment>
     </unit>
     <unit id="8250586630341518181">
@@ -716,7 +600,6 @@
       </notes>
       <segment>
         <source>Invalid rules</source>
-        <target>Regras inválidas</target>
       </segment>
     </unit>
     <unit id="3294903186277192854">
@@ -728,10 +611,6 @@
           (+<ph id="0" equiv="INTERPOLATION" disp="{{ filter.invalidRules?.length - 1 }}"/>
           <ph id="1" equiv="ICU" disp="{filter.invalidRules?.length === 2, select, true {...} false {...}}"/>)
         </source>
-        <target>
-          (+<ph id="0" equiv="INTERPOLATION" disp="{{ filter.invalidRules?.length - 1 }}"/>
-          <ph id="1" equiv="ICU" disp="{filter.invalidRules?.length === 2, select, true {...} false {...}}"/>)
-        </target>
       </segment>
     </unit>
     <unit id="8796969457776702266">
@@ -742,9 +621,6 @@
         <source>
     Clear
   </source>
-        <target>
-    Limpar
-  </target>
       </segment>
     </unit>
     <unit id="7700526719905983019">
@@ -755,9 +631,6 @@
         <source>
     Filter
   </source>
-        <target>
-    Filtrar
-  </target>
       </segment>
     </unit>
     <unit id="6380439426064840023">
@@ -768,9 +641,6 @@
         <source>
     Export CSV
   </source>
-        <target>
-    Exportar CSV
-  </target>
       </segment>
     </unit>
     <unit id="4638450448409947660">
@@ -779,7 +649,6 @@
       </notes>
       <segment>
         <source> Conformity </source>
-        <target> Conformidade </target>
       </segment>
     </unit>
     <unit id="1243849875818343347">
@@ -788,7 +657,6 @@
       </notes>
       <segment>
         <source>Harvested Records</source>
-        <target>Registros coletados</target>
       </segment>
     </unit>
     <unit id="3434159451328512184">
@@ -797,7 +665,6 @@
       </notes>
       <segment>
         <source>Valid Records</source>
-        <target>Registros válidos</target>
       </segment>
     </unit>
     <unit id="1837526967766571733">
@@ -806,7 +673,6 @@
       </notes>
       <segment>
         <source>Transformed Records</source>
-        <target>Registros transformados</target>
       </segment>
     </unit>
   </file>
