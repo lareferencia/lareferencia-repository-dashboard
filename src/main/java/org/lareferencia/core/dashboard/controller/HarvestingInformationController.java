@@ -38,11 +38,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageImpl;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import org.keycloak.KeycloakSecurityContext;
+import org.lareferencia.core.dashboard.security.KeycloakAuthorization;
 
 @RestController
 @Api(value = "Harvesting Information", tags="Harvesting")
@@ -52,6 +60,18 @@ public class HarvestingInformationController {
 	
 	@Autowired
 	IHarvestingInformationService hService;
+  
+  @Autowired
+	HttpServletRequest request;
+ 
+  @Value("${authz.admin-role}")
+  private String adminRole;
+ 
+  @Value("${authz.default-repo-scope}") 
+  private String scope; 
+  
+  @Value("${authz.repo-res-suffix}") 
+  private String repoResSuffix;
 
     @ApiOperation(value = "Returns a list harvesting data sources with paging/sorting using {pageable}")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Returns a list harvesting data sources with paging/sorting using {pageable}") })
@@ -59,6 +79,9 @@ public class HarvestingInformationController {
     HttpEntity< Page<IHarvestingSource> > getSources(Pageable pageable) throws HarvesterInfoServiceException {
 		
     	Page<IHarvestingSource> result = hService.listSources(pageable);   	
+    
+      //filter result according to user's permissions
+      result = filterByUserPermissions(result, pageable);
     
     	return new ResponseEntity< Page<IHarvestingSource> >(result, HttpStatus.OK);
 	}
@@ -123,8 +146,31 @@ public class HarvestingInformationController {
         return new ResponseEntity<IHarvestingResult>(result, HttpStatus.OK);
     }
     
+    private KeycloakSecurityContext getKeycloakSecurityContext() {
+		
+      return (KeycloakSecurityContext) request.getAttribute(KeycloakSecurityContext.class.getName());
+    }
     
-    
-    
-    
+	  private Page<IHarvestingSource> filterByUserPermissions(Page<IHarvestingSource> list, Pageable pageable){
+		 
+		  KeycloakAuthorization authz = new KeycloakAuthorization(getKeycloakSecurityContext());
+      List<IHarvestingSource> sources = list.getContent();
+      List<IHarvestingSource> filtered = new ArrayList<IHarvestingSource>();
+		
+		  if (authz.hasRole(adminRole)){
+        filtered = sources;
+      }
+      else {  
+        for (IHarvestingSource source : sources){
+          String resourceName = source.getAcronym() + " " + repoResSuffix;
+        
+          if (authz.hasPermission(resourceName, scope)){
+  		      filtered.add(source);
+   	      }
+        } 
+      }  
+      
+      return new PageImpl<IHarvestingSource>(filtered, pageable, filtered.size()); 
+	 }
+       
 }
