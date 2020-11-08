@@ -18,6 +18,10 @@ public class KeycloakAuthorization {
         return securityContext.getToken().getRealmAccess().isUserInRole(role);
     }
     
+    public List<String> getGroups(){
+        return (List<String>) securityContext.getToken().getOtherClaims().get("groups");
+    }    
+    
     public boolean hasPermission(String name, String scope) {
         return getAuthorizationContext().hasPermission(name, scope);
     }

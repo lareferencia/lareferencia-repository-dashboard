@@ -66,16 +66,10 @@ public class HarvestingInformationController {
  
   @Value("${authz.admin-role}")
   private String adminRole;
- 
-  @Value("${authz.default-repo-scope}") 
-  private String scope; 
-  
-  @Value("${authz.repo-res-suffix}") 
-  private String repoResSuffix;
 
     @ApiOperation(value = "Returns a list harvesting data sources with paging/sorting using {pageable}")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Returns a list harvesting data sources with paging/sorting using {pageable}") })
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+  	@RequestMapping(value = "/list", method = RequestMethod.GET)
     HttpEntity< Page<IHarvestingSource> > getSources(Pageable pageable) throws HarvesterInfoServiceException {
 		
     	Page<IHarvestingSource> result = hService.listSources(pageable);   	
@@ -154,6 +148,7 @@ public class HarvestingInformationController {
 	  private Page<IHarvestingSource> filterByUserPermissions(Page<IHarvestingSource> list, Pageable pageable){
 		 
 		  KeycloakAuthorization authz = new KeycloakAuthorization(getKeycloakSecurityContext());
+      List<String> userGroups = authz.getGroups();
       List<IHarvestingSource> sources = list.getContent();
       List<IHarvestingSource> filtered = new ArrayList<IHarvestingSource>();
 		
@@ -161,10 +156,8 @@ public class HarvestingInformationController {
         filtered = sources;
       }
       else {  
-        for (IHarvestingSource source : sources){
-          String resourceName = source.getAcronym() + " " + repoResSuffix;
-        
-          if (authz.hasPermission(resourceName, scope)){
+        for (IHarvestingSource source : sources){       
+          if (userGroups.contains(source.getAcronym())){
   		      filtered.add(source);
    	      }
         } 
