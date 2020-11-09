@@ -1,7 +1,7 @@
 import { ValidationDetailComponent } from './../validation-detail/validation-detail.component';
 import { Validation } from '../../../shared/validation.model';
 import { Rule } from '../../../shared/rule.model';
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, ElementRef } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
@@ -20,10 +20,18 @@ export class ValidationTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<Rule>;
   @Input() validation: Validation;
+  @ViewChild('ruleID') ruleID : any;
+  @ViewChild('name') name : ElementRef<HTMLTableHeaderCellElement>;
+  @ViewChild('description') description : ElementRef<HTMLTableHeaderCellElement>;
+  @ViewChild('mandatory') mandatory : any;
+  @ViewChild('conformity') conformity : any;
+  @ViewChild('validCount') validCount : any;
+
   dataSource: ValidationTableDataSource;
   harvestingID: number;
   acronym: string;
   csvData: any[];
+  headerData: any[];
 
   displayedColumns: string[] = [
     'ruleID',
@@ -65,6 +73,15 @@ export class ValidationTableComponent implements OnInit {
               validCount: x.validCount,
             };
           });
+
+          this.headerData = [
+            this.ruleID._elementRef.nativeElement.innerText,
+            this.name.nativeElement.innerText,
+            this.description.nativeElement.innerText,
+            this.mandatory._elementRef.nativeElement.innerText,
+            this.conformity._elementRef.nativeElement.innerText,
+            this.validCount._elementRef.nativeElement.innerText,
+          ];
         })
       )
       .subscribe();

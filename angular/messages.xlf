@@ -143,7 +143,7 @@
     <unit id="3917644028160931566">
       <notes>
         <note category="location">src/app/views/validation/validation.component.html:86</note>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:59</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:63</note>
         <note category="location">src/app/views/record-invalid/record-invalid.component.html:8</note>
       </notes>
       <segment>
@@ -186,17 +186,19 @@
   </source>
       </segment>
     </unit>
-    <unit id="8040881171107393560">
+    <unit id="7348557320164310066">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:5</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:5,7</note>
       </notes>
       <segment>
-        <source>ID</source>
+        <source>
+          ID
+        </source>
       </segment>
     </unit>
     <unit id="8953033926734869941">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:10</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:12</note>
       </notes>
       <segment>
         <source>Name</source>
@@ -204,23 +206,25 @@
     </unit>
     <unit id="4902817035128594900">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:15</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:17</note>
       </notes>
       <segment>
         <source>Description</source>
       </segment>
     </unit>
-    <unit id="7045123878111147511">
+    <unit id="4264441046758722349">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:20</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:22,24</note>
       </notes>
       <segment>
-        <source>Required</source>
+        <source>
+          Required
+        </source>
       </segment>
     </unit>
     <unit id="8102915832289919728">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:21,23</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:25,27</note>
       </notes>
       <segment>
         <source>
@@ -230,7 +234,7 @@
     </unit>
     <unit id="3416906127672356950">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:22</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:26</note>
       </notes>
       <segment>
         <source>{VAR_SELECT, select, true {Yes} false {No} }</source>
@@ -238,7 +242,7 @@
     </unit>
     <unit id="8927692490825452681">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:27,29</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:31,33</note>
       </notes>
       <segment>
         <source>
@@ -248,8 +252,8 @@
     </unit>
     <unit id="2351318473718426709">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:52,54</note>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:25,27</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:56,58</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:31,33</note>
       </notes>
       <segment>
         <source>
@@ -259,7 +263,7 @@
     </unit>
     <unit id="5662837045345510998">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:77,79</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:81,83</note>
       </notes>
       <segment>
         <source>
@@ -269,7 +273,7 @@
     </unit>
     <unit id="8294105413140648271">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:74</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:78</note>
       </notes>
       <segment>
         <source>Records that contain this invalid rule</source>
@@ -277,7 +281,7 @@
     </unit>
     <unit id="6161624606545961207">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:96,98</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:100,102</note>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:57,59</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:57,59</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:163,165</note>
@@ -290,7 +294,7 @@
     </unit>
     <unit id="677486627395562160">
       <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:93</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:97</note>
       </notes>
       <segment>
         <source>Details about this rule</source>
@@ -306,7 +310,7 @@
     </unit>
     <unit id="8742130100135598533">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:16,18</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:22,24</note>
       </notes>
       <segment>
         <source>
@@ -316,7 +320,7 @@
     </unit>
     <unit id="5933137805033862730">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:34,36</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:46,48</note>
       </notes>
       <segment>
         <source>
@@ -326,7 +330,7 @@
     </unit>
     <unit id="6269371916922374000">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:43,45</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:61,63</note>
       </notes>
       <segment>
         <source>
@@ -334,25 +338,29 @@
         </source>
       </segment>
     </unit>
-    <unit id="5162686434580248853">
+    <unit id="6057552704441695502">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:52</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:70,72</note>
       </notes>
       <segment>
-        <source>Start</source>
+        <source>
+          Start
+        </source>
       </segment>
     </unit>
-    <unit id="1241348629231510663">
+    <unit id="4700192692425133990">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:59</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:79,81</note>
       </notes>
       <segment>
-        <source>End</source>
+        <source>
+          End
+        </source>
       </segment>
     </unit>
     <unit id="4329653390172614983">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:68,70</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:90,92</note>
       </notes>
       <segment>
         <source>
@@ -362,7 +370,7 @@
     </unit>
     <unit id="8441334606065163183">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:77,79</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:99,101</note>
       </notes>
       <segment>
         <source>
@@ -396,22 +404,26 @@
         <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</source>
       </segment>
     </unit>
-    <unit id="3400354995808453024">
+    <unit id="5015476460808884362">
       <notes>
-        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:10</note>
-        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:10</note>
+        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:10,12</note>
+        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:10,12</note>
       </notes>
       <segment>
-        <source>Occurrence</source>
+        <source>
+        Occurrence
+      </source>
       </segment>
     </unit>
-    <unit id="6533918067030990396">
+    <unit id="1582655595976194789">
       <notes>
-        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:15</note>
-        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:15</note>
+        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:17,19</note>
+        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:17,19</note>
       </notes>
       <segment>
-        <source>Amount</source>
+        <source>
+        Amount
+      </source>
       </segment>
     </unit>
     <unit id="7396212938337853335">
@@ -428,7 +440,7 @@
         <note category="location">src/app/components/evaluation-rules/evaluation-rules.component.html:13</note>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:35</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:35</note>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:141</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:139</note>
       </notes>
       <segment>
         <source>{VAR_SELECT, select, true {Valid} false {Invalid} }</source>
@@ -467,7 +479,6 @@
       <notes>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:20,22</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:20,22</note>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:126,128</note>
       </notes>
       <segment>
         <source>
@@ -480,7 +491,7 @@
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:27</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:27</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:13</note>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:133</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:131</note>
       </notes>
       <segment>
         <source>Validation</source>
@@ -490,7 +501,6 @@
       <notes>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:41</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:41</note>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:147</note>
       </notes>
       <segment>
         <source>Transformation</source>
@@ -554,6 +564,7 @@
     <unit id="4164796296331721280">
       <notes>
         <note category="location">src/app/components/records/records-table/records-table.component.html:3</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:126</note>
       </notes>
       <segment>
         <source>Identifier</source>
@@ -649,6 +660,16 @@
         <source>
     Filter
   </source>
+      </segment>
+    </unit>
+    <unit id="808428305867308561">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:145,147</note>
+      </notes>
+      <segment>
+        <source>
+          Transformation
+        </source>
       </segment>
     </unit>
     <unit id="6380439426064840023">

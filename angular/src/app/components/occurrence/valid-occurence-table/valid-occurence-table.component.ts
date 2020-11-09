@@ -16,10 +16,13 @@ export class ValidOccurenceTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<Occurence>;
+  @ViewChild('value') value: any;
+  @ViewChild('count') count: any;
   @Input() rule: Rule;
   dataSource: ValidOccurenceTableDataSource;
   displayedColumns = ['value', 'count'];
   csvData: Occurence[];
+  headerData: any[];
 
   constructor(private validationService: ValidationService) {}
 
@@ -31,6 +34,10 @@ export class ValidOccurenceTableComponent implements OnInit {
       )
       .subscribe((result) => {
         this.csvData = result;
+        this.headerData = [
+          this.value._elementRef.nativeElement.innerText,
+          this.count._elementRef.nativeElement.innerText,
+        ];
         this.dataSource = new ValidOccurenceTableDataSource(result);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

@@ -7,12 +7,16 @@
     aria-label="Elements"
   >
     <ng-container matColumnDef="value">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Occurrence</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #value>
+        Occurrence
+      </th>
       <td mat-cell *matCellDef="let row">{{ row.value }}</td>
     </ng-container>
 
     <ng-container matColumnDef="count">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Amount</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #count>
+        Amount
+      </th>
       <td mat-cell *matCellDef="let row">{{ row.count | number }}</td>
     </ng-container>
 
@@ -29,4 +33,4 @@
   >
   </mat-paginator>
 </div>
-<app-table-exporter [data]="csvData"></app-table-exporter>
+<app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>

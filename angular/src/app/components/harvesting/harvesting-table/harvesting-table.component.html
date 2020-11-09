@@ -6,14 +6,20 @@
   <div class="table-content-container">
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header #id>ID</th>
         <td mat-cell *matCellDef="let harvesting">
           {{ harvesting.id }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="harvestedSize">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          i18n
+          #harvestedSize
+        >
           Harvested records
         </th>
         <td mat-cell *matCellDef="let harvesting">
@@ -22,7 +28,7 @@
       </ng-container>
 
       <ng-container matColumnDef="validSize">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #validSize>
           Valid records
         </th>
         <td mat-cell *matCellDef="let harvesting">
@@ -31,7 +37,13 @@
       </ng-container>
 
       <ng-container matColumnDef="invalidRecords">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          i18n
+          #invalidRecords
+        >
           Invalid records
         </th>
         <td mat-cell *matCellDef="let harvesting">
@@ -40,7 +52,13 @@
       </ng-container>
 
       <ng-container matColumnDef="transformedSize">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          i18n
+          #transformedSize
+        >
           Transformed records
         </th>
         <td mat-cell *matCellDef="let harvesting">
@@ -49,14 +67,18 @@
       </ng-container>
 
       <ng-container matColumnDef="startTime">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Start</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #startTime>
+          Start
+        </th>
         <td mat-cell *matCellDef="let harvesting">
           {{ harvesting.startTime | date: 'short' }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="endTime">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>End</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #endTime>
+          End
+        </th>
         <td mat-cell *matCellDef="let harvesting">
           {{ harvesting.endTime | date: 'short' }}
         </td>
@@ -91,5 +113,8 @@
     >
     </mat-paginator>
   </div>
-  <app-table-exporter [data]="csvData"></app-table-exporter>
+  <app-table-exporter
+    [data]="csvData"
+    [header]="headerData"
+  ></app-table-exporter>
 </div>

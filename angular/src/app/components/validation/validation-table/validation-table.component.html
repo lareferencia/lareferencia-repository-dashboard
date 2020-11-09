@@ -2,29 +2,33 @@
   <div class="table-content-container">
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="ruleID">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>ID</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #ruleID>
+          ID
+        </th>
         <td mat-cell *matCellDef="let rule">{{ rule.ruleID }}</td>
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef i18n>Name</th>
+        <th mat-header-cell *matHeaderCellDef i18n #name>Name</th>
         <td mat-cell *matCellDef="let rule">{{ rule.name }}</td>
       </ng-container>
 
       <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef i18n>Description</th>
+        <th mat-header-cell *matHeaderCellDef i18n #description>Description</th>
         <td mat-cell *matCellDef="let rule">{{ rule.description }}</td>
       </ng-container>
 
       <ng-container matColumnDef="mandatory">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Required</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #mandatory>
+          Required
+        </th>
         <td mat-cell *matCellDef="let rule" i18n>
           {rule.mandatory, select, true {Yes} false {No}}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="conformity">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #conformity>
           Conformity
         </th>
         <td mat-cell mat-cell-conformity *matCellDef="let rule">
@@ -49,7 +53,7 @@
       </ng-container>
 
       <ng-container matColumnDef="validCount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #validCount>
           Valid records
         </th>
         <td mat-cell *matCellDef="let rule">{{ rule.validCount | number }}</td>
@@ -115,5 +119,6 @@
   <app-table-exporter
     class="app-exporter"
     [data]="csvData"
+    [header]="headerData"
   ></app-table-exporter>
 </div>

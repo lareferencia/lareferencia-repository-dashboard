@@ -2,7 +2,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { HarvestingService } from './../../../services/harvesting.service';
 import { HarvestingContent } from './../../../shared/harvesting-content.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HarvestingTableDataSource } from './harvesting-table-datasource';
@@ -16,12 +15,20 @@ import { startWith, tap } from 'rxjs/operators';
 export class HarvestingTableComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('id') id : any;
+  @ViewChild('harvestedSize') harvestedSize : any;
+  @ViewChild('validSize') validSize : any;
+  @ViewChild('invalidRecords') invalidRecords : any;
+  @ViewChild('transformedSize') transformedSize : any;
+  @ViewChild('startTime') startTime : any;
+  @ViewChild('endTime') endTime : any;
   isLoadingResults = true;
   harvestingContent: HarvestingContent;
   dataSource: HarvestingTableDataSource;
   pageSize = 10;
   acronym: string;
   csvData: any[];
+  headerData: any[];
 
   displayedColumns = [
     'id',
@@ -85,6 +92,15 @@ export class HarvestingTableComponent implements OnInit {
                   endTime: x.endTime,
                 };
               });
+
+              this.headerData = [
+                this.id._elementRef.nativeElement.innerText,
+                this.harvestedSize._elementRef.nativeElement.innerText,
+                this.validSize._elementRef.nativeElement.innerText,
+                this.invalidRecords._elementRef.nativeElement.innerText,
+                this.startTime._elementRef.nativeElement.innerText,
+                this.endTime._elementRef.nativeElement.innerText,
+              ];
 
               this.dataSource = new HarvestingTableDataSource(
                 harvestingHistory.content

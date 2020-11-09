@@ -1,5 +1,5 @@
 import { RecordsFilter } from './../../../shared/records-filter.model';
-import { AfterViewInit, Component, OnInit, ViewChild, Input } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, Input, ElementRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -22,12 +22,17 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<Record>;
+  @ViewChild('id') id : ElementRef<HTMLTableHeaderCellElement>;
+  @ViewChild('identifier') identifier : ElementRef<HTMLTableHeaderCellElement>;
+  @ViewChild('isValid') isValid : ElementRef<HTMLTableHeaderCellElement>;
+  @ViewChild('isTransformed') isTransformed : ElementRef<HTMLTableHeaderCellElement>;
   @Input() validation: Validation;
   dataSource: RecordsTableDataSource;
   pageSize = 10;
   harvestingID: number;
   isLoadingResults = true;
   csvData: any[];
+  headerData: any[];
 
   filter: RecordsFilter = {
     pageSize: this.pageSize,
@@ -110,6 +115,13 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
             tranformation: x.isTransformed,
           };
         });
+
+        this.headerData = [
+          this.id.nativeElement.innerText,
+          this.identifier.nativeElement.innerText,
+          this.isValid.nativeElement.innerText,
+          this.isTransformed.nativeElement.innerText,
+        ];
       });
   }
 }

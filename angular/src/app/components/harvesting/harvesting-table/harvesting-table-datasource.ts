@@ -68,6 +68,8 @@ export class HarvestingTableDataSource extends DataSource<HarvestingContent> {
         case 'id': return compare(+a.id, +b.id, isAsc);
         case 'harvestedSize': return compare(+a.harvestedSize, +b.harvestedSize, isAsc);
         case 'validSize': return compare(+a.validSize, +b.validSize, isAsc);
+        case 'invalidRecords': return compare(+a.invalidRecords, +b.invalidRecords, isAsc);
+        case 'transformedSize': return compare(+a.transformedSize, +b.transformedSize, isAsc);
         case 'startTime': return compare(+a.startTime, +b.startTime, isAsc);
         case 'endTime': return compare(+a.endTime, +b.endTime, isAsc);
         default: return 0;
