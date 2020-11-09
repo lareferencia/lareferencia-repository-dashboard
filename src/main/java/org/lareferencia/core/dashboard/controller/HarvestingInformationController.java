@@ -38,11 +38,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageImpl;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import org.keycloak.KeycloakSecurityContext;
+import org.lareferencia.core.dashboard.security.KeycloakAuthorization;
 
 @RestController
 @Api(value = "Harvesting Information", tags="Harvesting")
@@ -52,13 +60,22 @@ public class HarvestingInformationController {
 	
 	@Autowired
 	IHarvestingInformationService hService;
+  
+  @Autowired
+	HttpServletRequest request;
+ 
+  @Value("${authz.admin-role}")
+  private String adminRole;
 
     @ApiOperation(value = "Returns a list harvesting data sources with paging/sorting using {pageable}")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Returns a list harvesting data sources with paging/sorting using {pageable}") })
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+  	@RequestMapping(value = "/list", method = RequestMethod.GET)
     HttpEntity< Page<IHarvestingSource> > getSources(Pageable pageable) throws HarvesterInfoServiceException {
 		
     	Page<IHarvestingSource> result = hService.listSources(pageable);   	
+    
+      //filter result according to user's permissions
+      result = filterByUserPermissions(result, pageable);
     
     	return new ResponseEntity< Page<IHarvestingSource> >(result, HttpStatus.OK);
 	}
@@ -123,8 +140,30 @@ public class HarvestingInformationController {
         return new ResponseEntity<IHarvestingResult>(result, HttpStatus.OK);
     }
     
+    private KeycloakSecurityContext getKeycloakSecurityContext() {
+		
+      return (KeycloakSecurityContext) request.getAttribute(KeycloakSecurityContext.class.getName());
+    }
     
-    
-    
-    
+	  private Page<IHarvestingSource> filterByUserPermissions(Page<IHarvestingSource> list, Pageable pageable){
+		 
+		  KeycloakAuthorization authz = new KeycloakAuthorization(getKeycloakSecurityContext());
+      List<String> userGroups = authz.getGroups();
+      List<IHarvestingSource> sources = list.getContent();
+      List<IHarvestingSource> filtered = new ArrayList<IHarvestingSource>();
+		
+		  if (authz.hasRole(adminRole)){
+        filtered = sources;
+      }
+      else {  
+        for (IHarvestingSource source : sources){       
+          if (userGroups.contains(source.getAcronym())){
+  		      filtered.add(source);
+   	      }
+        } 
+      }  
+      
+      return new PageImpl<IHarvestingSource>(filtered, pageable, filtered.size()); 
+	 }
+       
 }
