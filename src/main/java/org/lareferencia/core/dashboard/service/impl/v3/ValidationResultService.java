@@ -83,13 +83,10 @@ public class ValidationResultService implements IValidationInformationService {
 	 * @return
 	 * @throws ValidationInformationServiceException
 	 */
-	public ValidationResult validationResultByHarvestingID(Long snapshotID) throws ValidationInformationServiceException {
+	public ValidationResult validationResultByHarvestingID(String networkAcronym, Long snapshotID) throws ValidationInformationServiceException {
 				
-		Optional<NetworkSnapshot> opSnapshot = snapshotRepository.findById(snapshotID);
-		if (!opSnapshot.isPresent() )
-			throw new ValidationInformationServiceException("Harvesting w/ ID:" + snapshotID + "do not exist");
 		
-		NetworkSnapshot snapshot = opSnapshot.get();
+		NetworkSnapshot snapshot = obtainNetworkSnapshotAndCheckAcronymCorrespondece(networkAcronym, snapshotID);
 		
 		ValidationResult result = new ValidationResult();
 
@@ -154,8 +151,11 @@ public class ValidationResultService implements IValidationInformationService {
 	 * @param snapshotID
 	 * @param ruleID
 	 * @return
+	 * @throws ValidationInformationServiceException 
 	 */
-	private List<ValueCount> occurreceCountByHarvestingIDAndRuleID(Long snapshotID, Long ruleID, String ruleSuffix)  {
+	private List<ValueCount> occurreceCountByHarvestingIDAndRuleID(String networkAcronym, Long snapshotID, Long ruleID, String ruleSuffix) throws ValidationInformationServiceException  {
+		
+		obtainNetworkSnapshotAndCheckAcronymCorrespondece(networkAcronym, snapshotID);
 
 		FacetQuery facetQuery = new SimpleFacetQuery(new SimpleStringCriteria(SNAPSHOT_ID_FIELD + ":" + snapshotID));
 		facetQuery.setRows(0);
@@ -185,13 +185,13 @@ public class ValidationResultService implements IValidationInformationService {
 	
 	
 	@Override
-	public List<ValueCount> validOccurrenceCountByHarvestingIDAndRuleID(Long harvestingID, Long ruleID) {
-		return occurreceCountByHarvestingIDAndRuleID(harvestingID, ruleID, VALID_RULE_SUFFIX);
+	public List<ValueCount> validOccurrenceCountByHarvestingIDAndRuleID(String networkAcronym, Long harvestingID, Long ruleID) throws ValidationInformationServiceException {
+		return occurreceCountByHarvestingIDAndRuleID(networkAcronym, harvestingID, ruleID, VALID_RULE_SUFFIX);
 	}
 
 	@Override
-	public List<ValueCount> invalidOccurrenceCountByHarvestingIDAndRuleID(Long harvestingID, Long ruleID) {
-		return occurreceCountByHarvestingIDAndRuleID(harvestingID, ruleID, INVALID_RULE_SUFFIX);
+	public List<ValueCount> invalidOccurrenceCountByHarvestingIDAndRuleID(String networkAcronym, Long harvestingID, Long ruleID) throws ValidationInformationServiceException {
+		return occurreceCountByHarvestingIDAndRuleID(networkAcronym, harvestingID, ruleID, INVALID_RULE_SUFFIX);
 	}
 	
 	/**
@@ -199,10 +199,13 @@ public class ValidationResultService implements IValidationInformationService {
 	 * @param snapshotID
 	 * @param pageable
 	 * @return
+	 * @throws ValidationInformationServiceException 
 	 */
-	public Page<IRecordValidationResult> recordValidationResultsByHarvestingID(Long snapshotID, Optional<Boolean> isValid, Optional<Boolean> isTransformed, Optional<List<String>> validRuleIds, Optional<List<String>> invalidRuleIds, Optional<String> oaiIdentifier,  Pageable pageable) {
+	public Page<IRecordValidationResult> recordValidationResultsByHarvestingID(String networkAcronym, Long snapshotID, Optional<Boolean> isValid, Optional<Boolean> isTransformed, Optional<List<String>> validRuleIds, Optional<List<String>> invalidRuleIds, Optional<String> oaiIdentifier,  Pageable pageable) throws ValidationInformationServiceException {
 
-	    Criteria conditions = new Criteria(SNAPSHOT_ID_FIELD).is(snapshotID.toString());
+		obtainNetworkSnapshotAndCheckAcronymCorrespondece(networkAcronym, snapshotID);
+		
+		Criteria conditions = new Criteria(SNAPSHOT_ID_FIELD).is(snapshotID.toString());
 	    
 	    if ( oaiIdentifier.isPresent() )
 	    	conditions = conditions.and( new Criteria(OAI_IDENTIFIER_FIELD).is(oaiIdentifier.get()) );
@@ -229,6 +232,21 @@ public class ValidationResultService implements IValidationInformationService {
 	
 		return results;
 	}
+	
+	
+	
+	/** 
+	 * Check If Snapshots exists and corresponds to the given network acronym
+	 * @throws ValidationInformationServiceException 
+	 */
+     private NetworkSnapshot obtainNetworkSnapshotAndCheckAcronymCorrespondece(String networkAcronym, Long snapshotID) throws ValidationInformationServiceException {
+    	 
+    	Optional<NetworkSnapshot> opSnapshot = snapshotRepository.findById(snapshotID);
+ 		if (opSnapshot.isPresent() && opSnapshot.get().getNetwork().getAcronym().equals(networkAcronym) )
+ 			return opSnapshot.get();
+ 		else
+ 			throw new ValidationInformationServiceException("Harvesting w/ ID:" + snapshotID + "do not exist");
+     }
 	
 	
 

@@ -49,7 +49,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @Api(value = "Validation Information", tags="Validation")
-@RequestMapping("/api/v2/validation/")
+@RequestMapping("/api/v2/validation/source")
 @CrossOrigin
 public class ValidationInformationController {
 	
@@ -58,14 +58,14 @@ public class ValidationInformationController {
 
 	@ApiOperation(value = "Returns validation results info by harvesting id")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Returns validation results info by harvesting id") })  
-    @RequestMapping(value = "/by_id/{harvestingID}", method = RequestMethod.GET)
-    HttpEntity<IValidationResult> getValidationResults(@PathVariable("harvestingID")  Long harvestingID) {
+    @RequestMapping(value = "/{sourceAcronym}/{harvestingID}", method = RequestMethod.GET)
+    HttpEntity<IValidationResult> getValidationResults(@PathVariable("sourceAcronym") String sourceAcronym, @PathVariable("harvestingID")  Long harvestingID) {
 
 		IValidationResult result = null;
 		
 		try {
 		
-			result = vService.validationResultByHarvestingID(harvestingID);
+			result = vService.validationResultByHarvestingID(sourceAcronym, harvestingID);
 	        return new ResponseEntity<IValidationResult>(result, HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -76,8 +76,8 @@ public class ValidationInformationController {
     
 	@ApiOperation(value = "Returns validation results on each record by harvesting id")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Returns validation results on each record by harvesting id") })  
-    @RequestMapping(value = "/by_id/{harvestingID}/records", method = RequestMethod.GET)
-    HttpEntity< Page<IRecordValidationResult> > getRecordValitationResult(@PathVariable("harvestingID")  Long harvestingID, 
+    @RequestMapping(value = "/{sourceAcronym}/{harvestingID}/records", method = RequestMethod.GET)
+    HttpEntity< Page<IRecordValidationResult> > getRecordValitationResult(@PathVariable("sourceAcronym") String sourceAcronym, @PathVariable("harvestingID")  Long harvestingID, 
     		@RequestParam(value = "is_valid") Optional<Boolean> isValid, 
     		@RequestParam(value = "is_transformed") Optional<Boolean> isTransformed, 
     		@RequestParam(value = "valid_rules") Optional<List<String>> validRules, 
@@ -86,31 +86,48 @@ public class ValidationInformationController {
     		@RequestParam(value = "pageNumber", required = false, defaultValue = "0") Integer page,
     		@RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer size
 
-    		) throws ValidationInformationServiceException {
-
-    	Page<IRecordValidationResult> result = vService.recordValidationResultsByHarvestingID(harvestingID, isValid, isTransformed, validRules, invalidRules, oaiIdentifier, PageRequest.of(page, size));
-    	
-        return new ResponseEntity< Page<IRecordValidationResult> >(result, HttpStatus.OK);
+    		) {
+		
+		Page<IRecordValidationResult> result = null;
+		
+		try {
+			result = vService.recordValidationResultsByHarvestingID(sourceAcronym, harvestingID, isValid, isTransformed, validRules, invalidRules, oaiIdentifier, PageRequest.of(page, size));
+			return new ResponseEntity< Page<IRecordValidationResult> >(result, HttpStatus.OK);
+		} catch (Exception e) {
+	        return new ResponseEntity< Page<IRecordValidationResult> >(result, HttpStatus.NOT_FOUND);
+		}
     }
     
 	@ApiOperation(value = "Returns valid metadata occurrences/count for a given validation rule by {harvestingID} and {ruleID}")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Returns valid metadata occurrences/count for a given validation rule by {harvestingID} and {ruleID}") })  
-    @RequestMapping(value = "/by_id/{harvestingID}/valid_occrs/{ruleID}", method = RequestMethod.GET)
-    HttpEntity< List<ValueCount> > validOccurrenceCountByHarvestingIDAndRuleID(@PathVariable("harvestingID")  Long harvestingID, @PathVariable("ruleID")  Long ruleID) throws ValidationInformationServiceException {
+    @RequestMapping(value = "/{sourceAcronym}/{harvestingID}/valid_occrs/{ruleID}", method = RequestMethod.GET)
+    HttpEntity< List<ValueCount> > validOccurrenceCountByHarvestingIDAndRuleID(@PathVariable("sourceAcronym") String sourceAcronym, @PathVariable("harvestingID")  Long harvestingID, @PathVariable("ruleID")  Long ruleID) {
 
-    	List<ValueCount> result = vService.validOccurrenceCountByHarvestingIDAndRuleID(harvestingID, ruleID);
-    	
-        return new ResponseEntity< List<ValueCount> >(result, HttpStatus.OK);
-    }
+		List<ValueCount> result = null;
+				
+		try {
+			result = vService.validOccurrenceCountByHarvestingIDAndRuleID(sourceAcronym, harvestingID, ruleID);
+			return new ResponseEntity< List<ValueCount> >(result, HttpStatus.OK);
+		
+		} catch (Exception e) {
+			return new ResponseEntity< List<ValueCount> >(result, HttpStatus.NOT_FOUND);
+		}
+	}
+    
 	
 	@ApiOperation(value = "Returns invalid metadata occurrences/count for a given validation rule by {harvestingID} and {ruleID}")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Returns invalid metadata occurrences/count for a given validation rule by {harvestingID} and {ruleID}") })  
-    @RequestMapping(value = "/by_id/{harvestingID}/invalid_occrs/{ruleID}", method = RequestMethod.GET)
-    HttpEntity< List<ValueCount> > invalidOccurrenceCountByHarvestingIDAndRuleID(@PathVariable("harvestingID")  Long harvestingID, @PathVariable("ruleID")  Long ruleID) throws ValidationInformationServiceException {
+    @RequestMapping(value = "/{sourceAcronym}/{harvestingID}/invalid_occrs/{ruleID}", method = RequestMethod.GET)
+    HttpEntity< List<ValueCount> > invalidOccurrenceCountByHarvestingIDAndRuleID(@PathVariable("sourceAcronym") String sourceAcronym, @PathVariable("harvestingID")  Long harvestingID, @PathVariable("ruleID")  Long ruleID) throws ValidationInformationServiceException {
 
-    	List<ValueCount> result = vService.invalidOccurrenceCountByHarvestingIDAndRuleID(harvestingID, ruleID);
-    	
-        return new ResponseEntity< List<ValueCount> >(result, HttpStatus.OK);
+		List<ValueCount> result = null;
+		
+		try {
+			result = vService.invalidOccurrenceCountByHarvestingIDAndRuleID(sourceAcronym, harvestingID, ruleID);
+			return new ResponseEntity< List<ValueCount> >(result, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity< List<ValueCount> >(result, HttpStatus.NOT_FOUND);
+		}
     }
     
 }

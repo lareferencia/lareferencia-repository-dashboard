@@ -1,5 +1,6 @@
 package org.lareferencia.core.dashboard.service.impl.v3;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
@@ -59,6 +60,19 @@ public class HarvestingInformationService implements IHarvestingInformationServi
 		return results;
 	}
 
+	@Override
+	public Page<IHarvestingSource> listSources(List<String> whiteList, Pageable pageable) throws HarvesterInfoServiceException {
+
+		Page<Network> page = networkRepository.findFilteredByAcronymList(whiteList, pageable);
+
+		// builds a page based on result.
+		Page<IHarvestingSource> results = new PageImpl<IHarvestingSource>(
+				page.getContent().stream().map(o -> new Network2IHarvestingSourceAdapter(o)).collect(Collectors.toList()), pageable,
+				page.getTotalElements());
+
+		return results;
+	}
+	
 	@Override
 	public Page<IHarvestingSource> listSources(Pageable pageable) throws HarvesterInfoServiceException {
 

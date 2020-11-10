@@ -38,6 +38,9 @@ public interface NetworkRepository extends JpaRepository<Network, Long> {
 
 	Page<Network> findByAcronymIgnoreCaseContaining(String filterExpression, Pageable pageRequest);
 	
+	@Query("select n from Network n where n.acronym in (:list)")
+	Page<Network> findFilteredByAcronymList(@Param("list") List<String> whiteList, Pageable pageRequest);
+	
 	@Modifying
 	@Transactional
 	@Query("delete from Network n where n.id = ?1")
