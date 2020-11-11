@@ -24,6 +24,7 @@ export class RecordsInvalidTableComponent implements OnInit {
   dataSource: RecordsTableDataSource;
   pageSize = 25;
   harvestingID: number;
+  acronym: string;
   ruleID: number;
   isLoadingResults = true;
   csvData: any[];
@@ -44,6 +45,7 @@ export class RecordsInvalidTableComponent implements OnInit {
 
   ngOnInit() {
     this.harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
+    this.acronym = this.route.snapshot.paramMap.get('acronym');
     this.ruleID = Number(this.route.snapshot.paramMap.get('ruleID'));
   }
 
@@ -65,6 +67,7 @@ export class RecordsInvalidTableComponent implements OnInit {
           this.isLoadingResults = true;
           this.validationService
             .getRecordsByHarvestingIDInvalidRuleID(
+              this.acronym,
               this.harvestingID,
               this.ruleID,
               this.paginator.pageIndex,

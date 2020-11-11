@@ -28,7 +28,7 @@ export class RecordInvalidComponent implements OnInit {
     this.ruleID = this.route.snapshot.paramMap.get('ruleID');
 
     this.validationService
-      .getValidationResultsByHarvestingID(harvestingID)
+      .getValidationResultsByHarvestingID(acronym, harvestingID)
       .subscribe((result) => {
         this.validation = result;
         this.validation.rulesByID = Object.values(this.validation.rulesByID);

@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { ValidationService } from 'src/app/services/validation.service';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -24,11 +25,14 @@ export class ValidOccurenceTableComponent implements OnInit {
   csvData: Occurence[];
   headerData: any[];
 
-  constructor(private validationService: ValidationService) {}
+  constructor(private validationService: ValidationService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    const acronym = this.route.snapshot.paramMap.get('acronym');
+
     this.validationService
       .getValidOccurrencesByHarvestingIDRuleID(
+        acronym,
         this.rule.harvestingID,
         this.rule.ruleID
       )

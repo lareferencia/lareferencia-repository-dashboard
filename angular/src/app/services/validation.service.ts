@@ -16,56 +16,56 @@ export class ValidationService {
 
   constructor(private http: HttpClient) { }
 
-  getValidationResultsByHarvestingID(harvestingID: number): Observable<Validation> {
-    return this.http.get<Validation>(`${this.baseurl}by_id/${harvestingID}`).pipe(
+  getValidationResultsByHarvestingID(sourceAcronym: string, harvestingID: number): Observable<Validation> {
+    return this.http.get<Validation>(`${this.baseurl}${sourceAcronym}/${harvestingID}`).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
   }
 
-  getValidOccurrencesByHarvestingIDRuleID(harvestingID: number, ruleID: number): Observable<Occurence[]> {
-    return this.http.get<Occurence>(`${this.baseurl}by_id/${harvestingID}/valid_occrs/${ruleID}`).pipe(
+  getValidOccurrencesByHarvestingIDRuleID(sourceAcronym: string, harvestingID: number, ruleID: number): Observable<Occurence[]> {
+    return this.http.get<Occurence>(`${this.baseurl}${sourceAcronym}/${harvestingID}/valid_occrs/${ruleID}`).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
   }
 
-  getInValidOccurrencesByHarvestingIDRuleID(harvestingID: number, ruleID: number): Observable<Occurence[]> {
-    return this.http.get<Occurence>(`${this.baseurl}by_id/${harvestingID}/invalid_occrs/${ruleID}`).pipe(
+  getInValidOccurrencesByHarvestingIDRuleID(sourceAcronym: string, harvestingID: number, ruleID: number): Observable<Occurence[]> {
+    return this.http.get<Occurence>(`${this.baseurl}${sourceAcronym}/${harvestingID}/invalid_occrs/${ruleID}`).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
   }
 
-  getRecordsByHarvestingIDInvalidRuleID(harvestingID: number, ruleID: number, pageNumber: number, pageSize: number): Observable<Records> {
+  getRecordsByHarvestingIDInvalidRuleID(sourceAcronym: string, harvestingID: number, ruleID: number, pageNumber: number, pageSize: number): Observable<Records> {
     const params = new HttpParams()
       .append('invalid_rules', ruleID.toString())
       .append('pageNumber', pageNumber.toString())
       .append('pageSize', pageSize.toString());
 
     return this.http
-      .get<Records>(`${this.baseurl}by_id/${harvestingID}/records`, { params })
+      .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
       );
   }
 
-  getRecordsByHarvestingIDValidRuleID(harvestingID: number, ruleID: number, pageNumber: number, pageSize: number): Observable<Records> {
+  getRecordsByHarvestingIDValidRuleID(sourceAcronym: string, harvestingID: number, ruleID: number, pageNumber: number, pageSize: number): Observable<Records> {
     const params = new HttpParams()
       .append('valid_rules', ruleID.toString())
       .append('pageNumber', pageNumber.toString())
       .append('pageSize', pageSize.toString());
 
     return this.http
-      .get<Records>(`${this.baseurl}by_id/${harvestingID}/records`, { params })
+      .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
       );
   }
 
-  getRecordsByHarvestingIDFilter(harvestingID: number, filter: RecordsFilter): Observable<Records> {
+  getRecordsByHarvestingIDFilter(sourceAcronym: string, harvestingID: number, filter: RecordsFilter): Observable<Records> {
 
     let params = new HttpParams()
       .append('pageNumber', filter.pageNumber.toString())
@@ -93,7 +93,7 @@ export class ValidationService {
       );
 
     return this.http
-      .get<Records>(`${this.baseurl}by_id/${harvestingID}/records`, { params })
+      .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
