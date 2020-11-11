@@ -45,6 +45,13 @@ export class HarvestingService {
     );
   }
 
+  getHarvestingList(): Observable<HarvestingList> {
+    return this.http.get<HarvestingList>(`${this.baseurl}list`).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
   private errorHandler(e: any): Observable<any> {
     return throwError(e);
   }

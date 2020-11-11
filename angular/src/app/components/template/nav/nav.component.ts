@@ -14,25 +14,21 @@ export class NavComponent implements OnInit {
   isExpandedFio = true;
   showSubmenu: boolean = false;
   showSubmenuFio: boolean = false;
-  repositories: Menu[];
+  repositoriesMenu: Menu[] = [];
 
   constructor(
     private navService: NavService,
     private router: Router,
     private harvestingService: HarvestingService
-  ) {
-    this.repositories = [
-      { description: 'Fiocruz', showSubmenu: false },
-      { description: 'Uninove', showSubmenu: false },
-      { description: 'Ibict', showSubmenu: false },
-      { description: 'UFSM', showSubmenu: false },
-      { description: 'PUC-RS', showSubmenu: false },
-      { description: 'UFES', showSubmenu: false },
-      { description: 'UFSCar', showSubmenu: false },
-    ];
-  }
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.harvestingService.getHarvestingList().subscribe((harvestingList) => {
+      harvestingList.content.map((x) =>
+        this.repositoriesMenu.push({ description: x.acronym, showSubmenu: false })
+      );
+    });
+  }
 
   get harvestingID(): number {
     return this.navService.navData.harvestingID;
@@ -51,7 +47,7 @@ export class NavComponent implements OnInit {
   }
 
   menuClick(e: Menu) {
-    this.repositories.forEach((x) => {
+    this.repositoriesMenu.forEach((x) => {
       if (x.description == e.description) x.showSubmenu = !x.showSubmenu;
     });
   }
