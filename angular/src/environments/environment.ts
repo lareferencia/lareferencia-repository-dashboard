@@ -11,7 +11,7 @@ export const keycloakConfig: any = {
 export const environment = {
   production: false,
   harvestingService: 'http://dashboard.lareferencia.info/api/v2/harvesting/source/',
-  validationService: 'http://dashboard.lareferencia.info/api/v2/validation/',
+  validationService: 'http://dashboard.lareferencia.info/api/v2/validation/source/',
   keycloakConfig: keycloakConfig,
 };
 
