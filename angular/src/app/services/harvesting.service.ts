@@ -40,7 +40,7 @@ export class HarvestingService {
   }
 
   getHarvestingLastGoodKnowByAcronym(sourceAcronym: string): Observable<HarvestingContent> {
-    return this.http.get<HarvestingContent>(this.baseurl + 'by_acron/' + sourceAcronym + '/lkg').pipe(
+    return this.http.get<HarvestingContent>(`${this.baseurl}${sourceAcronym}/lkg`).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
