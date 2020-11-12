@@ -21,22 +21,15 @@
  *******************************************************************************/
 package org.lareferencia.core.dashboard.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.keycloak.KeycloakSecurityContext;
 import org.lareferencia.core.dashboard.security.ISecurityService;
-import org.lareferencia.core.dashboard.security.KeycloakAuthorization;
 import org.lareferencia.core.dashboard.service.HarvesterInfoServiceException;
 import org.lareferencia.core.dashboard.service.IHarvestingInformationService;
 import org.lareferencia.core.dashboard.service.IHarvestingResult;
 import org.lareferencia.core.dashboard.service.IHarvestingSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;

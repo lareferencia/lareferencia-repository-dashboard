@@ -33,3 +33,34 @@ rest.lareferencia.metadata.version=2.0.0
 rest.lareferencia.metadata.license="GNU General Public License"
 rest.lareferencia.metadata.licenseurl="https://www.gnu.org/licenses/"
 
+# Keycloak properties
+
+# uncomment the line below to disable keycloack
+#spring.autoconfigure.exclude=org.keycloak.adapters.springboot.KeycloakSpringBootConfiguration
+
+## Authentication
+keycloak.auth-server-url = http://demo.lareferencia.info:8280/auth
+keycloak.realm = lareferencia
+keycloak.resource = dashboard-lareferencia-api
+keycloak.ssl-required = none
+keycloak.confidential-port = 443
+keycloak.security-constraints[0].authRoles[0] = dashboard-user
+keycloak.security-constraints[0].authRoles[1] = dashboard-admin
+keycloak.security-constraints[0].securityCollections[0].patterns[0] = /*
+
+## Authorization
+keycloak.public-client = false
+keycloak.credentials.secret = 4f9dd323-7a4d-4671-9750-7a0262c8f5bd
+keycloak.policy-enforcer-config.enforcement-mode = enforcing
+keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.uri]={request.relativePath}
+keycloak.policy-enforcer-config.paths[0].path = /*
+keycloak.policy-enforcer-config.paths[0].methods[0].method = GET
+keycloak.policy-enforcer-config.paths[1].path = /api/v2/harvesting/source/list
+keycloak.policy-enforcer-config.paths[1].methods[0].method = GET
+keycloak.policy-enforcer-config.paths[2].path = /api/v2/harvesting/source/{sourceAcronym}/*
+keycloak.policy-enforcer-config.paths[2].methods[0].method = GET
+keycloak.policy-enforcer-config.paths[3].path = /api/v2/validation/source/{sourceAcronym}/*
+keycloak.policy-enforcer-config.paths[3].methods[0].method = GET
+
+#Custom authorization properties
+authz.admin-role = dashboard-admin
