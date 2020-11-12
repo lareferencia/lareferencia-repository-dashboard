@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { ValidationService } from './../../../services/validation.service';
 import { Occurence } from 'src/app/shared/occurrence.model';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
@@ -24,11 +25,14 @@ export class InvalidOccurenceTableComponent implements OnInit {
   csvData: Occurence[];
   headerData: any[];
 
-  constructor(private validationService: ValidationService) {}
+  constructor(private validationService: ValidationService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    const acronym = this.route.snapshot.paramMap.get('acronym');
+
     this.validationService
       .getInValidOccurrencesByHarvestingIDRuleID(
+        acronym,
         this.rule.harvestingID,
         this.rule.ruleID
       )

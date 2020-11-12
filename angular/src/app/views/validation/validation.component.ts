@@ -34,7 +34,7 @@ export class ValidationComponent implements OnInit {
 
       if (harvestingID != 0) {
         this.validationService
-          .getValidationResultsByHarvestingID(harvestingID)
+          .getValidationResultsByHarvestingID(acronym, harvestingID)
           .subscribe((result) => {
             this.validation = result;
             console.log(result);

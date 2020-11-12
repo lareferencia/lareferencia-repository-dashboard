@@ -30,6 +30,7 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
   dataSource: RecordsTableDataSource;
   pageSize = 10;
   harvestingID: number;
+  acronym: string;
   isLoadingResults = true;
   csvData: any[];
   headerData: any[];
@@ -57,6 +58,7 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
     this.harvestingID = Number(
       this.route.snapshot.paramMap.get('harvestingID')
     );
+    this.acronym = this.route.snapshot.paramMap.get('acronym');
   }
 
   detailClick(record: Record): void {
@@ -99,7 +101,7 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
     this.isLoadingResults = true;
 
     this.validationService
-      .getRecordsByHarvestingIDFilter(this.harvestingID, this.filter)
+      .getRecordsByHarvestingIDFilter(this.acronym, this.harvestingID, this.filter)
       .subscribe((result) => {
         this.dataSource = new RecordsTableDataSource(result.content);
         this.paginator.length = result.totalElements;
