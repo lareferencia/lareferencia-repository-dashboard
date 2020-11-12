@@ -10,8 +10,8 @@ export const keycloakConfig: any = {
 
 export const environment = {
   production: false,
-  harvestingService: 'http://demo.lareferencia.info:8092/api/v2/harvesting/source/',
-  validationService: 'http://demo.lareferencia.info:8092/api/v2/validation/source/',
+  harvestingService: 'http://dashboard.lareferencia.info/api/v2/harvesting/source/',
+  validationService: 'http://dashboard.lareferencia.info/api/v2/validation/source/',
   keycloakConfig: keycloakConfig,
 };
 
