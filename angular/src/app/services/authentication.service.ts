@@ -23,8 +23,14 @@ export class AuthenticationService extends KeycloakAuthGuard {
   ) {
     // Force the user to log in if currently unauthenticated.
     if (!this.authenticated) {
+      
+      let language = window.location.pathname.split('/')[1];
+      if (language !== 'en' && language !== 'pt' && language !== 'es')
+        language = '';
+      else language = '/' + language;
+      
       await this.keycloak.login({
-        redirectUri: window.location.origin +  window.location.pathname.split('/')[1] + state.url,
+        redirectUri: window.location.origin + language + state.url,
       });
     }
 
