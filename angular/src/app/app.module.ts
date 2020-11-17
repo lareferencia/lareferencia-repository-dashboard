@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 
@@ -10,7 +11,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -59,7 +59,7 @@ import { SubHeaderComponent } from './components/sub-header/sub-header.component
 import { CardComponent } from './components/card/card.component';
 import { initializeKeycloak } from './keycloak-init';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationService } from './core/services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -107,7 +107,6 @@ import { AuthenticationService } from './services/authentication.service';
     MatProgressBarModule,
     MatSortModule,
     MatTableModule,
-    HttpClientModule,
     MatProgressSpinnerModule,
     MatButtonModule,
     MatSnackBarModule,
@@ -122,6 +121,7 @@ import { AuthenticationService } from './services/authentication.service';
     FormsModule,
     MatSelectModule,
     KeycloakAngularModule,
+    CoreModule,
   ],
   providers: [
     AuthenticationService,

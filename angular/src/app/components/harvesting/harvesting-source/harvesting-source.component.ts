@@ -1,5 +1,5 @@
 import { Harvesting } from '../../../shared/harvesting.model';
-import { HarvestingService } from '../../../services/harvesting.service';
+import { HarvestingService } from '../../../core/services/harvesting.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HarvestingHistory } from 'src/app/shared/harvesting-history.model';

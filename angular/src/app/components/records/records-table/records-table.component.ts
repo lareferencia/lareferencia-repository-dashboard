@@ -6,7 +6,7 @@ import { MatTable } from '@angular/material/table';
 import { RecordsTableDataSource } from './records-table-datasource';
 import { Validation } from 'src/app/shared/validation.model';
 import { Record } from 'src/app/shared/record.model';
-import { ValidationService } from 'src/app/services/validation.service';
+import { ValidationService } from 'src/app/core/services/validation.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { startWith } from 'rxjs/internal/operators/startWith';

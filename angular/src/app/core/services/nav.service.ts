@@ -1,4 +1,4 @@
-import { NavData } from './../shared/nav-data.model';
+import { NavData } from '../../shared/nav-data.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 

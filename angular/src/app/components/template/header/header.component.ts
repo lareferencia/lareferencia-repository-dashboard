@@ -1,4 +1,4 @@
-import { NavService } from 'src/app/services/nav.service';
+import { NavService } from 'src/app/core/services/nav.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

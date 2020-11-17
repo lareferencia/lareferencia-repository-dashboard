@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validation } from 'src/app/shared/validation.model';
-import { ValidationService } from 'src/app/services/validation.service';
+import { ValidationService } from 'src/app/core/services/validation.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

@@ -1,6 +1,6 @@
-import { HarvestingService } from './../../../services/harvesting.service';
+import { HarvestingService } from '../../../core/services/harvesting.service';
 import { Menu } from './../../../shared/menu.model';
-import { NavService } from './../../../services/nav.service';
+import { NavService } from '../../../core/services/nav.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 

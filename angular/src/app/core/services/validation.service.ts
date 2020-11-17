@@ -1,12 +1,12 @@
-import { RecordsFilter } from './../shared/records-filter.model';
+import { RecordsFilter } from '../../shared/records-filter.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Validation } from '../shared/validation.model';
-import { Occurence } from '../shared/occurrence.model';
-import { Records } from '../shared/records.model';
-import { environment } from '../../environments/environment';
+import { Validation } from '../../shared/validation.model';
+import { Occurence } from '../../shared/occurrence.model';
+import { Records } from '../../shared/records.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

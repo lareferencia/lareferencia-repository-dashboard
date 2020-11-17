@@ -1,12 +1,12 @@
-import { HarvestingContent } from './../shared/harvesting-content.model';
-import { HarvestingHistory } from './../shared/harvesting-history.model';
-import { Harvesting } from './../shared/harvesting.model';
+import { HarvestingContent } from '../../shared/harvesting-content.model';
+import { HarvestingHistory } from '../../shared/harvesting-history.model';
+import { Harvesting } from '../../shared/harvesting.model';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
-import { HarvestingList } from '../shared/harvesting-list.model';
+import { environment } from '../../../environments/environment';
+import { HarvestingList } from '../../shared/harvesting-list.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class HarvestingService {
   constructor(private http: HttpClient) {}
 
   getHarvestingByAcronym(sourceAcronym: string): Observable<Harvesting> {
-    return this.http.get<Harvesting>(`${this.baseurl}${sourceAcronym}`).pipe(
+    return this.http.get<Harvesting>(`${this.baseurl}by_acron/${sourceAcronym}`).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
@@ -30,7 +30,7 @@ export class HarvestingService {
 
     return this.http
       .get<HarvestingHistory>(
-        `${this.baseurl}${sourceAcronym}/history`,
+        `${this.baseurl}by_acron/${sourceAcronym}/history`,
         { params }
       )
       .pipe(
@@ -40,7 +40,7 @@ export class HarvestingService {
   }
 
   getHarvestingLastGoodKnowByAcronym(sourceAcronym: string): Observable<HarvestingContent> {
-    return this.http.get<HarvestingContent>(`${this.baseurl}${sourceAcronym}/lkg`).pipe(
+    return this.http.get<HarvestingContent>(`${this.baseurl}by_acron/${sourceAcronym}/lkg`).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );

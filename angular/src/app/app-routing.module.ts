@@ -6,7 +6,7 @@ import { RecordInvalidComponent } from './views/record-invalid/record-invalid.co
 import { HarvestingComponent } from './views/harvesting/harvesting.component';
 import { HomeComponent } from './views/home/home.component';
 import { ValidationComponent } from './views/validation/validation.component';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationService } from './core/services/authentication.service';
 
 const routes: Routes = [
   {

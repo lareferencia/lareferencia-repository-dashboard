@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { ValidationService } from './../../../services/validation.service';
+import { ValidationService } from '../../../core/services/validation.service';
 import { Occurence } from 'src/app/shared/occurrence.model';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';

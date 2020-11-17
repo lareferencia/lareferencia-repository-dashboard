@@ -1,7 +1,7 @@
 import { Harvesting } from './../../shared/harvesting.model';
 import { HarvestingContent } from './../../shared/harvesting-content.model';
-import { NavService } from './../../services/nav.service';
-import { HarvestingService } from './../../services/harvesting.service';
+import { NavService } from '../../core/services/nav.service';
+import { HarvestingService } from '../../core/services/harvesting.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
