@@ -17,7 +17,7 @@ export class HarvestingService {
   constructor(private http: HttpClient) {}
 
   getHarvestingByAcronym(sourceAcronym: string): Observable<Harvesting> {
-    return this.http.get<Harvesting>(`${this.baseurl}by_acron/${sourceAcronym}`).pipe(
+    return this.http.get<Harvesting>(`${this.baseurl}${sourceAcronym}`).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
@@ -30,7 +30,7 @@ export class HarvestingService {
 
     return this.http
       .get<HarvestingHistory>(
-        `${this.baseurl}by_acron/${sourceAcronym}/history`,
+        `${this.baseurl}${sourceAcronym}/history`,
         { params }
       )
       .pipe(
@@ -40,7 +40,7 @@ export class HarvestingService {
   }
 
   getHarvestingLastGoodKnowByAcronym(sourceAcronym: string): Observable<HarvestingContent> {
-    return this.http.get<HarvestingContent>(`${this.baseurl}by_acron/${sourceAcronym}/lkg`).pipe(
+    return this.http.get<HarvestingContent>(`${this.baseurl}${sourceAcronym}/lkg`).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
