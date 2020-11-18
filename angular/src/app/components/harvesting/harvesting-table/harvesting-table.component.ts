@@ -1,6 +1,6 @@
 import { MatPaginator } from '@angular/material/paginator';
 import { HarvestingService } from '../../../core/services/harvesting.service';
-import { HarvestingContent } from './../../../shared/harvesting-content.model';
+import { HarvestingContent } from '../../../shared/models/harvesting-content.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';

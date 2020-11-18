@@ -1,4 +1,5 @@
 export interface Rule {
+  acronym: string;
   ruleID: number;
   name: string;
   description: string;

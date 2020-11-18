@@ -5,10 +5,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { RecordsTableDataSource } from './records-invalid-table-datasource';
-import { Record } from 'src/app/shared/record.model';
-import { Validation } from 'src/app/shared/validation.model';
+import { Record } from 'src/app/shared/models/record.model';
+import { Validation } from 'src/app/shared/models/validation.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { EvaluationRulesComponent } from '../../evaluation-rules/evaluation-rules.component';
+import { EvaluationRulesComponent } from '../../rule/evaluation-rules/evaluation-rules.component';
 import { startWith, tap } from 'rxjs/operators';
 
 @Component({

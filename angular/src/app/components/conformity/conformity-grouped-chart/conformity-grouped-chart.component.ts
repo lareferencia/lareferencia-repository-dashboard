@@ -1,4 +1,4 @@
-import { Validation } from './../../shared/validation.model';
+import { Validation } from '../../../shared/models/validation.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { View } from 'vega';
 declare const vega: any;

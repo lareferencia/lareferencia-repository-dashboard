@@ -5,8 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ValidOccurenceTableDataSource } from './valid-occurence-table-datasource';
-import { Occurence } from 'src/app/shared/occurrence.model';
-import { Rule } from 'src/app/shared/rule.model';
+import { Occurence } from 'src/app/shared/models/occurrence.model';
+import { Rule } from 'src/app/shared/models/rule.model';
 
 @Component({
   selector: 'app-valid-occurence-table',

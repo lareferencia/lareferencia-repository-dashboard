@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Occurence } from 'src/app/shared/occurrence.model';
+import { Occurence } from 'src/app/shared/models/occurrence.model';
 
 /**
  * Data source for the ValidOccurenceTable view. This class should

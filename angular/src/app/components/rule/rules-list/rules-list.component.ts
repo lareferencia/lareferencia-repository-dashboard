@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Rule } from 'src/app/shared/rule.model';
+import { Rule } from 'src/app/shared/models/rule.model';
 
 @Component({
   selector: 'app-rules-list',

@@ -1,12 +1,11 @@
-import { ActivatedRoute } from '@angular/router';
 import { ValidationService } from '../../../core/services/validation.service';
-import { Occurence } from 'src/app/shared/occurrence.model';
+import { Occurence } from 'src/app/shared/models/occurrence.model';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { InvalidOccurenceTableDataSource } from './invalid-occurence-table-datasource';
-import { Rule } from 'src/app/shared/rule.model';
+import { Rule } from 'src/app/shared/models/rule.model';
 
 @Component({
   selector: 'app-invalid-occurence-table',
@@ -25,14 +24,12 @@ export class InvalidOccurenceTableComponent implements OnInit {
   csvData: Occurence[];
   headerData: any[];
 
-  constructor(private validationService: ValidationService, private route: ActivatedRoute) {}
+  constructor(private validationService: ValidationService) {}
 
   ngOnInit() {
-    const acronym = this.route.snapshot.paramMap.get('acronym');
-
     this.validationService
       .getInValidOccurrencesByHarvestingIDRuleID(
-        acronym,
+        this.rule.acronym,
         this.rule.harvestingID,
         this.rule.ruleID
       )

@@ -1,10 +1,10 @@
-import { HarvestingService } from '../../core/services/harvesting.service';
-import { Harvesting } from './../../shared/harvesting.model';
-import { Validation } from 'src/app/shared/validation.model';
+import { HarvestingService } from '../../../core/services/harvesting.service';
+import { Harvesting } from '../../../shared/models/harvesting.model';
+import { Validation } from 'src/app/shared/models/validation.model';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Rule } from 'src/app/shared/rule.model';
+import { Rule } from 'src/app/shared/models/rule.model';
 
 @Component({
   selector: 'app-validation',

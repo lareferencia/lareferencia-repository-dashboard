@@ -1,12 +1,12 @@
-import { HarvestingContent } from '../../shared/harvesting-content.model';
-import { HarvestingHistory } from '../../shared/harvesting-history.model';
-import { Harvesting } from '../../shared/harvesting.model';
+import { HarvestingContent } from '../../shared/models/harvesting-content.model';
+import { HarvestingHistory } from '../../shared/models/harvesting-history.model';
+import { Harvesting } from '../../shared/models/harvesting.model';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { HarvestingList } from '../../shared/harvesting-list.model';
+import { HarvestingList } from '../../shared/models/harvesting-list.model';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Record } from 'src/app/shared/record.model';
+import { Record } from '../../../shared/models/record.model';
 
 @Component({
   selector: 'app-evaluation-rules',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { View } from 'vega';
-import { Validation } from 'src/app/shared/validation.model';
+import { Validation } from 'src/app/shared/models/validation.model';
 declare const vega: any;
 
 @Component({

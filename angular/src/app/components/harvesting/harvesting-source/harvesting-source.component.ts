@@ -1,8 +1,8 @@
-import { Harvesting } from '../../../shared/harvesting.model';
+import { Harvesting } from '../../../shared/models/harvesting.model';
 import { HarvestingService } from '../../../core/services/harvesting.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HarvestingHistory } from 'src/app/shared/harvesting-history.model';
+import { HarvestingHistory } from 'src/app/shared/models/harvesting-history.model';
 
 @Component({
   selector: 'app-harvesting-source',

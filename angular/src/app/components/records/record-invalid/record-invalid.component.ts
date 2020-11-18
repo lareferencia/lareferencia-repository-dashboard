@@ -1,9 +1,9 @@
-import { HarvestingService } from '../../core/services/harvesting.service';
-import { Harvesting } from './../../shared/harvesting.model';
+import { HarvestingService } from '../../../core/services/harvesting.service';
+import { Harvesting } from '../../../shared/models/harvesting.model';
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { ActivatedRoute } from '@angular/router';
-import { Validation } from 'src/app/shared/validation.model';
+import { Validation } from 'src/app/shared/models/validation.model';
 
 @Component({
   selector: 'app-record-invalid',

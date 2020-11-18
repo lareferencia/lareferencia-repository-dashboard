@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { View } from 'vega';
-import { HarvestingHistory } from 'src/app/shared/harvesting-history.model';
+import { HarvestingHistory } from 'src/app/shared/models/harvesting-history.model';
 declare const vega: any;
 
 @Component({

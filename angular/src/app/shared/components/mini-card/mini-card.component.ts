@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-dash-mini-card',
-  templateUrl: './dash-mini-card.component.html',
-  styleUrls: ['./dash-mini-card.component.css'],
+  selector: 'app-mini-card',
+  templateUrl: './mini-card.component.html',
+  styleUrls: ['./mini-card.component.css'],
 })
-export class DashMiniCardComponent implements OnInit {
+export class MiniCardComponent implements OnInit {
   @Input() icon: string;
   @Input() title: string;
   @Input() content: string;

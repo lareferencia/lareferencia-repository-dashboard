@@ -19,41 +19,41 @@
   ></app-sub-header>
 
   <div class="flex-container">
-    <app-dash-mini-card
+    <app-mini-card
       class="col-md-3"
       icon="library_books"
       i18n-title
       title="Harvested records"
       color="#3498db"
       [content]="validation.size | number"
-    ></app-dash-mini-card>
+    ></app-mini-card>
 
-    <app-dash-mini-card
+    <app-mini-card
       class="col-md-3"
       icon="done"
       i18n-title
       title="Valid"
       color="#27ae60"
       [content]="validation.validSize | number"
-    ></app-dash-mini-card>
+    ></app-mini-card>
 
-    <app-dash-mini-card
+    <app-mini-card
       class="col-md-3"
       icon="settings"
       i18n-title
       title="Transformed"
       color="#f1c40f"
       [content]="validation.transformedSize | number"
-    ></app-dash-mini-card>
+    ></app-mini-card>
 
-    <app-dash-mini-card
+    <app-mini-card
       class="col-md-3"
       icon="clear"
       i18n-title
       title="Invalid"
       color="#e74c3c"
       [content]="validation.size - validation.validSize | number"
-    ></app-dash-mini-card>
+    ></app-mini-card>
   </div>
 
   <div class="flex-container">
