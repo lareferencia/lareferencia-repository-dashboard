@@ -25,14 +25,12 @@ export class ValidOccurenceTableComponent implements OnInit {
   csvData: Occurence[];
   headerData: any[];
 
-  constructor(private validationService: ValidationService, private route: ActivatedRoute) {}
+  constructor(private validationService: ValidationService) {}
 
   ngOnInit() {
-    const acronym = this.route.snapshot.paramMap.get('acronym');
-
     this.validationService
       .getValidOccurrencesByHarvestingIDRuleID(
-        acronym,
+        this.rule.acronym,
         this.rule.harvestingID,
         this.rule.ruleID
       )
