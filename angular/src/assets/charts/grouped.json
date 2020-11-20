@@ -18,7 +18,7 @@
         {
           "type": "formula",
           "as": "percent",
-          "expr": "format(datum.value, '.2f') + '%'"
+          "expr": "format(datum.value, '.3f') + '%'"
         },
         {
           "type": "formula",
