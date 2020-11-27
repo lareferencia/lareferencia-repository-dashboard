@@ -44,6 +44,7 @@ keycloak.realm = lareferencia
 keycloak.resource = dashboard-lareferencia-api
 keycloak.ssl-required = none
 keycloak.confidential-port = 443
+keycloak.cors = true
 keycloak.security-constraints[0].authRoles[0] = dashboard-user
 keycloak.security-constraints[0].authRoles[1] = dashboard-admin
 keycloak.security-constraints[0].securityCollections[0].patterns[0] = /*
