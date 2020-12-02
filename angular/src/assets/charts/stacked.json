@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A basic stacked bar chart example.",
+  "width": 200,
+  "height": 200,
+  "padding": 35,
+
+  "data": [
+    {
+      "name": "table",
+      "values": [],
+      "transform": [
+        {
+          "type": "stack",
+          "groupby": ["x"],
+          "sort": {"field": "c"},
+          "field": "y"
+        },
+        {
+          "type": "formula",
+          "as": "color",
+          "expr": "datum.c == 0 ? '#22964F': '#E41A1C'"
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "x",
+      "type": "band",
+      "range": "width",
+      "domain": {"data": "table", "field": "x"}
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "range": "height",
+      "nice": true, "zero": true,
+      "domain": {"data": "table", "field": "y1"}
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": "category"
+    }
+  ],
+
+  "axes": [
+    {"orient": "bottom", "scale": "x", "zindex": 1, "title": "Id da validação"},
+    {"orient": "left", "scale": "y", "zindex": 1, "title": "Registros"}
+  ],
+
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "x": {"scale": "x", "field": "x"},
+          "width": {"scale": "x", "band": 1, "offset": -1},
+          "y": {"scale": "y", "field": "y0"},
+          "y2": {"scale": "y", "field": "y1"},
+          "fill": { "field": "color" },
+          "tooltip": {"signal": "datum.y"}
+        },
+        "update": {
+          "fillOpacity": {"value": 1}
+        },
+        "hover": {
+          "fillOpacity": {"value": 0.5}
+        }
+      }
+    }
+  ]
+}

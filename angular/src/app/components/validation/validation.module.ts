@@ -1,3 +1,4 @@
+import { ValidationChartFilterModule } from './validation-chart-filter/validation-chart-filter.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgModule } from '@angular/core';
@@ -32,6 +33,7 @@ import { RecordModule } from '../records/record.module';
     MatPaginatorModule,
     ConformityModule,
     RecordModule,
+    ValidationChartFilterModule,
   ],
   exports: [ValidationChartComponent],
 })

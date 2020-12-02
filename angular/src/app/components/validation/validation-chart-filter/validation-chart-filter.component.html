@@ -1,0 +1,29 @@
+<div class="filter-form">
+  <mat-form-field appearance="fill">
+    <mat-label i18n>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker" [formGroup]="date">
+      <input matStartDate placeholder="Start date" formControlName="start" />
+      <input matEndDate placeholder="End date" formControlName="end" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <button
+    class="btn-filter-action"
+    mat-raised-button
+    (click)="clearClick()"
+    i18n
+  >
+    Default
+  </button>
+  <button
+    class="btn-filter-action"
+    mat-raised-button
+    color="primary"
+    (click)="filterClick()"
+    i18n
+  >
+    Filter
+  </button>
+</div>
