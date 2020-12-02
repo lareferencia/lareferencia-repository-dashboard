@@ -9,6 +9,17 @@
   <div class="header-description">
     <div class="title-description">
       <span>Instituto Brasileiro de Informação em Ciência e Tecnologia</span>
+      <div class="logout">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon aria-hidden="false" aria-label="Account icon">
+            account_circle
+          </mat-icon>
+          <span>{{ userName }}</span>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </div>
     </div>
     <div class="sub-title-description">
       <span i18n>Dashboard for repository managers</span>

@@ -8,6 +8,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { MatListModule } from '@angular/material/list';
     RouterModule,
     MatSidenavModule,
     MatListModule,
+    MatMenuModule,
+    MatButtonModule,
   ],
   exports: [NavBarComponent, NavComponent, FooterComponent, HeaderComponent],
 })

@@ -45,4 +45,13 @@ export class AuthenticationService extends KeycloakAuthGuard {
     // Allow the user to proceed if all the required roles are present.
     return requiredRoles.every((role) => this.roles.includes(role));
   }
+
+  public async logout(){
+    this.keycloak.logout();
+  }
+
+  public async getUserName () : Promise<string> {
+    const userDetails = await this.keycloak.loadUserProfile();
+    return userDetails.firstName;
+  }
 }
