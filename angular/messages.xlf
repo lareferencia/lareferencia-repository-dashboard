@@ -42,6 +42,14 @@
         <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</source>
       </segment>
     </unit>
+    <unit id="3797778920049399855">
+      <notes>
+        <note category="location">src/app/components/template/header/header.component.html:20</note>
+      </notes>
+      <segment>
+        <source>Logout</source>
+      </segment>
+    </unit>
     <unit id="5823395783897532746">
       <notes>
         <note category="location">src/app/components/template/header/header.component.html:25</note>
@@ -498,28 +506,12 @@
         <source> Transformation </source>
       </segment>
     </unit>
-    <unit id="2793829730347223036">
+    <unit id="6380439426064840023">
       <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:11,12</note>
+        <note category="location">src/app/shared/components/table-exporter/table-exporter.component.html:3,4</note>
       </notes>
       <segment>
-        <source> Nothing to show </source>
-      </segment>
-    </unit>
-    <unit id="3434159451328512184">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:23</note>
-      </notes>
-      <segment>
-        <source>Valid Records</source>
-      </segment>
-    </unit>
-    <unit id="3600319047251497564">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:25</note>
-      </notes>
-      <segment>
-        <source>Invalid Records</source>
+        <source> Export CSV </source>
       </segment>
     </unit>
     <unit id="4638450448409947660">
@@ -580,14 +572,6 @@
         <source> Close </source>
       </segment>
     </unit>
-    <unit id="6380439426064840023">
-      <notes>
-        <note category="location">src/app/shared/components/table-exporter/table-exporter.component.html:3,4</note>
-      </notes>
-      <segment>
-        <source> Export CSV </source>
-      </segment>
-    </unit>
     <unit id="7396212938337853335">
       <notes>
         <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:3,4</note>
@@ -641,6 +625,30 @@
       </notes>
       <segment>
         <source> Amount </source>
+      </segment>
+    </unit>
+    <unit id="2793829730347223036">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:11,12</note>
+      </notes>
+      <segment>
+        <source> Nothing to show </source>
+      </segment>
+    </unit>
+    <unit id="3434159451328512184">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:23</note>
+      </notes>
+      <segment>
+        <source>Valid Records</source>
+      </segment>
+    </unit>
+    <unit id="3600319047251497564">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:25</note>
+      </notes>
+      <segment>
+        <source>Invalid Records</source>
       </segment>
     </unit>
     <unit id="5817928445374038037">
