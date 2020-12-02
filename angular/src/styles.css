@@ -56,3 +56,8 @@ body {
 .msg-warning button {
   color: black;
 }
+
+:focus {
+  outline: none !important;
+  border: 0 !important;
+}
