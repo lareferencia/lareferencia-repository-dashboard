@@ -1,5 +1,5 @@
+import { DateFilter } from './../../../shared/models/date-filter.model';
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-validation-chart-filter',
@@ -7,9 +7,9 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./validation-chart-filter.component.css'],
 })
 export class ValidationChartFilterComponent {
-  @Output() applyFilter = new EventEmitter<FormGroup>();
+  @Output() applyFilter = new EventEmitter<DateFilter>();
   @Output() applyClear = new EventEmitter();
-  @Input() date: FormGroup;
+  @Input() date: DateFilter;
 
   public filterClick() {
     this.applyFilter.emit(this.date);

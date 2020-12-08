@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { View } from 'vega';
 import { HarvestingHistory } from 'src/app/shared/models/harvesting-history.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import { DateFilter } from 'src/app/shared/models/date-filter.model';
 declare const vega: any;
 
 @Component({
@@ -12,10 +12,7 @@ declare const vega: any;
 export class ValidationChartComponent {
   @Input() harvestingHistory: HarvestingHistory;
   view: View;
-  date: FormGroup;
-  startDate = new Date();
-  endDate = new Date();
-  today = new Date();
+  date: DateFilter;
   lastYear = new Date();
   data = [];
   hideGraph = false;
@@ -27,37 +24,32 @@ export class ValidationChartComponent {
 
   constructor() {
     this.lastYear.setFullYear(this.lastYear.getFullYear() - 1);
-    this.startDate.setFullYear(this.startDate.getFullYear() - 1);
-    this.date = new FormGroup({
-      start: new FormControl(this.lastYear),
-      end: new FormControl(this.today),
-    });
+    this.date = {startDate: this.lastYear, endDate: new Date()};
   }
 
   public handleChart(chartData: View) {
     this.view = chartData;
-    this.filterGraph(this.startDate, this.endDate);
+    this.filterGraph();
   }
 
   clearClick() {
-    this.date.setValue({ start: this.lastYear, end: this.today });
-    this.filterGraph(this.lastYear, this.today);
+    this.date = {startDate: new Date(this.lastYear), endDate: new Date()};
+    this.filterGraph();
   }
 
-  filterClick(e: FormGroup) {
-    this.startDate = e.value.start;
-    this.endDate = e.value.end;
-    this.filterGraph(this.startDate, this.endDate);
+  filterClick(e: DateFilter) {
+    this.date = {startDate: e.startDate, endDate: e.endDate};
+    this.filterGraph();
   }
 
-  filterGraph(startDate: Date, endDate: Date) {
+  filterGraph() {
     this.data = [];
 
     this.harvestingHistory.content
       .filter(
         (x) =>
-          new Date(x.startTime).getTime() > new Date(startDate).getTime() &&
-          new Date(x.endTime).getTime() < new Date(endDate).getTime()
+          new Date(x.startTime).getTime() > new Date(this.date.startDate).getTime() &&
+          new Date(x.endTime).getTime() < new Date(this.date.endDate).getTime()
       )
       .sort(
         (a, b) =>
