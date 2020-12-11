@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { View } from 'vega';
 import { HarvestingHistory } from 'src/app/shared/models/harvesting-history.model';
 import { DateFilter } from 'src/app/shared/models/date-filter.model';
+import * as moment from 'moment';
 declare const vega: any;
 
 @Component({
@@ -19,7 +20,7 @@ export class ValidationChartComponent {
 
   chartDef = {
     name: 'line',
-    path: './assets/charts/stacked.json',
+    path: './assets/charts/grouped-horizontal.json',
   };
 
   constructor() {
@@ -58,20 +59,27 @@ export class ValidationChartComponent {
       .forEach((result) => {
         this.data.push(
           {
-            x: result.id,
-            y: result.validSize,
-            c: 0,
+            category: moment(result.startTime).format("DD/MM/YYYY HH:MM"),
+            position: 0,
+            value: result.validSize,
           },
           {
-            x: result.id,
-            y: result.harvestedSize - result.validSize,
-            c: 1,
+            category: moment(result.startTime).format("DD/MM/YYYY HH:MM"),
+            position: 1,
+            value: result.transformedSize = result.validSize,
+          },
+          {
+            category: moment(result.startTime).format("DD/MM/YYYY HH:MM"),
+            position: 2,
+            value: result.transformedSize,
           }
         );
       });
 
-    this.hideGraph = this.data.length == 0;
+    const dataLength = this.data.length;
+    this.hideGraph = dataLength == 0;
     const changeSet = vega.changeset().remove(vega.truthy).insert(this.data);
     this.view.change('table', changeSet).run();
+    this.view.width(dataLength * 50).run();
   }
 }
