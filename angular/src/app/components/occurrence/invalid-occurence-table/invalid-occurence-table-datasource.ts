@@ -1,4 +1,4 @@
-import { Occurence } from 'src/app/shared/occurrence.model';
+import { Occurence } from 'src/app/shared/models/occurrence.model';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';

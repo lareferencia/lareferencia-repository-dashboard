@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Record } from 'src/app/shared/record.model';
+import { Record } from 'src/app/shared/models/record.model';
 
 /**
  * Data source for the RecordsTable view. This class should

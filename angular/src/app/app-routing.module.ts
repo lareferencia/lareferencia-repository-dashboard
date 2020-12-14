@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RecordValidComponent } from './views/record-valid/record-valid.component';
-import { RecordInvalidComponent } from './views/record-invalid/record-invalid.component';
-import { HarvestingComponent } from './views/harvesting/harvesting.component';
-import { HomeComponent } from './views/home/home.component';
-import { ValidationComponent } from './views/validation/validation.component';
-import { AuthenticationService } from './services/authentication.service';
+import { RecordValidComponent } from './components/records/record-valid/record-valid.component';
+import { RecordInvalidComponent } from './components/records/record-invalid/record-invalid.component';
+import { HarvestingComponent } from './components/harvesting/harvesting/harvesting.component';
+import { HomeComponent } from './components/home/home.component';
+import { ValidationComponent } from './components/validation/validation/validation.component';
+import { AuthenticationService } from './core/services/authentication.service';
 
 const routes: Routes = [
   {
@@ -37,7 +37,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

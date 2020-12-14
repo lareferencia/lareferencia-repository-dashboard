@@ -1,6 +1,6 @@
 import { ValidationDetailComponent } from './../validation-detail/validation-detail.component';
-import { Validation } from '../../../shared/validation.model';
-import { Rule } from '../../../shared/rule.model';
+import { Validation } from '../../../shared/models/validation.model';
+import { Rule } from '../../../shared/models/rule.model';
 import { Component, OnInit, ViewChild, Input, ElementRef } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -91,6 +91,7 @@ export class ValidationTableComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
+      acronym: this.acronym,
       ruleID: rule.ruleID,
       harvestingID: this.harvestingID,
       name: rule.name,

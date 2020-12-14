@@ -1,0 +1,40 @@
+<div class="filter-form">
+  <mat-form-field appearance="fill">
+    <mat-label i18n>Start date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="pickerStart"
+      [(ngModel)]="date.startDate"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="pickerStart"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #pickerStart></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="pickerEnd">
+    <mat-label i18n>End date</mat-label>
+    <input matInput [matDatepicker]="pickerEnd" [(ngModel)]="date.endDate" />
+    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+    <mat-datepicker #pickerEnd></mat-datepicker>
+  </mat-form-field>
+
+  <button
+    class="btn-filter-action"
+    mat-raised-button
+    (click)="clearClick()"
+    i18n
+  >
+    Default
+  </button>
+  <button
+    class="btn-filter-action"
+    mat-raised-button
+    color="primary"
+    (click)="filterClick()"
+    i18n
+  >
+    Filter
+  </button>
+</div>

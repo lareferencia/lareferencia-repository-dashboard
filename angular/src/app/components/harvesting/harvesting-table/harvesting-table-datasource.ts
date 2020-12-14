@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { HarvestingContent } from 'src/app/shared/harvesting-content.model';
+import { HarvestingContent } from 'src/app/shared/models/harvesting-content.model';
 
 /**
  * Data source for the RecordsTable view. This class should

@@ -1,20 +1,29 @@
+<app-validation-chart-filter
+  (applyFilter)="filterClick($event)"
+  (applyClear)="clearClick()"
+  [(date)]="date"
+></app-validation-chart-filter>
 <div class="chart">
   <div class="chart-container">
     <div class="chart-title"><span i18n>Validations</span></div>
     <div class="divider"></div>
+    <div class="alert alert-warning" *ngIf="data.length == 0" i18n>
+      Nothing to show
+    </div>
     <app-vega-viz
       id="{{ chartDef.name }}"
       [pathToData]="chartDef.path"
       (outgoingData)="handleChart($event)"
+      *ngIf="!hideGraph"
     >
     </app-vega-viz>
 
-    <div class="legend-div">
-      <div class="blue-legend"></div>
-      <ng-container i18n>Harvested Records</ng-container>
+    <div *ngIf="data.length > 0" class="legend-div">
       <div class="green-legend"></div>
       <ng-container i18n>Valid Records</ng-container>
       <div class="red-legend"></div>
+      <ng-container i18n>Invalid Records</ng-container>
+      <div class="blue-legend"></div>
       <ng-container i18n>Transformed Records</ng-container>
     </div>
 

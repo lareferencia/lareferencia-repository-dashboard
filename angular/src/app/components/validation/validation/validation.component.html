@@ -1,0 +1,94 @@
+<div
+  [ngClass]="['alert', error ? 'alert-danger' : 'alert-warning']"
+  role="alert"
+  *ngIf="error || firstAccess"
+  i18n
+>
+  {error, select, true {Validations not found} false {Enter a source acronym in
+  the root URL /:acronym}}
+</div>
+
+<mat-card *ngIf="isLoadingResults">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</mat-card>
+
+<div *ngIf="!firstAccess && !error && validation">
+  <app-sub-header
+    *ngIf="harvesting"
+    description="{{ harvesting.name }}"
+  ></app-sub-header>
+
+  <div class="flex-container">
+    <app-mini-card
+      class="col-md-3"
+      icon="library_books"
+      i18n-title
+      title="Harvested records"
+      color="#3498db"
+      [content]="validation.size | number"
+    ></app-mini-card>
+
+    <app-mini-card
+      class="col-md-3"
+      icon="done"
+      i18n-title
+      title="Valid"
+      color="#27ae60"
+      [content]="validation.validSize | number"
+    ></app-mini-card>
+
+    <app-mini-card
+      class="col-md-3"
+      icon="settings"
+      i18n-title
+      title="Transformed"
+      color="#f1c40f"
+      [content]="validation.transformedSize | number"
+    ></app-mini-card>
+
+    <app-mini-card
+      class="col-md-3"
+      icon="clear"
+      i18n-title
+      title="Invalid"
+      color="#e74c3c"
+      [content]="validation.size - validation.validSize | number"
+    ></app-mini-card>
+  </div>
+
+  <div class="flex-container">
+    <app-conformity-grouped-chart
+      [validation]="validation"
+    ></app-conformity-grouped-chart>
+  </div>
+
+  <app-card
+    cardTitle="Validations"
+    i18n-cardTitle
+    description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
+  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+  It was popularised in the 1960s with the release of Letraset sheets containing 
+  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum."
+    i18n-description
+  >
+    <app-validation-table [validation]="validation"></app-validation-table>
+  </app-card>
+
+  <app-card
+    cardTitle="Records"
+    i18n-cardTitle
+    description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
+  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+  It was popularised in the 1960s with the release of Letraset sheets containing 
+  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum."
+    i18n-description
+  >
+    <app-records-table [validation]="validation"></app-records-table>
+  </app-card>
+</div>
