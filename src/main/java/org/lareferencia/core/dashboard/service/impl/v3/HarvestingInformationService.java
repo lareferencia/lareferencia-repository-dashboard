@@ -1,5 +1,6 @@
 package org.lareferencia.core.dashboard.service.impl.v3;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,6 +53,20 @@ public class HarvestingInformationService implements IHarvestingInformationServi
 		Network network = findHarvestingSourceByAcronym(sourceAcronym);
 
 		Page<NetworkSnapshot> page = snapshotRepository.findByNetwork(network, pageable);
+
+		Page<IHarvestingResult> results = new PageImpl<IHarvestingResult>(
+				page.getContent().stream().map(o -> new NetworkSnapshot2IHarvestingResultAdapter(o)).collect(Collectors.toList()),
+				pageable, page.getTotalElements());
+
+		return results;
+	}
+	
+	public Page<IHarvestingResult> getHarvestingHistoryBySourceAcronym(String sourceAcronym, Date startDate, Date endDate,  Pageable pageable)
+			throws HarvesterInfoServiceException {
+
+		Network network = findHarvestingSourceByAcronym(sourceAcronym);
+
+		Page<NetworkSnapshot> page = snapshotRepository.findByNetworkIdAndDate(network.getId(), startDate, endDate, pageable);
 
 		Page<IHarvestingResult> results = new PageImpl<IHarvestingResult>(
 				page.getContent().stream().map(o -> new NetworkSnapshot2IHarvestingResultAdapter(o)).collect(Collectors.toList()),

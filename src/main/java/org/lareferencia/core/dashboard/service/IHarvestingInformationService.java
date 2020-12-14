@@ -1,5 +1,6 @@
 package org.lareferencia.core.dashboard.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -23,4 +24,7 @@ public interface IHarvestingInformationService {
 	
 	Page<IHarvestingResult> getHarvestingHistoryBySourceAcronym(String sourceAcronym , Pageable pageable) throws HarvesterInfoServiceException;
 
+	Page<IHarvestingResult> getHarvestingHistoryBySourceAcronym(String sourceAcronym , Date startDate, Date endDate, Pageable pageable) throws HarvesterInfoServiceException;
+
+	
 }

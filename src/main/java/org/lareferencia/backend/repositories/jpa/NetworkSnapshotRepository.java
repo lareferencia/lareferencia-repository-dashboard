@@ -13,6 +13,7 @@
  ******************************************************************************/
 package org.lareferencia.backend.repositories.jpa;
 
+import java.util.Date;
 import java.util.List;
 
 import org.lareferencia.backend.domain.Network;
@@ -43,6 +44,10 @@ public interface NetworkSnapshotRepository extends JpaRepository<NetworkSnapshot
 	
 	Page<NetworkSnapshot> findByNetwork(Network network, Pageable pageable);
 
+	@Query("select ns from NetworkSnapshot ns where ns.network.id = :network_id and ns.startTime >= :startDate and ns.startTime <= :endDate ")
+	Page<NetworkSnapshot> findByNetworkIdAndDate(@Param("network_id") Long network_id, @Param("startDate") Date startDate, @Param("endDate") Date endDate, Pageable pageable);
+	
+	
 	List<NetworkSnapshot> findByNetworkAndStatus(Network network, SnapshotStatus status);
 
 	List<NetworkSnapshot> findByNetworkAndStatusOrderByEndTimeAsc(Network network, SnapshotStatus status);

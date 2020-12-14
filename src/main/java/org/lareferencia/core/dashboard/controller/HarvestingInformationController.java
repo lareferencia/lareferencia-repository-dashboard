@@ -125,6 +125,20 @@ public class HarvestingInformationController {
 
 		return new ResponseEntity<Page<IHarvestingResult>>(result, HttpStatus.OK);
 	}
+	
+	
+	@ApiOperation(value = "Returns a harvesting source harvesting history by source acronym")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Returns a harvesting source harvesting info by source acronym") })
+	@RequestMapping(value = "/{sourceAcronym}/history_date", method = RequestMethod.GET)
+	HttpEntity<Page<IHarvestingResult>> getHarvestingHistoryByAcronymAndDate(
+			@PathVariable("sourceAcronym") String sourceAcronym, Pageable pageable)
+			throws HarvesterInfoServiceException {
+
+		Page<IHarvestingResult> result = hService.getHarvestingHistoryBySourceAcronym(sourceAcronym, pageable);
+
+		return new ResponseEntity<Page<IHarvestingResult>>(result, HttpStatus.OK);
+	}
 
 //	@ApiOperation(value = "Returns a harvesting source last good known harvesting by source id")
 //	@ApiResponses(value = {
