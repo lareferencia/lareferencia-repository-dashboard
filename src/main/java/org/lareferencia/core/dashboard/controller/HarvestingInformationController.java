@@ -45,6 +45,12 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 @RestController
 @Api(value = "Harvesting Information", tags = "Harvesting")
 @RequestMapping("/api/v2/harvesting/source/")
@@ -127,15 +133,28 @@ public class HarvestingInformationController {
 	}
 	
 	
-	@ApiOperation(value = "Returns a harvesting source harvesting history by source acronym")
+	@ApiOperation(value = "Returns a harvesting source harvesting history within a time interval by source acronym")
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Returns a harvesting source harvesting info by source acronym") })
-	@RequestMapping(value = "/{sourceAcronym}/history_date", method = RequestMethod.GET)
+			@ApiResponse(code = 200, message = "Returns a harvesting source harvesting info for a given time interval by source acronym") })
+	@RequestMapping(value = "/{sourceAcronym}/history/{startDate}/{endDate}", method = RequestMethod.GET)
 	HttpEntity<Page<IHarvestingResult>> getHarvestingHistoryByAcronymAndDate(
-			@PathVariable("sourceAcronym") String sourceAcronym, Pageable pageable)
-			throws HarvesterInfoServiceException {
+			@PathVariable("sourceAcronym") String sourceAcronym, @PathVariable("startDate") String fromDate, @PathVariable("endDate") String toDate, Pageable pageable)
+			throws HarvesterInfoServiceException, ParseException {
 
-		Page<IHarvestingResult> result = hService.getHarvestingHistoryBySourceAcronym(sourceAcronym, pageable);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyy-MM-dd");
+    Date startDate = formatter.parse(fromDate);
+    Date endDate = formatter.parse(toDate);
+    
+    // Set endDate time to end of day
+    Calendar cal = Calendar.getInstance();
+		cal.setTime(endDate);
+		cal.set(Calendar.HOUR_OF_DAY, 23);
+		cal.set(Calendar.MINUTE, 59);
+		cal.set(Calendar.SECOND, 59);
+    cal.set(Calendar.MILLISECOND, 999);
+    endDate = cal.getTime();
+
+    Page<IHarvestingResult> result = hService.getHarvestingHistoryBySourceAcronym(sourceAcronym, startDate, endDate, pageable);
 
 		return new ResponseEntity<Page<IHarvestingResult>>(result, HttpStatus.OK);
 	}
