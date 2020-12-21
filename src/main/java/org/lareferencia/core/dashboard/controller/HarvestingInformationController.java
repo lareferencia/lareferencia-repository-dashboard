@@ -141,7 +141,7 @@ public class HarvestingInformationController {
 			@PathVariable("sourceAcronym") String sourceAcronym, @PathVariable("startDate") String fromDate, @PathVariable("endDate") String toDate, Pageable pageable)
 			throws HarvesterInfoServiceException, ParseException {
 
-		SimpleDateFormat formatter = new SimpleDateFormat("yyy-MM-dd");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     Date startDate = formatter.parse(fromDate);
     Date endDate = formatter.parse(toDate);
     
