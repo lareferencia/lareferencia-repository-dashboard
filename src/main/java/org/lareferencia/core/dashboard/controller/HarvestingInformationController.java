@@ -23,6 +23,8 @@ package org.lareferencia.core.dashboard.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.lareferencia.backend.domain.OAIRecord;
+import org.lareferencia.backend.repositories.jpa.OAIRecordRepository;
 import org.lareferencia.core.dashboard.security.ISecurityService;
 import org.lareferencia.core.dashboard.service.HarvesterInfoServiceException;
 import org.lareferencia.core.dashboard.service.IHarvestingInformationService;
@@ -38,6 +40,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -49,6 +52,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 import java.util.TimeZone;
 
 @RestController
@@ -65,6 +69,9 @@ public class HarvestingInformationController {
 
 	@Autowired
 	ISecurityService securityService;
+	
+	@Autowired
+	private OAIRecordRepository recordRepository;
 
 	@ApiOperation(value = "Returns a list harvesting data sources with paging/sorting using {pageable}")
 	@ApiResponses(value = {
@@ -183,7 +190,18 @@ public class HarvestingInformationController {
 		return new ResponseEntity<IHarvestingResult>(result, HttpStatus.OK);
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value = "/public/getRecordMetadataByID/{id}", method = RequestMethod.GET, produces = "application/xml; charset=utf-8")
+	public String getRecordMetadataByID(@PathVariable Long id) throws Exception {
+
+		Optional<OAIRecord> record = recordRepository.findById(id);
+
+		if (record != null && record.isPresent())
+			return record.get().getPublishedXML();
+		else
+			return "Registro inexistente - Posiblemente el diagnóstico está desactualizado";
+
+	}
 
 //	private Page<IHarvestingSource> filterByUserPermissions(Page<IHarvestingSource> list, Pageable pageable) {
 //
