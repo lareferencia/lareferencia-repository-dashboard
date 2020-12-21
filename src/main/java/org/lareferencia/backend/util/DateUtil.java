@@ -2,6 +2,7 @@ package org.lareferencia.backend.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtil {
@@ -39,6 +40,18 @@ public class DateUtil {
 		}
 
 		return date;
+	}
+ 
+	public static Date atEndOfDay (Date date){
+    
+    Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.set(Calendar.HOUR_OF_DAY, 23);
+		cal.set(Calendar.MINUTE, 59);
+		cal.set(Calendar.SECOND, 59);
+    cal.set(Calendar.MILLISECOND, 999);
+    
+    return cal.getTime();
 	}
 
 	private static String getDateFormat(String date) {
