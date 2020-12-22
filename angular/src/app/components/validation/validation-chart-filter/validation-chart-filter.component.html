@@ -20,6 +20,17 @@
     <mat-datepicker #pickerEnd></mat-datepicker>
   </mat-form-field>
 
+  <mat-form-field appearance="fill" style="margin-left: 30px">
+    <mat-label i18n>Time Unit</mat-label>
+    <mat-select [(value)]="date.timeUnit" [(ngModel)]="date.timeUnit">
+      <mat-option [value]="0" i18n>Unitary</mat-option>
+      <mat-option [value]="1" i18n>Daily</mat-option>
+      <mat-option [value]="2" i18n>Weekly</mat-option>
+      <mat-option [value]="3" i18n>Monthly</mat-option>
+      <mat-option [value]="4" i18n>Yearly</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <button
     class="btn-filter-action"
     mat-raised-button
