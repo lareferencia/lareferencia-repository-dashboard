@@ -529,7 +529,7 @@
     <unit id="7700526719905983019">
       <notes>
         <note category="location">src/app/components/records/records-table/records-table.component.html:103,104</note>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:27,28</note>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:49,50</note>
       </notes>
       <segment>
         <source> Filter </source>
@@ -613,13 +613,76 @@
         <target>Conformidade</target>
       </segment>
     </unit>
-    <unit id="193735854885505934">
+    <unit id="888341446683346521">
       <notes>
         <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:3</note>
       </notes>
       <segment>
-        <source>Enter a date range</source>
-        <target>Insira um intervalo de datas</target>
+        <source>Start date</source>
+        <target>Data inicial</target>
+      </segment>
+    </unit>
+    <unit id="126074860850048964">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:17</note>
+      </notes>
+      <segment>
+        <source>End date</source>
+        <target>Data final</target>
+      </segment>
+    </unit>
+    <unit id="3548180789147259812">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:24</note>
+      </notes>
+      <segment>
+        <source>Time Unit</source>
+        <target>Unidade de tempo</target>
+      </segment>
+    </unit>
+    <unit id="8364001491815179430">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:26</note>
+      </notes>
+      <segment>
+        <source>Unitary</source>
+        <target>Unitário</target>
+      </segment>
+    </unit>
+    <unit id="2988589012964101797">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:27</note>
+      </notes>
+      <segment>
+        <source>Daily</source>
+        <target>Diário</target>
+      </segment>
+    </unit>
+    <unit id="928838138686087140">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:28</note>
+      </notes>
+      <segment>
+        <source>Weekly</source>
+        <target>Semanal</target>
+      </segment>
+    </unit>
+    <unit id="6762743264882388498">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:29</note>
+      </notes>
+      <segment>
+        <source>Monthly</source>
+        <target>Mensal</target>
+      </segment>
+    </unit>
+    <unit id="8036977202721714375">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:30</note>
+      </notes>
+      <segment>
+        <source>Yearly</source>
+        <target>Anual</target>
       </segment>
     </unit>
     <unit id="6380439426064840023">
@@ -633,7 +696,7 @@
     </unit>
     <unit id="4509598277931187746">
       <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:18,19</note>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:40,41</note>
       </notes>
       <segment>
         <source> Default </source>

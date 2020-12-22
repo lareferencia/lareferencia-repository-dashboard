@@ -198,6 +198,15 @@
   PageMaker including versions of Lorem Ipsum.</source>
       </segment>
     </unit>
+    <unit id="2644640411790641675">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:3</note>
+        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:3</note>
+      </notes>
+      <segment>
+        <source>Validation evolution</source>
+      </segment>
+    </unit>
     <unit id="8742130100135598533">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:23,24</note>
@@ -261,15 +270,6 @@
       </notes>
       <segment>
         <source> Validations </source>
-      </segment>
-    </unit>
-    <unit id="2644640411790641675">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:3</note>
-        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:3</note>
-      </notes>
-      <segment>
-        <source>Validation evolution</source>
       </segment>
     </unit>
     <unit id="732432619111661062">
@@ -465,7 +465,7 @@
     <unit id="7700526719905983019">
       <notes>
         <note category="location">src/app/components/records/records-table/records-table.component.html:103,104</note>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:27,28</note>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:49,50</note>
       </notes>
       <segment>
         <source> Filter </source>
@@ -506,12 +506,36 @@
         <source> Transformation </source>
       </segment>
     </unit>
-    <unit id="6380439426064840023">
+    <unit id="2793829730347223036">
       <notes>
-        <note category="location">src/app/shared/components/table-exporter/table-exporter.component.html:3,4</note>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:11,12</note>
       </notes>
       <segment>
-        <source> Export CSV </source>
+        <source> Nothing to show </source>
+      </segment>
+    </unit>
+    <unit id="3434159451328512184">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:23</note>
+      </notes>
+      <segment>
+        <source>Valid Records</source>
+      </segment>
+    </unit>
+    <unit id="3600319047251497564">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:25</note>
+      </notes>
+      <segment>
+        <source>Invalid Records</source>
+      </segment>
+    </unit>
+    <unit id="1837526967766571733">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:27</note>
+      </notes>
+      <segment>
+        <source>Transformed Records</source>
       </segment>
     </unit>
     <unit id="4638450448409947660">
@@ -522,17 +546,81 @@
         <source> Conformity </source>
       </segment>
     </unit>
-    <unit id="193735854885505934">
+    <unit id="6380439426064840023">
+      <notes>
+        <note category="location">src/app/shared/components/table-exporter/table-exporter.component.html:3,4</note>
+      </notes>
+      <segment>
+        <source> Export CSV </source>
+      </segment>
+    </unit>
+    <unit id="888341446683346521">
       <notes>
         <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:3</note>
       </notes>
       <segment>
-        <source>Enter a date range</source>
+        <source>Start date</source>
+      </segment>
+    </unit>
+    <unit id="126074860850048964">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:17</note>
+      </notes>
+      <segment>
+        <source>End date</source>
+      </segment>
+    </unit>
+    <unit id="3548180789147259812">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:24</note>
+      </notes>
+      <segment>
+        <source>Time Unit</source>
+      </segment>
+    </unit>
+    <unit id="8364001491815179430">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:26</note>
+      </notes>
+      <segment>
+        <source>Unitary</source>
+      </segment>
+    </unit>
+    <unit id="2988589012964101797">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:27</note>
+      </notes>
+      <segment>
+        <source>Daily</source>
+      </segment>
+    </unit>
+    <unit id="928838138686087140">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:28</note>
+      </notes>
+      <segment>
+        <source>Weekly</source>
+      </segment>
+    </unit>
+    <unit id="6762743264882388498">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:29</note>
+      </notes>
+      <segment>
+        <source>Monthly</source>
+      </segment>
+    </unit>
+    <unit id="8036977202721714375">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:30</note>
+      </notes>
+      <segment>
+        <source>Yearly</source>
       </segment>
     </unit>
     <unit id="4509598277931187746">
       <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:18,19</note>
+        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:40,41</note>
       </notes>
       <segment>
         <source> Default </source>
@@ -625,30 +713,6 @@
       </notes>
       <segment>
         <source> Amount </source>
-      </segment>
-    </unit>
-    <unit id="2793829730347223036">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:11,12</note>
-      </notes>
-      <segment>
-        <source> Nothing to show </source>
-      </segment>
-    </unit>
-    <unit id="3434159451328512184">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:23</note>
-      </notes>
-      <segment>
-        <source>Valid Records</source>
-      </segment>
-    </unit>
-    <unit id="3600319047251497564">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:25</note>
-      </notes>
-      <segment>
-        <source>Invalid Records</source>
       </segment>
     </unit>
     <unit id="5817928445374038037">
