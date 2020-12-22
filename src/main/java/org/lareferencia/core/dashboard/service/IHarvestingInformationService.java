@@ -25,6 +25,8 @@ public interface IHarvestingInformationService {
 	Page<IHarvestingResult> getHarvestingHistoryBySourceAcronym(String sourceAcronym , Pageable pageable) throws HarvesterInfoServiceException;
 
 	Page<IHarvestingResult> getHarvestingHistoryBySourceAcronym(String sourceAcronym , Date startDate, Date endDate, Pageable pageable) throws HarvesterInfoServiceException;
+ 
+  String getRecordMetadataByRecordIDAndSourceAcronym(String sourceAcronym, Long recordID) throws HarvesterInfoServiceException;
 
 	
 }

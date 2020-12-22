@@ -2,14 +2,17 @@ package org.lareferencia.core.dashboard.service.impl.v3;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lareferencia.backend.domain.Network;
 import org.lareferencia.backend.domain.NetworkSnapshot;
+import org.lareferencia.backend.domain.OAIRecord;
 import org.lareferencia.backend.repositories.jpa.NetworkRepository;
 import org.lareferencia.backend.repositories.jpa.NetworkSnapshotRepository;
+import org.lareferencia.backend.repositories.jpa.OAIRecordRepository;
 import org.lareferencia.core.dashboard.service.HarvesterInfoServiceException;
 import org.lareferencia.core.dashboard.service.IHarvestingInformationService;
 import org.lareferencia.core.dashboard.service.IHarvestingSource;
@@ -32,6 +35,9 @@ public class HarvestingInformationService implements IHarvestingInformationServi
 
 	@Autowired
 	NetworkSnapshotRepository snapshotRepository;
+ 
+  @Autowired
+	OAIRecordRepository recordRepository;
 
 	public Page<IHarvestingResult> getHarvestingHistoryBySourceID(Long sourceID, Pageable pageable)
 			throws HarvesterInfoServiceException {
@@ -123,6 +129,16 @@ public class HarvestingInformationService implements IHarvestingInformationServi
 		return new NetworkSnapshot2IHarvestingResultAdapter(snapshotRepository.findLastGoodKnowByNetworkID(network.getId()));
 
 	}
+ 
+  @Override
+  public String getRecordMetadataByRecordIDAndSourceAcronym(String sourceAcronym, Long recordID) throws HarvesterInfoServiceException {
+    
+    Optional<OAIRecord> record = recordRepository.findById(recordID);
+ 		if (record.isPresent() && record.get().getSnapshot().getNetwork().getAcronym().equals(sourceAcronym) ) 
+ 			return record.get().getPublishedXML();
+ 		else
+ 			throw new HarvesterInfoServiceException("Record w/ ID:" + recordID + "do not exist");
+  }
 
 	private Network findHarvestingSourceByID(Long sourceID) throws HarvesterInfoServiceException {
 
@@ -141,5 +157,6 @@ public class HarvestingInformationService implements IHarvestingInformationServi
 
 		return network;
 	}
+ 
 
 }

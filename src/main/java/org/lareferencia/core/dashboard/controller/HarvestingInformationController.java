@@ -23,8 +23,6 @@ package org.lareferencia.core.dashboard.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.lareferencia.backend.domain.OAIRecord;
-import org.lareferencia.backend.repositories.jpa.OAIRecordRepository;
 import org.lareferencia.backend.util.DateUtil;
 import org.lareferencia.core.dashboard.security.ISecurityService;
 import org.lareferencia.core.dashboard.service.HarvesterInfoServiceException;
@@ -50,7 +48,6 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 import java.util.Date;
-import java.util.Optional;
 
 @RestController
 @Api(value = "Harvesting Information", tags = "Harvesting")
@@ -66,9 +63,6 @@ public class HarvestingInformationController {
 
 	@Autowired
 	ISecurityService securityService;
-	
-	@Autowired
-	private OAIRecordRepository recordRepository;
 
 	@ApiOperation(value = "Returns a list harvesting data sources with paging/sorting using {pageable}")
 	@ApiResponses(value = {
@@ -178,16 +172,15 @@ public class HarvestingInformationController {
 		return new ResponseEntity<IHarvestingResult>(result, HttpStatus.OK);
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/public/getRecordMetadataByID/{id}", method = RequestMethod.GET, produces = "application/xml; charset=utf-8")
-	public String getRecordMetadataByID(@PathVariable Long id) throws Exception {
-
-		Optional<OAIRecord> record = recordRepository.findById(id);
-
-		if (record != null && record.isPresent())
-			return record.get().getPublishedXML();
-		else
-			return "Registro inexistente - Posiblemente el diagnóstico está desactualizado";
+	@ApiOperation(value = "Returns the metadata for a record by id and source acronym")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Returns the metadata for a record by id and source acronym") })
+	@RequestMapping(value = "/{sourceAcronym}/records/{recordID}", method = RequestMethod.GET)
+	HttpEntity<String> getRecordMetadataByID(@PathVariable("sourceAcronym") String sourceAcronym, @PathVariable("recordID") Long recordID) throws HarvesterInfoServiceException {
+      
+      String result = hService.getRecordMetadataByRecordIDAndSourceAcronym(sourceAcronym, recordID);
+      
+      return new ResponseEntity<String>(result, HttpStatus.OK);
 
 	}
 

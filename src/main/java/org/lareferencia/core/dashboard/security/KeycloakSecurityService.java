@@ -28,17 +28,11 @@ public class KeycloakSecurityService implements ISecurityService {
 		KeycloakAuthorization authz = new KeycloakAuthorization( getKeycloakSecurityContext(request) );
 		return authz.hasRole(adminRole);
 	}
-
-	
 	
 	////////////////////// private
 	
 	private KeycloakSecurityContext getKeycloakSecurityContext(HttpServletRequest request) {
 		return (KeycloakSecurityContext) request.getAttribute(KeycloakSecurityContext.class.getName());
 	}
-
-
-
-
 
 }

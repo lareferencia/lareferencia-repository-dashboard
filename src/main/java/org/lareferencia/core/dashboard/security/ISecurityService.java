@@ -9,6 +9,6 @@ public interface ISecurityService {
 	List<String> getRequestGroups(HttpServletRequest request);
 	
 	Boolean isAdminRequest(HttpServletRequest request);
-	
-	
+ 
+
 }
