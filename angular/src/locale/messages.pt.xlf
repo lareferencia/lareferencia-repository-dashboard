@@ -277,6 +277,15 @@
         <target>Registros transformados</target>
       </segment>
     </unit>
+    <unit id="1837526967766571733">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:27</note>
+      </notes>
+      <segment>
+        <source>Transformed Records</source>
+        <target>Registros transformados</target>
+      </segment>
+    </unit>
     <unit id="6057552704441695502">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:71,72</note>
