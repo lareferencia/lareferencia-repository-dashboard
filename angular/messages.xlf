@@ -26,12 +26,12 @@
 </source>
       </segment>
     </unit>
-    <unit id="4362164183481353668">
+    <unit id="2671592876228738336">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting/harvesting.component.html:19</note>
       </notes>
       <segment>
-        <source>Validation table</source>
+        <source>Harvesting table</source>
       </segment>
     </unit>
     <unit id="510215860731572676">
@@ -175,7 +175,6 @@
       <notes>
         <note category="location">src/app/components/validation/validation/validation.component.html:66</note>
         <note category="location">src/app/components/template/nav-bar/nav-bar.component.html:17</note>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:8</note>
       </notes>
       <segment>
         <source>Validations</source>
@@ -263,13 +262,53 @@
         <source> Validations </source>
       </segment>
     </unit>
-    <unit id="2644640411790641675">
+    <unit id="4721611819278537908">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:3</note>
         <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:3</note>
       </notes>
       <segment>
-        <source>Validation evolution</source>
+        <source>Harvesting history</source>
+      </segment>
+    </unit>
+    <unit id="7863635000321078142">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:8</note>
+      </notes>
+      <segment>
+        <source>Harvestings</source>
+      </segment>
+    </unit>
+    <unit id="2793829730347223036">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:11,12</note>
+      </notes>
+      <segment>
+        <source> Nothing to show </source>
+      </segment>
+    </unit>
+    <unit id="3434159451328512184">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:23</note>
+      </notes>
+      <segment>
+        <source>Valid Records</source>
+      </segment>
+    </unit>
+    <unit id="3600319047251497564">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:25</note>
+      </notes>
+      <segment>
+        <source>Invalid Records</source>
+      </segment>
+    </unit>
+    <unit id="1837526967766571733">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:27</note>
+      </notes>
+      <segment>
+        <source>Transformed Records</source>
       </segment>
     </unit>
     <unit id="732432619111661062">
@@ -465,7 +504,7 @@
     <unit id="7700526719905983019">
       <notes>
         <note category="location">src/app/components/records/records-table/records-table.component.html:103,104</note>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:49,50</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:49,50</note>
       </notes>
       <segment>
         <source> Filter </source>
@@ -520,78 +559,6 @@
       </notes>
       <segment>
         <source> Conformity </source>
-      </segment>
-    </unit>
-    <unit id="888341446683346521">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:3</note>
-      </notes>
-      <segment>
-        <source>Start date</source>
-      </segment>
-    </unit>
-    <unit id="126074860850048964">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:17</note>
-      </notes>
-      <segment>
-        <source>End date</source>
-      </segment>
-    </unit>
-    <unit id="3548180789147259812">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:24</note>
-      </notes>
-      <segment>
-        <source>Time Unit</source>
-      </segment>
-    </unit>
-    <unit id="8364001491815179430">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:26</note>
-      </notes>
-      <segment>
-        <source>Unitary</source>
-      </segment>
-    </unit>
-    <unit id="2988589012964101797">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:27</note>
-      </notes>
-      <segment>
-        <source>Daily</source>
-      </segment>
-    </unit>
-    <unit id="928838138686087140">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:28</note>
-      </notes>
-      <segment>
-        <source>Weekly</source>
-      </segment>
-    </unit>
-    <unit id="6762743264882388498">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:29</note>
-      </notes>
-      <segment>
-        <source>Monthly</source>
-      </segment>
-    </unit>
-    <unit id="8036977202721714375">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:30</note>
-      </notes>
-      <segment>
-        <source>Yearly</source>
-      </segment>
-    </unit>
-    <unit id="4509598277931187746">
-      <notes>
-        <note category="location">src/app/components/validation/validation-chart-filter/validation-chart-filter.component.html:40,41</note>
-      </notes>
-      <segment>
-        <source> Default </source>
       </segment>
     </unit>
     <unit id="8462130792607498110">
@@ -683,36 +650,76 @@
         <source> Amount </source>
       </segment>
     </unit>
-    <unit id="2793829730347223036">
+    <unit id="888341446683346521">
       <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:11,12</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:3</note>
       </notes>
       <segment>
-        <source> Nothing to show </source>
+        <source>Start date</source>
       </segment>
     </unit>
-    <unit id="3434159451328512184">
+    <unit id="126074860850048964">
       <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:23</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:17</note>
       </notes>
       <segment>
-        <source>Valid Records</source>
+        <source>End date</source>
       </segment>
     </unit>
-    <unit id="3600319047251497564">
+    <unit id="3548180789147259812">
       <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:25</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:24</note>
       </notes>
       <segment>
-        <source>Invalid Records</source>
+        <source>Time Unit</source>
       </segment>
     </unit>
-    <unit id="1837526967766571733">
+    <unit id="8364001491815179430">
       <notes>
-        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:27</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:26</note>
       </notes>
       <segment>
-        <source>Transformed Records</source>
+        <source>Unitary</source>
+      </segment>
+    </unit>
+    <unit id="2988589012964101797">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:27</note>
+      </notes>
+      <segment>
+        <source>Daily</source>
+      </segment>
+    </unit>
+    <unit id="928838138686087140">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:28</note>
+      </notes>
+      <segment>
+        <source>Weekly</source>
+      </segment>
+    </unit>
+    <unit id="6762743264882388498">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:29</note>
+      </notes>
+      <segment>
+        <source>Monthly</source>
+      </segment>
+    </unit>
+    <unit id="8036977202721714375">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:30</note>
+      </notes>
+      <segment>
+        <source>Yearly</source>
+      </segment>
+    </unit>
+    <unit id="4509598277931187746">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:40,41</note>
+      </notes>
+      <segment>
+        <source> Default </source>
       </segment>
     </unit>
     <unit id="5817928445374038037">
