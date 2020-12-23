@@ -87,8 +87,8 @@
       <ng-container matColumnDef="button">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let harvesting">
-          <span i18n class="badge badge-danger" *ngIf="harvesting.deleted">
-            Deleted
+          <span i18n class="badge badge-secondary" *ngIf="harvesting.deleted">
+            Not available
           </span>
           <button
             *ngIf="!harvesting.deleted"
