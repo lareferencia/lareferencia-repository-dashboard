@@ -1,20 +1,19 @@
-import { HarvestingContent } from './../../../shared/models/harvesting-content.model';
-import { TimeUnit } from './../../../shared/enums/time-unit';
-import { Component, Input } from '@angular/core';
+import { HarvestingHistory } from './../../../shared/models/harvesting-history.model';
+import { Component, OnInit, Input, Inject, LOCALE_ID } from '@angular/core';
 import { View } from 'vega';
-import { HarvestingHistory } from 'src/app/shared/models/harvesting-history.model';
 import { DateFilter } from 'src/app/shared/models/date-filter.model';
-import { LOCALE_ID, Inject } from '@angular/core';
-import { groupBy } from 'src/app/shared/util/ArrayUtil';
+import { TimeUnit } from 'src/app/shared/enums/time-unit';
 import * as moment from 'moment';
+import { groupBy } from 'src/app/shared/util/ArrayUtil';
+import { HarvestingContent } from 'src/app/shared/models/harvesting-content.model';
 declare const vega: any;
 
 @Component({
-  selector: 'app-validation-chart',
-  templateUrl: './validation-chart.component.html',
-  styleUrls: ['./validation-chart.component.css'],
+  selector: 'app-harvesting-chart',
+  templateUrl: './harvesting-chart.component.html',
+  styleUrls: ['./harvesting-chart.component.css']
 })
-export class ValidationChartComponent {
+export class HarvestingChartComponent {
   @Input() harvestingHistory: HarvestingHistory;
   view: View;
   date: DateFilter;

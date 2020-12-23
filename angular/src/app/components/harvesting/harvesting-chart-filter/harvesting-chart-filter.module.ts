@@ -5,10 +5,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
-import { ValidationChartFilterComponent } from './validation-chart-filter.component';
+import { HarvestingChartFilterComponent } from './harvesting-chart-filter.component';
 
 @NgModule({
-  declarations: [ValidationChartFilterComponent],
+  declarations: [HarvestingChartFilterComponent],
   imports: [
     SharedModule,
     MatDatepickerModule,
@@ -17,9 +17,9 @@ import { ValidationChartFilterComponent } from './validation-chart-filter.compon
     MatMomentDateModule,
     MatSelectModule
   ],
-  exports: [ValidationChartFilterComponent],
+  exports: [HarvestingChartFilterComponent],
   providers: [
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { strict: true } },
   ],
 })
-export class ValidationChartFilterModule {}
+export class HarvestingChartFilterModule {}

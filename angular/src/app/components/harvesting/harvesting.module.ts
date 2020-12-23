@@ -8,12 +8,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { HarvestingChartComponent } from './harvesting-chart/harvesting-chart.component';
+import { HarvestingChartFilterModule } from './harvesting-chart-filter/harvesting-chart-filter.module';
 
 @NgModule({
   declarations: [
     HarvestingSourceComponent,
     HarvestingTableComponent,
     HarvestingComponent,
+    HarvestingChartComponent,
   ],
   imports: [
     SharedModule,
@@ -22,6 +25,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    HarvestingChartFilterModule,
   ],
+  exports: [HarvestingChartComponent],
 })
 export class HarvestingModule {}

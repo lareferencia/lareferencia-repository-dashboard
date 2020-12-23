@@ -1,12 +1,12 @@
-import { DateFilter } from './../../../shared/models/date-filter.model';
 import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { DateFilter } from 'src/app/shared/models/date-filter.model';
 
 @Component({
-  selector: 'app-validation-chart-filter',
-  templateUrl: './validation-chart-filter.component.html',
-  styleUrls: ['./validation-chart-filter.component.css'],
+  selector: 'app-harvesting-chart-filter',
+  templateUrl: './harvesting-chart-filter.component.html',
+  styleUrls: ['./harvesting-chart-filter.component.css']
 })
-export class ValidationChartFilterComponent {
+export class HarvestingChartFilterComponent {
   @Output() applyFilter = new EventEmitter<DateFilter>();
   @Output() applyClear = new EventEmitter();
   @Input() date: DateFilter;

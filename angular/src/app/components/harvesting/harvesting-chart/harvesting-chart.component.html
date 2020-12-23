@@ -1,11 +1,11 @@
-<app-validation-chart-filter
+<app-harvesting-chart-filter
   (applyFilter)="filterClick($event)"
   (applyClear)="clearClick()"
   [(date)]="date"
-></app-validation-chart-filter>
+></app-harvesting-chart-filter>
 <div class="chart">
   <div class="chart-container">
-    <div class="chart-title"><span i18n>Validations</span></div>
+    <div class="chart-title"><span i18n>Harvestings</span></div>
     <div class="divider"></div>
     <div class="alert alert-warning" *ngIf="data.length == 0" i18n>
       Nothing to show

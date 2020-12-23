@@ -1,6 +1,6 @@
 <app-card
   *ngIf="harvestingHistory?.content.length > 1"
-  cardTitle="Validation evolution"
+  cardTitle="Harvesting history"
   i18n-cardTitle
   description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
@@ -11,9 +11,9 @@
   PageMaker including versions of Lorem Ipsum."
   i18n-description
 >
-  <app-validation-chart
+  <app-harvesting-chart
     class="col-md-4"
     [harvestingHistory]="harvestingHistory"
   >
-  </app-validation-chart>
+  </app-harvesting-chart>
 </app-card>
