@@ -16,7 +16,7 @@
       </notes>
       <segment>
         <source> Dashboard for repository managers </source>
-        <target> Dashboard para gestores de repositórios </target>
+        <target> Dashboard para gestores de Repositórios e Bibliotecas digitais de teses e dissertações </target>
       </segment>
     </unit>
     <unit id="7660461365638405664">
@@ -62,7 +62,7 @@
       </notes>
       <segment>
         <source>Dashboard for repository managers</source>
-        <target>Dashboard para gestores de repositórios</target>
+        <target>Dashboard para gestores de Repositórios e Bibliotecas digitais de teses e dissertações</target>
       </segment>
     </unit>
     <unit id="2821179408673282599">
@@ -304,13 +304,13 @@
         <target>Fim</target>
       </segment>
     </unit>
-    <unit id="4329653390172614983">
+    <unit id="7387483197009994715">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:91,92</note>
       </notes>
       <segment>
-        <source> Deleted </source>
-        <target>Excluído</target>
+        <source> Not available </source>
+        <target> Não disponível </target>
       </segment>
     </unit>
     <unit id="8441334606065163183">
