@@ -175,7 +175,7 @@ public class HarvestingInformationController {
 	@ApiOperation(value = "Returns the metadata for a record by id and source acronym")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Returns the metadata for a record by id and source acronym") })
-	@RequestMapping(value = "/{sourceAcronym}/records/{recordID}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{sourceAcronym}/record/{recordID}", method = RequestMethod.GET)
 	HttpEntity<String> getRecordMetadataByID(@PathVariable("sourceAcronym") String sourceAcronym, @PathVariable("recordID") Long recordID) throws HarvesterInfoServiceException {
       
       String result = hService.getRecordMetadataByRecordIDAndSourceAcronym(sourceAcronym, recordID);

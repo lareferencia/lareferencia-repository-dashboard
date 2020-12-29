@@ -137,7 +137,7 @@ public class HarvestingInformationService implements IHarvestingInformationServi
  		if (record.isPresent() && record.get().getSnapshot().getNetwork().getAcronym().equals(sourceAcronym) ) 
  			return record.get().getPublishedXML();
  		else
- 			throw new HarvesterInfoServiceException("Record w/ ID:" + recordID + "do not exist");
+ 			throw new HarvesterInfoServiceException("Record w/ ID:" + recordID + "does not exist");
   }
 
 	private Network findHarvestingSourceByID(Long sourceID) throws HarvesterInfoServiceException {
