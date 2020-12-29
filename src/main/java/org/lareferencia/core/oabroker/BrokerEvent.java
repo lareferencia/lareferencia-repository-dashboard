@@ -49,6 +49,7 @@ import lombok.Setter;
 @javax.persistence.Entity
 public class BrokerEvent  {
 
+	@JsonIgnore
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
