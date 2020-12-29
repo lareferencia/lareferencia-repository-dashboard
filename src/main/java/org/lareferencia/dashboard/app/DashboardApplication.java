@@ -31,8 +31,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @ComponentScan(  basePackages={ "org.lareferencia.core.dashboard", "org.lareferencia.app.dashboard" } )
-@EntityScan( basePackages= { "org.lareferencia.backend.domain" } )
-@EnableJpaRepositories( basePackages={ "org.lareferencia.backend.repositories.jpa" } )
+@EntityScan( basePackages= { "org.lareferencia.backend.domain", "org.lareferencia.core.oabroker" } )
+@EnableJpaRepositories( basePackages={ "org.lareferencia.backend.repositories.jpa", "org.lareferencia.core.oabroker" } )
 @EnableSolrRepositories( basePackages= { "org.lareferencia.backend.repositories.solr" } ) 
 @EnableAutoConfiguration( exclude = {
 	    org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
