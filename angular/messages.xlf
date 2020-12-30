@@ -34,28 +34,19 @@
         <source>Harvesting table</source>
       </segment>
     </unit>
-    <unit id="510215860731572676">
+    <unit id="8165010687744208502">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting/harvesting.component.html:21</note>
+        <note category="location">src/app/components/harvesting/harvesting/harvesting.component.html:21,28</note>
       </notes>
       <segment>
-        <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</source>
-      </segment>
-    </unit>
-    <unit id="3797778920049399855">
-      <notes>
-        <note category="location">src/app/components/template/header/header.component.html:20</note>
-      </notes>
-      <segment>
-        <source>Logout</source>
-      </segment>
-    </unit>
-    <unit id="5823395783897532746">
-      <notes>
-        <note category="location">src/app/components/template/header/header.component.html:25</note>
-      </notes>
-      <segment>
-        <source>Dashboard for repository managers</source>
+        <source>Below is the history of each collection performed. Each collection generates 
+      a unique identifier, which is represented below as an ID. It shows numerically how many 
+      records were validated, invalidated and transformed in each collection performed. 
+      You can also view the start and end time of the collection process, as well as download
+      the .csv file containing all the information described. When clicking on “validations”, 
+      a page will be presented containing the level of compliance, in percentage, the collection
+      rules of the BDTD. Only the validations of the last collections made will be available for 
+      viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
       </segment>
     </unit>
     <unit id="2821179408673282599">
@@ -82,6 +73,22 @@
       </notes>
       <segment>
         <source>Last validation </source>
+      </segment>
+    </unit>
+    <unit id="3797778920049399855">
+      <notes>
+        <note category="location">src/app/components/template/header/header.component.html:20</note>
+      </notes>
+      <segment>
+        <source>Logout</source>
+      </segment>
+    </unit>
+    <unit id="5823395783897532746">
+      <notes>
+        <note category="location">src/app/components/template/header/header.component.html:25</note>
+      </notes>
+      <segment>
+        <source>Dashboard for repository managers</source>
       </segment>
     </unit>
     <unit id="5096107754514710030">
@@ -180,12 +187,23 @@
         <source>Validations</source>
       </segment>
     </unit>
-    <unit id="8210903900743032826">
+    <unit id="384773800039559491">
       <notes>
         <note category="location">src/app/components/validation/validation/validation.component.html:68,74</note>
+      </notes>
+      <segment>
+        <source>The graph below shows the result of the validations performed.
+    Records with 100% validation level refer to records that have complied with the mandatory
+    collection rules of the repository and become valid records. Records that have a 0.00% 
+    validation level refer to records that did not comply with the mandatory collection rules 
+    of the repository and became invalid records. In this case, the user has the option of 
+    viewing which were the invalid occurrences in the details button, where the metadata 
+    value with the corresponding quantities are shown.</source>
+      </segment>
+    </unit>
+    <unit id="8210903900743032826">
+      <notes>
         <note category="location">src/app/components/validation/validation/validation.component.html:83,89</note>
-        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:5,11</note>
-        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:5,11</note>
       </notes>
       <segment>
         <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -271,6 +289,22 @@
         <source>Harvesting history</source>
       </segment>
     </unit>
+    <unit id="1448555596083465232">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:5,12</note>
+        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:5,12</note>
+      </notes>
+      <segment>
+        <source>In the graph below it is possible to view the results of the collections performed.
+  It is possible to generate daily, weekly, monthly and yearly collection charts.
+  The chart shows three metrics, which are: valid, invalid and transformed records.
+  Valid records are those that are in accordance with the current mandatory collection
+  rules of the repository. Invalid records
+  are those that do not comply with the mandatory collection rules of the repository.
+  Finally, the transformed records inform the number of documents that were collected.
+  Normally, this number should equal the number of documents deposited in the repository.</source>
+      </segment>
+    </unit>
     <unit id="7863635000321078142">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:8</note>
@@ -281,7 +315,7 @@
     </unit>
     <unit id="2793829730347223036">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:11,12</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:15,16</note>
       </notes>
       <segment>
         <source> Nothing to show </source>
@@ -289,7 +323,7 @@
     </unit>
     <unit id="3434159451328512184">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:23</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:27</note>
       </notes>
       <segment>
         <source>Valid Records</source>
@@ -297,7 +331,7 @@
     </unit>
     <unit id="3600319047251497564">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:25</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:29</note>
       </notes>
       <segment>
         <source>Invalid Records</source>
@@ -305,7 +339,7 @@
     </unit>
     <unit id="1837526967766571733">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:27</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:31</note>
       </notes>
       <segment>
         <source>Transformed Records</source>
@@ -504,7 +538,7 @@
     <unit id="7700526719905983019">
       <notes>
         <note category="location">src/app/components/records/records-table/records-table.component.html:103,104</note>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:49,50</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:53,54</note>
       </notes>
       <segment>
         <source> Filter </source>
@@ -716,7 +750,7 @@
     </unit>
     <unit id="4509598277931187746">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:40,41</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:42,43</note>
       </notes>
       <segment>
         <source> Default </source>
