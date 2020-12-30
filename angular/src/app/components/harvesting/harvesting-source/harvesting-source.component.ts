@@ -13,7 +13,7 @@ export class HarvestingSourceComponent implements OnInit {
   harvesting: Harvesting;
   harvestingHistory: HarvestingHistory;
   pageNumber = 0;
-  pageSize = 12;
+  pageSize = 2;
 
   constructor(
     private route: ActivatedRoute,

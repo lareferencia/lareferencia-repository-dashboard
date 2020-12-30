@@ -3,6 +3,7 @@ import { SubHeaderComponent } from './sub-header/sub-header.component';
 import { TableExporterComponent } from './table-exporter/table-exporter.component';
 import { VegaVizComponent } from './vega-viz/vega-viz.component';
 import { MiniCardComponent } from './mini-card/mini-card.component';
+import { PreventDoubleClickDirective } from '../directives/app-prevent-double-click.directive';
 
 export const components: any[] = [
   CardComponent,
@@ -10,6 +11,7 @@ export const components: any[] = [
   TableExporterComponent,
   VegaVizComponent,
   MiniCardComponent,
+  PreventDoubleClickDirective
 ];
 
 export * from './card/card.component';

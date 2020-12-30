@@ -7,7 +7,11 @@
   <div class="chart-container">
     <div class="chart-title"><span i18n>Harvestings</span></div>
     <div class="divider"></div>
-    <div class="alert alert-warning" *ngIf="data.length == 0" i18n>
+    <div
+      class="alert alert-warning"
+      *ngIf="!filtrando && data.length == 0"
+      i18n
+    >
       Nothing to show
     </div>
     <app-vega-viz
@@ -18,7 +22,7 @@
     >
     </app-vega-viz>
 
-    <div *ngIf="data.length > 0" class="legend-div">
+    <div *ngIf="filtrando || data.length > 0" class="legend-div">
       <div class="green-legend"></div>
       <ng-container i18n>Valid Records</ng-container>
       <div class="red-legend"></div>

@@ -39,6 +39,22 @@ export class HarvestingService {
       );
   }
 
+  getHarvestingHistoryByAcronymAndDate(sourceAcronym: string, pageNumber: number, pageSize: number, startDate: Date, endDate: Date): Observable<HarvestingHistory> {
+    const params = new HttpParams()
+      .append('pageNumber', pageNumber.toString())
+      .append('pageSize', pageSize.toString());
+
+    return this.http
+      .get<HarvestingHistory>(
+        `${this.baseurl}${sourceAcronym}/history/${startDate.toISOString()}/${endDate.toISOString()}`,
+        { params }
+      )
+      .pipe(
+        map((obj) => obj),
+        catchError((e) => this.errorHandler(e))
+      );
+  }
+
   getHarvestingLastGoodKnowByAcronym(sourceAcronym: string): Observable<HarvestingContent> {
     return this.http.get<HarvestingContent>(`${this.baseurl}${sourceAcronym}/lkg`).pipe(
       map((obj) => obj),

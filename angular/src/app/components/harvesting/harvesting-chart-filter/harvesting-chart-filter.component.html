@@ -34,7 +34,9 @@
   <button
     class="btn-filter-action"
     mat-raised-button
-    (click)="clearClick()"
+    appPreventDoubleClick
+    (throttledClick)="clearClick()"
+    [throttleTime]="700"
     i18n
   >
     Default
@@ -43,7 +45,9 @@
     class="btn-filter-action"
     mat-raised-button
     color="primary"
-    (click)="filterClick()"
+    appPreventDoubleClick
+    (throttledClick)="filterClick()"
+    [throttleTime]="700"
     i18n
   >
     Filter
