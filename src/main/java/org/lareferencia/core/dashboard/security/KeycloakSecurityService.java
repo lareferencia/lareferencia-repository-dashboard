@@ -25,7 +25,8 @@ public class KeycloakSecurityService implements ISecurityService {
 	
 	@Override
 	public Boolean isAdminRequest(HttpServletRequest request) {
-		KeycloakAuthorization authz = new KeycloakAuthorization( getKeycloakSecurityContext(request) );
+		
+    KeycloakAuthorization authz = new KeycloakAuthorization( getKeycloakSecurityContext(request) );
 		return authz.hasRole(adminRole);
 	}
 	

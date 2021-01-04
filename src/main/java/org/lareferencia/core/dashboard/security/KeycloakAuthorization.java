@@ -1,6 +1,7 @@
 package org.lareferencia.core.dashboard.security;
 
 import java.util.List;
+import java.util.Set;
 
 import org.keycloak.AuthorizationContext;
 import org.keycloak.KeycloakSecurityContext;
@@ -17,6 +18,10 @@ public class KeycloakAuthorization {
     public boolean hasRole(String role) {
         return securityContext.getToken().getRealmAccess().isUserInRole(role);
     }
+    
+    public Set<String> getRoles(){
+      return securityContext.getToken().getRealmAccess().getRoles();
+    } 
     
     public List<String> getGroups(){
         return (List<String>) securityContext.getToken().getOtherClaims().get("groups");
