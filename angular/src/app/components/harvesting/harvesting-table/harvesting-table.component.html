@@ -51,21 +51,6 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="transformedSize">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          i18n
-          #transformedSize
-        >
-          Transformed records
-        </th>
-        <td mat-cell *matCellDef="let harvesting">
-          {{ harvesting.transformedSize | number }}
-        </td>
-      </ng-container>
-
       <ng-container matColumnDef="startTime">
         <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #startTime>
           Start

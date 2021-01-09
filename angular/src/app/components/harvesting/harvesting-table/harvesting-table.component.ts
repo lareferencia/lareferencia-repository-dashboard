@@ -19,7 +19,6 @@ export class HarvestingTableComponent implements OnInit {
   @ViewChild('harvestedSize') harvestedSize : any;
   @ViewChild('validSize') validSize : any;
   @ViewChild('invalidRecords') invalidRecords : any;
-  @ViewChild('transformedSize') transformedSize : any;
   @ViewChild('startTime') startTime : any;
   @ViewChild('endTime') endTime : any;
   isLoadingResults = true;
@@ -32,10 +31,9 @@ export class HarvestingTableComponent implements OnInit {
 
   displayedColumns = [
     'id',
-    'harvestedSize',
     'validSize',
     'invalidRecords',
-    'transformedSize',
+    'harvestedSize',
     'startTime',
     'endTime',
     'button',

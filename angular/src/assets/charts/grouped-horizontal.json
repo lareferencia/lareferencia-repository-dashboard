@@ -102,7 +102,7 @@
               "y2": { "scale": "yscale", "value": 0 },
               "fill": { "field": "color" },
               "tooltip": {
-                "signal": "datum.position == 0 ? 'Valid: ' + datum.value: datum.position == 1 ? 'Invalid: ' + datum.value : 'Transformed: ' + datum.value"
+                "signal": "datum.position == 0 ? 'Valid: ' + datum.value: datum.position == 1 ? 'Invalid: ' + datum.value : 'Harvested: ' + datum.value"
               },
               "fillOpacity": { "value": 1 }
             },

@@ -95,8 +95,8 @@ export class HarvestingChartComponent {
             const invalidSize =
               harvesting.reduce((a, b) => a + (b.harvestedSize - b.validSize), 0) /
               harvesting.length;
-            const transformedSize =
-              harvesting.reduce((a, b) => a + b.transformedSize, 0) /
+            const harvestedSize =
+              harvesting.reduce((a, b) => a + b.harvestedSize, 0) /
               harvesting.length;
     
             switch (this.date.timeUnit) {
@@ -139,7 +139,7 @@ export class HarvestingChartComponent {
               {
                 category: category,
                 position: 2,
-                value: transformedSize,
+                value: harvestedSize,
               }
             );
           });
