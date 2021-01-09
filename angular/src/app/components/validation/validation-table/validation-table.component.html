@@ -62,7 +62,7 @@
       <ng-container matColumnDef="button-records">
         <th mat-header-cell *matHeaderCellDef i18n>Records</th>
         <td mat-cell *matCellDef="let rule">
-          <span class="badge badge-success" *ngIf="rule.conformity == 100">
+          <span class="badge badge-secondary" *ngIf="rule.conformity == 100">
             100%
           </span>
           <div *ngIf="rule.conformity < 100">
@@ -89,7 +89,10 @@
       <ng-container matColumnDef="button-detail">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let rule">
-          <button
+          <span class="badge badge-secondary" *ngIf="rule.conformity == 100">
+            100%
+          </span>
+          <button *ngIf="rule.conformity < 100"
             type="button"
             class="btn btn-outline-primary"
             (click)="detailClick(rule)"
