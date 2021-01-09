@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { HarvestingModule } from './components/harvesting/harvesting.module';
 import { TemplateModule } from './components/template/template.module';
 import { HomeModule } from './components/home/home.module';
+import { BrokerModule } from './components/broker/broker.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { HomeModule } from './components/home/home.module';
     HarvestingModule,
     TemplateModule,
     HomeModule,
+    BrokerModule,
   ],
   providers: [
     AuthenticationService,

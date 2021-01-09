@@ -12,6 +12,7 @@ export const environment = {
   production: false,
   harvestingService: 'http://dashboard.lareferencia.info/api/v2/harvesting/source/',
   validationService: 'http://dashboard.lareferencia.info/api/v2/validation/source/',
+  brokerService: 'http://dashboard.lareferencia.info/api/v2/oabroker/source/',
   keycloakConfig: keycloakConfig,
 };
 

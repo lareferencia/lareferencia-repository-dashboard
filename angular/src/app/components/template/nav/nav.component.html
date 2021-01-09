@@ -49,6 +49,14 @@
             i18n
             >Last validation
           </a>
+          <a
+            *ngIf="repositorie.hasBroker"
+            class="sub-menu-border"
+            mat-list-item
+            routerLink="/{{ repositorie.description }}/broker"
+            i18n
+            >Broker
+          </a>
         </div>
       </ng-container>
       <div class="margin-top"></div>

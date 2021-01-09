@@ -1,3 +1,5 @@
+import { BrokerEventsFilter } from './../../../shared/models/broker-events-filter.model';
+import { BrokerService } from 'src/app/core/services/broker.service';
 import { HarvestingService } from '../../../core/services/harvesting.service';
 import { Menu } from '../../../shared/models/menu.model';
 import { NavService } from '../../../core/services/nav.service';
@@ -15,17 +17,31 @@ export class NavComponent implements OnInit {
   showSubmenu: boolean = false;
   showSubmenuFio: boolean = false;
   repositoriesMenu: Menu[] = [];
+  filter: BrokerEventsFilter = {
+    pageSize: 1,
+    pageNumber: 0,
+  };
 
   constructor(
     private navService: NavService,
     private router: Router,
-    private harvestingService: HarvestingService
+    private harvestingService: HarvestingService,
+    private brokerService: BrokerService
   ) {}
 
   ngOnInit(): void {
     this.harvestingService.getHarvestingList().subscribe((harvestingList) => {
       harvestingList.content.map((x) =>
-        this.repositoriesMenu.push({ description: x.acronym, showSubmenu: false })
+        this.brokerService
+          .getEventsByAcronym(x.acronym, this.filter)
+          .subscribe((brokerEvents) => {
+            this.repositoriesMenu.push({
+              description: x.acronym,
+              showSubmenu: false,
+              hasBroker: brokerEvents.content.length > 0,
+            });
+            this.repositoriesMenu = this.repositoriesMenu.sort((a, b) => +(a.description > b.description) || -(a.description < b.description));
+          })
       );
     });
   }

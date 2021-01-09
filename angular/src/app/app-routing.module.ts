@@ -7,6 +7,7 @@ import { HarvestingComponent } from './components/harvesting/harvesting/harvesti
 import { HomeComponent } from './components/home/home.component';
 import { ValidationComponent } from './components/validation/validation/validation.component';
 import { AuthenticationService } from './core/services/authentication.service';
+import { BrokerComponent } from './components/broker/broker/broker.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: ':acronym/validation/:harvestingID/valid_rule/:ruleID',
     component: RecordValidComponent,
+    canActivate: [AuthenticationService],
+  },
+  {
+    path: ':acronym/broker',
+    component: BrokerComponent,
     canActivate: [AuthenticationService],
   },
 ];
