@@ -80,6 +80,45 @@
         <target>Dashboard para gestores de Repositórios e Bibliotecas digitais de teses e dissertações</target>
       </segment>
     </unit>
+    <unit id="6436995159190484844">
+      <notes>
+        <note category="location">src/app/components/broker/broker/broker.component.html:7</note>
+      </notes>
+      <segment>
+        <source>OpenAIRE Broker</source>
+      </segment>
+    </unit>
+    <unit id="8210903900743032826">
+      <notes>
+        <note category="location">src/app/components/broker/broker/broker.component.html:7,13</note>
+        <note category="location">src/app/components/validation/validation/validation.component.html:83,89</note>
+      </notes>
+      <segment>
+        <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown 
+  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
+  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+  It was popularised in the 1960s with the release of Letraset sheets containing 
+  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum.</source>
+  <target>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown 
+  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
+  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+  It was popularised in the 1960s with the release of Letraset sheets containing 
+  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum.</target>
+      </segment>
+    </unit>
+    <unit id="2275833192866529649">
+      <notes>
+        <note category="location">src/app/components/template/nav/nav.component.html:58,59</note>
+      </notes>
+      <segment>
+        <source>OpenAIRE Broker</source>
+        <target>OpenAIRE Broker</target>
+      </segment>
+    </unit>
     <unit id="2821179408673282599">
       <notes>
         <note category="location">src/app/components/template/nav/nav.component.html:14</note>
@@ -123,7 +162,7 @@
         <note category="location">src/app/components/records/record-invalid/record-invalid.component.html:8</note>
         <note category="location">src/app/components/records/record-invalid/record-invalid.component.html:8</note>
         <note category="location">src/app/components/validation/validation/validation.component.html:81</note>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:63</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:76</note>
       </notes>
       <segment>
         <source>Records</source>
@@ -303,7 +342,7 @@
     <unit id="2351318473718426709">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:32,33</note>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:57,58</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:70,71</note>
       </notes>
       <segment>
         <source> Valid records </source>
@@ -328,18 +367,18 @@
         <target>Registros transformados</target>
       </segment>
     </unit>
-    <unit id="1837526967766571733">
+    <unit id="1243849875818343347">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:31</note>
       </notes>
       <segment>
-        <source>Transformed Records</source>
-        <target>Registros transformados</target>
+        <source>Harvested Records</source>
+        <target>Registros coletados</target>
       </segment>
     </unit>
     <unit id="6057552704441695502">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:71,72</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:56,57</note>
       </notes>
       <segment>
         <source> Start </source>
@@ -348,7 +387,7 @@
     </unit>
     <unit id="4700192692425133990">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:80,81</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:65,66</note>
       </notes>
       <segment>
         <source> End </source>
@@ -357,7 +396,7 @@
     </unit>
     <unit id="7387483197009994715">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:91,92</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:76,77</note>
       </notes>
       <segment>
         <source> Not available </source>
@@ -366,7 +405,7 @@
     </unit>
     <unit id="8441334606065163183">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:100,101</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:85,86</note>
       </notes>
       <segment>
         <source> Validations </source>
@@ -381,6 +420,16 @@
       <segment>
         <source> Identifier </source>
         <target>Identificador</target>
+      </segment>
+    </unit>
+    <unit id="5885452247889934944">
+      <notes>
+        <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:8</note>
+        <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:44</note>
+      </notes>
+      <segment>
+        <source>Topic</source>
+        <target>Tópico</target>
       </segment>
     </unit>
     <unit id="2957163997998056771">
@@ -580,6 +629,7 @@
     <unit id="8796969457776702266">
       <notes>
         <note category="location">src/app/components/records/records-table/records-table.component.html:93,94</note>
+        <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:13,14</note>
       </notes>
       <segment>
         <source> Clear </source>
@@ -590,12 +640,23 @@
       <notes>
         <note category="location">src/app/components/records/records-table/records-table.component.html:103,104</note>
         <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:53,54</note>
+        <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:17,18</note>
       </notes>
       <segment>
         <source> Filter </source>
         <target>Filtrar</target>
       </segment>
     </unit>
+    <unit id="8066608938393600549">
+      <notes>
+        <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:34</note>
+      </notes>
+      <segment>
+        <source>Message</source>
+        <target>Mensagem</target>
+      </segment>
+    </unit>
+    
     <unit id="4355526113700509146">
       <notes>
         <note category="location">src/app/components/records/records-table/records-table.component.html:48,49</note>
@@ -864,6 +925,42 @@
       <segment>
         <source> Amount </source>
         <target>Quantidade</target>
+      </segment>
+    </unit>
+     <unit id="4413725689798733033">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:4</note>
+      </notes>
+      <segment>
+        <source>Show rules</source>
+        <target>Mostrar regras</target>
+      </segment>
+    </unit>
+     <unit id="1616102757855967475">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:6</note>
+      </notes>
+      <segment>
+        <source>All</source>
+        <target>Todas</target>
+      </segment>
+    </unit>
+     <unit id="7045123878111147511">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:7</note>
+      </notes>
+      <segment>
+        <source>Required</source>
+        <target>Obrigatórias</target>
+      </segment>
+    </unit>
+    <unit id="1142555682966582117">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:8</note>
+      </notes>
+      <segment>
+        <source>Not required</source>
+        <target>Não obrigatórias</target>
       </segment>
     </unit>
     <unit id="5817928445374038037">
