@@ -9,7 +9,7 @@ th {
 }
 
 .table-container {
-  padding: 30px 30px 0px 30px;
+  padding: 10px 30px 0px 30px;
   position: relative;
   overflow: auto;
 }
@@ -40,6 +40,12 @@ th {
   width: 95%;
 }
 
-button {
+.btn-records {
   margin-right: 10px;
+}
+
+.filter-form {
+  display: flex;
+  align-items: center;
+  padding: 30px 0px 0px 0px;
 }

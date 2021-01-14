@@ -1,3 +1,16 @@
+<div class="filter-form">
+  
+  <mat-form-field appearance="fill" style="margin-left: 30px">
+    <mat-label i18n>Show rules</mat-label>
+    <mat-select (selectionChange)="applyFilter()" [(value)]="requiredRule" [(ngModel)]="requiredRule">
+      <mat-option i18n>All</mat-option>
+      <mat-option [value]="true" i18n>Required</mat-option>
+      <mat-option [value]="false" i18n>Not required</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
 <div class="table-container">
   <div class="table-content-container">
     <table mat-table [dataSource]="dataSource" matSort>
@@ -73,7 +86,7 @@
               }}/invalid_rule/{{ rule.ruleID }}"
             >
               <button
-                class="btn text-nowrap btn-outline-danger"
+                class="btn text-nowrap btn-outline-danger btn-records"
                 i18n-matTooltip
                 matTooltip="Records that contain this invalid rule"
                 matTooltipPosition="above"

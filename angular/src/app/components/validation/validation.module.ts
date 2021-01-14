@@ -7,6 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ConformityModule } from '../conformity/conformity.module';
 import { OcurrenceModule } from '../occurrence/occurrence.module';
 import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
 import { SharedModule } from './../../shared/shared.module';
 import { ValidationTableComponent } from './validation-table/validation-table.component';
 import { ValidationDetailComponent } from './validation-detail/validation-detail.component';
@@ -30,6 +31,7 @@ import { RecordModule } from '../records/record.module';
     MatPaginatorModule,
     ConformityModule,
     RecordModule,
+    MatSelectModule,
   ],
 })
 export class ValidationModule {}
