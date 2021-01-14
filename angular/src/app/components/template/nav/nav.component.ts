@@ -57,9 +57,16 @@ export class NavComponent implements OnInit {
   validationClick(acronym: string) {
     this.harvestingService
       .getHarvestingLastGoodKnowByAcronym(acronym)
-      .subscribe((harvestingContent) => {
-        this.router.navigate([`${acronym}/validation/${harvestingContent.id}`]);
-      });
+      .subscribe(
+        (harvestingContent) => {
+          this.router.navigate([
+            `${acronym}/validation/${harvestingContent.id}`,
+          ]);
+        },
+        () => {
+          this.router.navigate([`${acronym}/validation/-1`]);
+        }
+      );
   }
 
   menuClick(e: Menu) {
