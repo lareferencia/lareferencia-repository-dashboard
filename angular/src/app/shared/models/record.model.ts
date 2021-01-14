@@ -10,4 +10,6 @@ export interface Record {
   invalidRulesID: string[];
   validRulesID: string[];
   rules: Rule[];
+  metadataPrefix: string;
+  origin: string;
 }
