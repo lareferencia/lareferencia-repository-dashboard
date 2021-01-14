@@ -37,7 +37,6 @@ export class ValidationComponent implements OnInit {
           .getValidationResultsByHarvestingID(acronym, harvestingID)
           .subscribe((result) => {
             this.validation = result;
-            console.log(result);
 
             let rules: Rule[] = Object.values(this.validation.rulesByID).map(
               (rule) => {
