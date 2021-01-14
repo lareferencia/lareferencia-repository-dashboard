@@ -194,7 +194,7 @@
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:44</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:44</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:22</note>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:150</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:155</note>
       </notes>
       <segment>
         <source>Transformed</source>
@@ -401,14 +401,6 @@
         <source>Message</source>
       </segment>
     </unit>
-    <unit id="5011754961743018067">
-      <notes>
-        <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:36</note>
-      </notes>
-      <segment>
-        <source><ph id="0" equiv="INTERPOLATION" disp="matTooltip=&quot;{{eve"/></source>
-      </segment>
-    </unit>
     <unit id="4959992593092196730">
       <notes>
         <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:38,39</note>
@@ -473,7 +465,7 @@
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:27</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:27</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:13</note>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:131</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:136</note>
       </notes>
       <segment>
         <source>Validation</source>
@@ -483,7 +475,7 @@
       <notes>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:35</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:35</note>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:139</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:144</note>
         <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:13</note>
       </notes>
       <segment>
@@ -503,7 +495,7 @@
       <notes>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:58,59</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:58,59</note>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:164,165</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:169,170</note>
         <note category="location">src/app/components/validation/validation-table/validation-table.component.html:117,118</note>
       </notes>
       <segment>
@@ -580,7 +572,7 @@
     </unit>
     <unit id="808428305867308561">
       <notes>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:146,147</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:151,152</note>
       </notes>
       <segment>
         <source> Transformation </source>
