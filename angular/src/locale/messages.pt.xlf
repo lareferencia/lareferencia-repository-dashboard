@@ -38,28 +38,13 @@
         <target>Tabela de coletas</target>
       </segment>
     </unit>
-    <unit id="8165010687744208502">
+    <unit id="5628170427266659564">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting/harvesting.component.html:21,28</note>
+        <note category="location">src/app/components/harvesting/harvesting/harvesting.component.html:21</note>
       </notes>
       <segment>
-        <source>Below is the history of each collection performed. Each collection generates 
-        a unique identifier, which is represented below as an ID. It shows numerically how many 
-        records were validated, invalidated and transformed in each collection performed. 
-        You can also view the start and end time of the collection process, as well as download
-        the .csv file containing all the information described. When clicking on “validations”, 
-        a page will be presented containing the level of compliance, in percentage, the collection
-        rules of the BDTD. Only the validations of the last collections made will be available for 
-        viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
-        <target>Abaixo é apresentado o histórico de cada coleta realizada. Cada coleta gera um identificador
-        único, que está representado abaixo como ID.  Apresenta numericamente quantos registros
-        foram validados, invalidados e transformados em cada coleta realizada. Também é possível
-        visualizar a hora de início e fim do processo de coleta, bem como fazer download do arquivo
-        .csv contendo todas as informações descritas. Ao clicar em “validações”, será apresentada 
-        uma página contendo o nível de conformidade, em percentual, as regras de coleta da BDTD.
-        Só ficará disponível para visualização as validações das últimas coletas realizadas,
-        portanto, não será possível visualizar a validação granular das coletas mais antigas.
-        </target>
+         <source>Below is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
+        <target>Abaixo é apresentado o histórico de cada coleta realizada. Cada coleta gera um identificador único, que está representado abaixo como ID. Apresenta numericamente quantos registros foram validados, invalidados e transformados em cada coleta realizada. Também é possível visualizar a hora de início e fim do processo de coleta, bem como fazer download do arquivo .csv contendo todas as informações descritas. Ao clicar em “validações”, será apresentada uma página contendo o nível de conformidade, em percentual, as regras de coleta da BDTD. Só ficará disponível para visualização as validações das últimas coletas realizadas, portanto, não será possível visualizar a validação granular das coletas mais antigas.</target>
       </segment>
     </unit>
      <unit id="3797778920049399855">
@@ -90,24 +75,19 @@
     </unit>
     <unit id="8210903900743032826">
       <notes>
-        <note category="location">src/app/components/broker/broker/broker.component.html:7,13</note>
-        <note category="location">src/app/components/validation/validation/validation.component.html:83,89</note>
+        <note category="location">src/app/components/broker/broker/broker.component.html:7,11</note>
       </notes>
       <segment>
-        <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-  Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown 
-  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
-  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-  It was popularised in the 1960s with the release of Letraset sheets containing 
-  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-  PageMaker including versions of Lorem Ipsum.</source>
-  <target>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-  Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown 
-  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
-  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-  It was popularised in the 1960s with the release of Letraset sheets containing 
-  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-  PageMaker including versions of Lorem Ipsum.</target>
+        <source>OpenAIRE Broker Service.
+
+  Thanks to the Broker, repositories, publishers or aggregators can exchange metadata and enrich their local metadata collection by subscribing to notifications of different types. The Broker is able to notify Content providers when the OpenAIRE Graph contains information that is not available in the original collection of the data source.
+  
+  It is a subscription-notification service operating on top of the OpenAIRE Research Graph, a de-duplicated, enriched, linked, open scholarly communication graph.</source>
+  <target>OpenAIRE Broker Service.
+  
+  Thanks to the Broker, repositories, publishers or aggregators can exchange metadata and enrich their local metadata collection by subscribing to notifications of different types. The Broker is able to notify Content providers when the OpenAIRE Graph contains information that is not available in the original collection of the data source. 
+  
+  It is a subscription-notification service operating on top of the OpenAIRE Research Graph, a de-duplicated, enriched, linked, open scholarly communication graph.</target>
       </segment>
     </unit>
     <unit id="2275833192866529649">
@@ -161,7 +141,7 @@
       <notes>
         <note category="location">src/app/components/records/record-invalid/record-invalid.component.html:8</note>
         <note category="location">src/app/components/records/record-invalid/record-invalid.component.html:8</note>
-        <note category="location">src/app/components/validation/validation/validation.component.html:81</note>
+        <note category="location">src/app/components/validation/validation/validation.component.html:75</note>
         <note category="location">src/app/components/validation/validation-table/validation-table.component.html:76</note>
       </notes>
       <segment>
@@ -259,56 +239,32 @@
         <target>Validações</target>
       </segment>
     </unit>
-    <unit id="384773800039559491">
+    <unit id="6950187417688883815">
       <notes>
-        <note category="location">src/app/components/validation/validation/validation.component.html:68,74</note>
-        <note category="location">src/app/components/validation/validation/validation.component.html:83,89</note>
+        <note category="location">src/app/components/validation/validation/validation.component.html:68</note>
       </notes>
       <segment>
-        <source>The graph below shows the result of the validations performed.
-        Records with 100% validation level refer to records that have complied with the mandatory
-        collection rules of the repository and become valid records. Records that have a 0.00% 
-        validation level refer to records that did not comply with the mandatory collection rules 
-        of the repository and became invalid records. In this case, the user has the option of 
-        viewing which were the invalid occurrences in the details button, where the metadata 
-        value with the corresponding quantities are shown.</source>
-        <target>No gráfico abaixo é possível visualizar o resultado das validações realizadas.
-        Os registros que apresentam o nível de validação em 100% referem-se aos registros que 
-        cumpriram as regras obrigatórias de coleta da Biblioteca Digital Brasileira de Teses e 
-        Dissertações (BDTD) tornando-se registros válidos.Os registros que apresentam o nível de 
-        validação em 0.00% referem-se aos registros que não cumpriram as regras obrigatórias de 
-        coleta da Biblioteca Digital Brasileira de Teses e Dissertações (BDTD) tornando-se 
-        registros inválidos. Neste caso, o usuário tem a opção de visualizar quais foram as 
-        ocorrências inválidas no botão detalhes, onde são mostrados o valor do metadado com as 
-        quantidades correspondentes.
-</target>
+        <source>The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory collection rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory collection rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown.</source>
+        <target>No gráfico abaixo é possível visualizar o resultado das validações realizadas. Os registros que apresentam o nível de validação em 100% referem-se aos registros que cumpriram as regras obrigatórias de coleta da Biblioteca Digital Brasileira de Teses e Dissertações (BDTD) tornando-se registros válidos.Os registros que apresentam o nível de validação em 0.00% referem-se aos registros que não cumpriram as regras obrigatórias de coleta da Biblioteca Digital Brasileira de Teses e Dissertações (BDTD) tornando-se registros inválidos. Neste caso, o usuário tem a opção de visualizar quais foram as ocorrências inválidas no botão detalhes, onde são mostrados o valor do metadado com as quantidades correspondentes.</target>
       </segment>
     </unit>
-    <unit id="1448555596083465232">
+    <unit id="6756639748121558204">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:5,12</note>
-        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:5,12</note>
+        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:5</note>
+        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:5</note>
       </notes>
       <segment>
-        <source>In the graph below it is possible to view the results of the collections performed.
-        It is possible to generate daily, weekly, monthly and yearly collection charts.
-        The chart shows three metrics, which are: valid, invalid and transformed records.
-        Valid records are those that are in accordance with the current mandatory collection
-        rules of the repository. Invalid records
-        are those that do not comply with the mandatory collection rules of the repository.
-        Finally, the transformed records inform the number of documents that were collected.
-        Normally, this number should equal the number of documents deposited in the repository.
-        </source>
-        <target>No gráfico abaixo é possível visualizar o resultado das coletas realizadas. 
-        É possível gerar gráficos de coleta diário, semanal, mensal e anual. 
-        No gráfico são apresentadas três métricas, que são: registros válidos, inválidos e transformados.
-        Os registros válidos são aqueles que estão de acordo com as atuais regras obrigatórias de coleta
-        da Biblioteca Digital Brasileira de Teses e Dissertações (BDTD). Já os registros inválidos são
-        aqueles que não estão de acordo com as regras obrigatórias de coleta da BDTD.
-        Por fim, os registros transformados informam a quantidade de documentos que foram coletados.
-        Normalmente esse número deve ser igual a quantidade de documentos depositados no repositório
-        institucional ou na biblioteca digital de teses e dissertações de sua instituição.
-        </target>
+        <source>In the graph below it is possible to view the results of the collections performed. It is possible to generate daily, weekly, monthly and yearly collection charts. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory collection rules of the repository. Invalid records are those that do not comply with the mandatory collection rules of the repository. Finally, the transformed records inform the number of documents that were collected. Normally, this number should equal the number of documents deposited in the repository.</source>
+        <target>No gráfico abaixo é possível visualizar o resultado das coletas realizadas. É possível gerar gráficos de coleta diário, semanal, mensal e anual. No gráfico são apresentadas três métricas, que são: registros válidos, inválidos e transformados. Os registros válidos são aqueles que estão de acordo com as atuais regras obrigatórias de coleta da Biblioteca Digital Brasileira de Teses e Dissertações (BDTD). Já os registros inválidos são aqueles que não estão de acordo com as regras obrigatórias de coleta da BDTD. Por fim, os registros transformados informam a quantidade de documentos que foram coletados. Normalmente esse número deve ser igual a quantidade de documentos depositados no repositório institucional ou na biblioteca digital de teses e dissertações de sua instituição.</target>
+      </segment>
+    </unit>
+    <unit id="510215860731572676">
+      <notes>
+        <note category="location">src/app/components/validation/validation/validation.component.html:77</note>
+      </notes>
+      <segment>
+        <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</source>
+        <target>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</target>
       </segment>
     </unit>
     <unit id="4721611819278537908">
