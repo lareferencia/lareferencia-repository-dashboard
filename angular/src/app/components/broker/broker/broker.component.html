@@ -4,13 +4,11 @@
 
 <div *ngIf="!isLoadingResults">
   <app-sub-header *ngIf="harvesting" description="{{ harvesting.name }}"></app-sub-header>
-  <app-card cardTitle="OpenAIRE Broker" i18n-cardTitle description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
-  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
-  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-  It was popularised in the 1960s with the release of Letraset sheets containing 
-  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-  PageMaker including versions of Lorem Ipsum." i18n-description>
-    <app-broker-events-table></app-broker-events-table>
+  <app-card cardTitle="OpenAIRE Broker" i18n-cardTitle description="OpenAIRE Broker Service.
+
+  Thanks to the Broker, repositories, publishers or aggregators can exchange metadata and enrich their local metadata collection by subscribing to notifications of different types. The Broker is able to notify Content providers when the OpenAIRE Graph contains information that is not available in the original collection of the data source. 
+  
+  It is a subscription-notification service operating on top of the OpenAIRE Research Graph, a de-duplicated, enriched, linked, open scholarly communication graph." i18n-description>
+  <app-broker-events-table></app-broker-events-table>
   </app-card>
 </div>
