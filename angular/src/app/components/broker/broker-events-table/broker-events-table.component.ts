@@ -78,7 +78,17 @@ export class BrokerEventsTableComponent implements AfterViewInit, OnInit {
     this.brokerService
       .getEventsByAcronym(this.acronym, this.filter)
       .subscribe((result) => {
-        this.dataSource = new BrokerEventsTableDataSource(result.content);
+
+        var brokerEvents = result.content.map((x) => {
+          const message = Object.entries(JSON.parse(x.message));
+          return {
+            identifier: x.identifier,
+            message: message.map(x=> `${x[0]} = ${x[1]}\n`).join(''),
+            topic: x.topic,
+          };
+        });
+
+        this.dataSource = new BrokerEventsTableDataSource(brokerEvents);
         this.paginator.length = result.totalElements;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
