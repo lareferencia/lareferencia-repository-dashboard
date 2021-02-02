@@ -5,7 +5,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from './../../shared/shared.module';
 import { BrokerComponent } from './broker/broker.component';
 import { BrokerEventsTableComponent } from './broker-events-table/broker-events-table.component';
@@ -20,7 +19,6 @@ import { BrokerEventsTableComponent } from './broker-events-table/broker-events-
     MatProgressSpinnerModule,
     MatInputModule,
     MatButtonModule,
-    MatTooltipModule,
   ],
   exports: [BrokerComponent],
 })

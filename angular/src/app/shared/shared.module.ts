@@ -6,6 +6,7 @@ import * as fromDirectives from './directives';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [...fromComponents.components, ...fromDirectives.directives],
@@ -22,6 +23,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressBarModule,
     MatCardModule,
     MatIconModule,
+    MatTooltipModule,
     ...fromComponents.components,
     ...fromDirectives.directives,
   ],
