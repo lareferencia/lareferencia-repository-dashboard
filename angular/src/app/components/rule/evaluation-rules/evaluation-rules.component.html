@@ -1,19 +1,32 @@
-<div mat-dialog-title>
-  <ng-container i18n
-    >Result of the evaluation of rules for "{{ record.identifier }}"
-    record</ng-container
-  >
-  <span
-    [ngClass]="[
+<div class="modal-title" mat-dialog-title>
+  <div>
+    <span i18n>Result of the evaluation of rules for "{{ record.identifier }}" record</span>
+    <span [ngClass]="[
       'badge',
       'span-record-is-valid',
       record.isValid == true ? 'badge-success' : 'badge-danger'
-    ]"
-    i18n
-    >{record.isValid, select, true {Valid} false {Invalid}}</span
-  >
+    ]" i18n>{record.isValid, select, true {Valid record} false {Invalid record}}
+    </span>
+  </div>
+
+  <div class="icon-legend">
+    <mat-icon [inline]="true">cancel</mat-icon>
+    <span class="occurrence" i18n>Invalid occurrence</span>
+    <mat-icon [inline]="true" class="ml-2">check_circle_outline</mat-icon>
+    <span class="occurrence" i18n>Valid occurrence</span>
+  </div>
 </div>
+
 <mat-dialog-content class="mat-typography">
+
+  <div class="btn-actions">
+    <mat-button-toggle-group (change)="toggleChange($event)" multiple="true" [value]="['red', 'yellow', 'green']" name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle  [ngClass]="{ 'red' : redToggle}" value="red">Invalid required rules</mat-button-toggle>
+      <mat-button-toggle  [ngClass]="{ 'yellow' : yellowToggle}" value="yellow">Invalid not required rules</mat-button-toggle>
+      <mat-button-toggle  [ngClass]="{ 'green' : greenToggle}" value="green">Valid rules</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
   <!-- List invalid rules -->
   <div *ngFor="let obj of record.invalidRulesID">
     <div
@@ -27,11 +40,25 @@
           <mat-card-title
             ><div>{{ getRule(obj).name }}</div>
             <span class="span-margin-left" i18n>
-              {getRule(obj).mandatory, select, true {Required: Yes} false
-              {Required: No}}
+              {getRule(obj).mandatory, select, true {Required rule: Yes} false
+              {Required rule: No}}
             </span>
           </mat-card-title>
-          <mat-card-subtitle>{{ getRule(obj).quantifier }}</mat-card-subtitle>
+          <mat-card-subtitle>
+            <ng-container [ngSwitch]="getRule(obj).quantifier">
+              <span *ngSwitchCase="'ZERO_ONLY'" i18n>Zero only</span>
+              <span *ngSwitchCase="'ONE_ONLY'" i18n>One only</span>
+              <span *ngSwitchCase="'ZERO_OR_MORE'" i18n>Zero or more</span>
+              <span *ngSwitchCase="'ONE_OR_MORE'" i18n>One or more</span>
+              <span *ngSwitchCase="'ALL'" i18n>All</span>
+              <mat-icon 
+                i18n-matTooltip 
+                matTooltipPosition="right" 
+                matTooltip="Number of valid occurrences for a rule to be valid">
+                help
+              </mat-icon>
+            </ng-container>
+          </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <div class="occurrences">
@@ -68,12 +95,26 @@
             ><div>{{ getRule(obj).name }}</div>
             <div>
               <span class="span-margin-left" i18n>
-                {getRule(obj).mandatory, select, true {Required: Yes} false
-                {Required: No}}
+                {getRule(obj).mandatory, select, true {Required rule: Yes} false
+                {Required rule: No}}
               </span>
             </div>
           </mat-card-title>
-          <mat-card-subtitle>{{ getRule(obj).quantifier }}</mat-card-subtitle>
+          <mat-card-subtitle>
+            <ng-container [ngSwitch]="getRule(obj).quantifier">
+              <span *ngSwitchCase="'ZERO_ONLY'" i18n>Zero only</span>
+              <span *ngSwitchCase="'ONE_ONLY'" i18n>One only</span>
+              <span *ngSwitchCase="'ZERO_OR_MORE'" i18n>Zero or more</span>
+              <span *ngSwitchCase="'ONE_OR_MORE'" i18n>One or more</span>
+              <span *ngSwitchCase="'ALL'" i18n>All</span>
+              <mat-icon 
+                i18n-matTooltip 
+                matTooltipPosition="right" 
+                matTooltip="Number of valid occurrences for a rule to be valid">
+                help
+              </mat-icon>
+            </ng-container>
+          </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <div class="occurrences">
