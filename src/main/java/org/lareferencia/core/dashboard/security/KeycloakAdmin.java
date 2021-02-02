@@ -134,6 +134,26 @@ public class KeycloakAdmin {
 		keycloak.realm(realm).users().get(userId).resetPassword(credential);
 	}
  
+  public void updateGroupInfo (String groupName, Map<String, String> groupInfo){
+		
+		GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupName);
+    GroupRepresentation newInfo = buildGroupRepresentation(groupInfo);
+		keycloak.realm(realm).groups().group(group.getId()).update(newInfo);
+	}
+ 
+  public Response deleteUser (String userId){
+  
+    return keycloak.realm(realm).users().delete(userId);
+  }
+  
+  public void deleteGroup (String groupName){
+    
+    if (groupExists(groupName)){
+    	GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupName);
+		  keycloak.realm(realm).groups().group(group.getId()).remove();
+		}
+  }
+ 
   private UserRepresentation buildUserRepresentation (Map<String, String> userInfo, boolean update){
 	
 		Map<String, List<String>> attributes = new HashMap<String, List<String>>();

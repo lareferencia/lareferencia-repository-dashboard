@@ -52,13 +52,40 @@ public class UserManagementController {
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
-  @ApiOperation(value = "Returns a user info by user id")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Returns a user info by user id") })
+  @ApiOperation(value = "Returns a user's info")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Returns a user's info") })
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
 	HttpEntity<Map<String, String>> getUserInfo(@PathVariable("userId") String userId) {
     
     Map<String, String> result = uService.getUserInfo(userId);
 		return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
+	}
+ 
+  @ApiOperation(value = "Updates a user's info")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updates a user's info") })
+	@RequestMapping(value = "/user/{userId}/update", method = RequestMethod.GET)
+	HttpEntity<Boolean> updateUser(@PathVariable("userId") String userId, @RequestParam(value = "userInfo", required = true) String userInfo) {
+    
+    ObjectMapper mapper = new ObjectMapper();
+    Map<String, String> infoMap = new HashMap<String, String>();
+    
+    try {
+      infoMap = mapper.readValue(userInfo, new TypeReference<Map<String, String>>() {});
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    
+    Boolean result = uService.updateUser(userId, infoMap);
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
+ 
+  @ApiOperation(value = "Changes a user's password")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Changes a user's password") })
+	@RequestMapping(value = "/user/{userId}/reset_password", method = RequestMethod.GET)
+	HttpEntity<Boolean> changePassword(@PathVariable("userId") String userId, @RequestParam(value = "password", required = true) String password) {
+    
+    Boolean result = uService.changePassword(userId, password);
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
   @ApiOperation(value = "Adds a user to a group")
@@ -67,6 +94,15 @@ public class UserManagementController {
 	HttpEntity<Boolean> addUserToGroup(@PathVariable("userId") String userId, @PathVariable("groupId") String groupId) {
     
     Boolean result = uService.addUserToGroup(userId, groupId);
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
+ 
+  @ApiOperation(value = "Removes a user")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Removes a user") })
+	@RequestMapping(value = "/user/{userId}/delete", method = RequestMethod.GET)
+	HttpEntity<Boolean> deleteUser(@PathVariable("userId") String userId) {
+    
+    Boolean result = uService.deleteUser(userId);
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
@@ -88,13 +124,41 @@ public class UserManagementController {
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
-  @ApiOperation(value = "Returns a group info by group id")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Returns a group info by group id") })
+  @ApiOperation(value = "Returns a group's info")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Returns a group's info") })
 	@RequestMapping(value = "/group/{groupId}", method = RequestMethod.GET)
 	HttpEntity<Map<String, String>> getGroupInfo(@PathVariable("groupId") String groupId) {
     
     Map<String, String> result = uService.getGroupInfo(groupId);
 		return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
 	}
+ 
+  @ApiOperation(value = "Updates a group's info")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updates a group's info") })
+	@RequestMapping(value = "/group/{groupId}/update", method = RequestMethod.GET)
+	HttpEntity<Boolean> updateGroup(@PathVariable("groupId") String groupId, @RequestParam(value = "groupInfo", required = true) String groupInfo) {
+    
+    ObjectMapper mapper = new ObjectMapper();
+    Map<String, String> infoMap = new HashMap<String, String>();
+    
+    try {
+      infoMap = mapper.readValue(groupInfo, new TypeReference<Map<String, String>>() {});
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    
+    Boolean result = uService.updateGroup(groupId, infoMap);
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
+ 
+  @ApiOperation(value = "Removes a group")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Removes a group") })
+	@RequestMapping(value = "/group/{groupId}/delete", method = RequestMethod.GET)
+	HttpEntity<Boolean> deleteGroup(@PathVariable("groupId") String groupId) {
+    
+    Boolean result = uService.deleteGroup(groupId);
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
+ 
 
 }

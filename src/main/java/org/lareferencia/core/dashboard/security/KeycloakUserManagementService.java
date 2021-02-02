@@ -41,20 +41,25 @@ public class KeycloakUserManagementService implements IUserManagementService {
 
 	@Override
 	public Boolean deleteUser(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
+    return admin.deleteUser(userId).getStatusInfo().toString().equals("No Content");
 	}
 
 	@Override
 	public Boolean updateUser(String userId, Map<String, String> infoMap) {
-		// TODO Auto-generated method stub
-		return null;
+		
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
+    admin.updateUserInfo(userId, infoMap);
+    return true; //FIX
 	}
 
 	@Override
 	public Boolean changePassword(String userId, String passwd) {
-		// TODO Auto-generated method stub
-		return null;
+		
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
+    admin.resetUserPassword(userId, passwd);
+    return true; //FIX
 	}
 
 	@Override
@@ -73,14 +78,18 @@ public class KeycloakUserManagementService implements IUserManagementService {
 
 	@Override
 	public Boolean deleteGroup(String groupId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
+    admin.deleteGroup(groupId);
+    return true; //FIX
 	}
 
 	@Override
 	public Boolean updateGroup(String groupId, Map<String, String> infoMap) {
-		// TODO Auto-generated method stub
-		return null;
+		
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
+    admin.updateGroupInfo(groupId, infoMap);
+    return true; //FIX
 	}
 
 	@Override
