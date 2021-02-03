@@ -27,6 +27,7 @@ export class ValidationComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(() => {
       
+      this.validation = null;
       this.isLoadingResults = true;
       const harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
       const acronym = this.route.snapshot.paramMap.get('acronym');
