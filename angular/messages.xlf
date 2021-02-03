@@ -421,7 +421,7 @@
     <unit id="1353900317147489199">
       <notes>
         <note category="location">src/app/components/validation/validation-detail/validation-detail.component.html:23,24</note>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:107,108</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:148,149</note>
         <note category="description">Button close</note>
       </notes>
       <segment>
@@ -453,7 +453,6 @@
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:35</note>
         <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:35</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:144</note>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:13</note>
       </notes>
       <segment>
         <source>{VAR_SELECT, select, true {Valid} false {Invalid}}</source>
@@ -507,6 +506,7 @@
     <unit id="1199157391035799970">
       <notes>
         <note category="location">src/app/components/records/records-table/records-table.component.html:34</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:26</note>
       </notes>
       <segment>
         <source>Valid rules</source>
@@ -581,40 +581,144 @@
         <source> Amount </source>
       </segment>
     </unit>
-    <unit id="7396212938337853335">
+    <unit id="2790789392596235103">
       <notes>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:3,4</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:3</note>
       </notes>
       <segment>
         <source>Result of the evaluation of rules for &quot;<ph id="0" equiv="INTERPOLATION" disp="{{ record.identifier }}"/>&quot; record</source>
       </segment>
     </unit>
-    <unit id="359817121528370323">
+    <unit id="6505291181355350676">
       <notes>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:30,31</note>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:71,72</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:8</note>
       </notes>
       <segment>
-        <source>{VAR_SELECT, select, true {Required: Yes} false {Required: No}}</source>
+        <source>{VAR_SELECT, select, true {Valid record} false {Invalid record}}</source>
       </segment>
     </unit>
-    <unit id="5676922037336946281">
+    <unit id="1314862544078431037">
       <notes>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:30,32</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:8,9</note>
       </notes>
       <segment>
-        <source> <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {Required: Yes} false
-              {Required: No}}
+        <source><ph id="0" equiv="ICU" disp="{record.isValid, select, true {Valid record} false {Invalid record}}
+    "/> </source>
+      </segment>
+    </unit>
+    <unit id="4818205152402971018">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:14</note>
+      </notes>
+      <segment>
+        <source>Invalid occurrence</source>
+      </segment>
+    </unit>
+    <unit id="8671320072236405044">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:16</note>
+      </notes>
+      <segment>
+        <source>Valid occurrence</source>
+      </segment>
+    </unit>
+    <unit id="8657434870117642426">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:24</note>
+      </notes>
+      <segment>
+        <source>Invalid required rules</source>
+      </segment>
+    </unit>
+    <unit id="8104861717674488777">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:25</note>
+      </notes>
+      <segment>
+        <source>Invalid not required rules</source>
+      </segment>
+    </unit>
+    <unit id="758583939635828186">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:43,44</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:98,99</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {Required rule: Yes} false {Required rule: No}}</source>
+      </segment>
+    </unit>
+    <unit id="5905807774254672553">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:43,45</note>
+      </notes>
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {Required rule: Yes} false
+              {Required rule: No}}
             "/> </source>
       </segment>
     </unit>
-    <unit id="9171508892369069863">
+    <unit id="1582100194677911084">
       <notes>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:71,73</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:57</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:113</note>
       </notes>
       <segment>
-        <source> <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {Required: Yes} false
-                {Required: No}}
+        <source>Number of valid occurrences for a rule to be valid</source>
+      </segment>
+    </unit>
+    <unit id="8229089116150119448">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:49</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:105</note>
+      </notes>
+      <segment>
+        <source>Zero only</source>
+      </segment>
+    </unit>
+    <unit id="7384772634323367648">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:50</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:106</note>
+      </notes>
+      <segment>
+        <source>One only</source>
+      </segment>
+    </unit>
+    <unit id="2719592483880449875">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:51</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:107</note>
+      </notes>
+      <segment>
+        <source>Zero or more</source>
+      </segment>
+    </unit>
+    <unit id="146693172126595949">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:52</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:108</note>
+      </notes>
+      <segment>
+        <source>One or more</source>
+      </segment>
+    </unit>
+    <unit id="1616102757855967475">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:53</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:109</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:6</note>
+      </notes>
+      <segment>
+        <source>All</source>
+      </segment>
+    </unit>
+    <unit id="6581922792093984440">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:98,100</note>
+      </notes>
+      <segment>
+        <source> <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {Required rule: Yes} false
+                {Required rule: No}}
               "/> </source>
       </segment>
     </unit>
@@ -696,14 +800,6 @@
       </notes>
       <segment>
         <source>Show rules</source>
-      </segment>
-    </unit>
-    <unit id="1616102757855967475">
-      <notes>
-        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:6</note>
-      </notes>
-      <segment>
-        <source>All</source>
       </segment>
     </unit>
     <unit id="7045123878111147511">
