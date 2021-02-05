@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.Response;
@@ -33,29 +34,23 @@ public class KeycloakAdmin {
 	private String tokenEndpoint;
 	private String clientId;
   private String clientSecret;
-  private String[] defaultRoles;
-  private String[] userAttributes;
-  private String[] groupAttributes;
   
   private final Keycloak keycloak;
   
-  public KeycloakAdmin (String serverUrl, String realm, String tokenEndpoint, String clientId, String clientSecret, String[] defaultRoles, String[] userAttributes, String[] groupAttributes) {
+  public KeycloakAdmin (String serverUrl, String realm, String tokenEndpoint, String clientId, String clientSecret) {
   
     this.serverUrl = serverUrl;
 	  this.realm = realm;
     this.tokenEndpoint = tokenEndpoint;
 	  this.clientId = clientId;
     this.clientSecret = clientSecret;
-    this.defaultRoles = defaultRoles;
-    this.userAttributes = userAttributes;
-    this.groupAttributes = groupAttributes;
     
     keycloak = getKeycloakInstance();
   }
  
-  public Response createUser (Map<String, String> userInfo){	
+  public Response createUser (Map<String, String> userInfo, String[] defaultRoles, String[] userAttributes){	
    
-		UserRepresentation user = buildUserRepresentation(userInfo, false);
+		UserRepresentation user = buildUserRepresentation(userInfo, userAttributes, false);
 		Response response = keycloak.realm(realm).users().create(user);
 		
 		//Add default roles to user
@@ -72,42 +67,9 @@ public class KeycloakAdmin {
    return response;
 	}
 	
-	public Response createGroup (Map<String, String> groupInfo){
+	public Map<String, String> getUserInfo (String username, String[] userAttributes){
 		
-    GroupRepresentation group = buildGroupRepresentation(groupInfo);
-		
-    return keycloak.realm(realm).groups().add(group);
-	}
- 
-  public Map<String, String> getGroupInfo (String groupName){
-		
-		GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupName);
-		
-		Map<String, String> groupInfo = new HashMap<String, String>();
-		groupInfo.put("name", group.getName());
-   
-    for (String attribute : groupAttributes){
-		  groupInfo.put(attribute, group.getAttributes().get(attribute).get(0));
-		}
-	
-		return groupInfo;
-	}
-	
-	public Boolean addUserToGroup (String userId, String groupName){
-			
-		GroupRepresentation group = new GroupRepresentation();
-    
-    if (groupExists(groupName)){
-    	group = keycloak.realm(realm).getGroupByPath("/" + groupName);
-		  keycloak.realm(realm).users().get(userId).joinGroup(group.getId());
-		}
-   
-    return isUserInGroup(userId, group.getId());
-	}
-	
-	public Map<String, String> getUserInfo (String userId){
-		
-		UserRepresentation user = keycloak.realm(realm).users().get(userId).toRepresentation();
+    UserRepresentation user = keycloak.realm(realm).users().get(getUserId(username)).toRepresentation();
 		
 		Map<String, String> userInfo = new HashMap<String, String>();
 		userInfo.put("username", user.getUsername());
@@ -122,39 +84,101 @@ public class KeycloakAdmin {
 		return userInfo;
 	}
 	
-	public void updateUserInfo (String userId, Map<String, String> userInfo){
+	public void updateUserInfo (String username, Map<String, String> userInfo, String[] userAttributes){
 		
-		UserRepresentation newInfo = buildUserRepresentation(userInfo, true);
-		keycloak.realm(realm).users().get(userId).update(newInfo);
+		UserRepresentation newInfo = buildUserRepresentation(userInfo, userAttributes, true);
+		keycloak.realm(realm).users().get(getUserId(username)).update(newInfo);
 	}
 	
-	public void resetUserPassword (String userId, String password){
+	public void resetUserPassword (String username, String password){
 		
 		CredentialRepresentation credential = buildUserCredential(password, true);
-		keycloak.realm(realm).users().get(userId).resetPassword(credential);
+		keycloak.realm(realm).users().get(getUserId(username)).resetPassword(credential);
 	}
- 
-  public void updateGroupInfo (String groupName, Map<String, String> groupInfo){
-		
-		GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupName);
-    GroupRepresentation newInfo = buildGroupRepresentation(groupInfo);
-		keycloak.realm(realm).groups().group(group.getId()).update(newInfo);
-	}
- 
-  public Response deleteUser (String userId){
+	
+	public Response deleteUser (String username){
   
-    return keycloak.realm(realm).users().delete(userId);
+    return keycloak.realm(realm).users().delete(getUserId(username));
   }
   
-  public void deleteGroup (String groupName){
+  public List<String> listUsers (String role){
+		
+		List<String> usernames = new ArrayList<String>();		
+		Set<UserRepresentation> users = keycloak.realm(realm).roles().get(role).getRoleUserMembers();
+		users.forEach(user -> usernames.add(user.getUsername()));
+		
+		return usernames;
+	}
+	
+	public Response createGroup (Map<String, String> groupInfo, String[] groupAttributes){
+		
+    GroupRepresentation group = buildGroupRepresentation(groupInfo, groupAttributes);
+		
+    return keycloak.realm(realm).groups().add(group);
+	}
+ 
+  public Map<String, String> getGroupInfo (String groupname, String[] groupAttributes){
+		
+		GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupname);
+		
+		Map<String, String> groupInfo = new HashMap<String, String>();
+		groupInfo.put("name", group.getName());
+   
+    for (String attribute : groupAttributes){
+		  groupInfo.put(attribute, group.getAttributes().get(attribute).get(0));
+		}
+	
+		return groupInfo;
+	}
+	
+	 public void updateGroupInfo (String groupname, Map<String, String> groupInfo, String[] groupAttributes){
+		
+		GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupname);
+    GroupRepresentation newInfo = buildGroupRepresentation(groupInfo, groupAttributes);
+		keycloak.realm(realm).groups().group(group.getId()).update(newInfo);
+	}
+  
+  public void deleteGroup (String groupname){
     
-    if (groupExists(groupName)){
-    	GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupName);
+    if (groupExists(groupname)){
+    	GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupname);
 		  keycloak.realm(realm).groups().group(group.getId()).remove();
 		}
   }
+  
+  public List<String> listGroups (){
+		
+		List<String> groupnames = new ArrayList<String>();		
+		List<GroupRepresentation> groups = keycloak.realm(realm).groups().groups();
+		groups.forEach(group -> groupnames.add(group.getName()));
+		
+		return groupnames;
+	}
+	
+	public Boolean addUserToGroup (String username, String groupname){
+			
+		GroupRepresentation group = new GroupRepresentation();
+    
+    if (groupExists(groupname)){
+    	group = keycloak.realm(realm).getGroupByPath("/" + groupname);
+		  keycloak.realm(realm).users().get(getUserId(username)).joinGroup(group.getId());
+		}
+   
+    return isUserInGroup(getUserId(username), group.getId());
+	}
  
-  private UserRepresentation buildUserRepresentation (Map<String, String> userInfo, boolean update){
+  private String getUserId (String username) {
+		
+		List<UserRepresentation> users = keycloak.realm(realm).users().search(username); // substring-based match, can return more than one user
+		
+		for (UserRepresentation user : users) {
+			if (user.getUsername().equals(username)) return user.getId();
+		}
+		
+		return null;
+	}
+
+  private UserRepresentation buildUserRepresentation (Map<String, String> userInfo, String[] userAttributes, boolean update){
 	
 		Map<String, List<String>> attributes = new HashMap<String, List<String>>();
    
@@ -191,7 +215,7 @@ public class KeycloakAdmin {
 		return credential;
 	}
  
-  private GroupRepresentation buildGroupRepresentation (Map<String, String> groupInfo) {
+  private GroupRepresentation buildGroupRepresentation (Map<String, String> groupInfo, String[] groupAttributes) {
 		
 		Map<String, List<String>> attributes = new HashMap<String, List<String>>();
 		
@@ -206,12 +230,12 @@ public class KeycloakAdmin {
 		return group;
 	}
 	
-	private boolean groupExists (String groupName){
+	private boolean groupExists (String groupname){
 		
 		boolean exists = true;
 		
 		try{
-			keycloak.realm(realm).getGroupByPath("/" + groupName);
+			keycloak.realm(realm).getGroupByPath("/" + groupname);
 		}
 		catch (NotFoundException e){
 			exists = false;

@@ -1,5 +1,6 @@
 package org.lareferencia.core.dashboard.security;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +23,9 @@ public class KeycloakUserManagementService implements IUserManagementService {
 	
   @Value("${user-mgmt.client-secret}")
   private String clientSecret;
+  
+  @Value("${user-mgmt.user-role}")
+  private String userRole;
 	
   @Value("${user-mgmt.default-roles}")
   private String[] defaultRoles;
@@ -35,74 +39,88 @@ public class KeycloakUserManagementService implements IUserManagementService {
   @Override
 	public Boolean createUser(Map<String, String> infoMap) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
-    return admin.createUser(infoMap).getStatusInfo().toString().equals("Created");
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+    return admin.createUser(infoMap, defaultRoles, userAttributes).getStatusInfo().toString().equals("Created");
 	}
 
 	@Override
 	public Boolean deleteUser(String userId) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
     return admin.deleteUser(userId).getStatusInfo().toString().equals("No Content");
 	}
 
 	@Override
 	public Boolean updateUser(String userId, Map<String, String> infoMap) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
-    admin.updateUserInfo(userId, infoMap);
-    return true; //FIX
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+    admin.updateUserInfo(userId, infoMap, userAttributes);
+    return true;
 	}
 
 	@Override
 	public Boolean changePassword(String userId, String passwd) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
     admin.resetUserPassword(userId, passwd);
-    return true; //FIX
+    return true;
 	}
 
 	@Override
 	public Map<String, String> getUserInfo(String userId) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
-    return admin.getUserInfo(userId);
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+    return admin.getUserInfo(userId, userAttributes);
 	}
+ 
+  @Override
+  public List<String> listUsers() {
+  
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+    return admin.listUsers(userRole);
+  }
 
 	@Override
 	public Boolean createGroup(Map<String, String> infoMap) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
-		return admin.createGroup(infoMap).getStatusInfo().toString().equals("Created");
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+		return admin.createGroup(infoMap, groupAttributes).getStatusInfo().toString().equals("Created");
 	}
 
 	@Override
 	public Boolean deleteGroup(String groupId) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
     admin.deleteGroup(groupId);
-    return true; //FIX
+    return true;
 	}
 
 	@Override
 	public Boolean updateGroup(String groupId, Map<String, String> infoMap) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
-    admin.updateGroupInfo(groupId, infoMap);
-    return true; //FIX
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+    admin.updateGroupInfo(groupId, infoMap, groupAttributes);
+    return true;
 	}
 
 	@Override
 	public Map<String, String> getGroupInfo(String groupId) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
-    return admin.getGroupInfo(groupId);
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+    return admin.getGroupInfo(groupId, groupAttributes);
 	}
+ 
+  @Override
+  public List<String> listGroups() {
+  
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+    return admin.listGroups();
+  }
 
 	@Override
 	public Boolean addUserToGroup(String userId, String groupId) {
 		
-    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret, defaultRoles, userAttributes, groupAttributes);
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
 		return admin.addUserToGroup(userId, groupId);
 	}
 
