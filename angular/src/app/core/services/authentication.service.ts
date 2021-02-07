@@ -54,4 +54,8 @@ export class AuthenticationService extends KeycloakAuthGuard {
     const userDetails = await this.keycloak.loadUserProfile();
     return userDetails.firstName;
   }
+
+  public isAdmUser () : boolean {
+    return this.keycloak.isUserInRole("dashboard-admin");
+  }
 }

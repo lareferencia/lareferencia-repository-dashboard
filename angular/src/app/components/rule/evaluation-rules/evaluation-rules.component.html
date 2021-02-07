@@ -20,7 +20,7 @@
 <mat-dialog-content class="mat-typography">
 
   <div class="btn-actions">
-    <mat-button-toggle-group (change)="toggleChange($event)" multiple="true" [value]="['red', 'yellow', 'green']" name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle-group #toggleFilter (change)="toggleChange($event)" multiple="true" [value]="selectedToggle" name="fontStyle" aria-label="Font Style">
       <mat-button-toggle  [ngClass]="{ 'red' : redToggle}" value="red" i18n>Invalid required rules</mat-button-toggle>
       <mat-button-toggle  [ngClass]="{ 'yellow' : yellowToggle}" value="yellow" i18n>Invalid not required rules</mat-button-toggle>
       <mat-button-toggle  [ngClass]="{ 'green' : greenToggle}" value="green" i18n>Valid rules</mat-button-toggle>

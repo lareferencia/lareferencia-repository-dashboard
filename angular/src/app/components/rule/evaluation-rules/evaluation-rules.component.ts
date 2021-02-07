@@ -1,23 +1,42 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatButtonToggleChange } from '@angular/material/button-toggle';
+import { Component, OnInit, Inject, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { MatButtonToggle, MatButtonToggleChange } from '@angular/material/button-toggle';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Record } from '../../../shared/models/record.model';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-evaluation-rules',
   templateUrl: './evaluation-rules.component.html',
   styleUrls: ['./evaluation-rules.component.css'],
 })
-export class EvaluationRulesComponent implements OnInit {
+export class EvaluationRulesComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatButtonToggle) toggleFilter: MatButtonToggle;
   record: Record;
   originalRecord: Record;
   redToggle = true;
   yellowToggle = true;
   greenToggle = true;
+  selectedToggle = ['red', 'yellow', 'green'];
 
-  constructor(@Inject(MAT_DIALOG_DATA) data: Record) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data: Record,
+    private authenticationService: AuthenticationService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.originalRecord = { ...data };
     this.record = data;
+  }
+
+  ngOnInit(): void {
+    if (!this.authenticationService.isAdmUser()) {
+      this.yellowToggle = this.greenToggle = false;
+      this.selectedToggle = ['red'];
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.filter(this.toggleFilter);
+    this.cdr.detectChanges();
   }
 
   getRule(ruleID: string) {
@@ -25,9 +44,12 @@ export class EvaluationRulesComponent implements OnInit {
   }
 
   toggleChange(event: MatButtonToggleChange) {
+    this.filter(event.source);
+  }
+
+  filter(toggle: MatButtonToggle) {
     this.record = { ...this.originalRecord };
     this.redToggle = this.yellowToggle = this.greenToggle = false;
-    let toggle = event.source;
 
     if (toggle) {
       let group = toggle.buttonToggleGroup;
@@ -69,6 +91,4 @@ export class EvaluationRulesComponent implements OnInit {
       this.record.invalidRulesID = [];
     }
   }
-
-  ngOnInit(): void {}
 }
