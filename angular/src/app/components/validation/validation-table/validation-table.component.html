@@ -4,8 +4,8 @@
     <mat-label i18n>Show rules</mat-label>
     <mat-select (selectionChange)="applyFilter()" [(value)]="requiredRule" [(ngModel)]="requiredRule">
       <mat-option i18n>All</mat-option>
-      <mat-option [value]="true" i18n>Required</mat-option>
-      <mat-option [value]="false" i18n>Not required</mat-option>
+      <mat-option [value]="true" i18n>Mandatory</mat-option>
+      <mat-option [value]="false" i18n>Not mandatory</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -33,7 +33,7 @@
 
       <ng-container matColumnDef="mandatory">
         <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #mandatory>
-          Required
+          Mandatory
         </th>
         <td mat-cell *matCellDef="let rule" i18n>
           {rule.mandatory, select, true {Yes} false {No}}

@@ -57,10 +57,6 @@
   align-items: center;
 }
 
-.mat-card-subtitle > .mat-icon {
-  cursor: help;
-}
-
 .btn-actions {
   margin-bottom: 15px;
 }
@@ -78,4 +74,15 @@
 
 .icon-legend > mat-icon {
   font-size: 15pt;
+}
+
+.icon-help {
+  margin-left: 2px;
+  cursor: help;
+  font-size: 12pt;
+}
+
+.rule-info {
+  display: flex;
+  justify-content: center;
 }
