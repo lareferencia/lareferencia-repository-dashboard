@@ -173,6 +173,9 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let record; columns: displayedColumns"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" i18n colspan="4">Nothing to show</td>
+      </tr>
     </table>
 
     <mat-paginator
