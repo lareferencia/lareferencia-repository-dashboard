@@ -131,13 +131,12 @@
         <source>Records</source>
       </segment>
     </unit>
-    <unit id="522971211873433922">
+    <unit id="8570260821751442666">
       <notes>
-        <note category="location">src/app/components/records/record-invalid/record-invalid.component.html:10,11</note>
+        <note category="location">src/app/components/records/record-invalid/record-invalid.component.html:10</note>
       </notes>
       <segment>
-        <source>Records that contain the invalid &apos;&apos;<ph id="0" equiv="INTERPOLATION" disp="he invalid &apos;&apos;{{ getRule(ru"/>&apos;&apos;
-    rule</source>
+        <source>Records that contain the invalid &apos;&apos;<ph id="0" equiv="INTERPOLATION" disp="he invalid &apos;&apos;{{ getRule(ru"/>&apos;&apos; rule</source>
       </segment>
     </unit>
     <unit id="7467308342369948080">
@@ -392,6 +391,17 @@
       </notes>
       <segment>
         <source> Message </source>
+      </segment>
+    </unit>
+    <unit id="2345522807493182096">
+      <notes>
+        <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:51</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:177</note>
+        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:26</note>
+        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:26</note>
+      </notes>
+      <segment>
+        <source>Nothing to show</source>
       </segment>
     </unit>
     <unit id="8462130792607498110">
