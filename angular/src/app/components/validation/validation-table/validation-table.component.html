@@ -102,10 +102,10 @@
       <ng-container matColumnDef="button-detail">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let rule">
-          <span class="badge badge-secondary" *ngIf="rule.conformity == 100">
+          <span class="badge badge-secondary" *ngIf="rule.conformity == 100 && !admUser">
             100%
           </span>
-          <button *ngIf="rule.conformity < 100"
+          <button *ngIf="rule.conformity < 100 || admUser"
             type="button"
             class="btn btn-outline-primary"
             (click)="detailClick(rule)"

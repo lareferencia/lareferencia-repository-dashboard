@@ -1,3 +1,4 @@
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { RecordsFilter } from '../../../shared/models/records-filter.model';
 import { AfterViewInit, Component, OnInit, ViewChild, Input, ElementRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -34,6 +35,7 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
   isLoadingResults = true;
   csvData: any[];
   headerData: any[];
+  admUser = false;
 
   filter: RecordsFilter = {
     pageSize: this.pageSize,
@@ -51,10 +53,15 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
   constructor(
     private validationService: ValidationService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authenticationService: AuthenticationService
   ) {}
 
   ngOnInit() {
+    this.admUser = this.authenticationService.isAdmUser();
+    if (!this.admUser) {
+      this.displayedColumns.splice(this.displayedColumns.indexOf('isTransformed'), 1);
+    }
     this.harvestingID = Number(
       this.route.snapshot.paramMap.get('harvestingID')
     );
@@ -114,7 +121,7 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
             id: x.id,
             identifier: x.identifier,
             validation: x.isValid,
-            tranformation: x.isTransformed,
+            ...(this.admUser && {tranformation: x.isTransformed}),
           };
         });
 
@@ -122,7 +129,7 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
           this.id.nativeElement.innerText,
           this.identifier.nativeElement.innerText,
           this.isValid.nativeElement.innerText,
-          this.isTransformed.nativeElement.innerText,
+          ...(this.admUser ? [this.isTransformed.nativeElement.innerText] : ''),
         ];
       });
   }

@@ -1,3 +1,4 @@
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { ValidationDetailComponent } from './../validation-detail/validation-detail.component';
 import { Validation } from '../../../shared/models/validation.model';
 import { Rule } from '../../../shared/models/rule.model';
@@ -33,6 +34,7 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
   csvData: any[];
   headerData: any[];
   requiredRule? = true;
+  admUser = false;
 
   displayedColumns: string[] = [
     'ruleID',
@@ -45,9 +47,14 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
     'button-detail',
   ];
 
-  constructor(private route: ActivatedRoute, private dialog: MatDialog) {}
+  constructor(
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
+    this.admUser = this.authenticationService.isAdmUser();
     this.harvestingID = Number(
       this.route.snapshot.paramMap.get('harvestingID')
     );

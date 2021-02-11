@@ -37,7 +37,7 @@
       [content]="validation.validSize | number"
     ></app-mini-card>
 
-    <app-mini-card
+    <app-mini-card *ngIf="admUser"
       class="col-md-3"
       icon="settings"
       i18n-title

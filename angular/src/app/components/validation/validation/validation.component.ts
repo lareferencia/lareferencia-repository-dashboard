@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../../core/services/authentication.service';
 import { HarvestingService } from '../../../core/services/harvesting.service';
 import { Harvesting } from '../../../shared/models/harvesting.model';
 import { Validation } from 'src/app/shared/models/validation.model';
@@ -17,14 +18,18 @@ export class ValidationComponent implements OnInit {
   isLoadingResults = true;
   validation: Validation;
   harvesting: Harvesting;
+  admUser = false;
 
   constructor(
     private route: ActivatedRoute,
     private validationService: ValidationService,
-    private harvestingService: HarvestingService
+    private harvestingService: HarvestingService,
+    private authenticationService: AuthenticationService
   ) {}
   
   ngOnInit(): void {
+    this.admUser = this.authenticationService.isAdmUser();
+    
     this.route.params.subscribe(() => {
       
       this.validation = null;

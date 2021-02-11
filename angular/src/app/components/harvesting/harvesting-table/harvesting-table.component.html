@@ -36,6 +36,15 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="transformedSize" *ngIf="admUser">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #transformedSize>
+          Transformed records
+        </th>
+        <td mat-cell *matCellDef="let harvesting">
+          {{ harvesting.transformedSize | number }}
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="invalidRecords">
         <th
           mat-header-cell
