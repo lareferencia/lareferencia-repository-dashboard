@@ -274,9 +274,18 @@
         <target>Registros válidos</target>
       </segment>
     </unit>
+    <unit id="6269371916922374000">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:41,42</note>
+      </notes>
+      <segment>
+        <source> Transformed records </source>
+        <target> Registros transformados </target>
+      </segment>
+    </unit>
     <unit id="5933137805033862730">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:47,48</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:56,57</note>
       </notes>
       <segment>
         <source> Invalid records </source>
@@ -285,7 +294,7 @@
     </unit>
     <unit id="6057552704441695502">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:56,57</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:65,66</note>
       </notes>
       <segment>
         <source> Start </source>
@@ -294,7 +303,7 @@
     </unit>
     <unit id="4700192692425133990">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:65,66</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:74,75</note>
       </notes>
       <segment>
         <source> End </source>
@@ -303,7 +312,7 @@
     </unit>
     <unit id="7387483197009994715">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:76,77</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:85,86</note>
       </notes>
       <segment>
         <source> Not available </source>
@@ -312,7 +321,7 @@
     </unit>
     <unit id="8441334606065163183">
       <notes>
-        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:85,86</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:94,95</note>
       </notes>
       <segment>
         <source> Validations </source>
@@ -478,8 +487,7 @@
     </unit>
     <unit id="3542042671420335679">
       <notes>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:29</note>
-      </notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:29</note></notes>
       <segment>
         <source>No</source>
         <target>Não</target>
