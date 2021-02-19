@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.ws.rs.NotFoundException;
@@ -70,15 +71,17 @@ public class KeycloakAdmin {
 	public Map<String, String> getUserInfo (String username, String[] userAttributes){
 		
     UserRepresentation user = keycloak.realm(realm).users().get(getUserId(username)).toRepresentation();
-		
+    Map<String, List<String>> attributes = user.getAttributes();
+		List<String> defaultValue = Arrays.asList("");
+
 		Map<String, String> userInfo = new HashMap<String, String>();
 		userInfo.put("username", user.getUsername());
 		userInfo.put("first_name", user.getFirstName());
 		userInfo.put("last_name", user.getLastName());
-		userInfo.put("email", user.getEmail());
-   
-    for (String attribute : userAttributes){
-		  userInfo.put(attribute, user.getAttributes().get(attribute).get(0));
+		userInfo.put("email", user.getEmail());		
+		
+		for (String attribute : userAttributes){
+			userInfo.put(attribute, Objects.isNull(attributes) ? "" : attributes.getOrDefault(attribute, defaultValue).get(0));
 		}
 	
 		return userInfo;
@@ -120,12 +123,14 @@ public class KeycloakAdmin {
   public Map<String, String> getGroupInfo (String groupname, String[] groupAttributes){
 		
 		GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupname);
+    Map<String, List<String>> attributes = group.getAttributes();
+		List<String> defaultValue = Arrays.asList("");
 		
 		Map<String, String> groupInfo = new HashMap<String, String>();
 		groupInfo.put("name", group.getName());
    
     for (String attribute : groupAttributes){
-		  groupInfo.put(attribute, group.getAttributes().get(attribute).get(0));
+      groupInfo.put(attribute, Objects.isNull(attributes) ? "" : attributes.getOrDefault(attribute, defaultValue).get(0));
 		}
 	
 		return groupInfo;
@@ -167,6 +172,18 @@ public class KeycloakAdmin {
     return isUserInGroup(getUserId(username), group.getId());
 	}
  
+  public Boolean removeUserFromGroup (String username, String groupname){
+			
+		GroupRepresentation group = new GroupRepresentation();
+    
+    if (groupExists(groupname)){
+    	group = keycloak.realm(realm).getGroupByPath("/" + groupname);
+		  keycloak.realm(realm).users().get(getUserId(username)).leaveGroup(group.getId());
+		}
+   
+    return !isUserInGroup(getUserId(username), group.getId());
+	}
+ 
   private String getUserId (String username) {
 		
 		List<UserRepresentation> users = keycloak.realm(realm).users().search(username); // substring-based match, can return more than one user
@@ -179,19 +196,17 @@ public class KeycloakAdmin {
 	}
 
   private UserRepresentation buildUserRepresentation (Map<String, String> userInfo, String[] userAttributes, boolean update){
-	
-		Map<String, List<String>> attributes = new HashMap<String, List<String>>();
-   
-    for (String attribute : userAttributes){
-		  attributes.put(attribute, Arrays.asList(userInfo.get(attribute)));
-		}
 		
 		UserRepresentation user = new UserRepresentation();
 		user.setUsername(userInfo.get("username"));
 		user.setFirstName(userInfo.get("first_name"));
 		user.setLastName(userInfo.get("last_name"));
 		user.setEmail(userInfo.get("email"));
-		user.setAttributes(attributes);
+		
+    for (String attribute : userAttributes){
+		  user.singleAttribute(attribute, userInfo.getOrDefault(attribute, ""));
+		}
+   
 		user.setEnabled(true);
 		
 		//Add credentials only if it is a new user
@@ -217,15 +232,12 @@ public class KeycloakAdmin {
  
   private GroupRepresentation buildGroupRepresentation (Map<String, String> groupInfo, String[] groupAttributes) {
 		
-		Map<String, List<String>> attributes = new HashMap<String, List<String>>();
-		
-    for (String attribute : groupAttributes){
-		  attributes.put(attribute, Arrays.asList(groupInfo.get(attribute)));
-		}
-		
 		GroupRepresentation group = new GroupRepresentation();
 		group.setName(groupInfo.get("name"));
-		group.setAttributes(attributes);
+		
+    for (String attribute : groupAttributes){
+      group.singleAttribute(attribute, groupInfo.getOrDefault(attribute, ""));
+		}
 		
 		return group;
 	}

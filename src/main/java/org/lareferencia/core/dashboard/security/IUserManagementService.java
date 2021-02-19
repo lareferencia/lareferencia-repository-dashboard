@@ -24,5 +24,6 @@ public interface IUserManagementService {
   List<String> listGroups();
 	
 	Boolean addUserToGroup(String userId, String groupId);
+  Boolean removeUserFromGroup(String userId, String groupId);
 
 }

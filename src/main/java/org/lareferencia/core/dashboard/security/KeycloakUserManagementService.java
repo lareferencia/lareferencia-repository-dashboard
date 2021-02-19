@@ -123,5 +123,12 @@ public class KeycloakUserManagementService implements IUserManagementService {
     KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
 		return admin.addUserToGroup(userId, groupId);
 	}
+ 
+	@Override
+	public Boolean removeUserFromGroup(String userId, String groupId) {
+		
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+		return admin.removeUserFromGroup(userId, groupId);
+	}
 
 }

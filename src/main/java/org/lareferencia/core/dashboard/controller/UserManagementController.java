@@ -107,8 +107,17 @@ public class UserManagementController {
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
-  @ApiOperation(value = "Removes a user")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Removes a user") })
+  @ApiOperation(value = "Removes a user from a group")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Adds a user to a group") })
+	@RequestMapping(value = "/user/admin/{username}/remove_from_group/{groupname}", method = RequestMethod.GET)
+	HttpEntity<Boolean> removeUserFromGroup(@PathVariable("username") String username, @PathVariable("groupname") String groupname) {
+    
+    Boolean result = uService.removeUserFromGroup(username, groupname);
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
+ 
+  @ApiOperation(value = "Deletes a user")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Deletes a user") })
 	@RequestMapping(value = "/user/admin/{username}/delete", method = RequestMethod.GET)
 	HttpEntity<Boolean> deleteUser(@PathVariable("username") String username) {
     
@@ -170,8 +179,8 @@ public class UserManagementController {
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
-  @ApiOperation(value = "Removes a group")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Removes a group") })
+  @ApiOperation(value = "Deletes a group")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Deletes a group") })
 	@RequestMapping(value = "/group/admin/{groupname}/delete", method = RequestMethod.GET)
 	HttpEntity<Boolean> deleteGroup(@PathVariable("groupname") String groupname) {
     
