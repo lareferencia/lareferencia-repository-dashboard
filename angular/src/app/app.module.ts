@@ -11,6 +11,7 @@ import { HarvestingModule } from './components/harvesting/harvesting.module';
 import { TemplateModule } from './components/template/template.module';
 import { HomeModule } from './components/home/home.module';
 import { BrokerModule } from './components/broker/broker.module';
+import { ValidationModule } from './components/validation/validation.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { BrokerModule } from './components/broker/broker.module';
     TemplateModule,
     HomeModule,
     BrokerModule,
+    ValidationModule,
   ],
   providers: [
     AuthenticationService,

@@ -1,7 +1,6 @@
 import { HarvestingTableComponent } from './harvesting-table/harvesting-table.component';
 import { HarvestingSourceComponent } from './harvesting-source/harvesting-source.component';
 import { HarvestingComponent } from './harvesting/harvesting.component';
-import { ValidationModule } from './../validation/validation.module';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -20,7 +19,6 @@ import { HarvestingChartFilterModule } from './harvesting-chart-filter/harvestin
   ],
   imports: [
     SharedModule,
-    ValidationModule,
     MatProgressSpinnerModule,
     MatTableModule,
     MatPaginatorModule,
