@@ -69,6 +69,15 @@ export class HarvestingService {
     );
   }
 
+  getMetadataXml(sourceAcronym: string, recordID: string): Observable<string> {
+    return this.http
+      .get<string>(`${this.baseurl}${sourceAcronym}/record/${recordID}`, <Object>{ responseType: 'text' })
+      .pipe(
+        map((obj) => obj),
+        catchError((e) => this.errorHandler(e))
+      );
+  }
+
   private errorHandler(e: any): Observable<any> {
     return throwError(e);
   }

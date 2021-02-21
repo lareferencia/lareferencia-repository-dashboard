@@ -86,3 +86,7 @@
   display: flex;
   justify-content: center;
 }
+
+.mat-tab-content {
+  margin-top: 15px;
+}

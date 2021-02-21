@@ -5,6 +5,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RulesListComponent } from './rules-list/rules-list.component';
 import { EvaluationRulesComponent } from './evaluation-rules/evaluation-rules.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [EvaluationRulesComponent, RulesListComponent],
@@ -13,7 +15,20 @@ import { EvaluationRulesComponent } from './evaluation-rules/evaluation-rules.co
     MatDialogModule,
     MatListModule,
     MatButtonToggleModule,
+    HighlightModule,
+    MatTabsModule,
   ],
   exports: [EvaluationRulesComponent, RulesListComponent],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        languages: {
+          xml: () => import('highlight.js/lib/languages/xml'),
+        },
+      },
+    },
+  ],
 })
 export class RuleModule {}

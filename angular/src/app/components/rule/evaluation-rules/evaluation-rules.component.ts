@@ -1,3 +1,4 @@
+import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { Component, OnInit, Inject, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { MatButtonToggle, MatButtonToggleChange } from '@angular/material/button-toggle';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -17,21 +18,29 @@ export class EvaluationRulesComponent implements OnInit, AfterViewInit {
   yellowToggle = true;
   greenToggle = true;
   selectedToggle = ['red', 'yellow', 'green'];
+  xml: string;
+  acronym: string;
+  isAdmUser = false;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) data: Record,
+    @Inject(MAT_DIALOG_DATA) data: any,
     private authenticationService: AuthenticationService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private service: HarvestingService,
   ) {
-    this.originalRecord = { ...data };
-    this.record = data;
+    this.originalRecord = { ...data.record };
+    this.record = data.record;
+    this.acronym = data.acronym;
   }
 
   ngOnInit(): void {
-    if (!this.authenticationService.isAdmUser()) {
+    if (!(this.isAdmUser = this.authenticationService.isAdmUser())) {
       this.yellowToggle = this.greenToggle = false;
       this.selectedToggle = ['red'];
     }
+    this.service.getMetadataXml(this.acronym, this.record.id).subscribe(result=> {
+      this.xml = result;
+    })
   }
 
   ngAfterViewInit(): void {
