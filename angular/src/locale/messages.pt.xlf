@@ -911,6 +911,16 @@
         <target>Regras não obrigatórias inválidas</target>
       </segment>
     </unit>
+    <unit id="954060685823278818">
+      <notes>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:147</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:147</note>
+      </notes>
+      <segment>
+        <source>Transformed record XML</source>
+        <target>XML do registro transformado</target>
+      </segment>
+    </unit>
     <unit id="4244642951135625547">
       <notes>
         <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:52,53</note>
