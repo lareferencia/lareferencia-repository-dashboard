@@ -53,7 +53,7 @@ public class KeycloakAdmin {
    
 		UserRepresentation user = buildUserRepresentation(userInfo, userAttributes, false);
 		Response response = keycloak.realm(realm).users().create(user);
-		
+   
 		//Add default roles to user
 		List<RoleRepresentation> roles = new ArrayList<RoleRepresentation>();
 				
