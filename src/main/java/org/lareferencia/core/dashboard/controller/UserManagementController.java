@@ -9,10 +9,12 @@ import org.lareferencia.core.dashboard.security.IUserManagementService;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,19 +48,10 @@ public class UserManagementController {
   
   @ApiOperation(value = "Creates a new user")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Creates a new user with the given user info") })
-	@RequestMapping(value = "/user/admin/create", method = RequestMethod.POST)
-	HttpEntity<Boolean> createUser(@RequestParam(value = "userInfo", required = true) String userInfo) {
+	@RequestMapping(value = "/user/admin/create", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	HttpEntity<Boolean> createUser(@RequestBody Map<String, String> userInfo) {
 
-		ObjectMapper mapper = new ObjectMapper();
-    Map<String, String> infoMap = new HashMap<String, String>();
-    
-    try {
-      infoMap = mapper.readValue(userInfo, new TypeReference<Map<String, String>>() {});
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    
-    Boolean result = uService.createUser(infoMap);
+    Boolean result = uService.createUser(userInfo);
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
@@ -73,19 +66,10 @@ public class UserManagementController {
  
   @ApiOperation(value = "Updates a user's info")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updates a user's info") })
-	@RequestMapping(value = "/user/self/{username}/update", method = RequestMethod.PUT)
-	HttpEntity<Boolean> updateUser(@PathVariable("username") String username, @RequestParam(value = "userInfo", required = true) String userInfo) {
+	@RequestMapping(value = "/user/self/{username}/update", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	HttpEntity<Boolean> updateUser(@PathVariable("username") String username, @RequestBody Map<String, String> userInfo) {
     
-    ObjectMapper mapper = new ObjectMapper();
-    Map<String, String> infoMap = new HashMap<String, String>();
-    
-    try {
-      infoMap = mapper.readValue(userInfo, new TypeReference<Map<String, String>>() {});
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    
-    Boolean result = uService.updateUser(username, infoMap);
+    Boolean result = uService.updateUser(username, userInfo);
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
@@ -136,19 +120,10 @@ public class UserManagementController {
  
   @ApiOperation(value = "Creates a new group")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Creates a new group with the given group info") })
-	@RequestMapping(value = "/group/admin/create", method = RequestMethod.POST)
-	HttpEntity<Boolean> createGroup(@RequestParam(value = "groupInfo", required = true) String groupInfo) {
-
-		ObjectMapper mapper = new ObjectMapper();
-    Map<String, String> infoMap = new HashMap<String, String>();
+	@RequestMapping(value = "/group/admin/create", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	HttpEntity<Boolean> createGroup(@RequestBody Map<String, String> groupInfo) {
     
-    try {
-      infoMap = mapper.readValue(groupInfo, new TypeReference<Map<String, String>>() {});
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    
-    Boolean result = uService.createGroup(infoMap);
+    Boolean result = uService.createGroup(groupInfo);
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
@@ -163,19 +138,10 @@ public class UserManagementController {
  
   @ApiOperation(value = "Updates a group's info")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updates a group's info") })
-	@RequestMapping(value = "/group/admin/{groupname}/update", method = RequestMethod.PUT)
-	HttpEntity<Boolean> updateGroup(@PathVariable("groupname") String groupname, @RequestParam(value = "groupInfo", required = true) String groupInfo) {
+	@RequestMapping(value = "/group/admin/{groupname}/update", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	HttpEntity<Boolean> updateGroup(@PathVariable("groupname") String groupname, @RequestBody Map<String, String> groupInfo) {
     
-    ObjectMapper mapper = new ObjectMapper();
-    Map<String, String> infoMap = new HashMap<String, String>();
-    
-    try {
-      infoMap = mapper.readValue(groupInfo, new TypeReference<Map<String, String>>() {});
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    
-    Boolean result = uService.updateGroup(groupname, infoMap);
+    Boolean result = uService.updateGroup(groupname, groupInfo);
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
  
