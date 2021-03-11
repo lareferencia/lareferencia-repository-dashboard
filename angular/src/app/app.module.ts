@@ -12,6 +12,7 @@ import { TemplateModule } from './components/template/template.module';
 import { HomeModule } from './components/home/home.module';
 import { BrokerModule } from './components/broker/broker.module';
 import { ValidationModule } from './components/validation/validation.module';
+import { AccountModule } from './components/account/account.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { ValidationModule } from './components/validation/validation.module';
     HomeModule,
     BrokerModule,
     ValidationModule,
+    AccountModule,
   ],
   providers: [
     AuthenticationService,

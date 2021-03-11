@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../../core/services/authentication.service';
 import { BrokerEventsFilter } from './../../../shared/models/broker-events-filter.model';
 import { BrokerService } from 'src/app/core/services/broker.service';
 import { HarvestingService } from '../../../core/services/harvesting.service';
@@ -17,6 +18,7 @@ export class NavComponent implements OnInit {
   showSubmenu: boolean = false;
   showSubmenuFio: boolean = false;
   repositoriesMenu: Menu[] = [];
+  admUser = false;
   filter: BrokerEventsFilter = {
     pageSize: 1,
     pageNumber: 0,
@@ -26,10 +28,12 @@ export class NavComponent implements OnInit {
     private navService: NavService,
     private router: Router,
     private harvestingService: HarvestingService,
-    private brokerService: BrokerService
+    private brokerService: BrokerService,
+    private authenticationService: AuthenticationService,
   ) {}
 
   ngOnInit(): void {
+    this.admUser = this.authenticationService.isAdmUser();
     this.harvestingService.getHarvestingList().subscribe((harvestingList) => {
       harvestingList.content.map((x) =>
         this.brokerService

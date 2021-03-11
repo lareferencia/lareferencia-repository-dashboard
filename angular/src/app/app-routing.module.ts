@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ValidationComponent } from './components/validation/validation/validation.component';
 import { AuthenticationService } from './core/services/authentication.service';
 import { BrokerComponent } from './components/broker/broker/broker.component';
+import { AccountComponent } from './components/account/account/account.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,12 @@ const routes: Routes = [
     path: ':acronym/broker',
     component: BrokerComponent,
     canActivate: [AuthenticationService],
+  },
+  {
+    path: 'manage/accounts',
+    component: AccountComponent,
+    canActivate: [AuthenticationService],
+    data: { roles: ['dashboard-admin'] },
   },
 ];
 

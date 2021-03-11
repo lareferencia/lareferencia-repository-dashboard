@@ -8,6 +8,12 @@
     fixedBottomGap="60"
   >
     <mat-nav-list class="nav-list">
+      <ng-template [ngIf]="admUser">
+        <div class="margin-top"></div>
+        <a class="menu-border semi-bold" mat-list-item routerLink="/manage/accounts">
+          <span class="full-width" i18n>Manage Accounts</span>
+        </a>
+      </ng-template>
       <div class="margin-top"></div>
       <a class="menu-border semi-bold" mat-list-item routerLink="/">
         <!-- <i mat-list-icon class="material-icons">home</i> -->
