@@ -1011,21 +1011,21 @@
         <target>Ocorrência válida</target>
       </segment>
     </unit>
-    <unit id="2012505379304288480">
+    <unit id="1370991229066688006">
       <notes>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:24</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:27,28</note>
       </notes>
       <segment>
-        <source>Invalid mandatory rules</source>
+        <source>Invalid mandatory rules </source>
         <target>Regras obrigatórias inválidas</target>
       </segment>
     </unit>
-    <unit id="5677791642966753995">
+    <unit id="5383782631336588425">
       <notes>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:25</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:29,30</note>
       </notes>
       <segment>
-        <source>Invalid not mandatory rules</source>
+        <source>Invalid not mandatory rules </source>
         <target>Regras não obrigatórias inválidas</target>
       </segment>
     </unit>
