@@ -22,6 +22,22 @@ export class ManageUsersService {
       );
   }
 
+  getUser(userName: string): Observable<UserInfo> {
+    return this.http.get<UserInfo>(`${this.baseurl}user/self/${userName}`).pipe(
+      map((obj) => obj),
+      catchError(this.errorHandler)
+    );
+  }
+
+  updateUser(userName: string, userInfo: UserInfo): Observable<boolean> {
+    return this.http
+      .put<boolean>(`${this.baseurl}user/self/${userName}/update`, userInfo)
+      .pipe(
+        map((obj) => obj),
+        catchError(this.errorHandler)
+      );
+  }
+
   private errorHandler(error: HttpErrorResponse) {
     return throwError(error);
   }

@@ -7,6 +7,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { UserListComponent } from './user-list/user-list.component';
 import { AccountComponent } from './account/account.component';
 import { UsersComponent } from './users/users.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UsersComponent } from './users/users.component';
     MatButtonModule,
     MatTabsModule,
     MatExpansionModule,
+    MatSnackBarModule,
   ],
 })
 export class AccountModule {}

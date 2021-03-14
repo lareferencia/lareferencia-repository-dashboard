@@ -1,8 +1,9 @@
 import { FileService } from './../../../core/services/file.service';
 import { CreateStatus } from './../../../shared/enums/create-status';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
 import { ManageUsersService } from 'src/app/core/services/manage-users.service';
 import { UserInfo } from 'src/app/shared/models/user-info.model';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-upload-users',
@@ -11,25 +12,44 @@ import { UserInfo } from 'src/app/shared/models/user-info.model';
 })
 export class UploadUsersComponent {
   @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('snackBarTemplate') snackBarTemplate: TemplateRef<any>;
   file: File = null;
   users: UserInfo[] = [];
+  message: string;
+  config: MatSnackBarConfig = {
+    duration: 4000,
+    horizontalPosition: 'center',
+    verticalPosition: 'top',
+    panelClass: ['msg-error']
+  };
 
   constructor(
     private manageUsersService: ManageUsersService,
-    private fileService: FileService
+    private fileService: FileService,
+    private snackBar: MatSnackBar
   ) {}
 
   onClickFileInputButton(): void {
     this.fileInput.nativeElement.click();
   }
 
+  onClickClearFile() {
+    this.file = null;
+    this.users = [];
+    this.fileInput.nativeElement.value = '';
+  }
+
+  dismissSnackbar(): void {
+    this.snackBar.dismiss();
+  }
+
   async onChangeFileInput(): Promise<void> {
+    this.users = [];
     const file: File = this.fileInput.nativeElement.files[0];
 
     if (!(file.size > 0)) {
-      const message = 'Invalid file format';
-      alert(message);
-      throw new Error(message);
+      this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
+      throw new Error('Invalid file format');
     }
 
     this.file = file;
@@ -38,9 +58,8 @@ export class UploadUsersComponent {
       const csvSeparator = ',';
 
       if (lines[0].split(',').length != 14) {
-        const message = 'Invalid file format.';
-        alert(message);
-        throw new Error(message);
+        this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
+        throw new Error('Invalid file format');
       }
 
       lines.forEach((element, index) => {
@@ -74,18 +93,32 @@ export class UploadUsersComponent {
 
   private manageUsers(users: UserInfo[]) {
     users.forEach((user) => {
-      this.manageUsersService.createUser(user).subscribe(
-        (x) => {
-          if (x == true)
-            this.users.find(
-              (x) => x.username === user.username
-            ).created_status = CreateStatus.Success;
+      this.manageUsersService.getUser(user.username).subscribe(
+        () => {
+          this.manageUsersService.updateUser(user.username, user).subscribe(
+            (result) => this.successHandler(user, result),
+            () => this.errorHandler(user)
+          );
         },
         () => {
-          this.users.find((x) => x.username === user.username).created_status =
-            CreateStatus.Error;
+          this.manageUsersService.createUser(user).subscribe(
+            (result) => this.successHandler(user, result),
+            () => this.errorHandler(user)
+          );
         }
       );
     });
+  }
+
+  private successHandler(user: UserInfo, result: boolean) {
+    const status = result == true ? CreateStatus.Success : CreateStatus.Error;
+    this.users.find(
+      (x) => x.username === user.username
+    ).created_status = status;
+  }
+
+  private errorHandler(user: UserInfo) {
+    this.users.find((x) => x.username === user.username).created_status =
+      CreateStatus.Error;
   }
 }
