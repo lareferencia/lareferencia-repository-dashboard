@@ -609,7 +609,7 @@
     </unit>
     <unit id="718249813093322951">
       <notes>
-        <note category="location">src/app/components/account/upload-users/upload-users.component.html:4</note>
+        <note category="location">src/app/components/account/upload-users/upload-users.component.html:5</note>
       </notes>
       <segment>
         <source>Select file</source>
@@ -617,10 +617,18 @@
     </unit>
     <unit id="4267980179189609192">
       <notes>
-        <note category="location">src/app/components/account/upload-users/upload-users.component.html:6</note>
+        <note category="location">src/app/components/account/upload-users/upload-users.component.html:7</note>
       </notes>
       <segment>
         <source>No file selected</source>
+      </segment>
+    </unit>
+    <unit id="5749944901261431231">
+      <notes>
+        <note category="location">src/app/components/account/upload-users/upload-users.component.html:17</note>
+      </notes>
+      <segment>
+        <source>Invalid file format</source>
       </segment>
     </unit>
     <unit id="3894950702316166331">
