@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.2",
-    "@angular/cli": "~11.0.2",
+    "@angular/cli": "^11.2.5",
     "@angular/compiler-cli": "~11.0.1",
     "@types/node": "^12.11.1",
     "lite-server": "^2.6.1",
