@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { User } from 'src/app/shared/models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,20 @@ export class ManageUsersService {
         map((obj) => obj),
         catchError(this.errorHandler)
       );
+  }
+
+  getRegularUserList(): Observable<User[]> {
+    return this.http.get<string[]>(`${this.baseurl}user/admin/list`).pipe(
+      map((obj) => obj.map((value) => ({ username: value }))),
+      catchError(this.errorHandler)
+    );
+  }
+
+  deleteUser(userName: string): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.baseurl}user/admin/${userName}/delete`).pipe(
+      map((obj) => obj),
+      catchError(this.errorHandler)
+    );
   }
 
   private errorHandler(error: HttpErrorResponse) {

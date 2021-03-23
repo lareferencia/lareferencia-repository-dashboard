@@ -1,6 +1,18 @@
 <div class="users">
   <mat-accordion class="headers-align">
-    <mat-expansion-panel expanded>
+    <mat-expansion-panel expanded (opened)="openUserGroup()">
+      <mat-expansion-panel-header>
+        <mat-panel-title i18n>
+          Users
+        </mat-panel-title>
+        <mat-panel-description i18n>
+          User list
+          <mat-icon>recent_actors</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-user-table [update]="openedUserGroup"></app-user-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title i18n>
           Import

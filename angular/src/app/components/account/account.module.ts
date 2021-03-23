@@ -8,6 +8,13 @@ import { UserListComponent } from './user-list/user-list.component';
 import { AccountComponent } from './account/account.component';
 import { UsersComponent } from './users/users.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { UserTableComponent } from './user-table/user-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -15,6 +22,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     UserListComponent,
     AccountComponent,
     UsersComponent,
+    UserTableComponent,
+    DeleteConfirmationComponent,
   ],
   imports: [
     SharedModule,
@@ -22,6 +31,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTabsModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
+    MatInputModule,
   ],
 })
 export class AccountModule {}
