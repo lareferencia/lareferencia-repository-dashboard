@@ -438,6 +438,7 @@
     <unit id="2345522807493182096">
       <notes>
         <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:51</note>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:39</note>
         <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:26</note>
         <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:26</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:177</note>
@@ -655,9 +656,25 @@
         <source> Error </source>
       </segment>
     </unit>
-    <unit id="1643349242058468968">
+    <unit id="1582670847481559188">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:6,7</note>
+      </notes>
+      <segment>
+        <source> Users </source>
+      </segment>
+    </unit>
+    <unit id="4726219703281488821">
+      <notes>
+        <note category="location">src/app/components/account/users/users.component.html:9,10</note>
+      </notes>
+      <segment>
+        <source> User list <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">recent_actors</pc></source>
+      </segment>
+    </unit>
+    <unit id="1643349242058468968">
+      <notes>
+        <note category="location">src/app/components/account/users/users.component.html:18,19</note>
       </notes>
       <segment>
         <source> Import </source>
@@ -665,7 +682,7 @@
     </unit>
     <unit id="2080097627506325879">
       <notes>
-        <note category="location">src/app/components/account/users/users.component.html:9,10</note>
+        <note category="location">src/app/components/account/users/users.component.html:21,22</note>
       </notes>
       <segment>
         <source> Import users <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">upload</pc></source>
@@ -673,7 +690,7 @@
     </unit>
     <unit id="7959509736794331703">
       <notes>
-        <note category="location">src/app/components/account/users/users.component.html:18,19</note>
+        <note category="location">src/app/components/account/users/users.component.html:30,31</note>
       </notes>
       <segment>
         <source> Create </source>
@@ -681,10 +698,58 @@
     </unit>
     <unit id="6804749790521625283">
       <notes>
-        <note category="location">src/app/components/account/users/users.component.html:21,22</note>
+        <note category="location">src/app/components/account/users/users.component.html:33,34</note>
       </notes>
       <segment>
         <source> Create user <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">account_circle</pc></source>
+      </segment>
+    </unit>
+    <unit id="5248717555542428023">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:2</note>
+      </notes>
+      <segment>
+        <source>Username</source>
+      </segment>
+    </unit>
+    <unit id="4735050242789118064">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:31,32</note>
+      </notes>
+      <segment>
+        <source> Delete </source>
+      </segment>
+    </unit>
+    <unit id="4839682406703705780">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
+      </notes>
+      <segment>
+        <source>Delete User</source>
+      </segment>
+    </unit>
+    <unit id="4937450702054274075">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
+      </notes>
+      <segment>
+        <source>Are you sure you want to permanently delete the user <pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="1" equiv="INTERPOLATION" disp="{{username}}"/></pc></source>
+      </segment>
+    </unit>
+    <unit id="2159130950882492111">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:6</note>
+      </notes>
+      <segment>
+        <source>Cancel</source>
+      </segment>
+    </unit>
+    <unit id="7022070615528435141">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:7</note>
+      </notes>
+      <segment>
+        <source>Delete</source>
       </segment>
     </unit>
     <unit id="732432619111661062">
