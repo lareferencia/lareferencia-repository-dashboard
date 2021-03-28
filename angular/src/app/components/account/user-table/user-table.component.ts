@@ -19,7 +19,6 @@ export class UserTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<User>;
   @ViewChild('username') username: any;
-  @Input() update: EventEmitter<void> = new EventEmitter();
   dataSource: UserTableDataSource;
   displayedColumns = ['username', 'button-delete'];
   csvData: any[];
@@ -33,7 +32,6 @@ export class UserTableComponent implements AfterViewInit, OnInit {
   ) {}
 
   ngOnInit() {
-    this.update.subscribe(() => this.loadRecords());
   }
 
   ngAfterViewInit() {

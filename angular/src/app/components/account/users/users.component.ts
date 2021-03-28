@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { UserTableComponent } from './../user-table/user-table.component';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-users',
@@ -6,8 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent {
-  @Output() openedUserGroup: EventEmitter<void> = new EventEmitter();
+  @ViewChild(UserTableComponent) userTableChild: UserTableComponent;
   openUserGroup() {
-    this.openedUserGroup.emit(null);
+    this.userTableChild.loadRecords();
   }
 }
