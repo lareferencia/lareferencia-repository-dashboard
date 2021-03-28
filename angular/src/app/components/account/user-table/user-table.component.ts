@@ -1,6 +1,6 @@
 import { DeleteConfirmationComponent } from './../delete-confirmation/delete-confirmation.component';
 import { ManageUsersService } from './../../../core/services/manage-users.service';
-import { AfterViewInit, Component, EventEmitter, OnInit, ViewChild, Input } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
