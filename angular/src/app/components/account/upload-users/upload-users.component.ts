@@ -1,6 +1,7 @@
+import { ProcessStatus } from './../../../shared/enums/process-status';
+import { ProcessListComponent } from './../process-list/process-list.component';
 import { ProcessInfo } from '../../../shared/models/process-info.model';
 import { FileService } from './../../../core/services/file.service';
-import { CreateStatus } from './../../../shared/enums/create-status';
 import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
 import { ManageUsersService } from 'src/app/core/services/manage-users.service';
 import { UserInfo } from 'src/app/shared/models/user-info.model';
@@ -14,6 +15,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 export class UploadUsersComponent {
   @ViewChild('fileInput') fileInput: ElementRef;
   @ViewChild('snackBarTemplate') snackBarTemplate: TemplateRef<any>;
+  @ViewChild(ProcessListComponent) processListChild: ProcessListComponent; 
   file: File = null;
   users: UserInfo[] = [];
   process: ProcessInfo[] = [];
@@ -86,10 +88,7 @@ export class UploadUsersComponent {
             password: cols[0],
           });
 
-          this.process.push({
-            description: cols[0],
-            createdStatus: CreateStatus.Processing,
-          });
+          this.process.push({ description: cols[0] });
         }
       });
 
@@ -102,29 +101,17 @@ export class UploadUsersComponent {
       this.manageUsersService.getUser(user.username).subscribe(
         () => {
           this.manageUsersService.updateUser(user.username, user).subscribe(
-            (result) => this.successHandler(user, result),
-            () => this.errorHandler(user)
+            (result) => this.processListChild.onUpdateStatus({description: user.username, status: result ? ProcessStatus.Success: ProcessStatus.Error}),
+            () => this.processListChild.onUpdateStatus({description: user.username, status: ProcessStatus.Error})
           );
         },
         () => {
           this.manageUsersService.createUser(user).subscribe(
-            (result) => this.successHandler(user, result),
-            () => this.errorHandler(user)
+            (result) => this.processListChild.onUpdateStatus({description: user.username, status: result ? ProcessStatus.Success: ProcessStatus.Error}),
+            () => this.processListChild.onUpdateStatus({description: user.username, status: ProcessStatus.Error})
           );
         }
       );
     });
-  }
-
-  private successHandler(user: UserInfo, result: boolean) {
-    const status = result == true ? CreateStatus.Success : CreateStatus.Error;
-    this.process.find(
-      (x) => x.description === user.username
-    ).createdStatus = status;
-  }
-
-  private errorHandler(user: UserInfo) {
-    this.process.find((x) => x.description === user.username).createdStatus =
-      CreateStatus.Error;
   }
 }

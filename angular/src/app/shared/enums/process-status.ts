@@ -1,4 +1,4 @@
-export enum CreateStatus {
+export enum ProcessStatus {
   Processing,
   Success,
   Error,

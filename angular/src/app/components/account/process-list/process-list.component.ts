@@ -7,5 +7,15 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./process-list.component.css'],
 })
 export class ProcessListComponent {
-  @Input() process: ProcessInfo[] = [];
+  @Input() processes: ProcessInfo[] = [];
+
+  onUpdateStatus(processStatus: ProcessInfo) {
+    this.processes.map(
+      (x) =>
+        (x.status =
+          x.description === processStatus.description
+            ? processStatus.status
+            : x.status)
+    );
+  }
 }

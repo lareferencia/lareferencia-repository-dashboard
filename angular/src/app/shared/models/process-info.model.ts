@@ -1,6 +1,6 @@
-import { CreateStatus } from '../enums/create-status';
+import { ProcessStatus } from '../enums/process-status';
 
 export interface ProcessInfo {
   description: string;
-  createdStatus: CreateStatus;
+  status?: ProcessStatus;
 }
