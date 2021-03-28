@@ -42,6 +42,26 @@
         <source>Below is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
       </segment>
     </unit>
+    <unit id="6436995159190484844">
+      <notes>
+        <note category="location">src/app/components/broker/broker/broker.component.html:7</note>
+      </notes>
+      <segment>
+        <source>OpenAIRE Broker</source>
+      </segment>
+    </unit>
+    <unit id="8309278567108284050">
+      <notes>
+        <note category="location">src/app/components/broker/broker/broker.component.html:7,11</note>
+      </notes>
+      <segment>
+        <source>OpenAIRE Broker Service.
+
+  Thanks to the Broker, repositories, publishers or aggregators can exchange metadata and enrich their local metadata collection by subscribing to notifications of different types. The Broker is able to notify Content providers when the OpenAIRE Graph contains information that is not available in the original collection of the data source. 
+  
+  It is a subscription-notification service operating on top of the OpenAIRE Research Graph, a de-duplicated, enriched, linked, open scholarly communication graph.</source>
+      </segment>
+    </unit>
     <unit id="7467308342369948080">
       <notes>
         <note category="location">src/app/components/validation/validation/validation.component.html:7,8</note>
@@ -84,8 +104,8 @@
       <notes>
         <note category="location">src/app/components/validation/validation/validation.component.html:44</note>
         <note category="location">src/app/components/validation/validation/validation.component.html:44</note>
-        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:44</note>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:44</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:44</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:22</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:155</note>
       </notes>
@@ -130,32 +150,12 @@
         <source>Records</source>
       </segment>
     </unit>
-    <unit id="510215860731572676">
+    <unit id="517717415273683083">
       <notes>
         <note category="location">src/app/components/validation/validation/validation.component.html:77</note>
       </notes>
       <segment>
-        <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</source>
-      </segment>
-    </unit>
-    <unit id="6436995159190484844">
-      <notes>
-        <note category="location">src/app/components/broker/broker/broker.component.html:7</note>
-      </notes>
-      <segment>
-        <source>OpenAIRE Broker</source>
-      </segment>
-    </unit>
-    <unit id="8309278567108284050">
-      <notes>
-        <note category="location">src/app/components/broker/broker/broker.component.html:7,11</note>
-      </notes>
-      <segment>
-        <source>OpenAIRE Broker Service.
-
-  Thanks to the Broker, repositories, publishers or aggregators can exchange metadata and enrich their local metadata collection by subscribing to notifications of different types. The Broker is able to notify Content providers when the OpenAIRE Graph contains information that is not available in the original collection of the data source. 
-  
-  It is a subscription-notification service operating on top of the OpenAIRE Research Graph, a de-duplicated, enriched, linked, open scholarly communication graph.</source>
+        <source>The data below presents the complete diagnosis of your institution&apos;s data collection. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.</source>
       </segment>
     </unit>
     <unit id="3867153508248553779">
@@ -185,7 +185,7 @@
     </unit>
     <unit id="7644929688558867872">
       <notes>
-        <note category="location">src/app/components/account/account/account.component.html:9</note>
+        <note category="location">src/app/components/account/account/account.component.html:11</note>
       </notes>
       <segment>
         <source>Users in groups</source>
@@ -241,20 +241,20 @@
         <source>OpenAIRE Broker </source>
       </segment>
     </unit>
-    <unit id="5096107754514710030">
-      <notes>
-        <note category="location">src/app/components/records/record-valid/record-valid.component.html:2,4</note>
-      </notes>
-      <segment>
-        <source> Records that contain the valid &quot;<ph id="0" equiv="INTERPOLATION" disp="id &quot;{{ getRule(ruleID).nam"/>&quot; rule </source>
-      </segment>
-    </unit>
     <unit id="8570260821751442666">
       <notes>
         <note category="location">src/app/components/records/record-invalid/record-invalid.component.html:10</note>
       </notes>
       <segment>
         <source>Records that contain the invalid &apos;&apos;<ph id="0" equiv="INTERPOLATION" disp="he invalid &apos;&apos;{{ getRule(ru"/>&apos;&apos; rule</source>
+      </segment>
+    </unit>
+    <unit id="5096107754514710030">
+      <notes>
+        <note category="location">src/app/components/records/record-valid/record-valid.component.html:2,4</note>
+      </notes>
+      <segment>
+        <source> Records that contain the valid &quot;<ph id="0" equiv="INTERPOLATION" disp="id &quot;{{ getRule(ruleID).nam"/>&quot; rule </source>
       </segment>
     </unit>
     <unit id="8742130100135598533">
@@ -566,8 +566,8 @@
     <unit id="6161624606545961207">
       <notes>
         <note category="location">src/app/components/validation/validation-table/validation-table.component.html:117,118</note>
-        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:58,59</note>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:58,59</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:58,59</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:169,170</note>
       </notes>
       <segment>
@@ -634,7 +634,7 @@
     </unit>
     <unit id="3894950702316166331">
       <notes>
-        <note category="location">src/app/components/account/user-list/user-list.component.html:8</note>
+        <note category="location">src/app/components/account/process-list/process-list.component.html:8</note>
       </notes>
       <segment>
         <source>Loading...</source>
@@ -642,7 +642,7 @@
     </unit>
     <unit id="3734778559074647292">
       <notes>
-        <note category="location">src/app/components/account/user-list/user-list.component.html:11,12</note>
+        <note category="location">src/app/components/account/process-list/process-list.component.html:11,12</note>
       </notes>
       <segment>
         <source> Success </source>
@@ -650,7 +650,7 @@
     </unit>
     <unit id="3058268075253637641">
       <notes>
-        <note category="location">src/app/components/account/user-list/user-list.component.html:14,15</note>
+        <note category="location">src/app/components/account/process-list/process-list.component.html:14,15</note>
       </notes>
       <segment>
         <source> Error </source>
@@ -675,6 +675,7 @@
     <unit id="1643349242058468968">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:18,19</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:17,18</note>
       </notes>
       <segment>
         <source> Import </source>
@@ -691,6 +692,7 @@
     <unit id="7959509736794331703">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:30,31</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:29,30</note>
       </notes>
       <segment>
         <source> Create </source>
@@ -752,10 +754,58 @@
         <source>Delete</source>
       </segment>
     </unit>
+    <unit id="2740427404733507235">
+      <notes>
+        <note category="location">src/app/components/account/groups/groups.component.html:6,7</note>
+      </notes>
+      <segment>
+        <source> Groups </source>
+      </segment>
+    </unit>
+    <unit id="6066780391161469629">
+      <notes>
+        <note category="location">src/app/components/account/groups/groups.component.html:9,10</note>
+      </notes>
+      <segment>
+        <source> Group list <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">groups</pc></source>
+      </segment>
+    </unit>
+    <unit id="6325192997947077542">
+      <notes>
+        <note category="location">src/app/components/account/groups/groups.component.html:20,21</note>
+      </notes>
+      <segment>
+        <source> Import groups <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">upload</pc></source>
+      </segment>
+    </unit>
+    <unit id="4930229663435039589">
+      <notes>
+        <note category="location">src/app/components/account/groups/groups.component.html:32,33</note>
+      </notes>
+      <segment>
+        <source> Create group <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">group</pc></source>
+      </segment>
+    </unit>
+    <unit id="4235505579599675574">
+      <notes>
+        <note category="location">src/app/components/account/group-sync/group-sync.component.html:2</note>
+      </notes>
+      <segment>
+        <source>Sync</source>
+      </segment>
+    </unit>
+    <unit id="6659262502111103692">
+      <notes>
+        <note category="location">src/app/components/account/group-sync/group-sync.component.html:8</note>
+      </notes>
+      <segment>
+        <source>Import acronym from existing repositories</source>
+      </segment>
+    </unit>
     <unit id="732432619111661062">
       <notes>
-        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:21,22</note>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:21,22</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:21,22</note>
       </notes>
       <segment>
         <source> Identifier </source>
@@ -763,9 +813,9 @@
     </unit>
     <unit id="2957163997998056771">
       <notes>
-        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:27</note>
-        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:22</note>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:27</note>
+        <note category="location">src/app/components/rule/evaluation-rules/evaluation-rules.component.html:22</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:27</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:13</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:136</note>
       </notes>
@@ -775,8 +825,8 @@
     </unit>
     <unit id="7317370274961421513">
       <notes>
-        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:35</note>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:35</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:35</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:144</note>
       </notes>
       <segment>
@@ -785,8 +835,8 @@
     </unit>
     <unit id="4399330611551184869">
       <notes>
-        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:41</note>
         <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:41</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:41</note>
       </notes>
       <segment>
         <source>Transformation</source>
@@ -798,24 +848,6 @@
       </notes>
       <segment>
         <source> Export CSV </source>
-      </segment>
-    </unit>
-    <unit id="5015476460808884362">
-      <notes>
-        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:11,12</note>
-        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:11,12</note>
-      </notes>
-      <segment>
-        <source> Occurrence </source>
-      </segment>
-    </unit>
-    <unit id="1582655595976194789">
-      <notes>
-        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:18,19</note>
-        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:18,19</note>
-      </notes>
-      <segment>
-        <source> Amount </source>
       </segment>
     </unit>
     <unit id="2790789392596235103">
@@ -1037,6 +1069,24 @@
       </notes>
       <segment>
         <source> Default </source>
+      </segment>
+    </unit>
+    <unit id="5015476460808884362">
+      <notes>
+        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:11,12</note>
+        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:11,12</note>
+      </notes>
+      <segment>
+        <source> Occurrence </source>
+      </segment>
+    </unit>
+    <unit id="1582655595976194789">
+      <notes>
+        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:18,19</note>
+        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:18,19</note>
+      </notes>
+      <segment>
+        <source> Amount </source>
       </segment>
     </unit>
     <unit id="4638450448409947660">

@@ -56,6 +56,14 @@
         <target>OpenAIRE Broker</target>
       </segment>
     </unit>
+    <unit id="6436995159190484844">
+      <notes>
+        <note category="location">src/app/components/broker/broker/broker.component.html:7</note>
+      </notes>
+      <segment>
+        <source>OpenAIRE Broker</source>
+      </segment>
+    </unit>
     <unit id="8309278567108284050">
       <notes>
         <note category="location">src/app/components/broker/broker/broker.component.html:7,11</note>
@@ -63,15 +71,17 @@
       <segment>
         <source>OpenAIRE Broker Service.
 
-  Thanks to the Broker, repositories, publishers or aggregators can exchange metadata and enrich their local metadata collection by subscribing to notifications of different types. The Broker is able to notify Content providers when the OpenAIRE Graph contains information that is not available in the original collection of the data source. 
-  
-  It is a subscription-notification service operating on top of the OpenAIRE Research Graph, a de-duplicated, enriched, linked, open scholarly communication graph.</source>
+          Thanks to the Broker, repositories, publishers or aggregators can exchange metadata and enrich their local metadata collection by subscribing to notifications of different types. The Broker is able to notify Content providers when the OpenAIRE Graph contains information that is not available in the original collection of the data source. 
+    
+          It is a subscription-notification service operating on top of the OpenAIRE Research Graph, a de-duplicated, enriched, linked, open scholarly communication graph.
+        </source>
+        <target>Serviço OpenAIRE Broker. 
+        
+        Graças ao Broker, repositórios, editores ou agregadores podem trocar metadados e enriquecer sua coleção local de metadados assinando notificações de diferentes tipos. O Broker é capaz de notificar os provedores de Conteúdo quando o Gráfico OpenAIRE contém informações que não estão disponíveis na coleção original da fonte de dados. 
+        
+        É um serviço de notificação de assinatura operando no topo do OpenAIRE Research Graph, um gráfico de comunicação acadêmica aberto, sem duplicação, enriquecido, vinculado.
+        </target>
       </segment>
-      <target>Serviço OpenAIRE Broker. 
-      
-      Graças ao Broker, repositórios, editores ou agregadores podem trocar metadados e enriquecer sua coleção local de metadados assinando notificações de diferentes tipos. O Broker é capaz de notificar os provedores de Conteúdo quando o Gráfico OpenAIRE contém informações que não estão disponíveis na coleção original da fonte de dados. 
-      
-      É um serviço de notificação de assinatura operando no topo do OpenAIRE Research Graph, um gráfico de comunicação acadêmica aberto, sem duplicação, enriquecido, vinculado.</target>
     </unit>
     <unit id="3867153508248553779">
       <notes>
@@ -103,7 +113,7 @@
     </unit>
     <unit id="7644929688558867872">
       <notes>
-        <note category="location">src/app/components/account/account/account.component.html:9</note>
+        <note category="location">src/app/components/account/account/account.component.html:11</note>
       </notes>
       <segment>
         <source>Users in groups</source>
@@ -204,7 +214,7 @@
     </unit>
     <unit id="3894950702316166331">
       <notes>
-        <note category="location">src/app/components/account/user-list/user-list.component.html:8</note>
+        <note category="location">src/app/components/account/process-list/process-list.component.html:8</note>
       </notes>
       <segment>
         <source>Loading...</source>
@@ -213,7 +223,7 @@
     </unit>
     <unit id="3734778559074647292">
       <notes>
-        <note category="location">src/app/components/account/user-list/user-list.component.html:11,12</note>
+        <note category="location">src/app/components/account/process-list/process-list.component.html:11,12</note>
       </notes>
       <segment>
         <source> Success </source>
@@ -222,7 +232,7 @@
     </unit>
     <unit id="3058268075253637641">
       <notes>
-        <note category="location">src/app/components/account/user-list/user-list.component.html:14,15</note>
+        <note category="location">src/app/components/account/process-list/process-list.component.html:14,15</note>
       </notes>
       <segment>
         <source> Error </source>
@@ -250,6 +260,7 @@
     <unit id="1643349242058468968">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:18,19</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:17,18</note>
       </notes>
       <segment>
         <source> Import </source>
@@ -268,6 +279,7 @@
     <unit id="7959509736794331703">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:30,31</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:29,30</note>
       </notes>
       <segment>
         <source> Create </source>
@@ -299,6 +311,60 @@
       <segment>
         <source> Delete </source>
         <target> Excluir </target>
+      </segment>
+    </unit>
+     <unit id="2740427404733507235">
+      <notes>
+        <note category="location">src/app/components/account/groups/groups.component.html:6,7</note>
+      </notes>
+      <segment>
+        <source> Groups </source>
+        <target> Grupos </target>
+      </segment>
+    </unit>
+    <unit id="6066780391161469629">
+      <notes>
+        <note category="location">src/app/components/account/groups/groups.component.html:9,10</note>
+      </notes>
+      <segment>
+        <source> Group list <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">groups</pc></source>
+        <target> Lista de grupos <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">groups</pc></target>
+      </segment>
+    </unit>
+    <unit id="6325192997947077542">
+      <notes>
+        <note category="location">src/app/components/account/groups/groups.component.html:20,21</note>
+      </notes>
+      <segment>
+        <source> Import groups <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">upload</pc></source>
+        <target> Importar grupos <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">upload</pc></target>
+      </segment>
+    </unit>
+    <unit id="4930229663435039589">
+      <notes>
+        <note category="location">src/app/components/account/groups/groups.component.html:32,33</note>
+      </notes>
+      <segment>
+        <source> Create group <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">group</pc></source>
+        <target> Criar grupo <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">group</pc></target>
+      </segment>
+    </unit>
+    <unit id="4235505579599675574">
+      <notes>
+        <note category="location">src/app/components/account/group-sync/group-sync.component.html:2</note>
+      </notes>
+      <segment>
+        <source>Sync</source>
+        <target>Sincronizar</target>
+      </segment>
+    </unit>
+    <unit id="6659262502111103692">
+      <notes>
+        <note category="location">src/app/components/account/group-sync/group-sync.component.html:8</note>
+      </notes>
+      <segment>
+        <source>Import acronym from existing repositories</source>
+        <target>Importar acrônimo de repositórios existentes</target>
       </segment>
     </unit>
     <unit id="4839682406703705780">
@@ -445,13 +511,13 @@
         <target>No gráfico abaixo é possível visualizar o resultado das validações realizadas. Os registros que apresentam o nível de validação em 100% referem-se aos registros que cumpriram as regras obrigatórias de coleta da Biblioteca Digital Brasileira de Teses e Dissertações (BDTD) tornando-se registros válidos.Os registros que apresentam o nível de validação em 0.00% referem-se aos registros que não cumpriram as regras obrigatórias de coleta da Biblioteca Digital Brasileira de Teses e Dissertações (BDTD) tornando-se registros inválidos. Neste caso, o usuário tem a opção de visualizar quais foram as ocorrências inválidas no botão detalhes, onde são mostrados o valor do metadado com as quantidades correspondentes.</target>
       </segment>
     </unit>
-    <unit id="510215860731572676">
+    <unit id="517717415273683083">
       <notes>
         <note category="location">src/app/components/validation/validation/validation.component.html:77</note>
       </notes>
       <segment>
-        <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</source>
-        <target>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</target>
+        <source>The data below presents the complete diagnosis of your institution&apos;s data collection. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.</source>
+        <target>Os dados abaixo apresenta o diagnóstico completo da coleta de dados de sua instituição. Aqui será possível verificar quais são os registros válidos, os inválidos e o que torna um registro inválido. Além de permitir uma visualização customizada, em que é possível fazer combinações entre o tipo de registro (válido ou invalido) e o tipo de regra. Já no botão detalhes é possível visualizar item a item a aplicabilidade e a conformidade de cada regra de validação.</target>
       </segment>
     </unit>
     <unit id="8742130100135598533">
