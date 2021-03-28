@@ -1,5 +1,3 @@
-import { CreateStatus } from "../enums/create-status";
-
 export interface UserInfo {
   username: string;
   first_name: string;
@@ -17,5 +15,4 @@ export interface UserInfo {
   source_url: string;
   source_oai_url: string;
   password: string;
-  created_status: CreateStatus;
 }

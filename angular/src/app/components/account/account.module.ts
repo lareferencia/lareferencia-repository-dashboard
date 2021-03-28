@@ -4,7 +4,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { UserListComponent } from './user-list/user-list.component';
+import { ProcessListComponent } from './process-list/process-list.component';
 import { AccountComponent } from './account/account.component';
 import { UsersComponent } from './users/users.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -19,7 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     UploadUsersComponent,
-    UserListComponent,
+    ProcessListComponent,
     AccountComponent,
     UsersComponent,
     UserTableComponent,

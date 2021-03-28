@@ -1,3 +1,4 @@
+import { ProcessInfo } from '../../../shared/models/process-info.model';
 import { FileService } from './../../../core/services/file.service';
 import { CreateStatus } from './../../../shared/enums/create-status';
 import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
@@ -15,6 +16,7 @@ export class UploadUsersComponent {
   @ViewChild('snackBarTemplate') snackBarTemplate: TemplateRef<any>;
   file: File = null;
   users: UserInfo[] = [];
+  process: ProcessInfo[] = [];
   message: string;
   config: MatSnackBarConfig = {
     duration: 4000,
@@ -35,7 +37,7 @@ export class UploadUsersComponent {
 
   onClickClearFile() {
     this.file = null;
-    this.users = [];
+    this.users = this.process = [];
     this.fileInput.nativeElement.value = '';
   }
 
@@ -82,7 +84,11 @@ export class UploadUsersComponent {
             source_url: cols[11],
             source_oai_url: cols[12],
             password: cols[0],
-            created_status: CreateStatus.Processing,
+          });
+
+          this.process.push({
+            description: cols[0],
+            createdStatus: CreateStatus.Processing,
           });
         }
       });
@@ -112,13 +118,13 @@ export class UploadUsersComponent {
 
   private successHandler(user: UserInfo, result: boolean) {
     const status = result == true ? CreateStatus.Success : CreateStatus.Error;
-    this.users.find(
-      (x) => x.username === user.username
-    ).created_status = status;
+    this.process.find(
+      (x) => x.description === user.username
+    ).createdStatus = status;
   }
 
   private errorHandler(user: UserInfo) {
-    this.users.find((x) => x.username === user.username).created_status =
+    this.process.find((x) => x.description === user.username).createdStatus =
       CreateStatus.Error;
   }
 }
