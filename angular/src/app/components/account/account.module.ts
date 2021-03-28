@@ -15,6 +15,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { GroupsComponent } from './groups/groups.component';
+import { GroupSyncComponent } from './group-sync/group-sync.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { MatInputModule } from '@angular/material/input';
     UsersComponent,
     UserTableComponent,
     DeleteConfirmationComponent,
+    GroupsComponent,
+    GroupSyncComponent,
   ],
   imports: [
     SharedModule,
