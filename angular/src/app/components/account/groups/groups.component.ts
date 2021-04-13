@@ -1,4 +1,6 @@
+import { ViewChild } from '@angular/core';
 import { Component } from '@angular/core';
+import { GroupTableComponent } from '../group-table/group-table.component';
 
 @Component({
   selector: 'app-groups',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./groups.component.css'],
 })
 export class GroupsComponent {
-  openExpanderGroup() {}
+  @ViewChild(GroupTableComponent) groupTableChild: GroupTableComponent;
+  openExpanderGroup() {
+    this.groupTableChild.loadRecords();
+  }
 }

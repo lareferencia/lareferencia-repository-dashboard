@@ -65,7 +65,7 @@ export class UserTableComponent implements AfterViewInit, OnInit {
 
   deleteClick(user: User): void {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
-      data: user.username,
+      data: {type: "user", description: user.username}
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -80,7 +80,7 @@ export class UserTableComponent implements AfterViewInit, OnInit {
     let userFiltered = this.users;
     if (!!this.usernameFilter?.trim()) {
       userFiltered = this.users.filter((x) =>
-        x.username.includes(this.usernameFilter)
+        x.username.toUpperCase().includes(this.usernameFilter.toUpperCase())
       );
     }
     this.loadData(userFiltered);
