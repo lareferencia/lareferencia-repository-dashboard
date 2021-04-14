@@ -72,6 +72,13 @@ public class KeycloakUserManagementService implements IUserManagementService {
     KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
     return admin.getUserInfo(userId, userAttributes);
 	}
+
+  @Override
+  public List<String> getUserGroups(String userId) {
+    
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+    return admin.getUserGroups(userId);
+  }
  
   @Override
   public List<String> listUsers() {
@@ -109,6 +116,13 @@ public class KeycloakUserManagementService implements IUserManagementService {
     KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
     return admin.getGroupInfo(groupId, groupAttributes);
 	}
+
+  @Override
+  public List<String> getGroupMembers(String groupId) {
+  
+    KeycloakAdmin admin = new KeycloakAdmin(serverUrl, realm, tokenEndpoint, clientId, clientSecret);
+    return admin.getGroupMembers(groupId);
+  }
  
   @Override
   public List<String> listGroups() {

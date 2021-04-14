@@ -78,13 +78,25 @@ public class KeycloakAdmin {
 		userInfo.put("username", user.getUsername());
 		userInfo.put("first_name", user.getFirstName());
 		userInfo.put("last_name", user.getLastName());
-		userInfo.put("email", user.getEmail());		
+		userInfo.put("email", user.getEmail());	
 		
 		for (String attribute : userAttributes){
 			userInfo.put(attribute, Objects.isNull(attributes) ? "" : attributes.getOrDefault(attribute, defaultValue).get(0));
 		}
 	
 		return userInfo;
+	}
+ 
+  public List<String> getUserGroups (String username){
+		
+		List<String> userGroups = new ArrayList<String>();
+		List<GroupRepresentation> groups = keycloak.realm(realm).users().get(getUserId(username)).groups();
+		
+		for (GroupRepresentation group : groups) {
+			userGroups.add(group.getName());
+		}
+		
+		return userGroups;
 	}
 	
 	public void updateUserInfo (String username, Map<String, String> userInfo, String[] userAttributes){
@@ -134,6 +146,19 @@ public class KeycloakAdmin {
 		}
 	
 		return groupInfo;
+	}
+ 
+  public List<String> getGroupMembers (String groupname){
+		
+		List<String> groupMembers = new ArrayList<String>();
+    GroupRepresentation group = keycloak.realm(realm).getGroupByPath("/" + groupname);
+		List<UserRepresentation> members = keycloak.realm(realm).groups().group(group.getId()).members();
+		
+		for (UserRepresentation member : members) {
+			groupMembers.add(member.getUsername());
+		}
+		
+		return groupMembers;
 	}
 	
 	 public void updateGroupInfo (String groupname, Map<String, String> groupInfo, String[] groupAttributes){

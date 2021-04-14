@@ -12,6 +12,7 @@ public interface IUserManagementService {
 	Boolean changePassword(String userId, String passwd);
 	
 	Map<String,String> getUserInfo(String userId);
+  List<String> getUserGroups(String userId);
  
   List<String> listUsers();
 	
@@ -20,6 +21,7 @@ public interface IUserManagementService {
 	Boolean updateGroup(String groupId, Map<String,String> infoMap);
 	
 	Map<String,String> getGroupInfo(String groupId);
+  List<String> getGroupMembers(String groupId);
  
   List<String> listGroups();
 	

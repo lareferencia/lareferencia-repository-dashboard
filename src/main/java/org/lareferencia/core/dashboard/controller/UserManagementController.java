@@ -64,6 +64,15 @@ public class UserManagementController {
 		return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
 	}
  
+  @ApiOperation(value = "Lists a user's groups")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lists a user's groups") })
+	@RequestMapping(value = "/user/admin/{username}/groups", method = RequestMethod.GET)
+	HttpEntity<List<String>> getUserGroups(@PathVariable("username") String username) {
+    
+    List<String> result = uService.getUserGroups(username);
+		return new ResponseEntity<List<String>>(result, HttpStatus.OK);
+	}
+ 
   @ApiOperation(value = "Updates a user's info")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updates a user's info") })
 	@RequestMapping(value = "/user/self/{username}/update", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_VALUE})
@@ -134,6 +143,15 @@ public class UserManagementController {
     
     Map<String, String> result = uService.getGroupInfo(groupname);
 		return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
+	}
+ 
+  @ApiOperation(value = "Lists a group's members")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Lists a group's members") })
+	@RequestMapping(value = "/group/admin/{groupname}/members", method = RequestMethod.GET)
+	HttpEntity<List<String>> getGroupMembers(@PathVariable("groupname") String groupname) {
+    
+    List<String> result = uService.getGroupMembers(groupname);
+		return new ResponseEntity<List<String>>(result, HttpStatus.OK);
 	}
  
   @ApiOperation(value = "Updates a group's info")
