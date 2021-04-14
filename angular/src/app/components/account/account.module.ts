@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupSyncComponent } from './group-sync/group-sync.component';
+import { GroupTableComponent } from './group-table/group-table.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { GroupSyncComponent } from './group-sync/group-sync.component';
     DeleteConfirmationComponent,
     GroupsComponent,
     GroupSyncComponent,
+    GroupTableComponent,
   ],
   imports: [
     SharedModule,
