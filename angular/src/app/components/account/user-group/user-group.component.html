@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 username">
+      <h1 i18n>User: {{username}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2 i18n>Group Membership</h2>
+      <app-user-group-table #groupTableLeave [username]="username" [action]="userGroupAction.Leave"
+        (actionClick)="actionClick($event)">
+      </app-user-group-table>
+    </div>
+    <div class="col">
+      <h2 i18n>Available Groups</h2>
+      <app-user-group-table #groupTableJoin [username]="username" [action]="userGroupAction.Join"
+        (actionClick)="actionClick($event)">
+      </app-user-group-table>
+    </div>
+  </div>
+</div>
+<ng-template #snackBarTemplate>
+  <div class="message">
+    <span *ngIf="succesMessage; else error" i18n>Success! {typeMessage == userGroupAction.Leave, select, true {Removed}
+      false {Added}} group membership</span>
+    <ng-template #error i18n>Error</ng-template>
+    <mat-icon (click)="dismissSnackbar()">close</mat-icon>
+  </div>
+</ng-template>

@@ -1,3 +1,4 @@
+import { Group } from './../../shared/models/group.model';
 import { UserInfo } from 'src/app/shared/models/user-info.model';
 import { environment } from './../../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -51,6 +52,36 @@ export class ManageUsersService {
       map((obj) => obj),
       catchError(this.errorHandler)
     );
+  }
+
+  getUserGroups(userName: string): Observable<Group[]> {
+    return this.http.get<string[]>(`${this.baseurl}user/admin/${userName}/groups`).pipe(
+      map((obj) => obj.map((value) => ({ name: value }))),
+      catchError(this.errorHandler)
+    );
+  }
+
+  addUserToGroup(userName: string, groupName: string): Observable<boolean> {
+    return this.http
+      .put<boolean>(
+        `${this.baseurl}user/admin/${userName}/add_to_group/${groupName}`,
+        null
+      )
+      .pipe(
+        map((obj) => obj),
+        catchError(this.errorHandler)
+      );
+  }
+
+  removeUserFromGroup(userName: string, groupName: string): Observable<boolean> {
+    return this.http
+      .delete<boolean>(
+        `${this.baseurl}user/admin/${userName}/remove_from_group/${groupName}`
+      )
+      .pipe(
+        map((obj) => obj),
+        catchError(this.errorHandler)
+      );
   }
 
   private errorHandler(error: HttpErrorResponse) {

@@ -1,3 +1,4 @@
+import { UserGroupComponent } from './../user-group/user-group.component';
 import { DeleteConfirmationComponent } from './../delete-confirmation/delete-confirmation.component';
 import { ManageUsersService } from './../../../core/services/manage-users.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
@@ -73,6 +74,12 @@ export class UserTableComponent implements AfterViewInit, OnInit {
         this.manageUsersService.deleteUser(user.username).subscribe(() => {
           this.loadRecords();
         });
+    });
+  }
+
+  groupClick(user: User): void {
+    this.dialog.open(UserGroupComponent, {
+      data: { username: user.username },
     });
   }
 

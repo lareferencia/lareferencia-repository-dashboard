@@ -18,6 +18,8 @@ import { MatInputModule } from '@angular/material/input';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupSyncComponent } from './group-sync/group-sync.component';
 import { GroupTableComponent } from './group-table/group-table.component';
+import { UserGroupComponent } from './user-group/user-group.component';
+import { UserGroupTableComponent } from './user-group-table/user-group-table.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { GroupTableComponent } from './group-table/group-table.component';
     GroupsComponent,
     GroupSyncComponent,
     GroupTableComponent,
+    UserGroupComponent,
+    UserGroupTableComponent,
   ],
   imports: [
     SharedModule,
