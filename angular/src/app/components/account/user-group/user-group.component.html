@@ -23,7 +23,7 @@
   <div class="message">
     <span *ngIf="succesMessage; else error" i18n>Success! {typeMessage == userGroupAction.Leave, select, true {Removed}
       false {Added}} group membership</span>
-    <ng-template #error i18n>Error</ng-template>
+    <ng-template #error i18n>Error managing groups!</ng-template>
     <mat-icon (click)="dismissSnackbar()">close</mat-icon>
   </div>
 </ng-template>

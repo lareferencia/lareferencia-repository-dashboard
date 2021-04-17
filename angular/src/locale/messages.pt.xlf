@@ -111,15 +111,6 @@
         <target>Grupos</target>
       </segment>
     </unit>
-    <unit id="7644929688558867872">
-      <notes>
-        <note category="location">src/app/components/account/account/account.component.html:11</note>
-      </notes>
-      <segment>
-        <source>Users in groups</source>
-        <target>Usuários em grupos</target>
-      </segment>
-    </unit>
     <unit id="3797778920049399855">
       <notes>
         <note category="location">src/app/components/template/header/header.component.html:20</note>
@@ -260,7 +251,7 @@
     <unit id="1643349242058468968">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:18,19</note>
-        <note category="location">src/app/components/account/groups/groups.component.html:17,18</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:18,19</note>
       </notes>
       <segment>
         <source> Import </source>
@@ -279,7 +270,7 @@
     <unit id="7959509736794331703">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:30,31</note>
-        <note category="location">src/app/components/account/groups/groups.component.html:29,30</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:30,31</note>
       </notes>
       <segment>
         <source> Create </source>
@@ -307,6 +298,7 @@
     <unit id="4735050242789118064">
       <notes>
         <note category="location">src/app/components/account/user-table/user-table.component.html:31,32</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:24,25</note>
       </notes>
       <segment>
         <source> Delete </source>
@@ -333,7 +325,7 @@
     </unit>
     <unit id="6325192997947077542">
       <notes>
-        <note category="location">src/app/components/account/groups/groups.component.html:20,21</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:21,22</note>
       </notes>
       <segment>
         <source> Import groups <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">upload</pc></source>
@@ -342,20 +334,29 @@
     </unit>
     <unit id="4930229663435039589">
       <notes>
-        <note category="location">src/app/components/account/groups/groups.component.html:32,33</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:33,34</note>
       </notes>
       <segment>
         <source> Create group <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">group</pc></source>
         <target> Criar grupo <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">group</pc></target>
       </segment>
     </unit>
-    <unit id="4235505579599675574">
+    <unit id="2273088133016853024">
       <notes>
-        <note category="location">src/app/components/account/group-sync/group-sync.component.html:2</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:22</note>
       </notes>
       <segment>
-        <source>Sync</source>
-        <target>Sincronizar</target>
+        <source>Leave</source>
+        <target>Desassociar</target>
+      </segment>
+    </unit>
+    <unit id="8307140841776883735">
+      <notes>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:23</note>
+      </notes>
+      <segment>
+        <source>Join</source>
+        <target>Associar</target>
       </segment>
     </unit>
     <unit id="6659262502111103692">
@@ -367,22 +368,41 @@
         <target>Importar acrônimo de repositórios existentes</target>
       </segment>
     </unit>
-    <unit id="4839682406703705780">
+    <unit id="637403657101679327">
       <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:40,41</note>
       </notes>
       <segment>
-        <source>Delete User</source>
-        <target>Excluir Usuário</target>
+        <source> Groups </source>
+        <target> Grupos </target>
       </segment>
     </unit>
-    <unit id="4937450702054274075">
+    <unit id="444415320304815256">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {user} false {group}}</source>
+        <target>{VAR_SELECT, select, true {usuário} false {grupo}}</target>
+      </segment>
+    </unit>
+    <unit id="637403657101679327">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:40,41</note>
+      </notes>
+      <segment>
+        <source> Groups </source>
+        <target> Grupos </target>
+      </segment>
+    </unit>
+    <unit id="3275928518552732731">
       <notes>
         <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
       </notes>
       <segment>
-        <source>Are you sure you want to permanently delete the user <pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="1" equiv="INTERPOLATION" disp="{{username}}"/></pc></source>
-        <target>Tem certeza de que deseja excluir permanentemente o usuário <pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="1" equiv="INTERPOLATION" disp="{{username}}"/></pc></target>
+        <source>Are you sure you want to permanently delete the <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}} "/> <pc id="1" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="2" equiv="INTERPOLATION" disp="{{username}}"/></pc></source>
+        <target>Tem certeza de que deseja excluir permanentemente o <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {usuário} false {grupo}} "/> <pc id="1" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="2" equiv="INTERPOLATION" disp="{{username}}"/></pc></target>
       </segment>
     </unit>
     <unit id="2159130950882492111">
@@ -394,13 +414,13 @@
         <target>Cancelar</target>
       </segment>
     </unit>
-    <unit id="7022070615528435141">
+    <unit id="1391681277390422714">
       <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:7</note>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
       </notes>
       <segment>
-        <source>Delete</source>
-        <target>Excluir</target>
+        <source>Delete <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}}"/></source>
+        <target>Excluir <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {usuário} false {grupo}}"/></target>
       </segment>
     </unit>
     <unit id="3917644028160931566">
@@ -890,6 +910,10 @@
     <unit id="8953033926734869941">
       <notes>
         <note category="location">src/app/components/validation/validation-table/validation-table.component.html:25</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:2</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:11</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:2</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:16</note>
       </notes>
       <segment>
         <source>Name</source>
@@ -1055,7 +1079,9 @@
     <unit id="2345522807493182096">
       <notes>
         <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:51</note>
-        <note category="location">src/app/components/account/user-table/user-table.component.html:39</note>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:48</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:31</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:32</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:177</note>
         <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:26</note>
         <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:26</note>
@@ -1300,7 +1326,81 @@
       </notes>
       <segment>
         <source> Identifier </source>
-        <source> Identificador </source>
+        <target> Identificador </target>
+      </segment>
+    </unit>
+    <unit id="4235505579599675574">
+      <notes>
+        <note category="location">src/app/components/account/group-sync/group-sync.component.html:2</note>
+      </notes>
+      <segment>
+        <source>Sync</source>
+        <target>Sincronizar</target>
+      </segment>
+    </unit>
+    <unit id="6659262502111103692">
+      <notes>
+        <note category="location">src/app/components/account/group-sync/group-sync.component.html:8</note>
+      </notes>
+      <segment>
+        <source>Import acronym from existing repositories</source>
+        <target>Importar acrônimo de repositorios existentes</target>
+      </segment>
+    </unit>
+    <unit id="6208427231517012536">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:4</note>
+      </notes>
+      <segment>
+        <source>User: <ph id="0" equiv="INTERPOLATION" disp="{{username}}"/></source>
+        <target>Usuário: <ph id="0" equiv="INTERPOLATION" disp="{{username}}"/></target>
+      </segment>
+    </unit>
+    <unit id="3889681720381026715">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:9</note>
+      </notes>
+      <segment>
+        <source>Group Membership</source>
+        <target>Membro dos Grupos</target>
+      </segment>
+    </unit>
+    <unit id="7170660671778667897">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:15</note>
+      </notes>
+      <segment>
+        <source>Available Groups</source>
+        <target>Grupos disponíveis</target>
+      </segment>
+    </unit>
+    <unit id="1746128220184458144">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {Removed} false {Added}}</source>
+        <target>{VAR_SELECT, select, true {desassociado} false {associado}}</target>
+      </segment>
+    </unit>
+    <unit id="2367394252151270183">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source>Success! <ph id="0" equiv="ICU" disp="{typeMessage == userGroupAction.Leave, select, true {Removed}
+      false {Added}} "/> group membership</source>
+      <target>Sucesso! Grupo <ph id="0" equiv="ICU" disp="{typeMessage == userGroupAction.Leave, select, true {desassociado}
+      false {associado}} "/> com sucesso</target>
+      </segment>
+    </unit>
+    <unit id="5493405161230246040">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:26</note>
+      </notes>
+      <segment>
+        <source>Error managing groups</source>
+        <target>Erro ao manipular grupos</target>
       </segment>
     </unit>
     <unit id="4399330611551184869">

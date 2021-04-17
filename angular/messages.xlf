@@ -42,26 +42,6 @@
         <source>Below is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
       </segment>
     </unit>
-    <unit id="6436995159190484844">
-      <notes>
-        <note category="location">src/app/components/broker/broker/broker.component.html:7</note>
-      </notes>
-      <segment>
-        <source>OpenAIRE Broker</source>
-      </segment>
-    </unit>
-    <unit id="8309278567108284050">
-      <notes>
-        <note category="location">src/app/components/broker/broker/broker.component.html:7,11</note>
-      </notes>
-      <segment>
-        <source>OpenAIRE Broker Service.
-
-  Thanks to the Broker, repositories, publishers or aggregators can exchange metadata and enrich their local metadata collection by subscribing to notifications of different types. The Broker is able to notify Content providers when the OpenAIRE Graph contains information that is not available in the original collection of the data source. 
-  
-  It is a subscription-notification service operating on top of the OpenAIRE Research Graph, a de-duplicated, enriched, linked, open scholarly communication graph.</source>
-      </segment>
-    </unit>
     <unit id="7467308342369948080">
       <notes>
         <note category="location">src/app/components/validation/validation/validation.component.html:7,8</note>
@@ -158,6 +138,26 @@
         <source>The data below presents the complete diagnosis of your institution&apos;s data collection. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.</source>
       </segment>
     </unit>
+    <unit id="6436995159190484844">
+      <notes>
+        <note category="location">src/app/components/broker/broker/broker.component.html:7</note>
+      </notes>
+      <segment>
+        <source>OpenAIRE Broker</source>
+      </segment>
+    </unit>
+    <unit id="8309278567108284050">
+      <notes>
+        <note category="location">src/app/components/broker/broker/broker.component.html:7,11</note>
+      </notes>
+      <segment>
+        <source>OpenAIRE Broker Service.
+
+  Thanks to the Broker, repositories, publishers or aggregators can exchange metadata and enrich their local metadata collection by subscribing to notifications of different types. The Broker is able to notify Content providers when the OpenAIRE Graph contains information that is not available in the original collection of the data source. 
+  
+  It is a subscription-notification service operating on top of the OpenAIRE Research Graph, a de-duplicated, enriched, linked, open scholarly communication graph.</source>
+      </segment>
+    </unit>
     <unit id="3867153508248553779">
       <notes>
         <note category="location">src/app/components/account/account/account.component.html:1</note>
@@ -181,14 +181,6 @@
       </notes>
       <segment>
         <source>Groups</source>
-      </segment>
-    </unit>
-    <unit id="7644929688558867872">
-      <notes>
-        <note category="location">src/app/components/account/account/account.component.html:11</note>
-      </notes>
-      <segment>
-        <source>Users in groups</source>
       </segment>
     </unit>
     <unit id="3797778920049399855">
@@ -438,7 +430,9 @@
     <unit id="2345522807493182096">
       <notes>
         <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:51</note>
-        <note category="location">src/app/components/account/user-table/user-table.component.html:39</note>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:48</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:31</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:32</note>
         <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:26</note>
         <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:26</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:177</note>
@@ -492,6 +486,10 @@
     <unit id="8953033926734869941">
       <notes>
         <note category="location">src/app/components/validation/validation-table/validation-table.component.html:25</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:2</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:11</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:2</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:16</note>
       </notes>
       <segment>
         <source>Name</source>
@@ -675,7 +673,7 @@
     <unit id="1643349242058468968">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:18,19</note>
-        <note category="location">src/app/components/account/groups/groups.component.html:17,18</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:18,19</note>
       </notes>
       <segment>
         <source> Import </source>
@@ -692,7 +690,7 @@
     <unit id="7959509736794331703">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:30,31</note>
-        <note category="location">src/app/components/account/groups/groups.component.html:29,30</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:30,31</note>
       </notes>
       <segment>
         <source> Create </source>
@@ -717,25 +715,43 @@
     <unit id="4735050242789118064">
       <notes>
         <note category="location">src/app/components/account/user-table/user-table.component.html:31,32</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:24,25</note>
       </notes>
       <segment>
         <source> Delete </source>
       </segment>
     </unit>
-    <unit id="4839682406703705780">
+    <unit id="637403657101679327">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:40,41</note>
+      </notes>
+      <segment>
+        <source> Groups </source>
+      </segment>
+    </unit>
+    <unit id="444415320304815256">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {user} false {group}}</source>
+      </segment>
+    </unit>
+    <unit id="1391681277390422714">
       <notes>
         <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
       </notes>
       <segment>
-        <source>Delete User</source>
+        <source>Delete <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}}"/></source>
       </segment>
     </unit>
-    <unit id="4937450702054274075">
+    <unit id="3275928518552732731">
       <notes>
         <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
       </notes>
       <segment>
-        <source>Are you sure you want to permanently delete the user <pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="1" equiv="INTERPOLATION" disp="{{username}}"/></pc></source>
+        <source>Are you sure you want to permanently delete the <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}} "/> <pc id="1" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="2" equiv="INTERPOLATION" disp="{{username}}"/></pc></source>
       </segment>
     </unit>
     <unit id="2159130950882492111">
@@ -772,7 +788,7 @@
     </unit>
     <unit id="6325192997947077542">
       <notes>
-        <note category="location">src/app/components/account/groups/groups.component.html:20,21</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:21,22</note>
       </notes>
       <segment>
         <source> Import groups <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">upload</pc></source>
@@ -780,26 +796,26 @@
     </unit>
     <unit id="4930229663435039589">
       <notes>
-        <note category="location">src/app/components/account/groups/groups.component.html:32,33</note>
+        <note category="location">src/app/components/account/groups/groups.component.html:33,34</note>
       </notes>
       <segment>
         <source> Create group <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">group</pc></source>
       </segment>
     </unit>
-    <unit id="4235505579599675574">
+    <unit id="2273088133016853024">
       <notes>
-        <note category="location">src/app/components/account/group-sync/group-sync.component.html:2</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:22</note>
       </notes>
       <segment>
-        <source>Sync</source>
+        <source>Leave</source>
       </segment>
     </unit>
-    <unit id="6659262502111103692">
+    <unit id="8307140841776883735">
       <notes>
-        <note category="location">src/app/components/account/group-sync/group-sync.component.html:8</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:23</note>
       </notes>
       <segment>
-        <source>Import acronym from existing repositories</source>
+        <source>Join</source>
       </segment>
     </unit>
     <unit id="732432619111661062">
@@ -848,6 +864,22 @@
       </notes>
       <segment>
         <source> Export CSV </source>
+      </segment>
+    </unit>
+    <unit id="4235505579599675574">
+      <notes>
+        <note category="location">src/app/components/account/group-sync/group-sync.component.html:2</note>
+      </notes>
+      <segment>
+        <source>Sync</source>
+      </segment>
+    </unit>
+    <unit id="6659262502111103692">
+      <notes>
+        <note category="location">src/app/components/account/group-sync/group-sync.component.html:8</note>
+      </notes>
+      <segment>
+        <source>Import acronym from existing repositories</source>
       </segment>
     </unit>
     <unit id="2790789392596235103">
@@ -1069,6 +1101,55 @@
       </notes>
       <segment>
         <source> Default </source>
+      </segment>
+    </unit>
+    <unit id="6208427231517012536">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:4</note>
+      </notes>
+      <segment>
+        <source>User: <ph id="0" equiv="INTERPOLATION" disp="{{username}}"/></source>
+      </segment>
+    </unit>
+    <unit id="3889681720381026715">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:9</note>
+      </notes>
+      <segment>
+        <source>Group Membership</source>
+      </segment>
+    </unit>
+    <unit id="7170660671778667897">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:15</note>
+      </notes>
+      <segment>
+        <source>Available Groups</source>
+      </segment>
+    </unit>
+    <unit id="1746128220184458144">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {Removed} false {Added}}</source>
+      </segment>
+    </unit>
+    <unit id="2367394252151270183">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source>Success! <ph id="0" equiv="ICU" disp="{typeMessage == userGroupAction.Leave, select, true {Removed}
+      false {Added}} "/> group membership</source>
+      </segment>
+    </unit>
+    <unit id="5493405161230246040">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:26</note>
+      </notes>
+      <segment>
+        <source>Error managing groups!</source>
       </segment>
     </unit>
     <unit id="5015476460808884362">
