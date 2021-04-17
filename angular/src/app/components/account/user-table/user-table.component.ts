@@ -1,3 +1,4 @@
+import { DeleteType } from 'src/app/shared/enums/delete-type';
 import { UserGroupComponent } from './../user-group/user-group.component';
 import { DeleteConfirmationComponent } from './../delete-confirmation/delete-confirmation.component';
 import { ManageUsersService } from './../../../core/services/manage-users.service';
@@ -66,7 +67,7 @@ export class UserTableComponent implements AfterViewInit, OnInit {
 
   deleteClick(user: User): void {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
-      data: {type: "user", description: user.username}
+      data: {type: DeleteType.User, description: user.username}
     });
 
     dialogRef.afterClosed().subscribe((result) => {

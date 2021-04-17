@@ -8,6 +8,7 @@ import { MatTable } from '@angular/material/table';
 import { GroupTableDataSource } from './group-table-datasource';
 import { MatDialog } from '@angular/material/dialog';
 import { delay, startWith, tap } from 'rxjs/operators';
+import { DeleteType } from 'src/app/shared/enums/delete-type';
 
 @Component({
   selector: 'app-group-table',
@@ -62,7 +63,7 @@ export class GroupTableComponent implements AfterViewInit {
 
   deleteClick(group: Group): void {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
-      data: {type: "group", description: group.name},
+      data: {type: DeleteType.Group, description: group.name},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
