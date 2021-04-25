@@ -13,7 +13,7 @@
         {
           "type": "formula",
           "as": "color",
-          "expr": "datum.position == 0 ? '#22964F': datum.position == 1 ? '#E41A1C' : '#3498db'"
+          "expr": "datum.position == 0 ? '#48A1D9': datum.position == 1 ? '#33426A' : '#CCCCCC'"
         }
       ]
     }

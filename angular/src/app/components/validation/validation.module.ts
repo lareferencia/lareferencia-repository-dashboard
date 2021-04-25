@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgModule } from '@angular/core';
@@ -32,6 +33,7 @@ import { RecordModule } from '../records/record.module';
     ConformityModule,
     RecordModule,
     MatSelectModule,
+    MatButtonModule,
   ],
 })
 export class ValidationModule {}

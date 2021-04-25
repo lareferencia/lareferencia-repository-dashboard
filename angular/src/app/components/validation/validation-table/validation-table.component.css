@@ -49,3 +49,8 @@ th {
   align-items: center;
   padding: 30px 0px 0px 0px;
 }
+
+.btn-conformity {
+  width: 90px;
+  font-weight: 500;
+}

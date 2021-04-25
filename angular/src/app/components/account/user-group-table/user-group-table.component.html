@@ -15,9 +15,9 @@
       <ng-container matColumnDef="button-action">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let group">
-          <button type="button" [ngClass]="[
+          <button mat-raised-button color="warn" [ngClass]="[
             'btn', 
-            action == userGroupAction.Leave ? 'btn-outline-danger' : 'btn-outline-primary'
+            action == userGroupAction.Leave ? 'btn-danger' : 'btn-primary'
           ]" (click)="handlerClick(group)">
             <span *ngIf="action == userGroupAction.Leave; else join" i18n>Leave</span>
             <ng-template #join i18n>Join</ng-template>

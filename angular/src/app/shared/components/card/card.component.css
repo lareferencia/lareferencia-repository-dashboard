@@ -1,35 +1,38 @@
 .card-div {
-  padding: 0px 0px 30px 30px;
+  padding: 0px 0px 30px 10px;
 }
 
 .mat-card {
   padding: 0px;
-  background-color: #ededed;
+  background-color: #ffffff;
+  transition: none !important;
+  box-shadow: none !important;
 }
 
 .app-card-header {
-  background-color: #a3d8e7;
+  background-color: #ffffff;
   padding: 10px 10px 10px 30px;
 }
 
 .app-card-header > span {
-  font-family: Overpass;
+  font-family: Roboto;
+  font-weight: 700;
   font-size: 13pt;
-  color: #3c3c3b;
+  color: #000000;
 }
 
 .description {
-  background-color: #f6f6f6;
+  background-color: #ffffff;
   padding: 10px 10px 10px 30px;
   text-align: justify;
 }
 
 .description-text > span {
   font-size: 10pt;
-  font-family: Overpass;
+  font-family: Roboto;
   line-height: 15pt;
   color: #3c3c3b;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .description-text {

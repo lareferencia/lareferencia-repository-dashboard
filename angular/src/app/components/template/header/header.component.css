@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   border-bottom-style: solid;
-  border-bottom-color: #ec9700;
+  border-bottom-color: #f2f2f2;
   border-bottom-width: 7px;
   padding: 0px;
   height: 105px;
@@ -27,7 +27,7 @@
   position: relative;
   margin-left: -50vw;
   left: 50%;
-  background-color: #464b5c;
+  background-color: #f2f2f2;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -36,15 +36,15 @@
 
 .title-description > span {
   margin-left: 30px;
-  font-family: Overpass;
-  font-weight: 600;
+  font-family: Roboto;
+  font-weight: bold;
   font-size: 18pt;
   letter-spacing: 0.09em;
-  color: #f6d67b;
+  color: #33426a;
 }
 
 .sub-title-description {
-  background-color: #555a6d;
+  background-color: #f2f2f2;
 }
 
 .title-description {
@@ -53,12 +53,9 @@
 
 .sub-title-description > span {
   margin-left: 30px;
-  font-family: Overpass;
-  font-weight: bold;
+  font-family: Roboto;
   font-size: 16pt;
-  text-transform: uppercase;
   letter-spacing: 0.01em;
-  color: #ffffff;
 }
 
 .logout {
@@ -66,7 +63,6 @@
   margin-right: 220px;
   display: flex;
   align-items: center;
-  color: white;
 }
 
 .mat-icon {

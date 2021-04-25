@@ -23,8 +23,8 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let user">
           <button
-            type="button"
-            class="btn btn-outline-danger"
+            mat-raised-button 
+            color="warn"
             (click)="deleteClick(user)"
             i18n
           >
@@ -33,7 +33,7 @@
           
           <button style="margin-left: 15px;"
             type="button"
-            class="btn btn-outline-primary"
+            class="btn btn-primary"
             (click)="groupClick(user)"
             i18n
           >

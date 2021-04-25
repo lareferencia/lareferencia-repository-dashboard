@@ -53,7 +53,7 @@ export class RecordsInvalidTableComponent implements OnInit {
     record.rules = this.validation.rulesByID;
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = record;
+    dialogConfig.data = { record, acronym: this.acronym };
     dialogConfig.autoFocus = false;
 
     this.dialog.open(EvaluationRulesComponent, dialogConfig);

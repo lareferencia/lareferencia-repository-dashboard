@@ -6,7 +6,7 @@
 <div class="chart">
   <div class="chart-container">
     <div class="chart-title"><span i18n>Harvestings</span></div>
-    <div class="divider"></div>
+    <div class="divider-title"></div>
     <div
       class="alert alert-warning"
       *ngIf="!filtrando && data.length == 0"
@@ -23,11 +23,11 @@
     </app-vega-viz>
 
     <div *ngIf="filtrando || data.length > 0" class="legend-div">
-      <div class="green-legend"></div>
+      <div class="valid-legend"></div>
       <ng-container i18n>Valid Records</ng-container>
-      <div class="red-legend"></div>
+      <div class="invalid-legend"></div>
       <ng-container i18n>Invalid Records</ng-container>
-      <div class="blue-legend"></div>
+      <div class="harvested-legend"></div>
       <ng-container i18n>Harvested Records</ng-container>
     </div>
 

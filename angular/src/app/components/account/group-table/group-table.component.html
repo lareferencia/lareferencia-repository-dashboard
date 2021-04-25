@@ -20,7 +20,7 @@
       <ng-container matColumnDef="button-delete">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let group">
-          <button type="button" class="btn btn-outline-danger" (click)="deleteClick(group)" i18n>
+          <button mat-raised-button color="warn" (click)="deleteClick(group)" i18n>
             Delete
           </button>
         </td>

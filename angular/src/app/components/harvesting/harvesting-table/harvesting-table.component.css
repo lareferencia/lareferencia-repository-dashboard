@@ -31,3 +31,9 @@ th {
   align-items: center;
   justify-content: center;
 }
+
+.btn-nt-available {
+  width: 107px;
+  font-size: 8.5pt;
+  font-weight: bolder;
+}
