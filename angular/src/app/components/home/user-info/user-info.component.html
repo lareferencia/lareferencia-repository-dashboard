@@ -1,0 +1,33 @@
+<div class="user-info-title">
+  <h2>User info</h2>
+  <mat-icon (click)="onClickSave()">save</mat-icon>
+</div>
+<form *ngIf="user" class="user-form">
+  <mat-form-field class="example-full-width">
+    <mat-label i18n>Name</mat-label>
+    <input matInput [(ngModel)]="user.first_name" name="first_name">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>E-mail</mat-label>
+    <input matInput  [(ngModel)]="user.email" name="email">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label i18n>Institutional phone</mat-label>
+    <input matInput  [(ngModel)]="user.telephone" name="telephone">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label i18n>Position</mat-label>
+    <input matInput  [(ngModel)]="user.position" name="position">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label i18n>Affiliation</mat-label>
+    <input matInput  [(ngModel)]="user.affiliation" name="affiliation">
+  </mat-form-field>
+</form>
+<ng-template #snackBarTemplate>
+  <div class="message">
+    <span *ngIf="succesMessage; else error" i18n>Information updated successfully!</span>
+    <ng-template #error i18n>Error updating information!</ng-template>
+    <mat-icon (click)="dismissSnackbar()">close</mat-icon>
+  </div>
+</ng-template>
