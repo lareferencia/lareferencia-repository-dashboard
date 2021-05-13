@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RecordValidComponent } from './components/records/record-valid/record-valid.component';
 import { RecordInvalidComponent } from './components/records/record-invalid/record-invalid.component';
 import { HarvestingComponent } from './components/harvesting/harvesting/harvesting.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './components/home/home/home.component';
 import { ValidationComponent } from './components/validation/validation/validation.component';
 import { AuthenticationService } from './core/services/authentication.service';
 import { BrokerComponent } from './components/broker/broker/broker.component';
