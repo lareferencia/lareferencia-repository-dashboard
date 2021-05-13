@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.userName = await this.authenticationService.getUserName();
+    this.userName = await this.authenticationService.getFirstName();
   }
 
   get acronym(): string {

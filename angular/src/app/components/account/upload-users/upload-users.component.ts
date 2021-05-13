@@ -61,7 +61,7 @@ export class UploadUsersComponent {
       const lines = file.split('\n');
       const csvSeparator = ',';
 
-      if (lines[0].split(',').length != 14) {
+      if (lines[0].split(',').length != 6) {
         this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
         throw new Error('Invalid file format');
       }
@@ -73,18 +73,10 @@ export class UploadUsersComponent {
             username: cols[0],
             first_name: cols[1],
             last_name: '',
-            email: cols[11],
-            institution_name: cols[2],
-            institution_acronym: cols[3],
-            institution_type: cols[4],
-            institution_cnpj: cols[5],
-            institution_code: cols[6],
-            state: cols[7],
-            source_type: cols[8],
-            responsible_name: cols[9],
-            telephone: cols[10],
-            source_url: cols[11],
-            source_oai_url: cols[12],
+            email: cols[2],
+            telephone: cols[3],
+            position: cols[4],
+            affiliation: cols[5],
             password: cols[0],
           });
 

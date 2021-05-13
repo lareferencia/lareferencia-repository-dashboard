@@ -50,9 +50,14 @@ export class AuthenticationService extends KeycloakAuthGuard {
     this.keycloak.logout();
   }
 
-  public async getUserName () : Promise<string> {
+  public async getFirstName () : Promise<string> {
     const userDetails = await this.keycloak.loadUserProfile();
     return userDetails.firstName;
+  }
+
+  public async getUserName () : Promise<string> {
+    const userDetails = await this.keycloak.loadUserProfile();
+    return userDetails.username;
   }
 
   public isAdmUser () : boolean {
