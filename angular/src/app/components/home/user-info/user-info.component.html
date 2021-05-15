@@ -15,9 +15,16 @@
     <mat-label i18n>Institutional phone</mat-label>
     <input matInput  [(ngModel)]="user.telephone" name="telephone">
   </mat-form-field>
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="col-2">
     <mat-label i18n>Position</mat-label>
-    <input matInput  [(ngModel)]="user.position" name="position">
+    <mat-select disabled
+      [(value)]="user.position"
+    >
+      <mat-option i18n>Nenhum</mat-option>
+      <mat-option i18n value="1">Bibliotecário</mat-option>
+      <mat-option i18n value="2">Responsável técnico (T.I)</mat-option>
+      <mat-option i18n value="3">Assistente/Auxiliar</mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field class="example-full-width">
     <mat-label i18n>Affiliation</mat-label>

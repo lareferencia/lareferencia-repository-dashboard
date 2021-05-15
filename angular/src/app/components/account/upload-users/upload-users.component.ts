@@ -69,13 +69,18 @@ export class UploadUsersComponent {
       lines.forEach((element, index) => {
         const cols: string[] = element.split(csvSeparator);
         if (index > 0 && cols.length > 1) {
+          if (isNaN(parseInt(cols[4])) || parseInt(cols[4]) < 0 || parseInt(cols[4]) > 3) {
+            this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
+            throw new Error('Invalid file format');
+          }
+
           this.users.push({
             username: cols[0],
             first_name: cols[1],
             last_name: '',
             email: cols[2],
             telephone: cols[3],
-            position: cols[4],
+            position: parseInt(cols[4]),
             affiliation: cols[5],
             password: cols[0],
           });

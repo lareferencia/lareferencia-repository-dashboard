@@ -4,9 +4,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [HomeComponent, UserInfoComponent],
-  imports: [SharedModule, MatCardModule, MatInputModule],
+  imports: [SharedModule, MatCardModule, MatInputModule, MatSelectModule],
 })
 export class HomeModule {}

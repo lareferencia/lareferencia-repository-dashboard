@@ -1,3 +1,4 @@
+import { PositionType } from './../enums/user-position';
 export interface UserInfo {
   username: string;
   first_name: string;
@@ -5,6 +6,6 @@ export interface UserInfo {
   email: string;
   telephone: string;
   password: string;
-  position: string;
+  position: PositionType;
   affiliation: string;
 }
