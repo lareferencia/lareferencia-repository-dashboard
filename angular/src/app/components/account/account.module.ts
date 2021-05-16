@@ -20,6 +20,8 @@ import { GroupSyncComponent } from './group-sync/group-sync.component';
 import { GroupTableComponent } from './group-table/group-table.component';
 import { UserGroupComponent } from './user-group/user-group.component';
 import { UserGroupTableComponent } from './user-group-table/user-group-table.component';
+import { UserCreateComponent } from './user-create/user-create.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { UserGroupTableComponent } from './user-group-table/user-group-table.com
     GroupTableComponent,
     UserGroupComponent,
     UserGroupTableComponent,
+    UserCreateComponent,
   ],
   imports: [
     SharedModule,
@@ -46,6 +49,7 @@ import { UserGroupTableComponent } from './user-group-table/user-group-table.com
     MatSortModule,
     MatDialogModule,
     MatInputModule,
+    MatSelectModule,
   ],
 })
 export class AccountModule {}
