@@ -1,5 +1,7 @@
 export enum PositionType {
-  Librarian,
-  TechnicalResponsible,
+  NodeAdministrator,
   AssistantAuxiliary,
+  Librarian,
+  RepositoryManager,
+  TechnicalResponsible,
 }
