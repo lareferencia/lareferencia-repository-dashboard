@@ -91,13 +91,13 @@ export class HarvestingChartComponent {
     
             let category = '';
             const validSize =
-              harvesting.reduce((a, b) => a + b.validSize, 0) / harvesting.length;
+              (harvesting.reduce((a, b) => a + b.validSize, 0) / harvesting.length | 0);
             const invalidSize =
-              harvesting.reduce((a, b) => a + (b.harvestedSize - b.validSize), 0) /
-              harvesting.length;
+              (harvesting.reduce((a, b) => a + (b.harvestedSize - b.validSize), 0) /
+              harvesting.length | 0);
             const harvestedSize =
-              harvesting.reduce((a, b) => a + b.harvestedSize, 0) /
-              harvesting.length;
+              (harvesting.reduce((a, b) => a + b.harvestedSize, 0) /
+              harvesting.length | 0);
     
             switch (this.date.timeUnit) {
               case TimeUnit.Unitary: {
