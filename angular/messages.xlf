@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en">
   <file id="ngi18n" original="ng.template">
+    <unit id="1312515981620869544">
+      <notes>
+        <note category="location">src/app/components/home/home/home.component.html:2</note>
+      </notes>
+      <segment>
+        <source> Welcome! </source>
+      </segment>
+    </unit>
+    <unit id="783397264727973846">
+      <notes>
+        <note category="location">src/app/components/home/home/home.component.html:4,5</note>
+      </notes>
+      <segment>
+        <source> Dashboard for repository managers </source>
+      </segment>
+    </unit>
     <unit id="7660461365638405664">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting/harvesting.component.html:2,3</note>
@@ -24,22 +40,6 @@
       </notes>
       <segment>
         <source>Below is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
-      </segment>
-    </unit>
-    <unit id="1312515981620869544">
-      <notes>
-        <note category="location">src/app/components/home/home/home.component.html:2</note>
-      </notes>
-      <segment>
-        <source> Welcome! </source>
-      </segment>
-    </unit>
-    <unit id="783397264727973846">
-      <notes>
-        <note category="location">src/app/components/home/home/home.component.html:4,5</note>
-      </notes>
-      <segment>
-        <source> Dashboard for repository managers </source>
       </segment>
     </unit>
     <unit id="7467308342369948080">
@@ -370,6 +370,15 @@
         <source>Harvested Records</source>
       </segment>
     </unit>
+    <unit id="3139617918141046709">
+      <notes>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:2</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:2</note>
+      </notes>
+      <segment>
+        <source>User info</source>
+      </segment>
+    </unit>
     <unit id="8953033926734869941">
       <notes>
         <note category="location">src/app/components/home/user-info/user-info.component.html:7</note>
@@ -402,13 +411,15 @@
         <source>Position</source>
       </segment>
     </unit>
-    <unit id="4628604170072187363">
+    <unit id="6252070156626006029">
       <notes>
         <note category="location">src/app/components/home/user-info/user-info.component.html:21</note>
         <note category="location">src/app/components/account/user-create/user-create.component.html:25</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:15</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:27</note>
       </notes>
       <segment>
-        <source>Nenhum</source>
+        <source>None</source>
       </segment>
     </unit>
     <unit id="5961931878974459784">
@@ -751,6 +762,32 @@
         <source> Error </source>
       </segment>
     </unit>
+    <unit id="5248717555542428023">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:2</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:7</note>
+      </notes>
+      <segment>
+        <source>Username</source>
+      </segment>
+    </unit>
+    <unit id="4735050242789118064">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:31,32</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source> Delete </source>
+      </segment>
+    </unit>
+    <unit id="637403657101679327">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:40,41</note>
+      </notes>
+      <segment>
+        <source> Groups </source>
+      </segment>
+    </unit>
     <unit id="1582670847481559188">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:6,7</note>
@@ -799,32 +836,6 @@
       </notes>
       <segment>
         <source> Create user <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">account_circle</pc></source>
-      </segment>
-    </unit>
-    <unit id="5248717555542428023">
-      <notes>
-        <note category="location">src/app/components/account/user-table/user-table.component.html:2</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:7</note>
-      </notes>
-      <segment>
-        <source>Username</source>
-      </segment>
-    </unit>
-    <unit id="4735050242789118064">
-      <notes>
-        <note category="location">src/app/components/account/user-table/user-table.component.html:31,32</note>
-        <note category="location">src/app/components/account/group-table/group-table.component.html:24,25</note>
-      </notes>
-      <segment>
-        <source> Delete </source>
-      </segment>
-    </unit>
-    <unit id="637403657101679327">
-      <notes>
-        <note category="location">src/app/components/account/user-table/user-table.component.html:40,41</note>
-      </notes>
-      <segment>
-        <source> Groups </source>
       </segment>
     </unit>
     <unit id="2740427404733507235">
@@ -916,6 +927,78 @@
       </notes>
       <segment>
         <source> Transformed </source>
+      </segment>
+    </unit>
+    <unit id="888341446683346521">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:3</note>
+      </notes>
+      <segment>
+        <source>Start date</source>
+      </segment>
+    </unit>
+    <unit id="126074860850048964">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:17</note>
+      </notes>
+      <segment>
+        <source>End date</source>
+      </segment>
+    </unit>
+    <unit id="3548180789147259812">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:24</note>
+      </notes>
+      <segment>
+        <source>Time Unit</source>
+      </segment>
+    </unit>
+    <unit id="8364001491815179430">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:26</note>
+      </notes>
+      <segment>
+        <source>Unitary</source>
+      </segment>
+    </unit>
+    <unit id="2988589012964101797">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:27</note>
+      </notes>
+      <segment>
+        <source>Daily</source>
+      </segment>
+    </unit>
+    <unit id="928838138686087140">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:28</note>
+      </notes>
+      <segment>
+        <source>Weekly</source>
+      </segment>
+    </unit>
+    <unit id="6762743264882388498">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:29</note>
+      </notes>
+      <segment>
+        <source>Monthly</source>
+      </segment>
+    </unit>
+    <unit id="8036977202721714375">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:30</note>
+      </notes>
+      <segment>
+        <source>Yearly</source>
+      </segment>
+    </unit>
+    <unit id="4509598277931187746">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:42,43</note>
+      </notes>
+      <segment>
+        <source> Default </source>
       </segment>
     </unit>
     <unit id="1431416938026210429">
@@ -1156,78 +1239,6 @@
         <source>Delete</source>
       </segment>
     </unit>
-    <unit id="888341446683346521">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:3</note>
-      </notes>
-      <segment>
-        <source>Start date</source>
-      </segment>
-    </unit>
-    <unit id="126074860850048964">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:17</note>
-      </notes>
-      <segment>
-        <source>End date</source>
-      </segment>
-    </unit>
-    <unit id="3548180789147259812">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:24</note>
-      </notes>
-      <segment>
-        <source>Time Unit</source>
-      </segment>
-    </unit>
-    <unit id="8364001491815179430">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:26</note>
-      </notes>
-      <segment>
-        <source>Unitary</source>
-      </segment>
-    </unit>
-    <unit id="2988589012964101797">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:27</note>
-      </notes>
-      <segment>
-        <source>Daily</source>
-      </segment>
-    </unit>
-    <unit id="928838138686087140">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:28</note>
-      </notes>
-      <segment>
-        <source>Weekly</source>
-      </segment>
-    </unit>
-    <unit id="6762743264882388498">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:29</note>
-      </notes>
-      <segment>
-        <source>Monthly</source>
-      </segment>
-    </unit>
-    <unit id="8036977202721714375">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:30</note>
-      </notes>
-      <segment>
-        <source>Yearly</source>
-      </segment>
-    </unit>
-    <unit id="4509598277931187746">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:42,43</note>
-      </notes>
-      <segment>
-        <source> Default </source>
-      </segment>
-    </unit>
     <unit id="6208427231517012536">
       <notes>
         <note category="location">src/app/components/account/user-group/user-group.component.html:4</note>
@@ -1325,15 +1336,6 @@
       </notes>
       <segment>
         <source>Not mandatory rules</source>
-      </segment>
-    </unit>
-    <unit id="6252070156626006029">
-      <notes>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:15</note>
-        <note category="location">src/app/components/records/records-table/records-table.component.html:27</note>
-      </notes>
-      <segment>
-        <source>None</source>
       </segment>
     </unit>
     <unit id="8250586630341518181">

@@ -64,16 +64,6 @@
         <target>Papel</target>
       </segment>
     </unit>
-    <unit id="4628604170072187363">
-      <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:21</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:25</note>
-      </notes>
-      <segment>
-        <source>None</source>
-        <target>Nenhum</target>
-      </segment>
-    </unit>
     <unit id="5961931878974459784">
       <notes>
         <note category="location">src/app/components/home/user-info/user-info.component.html:22</note>
@@ -472,6 +462,16 @@
       <segment>
         <source>Leave</source>
         <target>Desassociar</target>
+      </segment>
+    </unit>
+    <unit id="3139617918141046709">
+      <notes>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:2</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:2</note>
+      </notes>
+      <segment>
+        <source>User info</source>
+        <target>Informações do usuário</target>
       </segment>
     </unit>
     <unit id="8307140841776883735">
@@ -910,6 +910,8 @@
     </unit>
     <unit id="6252070156626006029">
       <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:15</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:27</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:15</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:27</note>
       </notes>
