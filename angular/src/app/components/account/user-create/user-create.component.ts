@@ -1,4 +1,5 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ManageUsersService } from 'src/app/core/services/manage-users.service';
 import { UserInfo } from 'src/app/shared/models/user-info.model';
@@ -10,6 +11,7 @@ import { UserInfo } from 'src/app/shared/models/user-info.model';
 })
 export class UserCreateComponent {
   @ViewChild('snackBarTemplate') snackBarTemplate: TemplateRef<any>;
+  @ViewChild('userForm', {static: false}) userForm: NgForm;
   user = {} as UserInfo;
   succesMessage = true;
   config: MatSnackBarConfig = {
@@ -32,6 +34,7 @@ export class UserCreateComponent {
   }
 
   private resultHandler(success: boolean) {
+    if (success) this.userForm.resetForm();
     this.succesMessage = success;
     this.config = this.succesMessage
       ? { ...this.config, panelClass: ['msg-success'] }

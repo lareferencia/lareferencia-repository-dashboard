@@ -1,7 +1,4 @@
-<div class="user-info-title">
-  <h2 i18n>User info</h2>
-  <mat-icon (click)="onClickSave()">save</mat-icon>
-</div>
+<h2 i18n>User info</h2>
 <form *ngIf="user" class="user-form">
   <mat-form-field>
     <mat-label i18n>Name</mat-label>
@@ -15,7 +12,7 @@
     <mat-label i18n>Institutional phone</mat-label>
     <input matInput [(ngModel)]="user.telephone" name="telephone">
   </mat-form-field>
-  <mat-form-field class="col-2">
+  <mat-form-field>
     <mat-label i18n>Position</mat-label>
     <mat-select disabled [(value)]="user.position">
       <mat-option i18n>None</mat-option>
@@ -30,6 +27,7 @@
     <mat-label i18n>Affiliation</mat-label>
     <input matInput [(ngModel)]="user.affiliation" name="affiliation">
   </mat-form-field>
+  <button mat-raised-button class="btn-primary" (click)="onClickSave()" i18n>Update</button>
 </form>
 <ng-template #snackBarTemplate>
   <div class="message">

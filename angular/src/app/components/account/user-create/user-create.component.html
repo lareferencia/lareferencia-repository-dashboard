@@ -1,8 +1,5 @@
-<div class="user-info-title">
-  <h2 i18n>User info</h2>
-  <mat-icon (click)="onClickSave()">save</mat-icon>
-</div>
-<form class="user-form">
+<h2 i18n>User info</h2>
+<form name="userForm" #userForm="ngForm" class="user-form">
   <mat-form-field>
     <mat-label i18n>Username</mat-label>
     <input required matInput [(ngModel)]="user.username" name="username">
@@ -19,7 +16,7 @@
     <mat-label i18n>Institutional phone</mat-label>
     <input matInput [(ngModel)]="user.telephone" name="telephone">
   </mat-form-field>
-  <mat-form-field class="col-2">
+  <mat-form-field>
     <mat-label i18n>Position</mat-label>
     <mat-select [(value)]="user.position">
       <mat-option i18n>None</mat-option>
@@ -38,6 +35,7 @@
     <mat-label i18n>Password</mat-label>
     <input required matInput type="password" [(ngModel)]="user.password" name="password">
   </mat-form-field>
+  <button mat-raised-button class="btn-primary" (click)="onClickSave()" i18n>Save</button>
 </form>
 <ng-template #snackBarTemplate>
   <div class="message">
