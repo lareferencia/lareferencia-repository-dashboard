@@ -22,6 +22,7 @@ import { UserGroupComponent } from './user-group/user-group.component';
 import { UserGroupTableComponent } from './user-group-table/user-group-table.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { MatSelectModule } from '@angular/material/select';
+import { GroupCreateComponent } from './group-create/group-create.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatSelectModule } from '@angular/material/select';
     UserGroupComponent,
     UserGroupTableComponent,
     UserCreateComponent,
+    GroupCreateComponent,
   ],
   imports: [
     SharedModule,
