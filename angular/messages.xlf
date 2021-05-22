@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en">
   <file id="ngi18n" original="ng.template">
-    <unit id="1312515981620869544">
-      <notes>
-        <note category="location">src/app/components/home/home/home.component.html:2</note>
-      </notes>
-      <segment>
-        <source> Welcome! </source>
-      </segment>
-    </unit>
-    <unit id="783397264727973846">
-      <notes>
-        <note category="location">src/app/components/home/home/home.component.html:4,5</note>
-      </notes>
-      <segment>
-        <source> Dashboard for repository managers </source>
-      </segment>
-    </unit>
     <unit id="7660461365638405664">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting/harvesting.component.html:2,3</note>
@@ -40,6 +24,22 @@
       </notes>
       <segment>
         <source>Below is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
+      </segment>
+    </unit>
+    <unit id="1312515981620869544">
+      <notes>
+        <note category="location">src/app/components/home/home/home.component.html:2</note>
+      </notes>
+      <segment>
+        <source> Welcome! </source>
+      </segment>
+    </unit>
+    <unit id="783397264727973846">
+      <notes>
+        <note category="location">src/app/components/home/home/home.component.html:4,5</note>
+      </notes>
+      <segment>
+        <source> Dashboard for repository managers </source>
       </segment>
     </unit>
     <unit id="7467308342369948080">
@@ -372,8 +372,8 @@
     </unit>
     <unit id="3139617918141046709">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:2</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:2</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:1</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:1</note>
       </notes>
       <segment>
         <source>User info</source>
@@ -381,9 +381,9 @@
     </unit>
     <unit id="8953033926734869941">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:7</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:4</note>
         <note category="location">src/app/components/validation/validation-table/validation-table.component.html:25</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:11</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:8</note>
         <note category="location">src/app/components/account/group-table/group-table.component.html:2</note>
         <note category="location">src/app/components/account/group-table/group-table.component.html:16</note>
         <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:2</note>
@@ -395,8 +395,8 @@
     </unit>
     <unit id="7717036205100363889">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:15</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:19</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:12</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:16</note>
       </notes>
       <segment>
         <source>Institutional phone</source>
@@ -404,8 +404,8 @@
     </unit>
     <unit id="1172866303261737245">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:19</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:23</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:16</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:20</note>
       </notes>
       <segment>
         <source>Position</source>
@@ -413,8 +413,8 @@
     </unit>
     <unit id="6252070156626006029">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:21</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:25</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:18</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:22</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:15</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:27</note>
       </notes>
@@ -424,8 +424,8 @@
     </unit>
     <unit id="5961931878974459784">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:22</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:26</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:19</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:23</note>
       </notes>
       <segment>
         <source>Node Administrator</source>
@@ -433,8 +433,8 @@
     </unit>
     <unit id="6757136472455495596">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:23</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:27</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:20</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:24</note>
       </notes>
       <segment>
         <source>Assistant/Auxiliary</source>
@@ -442,8 +442,8 @@
     </unit>
     <unit id="1893044470088849694">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:24</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:28</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:21</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:25</note>
       </notes>
       <segment>
         <source>Librarian</source>
@@ -451,8 +451,8 @@
     </unit>
     <unit id="1867292495864583511">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:25</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:29</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:22</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:26</note>
       </notes>
       <segment>
         <source>Repository Manager</source>
@@ -460,8 +460,8 @@
     </unit>
     <unit id="5831435434478202738">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:26</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:30</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:23</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:27</note>
       </notes>
       <segment>
         <source>Technical Responsible</source>
@@ -469,16 +469,24 @@
     </unit>
     <unit id="4836026304455105">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:30</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:34</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:27</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:31</note>
       </notes>
       <segment>
         <source>Affiliation</source>
       </segment>
     </unit>
+    <unit id="4021752662928002901">
+      <notes>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:30</note>
+      </notes>
+      <segment>
+        <source>Update</source>
+      </segment>
+    </unit>
     <unit id="117193959430360747">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:36</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:34</note>
       </notes>
       <segment>
         <source>Information updated successfully!</source>
@@ -486,7 +494,7 @@
     </unit>
     <unit id="1351599663397358233">
       <notes>
-        <note category="location">src/app/components/home/user-info/user-info.component.html:37</note>
+        <note category="location">src/app/components/home/user-info/user-info.component.html:35</note>
       </notes>
       <segment>
         <source>Error updating information!</source>
@@ -552,10 +560,10 @@
         <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:51</note>
         <note category="location">src/app/components/account/user-table/user-table.component.html:48</note>
         <note category="location">src/app/components/account/group-table/group-table.component.html:32</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:31</note>
         <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:26</note>
         <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:26</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:184</note>
-        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:31</note>
       </notes>
       <segment>
         <source>Nothing to show</source>
@@ -762,32 +770,6 @@
         <source> Error </source>
       </segment>
     </unit>
-    <unit id="5248717555542428023">
-      <notes>
-        <note category="location">src/app/components/account/user-table/user-table.component.html:2</note>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:7</note>
-      </notes>
-      <segment>
-        <source>Username</source>
-      </segment>
-    </unit>
-    <unit id="4735050242789118064">
-      <notes>
-        <note category="location">src/app/components/account/user-table/user-table.component.html:31,32</note>
-        <note category="location">src/app/components/account/group-table/group-table.component.html:24,25</note>
-      </notes>
-      <segment>
-        <source> Delete </source>
-      </segment>
-    </unit>
-    <unit id="637403657101679327">
-      <notes>
-        <note category="location">src/app/components/account/user-table/user-table.component.html:40,41</note>
-      </notes>
-      <segment>
-        <source> Groups </source>
-      </segment>
-    </unit>
     <unit id="1582670847481559188">
       <notes>
         <note category="location">src/app/components/account/users/users.component.html:6,7</note>
@@ -836,6 +818,32 @@
       </notes>
       <segment>
         <source> Create user <pc id="0" equivStart="START_TAG_MAT_ICON" equivEnd="CLOSE_TAG_MAT_ICON" type="other" dispStart="&lt;mat-icon&gt;" dispEnd="&lt;/mat-icon&gt;">account_circle</pc></source>
+      </segment>
+    </unit>
+    <unit id="5248717555542428023">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:2</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:4</note>
+      </notes>
+      <segment>
+        <source>Username</source>
+      </segment>
+    </unit>
+    <unit id="4735050242789118064">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:31,32</note>
+        <note category="location">src/app/components/account/group-table/group-table.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source> Delete </source>
+      </segment>
+    </unit>
+    <unit id="637403657101679327">
+      <notes>
+        <note category="location">src/app/components/account/user-table/user-table.component.html:40,41</note>
+      </notes>
+      <segment>
+        <source> Groups </source>
       </segment>
     </unit>
     <unit id="2740427404733507235">
@@ -929,89 +937,25 @@
         <source> Transformed </source>
       </segment>
     </unit>
-    <unit id="888341446683346521">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:3</note>
-      </notes>
-      <segment>
-        <source>Start date</source>
-      </segment>
-    </unit>
-    <unit id="126074860850048964">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:17</note>
-      </notes>
-      <segment>
-        <source>End date</source>
-      </segment>
-    </unit>
-    <unit id="3548180789147259812">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:24</note>
-      </notes>
-      <segment>
-        <source>Time Unit</source>
-      </segment>
-    </unit>
-    <unit id="8364001491815179430">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:26</note>
-      </notes>
-      <segment>
-        <source>Unitary</source>
-      </segment>
-    </unit>
-    <unit id="2988589012964101797">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:27</note>
-      </notes>
-      <segment>
-        <source>Daily</source>
-      </segment>
-    </unit>
-    <unit id="928838138686087140">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:28</note>
-      </notes>
-      <segment>
-        <source>Weekly</source>
-      </segment>
-    </unit>
-    <unit id="6762743264882388498">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:29</note>
-      </notes>
-      <segment>
-        <source>Monthly</source>
-      </segment>
-    </unit>
-    <unit id="8036977202721714375">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:30</note>
-      </notes>
-      <segment>
-        <source>Yearly</source>
-      </segment>
-    </unit>
-    <unit id="4509598277931187746">
-      <notes>
-        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:42,43</note>
-      </notes>
-      <segment>
-        <source> Default </source>
-      </segment>
-    </unit>
     <unit id="1431416938026210429">
       <notes>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:38</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:35</note>
       </notes>
       <segment>
         <source>Password</source>
       </segment>
     </unit>
+    <unit id="3768927257183755959">
+      <notes>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:38</note>
+      </notes>
+      <segment>
+        <source>Save</source>
+      </segment>
+    </unit>
     <unit id="6769523491510900455">
       <notes>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:44</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:42</note>
       </notes>
       <segment>
         <source>User successfully created!</source>
@@ -1019,7 +963,7 @@
     </unit>
     <unit id="6456253663165305911">
       <notes>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:45</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:43</note>
       </notes>
       <segment>
         <source>Error creating user!</source>
@@ -1047,6 +991,96 @@
       </notes>
       <segment>
         <source>Import acronym from existing repositories</source>
+      </segment>
+    </unit>
+    <unit id="444415320304815256">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {user} false {group}}</source>
+      </segment>
+    </unit>
+    <unit id="1391681277390422714">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
+      </notes>
+      <segment>
+        <source>Delete <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}}"/></source>
+      </segment>
+    </unit>
+    <unit id="3275928518552732731">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
+      </notes>
+      <segment>
+        <source>Are you sure you want to permanently delete the <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}} "/> <pc id="1" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="2" equiv="INTERPOLATION" disp="{{username}}"/></pc></source>
+      </segment>
+    </unit>
+    <unit id="2159130950882492111">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:6</note>
+      </notes>
+      <segment>
+        <source>Cancel</source>
+      </segment>
+    </unit>
+    <unit id="7022070615528435141">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:7</note>
+      </notes>
+      <segment>
+        <source>Delete</source>
+      </segment>
+    </unit>
+    <unit id="6208427231517012536">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:4</note>
+      </notes>
+      <segment>
+        <source>User: <ph id="0" equiv="INTERPOLATION" disp="{{username}}"/></source>
+      </segment>
+    </unit>
+    <unit id="3889681720381026715">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:9</note>
+      </notes>
+      <segment>
+        <source>Group Membership</source>
+      </segment>
+    </unit>
+    <unit id="7170660671778667897">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:15</note>
+      </notes>
+      <segment>
+        <source>Available Groups</source>
+      </segment>
+    </unit>
+    <unit id="1746128220184458144">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {Removed} false {Added}}</source>
+      </segment>
+    </unit>
+    <unit id="2367394252151270183">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source>Success! <ph id="0" equiv="ICU" disp="{typeMessage == userGroupAction.Leave, select, true {Removed}
+      false {Added}} "/> group membership</source>
+      </segment>
+    </unit>
+    <unit id="5493405161230246040">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:26</note>
+      </notes>
+      <segment>
+        <source>Error managing groups!</source>
       </segment>
     </unit>
     <unit id="2790789392596235103">
@@ -1198,94 +1232,92 @@
                     "/> </source>
       </segment>
     </unit>
-    <unit id="444415320304815256">
+    <unit id="2273088133016853024">
       <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:22</note>
       </notes>
       <segment>
-        <source>{VAR_SELECT, select, true {user} false {group}}</source>
+        <source>Leave</source>
       </segment>
     </unit>
-    <unit id="1391681277390422714">
+    <unit id="8307140841776883735">
       <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:23</note>
       </notes>
       <segment>
-        <source>Delete <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}}"/></source>
+        <source>Join</source>
       </segment>
     </unit>
-    <unit id="3275928518552732731">
+    <unit id="888341446683346521">
       <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:3</note>
       </notes>
       <segment>
-        <source>Are you sure you want to permanently delete the <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}} "/> <pc id="1" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="2" equiv="INTERPOLATION" disp="{{username}}"/></pc></source>
+        <source>Start date</source>
       </segment>
     </unit>
-    <unit id="2159130950882492111">
+    <unit id="126074860850048964">
       <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:6</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:17</note>
       </notes>
       <segment>
-        <source>Cancel</source>
+        <source>End date</source>
       </segment>
     </unit>
-    <unit id="7022070615528435141">
+    <unit id="3548180789147259812">
       <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:7</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:24</note>
       </notes>
       <segment>
-        <source>Delete</source>
+        <source>Time Unit</source>
       </segment>
     </unit>
-    <unit id="6208427231517012536">
+    <unit id="8364001491815179430">
       <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:4</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:26</note>
       </notes>
       <segment>
-        <source>User: <ph id="0" equiv="INTERPOLATION" disp="{{username}}"/></source>
+        <source>Unitary</source>
       </segment>
     </unit>
-    <unit id="3889681720381026715">
+    <unit id="2988589012964101797">
       <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:9</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:27</note>
       </notes>
       <segment>
-        <source>Group Membership</source>
+        <source>Daily</source>
       </segment>
     </unit>
-    <unit id="7170660671778667897">
+    <unit id="928838138686087140">
       <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:15</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:28</note>
       </notes>
       <segment>
-        <source>Available Groups</source>
+        <source>Weekly</source>
       </segment>
     </unit>
-    <unit id="1746128220184458144">
+    <unit id="6762743264882388498">
       <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:29</note>
       </notes>
       <segment>
-        <source>{VAR_SELECT, select, true {Removed} false {Added}}</source>
+        <source>Monthly</source>
       </segment>
     </unit>
-    <unit id="2367394252151270183">
+    <unit id="8036977202721714375">
       <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:30</note>
       </notes>
       <segment>
-        <source>Success! <ph id="0" equiv="ICU" disp="{typeMessage == userGroupAction.Leave, select, true {Removed}
-      false {Added}} "/> group membership</source>
+        <source>Yearly</source>
       </segment>
     </unit>
-    <unit id="5493405161230246040">
+    <unit id="4509598277931187746">
       <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:26</note>
+        <note category="location">src/app/components/harvesting/harvesting-chart-filter/harvesting-chart-filter.component.html:42,43</note>
       </notes>
       <segment>
-        <source>Error managing groups!</source>
+        <source> Default </source>
       </segment>
     </unit>
     <unit id="5015476460808884362">
@@ -1395,22 +1427,6 @@
       </notes>
       <segment>
         <source> Transformation </source>
-      </segment>
-    </unit>
-    <unit id="2273088133016853024">
-      <notes>
-        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:22</note>
-      </notes>
-      <segment>
-        <source>Leave</source>
-      </segment>
-    </unit>
-    <unit id="8307140841776883735">
-      <notes>
-        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:23</note>
-      </notes>
-      <segment>
-        <source>Join</source>
       </segment>
     </unit>
   </file>
