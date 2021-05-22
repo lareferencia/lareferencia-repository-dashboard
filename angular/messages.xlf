@@ -26,22 +26,6 @@
         <source>Below is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
       </segment>
     </unit>
-    <unit id="1312515981620869544">
-      <notes>
-        <note category="location">src/app/components/home/home/home.component.html:2</note>
-      </notes>
-      <segment>
-        <source> Welcome! </source>
-      </segment>
-    </unit>
-    <unit id="783397264727973846">
-      <notes>
-        <note category="location">src/app/components/home/home/home.component.html:4,5</note>
-      </notes>
-      <segment>
-        <source> Dashboard for repository managers </source>
-      </segment>
-    </unit>
     <unit id="7467308342369948080">
       <notes>
         <note category="location">src/app/components/validation/validation/validation.component.html:7,8</note>
@@ -134,6 +118,22 @@
       </notes>
       <segment>
         <source>The data below presents the complete diagnosis of your institution&apos;s data collection. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.</source>
+      </segment>
+    </unit>
+    <unit id="1312515981620869544">
+      <notes>
+        <note category="location">src/app/components/home/home/home.component.html:2</note>
+      </notes>
+      <segment>
+        <source> Welcome! </source>
+      </segment>
+    </unit>
+    <unit id="783397264727973846">
+      <notes>
+        <note category="location">src/app/components/home/home/home.component.html:4,5</note>
+      </notes>
+      <segment>
+        <source> Dashboard for repository managers </source>
       </segment>
     </unit>
     <unit id="6436995159190484844">
@@ -383,6 +383,7 @@
       <notes>
         <note category="location">src/app/components/home/user-info/user-info.component.html:4</note>
         <note category="location">src/app/components/validation/validation-table/validation-table.component.html:25</note>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:4</note>
         <note category="location">src/app/components/account/user-create/user-create.component.html:8</note>
         <note category="location">src/app/components/account/group-table/group-table.component.html:2</note>
         <note category="location">src/app/components/account/group-table/group-table.component.html:16</note>
@@ -560,10 +561,10 @@
         <note category="location">src/app/components/broker/broker-events-table/broker-events-table.component.html:51</note>
         <note category="location">src/app/components/account/user-table/user-table.component.html:48</note>
         <note category="location">src/app/components/account/group-table/group-table.component.html:32</note>
-        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:31</note>
         <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:26</note>
         <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:26</note>
         <note category="location">src/app/components/records/records-table/records-table.component.html:184</note>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:31</note>
       </notes>
       <segment>
         <source>Nothing to show</source>
@@ -846,6 +847,47 @@
         <source> Groups </source>
       </segment>
     </unit>
+    <unit id="8238620343220328297">
+      <notes>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:1</note>
+      </notes>
+      <segment>
+        <source>Group info</source>
+      </segment>
+    </unit>
+    <unit id="1054555191264741952">
+      <notes>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:8</note>
+      </notes>
+      <segment>
+        <source>Longest name</source>
+      </segment>
+    </unit>
+    <unit id="3768927257183755959">
+      <notes>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:11</note>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:38</note>
+      </notes>
+      <segment>
+        <source>Save</source>
+      </segment>
+    </unit>
+    <unit id="1409578758278945798">
+      <notes>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:15</note>
+      </notes>
+      <segment>
+        <source>Group successfully created!</source>
+      </segment>
+    </unit>
+    <unit id="2811097968873789450">
+      <notes>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:16</note>
+      </notes>
+      <segment>
+        <source>Error creating group!</source>
+      </segment>
+    </unit>
     <unit id="2740427404733507235">
       <notes>
         <note category="location">src/app/components/account/groups/groups.component.html:6,7</note>
@@ -945,14 +987,6 @@
         <source>Password</source>
       </segment>
     </unit>
-    <unit id="3768927257183755959">
-      <notes>
-        <note category="location">src/app/components/account/user-create/user-create.component.html:38</note>
-      </notes>
-      <segment>
-        <source>Save</source>
-      </segment>
-    </unit>
     <unit id="6769523491510900455">
       <notes>
         <note category="location">src/app/components/account/user-create/user-create.component.html:42</note>
@@ -991,96 +1025,6 @@
       </notes>
       <segment>
         <source>Import acronym from existing repositories</source>
-      </segment>
-    </unit>
-    <unit id="444415320304815256">
-      <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
-      </notes>
-      <segment>
-        <source>{VAR_SELECT, select, true {user} false {group}}</source>
-      </segment>
-    </unit>
-    <unit id="1391681277390422714">
-      <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
-      </notes>
-      <segment>
-        <source>Delete <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}}"/></source>
-      </segment>
-    </unit>
-    <unit id="3275928518552732731">
-      <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
-      </notes>
-      <segment>
-        <source>Are you sure you want to permanently delete the <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}} "/> <pc id="1" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="2" equiv="INTERPOLATION" disp="{{username}}"/></pc></source>
-      </segment>
-    </unit>
-    <unit id="2159130950882492111">
-      <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:6</note>
-      </notes>
-      <segment>
-        <source>Cancel</source>
-      </segment>
-    </unit>
-    <unit id="7022070615528435141">
-      <notes>
-        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:7</note>
-      </notes>
-      <segment>
-        <source>Delete</source>
-      </segment>
-    </unit>
-    <unit id="6208427231517012536">
-      <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:4</note>
-      </notes>
-      <segment>
-        <source>User: <ph id="0" equiv="INTERPOLATION" disp="{{username}}"/></source>
-      </segment>
-    </unit>
-    <unit id="3889681720381026715">
-      <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:9</note>
-      </notes>
-      <segment>
-        <source>Group Membership</source>
-      </segment>
-    </unit>
-    <unit id="7170660671778667897">
-      <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:15</note>
-      </notes>
-      <segment>
-        <source>Available Groups</source>
-      </segment>
-    </unit>
-    <unit id="1746128220184458144">
-      <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
-      </notes>
-      <segment>
-        <source>{VAR_SELECT, select, true {Removed} false {Added}}</source>
-      </segment>
-    </unit>
-    <unit id="2367394252151270183">
-      <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
-      </notes>
-      <segment>
-        <source>Success! <ph id="0" equiv="ICU" disp="{typeMessage == userGroupAction.Leave, select, true {Removed}
-      false {Added}} "/> group membership</source>
-      </segment>
-    </unit>
-    <unit id="5493405161230246040">
-      <notes>
-        <note category="location">src/app/components/account/user-group/user-group.component.html:26</note>
-      </notes>
-      <segment>
-        <source>Error managing groups!</source>
       </segment>
     </unit>
     <unit id="2790789392596235103">
@@ -1232,20 +1176,112 @@
                     "/> </source>
       </segment>
     </unit>
-    <unit id="2273088133016853024">
+    <unit id="444415320304815256">
       <notes>
-        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:22</note>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
       </notes>
       <segment>
-        <source>Leave</source>
+        <source>{VAR_SELECT, select, true {user} false {group}}</source>
       </segment>
     </unit>
-    <unit id="8307140841776883735">
+    <unit id="1391681277390422714">
       <notes>
-        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:23</note>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:1</note>
       </notes>
       <segment>
-        <source>Join</source>
+        <source>Delete <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}}"/></source>
+      </segment>
+    </unit>
+    <unit id="3275928518552732731">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:3</note>
+      </notes>
+      <segment>
+        <source>Are you sure you want to permanently delete the <ph id="0" equiv="ICU" disp="{type == deleteType.User, select, true {user} false {group}} "/> <pc id="1" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;"><ph id="2" equiv="INTERPOLATION" disp="{{username}}"/></pc></source>
+      </segment>
+    </unit>
+    <unit id="2159130950882492111">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:6</note>
+      </notes>
+      <segment>
+        <source>Cancel</source>
+      </segment>
+    </unit>
+    <unit id="7022070615528435141">
+      <notes>
+        <note category="location">src/app/components/account/delete-confirmation/delete-confirmation.component.html:7</note>
+      </notes>
+      <segment>
+        <source>Delete</source>
+      </segment>
+    </unit>
+    <unit id="6208427231517012536">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:4</note>
+      </notes>
+      <segment>
+        <source>User: <ph id="0" equiv="INTERPOLATION" disp="{{username}}"/></source>
+      </segment>
+    </unit>
+    <unit id="3889681720381026715">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:9</note>
+      </notes>
+      <segment>
+        <source>Group Membership</source>
+      </segment>
+    </unit>
+    <unit id="7170660671778667897">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:15</note>
+      </notes>
+      <segment>
+        <source>Available Groups</source>
+      </segment>
+    </unit>
+    <unit id="1746128220184458144">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {Removed} false {Added}}</source>
+      </segment>
+    </unit>
+    <unit id="2367394252151270183">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:24,25</note>
+      </notes>
+      <segment>
+        <source>Success! <ph id="0" equiv="ICU" disp="{typeMessage == userGroupAction.Leave, select, true {Removed}
+      false {Added}} "/> group membership</source>
+      </segment>
+    </unit>
+    <unit id="5493405161230246040">
+      <notes>
+        <note category="location">src/app/components/account/user-group/user-group.component.html:26</note>
+      </notes>
+      <segment>
+        <source>Error managing groups!</source>
+      </segment>
+    </unit>
+    <unit id="5015476460808884362">
+      <notes>
+        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:11,12</note>
+        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:11,12</note>
+      </notes>
+      <segment>
+        <source> Occurrence </source>
+      </segment>
+    </unit>
+    <unit id="1582655595976194789">
+      <notes>
+        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:18,19</note>
+        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:18,19</note>
+      </notes>
+      <segment>
+        <source> Amount </source>
       </segment>
     </unit>
     <unit id="888341446683346521">
@@ -1318,24 +1354,6 @@
       </notes>
       <segment>
         <source> Default </source>
-      </segment>
-    </unit>
-    <unit id="5015476460808884362">
-      <notes>
-        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:11,12</note>
-        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:11,12</note>
-      </notes>
-      <segment>
-        <source> Occurrence </source>
-      </segment>
-    </unit>
-    <unit id="1582655595976194789">
-      <notes>
-        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:18,19</note>
-        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:18,19</note>
-      </notes>
-      <segment>
-        <source> Amount </source>
       </segment>
     </unit>
     <unit id="4638450448409947660">
@@ -1427,6 +1445,22 @@
       </notes>
       <segment>
         <source> Transformation </source>
+      </segment>
+    </unit>
+    <unit id="2273088133016853024">
+      <notes>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:22</note>
+      </notes>
+      <segment>
+        <source>Leave</source>
+      </segment>
+    </unit>
+    <unit id="8307140841776883735">
+      <notes>
+        <note category="location">src/app/components/account/user-group-table/user-group-table.component.html:23</note>
+      </notes>
+      <segment>
+        <source>Join</source>
       </segment>
     </unit>
   </file>

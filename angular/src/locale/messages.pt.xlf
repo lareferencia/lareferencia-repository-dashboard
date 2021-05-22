@@ -33,6 +33,7 @@
       <notes>
         <note category="location">src/app/components/home/user-info/user-info.component.html:4</note>
         <note category="location">src/app/components/validation/validation-table/validation-table.component.html:25</note>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:4</note>
         <note category="location">src/app/components/account/user-create/user-create.component.html:8</note>
         <note category="location">src/app/components/account/group-table/group-table.component.html:2</note>
         <note category="location">src/app/components/account/group-table/group-table.component.html:16</note>
@@ -42,6 +43,42 @@
       <segment>
         <source>Name</source>
         <target>Nome</target>
+      </segment>
+    </unit>
+    <unit id="8238620343220328297">
+      <notes>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:1</note>
+      </notes>
+      <segment>
+        <source>Group info</source>
+        <target>Informações do grupo</target>
+      </segment>
+    </unit>
+    <unit id="1054555191264741952">
+      <notes>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:8</note>
+      </notes>
+      <segment>
+        <source>Longest name</source>
+        <target>Nome mais longo</target>
+      </segment>
+    </unit>
+    <unit id="1409578758278945798">
+      <notes>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:15</note>
+      </notes>
+      <segment>
+        <source>Group successfully created!</source>
+        <target>Grupo criado com sucesso!</target>
+      </segment>
+    </unit>
+    <unit id="2811097968873789450">
+      <notes>
+        <note category="location">src/app/components/account/group-create/group-create.component.html:16</note>
+      </notes>
+      <segment>
+        <source>Error creating group!</source>
+        <target>Erro ao criar grupo! Verifique os campos obrigatórios.</target>
       </segment>
     </unit>
     <unit id="7717036205100363889">
@@ -1237,6 +1274,7 @@
     </unit>
     <unit id="3768927257183755959">
       <notes>
+        <note category="location">src/app/components/account/user-create/user-create.component.html:38</note>
         <note category="location">src/app/components/account/user-create/user-create.component.html:38</note>
       </notes>
       <segment>
