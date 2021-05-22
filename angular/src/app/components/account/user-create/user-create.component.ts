@@ -27,10 +27,14 @@ export class UserCreateComponent {
   ) {}
 
   onClickSave() {
-    this.manageUsersService.createUser(this.user).subscribe(
-      (result) => this.resultHandler(result),
-      () => this.resultHandler(false)
-    );
+    if (!this.userForm.invalid) {
+      this.manageUsersService.createUser(this.user).subscribe(
+        (result) => this.resultHandler(result),
+        () => this.resultHandler(false)
+      );
+    } else {
+      this.resultHandler(false);
+    }
   }
 
   private resultHandler(success: boolean) {

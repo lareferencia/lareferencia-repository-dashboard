@@ -27,10 +27,14 @@ export class GroupCreateComponent {
   ) {}
 
   onClickSave() {
-    this.manageGroupsService.createGroup(this.group).subscribe(
-      (result) => this.resultHandler(result),
-      () => this.resultHandler(false)
-    );
+    if (!this.groupForm.invalid) {
+      this.manageGroupsService.createGroup(this.group).subscribe(
+        (result) => this.resultHandler(result),
+        () => this.resultHandler(false)
+      );
+    } else {
+      this.resultHandler(false);
+    }
   }
 
   private resultHandler(success: boolean) {
