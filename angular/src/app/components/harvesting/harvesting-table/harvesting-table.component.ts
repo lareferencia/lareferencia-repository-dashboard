@@ -1,6 +1,7 @@
+import { AuthenticationService } from './../../../core/services/authentication.service';
 import { MatPaginator } from '@angular/material/paginator';
-import { HarvestingService } from './../../../services/harvesting.service';
-import { HarvestingContent } from './../../../shared/harvesting-content.model';
+import { HarvestingService } from '../../../core/services/harvesting.service';
+import { HarvestingContent } from '../../../shared/models/harvesting-content.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,12 +30,13 @@ export class HarvestingTableComponent implements OnInit {
   acronym: string;
   csvData: any[];
   headerData: any[];
+  admUser = false;
 
   displayedColumns = [
     'id',
-    'harvestedSize',
     'validSize',
     'invalidRecords',
+    'harvestedSize',
     'transformedSize',
     'startTime',
     'endTime',
@@ -44,10 +46,15 @@ export class HarvestingTableComponent implements OnInit {
   constructor(
     private harvestingService: HarvestingService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
+    this.admUser = this.authenticationService.isAdmUser();
+    if (!this.admUser) {
+      this.displayedColumns.splice(this.displayedColumns.indexOf('transformedSize'), 1);
+    }
     this.acronym = this.route.snapshot.paramMap.get('acronym');
   }
 
@@ -88,6 +95,7 @@ export class HarvestingTableComponent implements OnInit {
                   harvestedSize: x.harvestedSize,
                   validSize: x.validSize,
                   invalidRecords: x.invalidRecords,
+                  ...(this.admUser && {transformedSize: x.transformedSize}),
                   startTime: x.startTime,
                   endTime: x.endTime,
                 };
@@ -98,6 +106,7 @@ export class HarvestingTableComponent implements OnInit {
                 this.harvestedSize._elementRef.nativeElement.innerText,
                 this.validSize._elementRef.nativeElement.innerText,
                 this.invalidRecords._elementRef.nativeElement.innerText,
+                ...(this.admUser ? [this.transformedSize._elementRef.nativeElement.innerText] : ''),
                 this.startTime._elementRef.nativeElement.innerText,
                 this.endTime._elementRef.nativeElement.innerText,
               ];

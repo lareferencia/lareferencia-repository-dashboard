@@ -1,17 +1,18 @@
-import { RecordsFilter } from './../../../shared/records-filter.model';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { RecordsFilter } from '../../../shared/models/records-filter.model';
 import { AfterViewInit, Component, OnInit, ViewChild, Input, ElementRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { RecordsTableDataSource } from './records-table-datasource';
-import { Validation } from 'src/app/shared/validation.model';
-import { Record } from 'src/app/shared/record.model';
-import { ValidationService } from 'src/app/services/validation.service';
+import { Validation } from 'src/app/shared/models/validation.model';
+import { Record } from 'src/app/shared/models/record.model';
+import { ValidationService } from 'src/app/core/services/validation.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { startWith } from 'rxjs/internal/operators/startWith';
 import { tap } from 'rxjs/internal/operators/tap';
-import { EvaluationRulesComponent } from '../../evaluation-rules/evaluation-rules.component';
+import { EvaluationRulesComponent } from '../../rule/evaluation-rules/evaluation-rules.component';
 
 @Component({
   selector: 'app-records-table',
@@ -30,9 +31,11 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
   dataSource: RecordsTableDataSource;
   pageSize = 10;
   harvestingID: number;
+  acronym: string;
   isLoadingResults = true;
   csvData: any[];
   headerData: any[];
+  admUser = false;
 
   filter: RecordsFilter = {
     pageSize: this.pageSize,
@@ -50,20 +53,26 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
   constructor(
     private validationService: ValidationService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authenticationService: AuthenticationService
   ) {}
 
   ngOnInit() {
+    this.admUser = this.authenticationService.isAdmUser();
+    if (!this.admUser) {
+      this.displayedColumns.splice(this.displayedColumns.indexOf('isTransformed'), 1);
+    }
     this.harvestingID = Number(
       this.route.snapshot.paramMap.get('harvestingID')
     );
+    this.acronym = this.route.snapshot.paramMap.get('acronym');
   }
 
   detailClick(record: Record): void {
     record.rules = this.validation.rulesByID;
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = record;
+    dialogConfig.data = { record, acronym: this.acronym };
     dialogConfig.autoFocus = false;
 
     this.dialog.open(EvaluationRulesComponent, dialogConfig);
@@ -99,7 +108,7 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
     this.isLoadingResults = true;
 
     this.validationService
-      .getRecordsByHarvestingIDFilter(this.harvestingID, this.filter)
+      .getRecordsByHarvestingIDFilter(this.acronym, this.harvestingID, this.filter)
       .subscribe((result) => {
         this.dataSource = new RecordsTableDataSource(result.content);
         this.paginator.length = result.totalElements;
@@ -112,7 +121,7 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
             id: x.id,
             identifier: x.identifier,
             validation: x.isValid,
-            tranformation: x.isTransformed,
+            ...(this.admUser && {tranformation: x.isTransformed}),
           };
         });
 
@@ -120,7 +129,7 @@ export class RecordsTableComponent implements AfterViewInit, OnInit {
           this.id.nativeElement.innerText,
           this.identifier.nativeElement.innerText,
           this.isValid.nativeElement.innerText,
-          this.isTransformed.nativeElement.innerText,
+          ...(this.admUser ? [this.isTransformed.nativeElement.innerText] : ''),
         ];
       });
   }

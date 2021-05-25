@@ -1,0 +1,17 @@
+<div class="processes" *ngFor="let element of processes; let i=index;">
+  <div [ngClass]="[
+      'alert', 
+      !element.status ? 'alert-warning' : element.status == 1 ? 'alert-success' : 'alert-danger'
+    ]" role="alert">
+    {{element.description}}
+    <div *ngIf="!element.status" class="spinner-border spinner-border-sm" role="status">
+      <span class="sr-only" i18n>Loading...</span>
+    </div>
+    <div *ngIf="element.status == 1" i18n>
+      Success
+    </div>
+    <div *ngIf="element.status == 2" i18n>
+      Error
+    </div>
+  </div>
+</div>

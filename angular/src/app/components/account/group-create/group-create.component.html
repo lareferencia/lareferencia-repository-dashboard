@@ -1,0 +1,19 @@
+<h2 i18n>Group info</h2>
+<form name="groupForm" #groupForm="ngForm" class="group-form">
+  <mat-form-field>
+    <mat-label i18n>Name</mat-label>
+    <input required matInput [(ngModel)]="group.name" name="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label i18n>Longest name</mat-label>
+    <input matInput [(ngModel)]="group.long_name" name="long_name">
+  </mat-form-field>
+  <button mat-raised-button class="btn-primary" (click)="onClickSave()" i18n>Save</button>
+</form>
+<ng-template #snackBarTemplate>
+  <div class="message">
+    <span *ngIf="succesMessage; else error" i18n>Group successfully created!</span>
+    <ng-template #error i18n>Error creating group!</ng-template>
+    <mat-icon (click)="dismissSnackbar()">close</mat-icon>
+  </div>
+</ng-template>

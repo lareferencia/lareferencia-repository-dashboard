@@ -1,5 +1,6 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
+    id="style-1"
     class="sidenav"
     mode="side"
     opened
@@ -8,19 +9,16 @@
     fixedBottomGap="60"
   >
     <mat-nav-list class="nav-list">
-      <div class="margin-top"></div>
-      <a
-        class="menu-border semi-bold"
-        mat-list-item
-        routerLink="/{{ acronym }}"
-      >
-        <!-- <i mat-list-icon class="material-icons">home</i> -->
+      <ng-template [ngIf]="admUser">
+        <a class="manage-acount" mat-list-item routerLink="/manage/accounts">
+          <span class="full-width" i18n>Manage Accounts</span>
+        </a>
+      </ng-template>
+      <a class="home" mat-list-item routerLink="/">
         <span class="full-width" i18n="Home page">Home</span>
       </a>
-      <ng-container *ngFor="let repositorie of repositories">
-        <div class="margin-top"></div>
+      <ng-container *ngFor="let repositorie of repositoriesMenu">
         <a
-          class="menu-border ligth"
           mat-list-item
           (click)="menuClick(repositorie)"
         >
@@ -39,23 +37,26 @@
           *ngIf="isExpanded"
         >
           <a
-            class="sub-menu-border"
             mat-list-item
             routerLink="/{{ repositorie.description }}"
             i18n
             >History
           </a>
-          <div class="margin-top-sub-menu"></div>
           <a
-            class="sub-menu-border"
             mat-list-item
             (click)="validationClick(repositorie.description)"
             i18n
             >Last validation
           </a>
+          <a
+            *ngIf="repositorie.hasBroker"
+            mat-list-item
+            routerLink="/{{ repositorie.description }}/broker"
+            i18n
+            >OpenAIRE Broker
+          </a>
         </div>
       </ng-container>
-      <div class="margin-top"></div>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="content">

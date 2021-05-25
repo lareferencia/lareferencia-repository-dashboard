@@ -1,0 +1,42 @@
+<mat-form-field class="col-6">
+  <mat-label i18n>Name</mat-label>
+  <input type="text" matInput (keydown.enter)="applyFilter()" [(ngModel)]="nameFilter" />
+</mat-form-field>
+
+<div class="table-container" class="mat-elevation-z2">
+  <div class="table-content-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header #name i18n>Name</th>
+        <td mat-cell *matCellDef="let group">{{group.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="button-action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let group">
+          <button mat-raised-button color="warn" [ngClass]="[
+            'btn', 
+            action == userGroupAction.Leave ? 'btn-danger' : 'btn-primary'
+          ]" (click)="handlerClick(group)">
+            <span *ngIf="action == userGroupAction.Leave; else join" i18n>Leave</span>
+            <ng-template #join i18n>Join</ng-template>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" i18n colspan="4">Nothing to show</td>
+      </tr>
+    </table>
+
+    <mat-paginator 
+      #paginator 
+      [pageIndex]="0"
+      [pageSize]="5" 
+      [pageSizeOptions]="[5, 10, 25, 50, 100, 250]">
+    </mat-paginator>
+  </div>
+</div>

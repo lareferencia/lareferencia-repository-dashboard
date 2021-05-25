@@ -1,4 +1,4 @@
-import { Rule } from './../../../shared/rule.model';
+import { Rule } from '../../../shared/models/rule.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 

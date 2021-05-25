@@ -1,0 +1,20 @@
+.file-select-button,
+.file-name {
+  display: inline-block;
+  margin: 8px;
+}
+
+.file-selected {
+  display: flex;
+  align-items: center;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.message {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}

@@ -1,6 +1,9 @@
-import { HarvestingService } from './../../../services/harvesting.service';
-import { Menu } from './../../../shared/menu.model';
-import { NavService } from './../../../services/nav.service';
+import { AuthenticationService } from './../../../core/services/authentication.service';
+import { BrokerEventsFilter } from './../../../shared/models/broker-events-filter.model';
+import { BrokerService } from 'src/app/core/services/broker.service';
+import { HarvestingService } from '../../../core/services/harvesting.service';
+import { Menu } from '../../../shared/models/menu.model';
+import { NavService } from '../../../core/services/nav.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -14,25 +17,38 @@ export class NavComponent implements OnInit {
   isExpandedFio = true;
   showSubmenu: boolean = false;
   showSubmenuFio: boolean = false;
-  repositories: Menu[];
+  repositoriesMenu: Menu[] = [];
+  admUser = false;
+  filter: BrokerEventsFilter = {
+    pageSize: 1,
+    pageNumber: 0,
+  };
 
   constructor(
     private navService: NavService,
     private router: Router,
-    private harvestingService: HarvestingService
-  ) {
-    this.repositories = [
-      { description: 'Fiocruz', showSubmenu: false },
-      { description: 'Uninove', showSubmenu: false },
-      { description: 'Ibict', showSubmenu: false },
-      { description: 'UFSM', showSubmenu: false },
-      { description: 'PUC-RS', showSubmenu: false },
-      { description: 'UFES', showSubmenu: false },
-      { description: 'UFSCar', showSubmenu: false },
-    ];
-  }
+    private harvestingService: HarvestingService,
+    private brokerService: BrokerService,
+    private authenticationService: AuthenticationService,
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.admUser = this.authenticationService.isAdmUser();
+    this.harvestingService.getHarvestingList().subscribe((harvestingList) => {
+      harvestingList.content.map((x) =>
+        this.brokerService
+          .getEventsByAcronym(x.acronym, this.filter)
+          .subscribe((brokerEvents) => {
+            this.repositoriesMenu.push({
+              description: x.acronym,
+              showSubmenu: false,
+              hasBroker: brokerEvents.content.length > 0,
+            });
+            this.repositoriesMenu = this.repositoriesMenu.sort((a, b) => +(a.description > b.description) || -(a.description < b.description));
+          })
+      );
+    });
+  }
 
   get harvestingID(): number {
     return this.navService.navData.harvestingID;
@@ -45,13 +61,20 @@ export class NavComponent implements OnInit {
   validationClick(acronym: string) {
     this.harvestingService
       .getHarvestingLastGoodKnowByAcronym(acronym)
-      .subscribe((harvestingContent) => {
-        this.router.navigate([`${acronym}/validation/${harvestingContent.id}`]);
-      });
+      .subscribe(
+        (harvestingContent) => {
+          this.router.navigate([
+            `${acronym}/validation/${harvestingContent.id}`,
+          ]);
+        },
+        () => {
+          this.router.navigate([`${acronym}/validation/-1`]);
+        }
+      );
   }
 
   menuClick(e: Menu) {
-    this.repositories.forEach((x) => {
+    this.repositoriesMenu.forEach((x) => {
       if (x.description == e.description) x.showSubmenu = !x.showSubmenu;
     });
   }

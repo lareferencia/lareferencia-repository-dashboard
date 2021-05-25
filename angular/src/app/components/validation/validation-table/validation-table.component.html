@@ -1,3 +1,16 @@
+<div class="filter-form">
+  
+  <mat-form-field appearance="fill" style="margin-left: 30px">
+    <mat-label i18n>Show rules</mat-label>
+    <mat-select (selectionChange)="applyFilter()" [(value)]="requiredRule" [(ngModel)]="requiredRule">
+      <mat-option i18n>All</mat-option>
+      <mat-option [value]="true" i18n>Mandatory</mat-option>
+      <mat-option [value]="false" i18n>Not mandatory</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
 <div class="table-container">
   <div class="table-content-container">
     <table mat-table [dataSource]="dataSource" matSort>
@@ -9,7 +22,7 @@
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef i18n #name>Name</th>
+        <th mat-header-cell *matHeaderCellDef i18n width="12%" #name>Name</th>
         <td mat-cell *matCellDef="let rule">{{ rule.name }}</td>
       </ng-container>
 
@@ -20,7 +33,7 @@
 
       <ng-container matColumnDef="mandatory">
         <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #mandatory>
-          Required
+          Mandatory
         </th>
         <td mat-cell *matCellDef="let rule" i18n>
           {rule.mandatory, select, true {Yes} false {No}}
@@ -62,9 +75,13 @@
       <ng-container matColumnDef="button-records">
         <th mat-header-cell *matHeaderCellDef i18n>Records</th>
         <td mat-cell *matCellDef="let rule">
-          <span class="badge badge-success" *ngIf="rule.conformity == 100">
+          <button
+          *ngIf="rule.conformity == 100"
+            type="button"
+            class="btn btn-disabled btn-conformity"
+          >
             100%
-          </span>
+          </button>
           <div *ngIf="rule.conformity < 100">
             <a
               target="_blank"
@@ -73,7 +90,7 @@
               }}/invalid_rule/{{ rule.ruleID }}"
             >
               <button
-                class="btn text-nowrap btn-outline-danger"
+                mat-raised-button color="warn" class="btn text-nowrap btn-records"
                 i18n-matTooltip
                 matTooltip="Records that contain this invalid rule"
                 matTooltipPosition="above"
@@ -89,9 +106,12 @@
       <ng-container matColumnDef="button-detail">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let rule">
-          <button
+          <span class="badge badge-secondary" *ngIf="rule.conformity == 100 && !admUser">
+            100%
+          </span>
+          <button *ngIf="rule.conformity < 100 || admUser"
             type="button"
-            class="btn btn-outline-primary"
+            class="btn btn-primary"
             (click)="detailClick(rule)"
             i18n-matTooltip
             matTooltip="Details about this rule"

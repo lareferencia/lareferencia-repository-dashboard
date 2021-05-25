@@ -1,0 +1,8 @@
+.alert {
+  display: flex;
+  justify-content: space-between;
+}
+
+.processes {
+  margin: 5px 0px 0px 7px;
+}

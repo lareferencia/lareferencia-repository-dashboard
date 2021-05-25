@@ -1,0 +1,9 @@
+.icon-help {
+  font-size: 20px;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  margin: 5px 0px 15px 7px;
+}

@@ -1,0 +1,15 @@
+.sub-header {
+  background-color: #e6e6e6;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+span {
+  font-family: Roboto;
+  margin-left: 2em;
+  font-size: 14pt;
+  color: #000000;
+  font-weight: 700;
+}

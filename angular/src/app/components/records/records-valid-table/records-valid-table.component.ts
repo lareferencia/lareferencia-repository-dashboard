@@ -1,14 +1,14 @@
 import { ActivatedRoute } from '@angular/router';
-import { ValidationService } from 'src/app/services/validation.service';
+import { ValidationService } from 'src/app/core/services/validation.service';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { RecordsTableDataSource } from './records-valid-table-datasource';
-import { Record } from 'src/app/shared/record.model';
-import { Validation } from 'src/app/shared/validation.model';
+import { Record } from 'src/app/shared/models/record.model';
+import { Validation } from 'src/app/shared/models/validation.model';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
-import { EvaluationRulesComponent } from '../../evaluation-rules/evaluation-rules.component';
+import { EvaluationRulesComponent } from '../../rule/evaluation-rules/evaluation-rules.component';
 import { startWith, tap } from 'rxjs/operators';
 
 @Component({
@@ -24,6 +24,7 @@ export class RecordsValidTableComponent implements OnInit {
   dataSource: RecordsTableDataSource;
   pageSize = 25;
   harvestingID: number;
+  acronym: string;
   ruleID: number;
   isLoadingResults = true;
   csvData: any[];
@@ -44,6 +45,7 @@ export class RecordsValidTableComponent implements OnInit {
 
   ngOnInit() {
     this.harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
+    this.acronym = this.route.snapshot.paramMap.get('acronym');
     this.ruleID = Number(this.route.snapshot.paramMap.get('ruleID'));
   }
 
@@ -65,6 +67,7 @@ export class RecordsValidTableComponent implements OnInit {
           this.isLoadingResults = true;
           this.validationService
             .getRecordsByHarvestingIDValidRuleID(
+              this.acronym,
               this.harvestingID,
               this.ruleID,
               this.paginator.pageIndex,

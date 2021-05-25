@@ -1,0 +1,108 @@
+.chart {
+  background-color: #ffffff;
+  margin: 10px 0px 10px 30px;
+}
+
+.chart-card {
+  background-color: #eff9fc;
+  height: 95%;
+}
+
+.chart-title {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.chart-container {
+  padding: 20px 10px 10px 20px;
+}
+
+.divider {
+  border-top: 1px solid #48a1d9;
+  margin-bottom: 10px;
+  margin-right: 30px;
+}
+
+.divider-title {
+  border-top: 3px solid #cccccc;
+  margin-bottom: 10px;
+  margin-right: 30px;
+}
+
+.chart-title > span {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 12pt;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.invalid-legend {
+  width: 10px;
+  height: 10px;
+  background-color: #33426a;
+  margin-right: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.valid-legend {
+  width: 10px;
+  height: 10px;
+  background-color: #48a1d9;
+  margin-right: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.harvested-legend {
+  width: 10px;
+  height: 10px;
+  background-color: #cccccc;
+  margin-right: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.legend-div {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin: 5px 5px 30px 5px;
+}
+
+.chart-description-text > span {
+  font-family: Roboto;
+  font-size: 13pt;
+  line-height: 12pt;
+  color: #3c3c3b;
+  font-weight: 600;
+}
+
+.chart-description-text {
+  width: 75%;
+}
+
+.chart-description {
+  margin-bottom: 10px;
+}
+
+.graph::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.graph::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+.graph::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #555;
+}

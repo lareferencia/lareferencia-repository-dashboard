@@ -1,0 +1,40 @@
+<div class="groups">
+  <mat-accordion class="headers-align">
+    <mat-expansion-panel (opened)="openExpanderGroup()">
+      <mat-expansion-panel-header>
+        <mat-panel-title i18n>
+          Groups
+        </mat-panel-title>
+        <mat-panel-description i18n>
+          Group list
+          <mat-icon>groups</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-group-table></app-group-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title i18n>
+          Import
+        </mat-panel-title>
+        <mat-panel-description i18n>
+          Import groups
+          <mat-icon>upload</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-group-sync></app-group-sync>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title i18n>
+          Create
+        </mat-panel-title>
+        <mat-panel-description i18n>
+          Create group
+          <mat-icon>group</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-group-create></app-group-create>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

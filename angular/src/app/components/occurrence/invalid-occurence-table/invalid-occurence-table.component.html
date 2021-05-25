@@ -1,4 +1,4 @@
-<div class="table-container mat-elevation-z8">
+<div class="table-container">
   <table
     mat-table
     [dataSource]="dataSource"
@@ -22,6 +22,9 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" i18n colspan="4">Nothing to show</td>
+    </tr>
   </table>
 
   <mat-paginator

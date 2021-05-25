@@ -1,11 +1,11 @@
 .sidenav {
-  background-color: #f6d67b;
+  background-color: #f2f2f2;
   width: 200px;
 }
 
 .sidenav a {
-  color: #007a86;
-  font-size: 12pt;
+  font-family: Roboto;
+  color: #000000;
 }
 
 .semi-bold {
@@ -37,14 +37,15 @@
   transition: transform 300ms ease-out;
   transform: scaleY(0);
   transform-origin: top;
-  padding-left: 30px;
   height: 0;
   overflow: hidden;
-  background-color: #fae6b4;
+  background-color: #ffffff;
+  text-transform: uppercase;
 }
 
 .submenu > a {
-  color: #706f6f;
+  font-family: Roboto;
+  color: #000000;
 }
 
 .submenu.expanded {
@@ -65,22 +66,29 @@
   width: 100%;
 }
 
+.manage-acount {
+  background-color: #0487d9;
+}
+
+.home {
+  background-color: #0468be;
+}
+
+.manage-acount,
+.home span {
+  font-family: 'Roboto';
+  color: #ffffff !important;
+  text-transform: uppercase;
+}
+
 .nav-list {
-  margin-top: 2em;
+  padding-top: 0px;
 }
 
-.margin-top {
-  width: 80%;
-  height: 1px;
-  border-color: #4a4a49;
-  border-style: solid;
-  border-width: 1px 0px 0px 0px;
-}
-
-.margin-top-sub-menu {
-  width: 76%;
-  height: 1px;
-  border-color: #ffffff;
-  border-style: solid;
-  border-width: 1px 0px 0px 0px;
+.mat-nav-list .mat-list-item:focus,
+.mat-nav-list .mat-list-item:hover,
+.mat-action-list .mat-list-item:focus,
+.mat-list-option:focus {
+  background: #0468be !important;
+  color: white;
 }

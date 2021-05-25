@@ -1,7 +1,8 @@
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { ValidationDetailComponent } from './../validation-detail/validation-detail.component';
-import { Validation } from '../../../shared/validation.model';
-import { Rule } from '../../../shared/rule.model';
-import { Component, OnInit, ViewChild, Input, ElementRef } from '@angular/core';
+import { Validation } from '../../../shared/models/validation.model';
+import { Rule } from '../../../shared/models/rule.model';
+import { Component, OnInit, ViewChild, Input, ElementRef, AfterViewInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
@@ -15,23 +16,25 @@ import { startWith, tap, delay } from 'rxjs/operators';
   templateUrl: './validation-table.component.html',
   styleUrls: ['./validation-table.component.css'],
 })
-export class ValidationTableComponent implements OnInit {
+export class ValidationTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<Rule>;
   @Input() validation: Validation;
-  @ViewChild('ruleID') ruleID : any;
-  @ViewChild('name') name : ElementRef<HTMLTableHeaderCellElement>;
-  @ViewChild('description') description : ElementRef<HTMLTableHeaderCellElement>;
-  @ViewChild('mandatory') mandatory : any;
-  @ViewChild('conformity') conformity : any;
-  @ViewChild('validCount') validCount : any;
+  @ViewChild('ruleID') ruleID: any;
+  @ViewChild('name') name: ElementRef<HTMLTableHeaderCellElement>;
+  @ViewChild('description') description: ElementRef<HTMLTableHeaderCellElement>;
+  @ViewChild('mandatory') mandatory: any;
+  @ViewChild('conformity') conformity: any;
+  @ViewChild('validCount') validCount: any;
 
   dataSource: ValidationTableDataSource;
   harvestingID: number;
   acronym: string;
   csvData: any[];
   headerData: any[];
+  requiredRule? = true;
+  admUser = false;
 
   displayedColumns: string[] = [
     'ruleID',
@@ -44,11 +47,23 @@ export class ValidationTableComponent implements OnInit {
     'button-detail',
   ];
 
-  constructor(private route: ActivatedRoute, private dialog: MatDialog) {}
+  constructor(
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
-    this.harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
+    this.admUser = this.authenticationService.isAdmUser();
+    this.harvestingID = Number(
+      this.route.snapshot.paramMap.get('harvestingID')
+    );
     this.acronym = this.route.snapshot.paramMap.get('acronym');
+  }
+
+  applyFilter() {
+    this.paginator.pageIndex = 0;
+    this.loadRecords();
   }
 
   ngAfterViewInit() {
@@ -57,40 +72,48 @@ export class ValidationTableComponent implements OnInit {
         startWith(null),
         delay(0),
         tap(() => {
-          this.dataSource = new ValidationTableDataSource(
-            this.validation.rulesByID
-          );
-          this.dataSource.sort = this.sort;
-          this.dataSource.paginator = this.paginator;
-
-          this.csvData = this.validation.rulesByID.map((x) => {
-            return {
-              ruleID: x.ruleID,
-              name: x.name,
-              description: x.description,
-              mandatory: x.mandatory,
-              conformity: x.conformity.toFixed(3),
-              validCount: x.validCount,
-            };
-          });
-
-          this.headerData = [
-            this.ruleID._elementRef.nativeElement.innerText,
-            this.name.nativeElement.innerText,
-            this.description.nativeElement.innerText,
-            this.mandatory._elementRef.nativeElement.innerText,
-            this.conformity._elementRef.nativeElement.innerText,
-            this.validCount._elementRef.nativeElement.innerText,
-          ];
+          this.loadRecords();
         })
       )
-      .subscribe();
+      .subscribe(() => {});
+  }
+
+  loadRecords() {
+    let rules = this.validation.rulesByID;
+
+    if (this.requiredRule != null)
+      rules = this.validation.rulesByID.filter((x) => x.mandatory == this.requiredRule);
+
+    this.dataSource = new ValidationTableDataSource(rules);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+
+    this.csvData = this.validation.rulesByID.map((x) => {
+      return {
+        ruleID: x.ruleID,
+        name: x.name,
+        description: x.description,
+        mandatory: x.mandatory,
+        conformity: x.conformity.toFixed(3),
+        validCount: x.validCount,
+      };
+    });
+
+    this.headerData = [
+      this.ruleID._elementRef.nativeElement.innerText,
+      this.name.nativeElement.innerText,
+      this.description.nativeElement.innerText,
+      this.mandatory._elementRef.nativeElement.innerText,
+      this.conformity._elementRef.nativeElement.innerText,
+      this.validCount._elementRef.nativeElement.innerText,
+    ];
   }
 
   detailClick(rule: Rule): void {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
+      acronym: this.acronym,
       ruleID: rule.ruleID,
       harvestingID: this.harvestingID,
       name: rule.name,

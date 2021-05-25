@@ -18,7 +18,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field class="col-2">
+  <mat-form-field class="col-2" *ngIf="admUser">
     <mat-label i18n>Transformed</mat-label>
     <mat-select
       [(ngModel)]="filter.isTransformed"
@@ -85,7 +85,7 @@
   </mat-form-field>
 
   <button
-    class="btn-filter-action"
+    class="btn-filter-action btn-secondary"
     (click)="clearFilter()"
     mat-raised-button
     i18n
@@ -94,7 +94,7 @@
   </button>
 
   <button
-    class="btn-filter-action"
+    class="btn-filter-action btn-primary"
     (click)="applyFilter()"
     mat-raised-button
     color="primary"
@@ -124,31 +124,43 @@
 
       <ng-container matColumnDef="identifier">
         <th mat-header-cell *matHeaderCellDef i18n #identifier>Identifier</th>
-        <td mat-cell *matCellDef="let record">{{ record.identifier }}</td>
+        <td mat-cell *matCellDef="let record">
+          <a target="_blank"
+            href="{{record.origin}}?verb=GetRecord&metadataPrefix={{record.metadataPrefix}}&identifier={{record.identifier}}">
+            {{record.identifier }}
+          </a>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="isValid">
         <th mat-header-cell *matHeaderCellDef i18n #isValid>Validation</th>
         <td mat-cell *matCellDef="let record">
-          <span
+          <button
             [ngClass]="[
-              'badge',
-              record.isValid == true ? 'badge-success' : 'badge-danger'
-            ]"
+              'btn',
+              record.isValid == true ? 'btn-disabled-green btn-valid' : 'btn-disabled-red'
+            ]"            
+            type="button"
             i18n
-            >{record.isValid, select, true {Valid} false {Invalid}}</span
           >
+            {record.isValid, select, true {Valid} false {Invalid}}
+          </button>
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="isTransformed">
+      <ng-container matColumnDef="isTransformed" *ngIf="admUser">
         <th mat-header-cell *matHeaderCellDef i18n #isTransformed>
           Transformation
         </th>
         <td mat-cell *matCellDef="let record">
-          <span *ngIf="record.isTransformed" class="badge badge-light" i18n
-            >Transformed</span
+          <button
+            *ngIf="record.isTransformed"
+            type="button"
+            class="btn btn-disabled"
+            i18n
           >
+          Transformed
+          </button>
         </td>
       </ng-container>
 
@@ -157,7 +169,7 @@
         <td mat-cell *matCellDef="let record">
           <button
             type="button"
-            class="btn btn-outline-primary"
+            class="btn btn-primary"
             (click)="detailClick(record)"
             i18n
           >
@@ -168,6 +180,9 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let record; columns: displayedColumns"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" i18n colspan="4">Nothing to show</td>
+      </tr>
     </table>
 
     <mat-paginator

@@ -1,0 +1,41 @@
+.card-div {
+  padding: 0px 0px 30px 10px;
+}
+
+.mat-card {
+  padding: 0px;
+  background-color: #ffffff;
+  transition: none !important;
+  box-shadow: none !important;
+}
+
+.app-card-header {
+  background-color: #ffffff;
+  padding: 10px 10px 10px 30px;
+}
+
+.app-card-header > span {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 13pt;
+  color: #000000;
+}
+
+.description {
+  background-color: #ffffff;
+  padding: 10px 10px 10px 30px;
+  text-align: justify;
+}
+
+.description-text > span {
+  font-size: 13pt;
+  font-family: Roboto;
+  line-height: 15pt;
+  color: #3c3c3b;
+  font-weight: 400;
+}
+
+.description-text {
+  width: 75%;
+  white-space: pre-line;
+}

@@ -35,3 +35,7 @@ th {
   align-items: center;
   justify-content: center;
 }
+
+.btn-valid {
+  width: 71px;
+}

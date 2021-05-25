@@ -1,19 +1,9 @@
 <app-card
   *ngIf="harvestingHistory?.content.length > 1"
-  cardTitle="Validation evolution"
+  cardTitle="Harvesting history"
   i18n-cardTitle
-  description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
-  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
-  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-  It was popularised in the 1960s with the release of Letraset sheets containing 
-  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-  PageMaker including versions of Lorem Ipsum."
+  description="In the graph below it is possible to view the results of the collections performed. It is possible to generate daily, weekly, monthly and yearly collection charts. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory collection rules of the repository. Invalid records are those that do not comply with the mandatory collection rules of the repository. Finally, the transformed records inform the number of documents that were collected. Normally, this number should equal the number of documents deposited in the repository."
   i18n-description
 >
-  <app-validation-chart
-    class="col-md-4"
-    [harvestingHistory]="harvestingHistory"
-  >
-  </app-validation-chart>
+  <app-harvesting-chart class="col-md-4"> </app-harvesting-chart>
 </app-card>

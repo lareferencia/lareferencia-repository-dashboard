@@ -1,0 +1,117 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A basic grouped bar chart example.",
+  "width": 1500,
+  "height": 300,
+  "padding": 35,
+
+  "data": [
+    {
+      "name": "table",
+      "values": [],
+      "transform": [
+        {
+          "type": "formula",
+          "as": "color",
+          "expr": "datum.position == 0 ? '#00BAB8': datum.position == 1 ? '#F1686A' : '#02799E'"
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "xscale",
+      "type": "band",
+      "domain": { "data": "table", "field": "category" },
+      "range": "width",
+      "padding": 0.2
+    },
+    {
+      "name": "yscale",
+      "type": "linear",
+      "domain": { "data": "table", "field": "value" },
+      "range": "height",
+      "round": true,
+      "zero": true,
+      "nice": true
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": "category"
+    }
+  ],
+
+  "axes": [
+    {
+      "orient": "left",
+      "scale": "yscale",
+      "tickSize": 0,
+      "labelPadding": 4,
+      "zindex": 1
+    },
+    { "orient": "bottom", "scale": "xscale", "encode": {
+      "labels": {
+        "update": {
+          "text": {"signal": "split(datum.value, ' ')"}
+        }
+      }
+    } }
+  ],
+
+  "marks": [
+    {
+      "type": "group",
+
+      "from": {
+        "facet": {
+          "data": "table",
+          "name": "facet",
+          "groupby": "category"
+        }
+      },
+
+      "encode": {
+        "update": {
+          "x": { "scale": "xscale", "field": "category" }
+        }
+      },
+
+      "signals": [{ "name": "width", "update": "bandwidth('xscale')" }],
+
+      "scales": [
+        {
+          "name": "pos",
+          "type": "band",
+          "range": "width",
+          "domain": { "data": "facet", "field": "position" }
+        }
+      ],
+
+      "marks": [
+        {
+          "name": "bars",
+          "from": { "data": "facet" },
+          "type": "rect",
+          "encode": {
+            "update": {
+              "x": { "scale": "pos", "field": "position" },
+              "width": { "scale": "pos", "band": 1 },
+              "y": { "scale": "yscale", "field": "value" },
+              "y2": { "scale": "yscale", "value": 0 },
+              "fill": { "field": "color" },
+              "tooltip": {
+                "signal": "datum.position == 0 ? 'Valid: ' + datum.value: datum.position == 1 ? 'Invalid: ' + datum.value : 'Harvested: ' + datum.value"
+              },
+              "fillOpacity": { "value": 1 }
+            },
+            "hover": {
+              "fillOpacity": { "value": 0.5 }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

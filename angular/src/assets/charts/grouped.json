@@ -18,12 +18,12 @@
         {
           "type": "formula",
           "as": "percent",
-          "expr": "format(datum.value, '.2f') + '%'"
+          "expr": "format(datum.value, '.3f') + '%'"
         },
         {
           "type": "formula",
           "as": "color",
-          "expr": "(datum.value < 50) ? '#E41A1C': (datum.value == 100) ? '#22964F' : '#FFC107'"
+          "expr": "(datum.value < 50) ? '#F1686A': (datum.value == 100) ? '#00BAB8' : '#FBBE50'"
         }
       ]
     }
