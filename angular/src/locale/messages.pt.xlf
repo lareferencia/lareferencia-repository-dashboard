@@ -56,6 +56,15 @@
         <target>Repositórios</target>
       </segment>
     </unit>
+    <unit id="4378170314293353917">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:38,39</note>
+      </notes>
+      <segment>
+        <source> The quantities presented in the graphs above are dynamically generated through the collections carried out. It is up to the manager responsible for the source to verify the invalid records in order to solve the problems that resulted in their invalidation. </source>
+        <target> Os quantitativos apresentados nos gráficos acima são gerados dinamicamente por meio das coletas realizadas pela equipe BDTD. Compete ao gestor responsável pela fonte verificar os registros inválidos de modo a solucionar os problemas que resultaram em sua invalidação. </target>
+      </segment>
+    </unit>
     <unit id="7286430803380181008">
       <notes>
         <note category="location">src/app/components/home/acronym-table/acronym-table.component.html:4</note>
@@ -103,13 +112,13 @@
         <target> Filtrar </target>
       </segment>
     </unit>
-    <unit id="4368504036113969165">
+    <unit id="1037112662044934020">
       <notes>
         <note category="location">src/app/components/home/acronym-table/acronym-table.component.html:66</note>
       </notes>
       <segment>
-        <source>Last validation</source>
-        <target>Última validação</target>
+        <source>Harvested/Valid/Transformed</source>
+        <target>Coletado/Válido/Transformado</target>
       </segment>
     </unit>
     <unit id="7073877810060408991">

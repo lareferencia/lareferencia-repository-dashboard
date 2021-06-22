@@ -63,7 +63,7 @@
       </ng-container>
 
       <ng-container matColumnDef="teste">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header #name i18n>Last validation</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header #name><span i18n>Harvested/Valid/Transformed</span></th>
         <td mat-cell *matCellDef="let row">
           <span class="badge badge-harvested" i18n matTooltipPosition="above" i18n-matTooltip matTooltip="Harvested">
             {{row.lkgHarvestedSize}}</span>

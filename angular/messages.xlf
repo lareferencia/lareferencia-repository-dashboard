@@ -350,6 +350,14 @@
         <source>Harvestings</source>
       </segment>
     </unit>
+    <unit id="4378170314293353917">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:38,39</note>
+      </notes>
+      <segment>
+        <source> The quantities presented in the graphs above are dynamically generated through the collections carried out. It is up to the manager responsible for the source to verify the invalid records in order to solve the problems that resulted in their invalidation. </source>
+      </segment>
+    </unit>
     <unit id="2793829730347223036">
       <notes>
         <note category="location">src/app/components/harvesting/harvesting-chart/harvesting-chart.component.html:15,16</note>
@@ -567,12 +575,12 @@
 </source>
       </segment>
     </unit>
-    <unit id="4368504036113969165">
+    <unit id="1037112662044934020">
       <notes>
         <note category="location">src/app/components/home/acronym-table/acronym-table.component.html:66</note>
       </notes>
       <segment>
-        <source>Last validation</source>
+        <source>Harvested/Valid/Transformed</source>
       </segment>
     </unit>
     <unit id="7073877810060408991">
@@ -1356,14 +1364,6 @@
         <source> Default </source>
       </segment>
     </unit>
-    <unit id="4638450448409947660">
-      <notes>
-        <note category="location">src/app/components/conformity/conformity-grouped-chart/conformity-grouped-chart.component.html:2</note>
-      </notes>
-      <segment>
-        <source> Conformity </source>
-      </segment>
-    </unit>
     <unit id="5817928445374038037">
       <notes>
         <note category="location">src/app/components/conformity/conformity-chart/conformity-chart.component.html:3,4</note>
@@ -1386,6 +1386,14 @@
       </notes>
       <segment>
         <source>Not mandatory rules</source>
+      </segment>
+    </unit>
+    <unit id="4638450448409947660">
+      <notes>
+        <note category="location">src/app/components/conformity/conformity-grouped-chart/conformity-grouped-chart.component.html:2</note>
+      </notes>
+      <segment>
+        <source> Conformity </source>
       </segment>
     </unit>
     <unit id="8250586630341518181">
