@@ -17,6 +17,10 @@
       <a class="home" mat-list-item routerLink="/">
         <span class="full-width" i18n="Home page">Home</span>
       </a>
+      <mat-form-field class="acronymSearch col-11">
+        <mat-label i18n>Acronym</mat-label>
+        <input type="text" matInput (keyup)="applyFilter()" [(ngModel)]="acronymFilter" />
+      </mat-form-field>
       <ng-container *ngFor="let repositorie of repositoriesMenu">
         <a
           mat-list-item

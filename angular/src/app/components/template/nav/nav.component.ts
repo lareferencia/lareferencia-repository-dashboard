@@ -16,15 +16,17 @@ import { BrokerEvents } from 'src/app/shared/models/broker-events.model';
 })
 export class NavComponent implements OnInit {
   isExpanded = true;
-  isExpandedFio = true;
   showSubmenu: boolean = false;
   showSubmenuFio: boolean = false;
   repositoriesMenu: Menu[] = [];
+  allRepositoriesMenu: Menu[] = [];
   admUser = false;
   filter: BrokerEventsFilter = {
     pageSize: 1,
     pageNumber: 0,
   };
+  harvestingFiltered: Harvesting[];
+  acronymFilter = "";
 
   constructor(
     private navService: NavService,
@@ -46,6 +48,14 @@ export class NavComponent implements OnInit {
           )
       );
     });
+  }
+
+  applyFilter() {
+    this.repositoriesMenu = this.allRepositoriesMenu
+      .filter((x) =>
+        x.description.toUpperCase().includes(this.acronymFilter.toUpperCase())
+      )
+      .slice(0, 5);
   }
 
   get harvestingID(): number {
@@ -72,17 +82,19 @@ export class NavComponent implements OnInit {
   }
 
   private resultHandler(harvesting: Harvesting, brokerEvents: BrokerEvents) {
-    this.repositoriesMenu.push({
+    this.allRepositoriesMenu.push({
       description: harvesting.acronym,
       showSubmenu: false,
       hasBroker: brokerEvents?.content.length > 0,
     });
-    this.repositoriesMenu = this.repositoriesMenu.sort((a, b) => +(a.description > b.description) || -(a.description < b.description));
+    this.allRepositoriesMenu = this.allRepositoriesMenu.sort((a, b) => +(a.description > b.description) || -(a.description < b.description));
+    this.applyFilter();
   }
 
   menuClick(e: Menu) {
     this.repositoriesMenu.forEach((x) => {
       if (x.description == e.description) x.showSubmenu = !x.showSubmenu;
+      else x.showSubmenu = false;
     });
   }
 }

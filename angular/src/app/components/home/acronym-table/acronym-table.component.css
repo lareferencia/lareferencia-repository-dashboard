@@ -1,0 +1,55 @@
+table {
+  width: 100%;
+}
+
+th {
+  color: #5c6873;
+  background-color: #e4e7ea;
+  font-size: 0.9rem;
+}
+
+.table-container {
+  padding: 30px 30px 0px 30px;
+  position: relative;
+  overflow: auto;
+}
+
+.table-content-container {
+  position: relative;
+  min-height: 200px;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-filter-action {
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.badge {
+  margin: 1px 1px 1px 1px;
+  color: white;
+}
+
+.badge-harvested {
+  background-color: #02799e;
+}
+
+.badge-valid {
+  background-color: #00bab8;
+}
+
+.badge-transformed {
+  background-color: #fbbe50;
+}

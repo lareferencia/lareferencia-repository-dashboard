@@ -1,0 +1,105 @@
+<h2 i18n>Repositories</h2>
+
+<mat-form-field class="col-1">
+  <mat-label i18n>Id</mat-label>
+  <input type="number" matInput (keydown.enter)="applyFilter()" [(ngModel)]="filter.id" />
+</mat-form-field>
+
+<mat-form-field class="col-2">
+  <mat-label i18n>Institution acronym</mat-label>
+  <input type="text" matInput (keydown.enter)="applyFilter()" [(ngModel)]="filter.institutionAcronym" />
+</mat-form-field>
+
+<mat-form-field class="col-2">
+  <mat-label i18n>Institution name</mat-label>
+  <input type="text" matInput (keydown.enter)="applyFilter()" [(ngModel)]="filter.institutionName" />
+</mat-form-field>
+
+<mat-form-field class="col-2">
+  <mat-label i18n>Acronym</mat-label>
+  <input type="text" matInput (keydown.enter)="applyFilter()" [(ngModel)]="filter.acronym" />
+</mat-form-field>
+
+<mat-form-field class="col-2">
+  <mat-label i18n>Name</mat-label>
+  <input type="text" matInput (keydown.enter)="applyFilter()" [(ngModel)]="filter.name" />
+</mat-form-field>
+
+<button class="btn-filter-action btn-secondary" (click)="clearFilter()" mat-raised-button i18n>
+  Clear
+</button>
+
+<button class="btn-filter-action btn-primary" (click)="applyFilter()" mat-raised-button color="primary" i18n>
+  Filter
+</button>
+
+<div class="mat-elevation-z2">
+  <div class="table-content-container">
+    <table mat-table [dataSource]="dataSource" class="full-width-table" matSort aria-label="Elements">
+
+      <ng-container matColumnDef="institutionAcronym">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header #institutionAcronym i18n>Institution acronym</th>
+        <td mat-cell *matCellDef="let row">{{row.institutionAcronym}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="institutionName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header #institutionName i18n>Institution name</th>
+        <td mat-cell *matCellDef="let row">{{row.institutionName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acronym">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header #acronym i18n>Acronym</th>
+        <td mat-cell *matCellDef="let row">{{row.acronym}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header #id>Id</th>
+        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header #name i18n>Name</th>
+        <td mat-cell *matCellDef="let row">{{row.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="teste">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header #name i18n>Last validation</th>
+        <td mat-cell *matCellDef="let row">
+          <span class="badge badge-harvested" i18n matTooltipPosition="above" i18n-matTooltip matTooltip="Harvested">
+            {{row.lkgHarvestedSize}}</span>
+          <span class="badge badge-valid" i18n matTooltipPosition="above" i18n-matTooltip matTooltip="Valid">
+            {{row.lkgValidSize}}</span>
+          <span class="badge badge-transformed" i18n matTooltipPosition="above" i18n-matTooltip
+            matTooltip="Transformed"> {{row.lkgTransformedSize}}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="button-history">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let group">
+          <button mat-raised-button color="success" class="btn btn-primary" (click)="historyClick(group)" i18n>
+            History
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="button-validation">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let group">
+          <button mat-raised-button color="success" class="btn btn-primary" (click)="validationClick(group)" i18n>
+            Last Validation
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator #paginator [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50, 100, 250]">
+    </mat-paginator>
+  </div>
+  <div class="mr-2">
+    <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
+  </div>
+</div>

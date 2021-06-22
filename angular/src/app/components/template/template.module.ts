@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatListModule,
     MatMenuModule,
     MatButtonModule,
+    MatInputModule,
   ],
   exports: [NavBarComponent, NavComponent, FooterComponent, HeaderComponent],
 })

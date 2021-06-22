@@ -121,10 +121,6 @@ body {
   color: #33426a !important;
 }
 
-.mat-form-field-flex {
-  background-color: white !important;
-}
-
 .btn-disabled {
   cursor: auto !important;
   background-color: #cccccc !important;
