@@ -41,7 +41,7 @@
 .invalid-legend {
   width: 10px;
   height: 10px;
-  background-color: #33426a;
+  background-color: #F1686A;
   margin-right: 5px;
   margin-left: 10px;
   border-radius: 5px;
@@ -50,7 +50,7 @@
 .valid-legend {
   width: 10px;
   height: 10px;
-  background-color: #48a1d9;
+  background-color: #00BAB8;
   margin-right: 5px;
   margin-left: 10px;
   border-radius: 5px;
@@ -59,7 +59,7 @@
 .harvested-legend {
   width: 10px;
   height: 10px;
-  background-color: #cccccc;
+  background-color: #02799E;
   margin-right: 5px;
   margin-left: 10px;
   border-radius: 5px;
