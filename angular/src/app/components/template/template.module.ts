@@ -1,5 +1,3 @@
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NgModule } from '@angular/core';
@@ -15,8 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [
     NavBarComponent,
     NavComponent,
-    FooterComponent,
-    HeaderComponent,
   ],
   imports: [
     SharedModule,
@@ -27,6 +23,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatButtonModule,
   ],
-  exports: [NavBarComponent, NavComponent, FooterComponent, HeaderComponent],
+  exports: [NavBarComponent, NavComponent ],
 })
 export class TemplateModule {}
