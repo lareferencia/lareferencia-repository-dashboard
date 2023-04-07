@@ -1,94 +1,67 @@
-.sidenav {
-  background-color: #f2f2f2;
+
+/* DRAWER */
+
+.mat-drawer {
+  width: 46px;
+  transition: width 0.3s ease;
+  background: linear-gradient(180deg, #F6F7FC 100%, #ECECF9 100%);
+  box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.02);
+  /* -webkit-box-shadow: 1px 0px 9px 2px rgba(0,0,0,0.12);
+  -moz-box-shadow: 1px 0px 9px 2px rgba(0,0,0,0.12); */
+  border-bottom-right-radius: 50px;
+  position: fixed;
+  overflow: hidden;
+}
+
+
+.mat-drawer:hover {
   width: 200px;
 }
 
-.sidenav a {
-  font-family: Roboto;
-  color: #000000;
+.mat-drawer:hover .nav-list-text{
+  opacity: 1;
+  transition: opacity 0.3s ease;
+} 
+
+/* LIST ITEMS */
+
+.nav-list {
+  padding-top: 5rem;
 }
 
-.semi-bold {
-  font-weight: 600;
+.nav-list-a{
+  display: flex;
+  margin-bottom: 0.3rem;
+  transition: ease 0.3s;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
-
-.ligth {
-  font-weight: lighter;
-}
-
-.sidenav i {
-  padding-right: 10px;
-}
-
-.sidenav-container {
+.nav-list-a-logout{
   position: absolute;
-  top: 100px;
-  bottom: 60px;
-  left: 0;
-  right: 0;
-}
-
-.content {
-  background-color: #ffffff;
-}
-
-.submenu {
-  overflow-y: hidden;
-  transition: transform 300ms ease-out;
-  transform: scaleY(0);
-  transform-origin: top;
-  height: 0;
-  overflow: hidden;
-  background-color: #ffffff;
-  text-transform: uppercase;
-}
-
-.submenu > a {
-  font-family: Roboto;
-  color: #000000;
-}
-
-.submenu.expanded {
-  transform: scaleY(1);
-  height: auto;
-}
-
-.menu-button {
-  transition: 300ms ease-in-out;
-  transform: rotate(0deg);
-}
-
-.menu-button.rotated {
-  transform: rotate(180deg);
-}
-
-.full-width {
+  bottom: 8%;
   width: 100%;
 }
 
-.manage-acount {
-  background-color: #0487d9;
+.nav-list-a:hover{
+  background-color: #dcddea;
+  border-radius: 10px;
+  transition: ease 0.3s;
+}
+.nav-list-active{
+  background-color: #dcddea;
+  border-radius: 10px;
+  transition: ease 0.3s;
 }
 
-.home {
-  background-color: #0468be;
+.nav-list-text{
+  margin-left: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.manage-acount,
-.home span {
-  font-family: 'Roboto';
-  color: #ffffff !important;
-  text-transform: uppercase;
+.nav-list-img {
+  width: 20px; 
+  opacity: 0.8; 
+  margin-left: 0.8rem;
 }
 
-.nav-list {
-  padding-top: 0px;
-}
-
-.mat-nav-list .mat-list-item:focus,
-.mat-nav-list .mat-list-item:hover,
-.mat-action-list .mat-list-item:focus,
-.mat-list-option:focus {
-  background: #0468be !important;
-  color: white;
-}

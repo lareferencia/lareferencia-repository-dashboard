@@ -15,10 +15,10 @@ import { BrokerEvents } from 'src/app/shared/models/broker-events.model';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
-  isExpanded = true;
-  isExpandedFio = true;
-  showSubmenu: boolean = false;
-  showSubmenuFio: boolean = false;
+  // isExpanded = true;
+  // isExpandedFio = true;
+  // showSubmenu: boolean = false;
+  // showSubmenuFio: boolean = false;
   repositoriesMenu: Menu[] = [];
   admUser = false;
   filter: BrokerEventsFilter = {
@@ -70,6 +70,8 @@ export class NavComponent implements OnInit {
         }
       );
   }
+
+  // FUNCION QUE CARGA EL MENU DE REPOSITORIOS
 
   private resultHandler(harvesting: Harvesting, brokerEvents: BrokerEvents) {
     this.repositoriesMenu.push({
