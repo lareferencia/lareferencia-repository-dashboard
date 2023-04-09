@@ -1,5 +1,4 @@
 import { NavComponent } from './nav/nav.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    NavBarComponent,
     NavComponent,
   ],
   imports: [
@@ -23,6 +21,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatButtonModule,
   ],
-  exports: [NavBarComponent, NavComponent ],
+  exports: [ NavComponent ],
 })
 export class TemplateModule {}
