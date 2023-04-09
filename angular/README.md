@@ -1,6 +1,7 @@
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+And need Node 14.20.0
 
 ## Development server
 
