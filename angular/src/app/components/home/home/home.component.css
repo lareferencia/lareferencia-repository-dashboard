@@ -3,9 +3,10 @@
   grid-template-columns: 2fr 1rem 1fr;
   place-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 0rem 1rem 1rem 1rem;
   position: relative;
-  margin-top: 60px;
+  margin-top: 86px;
+  margin-left: 46px;
 }
 
 .home-info {
@@ -35,6 +36,10 @@
   grid-column: 3 / 4;
   min-height: 80vh;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+  padding-top: 1rem ;
 }
 
 .home .title {
@@ -63,6 +68,7 @@ h2{
   text-align: center;
   color: var(--color-primary);
   margin-top: 2rem;
+  font-weight: 600;
 }
 
 ul{
@@ -145,6 +151,9 @@ li{
   }
   .home-info{
     margin-bottom: 1rem;
+  }
+  .home-services{
+    min-height: 0vh;
   } 
 }
 
@@ -156,10 +165,13 @@ li{
   .home-info {
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    min-height: 70vh ;
   }
   .home-section{
     padding: 1rem;
+  }
+  .home-services{
+    min-height: 0vh;
   }
   p{
     font-size: 14px;

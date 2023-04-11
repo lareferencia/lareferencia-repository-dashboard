@@ -1,10 +1,6 @@
 
 /* DRAWER */
 
-  .mat-drawer-container {
-    min-height: 100vh;
-  }
-
   .mat-drawer {
     transition: width 0.3s ease;
     background: rgb(246,247,252);
@@ -37,6 +33,7 @@
     transition: ease 0.3s;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    text-decoration: none;
   }
   .nav-list-a-logout{
     position: absolute;
