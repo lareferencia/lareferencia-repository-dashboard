@@ -18,6 +18,8 @@ export class GroupTableDataSource extends DataSource<Group> {
   constructor(value: Group[]) {
     super();
     this.data = value;
+    this.paginator = this.paginator;
+    this.sort = this.sort;
   }
 
   /**
