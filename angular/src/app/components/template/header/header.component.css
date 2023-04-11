@@ -1,0 +1,37 @@
+h6 {
+    margin: 0;  
+}
+
+.header-component{
+    position: fixed; top: 0; 
+    width: calc(100% - 46px); margin-left: 46px;
+    padding: 2rem 2rem 1rem 2rem;
+    cursor: pointer;
+    background-color: rgba(236,236,249,1);
+}
+
+:host ::ng-deep .p-menu {
+    background: white;
+    border: none;
+  }
+
+:host ::ng-deep .p-menu .p-menuitem-link .p-menuitem-text {
+    color: #000 !important;
+}
+
+:host ::ng-deep .p-menu .p-menuitem-link .p-menuitem-icon {
+    color: #000 !important;
+}
+
+:host ::ng-deep .p-menu .p-submenu-header{
+    color: #000 !important;
+    background: rgba(236,236,249,1) !important;
+}
+
+:host ::ng-deep .p-menu .p-menuitem-link{
+    border: none;
+}
+
+:host ::ng-deep .p-menu .p-menuitem-link:hover{
+    background: rgba(236,236,249,1) !important;
+}

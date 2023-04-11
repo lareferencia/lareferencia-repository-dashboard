@@ -19,7 +19,6 @@ import { AccountModule } from './components/account/account.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     KeycloakAngularModule,
     CoreModule,
     HarvestingModule,
@@ -28,6 +27,7 @@ import { AccountModule } from './components/account/account.module';
     BrokerModule,
     ValidationModule,
     AccountModule,
+    AppRoutingModule,
   ],
   providers: [
     AuthenticationService,

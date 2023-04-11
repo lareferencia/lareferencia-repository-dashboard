@@ -36,11 +36,11 @@ const routes: Routes = [
     component: RecordValidComponent,
     canActivate: [AuthenticationService],
   },
-  {
-    path: ':acronym/broker',
-    component: BrokerComponent,
-    canActivate: [AuthenticationService],
-  },
+  // {
+  //   path: ':acronym/broker',
+  //   component: BrokerComponent,
+  //   canActivate: [AuthenticationService],
+  // },
   {
     path: 'manage/accounts',
     component: AccountComponent,
