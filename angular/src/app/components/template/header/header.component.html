@@ -1,0 +1,18 @@
+
+
+
+
+
+
+
+
+
+
+<div class="header-component">
+    <p-menu #menu [model]="items" [popup]="true"></p-menu>
+    <div style="display: flex; align-items: center;">
+        <h6 (click)="menu.toggle($event)">Dashboard / Argentina</h6>
+        <img style="width: 22px;" src="../../../../assets/icons/arrowdown.svg" alt="arrow">
+    </div>
+</div>
+  

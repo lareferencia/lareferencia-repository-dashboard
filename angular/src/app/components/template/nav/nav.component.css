@@ -1,18 +1,21 @@
 
 /* DRAWER */
 
+.mat-drawer-container{
+  position: fixed;
+  z-index: 3;
+}
+
 .mat-drawer {
   width: 46px;
   transition: width 0.3s ease;
-  background: linear-gradient(180deg, #F6F7FC 100%, #ECECF9 100%);
+  background: rgb(246,247,252);
+  background: linear-gradient(180deg, rgba(246,247,252,1) 0%, rgba(236,236,249,1) 100%);
   box-shadow: 1px 0px 9px 2px rgba(0, 0, 0, 0.02);
-  /* -webkit-box-shadow: 1px 0px 9px 2px rgba(0,0,0,0.12);
-  -moz-box-shadow: 1px 0px 9px 2px rgba(0,0,0,0.12); */
   border-bottom-right-radius: 50px;
-  position: fixed;
+  
   overflow: hidden;
 }
-
 
 .mat-drawer:hover {
   width: 200px;
