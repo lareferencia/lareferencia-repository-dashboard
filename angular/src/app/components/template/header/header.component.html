@@ -1,18 +1,17 @@
 
 
-
-
-
-
-
-
-
-
 <div class="header-component">
-    <p-menu #menu [model]="items" [popup]="true"></p-menu>
-    <div style="display: flex; align-items: center;">
-        <h6 (click)="menu.toggle($event)">Dashboard / Argentina</h6>
-        <img style="width: 22px;" src="../../../../assets/icons/arrowdown.svg" alt="arrow">
+    <div (mouseenter)="menu.show($event)" (mouseleave)="menu.hide()">
+        <p-menu #menu [model]="menuRepositories" [popup]="true"></p-menu>
+        <div style="display: flex; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <h6>Dashboard</h6>
+                <img style="width: 22px;" src="../../../../assets/icons/arrowdown.svg" alt="arrow">
+            </div>
+            <div>
+                <img style="width: 160px;" src="../../../../assets/img/logo-footer.png" alt="">
+            </div>
+        </div>
     </div>
 </div>
   
