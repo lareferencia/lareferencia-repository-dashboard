@@ -1,5 +1,6 @@
 export interface Menu {
-  description: string;
-  showSubmenu: boolean;
-  hasBroker: boolean;
+  id: number;
+  name: string;
+  acronym: string;
+  // hasBroker: boolean;
 }

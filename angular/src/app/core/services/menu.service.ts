@@ -7,6 +7,7 @@ import { Menu } from 'src/app/shared/models/menu.model';
 })
 export class MenuService {
   private _menuData = new BehaviorSubject<Menu[]>([]);
+  private _activeRepo = new BehaviorSubject<Menu>({ name: '', acronym: '', id:0 });
 
   constructor() {}
 
@@ -16,5 +17,14 @@ export class MenuService {
 
   set menu(menuData: BehaviorSubject<Menu[]>) {
     this._menuData = menuData;
+    console.log('menuData', this._menuData);
+  }
+
+  get activeRepo(): BehaviorSubject<Menu> {
+    return this._activeRepo;
+  }
+
+  set activeRepo(activeRepo: BehaviorSubject<Menu>) {
+    this._activeRepo = activeRepo;
   }
 }

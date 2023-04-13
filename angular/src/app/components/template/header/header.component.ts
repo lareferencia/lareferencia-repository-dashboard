@@ -9,36 +9,36 @@ import { Menu } from 'src/app/shared/models/menu.model';
 })
 export class HeaderComponent implements OnInit {
 
+  //TODO: Create the interface for the menu
+
   menuRepositories: any[] = [];
+  activeRepository: String;
 
   constructor( private menuService: MenuService) { }
 
   ngOnInit(): void {
     this.menuService.menu.subscribe((menu: Menu[]) => {
+
+      //Format that primeng menu component needs
       this.menuRepositories = 
       [
         {
-          label: 'Repositorios',
-          items: menu.map(menuItem =>(
-            {
-              label: menuItem.description + ' / Dashboard',
-              routerLink: ['/', menuItem.description]
-            }
-          ))
+        label: 'Repositorios',
+        items: menu.map(menuItem =>(
+          {
+            label: `Dashboard / ${menuItem.name}`,
+            routerLink: ['/', menuItem.acronym],
+            command: () => this.menuService.activeRepo.next(menuItem)
+          }))
         }
-      ]
-      console.log(this.menuRepositories)
+      ];
+      //Default repo, always the first in the array
+      this.menuService.activeRepo.next(menu[0]);
+
+      //Subscribe to active repo changes
+      this.menuService.activeRepo.subscribe((activeRepo: Menu) => {
+      this.activeRepository = activeRepo?.name;
+      });
     });
   }
-
-
-  // items = [{
-  //   label: 'Repositorios',
-  //   items: [
-  //       {label: 'Dashboard / Colombia', icourl: 'https://primeng.org'},
-  //       {label: 'Dashboard / España', routerLink: ['/menu']},
-  //       {label: 'Dashboard / Brasil', routerLink: ['/pagename'], queryParams: {'recent': 'true'}}
-  //   ]
-  // }];
-
 }

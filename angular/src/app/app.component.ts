@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { NavService } from './core/services/nav.service';
 import { Router } from '@angular/router';
 import { HarvestingService } from './core/services/harvesting.service';
-import { BrokerService } from './core/services/broker.service';
 import { AuthenticationService } from './core/services/authentication.service';
-import { BrokerEventsFilter } from './shared/models/broker-events-filter.model';
 import { Menu } from './shared/models/menu.model';
 import { Harvesting } from './shared/models/harvesting.model';
-import { BrokerEvents } from './shared/models/broker-events.model';
+// import { BrokerEvents } from './shared/models/broker-events.model';
 import { MenuService } from './core/services/menu.service';
+import { HarvestingList } from './shared/models/harvesting-list.model';
 
 @Component({
   selector: 'app-root',
@@ -17,32 +16,25 @@ import { MenuService } from './core/services/menu.service';
 export class AppComponent implements OnInit {
   repositoriesMenu: Menu[] = [];
   admUser = false;
-  filter: BrokerEventsFilter = {
-    pageSize: 1,
-    pageNumber: 0,
-  };
+  // filter: BrokerEventsFilter = {
+  //   pageSize: 1,
+  //   pageNumber: 0,
+  // };
 
   constructor(
     private navService: NavService,
     private menuService: MenuService,
     private router: Router,
     private harvestingService: HarvestingService,
-    private brokerService: BrokerService,
     private authenticationService: AuthenticationService,
   ) {}
 
   ngOnInit(): void {
     this.admUser = this.authenticationService.isAdmUser();
     this.harvestingService.getHarvestingList().subscribe((harvestingList) => {
-      harvestingList.content.map((harvesting) =>
-        this.brokerService
-          .getEventsByAcronym(harvesting.acronym, this.filter)
-          .subscribe(
-            (brokerEvents) => this.resultHandler(harvesting, brokerEvents),
-            () => this.resultHandler(harvesting, null)
-          )
-      );
-    });
+        this.resultHandler(harvestingList);
+          () => this.resultHandler(harvestingList )
+      })
   }
   
 
@@ -68,22 +60,26 @@ export class AppComponent implements OnInit {
         }
       );
   }
-
   // FUNCION QUE CARGA EL MENU DE REPOSITORIOS
 
-  private resultHandler(harvesting: Harvesting, brokerEvents: BrokerEvents) {
-    this.repositoriesMenu.push({
-      description: harvesting.acronym,
-      showSubmenu: false,
-      hasBroker: brokerEvents?.content.length > 0,
-    });
-    this.repositoriesMenu = this.repositoriesMenu.sort((a, b) => +(a.description > b.description) || -(a.description < b.description));
-    this.menuService.menu.next(this.repositoriesMenu);
-  }
+  private resultHandler(harvestingList: HarvestingList ) {
 
-  menuClick(e: Menu) {
-    this.repositoriesMenu.forEach((x) => {
-      if (x.description == e.description) x.showSubmenu = !x.showSubmenu;
-    });
+    // formating data
+    harvestingList.content.forEach((harvesting: Harvesting) => {
+      this.repositoriesMenu.push({
+        id: harvesting.id,
+        name: harvesting.name,
+        acronym: harvesting.acronym,
+      });
+    });    
+    
+    // Sort the menu alphabetically
+    this.repositoriesMenu = this.repositoriesMenu.sort((a, b) => +(a.name > b.name) || -(a.name < b.name));
+    // Wait for all requests to finish and then send the menu to the header component
+    //TODO: Investigar que sucede si hay un solo repositorio
+    if ( this.repositoriesMenu.length === harvestingList.content.length ) {
+      this.menuService.menu.next(this.repositoriesMenu);
+    }
   }
+    
 }
