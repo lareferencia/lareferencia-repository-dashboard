@@ -1,7 +1,7 @@
 <mat-drawer-container>
     <mat-drawer mode="side" opened>
         <div style="display: flex; justify-content: center; padding-top: 1.5rem;">
-            <img style="width: 45px;" src="../../../../assets/img/favicon.png" alt="">
+            <img style="width: 35px;" src="../../../../assets/img/favicon.png" alt="">
         </div>
         <mat-nav-list class="nav-list">
             <a class="nav-list-a" routerLink="/" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
@@ -12,7 +12,7 @@
               <img class="nav-list-img" src="../../../../assets/icons/chart.svg" alt="">
               <span class="nav-list-text">Statistics</span>
             </a>
-            <a class="nav-list-a"  routerLink="/2968" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-list-a"  routerLink="/{{activeRepository}}/validation/{{harvestingConentId}}" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="../../../../assets/icons/validation.svg" alt="">
               <span class="nav-list-text">Validations</span>
             </a>
