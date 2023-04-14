@@ -3,14 +3,16 @@
 <div class="header-component">
     <div>
         <div style="display: flex; justify-content: space-between;">
-            <div style="display: flex; align-items: center; cursor: pointer;" 
-                    (mouseenter)="menu.show($event)" (mouseleave)="menu.hide()">
 
+            <div 
+                class="menu-container" 
+                (mouseenter)="menu.show($event)" (mouseleave)="menu.hide()">
                 <p-menu #menu [model]="menuRepositories" [popup]="true"></p-menu>
                 <h6>Dashboard / {{activeRepository}}</h6>
-                <img style="width: 18px;" 
+                <img class="arrow" style="width: 18px;" 
                     src="../../../../assets/icons/arrowdown.svg" alt="arrow">
             </div>
+            
             <div>
                 <img style="width: 140px; cursor: pointer;" 
                     src="../../../../assets/img/logo-footer.png" alt="">

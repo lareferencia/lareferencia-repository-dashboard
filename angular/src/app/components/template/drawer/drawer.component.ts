@@ -27,13 +27,12 @@ export class DrawerComponent implements OnInit {
     this.resultHandler(activeRepo?.acronym);
     });
   }
-  //TODO: Revisat y refactorizar esto porque le pimer peticion falla.
+  //TODO: Revisar y refactorizar esto porque le pimer peticion falla.
 
   resultHandler(acronym: string) {
     this.harvestingService.getHarvestingLastGoodKnowByAcronym(acronym)
     .subscribe((harvestingContent) => {
       this.harvestingConentId = harvestingContent.id;
-      console.log(this.harvestingConentId)
     });
   }
 }

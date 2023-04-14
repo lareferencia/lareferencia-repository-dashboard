@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   constructor( private menuService: MenuService) { }
 
   ngOnInit(): void {
+    console.log(this.menuRepositories)
     this.menuService.menu.subscribe((menu: Menu[]) => {
 
       //Format that primeng menu component needs
@@ -32,6 +33,8 @@ export class HeaderComponent implements OnInit {
           }))
         }
       ];
+      console.log(this.menuRepositories)
+
       
       //Default repo, always the first in the array
       this.menuService.activeRepo.next(menu[0]);
