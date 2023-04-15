@@ -1,6 +1,7 @@
 h6 {
     margin: 0;
     margin-right: 8px;  
+    cursor: poiner;
 }
 
 .header-component{
@@ -8,11 +9,25 @@ h6 {
     top: 0; 
     width: calc(100% - 61px);
     margin-left: 46px;
-    padding: 2rem 2rem 2rem 2rem;
-    cursor: pointer;
+    padding: 1.5rem;
     background-color: rgba(246,247,252,1);
     z-index: 1;
 }
+
+.menu-container{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.menu-container:hover .arrow{
+    transform: rotate(180deg);
+}
+
+.arrow{
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+}
+
 
 :host ::ng-deep .p-menu {
     background: white;
