@@ -76,7 +76,6 @@ export class AppComponent implements OnInit {
     // Sort the menu alphabetically
     this.repositoriesMenu = this.repositoriesMenu.sort((a, b) => +(a.name > b.name) || -(a.name < b.name));
     // Wait for all requests to finish and then send the menu to the header component
-    //TODO: Investigar que sucede si hay un solo repositorio
     if ( this.repositoriesMenu.length === harvestingList.content.length ) {
       this.menuService.menu.next(this.repositoriesMenu);
     }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
-import { Menu } from 'src/app/shared/models/menu.model';
+import { switchMap, tap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-drawer',
@@ -16,23 +15,20 @@ export class DrawerComponent implements OnInit {
   constructor( 
     private menuService: MenuService,
     private harvestingService: HarvestingService,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {
 
-    //Subscribe to active repo changes
-    this.menuService.activeRepo.subscribe((activeRepo: Menu) => {
-    this.activeRepository = activeRepo?.acronym
-    this.resultHandler(activeRepo?.acronym);
-    });
-  }
-  //TODO: Revisar y refactorizar esto porque le pimer peticion falla.
+    this.menuService.activeRepo.pipe(
+      filter((activeRepo) => activeRepo.id > 0),
+      tap((activeRepo) => {
+        this.activeRepository = activeRepo.acronym;
+      }),
+      switchMap(({acronym}) => this.harvestingService.getHarvestingLastGoodKnowByAcronym(acronym)))
 
-  resultHandler(acronym: string) {
-    this.harvestingService.getHarvestingLastGoodKnowByAcronym(acronym)
-    .subscribe((harvestingContent) => {
-      this.harvestingConentId = harvestingContent.id;
-    });
+      .subscribe((resp) => {
+        this.harvestingConentId = resp.id;
+    })
   }
+ 
 }
