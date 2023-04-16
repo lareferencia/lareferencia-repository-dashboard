@@ -26,5 +26,6 @@ export class MenuService {
 
   set activeRepo(activeRepo: BehaviorSubject<Menu>) {
     this._activeRepo = activeRepo;
+    console.log('activeRepo', this._activeRepo)
   }
 }
