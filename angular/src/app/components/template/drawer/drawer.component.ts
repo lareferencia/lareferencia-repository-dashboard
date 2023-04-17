@@ -9,6 +9,7 @@ import { MenuService } from 'src/app/core/services/menu.service';
   styleUrls: ['./drawer.component.css']
 })
 export class DrawerComponent implements OnInit {
+  
   public activeRepository: string;
   public harvestingConentId: number;
 
@@ -18,15 +19,12 @@ export class DrawerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    
     this.menuService.activeRepo
       .subscribe( ({acronym}) => {
-
         this.activeRepository = acronym;
-
         this.harvestingService.getHarvestingLastGoodKnowByAcronym(acronym)
           .subscribe((harvesginContent) =>{
-
             this.harvestingConentId = harvesginContent.id;
           }, (error) => console.log('error de validacion'))
       })
