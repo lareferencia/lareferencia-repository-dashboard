@@ -4,6 +4,7 @@ import { MatListModule } from '@angular/material/list';
 import { MenuModule } from 'primeng/menu';
 import { DrawerComponent } from './drawer/drawer.component';
 import { HeaderComponent } from './header/header.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
     MatSidenavModule,
     MatListModule,
     MenuModule,
+    CommonModule
   ],
   exports: [ HeaderComponent, DrawerComponent ],
 })
