@@ -17,7 +17,6 @@ h6 {
 .menu-container{
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 .menu-container:hover .arrow{
     transform: rotate(180deg);

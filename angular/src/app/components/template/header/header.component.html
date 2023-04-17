@@ -4,17 +4,27 @@
     <div>
         <div style="display: flex; justify-content: space-between;">
 
-            <div 
-                class="menu-container" 
+            <div class="menu-container" *ngIf="isLoading">
+                <h6>Loading dashboard...</h6>
+            </div>
+
+            <div *ngIf="!isLoading && menuRepositories[0] && menuRepositories[0].items.length <= 1"
+                class="menu-container">
+                <h6>Dashboard / {{activeRepository}}</h6>
+            </div>
+
+            <div *ngIf="!isLoading && menuRepositories[0] && menuRepositories[0].items.length >= 2"
+                    class="menu-container"
+                    style="cursor: pointer" 
                 (mouseenter)="menu.show($event)" (mouseleave)="menu.hide()">
                 <p-menu #menu [model]="menuRepositories" [popup]="true"></p-menu>
                 <h6>Dashboard / {{activeRepository}}</h6>
                 <img class="arrow" style="width: 18px;" 
                     src="../../../../assets/icons/arrowdown.svg" alt="arrow">
             </div>
-            
+
             <div>
-                <img style="width: 140px; cursor: pointer;" 
+                <img style="width: 140px" 
                     src="../../../../assets/img/logo-footer.png" alt="">
             </div>
         </div>

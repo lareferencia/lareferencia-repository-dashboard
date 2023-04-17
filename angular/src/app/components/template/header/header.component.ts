@@ -14,16 +14,16 @@ export class HeaderComponent implements OnInit {
 
   public menuRepositories: MenuRepositorie[] = [];
   public activeRepository: string;
+  public isLoading: boolean = true;
 
   constructor( private menuService: MenuService) { }
 
   ngOnInit(): void {
-    // Get menu repositories
+
     this.menuService.menu.pipe(
       filter((menu: Menu[]) => menu.length > 0),
       tap((menu: Menu[]) => {
 
-        // Set menu repositories, primeNG Menu format
         this.menuRepositories = [
           {
             label: 'Repositories',
@@ -36,12 +36,12 @@ export class HeaderComponent implements OnInit {
             ))
           }
         ];
+        this.isLoading = false;
       }),
       switchMap((menu: Menu[]) => {
         return this.menuService.activeRepo;
       })
       ).subscribe((activeRepo: Menu) => {
-        // Set active repository, name to show in header
           this.activeRepository = activeRepo.name;
     });
   };
