@@ -12,6 +12,7 @@ import { MenuService } from 'src/app/core/services/menu.service';
   styleUrls: ['./harvesting.component.css']
 })
 export class HarvestingComponent implements OnInit {
+
   harvesting: Harvesting;
   harvestingContent: HarvestingContent;
   acronym: string;
@@ -45,6 +46,7 @@ export class HarvestingComponent implements OnInit {
               acronym: acronym,
             };
             this.isLoadingResults = false;
+
           },
           () => {
             this.error = true;
