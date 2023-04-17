@@ -5,8 +5,7 @@ export interface Menu {
   // hasBroker: boolean;
 }
 
-
-interface MenuItem {
+export interface MenuItem {
   label: string;
   routerLink: string[];
   command: () => void;
@@ -15,5 +14,5 @@ interface MenuItem {
 export interface MenuRepositorie {
   label: string;
   items: MenuItem[];
-
 }
+
