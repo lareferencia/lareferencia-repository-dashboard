@@ -1,5 +1,5 @@
-import { Validation } from '../../../shared/models/validation.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { Validation } from 'src/app/shared/models/validation.model';
 import { View } from 'vega';
 declare const vega: any;
 

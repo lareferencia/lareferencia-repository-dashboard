@@ -1,25 +1,25 @@
-import { ValidationService } from '../../../core/services/validation.service';
-import { Occurence } from 'src/app/shared/models/occurrence.model';
+import { ValidationService } from 'src/app/core/services/validation.service';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { InvalidOccurenceTableDataSource } from './invalid-occurence-table-datasource';
+import { ValidOccurenceTableDataSource } from './valid-occurence-table-datasource';
+import { Occurence } from 'src/app/shared/models/occurrence.model';
 import { Rule } from 'src/app/shared/models/rule.model';
 
 @Component({
-  selector: 'app-invalid-occurence-table',
-  templateUrl: './invalid-occurence-table.component.html',
-  styleUrls: ['./invalid-occurence-table.component.css'],
+  selector: 'app-valid-occurence-table',
+  templateUrl: './valid-occurence-table.component.html',
+  styleUrls: ['./valid-occurence-table.component.css'],
 })
-export class InvalidOccurenceTableComponent implements OnInit {
+export class ValidOccurenceTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<Occurence>;
   @ViewChild('value') value: any;
   @ViewChild('count') count: any;
   @Input() rule: Rule;
-  dataSource: InvalidOccurenceTableDataSource;
+  dataSource: ValidOccurenceTableDataSource;
   displayedColumns = ['value', 'count'];
   csvData: Occurence[];
   headerData: any[];
@@ -28,7 +28,7 @@ export class InvalidOccurenceTableComponent implements OnInit {
 
   ngOnInit() {
     this.validationService
-      .getInValidOccurrencesByHarvestingIDRuleID(
+      .getValidOccurrencesByHarvestingIDRuleID(
         this.rule.acronym,
         this.rule.harvestingID,
         this.rule.ruleID
@@ -39,7 +39,7 @@ export class InvalidOccurenceTableComponent implements OnInit {
           this.value._elementRef.nativeElement.innerText,
           this.count._elementRef.nativeElement.innerText,
         ];
-        this.dataSource = new InvalidOccurenceTableDataSource(result);
+        this.dataSource = new ValidOccurenceTableDataSource(result);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       });

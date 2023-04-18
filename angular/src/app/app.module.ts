@@ -7,11 +7,9 @@ import { initializeKeycloak } from './keycloak-init';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { AuthenticationService } from './core/services/authentication.service';
 import { CoreModule } from './core/core.module';
-import { HarvestingModule } from './components/harvesting/harvesting.module';
 import { TemplateModule } from './components/template/template.module';
 import { HomeModule } from './components/home/home.module';
 import { BrokerModule } from './components/broker/broker.module';
-import { ValidationModule } from './components/validation/validation.module';
 import { AccountModule } from './components/account/account.module';
 
 @NgModule({
@@ -21,11 +19,9 @@ import { AccountModule } from './components/account/account.module';
     BrowserAnimationsModule,
     KeycloakAngularModule,
     CoreModule,
-    HarvestingModule,
     TemplateModule,
     HomeModule,
     BrokerModule,
-    ValidationModule,
     AccountModule,
     AppRoutingModule,
   ],

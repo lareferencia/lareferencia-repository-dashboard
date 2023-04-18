@@ -7,8 +7,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [InvalidOccurenceTableComponent, ValidOccurenceTableComponent],
-  imports: [SharedModule, MatTableModule, MatPaginatorModule, MatSortModule],
-  exports: [InvalidOccurenceTableComponent, ValidOccurenceTableComponent],
+  declarations: [
+    InvalidOccurenceTableComponent, 
+    ValidOccurenceTableComponent
+  ],
+  imports: [
+    SharedModule, 
+    MatTableModule, 
+    MatPaginatorModule, 
+    MatSortModule],
+  exports: [
+    InvalidOccurenceTableComponent, 
+    ValidOccurenceTableComponent
+  ],
 })
 export class OcurrenceModule {}

@@ -1,5 +1,4 @@
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import { RecordsFilter } from '../../../shared/models/records-filter.model';
 import { AfterViewInit, Component, OnInit, ViewChild, Input, ElementRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -12,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { startWith } from 'rxjs/internal/operators/startWith';
 import { tap } from 'rxjs/internal/operators/tap';
+import { RecordsFilter } from 'src/app/shared/models/records-filter.model';
 import { EvaluationRulesComponent } from '../../rule/evaluation-rules/evaluation-rules.component';
 
 @Component({

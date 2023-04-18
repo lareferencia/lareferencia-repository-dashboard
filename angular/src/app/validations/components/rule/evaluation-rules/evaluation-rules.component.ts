@@ -2,8 +2,8 @@ import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { Component, OnInit, Inject, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { MatButtonToggle, MatButtonToggleChange } from '@angular/material/button-toggle';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Record } from '../../../shared/models/record.model';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { Record } from 'src/app/shared/models/record.model';
 
 @Component({
   selector: 'app-evaluation-rules',
