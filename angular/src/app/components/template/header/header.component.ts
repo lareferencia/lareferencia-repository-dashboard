@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
             items: menu.map(menuItem => (
               {
                 label: menuItem.name,
-                routerLink: ['/', menuItem.acronym],
+                routerLink: [`${menuItem.acronym}/harvesting`],
                 command: () => this.menuService.activeRepo.next(menuItem)
               }
             ))
