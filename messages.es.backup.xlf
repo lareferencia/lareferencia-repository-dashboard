@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en">
+  <file original="ng.template" id="ngi18n">
+    <unit id="2821179408673282599">
+      <notes>
+        <note category="description">Home page</note>
+        <note category="location">src/app/components/template/nav/nav.component.html:18</note>
+        <note category="location">src/app/components/template/nav-bar/nav-bar.component.html:13</note>
+      </notes>
+      <segment>
+        <source>Home</source>
+        <target>Home</target>
+      </segment>
+    </unit>
+    <unit id="5229258401533680267">
+      <notes>
+        <note category="location">src/app/components/template/nav/nav.component.html:46,47</note>
+      </notes>
+      <segment>
+        <source>History
+          </source>
+        <target>Histórico
+          </target>
+      </segment>
+    </unit>
+    <unit id="8414791111649994722">
+      <notes>
+        <note category="location">src/app/components/template/nav/nav.component.html:54,55</note>
+      </notes>
+      <segment>
+        <source>Last validation
+          </source>
+        <target>Última validação
+          </target>
+      </segment>
+    </unit>
+    <unit id="3512676223114154375">
+      <notes>
+        <note category="location">src/app/views/home/home.component.html:2,4</note>
+      </notes>
+      <segment>
+        <source>
+    Welcome!
+  </source>
+        <target>
+    Bem-vindo!
+  </target>
+      </segment>
+    </unit>
+    <unit id="9078494337127893740">
+      <notes>
+        <note category="location">src/app/views/home/home.component.html:5,7</note>
+      </notes>
+      <segment>
+        <source>
+    LA Referencia Dashboard
+  </source>
+        <target>
+    Dashboard LA Referencia
+  </target>
+      </segment>
+    </unit>
+    <unit id="2180124995485990496">
+      <notes>
+        <note category="location">src/app/views/validation/validation.component.html:6,9</note>
+      </notes>
+      <segment>
+        <source>
+  <ph id="0" equiv="ICU" disp="{error, select, true {...} false {...}}"/>
+</source>
+        <target>
+  <ph id="0" equiv="ICU" disp="{error, select, true {...} false {...}}"/>
+</target>
+      </segment>
+    </unit>
+    <unit id="7467308342369948080">
+      <notes>
+        <note category="location">src/app/views/validation/validation.component.html:7,8</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {Validations not found} false {Enter a source acronym in
+  the root URL /:acronym} }</source>
+        <target>{VAR_SELECT, select, true {Validações não encontradas} false {Entre com um acrônimo de origem na URL
+        raiz /:acrônimo} }</target>
+      </segment>
+    </unit>
+    <unit id="1084183243125905801">
+      <notes>
+        <note category="location">src/app/views/validation/validation.component.html:26</note>
+      </notes>
+      <segment>
+        <source>Harvested records</source>
+        <target>Registros coletados</target>
+      </segment>
+    </unit>
+    <unit id="2831497907036176442">
+      <notes>
+        <note category="location">src/app/views/validation/validation.component.html:35</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:16</note>
+      </notes>
+      <segment>
+        <source>Valid</source> 
+        <target>Válido</target> 
+      </segment>
+    </unit>
+    <unit id="9048867534521749580">
+      <notes>
+        <note category="location">src/app/views/validation/validation.component.html:44</note>
+        <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:44</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:44</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:22</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:150</note>
+      </notes>
+      <segment>
+        <source>Transformed</source>
+        <target>Transformado</target>
+      </segment>
+    </unit>
+    <unit id="4136129438009397007">
+      <notes>
+        <note category="location">src/app/views/validation/validation.component.html:53</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:17</note>
+      </notes>
+      <segment>
+        <source>Invalid</source>
+        <target>Inválido</target>
+      </segment>
+    </unit>
+    <unit id="4189102578654356532">
+      <notes>
+        <note category="location">src/app/views/validation/validation.component.html:71</note>
+        <note category="location">src/app/components/template/nav-bar/nav-bar.component.html:17</note>
+      </notes>
+      <segment>
+        <source>Validations</source>
+        <target>Validações</target>
+      </segment>
+    </unit>
+    <unit id="8210903900743032826">
+      <notes>
+        <note category="location">src/app/views/validation/validation.component.html:73,79</note>
+        <note category="location">src/app/views/validation/validation.component.html:88,94</note>
+        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:5,11</note>
+      </notes>
+      <segment>
+        <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown 
+  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
+  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+  It was popularised in the 1960s with the release of Letraset sheets containing 
+  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum.</source>
+        <target>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+  Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown 
+  printer took a galley of type and scrambled it to make a type specimen book. It has survived 
+  not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+  It was popularised in the 1960s with the release of Letraset sheets containing 
+  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum.</target>
+      </segment>
+    </unit>
+    <unit id="3917644028160931566">
+      <notes>
+        <note category="location">src/app/views/validation/validation.component.html:86</note>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:59</note>
+        <note category="location">src/app/views/record-invalid/record-invalid.component.html:8</note>
+      </notes>
+      <segment>
+        <source>Records</source>
+        <target>Registros</target>
+      </segment>
+    </unit>
+    <unit id="8462130792607498110">
+      <notes>
+        <note category="location">src/app/components/validation/validation-detail/validation-detail.component.html:2</note>
+      </notes>
+      <segment>
+        <source>Rule</source>
+        <target>Regra</target>
+      </segment>
+    </unit>
+    <unit id="4065032980887613740">
+      <notes>
+        <note category="location">src/app/components/validation/validation-detail/validation-detail.component.html:7</note>
+      </notes>
+      <segment>
+        <source>Valid occurrences</source>
+        <target>Ocorrências válidas</target>
+      </segment>
+    </unit>
+    <unit id="4229881712747303763">
+      <notes>
+        <note category="location">src/app/components/validation/validation-detail/validation-detail.component.html:11</note>
+      </notes>
+      <segment>
+        <source>Invalid occurrences</source>
+        <target>Ocorrências inválidas</target>
+      </segment>
+    </unit>
+    <unit id="1353900317147489199">
+      <notes>
+        <note category="description">Button close</note>
+        <note category="location">src/app/components/validation/validation-detail/validation-detail.component.html:22,24</note>
+        <note category="location">src/app/components/evaluation-rules/evaluation-rules.component.html:106,108</note>
+      </notes>
+      <segment>
+        <source>
+    Close
+  </source>
+        <target>
+    Fechar
+  </target>
+      </segment>
+    </unit>
+    <unit id="8040881171107393560">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:5</note>
+      </notes>
+      <segment>
+        <source>ID</source>
+        <target>ID</target>
+      </segment>
+    </unit>
+    <unit id="8953033926734869941">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:10</note>
+      </notes>
+      <segment>
+        <source>Name</source>
+        <target>Nome</target>
+      </segment>
+    </unit>
+    <unit id="4902817035128594900">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:15</note>
+      </notes>
+      <segment>
+        <source>Description</source>
+        <target>Descrição</target>
+      </segment>
+    </unit>
+    <unit id="7045123878111147511">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:20</note>
+      </notes>
+      <segment>
+        <source>Required</source>
+        <target>Obrigatório</target>
+      </segment>
+    </unit>
+    <unit id="8102915832289919728">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:21,23</note>
+      </notes>
+      <segment>
+        <source>
+          <ph id="0" equiv="ICU" disp="{rule.mandatory, select, true {...} false {...}}"/>
+        </source>
+        <target>
+          <ph id="0" equiv="ICU" disp="{rule.mandatory, select, true {...} false {...}}"/>
+        </target>
+      </segment>
+    </unit>
+    <unit id="3416906127672356950">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:22</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {Yes} false {No} }</source>
+        <target>{VAR_SELECT, select, true {Sim} false {Não} }</target>
+      </segment>
+    </unit>
+    <unit id="8927692490825452681">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:27,29</note>
+      </notes>
+      <segment>
+        <source>
+          Conformity
+        </source>
+        <target>
+          Conformidade
+        </target>
+      </segment>
+    </unit>
+    <unit id="2351318473718426709">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:52,54</note>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:25,27</note>
+      </notes>
+      <segment>
+        <source>
+          Valid records
+        </source>
+        <target>
+          Registros válidos
+        </target>
+      </segment>
+    </unit>
+    <unit id="5662837045345510998">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:75,77</note>
+      </notes>
+      <segment>
+        <source>
+                Records
+              </source>
+        <target>
+                Registros
+              </target>
+      </segment>
+    </unit>
+    <unit id="8294105413140648271">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:72</note>
+      </notes>
+      <segment>
+        <source>Records that contain this invalid rule</source>
+        <target>Registros que contêm está regra inválida</target>
+      </segment>
+    </unit>
+    <unit id="6161624606545961207">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:94,96</note>
+        <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:57,59</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:57,59</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:163,165</note>
+      </notes>
+      <segment>
+        <source>
+            Details
+          </source>
+        <target>
+            Detalhes
+          </target>
+      </segment>
+    </unit>
+    <unit id="677486627395562160">
+      <notes>
+        <note category="location">src/app/components/validation/validation-table/validation-table.component.html:91</note>
+      </notes>
+      <segment>
+        <source>Details about this rule</source>
+        <target>Detalhes sobre esta regra</target>
+      </segment>
+    </unit>
+    <unit id="2644640411790641675">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-source/harvesting-source.component.html:3</note>
+      </notes>
+      <segment>
+        <source>Validation evolution</source>
+        <target>Evolução das validações</target>
+      </segment>
+    </unit>
+    <unit id="8742130100135598533">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:16,18</note>
+      </notes>
+      <segment>
+        <source>
+          Harvested records
+        </source>
+        <target>
+          Registros coletados
+        </target>
+      </segment>
+    </unit>
+    <unit id="5933137805033862730">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:34,36</note>
+      </notes>
+      <segment>
+        <source>
+          Invalid records
+        </source>
+        <target>
+          Registros inválidos
+        </target>
+      </segment>
+    </unit>
+    <unit id="6269371916922374000">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:43,45</note>
+      </notes>
+      <segment>
+        <source>
+          Transformed records
+        </source>
+        <target>
+          Registros transformados
+        </target>
+      </segment>
+    </unit>
+    <unit id="5162686434580248853">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:52</note>
+      </notes>
+      <segment>
+        <source>Start</source>
+        <target>Início</target>
+      </segment>
+    </unit>
+    <unit id="1241348629231510663">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:59</note>
+      </notes>
+      <segment>
+        <source>End</source>
+        <target>Fim</target>
+      </segment>
+    </unit>
+    <unit id="8441334606065163183">
+      <notes>
+        <note category="location">src/app/components/harvesting/harvesting-table/harvesting-table.component.html:74,76</note>
+      </notes>
+      <segment>
+        <source>
+            Validations
+          </source>
+        <target>
+            Validações
+          </target>
+      </segment>
+    </unit>
+    <unit id="7660461365638405664">
+      <notes>
+        <note category="location">src/app/views/harvesting/harvesting.component.html:1,3</note>
+      </notes>
+      <segment>
+        <source>
+  Harvesting not found
+</source>
+        <target>
+  Coleta não encontrada
+</target>
+      </segment>
+    </unit>
+    <unit id="4362164183481353668">
+      <notes>
+        <note category="location">src/app/views/harvesting/harvesting.component.html:18</note>
+      </notes>
+      <segment>
+        <source>Validation table</source>
+        <target>Tabela de validações</target>
+      </segment>
+    </unit>
+    <unit id="510215860731572676">
+      <notes>
+        <note category="location">src/app/views/harvesting/harvesting.component.html:20</note>
+      </notes>
+      <segment>
+        <source>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</source>
+        <target>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</target>
+      </segment>
+    </unit>
+    <unit id="3400354995808453024">
+      <notes>
+        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:10</note>
+        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:10</note>
+      </notes>
+      <segment>
+        <source>Occurrence</source>
+        <target>Ocorrência</target>
+      </segment>
+    </unit>
+    <unit id="6533918067030990396">
+      <notes>
+        <note category="location">src/app/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html:15</note>
+        <note category="location">src/app/components/occurrence/valid-occurence-table/valid-occurence-table.component.html:15</note>
+      </notes>
+      <segment>
+        <source>Amount</source>
+        <target>Quantidade</target>
+      </segment>
+    </unit>
+    <unit id="7396212938337853335">
+      <notes>
+        <note category="location">src/app/components/evaluation-rules/evaluation-rules.component.html:3,4</note>
+      </notes>
+      <segment>
+        <source>Result of the evaluation of rules for &quot;<ph id="0" equiv="INTERPOLATION" disp="{{ record.identifier }}"/>&quot;
+    record</source>
+        <target>Resultado da avaliação das regras para o registro &quot;<ph id="0" equiv="INTERPOLATION" disp="{{ record.identifier }}"/>&quot;
+    </target>
+      </segment>
+    </unit>
+    <unit id="7317370274961421513">
+      <notes>
+        <note category="location">src/app/components/evaluation-rules/evaluation-rules.component.html:13</note>
+        <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:35</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:35</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:141</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {Valid} false {Invalid} }</source>
+        <target>{VAR_SELECT, select, true {Válido} false {Inválido} }</target>
+      </segment>
+    </unit>
+    <unit id="5676922037336946281">
+      <notes>
+        <note category="location">src/app/components/evaluation-rules/evaluation-rules.component.html:29,32</note>
+      </notes>
+      <segment>
+        <source>
+              <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {...} false {...}}"/>
+            </source>
+        <target>
+              <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {...} false {...}}"/>
+            </target>
+      </segment>
+    </unit>
+    <unit id="359817121528370323">
+      <notes>
+        <note category="location">src/app/components/evaluation-rules/evaluation-rules.component.html:30,31</note>
+        <note category="location">src/app/components/evaluation-rules/evaluation-rules.component.html:71,72</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {Required: Yes} false {Required: No} }</source>
+        <target>{VAR_SELECT, select, true {Obrigatório: Sim} false {Obrigatório: Não} }</target>
+      </segment>
+    </unit>
+    <unit id="9171508892369069863">
+      <notes>
+        <note category="location">src/app/components/evaluation-rules/evaluation-rules.component.html:70,73</note>
+      </notes>
+      <segment>
+        <source>
+                <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {...} false {...}}"/>
+              </source>
+        <target>
+                <ph id="0" equiv="ICU" disp="{getRule(obj).mandatory, select, true {...} false {...}}"/>
+              </target>
+      </segment>
+    </unit>
+    <unit id="732432619111661062">
+      <notes>
+        <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:20,22</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:20,22</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:126,128</note>
+      </notes>
+      <segment>
+        <source>
+          Identifier
+        </source>
+        <target>
+          Identificador
+        </target>
+      </segment>
+    </unit>
+    <unit id="2957163997998056771">
+      <notes>
+        <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:27</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:27</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:13</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:133</note>
+      </notes>
+      <segment>
+        <source>Validation</source>
+        <target>Validação</target>
+      </segment>
+    </unit>
+    <unit id="4399330611551184869">
+      <notes>
+        <note category="location">src/app/components/records/records-valid-table/records-valid-table.component.html:41</note>
+        <note category="location">src/app/components/records/records-invalid-table/records-invalid-table.component.html:41</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:147</note>
+      </notes>
+      <segment>
+        <source>Transformation</source> 
+        <target>Transformação</target> 
+      </segment>
+    </unit>
+    <unit id="5096107754514710030">
+      <notes>
+        <note category="location">src/app/views/record-valid/record-valid.component.html:2,4</note>
+      </notes>
+      <segment>
+        <source>
+    Records that contain the valid &quot;<ph id="0" equiv="INTERPOLATION" disp="{{ getRule(ruleID).name }}"/>&quot; rule
+  </source>
+        <target>
+    Registros que contém a regra &quot;<ph id="0" equiv="INTERPOLATION" disp="{{ getRule(ruleID).name }}"/>&quot; inválida
+  </target>
+      </segment>
+    </unit>
+    <unit id="522971211873433922">
+      <notes>
+        <note category="location">src/app/views/record-invalid/record-invalid.component.html:10,11</note>
+      </notes>
+      <segment>
+        <source>Records that contain the invalid &apos;&apos;<ph id="0" equiv="INTERPOLATION" disp="{{ getRule(ruleID).name }}"/>&apos;&apos;
+    rule</source>
+        <target>Registros que contém a regra &apos;&apos;<ph id="0" equiv="INTERPOLATION" disp="{{ getRule(ruleID).name }}"/>&apos;&apos;
+    inválida</target>
+      </segment>
+    </unit>
+    <unit id="7630457246098294813">
+      <notes>
+        <note category="location">src/app/components/score-chart/score-chart.component.html:2,4</note>
+      </notes>
+      <segment>
+        <source>
+    Score
+  </source>
+        <target>
+    Pontuação
+  </target>
+      </segment>
+    </unit>
+    <unit id="5817928445374038037">
+      <notes>
+        <note category="location">src/app/components/conformity-chart/conformity-chart.component.html:2,4</note>
+      </notes>
+      <segment>
+        <source>
+    Conformity
+  </source>
+        <target>
+    Conformidade
+  </target>
+      </segment>
+    </unit>
+    <unit id="1533389380577466099">
+      <notes>
+        <note category="location">src/app/components/conformity-chart/conformity-chart.component.html:16</note>
+      </notes>
+      <segment>
+        <source>Required rules</source>
+        <target>Regras obrigatórias</target>
+      </segment>
+    </unit>
+    <unit id="3414697895342325339">
+      <notes>
+        <note category="location">src/app/components/conformity-chart/conformity-chart.component.html:18</note>
+      </notes>
+      <segment>
+        <source>Non-required rules</source>
+        <target>Regras não obrigatórias</target>
+      </segment>
+    </unit>
+    <unit id="4164796296331721280">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:3</note>
+      </notes>
+      <segment>
+        <source>Identifier</source>
+        <target>Identificador</target>
+      </segment>
+    </unit>
+    <unit id="6252070156626006029">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:15</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:27</note>
+      </notes>
+      <segment>
+        <source>None</source>
+        <target>Nenhum</target>
+      </segment>
+    </unit>
+    <unit id="2807800733729323332">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:28</note>
+      </notes>
+      <segment>
+        <source>Yes</source>
+        <target>Sim</target>
+      </segment>
+    </unit>
+    <unit id="3542042671420335679">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:29</note>
+      </notes>
+      <segment>
+        <source>No</source>
+        <target>Não</target>
+      </segment>
+    </unit>
+    <unit id="1199157391035799970">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:34</note>
+      </notes>
+      <segment>
+        <source>Valid rules</source>  
+        <target>Regras válidas</target>  
+      </segment>
+    </unit>
+    <unit id="8569091883467664902">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:46,50</note>
+      </notes>
+      <segment>
+        <source>
+          (+<ph id="0" equiv="INTERPOLATION" disp="{{ filter.validRules?.length - 1 }}"/>
+          <ph id="1" equiv="ICU" disp="{filter.validRules?.length === 2, select, true {...} false {...}}"/>)
+        </source>
+        <target>
+          (+<ph id="0" equiv="INTERPOLATION" disp="{{ filter.validRules?.length - 1 }}"/>
+          <ph id="1" equiv="ICU" disp="{filter.validRules?.length === 2, select, true {...} false {...}}"/>)
+        </target>
+      </segment>
+    </unit>
+    <unit id="4355526113700509146">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:48,49</note>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:75,76</note>
+      </notes>
+      <segment>
+        <source>{VAR_SELECT, select, true {other} false {others} }</source>
+        <target>{VAR_SELECT, select, true {outro} false {outros} }</target>
+      </segment>
+    </unit>
+    <unit id="8250586630341518181">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:61</note>
+      </notes>
+      <segment>
+        <source>Invalid rules</source>
+        <target>Regras inválidas</target>
+      </segment>
+    </unit>
+    <unit id="3294903186277192854">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:73,77</note>
+      </notes>
+      <segment>
+        <source>
+          (+<ph id="0" equiv="INTERPOLATION" disp="{{ filter.invalidRules?.length - 1 }}"/>
+          <ph id="1" equiv="ICU" disp="{filter.invalidRules?.length === 2, select, true {...} false {...}}"/>)
+        </source>
+        <target>
+          (+<ph id="0" equiv="INTERPOLATION" disp="{{ filter.invalidRules?.length - 1 }}"/>
+          <ph id="1" equiv="ICU" disp="{filter.invalidRules?.length === 2, select, true {...} false {...}}"/>)
+        </target>
+      </segment>
+    </unit>
+    <unit id="8796969457776702266">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:92,94</note>
+      </notes>
+      <segment>
+        <source>
+    Clear
+  </source>
+        <target>
+    Limpar
+  </target>
+      </segment>
+    </unit>
+    <unit id="7700526719905983019">
+      <notes>
+        <note category="location">src/app/components/records/records-table/records-table.component.html:102,104</note>
+      </notes>
+      <segment>
+        <source>
+    Filter
+  </source>
+        <target>
+    Filtrar
+  </target>
+      </segment>
+    </unit>
+    <unit id="6380439426064840023">
+      <notes>
+        <note category="location">src/app/components/table-exporter/table-exporter.component.html:2,4</note>
+      </notes>
+      <segment>
+        <source>
+    Export CSV
+  </source>
+        <target>
+    Exportar CSV
+  </target>
+      </segment>
+    </unit>
+    <unit id="4638450448409947660">
+      <notes>
+        <note category="location">src/app/components/conformity-grouped-chart/conformity-grouped-chart.component.html:2</note>
+      </notes>
+      <segment>
+        <source> Conformity </source>
+        <target> Conformidade </target>
+      </segment>
+    </unit>
+    <unit id="1243849875818343347">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:14</note>
+      </notes>
+      <segment>
+        <source>Harvested Records</source>
+        <target>Registros coletados</target>
+      </segment>
+    </unit>
+    <unit id="3434159451328512184">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:16</note>
+      </notes>
+      <segment>
+        <source>Valid Records</source>
+        <target>Registros válidos</target>
+      </segment>
+    </unit>
+    <unit id="1837526967766571733">
+      <notes>
+        <note category="location">src/app/components/validation/validation-chart/validation-chart.component.html:18</note>
+      </notes>
+      <segment>
+        <source>Transformed Records</source>
+        <target>Registros transformados</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

@@ -733,7 +733,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c8f3e21f029fd5ea72baf43919d5cf93ba3d7873" datatype="html">
-        <source>Dashboard for repository managers</source><target>Dashboard para gestores de repositorios</target>
+        <source>Dashboard for repository managers</source><target>Cuadro de mandos para gestores de repositorios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">9</context>
@@ -833,7 +833,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="f3da1a991743aabe2088144a26bb48399c936755" datatype="html">
-        <source>Dashboard / <x id="INTERPOLATION" equiv-text="{{activeRepository}}" /></source><target>Dashboard / <x id="INTERPOLATION" equiv-text="{{activeRepository}}" /></target>
+        <source>Dashboard / <x id="INTERPOLATION" equiv-text="{{activeRepository}}" /></source><target>Cuadro de mandos / <x id="INTERPOLATION" equiv-text="{{activeRepository}}" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/header/header.component.html</context>
           <context context-type="linenumber">13</context>
@@ -851,7 +851,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="047f50bc5b5d17b5bec0196355953e1a5c590ddb" datatype="html">
-        <source>Update</source><target>Actualizar</target>
+        <source>Update</source><target>Actualización</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
           <context context-type="linenumber">44</context>
