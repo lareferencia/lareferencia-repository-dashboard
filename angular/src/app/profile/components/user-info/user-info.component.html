@@ -1,8 +1,13 @@
 <div class="profile-section">
   <div class="form-section">
-    <h2>Edit Info</h2>
 
-    <form *ngIf="user" class="user-form">
+    <h2 i18n>Edit Info</h2>
+
+    <div *ngIf="!user" style="display: flex; justify-content: center; margin-top: 2rem;">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+
+    <form *ngIf="user" class="user-form animate__animated animate__fadeIn" >
       <mat-form-field appearance="outline">
         <mat-label i18n>Name</mat-label>
         <input matInput [(ngModel)]="user.first_name" name="first_name">
@@ -40,6 +45,7 @@
     </form>
 
   </div>
+  
 </div>
 
 

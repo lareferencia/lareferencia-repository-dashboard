@@ -6,6 +6,10 @@ import { MaterialModule } from '../material/material.module';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { SharedModule } from '../shared/shared.module';
 import { ToastModule } from 'primeng/toast';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
+
+
 
 
 @NgModule({
@@ -18,7 +22,8 @@ import { ToastModule } from 'primeng/toast';
     SharedModule,
     ProfileRoutingModule,
     MaterialModule,
-    ToastModule
+    ToastModule,
+    ProgressSpinnerModule
   ]
 })
 export class ProfileModule { }
