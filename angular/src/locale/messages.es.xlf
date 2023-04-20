@@ -636,7 +636,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="52a71879612477658b9db8f0b11f9c7785094489" datatype="html">
-        <source>In the graph below it is possible to view the results of the collections performed. It is possible to generate daily, weekly, monthly and yearly collection charts. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory collection rules of the repository. Invalid records are those that do not comply with the mandatory collection rules of the repository. Finally, the transformed records inform the number of documents that were collected. Normally, this number should equal the number of documents deposited in the repository.</source><target>En el gráfico siguiente se pueden ver los resultados de las recogidas realizadas. Es posible generar gráficos de recogida diarios, semanales, mensuales y anuales. El gráfico muestra tres métricas, que son: registros válidos, inválidos y transformados. Los registros válidos son aquellos que se ajustan a las normas vigentes de recogida obligatoria del depósito. Los registros no válidos son aquellos que no cumplen las normas de recogida obligatorias del repositorio. Por último, los registros transformados informan del número de documentos que se recogieron. Normalmente, este número debe ser igual al número de documentos depositados en el repositorio.</target>
+        <source>In the graph below it is possible to view the results of the collections performed. It is possible to generate daily, weekly, monthly and yearly collection charts. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory collection rules of the repository. Invalid records are those that do not comply with the mandatory collection rules of the repository. Finally, the transformed records inform the number of documents that were collected. Normally, this number should equal the number of documents deposited in the repository.</source><target>En el siguiente gráfico se pueden ver los resultados de las recogidas realizadas. Es posible generar gráficos de recogida diarios, semanales, mensuales y anuales. El gráfico muestra tres métricas, que son: registros válidos, inválidos y transformados. Los registros válidos son aquellos que se ajustan a las normas vigentes de recogida obligatoria del depósito. Los registros no válidos son aquellos que no cumplen las normas de recogida obligatorias del repositorio. Por último, los registros transformados informan del número de documentos que se recogieron. Normalmente, este número debe ser igual al número de documentos depositados en el repositorio.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-source/harvesting-source.component.html</context>
           <context context-type="linenumber">5</context>
@@ -733,7 +733,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c8f3e21f029fd5ea72baf43919d5cf93ba3d7873" datatype="html">
-        <source>Dashboard for repository managers</source><target>Dashboard para gestores de repositorios</target>
+        <source>Dashboard for repository managers</source><target>Cuadro de mandos para gestores de repositorios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">9</context>
@@ -746,22 +746,22 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="38ae536b2dc873b66e13a1d1e3b8347700375461" datatype="html">
-        <source>Harvest statistics or something like that</source><target>Estadísticas de cosecha o algo así</target>
+      <trans-unit id="00baff751c3df4a112785a035b167cdd3f728114" datatype="html">
+        <source> Information about the harvesting of deposit documents </source><target> Información sobre la recogida de documentos de depósito </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ee845b1f52d72e862f0aa21bab0b18ba1e3150fa" datatype="html">
-        <source>Last validations or something like that</source><target>Últimas validaciones o algo así</target>
+      <trans-unit id="f7c1a134eba5949a8b5f467a0334467ed1d96d49" datatype="html">
+        <source> Information about the harvesting of deposit documents</source><target> Información sobre la recogida de documentos de depósito</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="90e2da856db93ced3b2f0f4d04b0c617529b9635" datatype="html">
-        <source>Anything else</source><target>Cualquier otra cosa</target>
+      <trans-unit id="c4cdd805c19f46f39d1c96247617def977c48753" datatype="html">
+        <source> Informative statistics and graphics</source><target> Estadísticas y gráficos informativos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">17</context>
@@ -833,7 +833,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="f3da1a991743aabe2088144a26bb48399c936755" datatype="html">
-        <source>Dashboard / <x id="INTERPOLATION" equiv-text="{{activeRepository}}" /></source><target>Dashboard / <x id="INTERPOLATION" equiv-text="{{activeRepository}}" /></target>
+        <source>Dashboard / <x id="INTERPOLATION" equiv-text="{{activeRepository}}" /></source><target>Cuadro de mandos / <x id="INTERPOLATION" equiv-text="{{activeRepository}}" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/header/header.component.html</context>
           <context context-type="linenumber">13</context>
@@ -851,7 +851,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="047f50bc5b5d17b5bec0196355953e1a5c590ddb" datatype="html">
-        <source>Update</source><target>Actualizar</target>
+        <source>Update</source><target>Actualización</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
           <context context-type="linenumber">44</context>
@@ -1171,7 +1171,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="8344d5460beb953be101716516097d9e5ad4cfe9" datatype="html">
-        <source>Result of the evaluation of rules for "<x id="INTERPOLATION" equiv-text="{{ record.identifier }}" />" record</source><target>Resultado de la evaluación de las reglas para el registro "<x id="INTERPOLATION" equiv-text="{{ record.identifier }}" /></target>
+        <source>Result of the evaluation of rules for "<x id="INTERPOLATION" equiv-text="{{ record.identifier }}" />" record</source><target>Resultado de la evaluación de las normas para el registro "<x id="INTERPOLATION" equiv-text="{{ record.identifier }}" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
           <context context-type="linenumber">3</context>
