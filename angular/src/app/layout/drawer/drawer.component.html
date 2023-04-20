@@ -10,19 +10,19 @@
         <mat-nav-list class="nav-list">
             <a class="nav-list-a" routerLink="/" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="../../../../assets/icons/home.svg" alt="">
-                <span class="nav-list-text">Home</span>
+                <span i18n class="nav-list-text">Home</span>
             </a>
             <a class="nav-list-a" routerLink="/{{activeRepository}}/harvesting" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="../../../../assets/icons/chart.svg" alt="">
-              <span class="nav-list-text">Statistics</span>
+              <span i18n class="nav-list-text">Statistics</span>
             </a>
             <a class="nav-list-a"  routerLink="/{{activeRepository}}/validation/{{harvestingConentId}}" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="../../../../assets/icons/validation.svg" alt="">
-              <span class="nav-list-text">Validations</span>
+              <span i18n class="nav-list-text">Validations</span>
             </a>
             <a class="nav-list-a nav-list-a-logout"  routerLink="/user/profile" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="../../../../assets/icons/user.svg" alt="">
-              <span class="nav-list-text">Account</span>
+              <span i18n class="nav-list-text">Account</span>
             </a>
             
         </mat-nav-list>
