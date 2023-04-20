@@ -744,22 +744,22 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="38ae536b2dc873b66e13a1d1e3b8347700375461" datatype="html">
-        <source>Harvest statistics or something like that</source>
+      <trans-unit id="00baff751c3df4a112785a035b167cdd3f728114" datatype="html">
+        <source> Information about the harvesting of deposit documents </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ee845b1f52d72e862f0aa21bab0b18ba1e3150fa" datatype="html">
-        <source>Last validations or something like that</source>
+      <trans-unit id="f7c1a134eba5949a8b5f467a0334467ed1d96d49" datatype="html">
+        <source> Information about the harvesting of deposit documents</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="90e2da856db93ced3b2f0f4d04b0c617529b9635" datatype="html">
-        <source>Anything else</source>
+      <trans-unit id="c4cdd805c19f46f39d1c96247617def977c48753" datatype="html">
+        <source> Informative statistics and graphics</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">17</context>
