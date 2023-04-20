@@ -1,30 +1,27 @@
 import { UserInfo } from 'src/app/shared/models/user-info.model';
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Component, OnInit } from '@angular/core';
 import { ManageUsersService } from 'src/app/core/services/manage-users.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.css'],
+  providers: [MessageService]
 })
+
+
 export class UserInfoComponent implements OnInit {
-  @ViewChild('snackBarTemplate') snackBarTemplate: TemplateRef<any>;
-  succesMessage = true;
+  updatingSuccess = true;
   userName: string;
   user: UserInfo;
-  config: MatSnackBarConfig = {
-    duration: 4000,
-    horizontalPosition: 'center',
-    verticalPosition: 'top',
-    panelClass: ['msg-error'],
-  };
-
+ 
   constructor(
-    private snackBar: MatSnackBar,
     private manageUsersService: ManageUsersService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private messageService: MessageService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -34,7 +31,9 @@ export class UserInfoComponent implements OnInit {
       .subscribe((result) => (this.user = result));
   }
 
+  //no hay validaciones acá
   onClickSave() {
+    this.updatingSuccess = false;
     this.manageUsersService.updateUser(this.userName, this.user).subscribe(
       (result) => this.resultHandler(result),
       () => this.resultHandler(false)
@@ -42,14 +41,11 @@ export class UserInfoComponent implements OnInit {
   }
 
   private resultHandler(success: boolean) {
-    this.succesMessage = success;
-    this.config = this.succesMessage
-      ? { ...this.config, panelClass: ['msg-success'] }
-      : { ...this.config, panelClass: ['msg-error'] };
-    this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
-  }
 
-  dismissSnackbar(): void {
-    this.snackBar.dismiss();
+    this.updatingSuccess === true
+    ? this.messageService.add(
+      { severity: 'success', summary: 'Info', detail: 'Information updated successfully!' })
+    : this.messageService.add(
+      { severity: 'error', summary: 'Info', detail: 'Error updating information!' })
   }
 }

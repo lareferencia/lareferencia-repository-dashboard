@@ -13,6 +13,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -31,6 +35,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatInputModule,
     MatButtonToggleModule,
     MatTabsModule,
+    MatCardModule,
+    MatIconModule,
+    MatGridListModule,
+    MatSidenavModule,
     ],
 })
 export class MaterialModule { }

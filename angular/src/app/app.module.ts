@@ -1,16 +1,19 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { initializeKeycloak } from './keycloak-init';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
+import { initializeKeycloak } from './keycloak-init';
+
 import { AuthenticationService } from './core/services/authentication.service';
-import { CoreModule } from './core/core.module';
-import { TemplateModule } from './components/template/template.module';
-import { HomeModule } from './components/home/home.module';
-import { BrokerModule } from './components/broker/broker.module';
+
+import { LayoutModule } from './layout/layout.module';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeModule } from './home/home.module';
 import { AccountModule } from './components/account/account.module';
+import { CoreModule } from './core/core.module';
+
+import { AppComponent } from './app.component';
+// import { BrokerModule } from './components/broker/broker.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,11 +22,11 @@ import { AccountModule } from './components/account/account.module';
     BrowserAnimationsModule,
     KeycloakAngularModule,
     CoreModule,
-    TemplateModule,
     HomeModule,
-    BrokerModule,
+    // BrokerModule,
     AccountModule,
     AppRoutingModule,
+    LayoutModule
   ],
   providers: [
     AuthenticationService,

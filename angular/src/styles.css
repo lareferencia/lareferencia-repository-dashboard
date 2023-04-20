@@ -118,9 +118,13 @@ p, span, li {
 }
 
 .btn-primary {
-  background-color: #33426a !important;
+  background-color: var(--color-primary) !important;
   border-color: #33426a !important;
   border-style: solid !important;
+  color: white !important;
+}
+
+.btn-primary span{
   color: white !important;
 }
 
@@ -130,9 +134,9 @@ p, span, li {
   color: #33426a !important;
 }
 
-.mat-form-field-flex {
+/* .mat-form-field-flex {
   background-color: white !important;
-}
+} */
 
 .btn-disabled {
   cursor: auto !important;

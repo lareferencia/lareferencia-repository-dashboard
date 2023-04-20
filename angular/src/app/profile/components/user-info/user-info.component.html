@@ -1,0 +1,45 @@
+<div class="profile-section">
+  <div class="form-section">
+    <h2>Edit Info</h2>
+
+    <form *ngIf="user" class="user-form">
+      <mat-form-field appearance="outline">
+        <mat-label i18n>Name</mat-label>
+        <input matInput [(ngModel)]="user.first_name" name="first_name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input matInput [(ngModel)]="user.email" name="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label i18n>Institutional phone</mat-label>
+        <input matInput [(ngModel)]="user.telephone" name="telephone">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label i18n>Position</mat-label>
+        <mat-select disabled [(value)]="user.position">
+          <mat-option i18n>None</mat-option>
+          <mat-option i18n value="1">Node Administrator</mat-option>
+          <mat-option i18n value="2">Assistant/Auxiliary</mat-option>
+          <mat-option i18n value="3">Librarian</mat-option>
+          <mat-option i18n value="4">Repository Manager</mat-option>
+          <mat-option i18n value="5">Technical Responsible</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label i18n>Affiliation</mat-label>
+        <input matInput [(ngModel)]="user.affiliation" name="affiliation">
+      </mat-form-field>
+
+      <p-toast></p-toast>
+      <button [disabled]="!updatingSuccess" mat-raised-button class="btn-primary" (click)="onClickSave()" i18n>Update</button>
+    </form>
+
+  </div>
+</div>
+
+
