@@ -45,4 +45,8 @@ export class HeaderComponent implements OnInit {
           this.activeRepository = activeRepo.name;
     });
   };
+
+  toggleMenu(){
+    this.menuService.toggleMenuOpen();
+  }
 };

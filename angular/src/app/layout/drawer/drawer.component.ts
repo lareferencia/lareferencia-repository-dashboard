@@ -12,6 +12,8 @@ export class DrawerComponent implements OnInit {
   
   public activeRepository: string;
   public harvestingConentId: number;
+  public isMobileMenu = true;
+  public isMenuOpen = false;
 
   constructor( 
     private menuService: MenuService,
@@ -27,6 +29,16 @@ export class DrawerComponent implements OnInit {
           .subscribe((harvesginContent) =>{
             this.harvestingConentId = harvesginContent.id;
           }, (error) => console.log('error de validacion'))
-      })
+      });
+
+      this.isMobileMenu = window.innerWidth < 570;
+      window.addEventListener('resize', () => {
+        this.isMobileMenu = window.innerWidth < 570;
+      });
+
+      this.menuService.isMenuOpen
+        .subscribe( (isMenuOpen) => {
+          this.isMenuOpen = isMenuOpen;
+        });
   }
 }

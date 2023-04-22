@@ -8,6 +8,7 @@ import { Menu } from 'src/app/shared/models/menu.model';
 export class MenuService {
   private _menuData = new BehaviorSubject<Menu[]>([]);
   private _activeRepo = new BehaviorSubject<Menu>({ name: '', acronym: '', id:0 });
+  private _isMenuOpen = new BehaviorSubject<boolean>(false);
 
   constructor() {}
 
@@ -28,4 +29,13 @@ export class MenuService {
     this._activeRepo = activeRepo;
     console.log('activeRepo', this._activeRepo)
   }
+
+  get isMenuOpen(): BehaviorSubject<boolean> {
+    return this._isMenuOpen;
+  }
+
+  toggleMenuOpen(){
+    this._isMenuOpen.next(!this._isMenuOpen.value);
+  }
+
 }

@@ -19,8 +19,9 @@
   .mat-drawer:hover .nav-list-text{
     opacity: 1;
     transition: opacity 0.3s ease;
-  } 
+  }
   
+
   /* LIST ITEMS */
   
   .nav-list {
@@ -62,6 +63,13 @@
     width: 20px; 
     opacity: 0.8; 
     margin-left: 18px;
+  }
+
+
+  @media screen and (max-width: 570px) {
+    .mat-drawer {
+      margin-top: 72px;
+    }
   }
   
   
