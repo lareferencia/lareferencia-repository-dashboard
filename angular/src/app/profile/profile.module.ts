@@ -5,8 +5,6 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { SharedModule } from '../shared/shared.module';
-import { ToastModule } from 'primeng/toast';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 
 
@@ -22,8 +20,6 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     SharedModule,
     ProfileRoutingModule,
     MaterialModule,
-    ToastModule,
-    ProgressSpinnerModule
   ]
 })
 export class ProfileModule { }

@@ -18,6 +18,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ToastModule } from 'primeng/toast';
+
 
 
 @NgModule({
@@ -40,6 +43,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     MatGridListModule,
     MatSidenavModule,
+
+    ProgressSpinnerModule,
+    ToastModule,
+
+
     ],
 })
 export class MaterialModule { }
