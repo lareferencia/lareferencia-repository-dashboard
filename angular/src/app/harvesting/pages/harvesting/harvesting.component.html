@@ -3,25 +3,29 @@
 </div>
 
 <ng-container *ngIf="!error">
-  <mat-progress-bar
-    mode="indeterminate"
-    *ngIf="isLoadingResults"
-  ></mat-progress-bar>
+  <div *ngIf="isLoadingResults" style="display: flex; justify-content: center; margin-top: 2rem;">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
 
-  <app-sub-header
+  
+
+  <!-- <app-sub-header
     *ngIf="harvesting && !error"
     description="{{ harvesting.name }}"
-  ></app-sub-header>
+  ></app-sub-header> -->
 
-  <div *ngIf="harvestingContent">
+  <div *ngIf="harvestingContent" class="animate__animated animate__fadeIn">
     <app-harvesting-source></app-harvesting-source>
-    <app-card
+
+
+    <!-- <app-card
       cardTitle="Harvesting table"
       i18n-cardTitle
       description="Below is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections."
       i18n-description
     >
       <app-harvesting-table></app-harvesting-table>
-    </app-card>
+    </app-card> -->
+
   </div>
 </ng-container>

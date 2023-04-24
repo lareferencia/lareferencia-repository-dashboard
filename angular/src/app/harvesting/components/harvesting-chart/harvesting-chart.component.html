@@ -1,8 +1,4 @@
-<app-harvesting-chart-filter
-  (applyFilter)="filterClick($event)"
-  (applyClear)="clearClick()"
-  [(date)]="date"
-></app-harvesting-chart-filter>
+
 <div class="chart">
   <div class="chart-container">
     <div class="chart-title"><span i18n>Harvestings</span></div>
@@ -32,16 +28,11 @@
     </div>
 
     <div class="divider"></div>
-    <div class="chart-description">
-      <div class="chart-description-text">
-        <span>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
-        </span>
-      </div>
-    </div>
+    <app-harvesting-chart-filter
+      (applyFilter)="filterClick($event)"
+      (applyClear)="clearClick()"
+      [(date)]="date"
+    ></app-harvesting-chart-filter>
     <div class="divider"></div>
   </div>
 </div>
