@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
+import { AuthenticationService } from '../../core/services/authentication.service';
 
 @Component({
   selector: 'app-drawer',
@@ -18,6 +19,7 @@ export class DrawerComponent implements OnInit {
   constructor( 
     private menuService: MenuService,
     private harvestingService: HarvestingService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -40,5 +42,9 @@ export class DrawerComponent implements OnInit {
         .subscribe( (isMenuOpen) => {
           this.isMenuOpen = isMenuOpen;
         });
+  }
+
+  logout(){
+    this.authenticationService.logout();
   }
 }

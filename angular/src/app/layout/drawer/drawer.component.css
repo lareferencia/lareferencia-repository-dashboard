@@ -36,10 +36,16 @@
     padding-bottom: 0.5rem;
     text-decoration: none;
   }
+  .nav-list-a-user{
+    position: absolute;
+    bottom: 15%;
+    width: 100%;
+  }
   .nav-list-a-logout{
     position: absolute;
     bottom: 8%;
     width: 100%;
+    cursor: pointer;
   }
   
   .nav-list-a:hover{
