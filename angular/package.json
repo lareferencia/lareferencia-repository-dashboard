@@ -31,6 +31,7 @@
     "keycloak-js": "^20.0.5",
     "ngx-highlightjs": "^8.0.0",
     "postcss": "^8.4.21",
+    "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
     "primeng": "^15.3.0",
     "rxjs": "^6.6.3",
