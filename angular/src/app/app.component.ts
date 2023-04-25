@@ -45,6 +45,12 @@ export class AppComponent implements OnInit {
 
     if ( this.repositoriesMenu.length === harvestingList.content.length ) {
       this.menuService.menu.next(this.repositoriesMenu);
+
+      // Set active repository by local storage
+      const activeRepository = localStorage.getItem('activeRepository');
+      if (activeRepository) return this.menuService.activeRepo.next(JSON.parse(activeRepository));
+
+      // Set active repository by first repository if local storage is empty
       this.menuService.activeRepo.next(this.repositoriesMenu[0]);
     };
   };

@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   constructor( private menuService: MenuService) { }
 
   ngOnInit(): void {
-
+   
     this.menuService.menu.pipe(
       filter((menu: Menu[]) => menu.length > 0),
       tap((menu: Menu[]) => {
@@ -31,7 +31,10 @@ export class HeaderComponent implements OnInit {
               {
                 label: menuItem.name,
                 routerLink: [`${menuItem.acronym}/harvesting`],
-                command: () => this.menuService.activeRepo.next(menuItem)
+                command: () => {
+                  this.menuService.activeRepo.next(menuItem);
+                  localStorage.setItem('activeRepository', JSON.stringify(menuItem));
+                }
               }
             ))
           }
@@ -42,7 +45,7 @@ export class HeaderComponent implements OnInit {
         return this.menuService.activeRepo;
       })
       ).subscribe((activeRepo: Menu) => {
-          this.activeRepository = activeRepo.name;
+        this.activeRepository = activeRepo.name;  
     });
   };
 

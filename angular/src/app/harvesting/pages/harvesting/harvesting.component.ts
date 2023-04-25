@@ -4,7 +4,6 @@ import { NavService } from '../../../core/services/nav.service';
 import { HarvestingService } from '../../../core/services/harvesting.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from 'src/app/core/services/menu.service';
 
 @Component({
   selector: 'app-harvesting',
@@ -23,7 +22,6 @@ export class HarvestingComponent implements OnInit {
     private route: ActivatedRoute,
     private harvestingService: HarvestingService,
     private navService: NavService,
-    private menuService: MenuService
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +31,7 @@ export class HarvestingComponent implements OnInit {
       this.harvestingContent = null;
       this.isLoadingResults = true;
 
-      const acronym = this.menuService.activeRepo.value.acronym;
+      const acronym = this.route.snapshot.paramMap.get('acronym');
       
 
       this.harvestingService
@@ -55,6 +53,7 @@ export class HarvestingComponent implements OnInit {
         );
 
       this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
+        console.log(harvesting);
         this.harvesting = harvesting;
       })
     });

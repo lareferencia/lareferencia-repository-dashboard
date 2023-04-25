@@ -24,6 +24,7 @@ export class DrawerComponent implements OnInit {
 
   ngOnInit(): void {
     
+    //TODO: Solucionar el error usando una funcion aca
     this.menuService.activeRepo
       .subscribe( ({acronym}) => {
         this.activeRepository = acronym;
