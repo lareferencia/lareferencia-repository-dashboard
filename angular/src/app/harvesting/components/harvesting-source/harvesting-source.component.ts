@@ -1,7 +1,9 @@
-import { Harvesting } from '../../../shared/models/harvesting.model';
-import { HarvestingService } from '../../../core/services/harvesting.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { HarvestingService } from '../../../core/services/harvesting.service';
+
+import { Harvesting } from '../../../shared/models/harvesting.model';
 import { HarvestingHistory } from 'src/app/shared/models/harvesting-history.model';
 
 @Component({
@@ -9,6 +11,8 @@ import { HarvestingHistory } from 'src/app/shared/models/harvesting-history.mode
   templateUrl: './harvesting-source.component.html',
   styleUrls: ['./harvesting-source.component.css'],
 })
+
+
 export class HarvestingSourceComponent implements OnInit {
   harvesting: Harvesting;
   harvestingHistory: HarvestingHistory;

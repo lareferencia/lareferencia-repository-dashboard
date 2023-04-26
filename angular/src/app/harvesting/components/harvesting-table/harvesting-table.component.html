@@ -1,14 +1,14 @@
 
-<div class="grid mt-2">
+<div class="grid">
   
-  <div class="col-12 lg:col-4 harvesting-table-info">
+  <div class="col-12 lg:col-4 p-3 harvesting-table-info">
     <mat-card>
       <h3 i18n>Harvesting table</h3>
-      <p i18n>Below is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</p>
+      <p i18n>This table is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</p>
     </mat-card>
   </div>
 
-  <div class="table-container col-12 lg:col-8">
+  <div class="table-container col-12 lg:col-8 p-3">
     <div class="loading-shade" *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     </div>

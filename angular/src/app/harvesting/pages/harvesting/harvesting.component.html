@@ -5,22 +5,20 @@
 </div>
 
 <div *ngIf="!error">
-  <!-- <div *ngIf="isLoadingResults" 
-        style="display: flex; justify-content: center; margin-top: 2rem">
-    <p-progressSpinner></p-progressSpinner>
-  </div> -->
 
-  <div *ngIf="harvestingContent" 
-        class="p-3">
+  <div *ngIf="isLoadingResults" class="min-h-screen flex justify-content-center align-items-center">
+      <p-progressSpinner></p-progressSpinner>
+  </div>
+
+  <div *ngIf="harvestingContent" class="p-2 animate__animated animate__fadeIn">
 
     <!-- Grafico -->
     <app-harvesting-source>
     </app-harvesting-source>
 
-
     <!-- Tabla -->
-
-    <app-harvesting-table></app-harvesting-table>
+    <app-harvesting-table>
+    </app-harvesting-table>
 
   </div>
 </div>

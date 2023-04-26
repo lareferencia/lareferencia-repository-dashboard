@@ -53,7 +53,6 @@ export class HarvestingComponent implements OnInit {
         );
 
       this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
-        console.log(harvesting);
         this.harvesting = harvesting;
       })
     });
