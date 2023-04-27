@@ -33,8 +33,8 @@ export class HarvestingChartComponent implements OnInit {
             { type: 'bar', label: 'Validos', backgroundColor: '#00d0de',
               data: content.map(harvesting => harvesting.validSize)},
 
-            { type: 'bar', label: 'Total', backgroundColor: '#0bd18a', 
-              data: content.map(harvesting => harvesting.harvestedSize ) },
+            { type: 'bar', label: 'Invalidos', backgroundColor: '#0bd18a', 
+              data: content.map(harvesting => harvesting.harvestedSize - harvesting.validSize ) },
             ]
           };
           this.loadingChart = false;
@@ -74,7 +74,7 @@ export class HarvestingChartComponent implements OnInit {
                     color: '#44486D'
                 },
                 grid: {
-                    color: '#bbb',
+                    color: '#fff',
                     drawBorder: false
                 }
             }
