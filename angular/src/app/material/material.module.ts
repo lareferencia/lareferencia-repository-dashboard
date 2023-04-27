@@ -21,6 +21,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ToastModule } from 'primeng/toast';
 import { ChartModule } from 'primeng/chart';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+
+
 
 
 
@@ -48,7 +52,10 @@ import { ChartModule } from 'primeng/chart';
 
     ProgressSpinnerModule,
     ToastModule,
-    ChartModule
+    ChartModule,
+    TableModule,
+    ButtonModule,
+    
 
 
     ],
