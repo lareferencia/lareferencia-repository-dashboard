@@ -1,6 +1,9 @@
 
 /* DRAWER */
-
+  p, span, li {
+    color: var(--color-secondary);
+  }
+  
   .mat-drawer {
     transition: width 0.3s ease;
     background: rgb(246,247,252);
