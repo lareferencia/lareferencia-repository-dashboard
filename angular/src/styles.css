@@ -27,9 +27,7 @@ h1,h2,h3,h4,h5,h6{
 h1{
   text-align: center;
 }
-p, span, li {
-  color: var(--color-secondary);
-}
+
 .app-router-container{
   margin-left: 55px;
 }
