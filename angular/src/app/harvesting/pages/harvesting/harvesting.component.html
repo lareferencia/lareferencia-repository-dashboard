@@ -4,13 +4,15 @@
   Harvesting not found
 </div>
 
-<div *ngIf="!error">
+<div *ngIf="!error" >
 
-  <div *ngIf="isLoadingResults" class="min-h-screen flex justify-content-center align-items-center">
+  <div *ngIf="isLoadingResults" 
+    class="min-h-screen flex justify-content-center align-items-center">
       <p-progressSpinner></p-progressSpinner>
   </div>
 
-  <div *ngIf="harvestingContent" class="p-2 animate__animated animate__fadeIn">
+  <div *ngIf="harvestingContent" class="p-3"
+   animate__animated animate__fadeIn>
 
     <!-- Grafico -->
     <app-harvesting-source>
