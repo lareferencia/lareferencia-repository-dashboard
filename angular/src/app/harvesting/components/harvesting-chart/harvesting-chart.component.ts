@@ -26,15 +26,14 @@ export class HarvestingChartComponent implements OnInit {
 
     this.harvestingService.getHarvestingHistoryByAcronym(acronym, this.pageNumber, this.pageSize)
       .subscribe(({content}) => {
-                
         this.data = {
         labels: content.map(harvesting => harvesting.startTime.toString().substring(0,10)).reverse(),
         datasets: [
-            { type: 'bar', label: 'Validos', backgroundColor: '#00d0de',
-              data: content.map(harvesting => harvesting.validSize)},
+            { type: 'bar', label: 'Invalidos', backgroundColor: '#fc6161',
+              data: content.map(harvesting => (harvesting.harvestedSize - harvesting.validSize) ).reverse() },
 
-            { type: 'bar', label: 'Invalidos', backgroundColor: '#0bd18a', 
-              data: content.map(harvesting => harvesting.harvestedSize - harvesting.validSize ) },
+            { type: 'bar', label: 'Validos', backgroundColor: '#00d0de',
+              data: content.map(harvesting => harvesting.validSize).reverse()},
             ]
           };
           this.loadingChart = false;
@@ -52,7 +51,6 @@ export class HarvestingChartComponent implements OnInit {
                     color: '#44486D',
                     font: {
                         size: 14,
-                        weight: 'bold'
                     }
                 }
             }

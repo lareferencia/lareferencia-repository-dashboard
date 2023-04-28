@@ -3,6 +3,7 @@
   border-radius: 10px;
   /* display: flex; */
   justify-content: center;
+  min-height: 50vh;
 }
 .chart-container{
   padding: 16px;
