@@ -12,57 +12,55 @@
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </mat-card>
 
-<div *ngIf="!firstAccess && !error && validation">
-  <app-sub-header
-    *ngIf="harvesting"
-    description="{{ harvesting.name }}"
-  ></app-sub-header>
+<div *ngIf="!firstAccess && !error && validation" class="grid p-3">
+ 
+  
 
-  <div class="flex-container">
-    <app-mini-card
-      class="col-md-3"
-      icon="library_books"
-      i18n-title
-      title="Harvested records"
-      color="#02799E"
-      [content]="validation.size | number"
-    ></app-mini-card>
+  <div class="col-12 md:col-4 p-3">
+        <app-validation-card
+        title="Last validation"
+        validationTitle="Records"
+        [validationData]="validation.size"
+        icon="pi pi-book"
+        color="#00d0de"
+        imagePath="validation-record.svg"
+        shadowColor="0px 6px 20px rgba(0, 208, 222, 0.3)">
+      </app-validation-card>
+    </div>
 
-    <app-mini-card
-      class="col-md-3"
-      icon="done"
-      i18n-title
-      title="Valid"
-      color="#00BAB8"
-      [content]="validation.validSize | number"
-    ></app-mini-card>
-
-    <app-mini-card *ngIf="admUser"
-      class="col-md-3"
-      icon="settings"
-      i18n-title
-      title="Transformed"
-      color="#FBBE50"
-      [content]="validation.transformedSize | number"
-    ></app-mini-card>
-
-    <app-mini-card
-      class="col-md-3"
-      icon="clear"
-      i18n-title
-      title="Invalid"
-      color="#F1686A"
-      [content]="validation.size - validation.validSize | number"
-    ></app-mini-card>
+  <div class="col-12 md:col-4 p-3">
+    <app-validation-card
+      title="Last validation"
+      validationTitle="Valid"
+      [validationData]="validation.validSize"
+      icon="pi pi-check-circle"
+      color="#0bd18a"
+      imagePath="validation-valid.svg"
+      shadowColor="0px 6px 20px rgba(11, 209, 138, 0.3)">
+    </app-validation-card>
   </div>
 
-  <div class="flex-container">
+  <div class="col-12 md:col-4 p-3">
+    <app-validation-card
+      title="Last validation"
+      validationTitle="Invalid"
+      [validationData]="validation.size - validation.validSize"
+      icon="pi pi-times-circle"
+      color="#fc6161"
+      imagePath="validation-invalid.svg"
+      shadowColor="0px 6px 20px rgba(252, 97, 97, 0.3)">
+    </app-validation-card>
+  </div>
+
+
+
+  <!-- <div class="flex-container">
     <app-conformity-grouped-chart
       [validation]="validation"
     ></app-conformity-grouped-chart>
-  </div>
+  </div> -->
 
-  <app-card
+  <!-- <app-card
     cardTitle="Validations"
     i18n-cardTitle
     description="The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory collection rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory collection rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown."
@@ -78,5 +76,5 @@
     i18n-description
   >
     <app-records-table [validation]="validation"></app-records-table>
-  </app-card>
+  </app-card> -->
 </div>
