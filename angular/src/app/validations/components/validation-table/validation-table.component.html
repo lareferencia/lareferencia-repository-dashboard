@@ -1,4 +1,4 @@
-<div class="filter-form">
+<!-- <div class="filter-form">
   
   <mat-form-field appearance="fill" style="margin-left: 30px">
     <mat-label i18n>Show rules</mat-label>
@@ -9,80 +9,81 @@
     </mat-select>
   </mat-form-field>
 
+</div> -->
+<div class="table-container
+  animate__animated animate__fadeInRight animate__faster">
+    <div class="table-content-container">
+      <p-table 
+      [value]="dataSource"
+      [paginator]="true"
+      rows="10"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[10, 25, 50]">
+      <ng-template pTemplate="header" >
+          <tr>
+              <th *ngFor="let item of displayedColumns" 
+              pSortableColumn="{{item}}">
+                {{item}} 
+                <p-sortIcon field="{{item}}"></p-sortIcon>
+              </th>
+              <th>Records</th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+            <td>{{dataSource.ruleID}}</td>
+            <td>{{dataSource.name}}</td>
+            <td>{{dataSource.description}}</td>
+            <td>{{dataSource.mandatory}}</td>
+            <td>
+              <div class="clearfix">
+                <div class="float-left">
+                  <strong>{{ dataSource.conformity / 100 | percent: '1.3' }}</strong>
+                </div>
+              </div>
+              <mat-progress-bar 
+                value="{{ dataSource.conformity > 0 
+                  ? dataSource.conformity 
+                  : 100 }}">
+              </mat-progress-bar>
+            </td>
+            <td>{{dataSource.validCount | number}}</td>
+            <td>
+              <p-button *ngIf="dataSource.conformity == 100"
+                disabled="true"
+                styleClass="p-button-secondary p-button-sm"
+                label="100%"
+                ></p-button>
+              <p-button *ngIf="dataSource.conformity < 100"
+                styleClass="p-button-danger p-button-sm"
+                label="Records"
+                ></p-button>
+            </td>
+            <td>
+              <p-button *ngIf="dataSource.conformity == 100 && !admUser"
+                disabled="true"
+                styleClass="p-button-secondary p-button-sm"
+                label="100%"
+                ></p-button>
+
+              <p-button *ngIf="dataSource.conformity < 100 || admUser"
+                styleClass="p-button-primary p-button-sm"
+                label="Details"
+                ></p-button>
+            </td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
 </div>
 
-<div class="table-container">
-  <div class="table-content-container">
-    <table mat-table [dataSource]="dataSource" matSort>
-      <ng-container matColumnDef="ruleID">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #ruleID>
-          ID
-        </th>
-        <td mat-cell *matCellDef="let rule">{{ rule.ruleID }}</td>
-      </ng-container>
 
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef i18n width="12%" #name>Name</th>
-        <td mat-cell *matCellDef="let rule">{{ rule.name }}</td>
-      </ng-container>
 
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef i18n #description>Description</th>
-        <td mat-cell *matCellDef="let rule">{{ rule.description }}</td>
-      </ng-container>
 
-      <ng-container matColumnDef="mandatory">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #mandatory>
-          Mandatory
-        </th>
-        <td mat-cell *matCellDef="let rule" i18n>
-          {rule.mandatory, select, true {Yes} false {No}}
-        </td>
-      </ng-container>
 
-      <ng-container matColumnDef="conformity">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #conformity>
-          Conformity
-        </th>
-        <td mat-cell mat-cell-conformity *matCellDef="let rule">
-          <div class="clearfix">
-            <div class="float-left">
-              <strong>{{ rule.conformity / 100 | percent: '1.3' }}</strong>
-            </div>
-          </div>
-          <mat-progress-bar
-            [ngClass]="[
-              'conformity-bar',
-              rule.conformity == 100
-                ? 'bar-green'
-                : rule.conformity > 0
-                ? 'bar-yellow'
-                : 'bar-red'
-            ]"
-            value="{{ rule.conformity > 0 ? rule.conformity : 100 }}"
-          >
-          </mat-progress-bar>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="validCount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #validCount>
-          Valid records
-        </th>
-        <td mat-cell *matCellDef="let rule">{{ rule.validCount | number }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="button-records">
-        <th mat-header-cell *matHeaderCellDef i18n>Records</th>
-        <td mat-cell *matCellDef="let rule">
-          <button
-          *ngIf="rule.conformity == 100"
-            type="button"
-            class="btn btn-disabled btn-conformity"
-          >
-            100%
-          </button>
-          <div *ngIf="rule.conformity < 100">
+<!-- <div class="table-container">
             <a
               target="_blank"
               routerLink="/{{ this.acronym }}/validation/{{
@@ -136,9 +137,10 @@
     >
     </mat-paginator>
   </div>
+
   <app-table-exporter
     class="app-exporter"
     [data]="csvData"
     [header]="headerData"
   ></app-table-exporter>
-</div>
+</div> -->

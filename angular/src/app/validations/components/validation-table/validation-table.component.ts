@@ -17,18 +17,11 @@ import { startWith, tap, delay } from 'rxjs/operators';
   styleUrls: ['./validation-table.component.css'],
 })
 export class ValidationTableComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<Rule>;
+  
   @Input() validation: Validation;
-  @ViewChild('ruleID') ruleID: any;
-  @ViewChild('name') name: ElementRef<HTMLTableHeaderCellElement>;
-  @ViewChild('description') description: ElementRef<HTMLTableHeaderCellElement>;
-  @ViewChild('mandatory') mandatory: any;
-  @ViewChild('conformity') conformity: any;
-  @ViewChild('validCount') validCount: any;
 
-  dataSource: ValidationTableDataSource;
+
+  dataSource: Rule[];
   harvestingID: number;
   acronym: string;
   csvData: any[];
@@ -43,8 +36,6 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
     'mandatory',
     'conformity',
     'validCount',
-    'button-records',
-    'button-detail',
   ];
 
   constructor(
@@ -61,66 +52,45 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
     this.acronym = this.route.snapshot.paramMap.get('acronym');
   }
 
-  applyFilter() {
-    this.paginator.pageIndex = 0;
-    this.loadRecords();
-  }
 
   ngAfterViewInit() {
-    this.paginator.page
-      .pipe(
-        startWith(null),
-        delay(0),
-        tap(() => {
-          this.loadRecords();
-        })
-      )
-      .subscribe(() => {});
+    this.loadRecords()
   }
 
   loadRecords() {
     let rules = this.validation.rulesByID;
+    this.dataSource = rules;
+    console.log('dataSource',this.dataSource)
 
-    if (this.requiredRule != null)
-      rules = this.validation.rulesByID.filter((x) => x.mandatory == this.requiredRule);
+    // if (this.requiredRule != null)
+    //   rules = this.validation.rulesByID.filter((x) => x.mandatory == this.requiredRule);
 
-    this.dataSource = new ValidationTableDataSource(rules);
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource = new ValidationTableDataSource(rules);
 
-    this.csvData = this.validation.rulesByID.map((x) => {
-      return {
-        ruleID: x.ruleID,
-        name: x.name,
-        description: x.description,
-        mandatory: x.mandatory,
-        conformity: x.conformity.toFixed(3),
-        validCount: x.validCount,
-      };
-    });
-
-    this.headerData = [
-      this.ruleID._elementRef.nativeElement.innerText,
-      this.name.nativeElement.innerText,
-      this.description.nativeElement.innerText,
-      this.mandatory._elementRef.nativeElement.innerText,
-      this.conformity._elementRef.nativeElement.innerText,
-      this.validCount._elementRef.nativeElement.innerText,
-    ];
+    // this.csvData = this.validation.rulesByID.map((x) => {
+    //   return {
+    //     ruleID: x.ruleID,
+    //     name: x.name,
+    //     description: x.description,
+    //     mandatory: x.mandatory,
+    //     conformity: x.conformity.toFixed(3),
+    //     validCount: x.validCount,
+    //   };
+    // });
   }
 
-  detailClick(rule: Rule): void {
-    const dialogConfig = new MatDialogConfig();
+  // detailClick(rule: Rule): void {
+  //   const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.data = {
-      acronym: this.acronym,
-      ruleID: rule.ruleID,
-      harvestingID: this.harvestingID,
-      name: rule.name,
-    };
+  //   dialogConfig.data = {
+  //     acronym: this.acronym,
+  //     ruleID: rule.ruleID,
+  //     harvestingID: this.harvestingID,
+  //     name: rule.name,
+  //   };
 
-    dialogConfig.autoFocus = false;
+  //   dialogConfig.autoFocus = false;
 
-    this.dialog.open(ValidationDetailComponent, dialogConfig);
-  }
+  //   this.dialog.open(ValidationDetailComponent, dialogConfig);
+  // }
 }

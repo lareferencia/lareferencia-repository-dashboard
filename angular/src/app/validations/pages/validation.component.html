@@ -54,27 +54,32 @@
 
 
 
-  <!-- <div class="flex-container">
+   <!-- <div class="col-12 lg:col-6 flex-container">
     <app-conformity-grouped-chart
       [validation]="validation"
     ></app-conformity-grouped-chart>
-  </div> -->
+  </div>  -->
 
-  <!-- <app-card
-    cardTitle="Validations"
-    i18n-cardTitle
-    description="The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory collection rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory collection rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown."
-    i18n-description
-  >
+  <div class="col-12 p-3">
+    <app-info-card
+      title="Validations"
+      description="The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory collection rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory collection rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown.">
+    </app-info-card>
+  </div>
+
+  <div class="col-12 p-3">
     <app-validation-table [validation]="validation"></app-validation-table>
-  </app-card>
+  </div>
 
-  <app-card
-    cardTitle="Records"
-    i18n-cardTitle
-    description="The data below presents the complete diagnosis of your institution's data collection. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item."
-    i18n-description
-  >
+  <div class="col-8">
     <app-records-table [validation]="validation"></app-records-table>
-  </app-card> -->
+  </div>
+
+  <div class="col-4">
+    <app-info-card
+      title="Records"
+      description="The data below presents the complete diagnosis of your institution's data collection. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.">
+    </app-info-card>
+  </div>
+
 </div>
