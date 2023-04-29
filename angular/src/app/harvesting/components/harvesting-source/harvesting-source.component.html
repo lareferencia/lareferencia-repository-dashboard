@@ -4,12 +4,11 @@
     <app-harvesting-chart> </app-harvesting-chart>
   </div>
 
-  <div class="col-12 lg:col-4 p-3 haversting-source-info-container animate__animated animate__fadeInDown animate__faster">
-    <mat-card
-      *ngIf="harvestingHistory?.content.length > 1">
-      <h3 i18n>Harvesting history</h3>
-      <p i18n>In the graph it is possible to view the results of the collections performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory collection rules of the repository. Invalid records are those that do not comply with the mandatory collection rules of the repository. Finally, the transformed records inform the number of documents that were collected.</p>
-    </mat-card>
+  <div class="col-12 lg:col-4 p-3 haversting-source-info-container animate__animated animate__fadeInDown animate__faster"
+    *ngIf="harvestingHistory?.content.length > 1">
+    <app-info-card
+      title="Harvesting history"
+      description="In the graph it is possible to view the results of the collections performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory collection rules of the repository. Invalid records are those that do not comply with the mandatory collection rules of the repository. Finally, the transformed records inform the number of documents that were collected."></app-info-card>
   </div>
 
 </div>

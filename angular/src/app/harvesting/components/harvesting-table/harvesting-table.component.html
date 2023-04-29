@@ -3,10 +3,10 @@
   
   <div class="col-12 lg:col-4 p-3 harvesting-table-info
   animate__animated animate__fadeInLeft animate__faster">
-    <mat-card>
-      <h3 i18n>Harvesting table</h3>
-      <p i18n>This table is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</p>
-    </mat-card>
+    <app-info-card
+      title="Harvesting table"
+      description="This table is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.">
+    </app-info-card>
   </div>
 
   <div class="table-container col-12 lg:col-8 p-3
@@ -38,7 +38,6 @@
             <td>{{harvestingContent.invalidRecords | number}}</td>
             <td>{{harvestingContent.startTime | date: 'short'}}</td>
             <td>{{harvestingContent.endTime | date: 'short'}}</td>
-            <td>
               <p-button *ngIf="!harvestingContent.deleted" 
                 icon="pi pi-eye" 
                 styleClass="p-button-rounded 
