@@ -1,6 +1,6 @@
-<div class="grid bg-white p-2 relative" style="border-radius: 10px;">
+<div class="bg-white p-3 relative" style="border-radius: 10px;">
 
-    <span class="col-12 text-left font-medium">{{title}}</span>
+    <span class="text-left font-medium">{{title}}</span>
 
     <div class="flex justify-content-between mt-2">
       <div [ngStyle]="{
@@ -14,11 +14,12 @@
           <span>{{validationTitle}}</span>
         </div>
       </div>
-      <span class="flex align-items-center text-xl ml-3">
+      <span class="flex align-items-center text-xl ml-3 font-medium z-5">
         {{validationData | number}}
       </span>
     </div>
     <img class="absolute" 
       style="bottom: 14px;
+      opacity: 0.7;
       right: 12px;" [src]="'../../../assets/img/' + imagePath" alt="">
   </div>
