@@ -25,10 +25,6 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 
 
-
-
-
-
 @NgModule({
     exports: [
     MatProgressSpinnerModule,
@@ -54,10 +50,7 @@ import { ButtonModule } from 'primeng/button';
     ToastModule,
     ChartModule,
     TableModule,
-    ButtonModule,
-    
-
-
+    ButtonModule
     ],
 })
 export class MaterialModule { }
