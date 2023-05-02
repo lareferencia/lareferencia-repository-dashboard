@@ -60,7 +60,6 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
   loadRecords() {
     let rules = this.validation.rulesByID;
     this.dataSource = rules;
-    console.log('dataSource',this.dataSource)
 
     // if (this.requiredRule != null)
     //   rules = this.validation.rulesByID.filter((x) => x.mandatory == this.requiredRule);

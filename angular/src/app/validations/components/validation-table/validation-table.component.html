@@ -36,7 +36,8 @@
             <td>{{dataSource.ruleID}}</td>
             <td>{{dataSource.name}}</td>
             <td>{{dataSource.description}}</td>
-            <td>{{dataSource.mandatory}}</td>
+            <td *ngIf="dataSource.mandatory"><b>Yes</b></td>
+            <td *ngIf="!dataSource.mandatory"><b>No</b></td>
             <td>
               <div class="clearfix">
                 <div class="float-left">
