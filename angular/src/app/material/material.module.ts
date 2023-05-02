@@ -23,6 +23,11 @@ import { ToastModule } from 'primeng/toast';
 import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
+
+
 
 
 @NgModule({
@@ -50,7 +55,10 @@ import { ButtonModule } from 'primeng/button';
     ToastModule,
     ChartModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    DropdownModule,
+    InputTextModule,
+    MultiSelectModule,
     ],
 })
 export class MaterialModule { }
