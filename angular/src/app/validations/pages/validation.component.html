@@ -23,6 +23,7 @@
         [validationData]="validation.size"
         icon="pi pi-book"
         color="#00d0de"
+        bgColor="rgb(0, 208, 222 , 0.30)"
         imagePath="validation-record.svg"
         shadowColor="0px 6px 20px rgba(0, 208, 222, 0.3)">
       </app-validation-card>
@@ -35,6 +36,7 @@
       [validationData]="validation.validSize"
       icon="pi pi-check-circle"
       color="#0bd18a"
+      bgColor="rgb(11, 209, 138 , 0.30)"
       imagePath="validation-valid.svg"
       shadowColor="0px 6px 20px rgba(11, 209, 138, 0.3)">
     </app-validation-card>
@@ -47,6 +49,7 @@
       [validationData]="validation.size - validation.validSize"
       icon="pi pi-times-circle"
       color="#fc6161"
+      bgColor="rgb(252, 97, 97 , 0.30)"
       imagePath="validation-invalid.svg"
       shadowColor="0px 6px 20px rgba(252, 97, 97, 0.3)">
     </app-validation-card>
@@ -71,11 +74,11 @@
     <app-validation-table [validation]="validation"></app-validation-table>
   </div>
 
-  <div class="col-8">
+  <div class="col-12 lg:col-8 p-3">
     <app-records-table [validation]="validation"></app-records-table>
   </div>
 
-  <div class="col-4">
+  <div class="col-12 lg:col-4 p-3">
     <app-info-card
       title="Records"
       description="The data below presents the complete diagnosis of your institution's data collection. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.">
