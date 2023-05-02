@@ -67,6 +67,7 @@ export class ValidationService {
 
   getRecordsByHarvestingIDFilter(sourceAcronym: string, harvestingID: number, filter: RecordsFilter): Observable<Records> {
 
+
     let params = new HttpParams()
       .append('pageNumber', filter.pageNumber.toString())
       .append('pageSize', filter.pageSize.toString());
@@ -91,13 +92,13 @@ export class ValidationService {
         'invalid_rules',
         filter.invalidRules.map((x) => x.ruleID).join(',')
       );
-
     return this.http
       .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
       );
+
   }
 
   errorHandler(e: any): Observable<any> {

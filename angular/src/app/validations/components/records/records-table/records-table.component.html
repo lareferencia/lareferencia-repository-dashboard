@@ -1,4 +1,4 @@
-<div class="filter-form">
+<!-- <div class="filter-form">
   <mat-form-field class="col-2">
     <mat-label i18n>Identifier</mat-label>
     <input
@@ -102,14 +102,103 @@
   >
     Filter
   </button>
-</div>
+</div> -->
 
-<div class="table-container">
-  <div class="loading-shade" *ngIf="isLoadingResults">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  <div class="table-filters-container">
+    <div>
+      <input type="text" 
+        pInputText 
+        [(ngModel)]="filter.oaiIdentifier" 
+        placeholder="Identifier"
+        (keydown.enter)="applyFilter()"/>
+      <p-dropdown 
+        [options]="validOptions" 
+        [(ngModel)]="selectedValidation" 
+        optionLabel="name" 
+        placeholder="Validation"
+        (ngModelChange)="filter.isValid = $event.value; applyFilter()">
+      </p-dropdown>
+
+      <p-multiSelect
+      placeholder="Valid rules" 
+      [options]="rulesOptions" 
+      [(ngModel)]="selectedValidRule" 
+      [filter]="true" 
+      optionLabel="name"
+      (ngModelChange)="filter.validRules = $event; applyFilter()">
+      </p-multiSelect>
+    
+      <p-multiSelect
+      placeholder="Invalid rules" 
+      [options]="rulesOptions" 
+      [(ngModel)]="selectedInvalidRule" 
+      optionLabel="name"
+      (ngModelChange)="filter.invalidRules= $event; applyFilter()">
+      </p-multiSelect>
+  </div>
+  
+  <div class="flex">
+      <p-button label="Clear" styleClass="p-button-outlined p-button-sm p-button-secondary"
+      (onClick)="clearFilters()"></p-button>
+      <p-button label="Filter" styleClass="p-button-sm p-button-primary"
+      (onClick)="applyFilter()"></p-button>
+    </div>
   </div>
 
-  <div class="table-content-container">
+  <div class="table-container
+  animate__animated animate__fadeInRight animate__faster">
+    
+    <div class="table-content-container">
+      <p-table
+      [value]="dataSource"
+      [paginator]="true"
+      [rows]="pageSize"
+      [totalRecords]="totalRecords"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="isLoading"
+      [lazy]="true"
+      (onLazyLoad)="loadRecords($event)"
+      >
+      <ng-template pTemplate="header" >
+          <tr>
+            <th>ID</th>
+            <th>Identifier</th>
+            <th>Validation</th>
+            <th>Transformed</th>
+            <th>Details</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+            <td i18n>{{dataSource.id}}</td>
+            <td i18n>{{dataSource.identifier}}</td>
+            <td i18n> <b>{dataSource.isValid, select, true {Valid} false {invalid} }</b></td>
+            <td i18n> <b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
+            <td>
+              <p-button *ngIf="dataSource.conformity == 100"
+                disabled="true"
+                styleClass="p-button-secondary p-button-sm"
+                label="100%"
+                ></p-button>
+              <p-button
+                styleClass="p-button-primary p-button-sm"
+                label="Details"
+                ></p-button>
+            </td>
+          </tr>
+      </ng-template>
+      
+  </p-table>
+</div>
+  </div>
+
+
+
+
+
+  <!-- <div class="table-content-container">
     <table
       mat-table
       [dataSource]="dataSource"
@@ -197,4 +286,4 @@
     [data]="csvData"
     [header]="headerData"
   ></app-table-exporter>
-</div>
+</div> -->
