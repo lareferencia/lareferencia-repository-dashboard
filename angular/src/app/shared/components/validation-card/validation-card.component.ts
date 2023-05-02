@@ -11,6 +11,7 @@ export class ValidationCardComponent {
   @Input() validationTitle: string;
   @Input() icon: string;
   @Input() color: string;
+  @Input() bgColor: string;
   @Input() validationData: number;
   @Input() imagePath: string;
   @Input() shadowColor: string;
