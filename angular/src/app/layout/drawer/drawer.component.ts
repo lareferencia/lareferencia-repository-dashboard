@@ -24,14 +24,10 @@ export class DrawerComponent implements OnInit {
 
   ngOnInit(): void {
     
-    //TODO: Solucionar el error usando una funcion aca
     this.menuService.activeRepo
       .subscribe( ({acronym}) => {
         this.activeRepository = acronym;
-        this.harvestingService.getHarvestingLastGoodKnowByAcronym(acronym)
-          .subscribe((harvesginContent) =>{
-            this.harvestingConentId = harvesginContent.id;
-          }, (error) => console.log('error de validacion'))
+        this.loadLastValidation()
       });
 
       this.isMobileMenu = window.innerWidth < 570;
@@ -43,6 +39,15 @@ export class DrawerComponent implements OnInit {
         .subscribe( (isMenuOpen) => {
           this.isMenuOpen = isMenuOpen;
         });
+  }
+
+  loadLastValidation(){
+    if(!this.activeRepository) return;
+
+    this.harvestingService.getHarvestingLastGoodKnowByAcronym(this.activeRepository)
+      .subscribe((harvesginContent) =>{
+        this.harvestingConentId = harvesginContent.id;
+      });
   }
 
   logout(){
