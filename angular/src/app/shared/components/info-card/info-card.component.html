@@ -1,4 +1,22 @@
-<mat-card>
-      <h3 i18n>{{title}}</h3>
-      <p i18n>{{description}}</p>
-</mat-card>
+
+<p-accordion>
+  <p-accordionTab >
+
+    <ng-template pTemplate="header">
+      <div class="flex align-items-center">
+        <span >{{title}}</span>
+        <div class="flex">
+          <i class="pi pi-info-circle ml-2"></i>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+
+      <mat-card>
+        <p i18n>{{description}}</p>
+      </mat-card>  
+    </ng-template>
+
+  </p-accordionTab>
+</p-accordion>

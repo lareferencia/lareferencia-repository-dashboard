@@ -1,6 +1,5 @@
 
   mat-card{
-    padding: 24px;
     background-color: white;
     border-radius: 10px;
   }
@@ -8,10 +7,42 @@
   mat-card h3{
     text-align: center;
     padding: 16px;
+    font-family: 'Poppins', sans-serif;
+
   }
 
   mat-card p{
     text-align: justify;
     line-height: 1.7;
+    font-family: 'Poppins', sans-serif;
   }
+
+  :host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+    background-color: white;
+    border: none;
+    color: var(--color-primary);
+    border-radius: 10px;
+  }
+  
+  :host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link:hover {
+    text-decoration: none;
+  }
+  
+  :host ::ng-deep .p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link{
+    color: var(--color-primary);
+  
+  }
+  
+  :host ::ng-deep .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus{
+    box-shadow: none;
+  }
+
+  :host ::ng-deep .p-accordion-header-link:focus{
+    z-index: 0;
+  }
+
+  span{
+    font-family: 'Poppins';
+  }
+  
   
