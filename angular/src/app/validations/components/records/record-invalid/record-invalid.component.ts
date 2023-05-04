@@ -14,6 +14,8 @@ export class RecordInvalidComponent implements OnInit {
   validation: Validation;
   ruleID: string;
   harvesting: Harvesting;
+  ruleName: string;
+  isLoadingResults = true;
 
   constructor(
     private validationService: ValidationService,
@@ -22,6 +24,8 @@ export class RecordInvalidComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoadingResults = true;
+
     const harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
     const acronym = this.route.snapshot.paramMap.get('acronym');
 
@@ -30,16 +34,23 @@ export class RecordInvalidComponent implements OnInit {
     this.validationService
       .getValidationResultsByHarvestingID(acronym, harvestingID)
       .subscribe((result) => {
+        this.isLoadingResults = false;
+
         this.validation = result;
         this.validation.rulesByID = Object.values(this.validation.rulesByID);
+        this.ruleName = this.validation.rulesByID.find((x) => x.ruleID === Number(this.ruleID)).name;
       });
 
       this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
-        this.harvesting = harvesting;
+        this.harvesting = harvesting; 
       })
+
+
   }
 
-  getRule(ruleID: string) {
-    return this.validation.rulesByID.find((x) => x.ruleID === Number(ruleID));
-  }
+  // getRule(ruleID: string) {
+  //   const rule = this.validation.rulesByID.find((x) => x.ruleID === Number(ruleID));
+  //   if(!rule) return;
+  //   return rule.name
+  // }
 }

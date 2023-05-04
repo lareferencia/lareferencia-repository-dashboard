@@ -3,7 +3,51 @@
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
 
-  <div class="table-content-container">
+
+
+  <div class="table-container
+  animate__animated animate__fadeInRight animate__faster">
+    
+    <div class="table-content-container">
+      <p-table
+      [value]="dataSource"
+      [paginator]="true"
+      [rows]="pageSize"
+      [totalRecords]="totalRecords"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [lazy]="true"
+      (onLazyLoad)="loadRecords($event)"
+      >
+      <ng-template pTemplate="header" >
+          <tr>
+            <th>ID</th>
+            <th>Identifier</th>
+            <th>Validation</th>
+            <th>Transformed</th>
+            <th>Details</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+            <td i18n>{{dataSource.id}}</td>
+            <td i18n>{{dataSource.identifier}}</td>
+            <td i18n> <b>{dataSource.isValid, select, true {Valid} false {invalid} }</b></td>
+            <td i18n> <b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
+            <td>
+              <p-button
+                styleClass="p-button-primary p-button-sm"
+                label="Details"
+                ></p-button>
+            </td>
+          </tr>
+      </ng-template>
+      
+  </p-table>
+  </div>
+</div>
+  <!-- <div class="table-content-container">
     <table
       mat-table
       [dataSource]="dataSource"
@@ -78,6 +122,6 @@
       [pageSizeOptions]="[25, 50, 100, 250]"
     >
     </mat-paginator>
-  </div>
+  </div> -->
   <app-table-exporter [data]="csvData"></app-table-exporter>
 </div>

@@ -1,16 +1,21 @@
-<app-sub-header
-  *ngIf="harvesting"
-  description="{{ harvesting.name }}"
-></app-sub-header>
-<app-card
-  class="app-card"
-  *ngIf="validation"
-  cardTitle="Records"
-  i18n-cardTitle
-  description="Records that contain the invalid ''{{ getRule(ruleID).name }}'' rule"
-  i18n-description
->
+<div
+  *ngIf="isLoadingResults"
+  class="min-h-screen flex justify-content-center align-items-center">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="p-4" *ngIf="!isLoadingResults">
+  <app-validation-card
+    title="Records that contain the invalid rule"
+    [validationTitle]="ruleName"
+    icon="pi pi-exclamation-triangle"
+    color="#fc6161"
+    bgColor="rgb(252, 97, 97 , 0.30)"
+    imagePath="validation-invalid.svg"
+    shadowColor="0px 6px 20px rgba(252, 97, 97, 0.3)">
+  </app-validation-card>
+
   <app-records-invalid-table
-    [validation]="validation"
+  [validation]="validation"
   ></app-records-invalid-table>
-</app-card>
+</div>
