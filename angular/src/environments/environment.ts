@@ -15,7 +15,6 @@ export const environment = {
   brokerService: 'https://validador.lareferencia.info/api/v2/oabroker/source/',
   securityService: 'https://validador.lareferencia.info/api/v2/security/management/',
   keycloakConfig: keycloakConfig,
-  hmr: true,
 };
 
 /*
