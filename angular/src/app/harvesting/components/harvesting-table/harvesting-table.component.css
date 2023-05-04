@@ -3,7 +3,6 @@
   border: none;
   font-family: 'Poppins', sans-serif;
 }
-
 :host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
   color: #5c6873;
   font-size: 0.8rem;
@@ -16,6 +15,14 @@
 }
 :host ::ng-deep .pi .p-eye {
   color: white;
+}
+:host ::ng-deep .p-datatable .p-datatable-loading-overlay {
+  background: #8080804f;
+  opacity: 0.4;
+  border-radius: 10px;
+}
+:host ::ng-deep .p-datatable .p-datatable-loading-icon {
+  font-size: 5rem;
 }
 
 

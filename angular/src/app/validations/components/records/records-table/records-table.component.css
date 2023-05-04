@@ -2,6 +2,7 @@
 :host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
   border: none;
   font-family: 'Poppins', sans-serif;
+  text-align: center;
 }
 
 :host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
@@ -30,6 +31,10 @@
 
 :host ::ng-deep .p-datatable .p-datatable-loading-icon {
   font-size: 5rem;
+}
+
+:host ::ng-deep .p-inputtext {
+  width: 100px;
 }
 
 
