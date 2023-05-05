@@ -27,6 +27,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { AccordionModule } from 'primeng/accordion';
+import { DialogModule } from 'primeng/dialog';
+
 
 
 
@@ -59,7 +61,8 @@ import { AccordionModule } from 'primeng/accordion';
     DropdownModule,
     InputTextModule,
     MultiSelectModule,
-    AccordionModule
+    AccordionModule,
+    DialogModule
     ],
 })
 export class MaterialModule { }
