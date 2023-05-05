@@ -1,9 +1,11 @@
 import { ActivatedRoute } from '@angular/router';
 import { ValidationService } from 'src/app/core/services/validation.service';
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Validation } from 'src/app/shared/models/validation.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LazyLoadEvent } from 'primeng/api';
+import { EvaluationRulesComponent } from '../../rule/evaluation-rules/evaluation-rules.component';
+import { Record } from 'src/app/shared/models/record.model';
 
 @Component({
   selector: 'app-records-invalid-table',
@@ -58,15 +60,15 @@ export class RecordsInvalidTableComponent implements OnInit {
   }
 
 
-  // detailClick(record: Record): void {
-  //   record.rules = this.validation.rulesByID;
+  detailClick(record: Record): void {
+    record.rules = this.validation.rulesByID;
 
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.data = { record, acronym: this.acronym };
-  //   dialogConfig.autoFocus = false;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { record, acronym: this.acronym };
+    dialogConfig.autoFocus = false;
 
-  //   this.dialog.open(EvaluationRulesComponent, dialogConfig);
-  // }
+    this.dialog.open(EvaluationRulesComponent, dialogConfig);
+  }
     
 
 }

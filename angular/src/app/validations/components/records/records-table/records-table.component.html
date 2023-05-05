@@ -2,7 +2,7 @@
   
 
 <div class="table-container
-  animate__animated animate__fadeInRight animate__faster">
+  animate__animated animate__fadeInLeft animate__faster">
     <div class="table-content-container">
       <div class="table-filters-container">
         <div class="flex gap-3">
@@ -95,9 +95,14 @@
       <ng-template pTemplate="body" let-dataSource>
           <tr>
             <td i18n>{{dataSource.id}}</td>
-            <td i18n>{{dataSource.identifier}}</td>
-            <td i18n> <b>{dataSource.isValid, select, true {Valid} false {invalid} }</b></td>
-            <td i18n> <b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
+            <td i18n>
+              <a target="_blank" 
+                href="{{dataSource.origin}}?verb=GetRecord&metadataPrefix={{dataSource.metadataPrefix}}&identifier={{dataSource.identifier}}">
+                {{dataSource.identifier}}
+              </a>
+            </td>
+            <td i18n><b>{dataSource.isValid, select, true {Valid} false {invalid} }</b></td>
+            <td i18n><b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
             <td>
               <p-button *ngIf="dataSource.conformity == 100"
                 disabled="true"
