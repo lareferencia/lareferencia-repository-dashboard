@@ -1,7 +1,7 @@
 
 <div class="grid">
   
-  <div class="col-12 lg:col-4 p-3 harvesting-table-info
+  <div class="col-12 p-3 harvesting-table-info
   animate__animated animate__fadeInLeft animate__faster">
     <app-info-card
       title="Harvesting table"
@@ -9,7 +9,7 @@
     </app-info-card>
   </div>
 
-  <div class="table-container col-12 lg:col-8 p-3
+  <div class="table-container col-12 p-3
   animate__animated animate__fadeInRight animate__faster">
     <div class="table-content-container">
     <p-table 
@@ -20,10 +20,10 @@
       [showCurrentPageReport]="true"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [rowsPerPageOptions]="[10, 25, 50]"
-      
       [lazy]="true"
       [loading]="isLoading"
-      (onLazyLoad)="loadContent($event)">
+      (onLazyLoad)="loadContent($event)"
+      (onSort)="onSort($event)">
 
       <ng-template pTemplate="header" >
           <tr>
