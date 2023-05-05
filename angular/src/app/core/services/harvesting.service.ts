@@ -4,7 +4,7 @@ import { Harvesting } from '../../shared/models/harvesting.model';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { HarvestingList } from '../../shared/models/harvesting-list.model';
 
@@ -23,18 +23,22 @@ export class HarvestingService {
     );
   }
 
-  getHarvestingHistoryByAcronym(sourceAcronym: string, pageNumber: number, pageSize: number): Observable<HarvestingHistory> {
-    const params = new HttpParams()
+  getHarvestingHistoryByAcronym(sourceAcronym: string, pageNumber: number, pageSize: number, sortField?: string, sortOrder?: number): Observable<HarvestingHistory> {
+    let params = new HttpParams()
       .append('pageNumber', pageNumber.toString())
       .append('pageSize', pageSize.toString());
-
+      
+    if (sortField && sortOrder !== undefined) {
+        params = params.append('sortField', sortField);
+        params = params.append('sortOrder', sortOrder.toString());
+    }
     return this.http
       .get<HarvestingHistory>(
         `${this.baseurl}${sourceAcronym}/history`,
         { params }
       )
       .pipe(
-        map((obj) => obj),
+        tap((obj) => console.log(obj)),
         catchError((e) => this.errorHandler(e))
       );
   }
