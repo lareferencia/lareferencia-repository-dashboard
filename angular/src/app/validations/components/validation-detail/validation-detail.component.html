@@ -1,15 +1,15 @@
 <h2 mat-dialog-title>
-  <ng-container i18n>Rule</ng-container>: {{ rule.name }}
+  <ng-container i18n>Rule</ng-container>: {{ dialogData.name }}
 </h2>
 <mat-dialog-content class="mat-typography">
   <div class="occurrences-tables">
     <div class="valid-occ-table">
       <h3 i18n>Valid occurrences</h3>
-      <app-valid-occurence-table [rule]="rule"></app-valid-occurence-table>
+      <app-valid-occurence-table [rule]="dialogData"></app-valid-occurence-table>
     </div>
     <div class="invalid-occ-table">
       <h3 i18n>Invalid occurrences</h3>
-      <app-invalid-occurence-table [rule]="rule"></app-invalid-occurence-table>
+      <app-invalid-occurence-table [rule]="dialogData"></app-invalid-occurence-table>
     </div>
   </div>
 </mat-dialog-content>

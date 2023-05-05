@@ -39,6 +39,7 @@ export class InvalidOccurenceTableComponent implements OnInit {
           this.value._elementRef.nativeElement.innerText,
           this.count._elementRef.nativeElement.innerText,
         ];
+        console.log(result)
         this.dataSource = new InvalidOccurenceTableDataSource(result);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

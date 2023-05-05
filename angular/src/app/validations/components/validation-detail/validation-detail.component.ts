@@ -1,6 +1,5 @@
-import { Rule } from '../../../shared/models/rule.model';
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Input, OnInit } from '@angular/core';
+import { Rule } from 'src/app/shared/models/rule.model';
 
 @Component({
   selector: 'app-validation-detail',
@@ -8,11 +7,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./validation-detail.component.css'],
 })
 export class ValidationDetailComponent implements OnInit {
-  rule: Rule;
+  @Input() dialogData: Rule;
 
-  constructor(@Inject(MAT_DIALOG_DATA) data: Rule) {
-    this.rule = data;
+ 
+
+  ngOnInit(): void {
   }
-
-  ngOnInit(): void {}
 }
