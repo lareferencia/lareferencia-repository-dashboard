@@ -75,7 +75,9 @@
                 label="100%"
                 ></p-button>
 
-              <p-button *ngIf="dataSource.conformity < 100 || admUser"
+              <p-button
+                (onClick)="detailClick(dataSource)" 
+                *ngIf="dataSource.conformity < 100 || admUser"
                 styleClass="p-button-primary p-button-sm"
                 label="Details"
                 ></p-button>
@@ -85,3 +87,16 @@
   </p-table>
 </div>
 </div>
+
+<p-dialog
+  *ngIf="dialogData"
+  header="Header" 
+  [(visible)]="visible" 
+  [modal]="true" 
+ 
+  [draggable]="false" 
+  [resizable]="false">
+  <div>
+    <app-validation-detail [dialogData]="dialogData"></app-validation-detail>
+  </div>
+</p-dialog>

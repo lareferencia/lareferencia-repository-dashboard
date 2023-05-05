@@ -3,7 +3,8 @@ import { Validation } from '../../../shared/models/validation.model';
 import { Rule } from '../../../shared/models/rule.model';
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ValidationDetailComponent } from '../validation-detail/validation-detail.component';
 
 
 interface MandatoryOption {
@@ -28,6 +29,9 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
   admUser = false;
   mandatoryOptions: MandatoryOption[];
   isMandatory: MandatoryOption;
+
+  dialogData: any;
+  visible:boolean;
 
   displayedColumns: any[] = [
     {value: 'ruleID', name: 'ID'},
@@ -82,18 +86,14 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
     // });
   }
 
-  // detailClick(rule: Rule): void {
-  //   const dialogConfig = new MatDialogConfig();
-
-  //   dialogConfig.data = {
-  //     acronym: this.acronym,
-  //     ruleID: rule.ruleID,
-  //     harvestingID: this.harvestingID,
-  //     name: rule.name,
-  //   };
-
-  //   dialogConfig.autoFocus = false;
-
-  //   this.dialog.open(ValidationDetailComponent, dialogConfig);
-  // }
+  detailClick(rule: Rule): void {
+    
+    this.visible = true;
+    this.dialogData = {
+      acronym: this.acronym,
+      harvestingID: this.harvestingID,
+      ruleID: rule.ruleID,
+      name: rule.name,
+    }
+  }
 }
