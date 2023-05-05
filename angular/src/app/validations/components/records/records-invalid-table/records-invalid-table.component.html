@@ -37,6 +37,7 @@
             <td i18n> <b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
             <td>
               <p-button
+                (onClick)="detailClick(dataSource)"
                 styleClass="p-button-primary p-button-sm"
                 label="Details"
                 ></p-button>
