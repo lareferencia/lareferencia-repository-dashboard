@@ -29,10 +29,10 @@ export class HarvestingChartComponent implements OnInit {
         this.data = {
         labels: content.map(harvesting => harvesting.startTime.toString().substring(0,10)).reverse(),
         datasets: [
-            { type: 'bar', label: 'Invalidos', backgroundColor: '#fc6161',
+            { type: 'bar', label: 'Invalidos', backgroundColor: '#D14D72',
               data: content.map(harvesting => (harvesting.harvestedSize - harvesting.validSize) ).reverse() },
 
-            { type: 'bar', label: 'Validos', backgroundColor: '#00d0de',
+            { type: 'bar', label: 'Validos', backgroundColor: '#FFABAB',
               data: content.map(harvesting => harvesting.validSize).reverse()},
             ]
           };
