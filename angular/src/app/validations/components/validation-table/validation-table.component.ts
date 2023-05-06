@@ -85,6 +85,9 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
     //   };
     // });
   }
+  onDialogHide(){
+    this.dialogData = null;
+  }
 
   detailClick(rule: Rule): void {
     

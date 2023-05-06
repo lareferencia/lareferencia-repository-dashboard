@@ -1,39 +1,35 @@
-<div class="table-container">
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    class="full-width-table"
-    matSort
-    aria-label="Elements"
-  >
-    <ng-container matColumnDef="value">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #value>
-        Occurrence
-      </th>
-      <td mat-cell *matCellDef="let row">{{ row.value }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="count">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n #count>
-        Amount
-      </th>
-      <td mat-cell *matCellDef="let row">{{ row.count | number }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" i18n colspan="4">Nothing to show</td>
-    </tr>
-  </table>
-
-  <mat-paginator
-    #paginator
-    [length]="dataSource?.data.length"
-    [pageIndex]="0"
-    [pageSize]="10"
-    [pageSizeOptions]="[10, 25, 50, 100, 250]"
-  >
-  </mat-paginator>
+<div *ngIf="isLoading" class="flex justify-content-center p-6">
+  <p-progressSpinner></p-progressSpinner>
 </div>
-<app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
+<div *ngIf="!isLoading" class="table-container mt-3
+  animate__animated animate__fadeInRight animate__faster">
+    <div class="table-content-container">
+      <p-table 
+        [value]="dataSource"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header" >
+            <tr>
+                <th pSortableColumn="value"i18n>
+                  Ocurrence
+                  <p-sortIcon field="value"></p-sortIcon>
+                </th>
+                <th pSortableColumn="count" i18n>
+                  Amount
+                  <p-sortIcon field="count"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-dataSource>
+            <tr>
+              <td>{{dataSource.value}}</td>
+              <td>{{dataSource.count | number}}</td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+</div>
+<app-table-exporter *ngIf="!isLoading" [data]="csvData" [header]="headerData"></app-table-exporter>

@@ -90,12 +90,13 @@
 
 <p-dialog
   *ngIf="dialogData"
-  header="Header" 
+  [header]="dialogData.name"
   [(visible)]="visible" 
   [modal]="true" 
- 
   [draggable]="false" 
-  [resizable]="false">
+  [resizable]="false"
+  [style]="{maxWidth: '90vw'}"
+  (onHide)="onDialogHide()">
   <div>
     <app-validation-detail [dialogData]="dialogData"></app-validation-detail>
   </div>

@@ -1,11 +1,9 @@
 import { Occurence } from 'src/app/shared/models/occurrence.model';
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { Component, OnInit, Input } from '@angular/core';
 import { InvalidOccurenceTableDataSource } from './invalid-occurence-table-datasource';
 import { Rule } from 'src/app/shared/models/rule.model';
 import { ValidationService } from 'src/app/core/services/validation.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-invalid-occurence-table',
@@ -13,36 +11,45 @@ import { ValidationService } from 'src/app/core/services/validation.service';
   styleUrls: ['./invalid-occurence-table.component.css'],
 })
 export class InvalidOccurenceTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<Occurence>;
-  @ViewChild('value') value: any;
-  @ViewChild('count') count: any;
+
   @Input() rule: Rule;
-  dataSource: InvalidOccurenceTableDataSource;
+
+
+  isLoading = true;
+  dataSource: any;
   displayedColumns = ['value', 'count'];
   csvData: Occurence[];
   headerData: any[];
+  private subscription: Subscription;
 
   constructor(private validationService: ValidationService) {}
 
   ngOnInit() {
-    this.validationService
+    this.loadData();
+  }
+
+  ngOnDestroy(){
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
+  }
+
+  loadData(){
+    this.isLoading = true;
+    this.subscription = this.validationService
       .getInValidOccurrencesByHarvestingIDRuleID(
         this.rule.acronym,
         this.rule.harvestingID,
         this.rule.ruleID
       )
       .subscribe((result) => {
+        this.isLoading = false;
         this.csvData = result;
-        this.headerData = [
-          this.value._elementRef.nativeElement.innerText,
-          this.count._elementRef.nativeElement.innerText,
-        ];
-        console.log(result)
-        this.dataSource = new InvalidOccurenceTableDataSource(result);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+        // this.headerData = [
+        //   this.value._elementRef.nativeElement.innerText,
+        //   this.count._elementRef.nativeElement.innerText,
+        // ];
+        this.dataSource = result;
       });
   }
 }
