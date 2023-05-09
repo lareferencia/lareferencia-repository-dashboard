@@ -38,7 +38,7 @@ export class HarvestingService {
         { params }
       )
       .pipe(
-        tap((obj) => console.log(obj)),
+        map((obj) => obj),
         catchError((e) => this.errorHandler(e))
       );
   }
