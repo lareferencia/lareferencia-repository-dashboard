@@ -3,16 +3,12 @@ import { Validation } from 'src/app/shared/models/validation.model';
 import { Record } from 'src/app/shared/models/record.model';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { EvaluationRulesComponent } from '../../rule/evaluation-rules/evaluation-rules.component';
 import { RecordsFilter } from 'src/app/shared/models/records-filter.model';
 import { LazyLoadEvent } from 'primeng/api';
 import { Rule } from 'src/app/shared/models/rule.model';
+import { dialogData } from 'src/app/validations/interfaces/dialogData.interface';
+import { validOptios } from 'src/app/validations/interfaces/validOptions.interface';
 
-interface validOptios {
-  name: string;
-  value: boolean;
-};
 
 @Component({
   selector: 'app-records-table',
@@ -30,6 +26,10 @@ export class RecordsTableComponent implements  OnInit {
   acronym: string;
   totalRecords:number;
   isLoading = true;
+
+  dialogData: dialogData;
+  visible:boolean;
+  dialogTitle: string;
   
   rulesOptions: Rule[];
   selectedValidRule: Rule;
@@ -50,7 +50,6 @@ export class RecordsTableComponent implements  OnInit {
   constructor(
     private validationService: ValidationService,
     private route: ActivatedRoute,
-    private dialog: MatDialog,
   ) {}
 
   ngOnInit() {
@@ -69,16 +68,17 @@ export class RecordsTableComponent implements  OnInit {
     ];
   }
 
- 
 
   detailClick(record: Record): void {
+    
+    this.dialogTitle = record.identifier;
     record.rules = this.validation.rulesByID;
+    this.visible = true;
+    this.dialogData = { record, acronym: this.acronym };
+  }
 
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = { record, acronym: this.acronym };
-    dialogConfig.autoFocus = false;
-
-    this.dialog.open(EvaluationRulesComponent, dialogConfig);
+  onDialogHide(){
+    this.dialogData = null;
   }
 
   clearFilters() {
@@ -89,7 +89,6 @@ export class RecordsTableComponent implements  OnInit {
   applyFilter() {
     this.loadRecords({ first: 0, rows: this.pageSize });
   }
-
 
   loadRecords(event: LazyLoadEvent) {
     this.isLoading = true;

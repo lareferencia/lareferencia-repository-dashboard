@@ -1,4 +1,79 @@
-<div class="modal-title" mat-dialog-title>
+<div class="mt-3">
+  <div class="grid">
+    <div class="col-4">
+      <h6 class="text-center">Invalid mandatory rules</h6>
+    </div>
+    <div class="col-4">
+      <h6 class="text-center">Invalid not mandatory rules</h6>
+    </div>
+    <div class="col-4">
+      <h6 class="text-center">Valid rules</h6>
+    </div>
+  </div>
+  <hr>
+  <div class="flex justify-content-between gap-3">
+
+    <div>
+
+      <div *ngFor="let rule of dialogData.record.invalidRulesID">
+
+        <div *ngIf="
+          dialogData.record.validOccurrencesByRuleID[rule] 
+          || record.invalidOccurrencesByRuleID[rule]
+          && getRule(rule).mandatory"
+          class="mb-3 p-3 flex flex-column" style="background-color: #FC6161; border-radius: 10px;
+          box-shadow: rgba(252, 97, 97, 0.3) 0px 6px 20px;">
+          <span class="text-lg text-white font-semibold"> {{getRule(rule).name}} - Mandatory: Yes</span>
+
+          <ng-container [ngSwitch]="getRule(rule).quantifier">
+            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ZERO_ONLY'" i18n>
+              Zero only</span>
+            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ONE_ONLY'" i18n>
+              One only</span>
+            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ZERO_OR_MORE'" i18n>
+              Zero or more</span>
+            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ONE_OR_MORE'" i18n>
+              One or more</span>
+            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ALL'" i18n
+            >All</span>
+          </ng-container>
+
+          <div *ngFor="let occurrence of record.invalidOccurrencesByRuleID[rule]" 
+            class="flex flex-wrap align-items-center">
+            <i class="pi pi-times-circle mr-2"></i>
+            <span class="text-white text-xs">{{occurrence}}</span>
+          </div>
+          <div *ngFor="let occurrence of record.validOccurrencesByRuleID[rule]" 
+            class="flex flex-wrap align-items-center">
+            <i class="pi pi-check-circle mr-2"></i>
+            <span class="text-white text-xs">{{occurrence}}</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div >
+      <div style="background-color: #FC6161;">
+        <span> Access Level (M) - Mandatory: Yes</span>
+        <span>One or more</span>
+      </div>
+    </div>
+
+    <div >
+      <div style="background-color: #FC6161;">
+        <span> Access Level (M) - Mandatory: Yes</span>
+        <span>One or more</span>
+      </div>
+    </div>
+   
+
+  </div>
+</div>
+
+
+<!-- <div class="modal-title" mat-dialog-title>
   <div>
     <span i18n>Result of the evaluation of rules for "{{ record.identifier }}" record</span>
     <span [ngClass]="[
@@ -30,10 +105,10 @@
             </mat-button-toggle>
             <mat-button-toggle [ngClass]="{ 'green' : greenToggle}" value="green" i18n>Valid rules</mat-button-toggle>
           </mat-button-toggle-group>
-        </div>
+        </div> -->
   
         <!-- List invalid rules -->
-        <div *ngFor="let obj of record.invalidRulesID">
+        <!-- <div *ngFor="let obj of record.invalidRulesID">
           <div *ngIf="
               record.validOccurrencesByRuleID[obj] ||
               record.invalidOccurrencesByRuleID[obj]
@@ -68,15 +143,15 @@
                 </mat-card-subtitle>
               </mat-card-header>
               <mat-card-content>
-                <div class="occurrences">
+                <div class="occurrences"> -->
                   <!-- List valid ocurrences -->
-                  <div *ngFor="let x of record.validOccurrencesByRuleID[obj]">
+                  <!-- <div *ngFor="let x of record.validOccurrencesByRuleID[obj]">
                     <div class="icon">
                       <i class="material-icons">check_circle_outline</i><span class="occurrence">{{ x }}</span>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- List invalid ocurrences -->
-                  <div *ngFor="let x of record.invalidOccurrencesByRuleID[obj]">
+                  <!-- <div *ngFor="let x of record.invalidOccurrencesByRuleID[obj]">
                     <div class="icon">
                       <i class="material-icons">cancel</i><span class="occurrence">{{ x }}</span>
                     </div>
@@ -85,9 +160,10 @@
               </mat-card-content>
             </mat-card>
           </div>
-        </div>
+        </div> -->
+
         <!-- List valid rules -->
-        <div *ngFor="let obj of record.validRulesID">
+        <!-- <div *ngFor="let obj of record.validRulesID">
           <div *ngIf="
               record.validOccurrencesByRuleID[obj] ||
               record.invalidOccurrencesByRuleID[obj]
@@ -124,15 +200,15 @@
                 </mat-card-subtitle>
               </mat-card-header>
               <mat-card-content>
-                <div class="occurrences">
+                <div class="occurrences"> -->
                   <!-- List valid ocurrences -->
-                  <div *ngFor="let x of record.validOccurrencesByRuleID[obj]">
+                  <!-- <div *ngFor="let x of record.validOccurrencesByRuleID[obj]">
                     <div class="icon">
                       <i class="material-icons">check_circle_outline</i><span class="occurrence">{{ x }}</span>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- List invalid ocurrences -->
-                  <div *ngFor="let x of record.invalidOccurrencesByRuleID[obj]">
+                  <!-- <div *ngFor="let x of record.invalidOccurrencesByRuleID[obj]">
                     <div class="icon">
                       <i class="material-icons">cancel</i><span class="occurrence">{{ x }}</span>
                     </div>
@@ -150,14 +226,5 @@
       </div>
     </mat-tab>
   </mat-tab-group>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button
-    mat-dialog-close
-    type="button"
-    class="btn btn-outline-dark"
-    i18n="Button close"
-  >
-    Close
-  </button>
-</mat-dialog-actions>
+</mat-dialog-content> -->
+

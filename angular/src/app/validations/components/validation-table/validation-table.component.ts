@@ -3,8 +3,6 @@ import { Validation } from '../../../shared/models/validation.model';
 import { Rule } from '../../../shared/models/rule.model';
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ValidationDetailComponent } from '../validation-detail/validation-detail.component';
 
 
 interface MandatoryOption {
@@ -44,7 +42,6 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dialog: MatDialog,
     private authenticationService: AuthenticationService
   ) {}
 

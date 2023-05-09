@@ -4,6 +4,7 @@ import { RulesListComponent } from './rules-list/rules-list.component';
 import { EvaluationRulesComponent } from './evaluation-rules/evaluation-rules.component';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { MaterialModule } from 'src/app/material/material.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [EvaluationRulesComponent, RulesListComponent],

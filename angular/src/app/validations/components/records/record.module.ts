@@ -8,6 +8,7 @@ import { RecordInvalidComponent } from "./record-invalid/record-invalid.componen
 import { RecordsValidTableComponent } from "./records-valid-table/records-valid-table.component";
 import { RecordsInvalidTableComponent } from "./records-invalid-table/records-invalid-table.component";
 import { RecordsTableComponent } from "./records-table/records-table.component";
+import { RuleModule } from "../rule/rule.module";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { RecordsTableComponent } from "./records-table/records-table.component";
   imports: [
     SharedModule,
     MaterialModule,
+    RuleModule
   ],
   exports: [
     RecordValidComponent,

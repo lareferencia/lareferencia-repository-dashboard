@@ -28,6 +28,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { AccordionModule } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
+import { TagModule } from 'primeng/tag';
+
 
 
 
@@ -62,7 +64,8 @@ import { DialogModule } from 'primeng/dialog';
     InputTextModule,
     MultiSelectModule,
     AccordionModule,
-    DialogModule
+    DialogModule,
+    TagModule,
     ],
 })
 export class MaterialModule { }

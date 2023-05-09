@@ -1,9 +1,9 @@
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
-import { Component, OnInit, Inject, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
 import { MatButtonToggle, MatButtonToggleChange } from '@angular/material/button-toggle';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { Record } from 'src/app/shared/models/record.model';
+import { dialogData } from 'src/app/validations/interfaces/dialogData.interface';
 
 @Component({
   selector: 'app-evaluation-rules',
@@ -12,6 +12,8 @@ import { Record } from 'src/app/shared/models/record.model';
 })
 export class EvaluationRulesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatButtonToggle) toggleFilter: MatButtonToggle;
+
+  @Input() dialogData: dialogData; 
   record: Record;
   originalRecord: Record;
   redToggle = true;
@@ -23,17 +25,18 @@ export class EvaluationRulesComponent implements OnInit, AfterViewInit {
   isAdmUser = false;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) data: any,
     private authenticationService: AuthenticationService,
     private cdr: ChangeDetectorRef,
     private service: HarvestingService,
-  ) {
-    this.originalRecord = { ...data.record };
-    this.record = data.record;
-    this.acronym = data.acronym;
-  }
+  ) {}
 
   ngOnInit(): void {
+
+    this.originalRecord = { ...this.dialogData.record };
+    this.record = this.dialogData.record;
+    this.acronym = this.dialogData.acronym;
+    console.log(this.dialogData.record)
+
     if (!(this.isAdmUser = this.authenticationService.isAdmUser())) {
       this.yellowToggle = this.greenToggle = false;
       this.selectedToggle = ['red'];
