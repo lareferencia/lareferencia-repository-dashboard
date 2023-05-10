@@ -10,9 +10,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ValidationCardComponent } from './components/validation-card/validation-card.component';
 import { InfoCardComponent } from './components/info-card/info-card.component';
 import { MaterialModule } from '../material/material.module';
+import { RuleCardComponent } from './components/rule-card/rule-card.component';
 
 @NgModule({
-  declarations: [...fromComponents.components, ...fromDirectives.directives, InfoCardComponent, ValidationCardComponent],
+  declarations: [...fromComponents.components, ...fromDirectives.directives, InfoCardComponent, ValidationCardComponent, RuleCardComponent],
   imports: [
     CommonModule,
     FormsModule,
