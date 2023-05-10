@@ -29,6 +29,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { AccordionModule } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
 import { TagModule } from 'primeng/tag';
+import { TooltipModule } from 'primeng/tooltip';
+
 
 
 
@@ -66,6 +68,7 @@ import { TagModule } from 'primeng/tag';
     AccordionModule,
     DialogModule,
     TagModule,
+    TooltipModule,
     ],
 })
 export class MaterialModule { }
