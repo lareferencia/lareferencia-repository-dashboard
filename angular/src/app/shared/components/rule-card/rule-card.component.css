@@ -1,0 +1,37 @@
+.card-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    min-height: 220px;
+}
+.red{
+    background-color: rgba(252, 97, 97, 0.515);
+    box-shadow: rgba(252, 97, 97, 0.3) 0px 6px 20px;
+}
+.blue{
+    background-color: rgb(0, 208, 222);
+    box-shadow: rgba(0, 208, 222, 0.3) 0px 6px 20px;
+}
+.yellow{
+    background-color: rgb(255, 211, 0);
+    box-shadow: rgba(255, 213, 0, 0.227) 0px 6px 20px;
+}
+.card-quantifier{
+    font-size: .875rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+
+}
+.occurrence-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 40ch;
+}
+span{
+    color: var(--color-primary);
+}
+
