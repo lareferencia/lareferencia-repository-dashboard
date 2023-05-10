@@ -43,6 +43,9 @@
 :host ::ng-deep .p-dialog-header {
   align-items: baseline;
 }
+:host ::ng-deep .p-dialog-content {
+  overflow-x: hidden;
+}
 
 
 .table-container {

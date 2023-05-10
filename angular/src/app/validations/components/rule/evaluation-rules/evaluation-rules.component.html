@@ -11,60 +11,69 @@
     </div>
   </div>
   <hr>
-  <div class="flex justify-content-between gap-3">
+  <div class="grid">
 
-    <div>
-
+    <div class="col-4">
       <div *ngFor="let rule of dialogData.record.invalidRulesID">
-
-        <div *ngIf="
+        <app-rule-card
+          *ngIf="
           dialogData.record.validOccurrencesByRuleID[rule] 
           || record.invalidOccurrencesByRuleID[rule]
           && getRule(rule).mandatory"
-          class="mb-3 p-3 flex flex-column" style="background-color: #FC6161; border-radius: 10px;
-          box-shadow: rgba(252, 97, 97, 0.3) 0px 6px 20px;">
-          <span class="text-lg text-white font-semibold"> {{getRule(rule).name}} - Mandatory: Yes</span>
 
-          <ng-container [ngSwitch]="getRule(rule).quantifier">
-            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ZERO_ONLY'" i18n>
-              Zero only</span>
-            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ONE_ONLY'" i18n>
-              One only</span>
-            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ZERO_OR_MORE'" i18n>
-              Zero or more</span>
-            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ONE_OR_MORE'" i18n>
-              One or more</span>
-            <span class="text-lg text-white font-light text-sm mb-6" *ngSwitchCase="'ALL'" i18n
-            >All</span>
-          </ng-container>
-
-          <div *ngFor="let occurrence of record.invalidOccurrencesByRuleID[rule]" 
-            class="flex flex-wrap align-items-center">
-            <i class="pi pi-times-circle mr-2"></i>
-            <span class="text-white text-xs">{{occurrence}}</span>
-          </div>
-          <div *ngFor="let occurrence of record.validOccurrencesByRuleID[rule]" 
-            class="flex flex-wrap align-items-center">
-            <i class="pi pi-check-circle mr-2"></i>
-            <span class="text-white text-xs">{{occurrence}}</span>
-          </div>
-        </div>
-
+          [name]="getRule(rule).name"
+          [quantifier]="getRule(rule).quantifier"
+          [rule]="rule"
+          [record]="dialogData.record"
+          [mandatory]="getRule(rule).mandatory"
+          [toolTipDescription]="getRule(rule).description"
+          colorCard="red"
+          >
+        </app-rule-card>
       </div>
-
+      <!-- <div *ngIf="dialogData.record.isValid"
+        class="p-3" style="background-color: rgba(252, 97, 97, 0.515); border-radius: 6px;">
+        <span class="text-center">Nothing to show</span>
+      </div> -->
     </div>
 
-    <div >
-      <div style="background-color: #FC6161;">
-        <span> Access Level (M) - Mandatory: Yes</span>
-        <span>One or more</span>
+    <div class="col-4">
+      <div *ngFor="let rule of dialogData.record.invalidRulesID">
+        <app-rule-card
+          *ngIf="
+          dialogData.record.validOccurrencesByRuleID[rule] 
+          || record.invalidOccurrencesByRuleID[rule]
+          && !getRule(rule).mandatory"
+
+          [name]="getRule(rule).name"
+          [quantifier]="getRule(rule).quantifier"
+          [rule]="rule"
+          [record]="dialogData.record"
+          [mandatory]="getRule(rule).mandatory"
+          [toolTipDescription]="getRule(rule).description"
+          colorCard="yellow"
+          >
+        </app-rule-card>
       </div>
     </div>
 
-    <div >
-      <div style="background-color: #FC6161;">
-        <span> Access Level (M) - Mandatory: Yes</span>
-        <span>One or more</span>
+    <div class="col-4">
+      <div *ngFor="let rule of dialogData.record.validRulesID">
+        <app-rule-card
+          *ngIf="
+          dialogData.record.validOccurrencesByRuleID[rule] 
+          || record.invalidOccurrencesByRuleID[rule]
+          && !getRule(rule).mandatory"
+
+          [name]="getRule(rule).name"
+          [quantifier]="getRule(rule).quantifier"
+          [rule]="rule"
+          [record]="dialogData.record"
+          [mandatory]="getRule(rule).mandatory"
+          [toolTipDescription]="getRule(rule).description"
+          colorCard="blue"
+          >
+        </app-rule-card>
       </div>
     </div>
    

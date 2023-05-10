@@ -129,10 +129,10 @@
   [draggable]="false" 
   [resizable]="false"
   [closable]="false"
-  [style]="{maxWidth: '90vw'}"
+  [style]="{minWidth: '90vw', maxWidth: '90vw'}"
   (onHide)="onDialogHide()">
   <ng-template pTemplate="header" class="grid">
-    <div class="grid flex-column col-3">
+    <div class="grid flex-column col-2">
       <p-tag *ngIf="dialogData.record.isValid" severity="success">
         <span class="text-base font-normal">Valid Record</span>
       </p-tag>
@@ -151,11 +151,11 @@
       </div>
 
     </div>
-    <div class="col-7">
+    <div class="col-8">
       <h5 class="text-center font-normal">Result of the evaluation of rules for:</h5>
       <b><h5 class="text-center font-bold">{{dialogTitle}}</h5></b>
     </div>
-    <div class="col-1 flex justify-content-end">
+    <div class="col-2 flex justify-content-end">
       <p-button 
         icon="pi pi-times" 
         styleClass="p-button-text p-button-sm p-button-secondary" 

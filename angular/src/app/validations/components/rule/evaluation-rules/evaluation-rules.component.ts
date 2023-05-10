@@ -1,5 +1,5 @@
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
-import { Component, OnInit, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
 import { MatButtonToggle, MatButtonToggleChange } from '@angular/material/button-toggle';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { Record } from 'src/app/shared/models/record.model';

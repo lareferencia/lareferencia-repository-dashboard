@@ -126,3 +126,47 @@
   </div> -->
   <app-table-exporter [data]="csvData"></app-table-exporter>
 </div>
+
+<p-dialog
+  *ngIf="dialogData"
+  [(visible)]="visible" 
+  [modal]="true" 
+  [draggable]="false" 
+  [resizable]="false"
+  [closable]="false"
+  [style]="{minWidth: '90vw', maxWidth: '90vw'}"
+  (onHide)="onDialogHide()">
+  <ng-template pTemplate="header" class="grid">
+    <div class="grid flex-column col-2">
+      <p-tag *ngIf="dialogData.record.isValid" severity="success">
+        <span class="text-base font-normal">Valid Record</span>
+      </p-tag>
+      <p-tag *ngIf="!dialogData.record.isValid" severity="danger">
+        <span class="text-base font-normal">Invalid Record</span>
+      </p-tag>
+
+      <div class="flex align-items-center mt-3 mb-3">
+        <i class="pi pi-times-circle mr-2"></i>
+        <span class="text-sm font-semibold">Invalid ocurrence</span>
+      </div>
+
+      <div class="flex align-items-center">
+        <i class="pi pi-check-circle mr-2"></i>
+        <span class="text-sm font-semibold">Valid ocurrence</span>
+      </div>
+
+    </div>
+    <div class="col-8">
+      <h5 class="text-center font-normal">Result of the evaluation of rules for:</h5>
+      <b><h5 class="text-center font-bold">{{dialogTitle}}</h5></b>
+    </div>
+    <div class="col-2 flex justify-content-end">
+      <p-button 
+        icon="pi pi-times" 
+        styleClass="p-button-text p-button-sm p-button-secondary" 
+        (onClick)="visible = false"></p-button>
+    </div>
+  </ng-template>
+  
+    <app-evaluation-rules [dialogData]="dialogData"></app-evaluation-rules>
+</p-dialog>

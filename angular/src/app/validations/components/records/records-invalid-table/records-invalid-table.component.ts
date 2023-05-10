@@ -6,6 +6,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LazyLoadEvent } from 'primeng/api';
 import { EvaluationRulesComponent } from '../../rule/evaluation-rules/evaluation-rules.component';
 import { Record } from 'src/app/shared/models/record.model';
+import { dialogData } from 'src/app/validations/interfaces/dialogData.interface';
 
 @Component({
   selector: 'app-records-invalid-table',
@@ -24,6 +25,10 @@ export class RecordsInvalidTableComponent implements OnInit {
   ruleID: number;
   isLoadingResults = true;
   csvData: any[];
+
+  dialogData: dialogData;
+  visible:boolean;
+  dialogTitle: string;
   
  
 
@@ -60,15 +65,26 @@ export class RecordsInvalidTableComponent implements OnInit {
   }
 
 
+  // detailClick(record: Record): void {
+  //   record.rules = this.validation.rulesByID;
+
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.data = { record, acronym: this.acronym };
+  //   dialogConfig.autoFocus = false;
+
+  //   this.dialog.open(EvaluationRulesComponent, dialogConfig);
+  // }
+
   detailClick(record: Record): void {
-    record.rules = this.validation.rulesByID;
-
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = { record, acronym: this.acronym };
-    dialogConfig.autoFocus = false;
-
-    this.dialog.open(EvaluationRulesComponent, dialogConfig);
-  }
     
+    this.dialogTitle = record.identifier;
+    record.rules = this.validation.rulesByID;
+    this.visible = true;
+    this.dialogData = { record, acronym: this.acronym };
+  };
+
+  onDialogHide(){
+    this.dialogData = null;
+  }
 
 }
