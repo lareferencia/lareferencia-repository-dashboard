@@ -1,31 +1,24 @@
+<div class="flex bg-white p-3 mb-3 justify-content-between" 
+  style="border-radius: 10px;">
+  <div class="flex">
+    <div class="mr-2">
+      <p-calendar [(ngModel)]="startDate" 
+      dateFormat="dd.mm.yy" [showIcon]="true" placeholder="Start date"></p-calendar>
+    </div>
+    <div>
+      <p-calendar [(ngModel)]="endDate" 
+      dateFormat="dd.mm.yy" [showIcon]="true" placeholder="End date"></p-calendar>
+    </div>
+  </div>
+  <div>
+    <p-button label="Apply" (onClick)="filtrar()" styleClass="primary"></p-button>
+  </div>
+</div>
 
 <div class="chart">
   <div class="chart-container">
     <div class="chart-title"><span i18n>Harvestings</span></div>
-    <!-- <div
-      class="alert alert-warning"
-      *ngIf="!filtrando && data.length == 0"
-      i18n
-    >
-      Nothing to show
-    </div>
-    <app-vega-viz
-      id="{{ chartDef.name }}"
-      [pathToData]="chartDef.path"
-      (outgoingData)="handleChart($event)"
-      *ngIf="!hideGraph"
-    >
-    </app-vega-viz>
-
-    <div *ngIf="filtrando || data.length > 0" class="legend-div">
-      <div class="valid-legend"></div>
-      <ng-container i18n>Valid Records</ng-container>
-      <div class="invalid-legend"></div>
-      <ng-container i18n>Invalid Records</ng-container>
-      <div class="harvested-legend"></div>
-      <ng-container i18n>Harvested Records</ng-container>
-    </div> -->
-
+    
     <div *ngIf="loadingChart" class="flex justify-content-center align-content-center">
       <p-progressSpinner></p-progressSpinner>
     </div>
@@ -37,8 +30,5 @@
   </div>
 </div>
 
-<!-- <app-harvesting-chart-filter
-      (applyFilter)="filterClick($event)"
-      (applyClear)="clearClick()"
-      [(date)]="date">
-</app-harvesting-chart-filter> -->
+
+

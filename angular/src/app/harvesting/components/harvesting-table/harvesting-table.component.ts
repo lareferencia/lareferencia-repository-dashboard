@@ -81,7 +81,6 @@ export class HarvestingTableComponent implements OnInit {
   }
 
   loadContent(event: LazyLoadEvent){
-    console.log(event);
     
     this.isLoading = true;
 

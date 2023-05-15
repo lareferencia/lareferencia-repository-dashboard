@@ -14,6 +14,8 @@ export class HarvestingChartComponent implements OnInit {
   options:any;
   pageNumber = 0;
   pageSize = 30;
+  startDate: Date = new Date();
+  endDate: Date = new Date();
 
 
   constructor(
@@ -22,18 +24,32 @@ export class HarvestingChartComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const acronym = this.route.snapshot.paramMap.get('acronym');
+    
+    this.startDate.setFullYear(this.endDate.getFullYear() - 2);
+    this.filtrar();
+  }
 
-    this.harvestingService.getHarvestingHistoryByAcronym(acronym, this.pageNumber, this.pageSize)
+  filtrar(){
+    this.loadingChart = true;
+
+    const acronym = this.route.snapshot.paramMap.get('acronym');
+    this.harvestingService.getHarvestingHistoryByAcronymAndDate(acronym, this.pageNumber, this.pageSize, this.startDate, this.endDate)
       .subscribe(({content}) => {
+
+        const sortedConent = content.sort((a, b) => {
+          const dateA = new Date(a.startTime).getTime();
+          const dateB = new Date(b.startTime).getTime();
+          return dateA - dateB;
+        });
+
         this.data = {
-        labels: content.map(harvesting => harvesting.startTime.toString().substring(0,10)).reverse(),
+        labels: sortedConent.map(harvesting => harvesting.startTime.toString().substring(0,10)),
         datasets: [
             { type: 'bar', label: 'Invalidos', backgroundColor: '#D14D72',
-              data: content.map(harvesting => (harvesting.harvestedSize - harvesting.validSize) ).reverse() },
+              data: sortedConent.map(harvesting => (harvesting.harvestedSize - harvesting.validSize) ) },
 
             { type: 'bar', label: 'Validos', backgroundColor: '#FFABAB',
-              data: content.map(harvesting => harvesting.validSize).reverse()},
+              data: sortedConent.map(harvesting => harvesting.validSize)},
             ]
           };
           this.loadingChart = false;
