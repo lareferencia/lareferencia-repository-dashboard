@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatOptionModule } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
@@ -30,6 +25,8 @@ import { AccordionModule } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
 import { TagModule } from 'primeng/tag';
 import { TooltipModule } from 'primeng/tooltip';
+import { CalendarModule } from 'primeng/calendar';
+
 
 
 
@@ -40,17 +37,12 @@ import { TooltipModule } from 'primeng/tooltip';
     exports: [
     MatProgressSpinnerModule,
     MatSortModule,
-    MatDialogModule,
     MatTableModule,
-    MatProgressBarModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatButtonModule,
     MatFormFieldModule,
-    MatOptionModule,
     MatListModule,
     MatInputModule,
-    MatButtonToggleModule,
     MatTabsModule,
     MatCardModule,
     MatIconModule,
@@ -69,6 +61,7 @@ import { TooltipModule } from 'primeng/tooltip';
     DialogModule,
     TagModule,
     TooltipModule,
+    CalendarModule
     ],
 })
 export class MaterialModule { }
