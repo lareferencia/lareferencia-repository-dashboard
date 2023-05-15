@@ -7,7 +7,7 @@ import { ValidationComponent } from './pages/validation.component';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 import { RecordModule } from './components/records/record.module';
-import { ConformityModule } from './components/conformity/conformity.module';
+// import { ConformityModule } from './components/conformity/conformity.module';
 import { OcurrenceModule } from './components/occurrence/occurrence.module';
 
 
@@ -23,7 +23,7 @@ import { OcurrenceModule } from './components/occurrence/occurrence.module';
     SharedModule,
     MaterialModule,
     RecordModule,
-    ConformityModule,
+    // ConformityModule,
     OcurrenceModule
   ]
 })
