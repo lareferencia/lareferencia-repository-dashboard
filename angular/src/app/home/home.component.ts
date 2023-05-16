@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { MenuService } from '../core/services/menu.service';
 import { HarvestingService } from '../core/services/harvesting.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
