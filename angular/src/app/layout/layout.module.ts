@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { MenuModule } from 'primeng/menu';
+import { CommonModule } from '@angular/common';
+
+import { MaterialModule } from '../material/material.module';
+
 import { DrawerComponent } from './drawer/drawer.component';
 import { HeaderComponent } from './header/header.component';
-import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -13,7 +14,6 @@ import { MaterialModule } from '../material/material.module';
   ],
   imports: [
     MaterialModule,
-    MenuModule,
     CommonModule
   ],
   exports: [ HeaderComponent, DrawerComponent ],

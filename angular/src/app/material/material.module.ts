@@ -7,9 +7,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
@@ -26,7 +23,7 @@ import { DialogModule } from 'primeng/dialog';
 import { TagModule } from 'primeng/tag';
 import { TooltipModule } from 'primeng/tooltip';
 import { CalendarModule } from 'primeng/calendar';
-
+import { MenuModule } from 'primeng/menu';
 
 
 
@@ -43,10 +40,7 @@ import { CalendarModule } from 'primeng/calendar';
     MatFormFieldModule,
     MatListModule,
     MatInputModule,
-    MatTabsModule,
     MatCardModule,
-    MatIconModule,
-    MatGridListModule,
     MatSidenavModule,
 
     ProgressSpinnerModule,
@@ -61,7 +55,8 @@ import { CalendarModule } from 'primeng/calendar';
     DialogModule,
     TagModule,
     TooltipModule,
-    CalendarModule
+    CalendarModule,
+    MenuModule
     ],
 })
 export class MaterialModule { }

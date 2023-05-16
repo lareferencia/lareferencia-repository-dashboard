@@ -40,8 +40,12 @@
         <input matInput [(ngModel)]="user.affiliation" name="affiliation">
       </mat-form-field>
 
-      <p-toast></p-toast>
-      <button [disabled]="!updatingSuccess" mat-raised-button class="btn-primary" (click)="onClickSave()" i18n>Update</button>
+      <p-toast position="bottom-right"></p-toast>
+        <button [disabled]="!updatingSuccess" 
+        mat-raised-button class="btn-primary" 
+        (click)="onClickSave()" i18n>
+        Update
+      </button>
     </form>
 
   </div>

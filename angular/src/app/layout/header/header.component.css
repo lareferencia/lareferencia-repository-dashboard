@@ -36,7 +36,7 @@ h6 {
 :host ::ng-deep .p-menu {
     background: white;
     border: none;
-  }
+}
 
 :host ::ng-deep .p-menu .p-menuitem-link .p-menuitem-text {
     color: #000 !important;
