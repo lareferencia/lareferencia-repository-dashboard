@@ -27,7 +27,7 @@
                   <p-sortIcon field="{{item}}"></p-sortIcon>
                 </div>
               </th>
-              <th class="text-center">Records</th>
+              <th class="text-center">Invalid records</th>
               <th></th>
           </tr>
       </ng-template>
@@ -64,7 +64,7 @@
                   }}/invalid_rule/{{ dataSource.ruleID }}">
                   <p-button *ngIf="dataSource.conformity < 100"
                   styleClass="p-button-danger p-button-sm"
-                  label="Records"
+                  label="Invalids"
                   ></p-button>
                 </a>
             </td>
