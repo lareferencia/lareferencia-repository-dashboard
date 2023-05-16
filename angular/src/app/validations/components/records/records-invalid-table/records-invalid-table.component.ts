@@ -4,7 +4,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Validation } from 'src/app/shared/models/validation.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LazyLoadEvent } from 'primeng/api';
-import { EvaluationRulesComponent } from '../../rule/evaluation-rules/evaluation-rules.component';
 import { Record } from 'src/app/shared/models/record.model';
 import { dialogData } from 'src/app/validations/interfaces/dialogData.interface';
 
@@ -35,18 +34,20 @@ export class RecordsInvalidTableComponent implements OnInit {
   constructor(
     private validationService: ValidationService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
     this.acronym = this.route.snapshot.paramMap.get('acronym');
     this.ruleID = Number(this.route.snapshot.paramMap.get('ruleID'));
+    this.isLoadingResults = false;
+
 
   }
 
   loadRecords(event: LazyLoadEvent) {
     this.isLoadingResults = true;
+
     this.pageSize = event.rows;
     this.pageNumber = event.first / event.rows;
 
@@ -60,20 +61,10 @@ export class RecordsInvalidTableComponent implements OnInit {
       this.dataSource = result.content;
       this.totalRecords = result.totalElements;
 
-      this.isLoadingResults = false;
     });
+    this.isLoadingResults = false;
   }
 
-
-  // detailClick(record: Record): void {
-  //   record.rules = this.validation.rulesByID;
-
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.data = { record, acronym: this.acronym };
-  //   dialogConfig.autoFocus = false;
-
-  //   this.dialog.open(EvaluationRulesComponent, dialogConfig);
-  // }
 
   detailClick(record: Record): void {
     
