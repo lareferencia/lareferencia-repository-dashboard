@@ -1,22 +1,23 @@
-import { Harvesting } from '../../../shared/models/harvesting.model';
-import { HarvestingContent } from '../../../shared/models/harvesting-content.model';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { NavService } from '../../../core/services/nav.service';
 import { HarvestingService } from '../../../core/services/harvesting.service';
-import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+
+import { Harvesting } from '../../../shared/models/harvesting.model';
+import { HarvestingContent } from '../../../shared/models/harvesting-content.model';
 
 @Component({
   selector: 'app-harvesting',
   templateUrl: './harvesting.component.html',
-  styleUrls: ['./harvesting.component.css']
 })
 export class HarvestingComponent implements OnInit {
 
-  harvesting: Harvesting;
-  harvestingContent: HarvestingContent;
-  acronym: string;
-  error = false;
-  isLoadingResults = true;
+  public harvesting: Harvesting;
+  public harvestingContent: HarvestingContent;
+  public acronym: string;
+  public error = false;
+  public isLoadingResults = true;
   
   constructor(
     private route: ActivatedRoute,
@@ -30,10 +31,9 @@ export class HarvestingComponent implements OnInit {
       this.error = false;
       this.harvestingContent = null;
       this.isLoadingResults = true;
-
+      
       const acronym = this.route.snapshot.paramMap.get('acronym');
       
-
       this.harvestingService
         .getHarvestingLastGoodKnowByAcronym(acronym)
         .subscribe(
@@ -51,7 +51,6 @@ export class HarvestingComponent implements OnInit {
             
           }
         );
-
       this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
         this.harvesting = harvesting;
       })

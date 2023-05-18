@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
-import { ActivatedRoute } from '@angular/router';
+
+import { ChartData } from '../../interfaces/stack-chart.interface';
 
 @Component({
   selector: 'app-harvesting-chart',
@@ -9,14 +11,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./harvesting-chart.component.css'],
 })
 export class HarvestingChartComponent implements OnInit {
-  loadingChart: boolean = true;
-  data:any;
-  options:any;
-  pageNumber = 0;
-  pageSize = 30;
-  startDate: Date = new Date();
-  endDate: Date = new Date();
 
+  public loadingChart: boolean = true;
+  public data: ChartData;
+  public options:any;
+  public pageNumber = 0;
+  public pageSize = 30;
+  public startDate: Date = new Date();
+  public endDate: Date = new Date();
 
   constructor(
     private harvestingService: HarvestingService,
@@ -24,7 +26,6 @@ export class HarvestingChartComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    
     this.startDate.setFullYear(this.endDate.getFullYear() - 2);
     this.filtrar();
   }
@@ -41,6 +42,7 @@ export class HarvestingChartComponent implements OnInit {
           const dateB = new Date(b.startTime).getTime();
           return dateA - dateB;
         });
+
 
         this.data = {
         labels: sortedConent.map(harvesting => harvesting.startTime.toString().substring(0,10)),

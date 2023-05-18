@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { Rule } from 'src/app/shared/models/rule.model';
 
 @Component({
@@ -7,6 +8,5 @@ import { Rule } from 'src/app/shared/models/rule.model';
 })
 export class ValidationDetailComponent {
   @Input() dialogData: Rule;
-  
   
 }

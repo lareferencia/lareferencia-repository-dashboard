@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
+
 import { SharedModule } from 'src/app/shared/shared.module';
-import { RulesListComponent } from './rules-list/rules-list.component';
-import { EvaluationRulesComponent } from './evaluation-rules/evaluation-rules.component';
-import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { MaterialModule } from 'src/app/material/material.module';
-import { CommonModule } from '@angular/common';
+
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+
+import { EvaluationRulesComponent } from './evaluation-rules/evaluation-rules.component';
 
 @NgModule({
-  declarations: [EvaluationRulesComponent, RulesListComponent],
+  declarations: [EvaluationRulesComponent],
   imports: [
     SharedModule,
     MaterialModule,
@@ -15,7 +16,6 @@ import { CommonModule } from '@angular/common';
   ],
   exports: [
     EvaluationRulesComponent,
-    RulesListComponent
   ],
   providers: [
     {

@@ -9,7 +9,6 @@ import { HarvestingHistory } from 'src/app/shared/models/harvesting-history.mode
 @Component({
   selector: 'app-harvesting-source',
   templateUrl: './harvesting-source.component.html',
-  styleUrls: ['./harvesting-source.component.css'],
 })
 
 

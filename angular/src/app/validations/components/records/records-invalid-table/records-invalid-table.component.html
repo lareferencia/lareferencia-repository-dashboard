@@ -3,8 +3,6 @@
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
 
-
-
   <div class="table-container
   animate__animated animate__fadeInRight animate__faster"
   *ngIf="!isLoadingResults">
@@ -21,21 +19,21 @@
       [lazy]="true"
       (onLazyLoad)="loadRecords($event)"
       >
-      <ng-template pTemplate="header" >
+      <ng-template pTemplate="header">
           <tr>
             <th>ID</th>
-            <th>Identifier</th>
-            <th>Validation</th>
-            <th>Transformed</th>
-            <th>Details</th>
+            <th i18n>Identifier</th>
+            <th i18n>Validation</th>
+            <th i18n>Transformed</th>
+            <th i18n>Details</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-dataSource>
           <tr>
             <td i18n>{{dataSource.id}}</td>
             <td i18n>{{dataSource.identifier}}</td>
-            <td i18n> <b>{dataSource.isValid, select, true {Valid} false {invalid} }</b></td>
-            <td i18n> <b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
+            <td i18n><b>{dataSource.isValid, select, true {Valid} false {invalid} }</b></td>
+            <td i18n><b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
             <td>
               <p-button
                 (onClick)="detailClick(dataSource)"
@@ -140,25 +138,25 @@
   <ng-template pTemplate="header" class="grid">
     <div class="grid flex-column col-2">
       <p-tag *ngIf="dialogData.record.isValid" severity="success">
-        <span class="text-base font-normal">Valid Record</span>
+        <span class="text-base font-normal" i18n>Valid Record</span>
       </p-tag>
       <p-tag *ngIf="!dialogData.record.isValid" severity="danger">
-        <span class="text-base font-normal">Invalid Record</span>
+        <span class="text-base font-normal" i18n>Invalid Record</span>
       </p-tag>
 
       <div class="flex align-items-center mt-3 mb-3">
         <i class="pi pi-times-circle mr-2"></i>
-        <span class="text-sm font-semibold">Invalid ocurrence</span>
+        <span class="text-sm font-semibold" i18n>Invalid ocurrence</span>
       </div>
 
       <div class="flex align-items-center">
         <i class="pi pi-check-circle mr-2"></i>
-        <span class="text-sm font-semibold">Valid ocurrence</span>
+        <span class="text-sm font-semibold" i18n>Valid ocurrence</span>
       </div>
 
     </div>
     <div class="col-8">
-      <h5 class="text-center font-normal">Result of the evaluation of rules for:</h5>
+      <h5 class="text-center font-normal" i18n>Result of the evaluation of rules for:</h5>
       <b><h5 class="text-center font-bold">{{dialogTitle}}</h5></b>
     </div>
     <div class="col-2 flex justify-content-end">

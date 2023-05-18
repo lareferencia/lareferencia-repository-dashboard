@@ -1,11 +1,13 @@
-import { ActivatedRoute } from '@angular/router';
-import { ValidationService } from 'src/app/core/services/validation.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Validation } from 'src/app/shared/models/validation.model';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+
+import { ValidationService } from 'src/app/core/services/validation.service';
+
 import { LazyLoadEvent } from 'primeng/api';
+
+import { Validation } from 'src/app/shared/models/validation.model';
 import { Record } from 'src/app/shared/models/record.model';
-import { dialogData } from 'src/app/validations/interfaces/dialogData.interface';
+import { DialogData } from 'src/app/validations/interfaces/dialogData.interface';
 
 @Component({
   selector: 'app-records-invalid-table',
@@ -15,22 +17,21 @@ import { dialogData } from 'src/app/validations/interfaces/dialogData.interface'
 export class RecordsInvalidTableComponent implements OnInit {
   
   @Input() validation: Validation;
-  dataSource: any;
-  pageSize = 10;
-  pageNumber = 0;
-  totalRecords: number;
-  harvestingID: number;
-  acronym: string;
-  ruleID: number;
-  isLoadingResults = true;
-  csvData: any[];
-
-  dialogData: dialogData;
-  visible:boolean;
-  dialogTitle: string;
   
- 
+  public dataSource: any;
+  public pageSize = 10;
+  public pageNumber = 0;
+  public totalRecords: number;
+  public harvestingID: number;
+  public acronym: string;
+  public ruleID: number;
+  public isLoadingResults = true;
+  public csvData: any[];
 
+  public dialogData: DialogData;
+  public visible:boolean;
+  public dialogTitle: string;
+  
   constructor(
     private validationService: ValidationService,
     private route: ActivatedRoute,
@@ -41,8 +42,6 @@ export class RecordsInvalidTableComponent implements OnInit {
     this.acronym = this.route.snapshot.paramMap.get('acronym');
     this.ruleID = Number(this.route.snapshot.paramMap.get('ruleID'));
     this.isLoadingResults = false;
-
-
   }
 
   loadRecords(event: LazyLoadEvent) {
@@ -65,7 +64,6 @@ export class RecordsInvalidTableComponent implements OnInit {
     this.isLoadingResults = false;
   }
 
-
   detailClick(record: Record): void {
     
     this.dialogTitle = record.identifier;
@@ -77,5 +75,4 @@ export class RecordsInvalidTableComponent implements OnInit {
   onDialogHide(){
     this.dialogData = null;
   }
-
 }

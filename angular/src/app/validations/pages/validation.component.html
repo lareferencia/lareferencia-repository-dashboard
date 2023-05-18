@@ -1,9 +1,10 @@
+<!-- TODO: VER ESTO DE ACA ABAJO -->
+
 <div
   [ngClass]="['alert', error ? 'alert-danger' : 'alert-warning']"
   role="alert"
   *ngIf="error || firstAccess"
-  i18n
->
+  i18n >
   {error, select, true {Validations not found} false {Enter a source acronym in
   the root URL /:acronym}}
 </div>
@@ -14,8 +15,6 @@
 
 <div *ngIf="!firstAccess && !error && validation" class="grid p-3">
  
-  
-
   <div class="col-12 md:col-4 p-3 
     animate__animated animate__fadeInDown animate__faster">
         <app-validation-card
@@ -57,14 +56,6 @@
       shadowColor="0px 6px 20px rgba(252, 97, 97, 0.3)">
     </app-validation-card>
   </div>
-
-
-
-   <!-- <div class="col-12 lg:col-6 flex-container">
-    <app-conformity-grouped-chart
-      [validation]="validation"
-    ></app-conformity-grouped-chart>
-  </div>  -->
 
   <div class="col-12 pt-3 pl-3 pr-3
   animate__animated animate__fadeInLeft animate__faster">

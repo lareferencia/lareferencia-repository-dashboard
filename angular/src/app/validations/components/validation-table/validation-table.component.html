@@ -22,22 +22,22 @@
           <tr>
               <th *ngFor="let item of displayedColumns" 
               pSortableColumn="{{item.value}}">
-                <div class="flex align-items-center">
+                <div class="flex align-items-center" i18n>
                   {{item.name}} 
                   <p-sortIcon field="{{item}}"></p-sortIcon>
                 </div>
               </th>
-              <th class="text-center">Invalid records</th>
+              <th class="text-center" i18n>Invalid records</th>
               <th></th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-dataSource>
           <tr>
             <td>{{dataSource.ruleID}}</td>
-            <td>{{dataSource.name}}</td>
-            <td>{{dataSource.description}}</td>
-            <td *ngIf="dataSource.mandatory"><b>Yes</b></td>
-            <td *ngIf="!dataSource.mandatory"><b>No</b></td>
+            <td i18n>{{dataSource.name}}</td>
+            <td i18n>{{dataSource.description}}</td>
+            <td *ngIf="dataSource.mandatory" i18n><b>Yes</b></td>
+            <td *ngIf="!dataSource.mandatory" i18n><b>No</b></td>
             <td>
               <div class="clearfix">
                 <div class="float-left">

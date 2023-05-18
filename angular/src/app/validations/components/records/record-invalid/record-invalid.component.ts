@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { ValidationService } from 'src/app/core/services/validation.service';
 import { ActivatedRoute } from '@angular/router';
-import { Validation } from 'src/app/shared/models/validation.model';
+
+import { ValidationService } from 'src/app/core/services/validation.service';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
+
+import { Validation } from 'src/app/shared/models/validation.model';
 import { Harvesting } from 'src/app/shared/models/harvesting.model';
 
 @Component({
   selector: 'app-record-invalid',
   templateUrl: './record-invalid.component.html',
-  styleUrls: ['./record-invalid.component.css'],
 })
+
 export class RecordInvalidComponent implements OnInit {
-  validation: Validation;
-  ruleID: string;
-  harvesting: Harvesting;
-  ruleName: string;
-  isLoadingResults = true;
+  public validation: Validation;
+  public ruleID: string;
+  public harvesting: Harvesting;
+  public ruleName: string;
+  public isLoadingResults = true;
 
   constructor(
     private validationService: ValidationService,
@@ -47,10 +49,4 @@ export class RecordInvalidComponent implements OnInit {
 
 
   }
-
-  // getRule(ruleID: string) {
-  //   const rule = this.validation.rulesByID.find((x) => x.ruleID === Number(ruleID));
-  //   if(!rule) return;
-  //   return rule.name
-  // }
 }

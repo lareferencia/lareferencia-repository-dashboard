@@ -1,15 +1,19 @@
-import { ActivatedRoute } from '@angular/router';
-import { ValidationService } from 'src/app/core/services/validation.service';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { startWith, tap } from 'rxjs/operators';
+
+import { ValidationService } from 'src/app/core/services/validation.service';
+import { RecordsTableDataSource } from './records-valid-table-datasource';
+
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { RecordsTableDataSource } from './records-valid-table-datasource';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+
 import { Record } from 'src/app/shared/models/record.model';
 import { Validation } from 'src/app/shared/models/validation.model';
-import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+
 import { EvaluationRulesComponent } from '../../rule/evaluation-rules/evaluation-rules.component';
-import { startWith, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-records-valid-table',

@@ -1,12 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Validation } from 'src/app/shared/models/validation.model';
-import { Record } from 'src/app/shared/models/record.model';
-import { ValidationService } from 'src/app/core/services/validation.service';
 import { ActivatedRoute } from '@angular/router';
-import { RecordsFilter } from 'src/app/shared/models/records-filter.model';
+
+import { ValidationService } from 'src/app/core/services/validation.service';
+
 import { LazyLoadEvent } from 'primeng/api';
+
+import { Record } from 'src/app/shared/models/record.model';
 import { Rule } from 'src/app/shared/models/rule.model';
-import { dialogData } from 'src/app/validations/interfaces/dialogData.interface';
+import { Validation } from 'src/app/shared/models/validation.model';
+import { RecordsFilter } from 'src/app/shared/models/records-filter.model';
+import { DialogData } from 'src/app/validations/interfaces/dialogData.interface';
 import { validOptios } from 'src/app/validations/interfaces/validOptions.interface';
 
 
@@ -20,29 +23,28 @@ export class RecordsTableComponent implements  OnInit {
 
   @Input() validation: Validation;
 
-  dataSource: Record[];
-  pageSize = 10;
-  harvestingID: number;
-  acronym: string;
-  totalRecords:number;
-  isLoading = true;
+  public dataSource: Record[];
+  public pageSize = 10;
+  public harvestingID: number;
+  public acronym: string;
+  public totalRecords:number;
+  public isLoading = true;
 
-  dialogData: dialogData;
-  visible:boolean;
-  dialogTitle: string;
-  
-  rulesOptions: Rule[];
-  selectedValidRule: Rule;
-  selectedInvalidRule: Rule;
+  public dialogData: DialogData;
+  public visible:boolean;
+  public dialogTitle: string;
 
-  validOptions: validOptios[];
-  selectedValidation: boolean;
+  public rulesOptions: Rule[];
+  public selectedValidRule: Rule;
+  public selectedInvalidRule: Rule;
 
+  public validOptions: validOptios[];
+  public selectedValidation: boolean;
 
-  csvData: any[];
-  headerData: any[];
+  public csvData: any[];
+  public headerData: any[];
 
-  filter: RecordsFilter = {
+  public filter: RecordsFilter = {
     pageSize: this.pageSize,
     pageNumber: 0,
   };
@@ -67,10 +69,7 @@ export class RecordsTableComponent implements  OnInit {
       {name: 'All', value: null},
     ];
   }
-
-
   detailClick(record: Record): void {
-    
     this.dialogTitle = record.identifier;
     record.rules = this.validation.rulesByID;
     this.visible = true;
@@ -102,27 +101,19 @@ export class RecordsTableComponent implements  OnInit {
     this.validationService.getRecordsByHarvestingIDFilter(this.acronym, this.harvestingID, this.filter)
       .subscribe((result) => {
 
-
         this.isLoading = false;
 
         this.dataSource = result.content
         this.totalRecords = result.totalElements;
 
-        // this.csvData = result.content.map((x) => {
-        //   return {
-        //     id: x.id,
-        //     identifier: x.identifier,
-        //     validation: x.isValid,
-        //     ...(this.admUser && {tranformation: x.isTransformed}),
-        //   };
-        // });
-
-        // this.headerData = [
-        //   this.id.nativeElement.innerText,
-        //   this.identifier.nativeElement.innerText,
-        //   this.isValid.nativeElement.innerText,
-        //   ...(this.admUser ? [this.isTransformed.nativeElement.innerText] : ''),
-        // ];
+        this.csvData = result.content.map((x) => {
+          return {
+            id: x.id,
+            identifier: x.identifier,
+            validation: x.isValid,
+            tranformation: x.isTransformed,
+          };
+        });
       });
   }
 }

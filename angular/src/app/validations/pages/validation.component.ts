@@ -1,24 +1,25 @@
-import { Validation } from 'src/app/shared/models/validation.model';
-import { ValidationService } from 'src/app/core/services/validation.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Rule } from 'src/app/shared/models/rule.model';
-import { Harvesting } from 'src/app/shared/models/harvesting.model';
+
+import { ValidationService } from 'src/app/core/services/validation.service';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+
+import { Harvesting } from 'src/app/shared/models/harvesting.model';
+import { Validation } from 'src/app/shared/models/validation.model';
+import { Rule } from 'src/app/shared/models/rule.model';
 
 @Component({
   selector: 'app-validation',
   templateUrl: './validation.component.html',
-  styleUrls: ['./validation.component.css'],
 })
 export class ValidationComponent implements OnInit {
-  firstAccess = false;
-  error = false;
-  isLoadingResults = true;
-  validation: Validation;
-  harvesting: Harvesting;
-  admUser = false;
+  public firstAccess = false;
+  public error = false;
+  public isLoadingResults = true;
+  public validation: Validation;
+  public harvesting: Harvesting;
+  public admUser = false;
 
   constructor(
     private route: ActivatedRoute,

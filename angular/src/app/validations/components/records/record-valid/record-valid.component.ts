@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Validation } from 'src/app/shared/models/validation.model';
-import { ValidationService } from 'src/app/core/services/validation.service';
 import { ActivatedRoute } from '@angular/router';
+
+import { ValidationService } from 'src/app/core/services/validation.service';
+
+import { Validation } from 'src/app/shared/models/validation.model';
 
 @Component({
   selector: 'app-record-valid',
@@ -9,8 +11,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./record-valid.component.css'],
 })
 export class RecordValidComponent implements OnInit {
-  validation: Validation;
-  ruleID: string;
+  public validation: Validation;
+  public ruleID: string;
 
   constructor(
     private validationService: ValidationService,
@@ -22,9 +24,7 @@ export class RecordValidComponent implements OnInit {
       this.route.snapshot.paramMap.get('harvestingID')
     );
     const acronym = this.route.snapshot.paramMap.get('acronym');
-
     this.ruleID = this.route.snapshot.paramMap.get('ruleID');
-
     this.validationService
       .getValidationResultsByHarvestingID(acronym, harvestingID)
       .subscribe((result) => {

@@ -1,14 +1,13 @@
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+
 import { Validation } from '../../../shared/models/validation.model';
 import { Rule } from '../../../shared/models/rule.model';
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { DialogDataTable } from '../../interfaces/dialogData.interface';
+import { MandatoryOption } from '../../interfaces/mandatoryOptions.interface';
 
-
-interface MandatoryOption {
-  name: string;
-  value: boolean;
-}
 
 @Component({
   selector: 'app-validation-table',
@@ -19,17 +18,16 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
   
   @Input() validation: Validation;
 
-  dataSource: Rule[];
-  harvestingID: number;
-  acronym: string;
-  csvData: any[];
-  headerData: any[];
-  admUser = false;
-  mandatoryOptions: MandatoryOption[];
-  isMandatory: MandatoryOption;
-
-  dialogData: any;
-  visible:boolean;
+  public dataSource: Rule[];
+  public harvestingID: number;
+  public acronym: string;
+  public csvData: any[];
+  public headerData: any[];
+  public admUser = false;
+  public mandatoryOptions: MandatoryOption[];
+  public isMandatory: MandatoryOption;
+  public dialogData: DialogDataTable;
+  public visible:boolean;
 
   displayedColumns: any[] = [
     {value: 'ruleID', name: 'ID'},

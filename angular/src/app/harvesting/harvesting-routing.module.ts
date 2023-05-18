@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HarvestingComponent } from './pages/harvesting/harvesting.component';
 
 const routes: Routes = [

@@ -1,8 +1,9 @@
-import { AuthenticationService } from './../../../core/services/authentication.service';
-import { HarvestingService } from '../../../core/services/harvesting.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HarvestingTableDataSource } from './harvesting-table-datasource';
+
+import { AuthenticationService } from './../../../core/services/authentication.service';
+import { HarvestingService } from '../../../core/services/harvesting.service';
+
 import { HarvestingContent } from 'src/app/shared/models/harvesting-content.model';
 import { LazyLoadEvent, SortEvent } from 'primeng/api';
 
@@ -13,21 +14,20 @@ import { LazyLoadEvent, SortEvent } from 'primeng/api';
 })
 export class HarvestingTableComponent implements OnInit {
 
-  acronym: string;
-  isLoadingResults = true;
-  harvestingContent: HarvestingContent[];
-  dataSource: HarvestingTableDataSource;
-  pageSize: number = 80;
-  pageNumber: number;
-  totalRecords: number;
-  isLoading: boolean = true;
+  public acronym: string;
+  public isLoadingResults = true;
+  public harvestingContent: HarvestingContent[];
+  public pageSize: number = 80;
+  public pageNumber: number;
+  public totalRecords: number;
+  public isLoading: boolean = true;
 
-  filter = {
+  public filter = {
     sortField: '',
     sortOrder: 1,
   };
 
-  displayColumns = [
+  public displayColumns = [
     {
       title: 'ID',
       field: 'id',
@@ -52,7 +52,7 @@ export class HarvestingTableComponent implements OnInit {
       title: 'End',
       field: 'endTime',
     },
-  ]
+  ];
 
   csvData: any[];
   headerData: any[];
@@ -81,13 +81,10 @@ export class HarvestingTableComponent implements OnInit {
   }
 
   loadContent(event: LazyLoadEvent){
-    
     this.isLoading = true;
-
     this.pageNumber = event.first / event.rows;
     this.pageSize = event.rows;
 
-    
     this.harvestingService.getHarvestingHistoryByAcronym(
       this.acronym, 
       this.pageNumber, 

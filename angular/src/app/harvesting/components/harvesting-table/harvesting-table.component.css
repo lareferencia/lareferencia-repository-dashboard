@@ -40,37 +40,3 @@
   overflow: auto;
 }
 
-.harvesting-table-info mat-card{
-  padding: 24px;
-  background-color: #fff;
-  border-radius: 10px;
-}
-
-.harvesting-table-info mat-card h3{
-  text-align: center;
-  padding: 16px;
- 
-}
-.harvesting-table-info mat-card p{
-  text-align: justify;
-  line-height: 1.7;
-}
-
-/* .loading-shade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 56px;
-  right: 0;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-/* .btn-nt-available {
-  width: 107px;
-  font-size: 8.5pt;
-  font-weight: bolder;
-} */
