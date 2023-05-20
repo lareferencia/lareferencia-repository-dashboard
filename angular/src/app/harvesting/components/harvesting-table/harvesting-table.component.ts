@@ -22,6 +22,11 @@ export class HarvestingTableComponent implements OnInit {
   public totalRecords: number;
   public isLoading: boolean = true;
 
+  public csvData: any[];
+  public headerData: any[];
+  admUser = false;
+
+
   public filter = {
     sortField: '',
     sortOrder: 1,
@@ -54,9 +59,7 @@ export class HarvestingTableComponent implements OnInit {
     },
   ];
 
-  csvData: any[];
-  headerData: any[];
-  admUser = false;
+
 
   constructor(
     private harvestingService: HarvestingService,
@@ -92,7 +95,6 @@ export class HarvestingTableComponent implements OnInit {
       this.filter.sortField,
       this.filter.sortOrder)
       .subscribe((result) => {
-
         this.isLoading = false;
         this.totalRecords = result.totalElements;
         this.harvestingContent = result.content.map((harvestingContent) => {
@@ -105,7 +107,27 @@ export class HarvestingTableComponent implements OnInit {
             new Date(b.startTime).getTime() -
             new Date(a.startTime).getTime()
         );
+        this.csvData = result.content.map( (item) => {
+          return{
+            id: item.id,
+            harvestedSize: item.harvestedSize,
+            validSize: item.validSize,
+            invalidRecords: item.harvestedSize - item.validSize,
+            transformedSize: item.transformedSize,
+            startTime: item.startTime,
+            endTime: item.endTime,
+          }
+        });
       });
+      this.headerData = [
+        'id',
+        'harvestedSize',
+        'validSize',
+        'invalidRecords',
+        'transformedSize',
+        'startTime',
+        'endTime',
+      ]
 
   }
 

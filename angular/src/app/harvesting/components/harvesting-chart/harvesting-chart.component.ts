@@ -26,7 +26,7 @@ export class HarvestingChartComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.startDate.setFullYear(this.endDate.getFullYear() - 2);
+    this.startDate.setFullYear(this.endDate.getFullYear() - 1);
     this.filtrar();
   }
 
