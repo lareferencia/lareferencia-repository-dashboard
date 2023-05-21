@@ -11,10 +11,7 @@ export class TableExporterComponent implements OnInit {
   @Input() header: any[];
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.header)
-    console.log(this.data)
-  }
+  ngOnInit(): void {}
 
   export(): void {
     const options = {

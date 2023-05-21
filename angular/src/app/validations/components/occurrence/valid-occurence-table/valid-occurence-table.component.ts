@@ -1,5 +1,7 @@
-import { ValidationService } from 'src/app/core/services/validation.service';
 import { Component, OnInit, Input } from '@angular/core';
+
+import { ValidationService } from 'src/app/core/services/validation.service';
+
 import { Occurence } from 'src/app/shared/models/occurrence.model';
 import { Rule } from 'src/app/shared/models/rule.model';
 
@@ -11,11 +13,12 @@ import { Rule } from 'src/app/shared/models/rule.model';
 export class ValidOccurenceTableComponent implements OnInit {
 
   @Input() rule: Rule;
-  dataSource: any;
-  displayedColumns = ['value', 'count'];
-  csvData: Occurence[];
-  headerData: any[];
-  isLoading = true;
+  
+  public dataSource: any;
+  public displayedColumns = ['value', 'count'];
+  public csvData: Occurence[];
+  public headerData: any[];
+  public isLoading = true;
 
   constructor(private validationService: ValidationService) {}
 
@@ -30,10 +33,7 @@ export class ValidOccurenceTableComponent implements OnInit {
       .subscribe((result) => {
         this.isLoading = false;
         this.csvData = result;
-        // this.headerData = [
-        //   this.value._elementRef.nativeElement.innerText,
-        //   this.count._elementRef.nativeElement.innerText,
-        // ];
+        this.headerData = ['Ocurrence', 'Amount'];
         this.dataSource = result;
       });
   }

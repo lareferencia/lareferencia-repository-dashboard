@@ -69,16 +69,17 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
         .filter((x) => x.mandatory == this.isMandatory.value);
 
 
-    // this.csvData = this.validation.rulesByID.map((x) => {
-    //   return {
-    //     ruleID: x.ruleID,
-    //     name: x.name,
-    //     description: x.description,
-    //     mandatory: x.mandatory,
-    //     conformity: x.conformity.toFixed(3),
-    //     validCount: x.validCount,
-    //   };
-    // });
+    this.csvData = this.validation.rulesByID.map((x) => {
+      return {
+        ruleID: x.ruleID,
+        name: x.name,
+        description: x.description,
+        mandatory: x.mandatory,
+        conformity: x.conformity.toFixed(3),
+        validCount: x.validCount,
+      };
+    });
+    this.headerData = ['ID', 'Name', 'Description', 'Mandatory', 'Conformity', 'Valid records']
   }
   onDialogHide(){
     this.dialogData = null;

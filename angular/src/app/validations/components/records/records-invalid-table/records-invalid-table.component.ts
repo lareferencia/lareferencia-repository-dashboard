@@ -27,6 +27,7 @@ export class RecordsInvalidTableComponent implements OnInit {
   public ruleID: number;
   public isLoadingResults = true;
   public csvData: any[];
+  public headerData: any[];
 
   public dialogData: DialogData;
   public visible:boolean;
@@ -60,7 +61,16 @@ export class RecordsInvalidTableComponent implements OnInit {
       this.dataSource = result.content;
       this.totalRecords = result.totalElements;
 
+      this.csvData = result.content.map((x) => {
+        return {
+          id: x.id,
+          identifier: x.identifier,
+          validation: x.isValid,
+          tranformation: x.isTransformed,
+        };
+      });
     });
+    this.headerData = ['ID', 'Identifier', 'Validation', 'Transformed']
     this.isLoadingResults = false;
   }
 

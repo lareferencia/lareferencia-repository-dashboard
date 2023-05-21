@@ -115,5 +115,7 @@ export class RecordsTableComponent implements  OnInit {
           };
         });
       });
+
+      this.headerData = ['ID', 'Identifier', 'Validation']
   }
 }

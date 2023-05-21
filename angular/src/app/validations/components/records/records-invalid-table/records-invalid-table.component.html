@@ -45,85 +45,9 @@
       </ng-template>
       
   </p-table>
+  <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
   </div>
 </div>
-  <!-- <div class="table-content-container">
-    <table
-      mat-table
-      [dataSource]="dataSource"
-      class="full-width-table"
-      matSort
-      aria-label="Elements"
-    >
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-        <td mat-cell *matCellDef="let record">{{ record.id }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="identifier">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>
-          Identifier
-        </th>
-        <td mat-cell *matCellDef="let record">{{ record.identifier }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="isValid">
-        <th mat-header-cell *matHeaderCellDef i18n>Validation</th>
-        <td mat-cell *matCellDef="let record">
-          <button
-            [ngClass]="[
-              'btn',
-              record.isValid == true ? 'btn-disabled-green btn-valid' : 'btn-disabled-red'
-            ]"            
-            type="button"
-            i18n
-          >
-            {record.isValid, select, true {Valid} false {Invalid}}
-          </button>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="isTransformed">
-        <th mat-header-cell *matHeaderCellDef i18n>Transformation</th>
-        <td mat-cell *matCellDef="let record">
-          <button
-            *ngIf="record.isTransformed"
-            type="button"
-            class="btn btn-disabled"
-            i18n
-          >
-          Transformed
-          </button>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="button-detail">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let record">
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            (click)="detailClick(record)"
-            i18n
-          >
-            Details
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let record; columns: displayedColumns"></tr>
-    </table>
-
-    <mat-paginator
-      #paginator
-      [pageIndex]="0"
-      [pageSize]="pageSize"
-      [pageSizeOptions]="[25, 50, 100, 250]"
-    >
-    </mat-paginator>
-  </div> -->
-  <app-table-exporter [data]="csvData"></app-table-exporter>
 </div>
 
 <p-dialog
