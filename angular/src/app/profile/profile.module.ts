@@ -9,9 +9,6 @@ import { MainComponent } from './pages/main/main.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 
 
-
-
-
 @NgModule({
   declarations: [
     MainComponent,

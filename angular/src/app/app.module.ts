@@ -9,7 +9,6 @@ import { AuthenticationService } from './core/services/authentication.service';
 import { LayoutModule } from './layout/layout.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
-import { AccountModule } from './components/account/account.module';
 import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
@@ -24,7 +23,6 @@ import { AppComponent } from './app.component';
     CoreModule,
     HomeModule,
     // BrokerModule,
-    AccountModule,
     AppRoutingModule,
     LayoutModule
   ],

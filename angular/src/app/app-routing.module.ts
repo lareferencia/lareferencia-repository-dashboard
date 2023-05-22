@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthenticationService } from './core/services/authentication.service';
-import { AccountComponent } from './components/account/account/account.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
@@ -27,8 +26,8 @@ const routes: Routes = [
     canActivate: [AuthenticationService],
   },
   {
-    path: 'manage/accounts',
-    component: AccountComponent,
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
     canActivate: [AuthenticationService],
     data: { roles: ['dashboard-admin'] },
   },
