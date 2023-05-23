@@ -1,40 +1,43 @@
 <div class="users">
-  <mat-accordion class="headers-align">
-    <mat-expansion-panel (opened)="openUserGroup()">
-      <mat-expansion-panel-header>
-        <mat-panel-title i18n>
-          Users
-        </mat-panel-title>
-        <mat-panel-description i18n>
-          User list
-          <mat-icon>recent_actors</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-user-table></app-user-table>
-    </mat-expansion-panel>
-    <mat-expansion-panel expanded>
-      <mat-expansion-panel-header>
-        <mat-panel-title i18n>
-          Import
-        </mat-panel-title>
-        <mat-panel-description i18n>
-          Import users
-          <mat-icon>upload</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-upload-users></app-upload-users>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title i18n>
-          Create
-        </mat-panel-title>
-        <mat-panel-description i18n>
-          Create user
-          <mat-icon>account_circle</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <app-user-create></app-user-create>
-    </mat-expansion-panel>
-  </mat-accordion>
+  <p-accordion class="w-full">
+    <p-accordionTab>
+        <ng-template pTemplate="header">
+            <div class="flex align-items-center">
+                <i class="pi pi-users mr-2"></i>
+                <span class="vertical-align-middle" i18n>User list</span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+          <app-user-table></app-user-table>
+        </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+
+  <p-accordion class="w-full">
+    <p-accordionTab>
+        <ng-template pTemplate="header">
+            <div class="flex align-items-center">
+                <i class="pi pi-download mr-2"></i>
+                <span class="vertical-align-middle" i18n>Import users</span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+          <app-upload-users></app-upload-users>
+        </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+
+  <p-accordion class="w-full">
+    <p-accordionTab>
+        <ng-template pTemplate="header">
+            <div class="flex align-items-center">
+                <i class="pi pi-user-plus mr-2"></i>
+                <span class="vertical-align-middle" i18n>Create user</span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+          <app-user-create></app-user-create>
+        </ng-template>
+    </p-accordionTab>
+  </p-accordion>
 </div>

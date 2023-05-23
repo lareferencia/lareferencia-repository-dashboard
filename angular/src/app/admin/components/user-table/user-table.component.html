@@ -1,4 +1,4 @@
-<mat-form-field class="col-2">
+<!-- <mat-form-field class="col-2">
   <mat-label i18n>Username</mat-label>
   <input
     type="text"
@@ -6,8 +6,53 @@
     (keydown.enter)="applyFilter()"
     [(ngModel)]="usernameFilter"
   />
-</mat-form-field>
+</mat-form-field> -->
 
+<div class="table-container
+  animate__animated animate__fadeInRight animate__faster">
+    <div class="table-content-container">
+      <div class="mb-3">
+        <input
+          pInputText
+          placeholder="Username"
+          type="text"
+          (keydown.enter)="applyFilter()"
+          [(ngModel)]="usernameFilter"/>
+      </div>
+      <p-table 
+      [value]="dataSource"
+      [paginator]="true"
+      rows="10"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 25]">
+      <ng-template pTemplate="header" >
+          <tr>
+              <th 
+              pSortableColumn="username">
+                <div class="flex align-items-center" i18n>
+                 Username 
+                  <p-sortIcon field=""></p-sortIcon>
+                </div>
+              </th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+            <td>{{dataSource.username}}</td>
+           
+            <td>
+              <p-button class="mr-3" styleClass="p-button-danger p-button-sm" i18n-label label="Delete" ></p-button>
+              <p-button styleClass="p-button-sm" i18n-label label="Groups"></p-button>
+            </td>
+          </tr>
+      </ng-template>
+  </p-table>
+  <!-- <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter> -->
+  </div>
+</div>
+<!-- 
 <div class="table-container" class="mat-elevation-z2">
   <div class="table-content-container">
     <table mat-table [dataSource]="dataSource" matSort>
@@ -56,10 +101,10 @@
     >
     </mat-paginator>
   </div>
-  <div class="mr-2">
+  <div class="mr-2"> -->
     <!-- <app-table-exporter
       [data]="csvData"
       [header]="headerData"
     ></app-table-exporter> -->
-  </div>
-</div>
+  <!-- </div>
+</div> -->

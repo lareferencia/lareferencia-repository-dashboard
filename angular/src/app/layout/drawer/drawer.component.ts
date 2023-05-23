@@ -15,6 +15,7 @@ export class DrawerComponent implements OnInit {
   public harvestingConentId: number;
   public isMobileMenu = true;
   public isMenuOpen = false;
+  public isAdmin = false;
 
   constructor( 
     private menuService: MenuService,
@@ -23,6 +24,8 @@ export class DrawerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isAdmin = this.authenticationService.isAdmUser()
+    console.log(this.isAdmin)
     
     this.menuService.activeRepo
       .subscribe( ({acronym}) => {

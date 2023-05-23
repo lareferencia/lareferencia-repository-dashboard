@@ -1,15 +1,26 @@
-table {
-  width: 100%;
+:host ::ng-deep .p-datatable .p-datatable-tbody>tr>td,
+:host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
+  border: none;
+  font-family: 'Poppins', sans-serif;
 }
-
-th {
+:host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
   color: #5c6873;
-  background-color: #e4e7ea;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+}
+:host ::ng-deep .p-datatable .p-datatable-tbody>tr>td {
+  font-size: 0.8rem;
+}
+:host ::ng-deep .p-element .p-sorteable-column {
+  display: flex;
+}
+:host ::ng-deep .pi .p-eye {
+  color: white;
+}
+:host ::ng-deep .p-button {
+  font-family: 'Poppins';
 }
 
 .table-container {
-  padding: 30px 30px 0px 30px;
   position: relative;
   overflow: auto;
 }
@@ -17,17 +28,8 @@ th {
 .table-content-container {
   position: relative;
   min-height: 200px;
-}
-
-.loading-shade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 56px;
-  right: 0;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 16px;
+  overflow: auto;
 }

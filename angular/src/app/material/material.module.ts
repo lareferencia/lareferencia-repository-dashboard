@@ -24,6 +24,8 @@ import { TagModule } from 'primeng/tag';
 import { TooltipModule } from 'primeng/tooltip';
 import { CalendarModule } from 'primeng/calendar';
 import { MenuModule } from 'primeng/menu';
+import { KeyFilterModule } from 'primeng/keyfilter';
+
 
 
 
@@ -56,7 +58,8 @@ import { MenuModule } from 'primeng/menu';
     TagModule,
     TooltipModule,
     CalendarModule,
-    MenuModule
+    MenuModule,
+    KeyFilterModule
     ],
 })
 export class MaterialModule { }

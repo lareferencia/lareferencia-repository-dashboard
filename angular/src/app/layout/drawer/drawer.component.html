@@ -10,6 +10,11 @@
               <img class="nav-list-img" src="../../../../assets/icons/home.svg" alt="">
                 <span i18n class="nav-list-text">Home</span>
             </a>
+            <a class="nav-list-a"  routerLink="/admin/accounts" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}"
+              *ngIf="isAdmin">
+              <img class="nav-list-img" src="../../../../assets/icons/admin.svg" alt="">
+              <span i18n class="nav-list-text">Admin</span>
+            </a>
             <a class="nav-list-a" routerLink="/{{activeRepository}}/harvesting" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="../../../../assets/icons/chart.svg" alt="">
               <span i18n class="nav-list-text">Harvesting</span>
@@ -18,6 +23,9 @@
               <img class="nav-list-img" src="../../../../assets/icons/validation.svg" alt="">
               <span i18n class="nav-list-text">Validations</span>
             </a>
+            
+
+
             <a class="nav-list-a nav-list-a-user"  routerLink="/user/profile" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="../../../../assets/icons/user.svg" alt="">
               <span i18n class="nav-list-text">Account</span>

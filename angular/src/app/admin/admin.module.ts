@@ -28,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
     declarations: [
@@ -62,7 +63,8 @@ import { FormsModule } from '@angular/forms';
       MatDialogModule,
       MatInputModule,
       MatSelectModule,
-      MatIconModule
+      MatIconModule,
+      MaterialModule
     ],
     exports:[
       AccountComponent

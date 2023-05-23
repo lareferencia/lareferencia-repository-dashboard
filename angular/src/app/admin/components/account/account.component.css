@@ -1,3 +1,7 @@
 .content {
-  margin: 0px 15px 0px 15px;
+  margin: 1rem;
+  background-color: white;
+  border-radius: 6px;
+  padding: 1.5rem;
 }
+

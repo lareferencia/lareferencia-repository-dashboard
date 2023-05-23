@@ -7,8 +7,8 @@ import { Component, ViewChild } from '@angular/core';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent {
-  @ViewChild(UserTableComponent) userTableChild: UserTableComponent;
-  openUserGroup() {
-    this.userTableChild.loadRecords();
-  }
+  // @ViewChild(UserTableComponent) userTableChild: UserTableComponent;
+  // openUserGroup() {
+  //   this.userTableChild.loadRecords();
+  // }
 }

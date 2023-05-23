@@ -1,13 +1,24 @@
-.users {
-  padding: 10px 7px 5px 2px;
+
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+  background-color: white;
+  border: 0.5px solid rgba(128, 128, 128, 0.333) ;
+  color: var(--color-primary);
+  border-radius: 6px;
 }
 
-.headers-align .mat-expansion-panel-header-title,
-.headers-align .mat-expansion-panel-header-description {
-  flex-basis: 0;
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link:hover {
+  text-decoration: none;
 }
 
-.headers-align .mat-expansion-panel-header-description {
-  justify-content: space-between;
-  align-items: center;
+:host ::ng-deep .p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link{
+  color: var(--color-primary);
+
+}
+
+:host ::ng-deep .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus{
+  box-shadow: none;
+}
+
+:host ::ng-deep .p-accordion-header-link:focus{
+  z-index: 0;
 }
