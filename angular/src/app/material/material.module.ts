@@ -25,6 +25,8 @@ import { TooltipModule } from 'primeng/tooltip';
 import { CalendarModule } from 'primeng/calendar';
 import { MenuModule } from 'primeng/menu';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+
 
 
 
@@ -59,7 +61,8 @@ import { KeyFilterModule } from 'primeng/keyfilter';
     TooltipModule,
     CalendarModule,
     MenuModule,
-    KeyFilterModule
+    KeyFilterModule,
+    ConfirmPopupModule
     ],
 })
 export class MaterialModule { }
