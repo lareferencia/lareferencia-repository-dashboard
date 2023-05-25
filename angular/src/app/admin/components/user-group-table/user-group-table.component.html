@@ -1,42 +1,58 @@
-<mat-form-field class="col-6">
-  <mat-label i18n>Name</mat-label>
-  <input type="text" matInput (keydown.enter)="applyFilter()" [(ngModel)]="nameFilter" />
-</mat-form-field>
+<p-progressSpinner 
+*ngIf="isLoadingData"
+styleClass="w-4rem h-4rem" strokeWidth="8" animationDuration=".5s">
+</p-progressSpinner>
 
-<div class="table-container" class="mat-elevation-z2">
-  <div class="table-content-container">
-    <table mat-table [dataSource]="dataSource" matSort>
+<div
+  *ngIf="!isLoadingData" 
+  class="table-container
+  animate__animated animate__fadeIn animate__faster">
+    <div class="table-content-container">
+      <div class="mb-3">
+        <input pInputText type="text" 
+        (input)="userTable.filterGlobal($event.target.value, 'contains')" 
+        placeholder="Search" 
+        />
+      </div>
+    <p-table
+      #userTable 
+      [value]="dataSource"
+      [paginator]="true"
+      rows="5"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 25]"
+      [globalFilterFields]="['name']">
 
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header #name i18n>Name</th>
-        <td mat-cell *matCellDef="let group">{{group.name}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="button-action">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let group">
-          <button mat-raised-button color="warn" [ngClass]="[
-            'btn', 
-            action == userGroupAction.Leave ? 'btn-danger' : 'btn-primary'
-          ]" (click)="handlerClick(group)">
-            <span *ngIf="action == userGroupAction.Leave; else join" i18n>Leave</span>
-            <ng-template #join i18n>Join</ng-template>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" i18n colspan="4">Nothing to show</td>
-      </tr>
-    </table>
-
-    <mat-paginator 
-      #paginator 
-      [pageIndex]="0"
-      [pageSize]="5" 
-      [pageSizeOptions]="[5, 10, 25, 50, 100, 250]">
-    </mat-paginator>
+      <ng-template pTemplate="header" >
+          <tr>
+              <th 
+              pSortableColumn="name">
+                <div class="flex align-items-center" i18n>
+                 Name 
+                  <p-sortIcon field="name"></p-sortIcon>
+                </div>
+              </th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+            <td><b>{{dataSource.name}}</b></td>
+            <td>
+              <p-button
+                (click)="handlerClick(dataSource)" 
+                [loading]="loading"
+                [icon]="action === userGroupAction.Leave ? 'pi pi-trash' : 'pi pi-plus-circle'"
+                class="mr-3" 
+                [styleClass]="action === userGroupAction.Leave ? leaveStyleClass: joinStyleClass" 
+                i18n-label 
+                [label]="action === userGroupAction.Leave ? 'Leave' : 'Join'" 
+                >
+              </p-button>
+            </td>
+          </tr>
+      </ng-template>
+  </p-table>
   </div>
 </div>

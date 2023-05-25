@@ -6,8 +6,6 @@ import { ConfirmationService } from 'primeng/api';
 
 
 import { User } from 'src/app/shared/models/user.model';
-import { UserGroupComponent } from '../user-group/user-group.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-table',
@@ -21,11 +19,13 @@ export class UserTableComponent implements OnInit {
   public csvData: any[];
   public headerData: any[];
   public users: User[];
+  public dialogData: any;
+  public visible:boolean;
+
 
   constructor(
     private manageUsersService: ManageUsersService,
     private confirmationService: ConfirmationService,
-    private dialog: MatDialog 
   ) {}
 
   ngOnInit() {
@@ -56,9 +56,13 @@ export class UserTableComponent implements OnInit {
         });
     }
 
+  onDialogHide(){
+    this.dialogData = null;
+  }
+
   groupClick(user: User): void {
-    this.dialog.open(UserGroupComponent, {
-      data: { username: user.username },
-    });
+
+    this.visible = true;
+    this.dialogData = { username: user.username }
   }
 }
