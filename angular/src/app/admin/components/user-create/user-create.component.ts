@@ -1,52 +1,78 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+
 import { ManageUsersService } from 'src/app/core/services/manage-users.service';
+
 import { UserInfo } from 'src/app/shared/models/user-info.model';
+
+import { MessageService } from 'primeng/api';
+
+
+interface PositionTypes{
+  name: string
+}
 
 @Component({
   selector: 'app-user-create',
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.css'],
+  providers: [MessageService]
 })
-export class UserCreateComponent {
-  @ViewChild('snackBarTemplate') snackBarTemplate: TemplateRef<any>;
+export class UserCreateComponent implements OnInit  {
   @ViewChild('userForm', {static: false}) userForm: NgForm;
-  user = {} as UserInfo;
-  succesMessage = true;
-  config: MatSnackBarConfig = {
-    duration: 4000,
-    horizontalPosition: 'center',
-    verticalPosition: 'top',
-    panelClass: ['msg-error'],
-  };
+
+  public loading = false;
+  public user = {} as UserInfo;
+  public positions: PositionTypes[];
+
 
   constructor(
-    private snackBar: MatSnackBar,
-    private manageUsersService: ManageUsersService
+    private manageUsersService: ManageUsersService,
+    private messageService: MessageService
   ) {}
 
+  ngOnInit(): void {
+    this.positions = [
+      { name: 'Node Administrator'},
+      { name: 'Assistant/Auxiliary'},
+      { name: 'Librarian'},
+      { name: 'Repository Manager'},
+      { name: 'Technical Responsible'},
+    ]
+  }
+
   onClickSave() {
-    if (!this.userForm.invalid) {
+    this.loading = true;
+
+    if (!this.userForm.invalid 
+        && this.user.username.length > 0 
+        && this.user.email.includes('@')
+        && this.user.password.length > 0) {
+
       this.manageUsersService.createUser(this.user).subscribe(
         (result) => this.resultHandler(result),
         () => this.resultHandler(false)
       );
     } else {
-      this.resultHandler(false);
+      this.loading = false;
     }
   }
 
   private resultHandler(success: boolean) {
-    if (success) this.userForm.resetForm();
-    this.succesMessage = success;
-    this.config = this.succesMessage
-      ? { ...this.config, panelClass: ['msg-success'] }
-      : { ...this.config, panelClass: ['msg-error'] };
-    this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
-  }
-
-  dismissSnackbar(): void {
-    this.snackBar.dismiss();
+    this.loading = false
+    if (success) {
+      this.userForm.resetForm();
+      this.messageService.add({
+        severity:'success',
+        summary: 'Success',
+        detail: 'User created successfully'
+      })
+    } else{
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'User creation failed'
+      })
+    }
   }
 }

@@ -1,71 +1,64 @@
-import { DeleteType } from 'src/app/shared/enums/delete-type';
-import { UserGroupComponent } from './../user-group/user-group.component';
-import { DeleteConfirmationComponent } from './../delete-confirmation/delete-confirmation.component';
-import { ManageUsersService } from './../../../core/services/manage-users.service';
 import {Component, OnInit } from '@angular/core';
+
+import { ManageUsersService } from './../../../core/services/manage-users.service';
+
+import { ConfirmationService } from 'primeng/api';
+
+
 import { User } from 'src/app/shared/models/user.model';
-import { UserTableDataSource } from './user-table-datasource';
+import { UserGroupComponent } from '../user-group/user-group.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-table',
   templateUrl: './user-table.component.html',
   styleUrls: ['./user-table.component.css'],
+  providers: [ConfirmationService]
 })
 export class UserTableComponent implements OnInit {
   
-  dataSource: User[];
-  displayedColumns = ['username', 'button-delete'];
-  csvData: any[];
-  headerData: any[];
-  usernameFilter: string;
-  users: User[];
+  public dataSource: User[];
+  public csvData: any[];
+  public headerData: any[];
+  public users: User[];
 
   constructor(
     private manageUsersService: ManageUsersService,
+    private confirmationService: ConfirmationService,
+    private dialog: MatDialog 
   ) {}
 
   ngOnInit() {
+    this.loadUsers();
+  }
+
+  loadUsers(){
     this.manageUsersService.getRegularUserList().subscribe((result) => {
       this.dataSource = result
+      this.csvData = result.map((x) => ({ username: x.username }));
+      this.headerData = ['Username'];
+    });
+
+  }
+
+  onDeleteUser(event: Event, user: User) {
+        this.confirmationService.confirm({
+            target: event.target,
+            message: `You going to delete ${user.username} user, are you sure?`,
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
+              this.manageUsersService.deleteUser(user.username).subscribe(() =>{
+                this.loadUsers();
+              })
+            },
+            reject: () => {
+            }
+        });
+    }
+
+  groupClick(user: User): void {
+    this.dialog.open(UserGroupComponent, {
+      data: { username: user.username },
     });
   }
-  applyFilter(){
-    
-  }
-
-
-  // private loadData(users: User[]) {
-
-  //   this.csvData = users.map((x) => ({ username: x.username }));
-
-  // }
-
-  // deleteClick(user: User): void {
-  //   const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
-  //     data: {type: DeleteType.User, description: user.username}
-  //   });
-
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result)
-  //       this.manageUsersService.deleteUser(user.username).subscribe(() => {
-  //         this.loadRecords();
-  //       });
-  //   });
-  // }
-
-  // groupClick(user: User): void {
-  //   this.dialog.open(UserGroupComponent, {
-  //     data: { username: user.username },
-  //   });
-  // }
-
-  // applyFilter() {
-  //   let userFiltered = this.users;
-  //   if (!!this.usernameFilter?.trim()) {
-  //     userFiltered = this.users.filter((x) =>
-  //       x.username.toUpperCase().includes(this.usernameFilter.toUpperCase())
-  //     );
-  //   }
-  //   this.loadData(userFiltered);
-  // }
 }

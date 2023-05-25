@@ -1,7 +1,4 @@
-.content {
-  margin: 1rem;
-  background-color: white;
-  border-radius: 6px;
-  padding: 1.5rem;
+.border-10 {
+  border-radius: 10px;
 }
 

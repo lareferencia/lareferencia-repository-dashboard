@@ -15,7 +15,6 @@ import { UserGroupComponent } from './components/user-group/user-group.component
 import { UserGroupTableComponent } from './components/user-group-table/user-group-table.component';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { GroupCreateComponent } from './components/group-create/group-create.component';
-import { SharedModule } from 'primeng/api';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -29,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [

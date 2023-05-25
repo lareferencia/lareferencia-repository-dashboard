@@ -1,31 +1,24 @@
-<!-- <mat-form-field class="col-2">
-  <mat-label i18n>Username</mat-label>
-  <input
-    type="text"
-    matInput
-    (keydown.enter)="applyFilter()"
-    [(ngModel)]="usernameFilter"
-  />
-</mat-form-field> -->
 
 <div class="table-container
-  animate__animated animate__fadeInRight animate__faster">
+  animate__animated animate__fadeIn animate__faster">
     <div class="table-content-container">
       <div class="mb-3">
-        <input
-          pInputText
-          placeholder="Username"
-          type="text"
-          (keydown.enter)="applyFilter()"
-          [(ngModel)]="usernameFilter"/>
+        <input pInputText type="text" 
+        (input)="userTable.filterGlobal($event.target.value, 'contains')" 
+        placeholder="Search username" 
+        />
       </div>
-      <p-table 
+    <p-table
+      #userTable 
       [value]="dataSource"
       [paginator]="true"
       rows="10"
       [showCurrentPageReport]="true"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [rowsPerPageOptions]="[5, 10, 25]">
+      [rowsPerPageOptions]="[5, 10, 25]"
+      loading
+      [globalFilterFields]="['username']">
+
       <ng-template pTemplate="header" >
           <tr>
               <th 
@@ -40,71 +33,26 @@
       </ng-template>
       <ng-template pTemplate="body" let-dataSource>
           <tr>
-            <td>{{dataSource.username}}</td>
-           
+            <td><b>{{dataSource.username}}</b></td>
             <td>
-              <p-button class="mr-3" styleClass="p-button-danger p-button-sm" i18n-label label="Delete" ></p-button>
-              <p-button styleClass="p-button-sm" i18n-label label="Groups"></p-button>
+              <p-confirmPopup></p-confirmPopup>
+              <p-button
+                (click)="onDeleteUser($event, dataSource)" icon="pi pi-trash"
+                class="mr-3" 
+                styleClass="p-button-danger p-button-sm" 
+                i18n-label label="Delete" 
+                >
+              </p-button>
+              <p-button
+              (click)="groupClick(dataSource)"
+                styleClass="p-button-sm" 
+                i18n-label 
+                label="Groups"
+              ></p-button>
             </td>
           </tr>
       </ng-template>
   </p-table>
-  <!-- <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter> -->
+  <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
   </div>
 </div>
-<!-- 
-<div class="table-container" class="mat-elevation-z2">
-  <div class="table-content-container">
-    <table mat-table [dataSource]="dataSource" matSort>
-
-      <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header #username>Username</th>
-        <td mat-cell *matCellDef="let user">
-          {{ user.username }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="button-delete">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let user">
-          <button
-            mat-raised-button 
-            color="warn"
-            (click)="deleteClick(user)"
-            i18n
-          >
-            Delete
-          </button>
-          
-          <button style="margin-left: 15px;"
-            type="button"
-            class="btn btn-primary"
-            (click)="groupClick(user)"
-            i18n
-          >
-            Groups
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" i18n colspan="4">Nothing to show</td>
-      </tr>
-    </table>
-    <mat-paginator
-      #paginator
-      [pageIndex]="0"
-      [pageSize]="5"
-      [pageSizeOptions]="[5, 10, 25, 50, 100, 250]"
-    >
-    </mat-paginator>
-  </div>
-  <div class="mr-2"> -->
-    <!-- <app-table-exporter
-      [data]="csvData"
-      [header]="headerData"
-    ></app-table-exporter> -->
-  <!-- </div>
-</div> -->

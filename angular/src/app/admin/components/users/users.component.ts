@@ -1,5 +1,6 @@
+import { Component } from '@angular/core';
+
 import { UserTableComponent } from './../user-table/user-table.component';
-import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-users',
