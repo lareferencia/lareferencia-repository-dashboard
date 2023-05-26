@@ -1,11 +1,11 @@
 <div class="card-container"
 [ngClass]="colorCard === 'blue' ? 'blue' : colorCard === 'red' ? 'red' : 'yellow'">
   <div style="display: grid">
-    <span class="text-xl font-bold mb-2"> 
+    <span class="text-xl font-bold mb-2" i18n> 
         {{name}} <i class="pi pi-question-circle text-xs" 
-        pTooltip="{{toolTipDescription}}"></i>
+       i18n-pTooltip pTooltip="{{toolTipDescription}}"></i>
     </span>
-    <span class="text-lg font-bold mb-2">
+    <span class="text-lg font-bold mb-2" i18n>
       {mandatory, select, true {Mandatory rule: Yes} false {Mandatory rule: No}}
     </span>
     <ng-container [ngSwitch]="quantifier">
@@ -13,30 +13,30 @@
         *ngSwitchCase="'ZERO_ONLY'" i18n>
         Zero only
         <i class="pi pi-question-circle text-xs" 
-        pTooltip="Number of valid occurrences for a rule to be valid"></i>
+        i18n-pTooltip pTooltip="Number of valid occurrences for a rule to be valid"></i>
       </span>
       <span class="card-quantifier" 
         *ngSwitchCase="'ONE_ONLY'" i18n>
         One only
-        <i class="pi pi-question-circle text-xs" 
+        <i class="pi pi-question-circle text-xs" i18n-pTooltip
         pTooltip="Number of valid occurrences for a rule to be valid"></i>
       </span>
       <span class="card-quantifier" 
         *ngSwitchCase="'ZERO_OR_MORE'" i18n>
         Zero or more
-        <i class="pi pi-question-circle text-xs" 
+        <i class="pi pi-question-circle text-xs" i18n-pTooltip
         pTooltip="Number of valid occurrences for a rule to be valid"></i>
       </span>
       <span class="card-quantifier" 
         *ngSwitchCase="'ONE_OR_MORE'" i18n>
         One or more
-        <i class="pi pi-question-circle text-xs" 
+        <i class="pi pi-question-circle text-xs" i18n-pTooltip 
         pTooltip="Number of valid occurrences for a rule to be valid"></i>
       </span>
       <span class="card-quantifier text-xs" 
         *ngSwitchCase="'ALL'" i18n        
       >All
-      <i class="pi pi-question-circle text-xs" 
+      <i class="pi pi-question-circle text-xs" i18n-pToolTip
       pTooltip="Number of valid occurrences for a rule to be valid"></i>
     </span>
     </ng-container>
@@ -46,14 +46,14 @@
     <div *ngFor="let occurrence of record.invalidOccurrencesByRuleID[rule]" 
       class="card-ocurrence-white flex flex-wrap align-items-center mb-2">
       <i class="pi pi-times-circle mr-2"></i>
-      <span class="occurrence-text text-xs font-medium">{{occurrence}}</span>
+      <span class="occurrence-text text-xs font-medium" i18n>{{occurrence}}</span>
     </div>
 
     <div *ngFor="let occurrence of record.validOccurrencesByRuleID[rule]" 
       class="flex flex-wrap align-items-center mb-2">
       
       <i class="pi pi-check-circle mr-2"></i>
-      <span class="occurrence-text text-xs font-medium">{{occurrence}}</span>
+      <span class="occurrence-text text-xs font-medium" i18n>{{occurrence}}</span>
     </div>
   </div>
 

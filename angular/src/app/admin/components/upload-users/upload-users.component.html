@@ -1,20 +1,14 @@
 <div class="file-selected"><input type="file" style="display: none" #fileInput accept="csv/*"
     (change)="onChangeFileInput()" />
-  <button mat-raised-button class="file-select-button btn-primary" (click)="onClickFileInputButton()">
-    <mat-icon>attach_file</mat-icon>
-    <span i18n>Select file</span>
-  </button>
+  <p-button styleClass="p-button-sm" (click)="onClickFileInputButton()" icon="pi pi-upload"
+    i18n-label label="Select file">
+  </p-button>
   <p class="file-name" *ngIf="!file; else fileName" i18n>No file selected</p>
   <ng-template #fileName>
     <p class="file-name">{{ file?.name }}</p>
-    <mat-icon (click)="onClickClearFile()">delete_outline</mat-icon>
+    <i class="pi pi-trash cursor-pointer" (click)="onClickClearFile()"></i>
   </ng-template>
+  
 </div>
+<p-toast></p-toast>
 <app-process-list [processes]="process"></app-process-list>
-
-<ng-template #snackBarTemplate>
-  <div class="message">
-    <span i18n>Invalid file format</span>
-    <mat-icon (click)="dismissSnackbar()">close</mat-icon>
-  </div>
-</ng-template>

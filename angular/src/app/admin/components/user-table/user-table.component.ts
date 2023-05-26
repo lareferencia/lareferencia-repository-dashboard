@@ -21,6 +21,7 @@ export class UserTableComponent implements OnInit {
   public users: User[];
   public dialogData: any;
   public visible:boolean;
+  public isLoadingData = true;
 
 
   constructor(
@@ -33,7 +34,9 @@ export class UserTableComponent implements OnInit {
   }
 
   loadUsers(){
+    this.isLoadingData = true;
     this.manageUsersService.getRegularUserList().subscribe((result) => {
+      this.isLoadingData = false;
       this.dataSource = result
       this.csvData = result.map((x) => ({ username: x.username }));
       this.headerData = ['Username'];

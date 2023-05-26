@@ -1,11 +1,18 @@
+<div class="flex justify-content-center">
+  <p-progressSpinner 
+    *ngIf="isLoadingData"
+    styleClass="w-4rem h-4rem" strokeWidth="8" animationDuration=".5s">
+  </p-progressSpinner>
+</div>
 
-<div class="table-container
+<div *ngIf="!isLoadingData" class="table-container
   animate__animated animate__fadeIn animate__faster">
     <div class="table-content-container">
       <div class="mb-3">
         <input pInputText type="text" 
         (input)="userTable.filterGlobal($event.target.value, 'contains')" 
         placeholder="Search username" 
+        i18n-placeholder
         />
       </div>
     <p-table
@@ -15,6 +22,7 @@
       rows="10"
       [showCurrentPageReport]="true"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      i18n-currentPageReportTemplate
       [rowsPerPageOptions]="[5, 10, 25]"
       loading
       [globalFilterFields]="['username']">
@@ -29,6 +37,15 @@
                 </div>
               </th>
               <th></th>
+              <th>
+                <p-button
+                (click)="loadUsers()" 
+                  icon="pi pi-sync" 
+                  styleClass="p-button-rounded 
+                  p-button-secondary 
+                  p-button-text">
+                </p-button>
+              </th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-dataSource>

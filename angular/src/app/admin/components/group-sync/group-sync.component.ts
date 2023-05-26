@@ -1,10 +1,14 @@
-import { ProcessListComponent } from './../process-list/process-list.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { ManageGroupsService } from './../../../core/services/manage-groups.service';
+import { HarvestingService } from './../../../core/services/harvesting.service';
+
+import { ProcessStatus } from 'src/app/shared/enums/process-status';
+
+import { ProcessListComponent } from './../process-list/process-list.component';
+
 import { GroupInfo } from 'src/app/shared/models/group-info.model';
 import { ProcessInfo } from '../../../shared/models/process-info.model';
-import { HarvestingService } from './../../../core/services/harvesting.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ProcessStatus } from 'src/app/shared/enums/process-status';
 
 @Component({
   selector: 'app-group-sync',

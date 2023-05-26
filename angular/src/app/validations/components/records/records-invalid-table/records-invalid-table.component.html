@@ -14,6 +14,7 @@
       [rows]="pageSize"
       [totalRecords]="totalRecords"
       [showCurrentPageReport]="true"
+      i18n-currentPageReportTemplate
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [rowsPerPageOptions]="[10, 25, 50]"
       [lazy]="true"
@@ -38,6 +39,7 @@
               <p-button
                 (onClick)="detailClick(dataSource)"
                 styleClass="p-button-primary p-button-sm"
+                i18n-label
                 label="Details"
                 ></p-button>
             </td>
@@ -81,7 +83,7 @@
     </div>
     <div class="col-8">
       <h5 class="text-center font-normal" i18n>Result of the evaluation of rules for:</h5>
-      <b><h5 class="text-center font-bold">{{dialogTitle}}</h5></b>
+      <b><h5 class="text-center font-bold" i18n>{{dialogTitle}}</h5></b>
     </div>
     <div class="col-2 flex justify-content-end">
       <p-button 

@@ -18,7 +18,7 @@
   <div class="col-12 md:col-4 p-3 
     animate__animated animate__fadeInDown animate__faster">
         <app-validation-card
-        title="Last validation"
+        title="Total records in the last validation"
         validationTitle="Records"
         [validationData]="validation.size"
         icon="pi pi-book"
@@ -32,7 +32,7 @@
   <div class="col-12 md:col-4 p-3
     animate__animated animate__fadeInDown animate__faster">
     <app-validation-card
-      title="Last validation"
+      title="Total valid records"
       validationTitle="Valid"
       [validationData]="validation.validSize"
       icon="pi pi-check-circle"
@@ -46,7 +46,7 @@
   <div class="col-12 md:col-4 p-3
     animate__animated animate__fadeInDown animate__faster">
     <app-validation-card
-      title="Last validation"
+      title="Total invalid records"
       validationTitle="Invalid"
       [validationData]="validation.size - validation.validSize"
       icon="pi pi-times-circle"

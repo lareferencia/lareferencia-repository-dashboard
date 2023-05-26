@@ -17,8 +17,10 @@
       [paginator]="true"
       [rows]="pageSize"
       [totalRecords]="totalRecords"
+      i18n-totalRecords
       [showCurrentPageReport]="true"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      i18n-currentPageReportTemplate
       [rowsPerPageOptions]="[10, 25, 50]"
       [lazy]="true"
       [loading]="isLoading"

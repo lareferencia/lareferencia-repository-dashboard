@@ -4,11 +4,16 @@
     <div class="table-content-container">
       <div class="mb-3">
         <p-dropdown
+          i18n-placeholder
           placeholder="Show rules"
           [options]="mandatoryOptions" 
           [(ngModel)]="isMandatory" 
           optionLabel="name" 
           (ngModelChange)="loadRecords()">
+          <ng-template let-option>
+            <span i18n>{{ option.name }}</span>
+          </ng-template>
+
         </p-dropdown>
       </div>
       <p-table 
@@ -16,14 +21,15 @@
       [paginator]="true"
       rows="10"
       [showCurrentPageReport]="true"
+      i18n-currentPageReportTemplate
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [rowsPerPageOptions]="[10, 25, 50]">
       <ng-template pTemplate="header" >
           <tr>
               <th *ngFor="let item of displayedColumns" 
               pSortableColumn="{{item.value}}">
-                <div class="flex align-items-center" i18n>
-                  {{item.name}} 
+                <div class="flex align-items-center">
+                  <span i18n>{{item.name}}</span> 
                   <p-sortIcon field="{{item}}"></p-sortIcon>
                 </div>
               </th>
@@ -34,8 +40,8 @@
       <ng-template pTemplate="body" let-dataSource>
           <tr>
             <td>{{dataSource.ruleID}}</td>
-            <td i18n>{{dataSource.name}}</td>
-            <td i18n>{{dataSource.description}}</td>
+            <td i18n >{{dataSource.name}}</td>
+            <td i18n >{{dataSource.description}}</td>
             <td *ngIf="dataSource.mandatory" i18n><b>Yes</b></td>
             <td *ngIf="!dataSource.mandatory" i18n><b>No</b></td>
             <td>
@@ -55,6 +61,7 @@
               <p-button *ngIf="dataSource.conformity == 100"
                 disabled="true"
                 styleClass="p-button-secondary p-button-sm"
+                i18n-label
                 label="100%"
                 ></p-button>
                 <a
@@ -64,6 +71,7 @@
                   }}/invalid_rule/{{ dataSource.ruleID }}">
                   <p-button *ngIf="dataSource.conformity < 100"
                   styleClass="p-button-danger p-button-sm"
+                  i18n-label
                   label="Invalids"
                   ></p-button>
                 </a>
@@ -79,6 +87,7 @@
                 (onClick)="detailClick(dataSource)" 
                 *ngIf="dataSource.conformity < 100 || admUser"
                 styleClass="p-button-primary p-button-sm"
+                i18n-label
                 label="Details"
                 ></p-button>
             </td>

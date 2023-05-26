@@ -1,52 +1,62 @@
-import { GroupInfo } from 'src/app/shared/models/group-info.model';
-import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { ManageGroupsService } from 'src/app/core/services/manage-groups.service';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+
+import { ManageGroupsService } from 'src/app/core/services/manage-groups.service';
+
+import { GroupInfo } from 'src/app/shared/models/group-info.model';
+
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-group-create',
   templateUrl: './group-create.component.html',
   styleUrls: ['./group-create.component.css'],
+  providers: [MessageService]
 })
 export class GroupCreateComponent {
-  @ViewChild('snackBarTemplate') snackBarTemplate: TemplateRef<any>;
   @ViewChild('groupForm', { static: false }) groupForm: NgForm;
-  group = {} as GroupInfo;
-  succesMessage = true;
-  config: MatSnackBarConfig = {
-    duration: 4000,
-    horizontalPosition: 'center',
-    verticalPosition: 'top',
-    panelClass: ['msg-error'],
-  };
+  public group = {} as GroupInfo;
+  public succesMessage = true;
+  public loading = false;
+
 
   constructor(
     private manageGroupsService: ManageGroupsService,
-    private snackBar: MatSnackBar
+    private messageService: MessageService
   ) {}
 
   onClickSave() {
-    if (!this.groupForm.invalid) {
+    this.loading = true;
+
+    if (!this.groupForm.invalid 
+        && this.group.name.length > 0) {
+
       this.manageGroupsService.createGroup(this.group).subscribe(
         (result) => this.resultHandler(result),
         () => this.resultHandler(false)
       );
     } else {
-      this.resultHandler(false);
+      this.loading = false;
     }
   }
 
   private resultHandler(success: boolean) {
-    if (success) this.groupForm.resetForm();
-    this.succesMessage = success;
-    this.config = this.succesMessage
-      ? { ...this.config, panelClass: ['msg-success'] }
-      : { ...this.config, panelClass: ['msg-error'] };
-    this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
+    this.loading = false
+    if (success) {
+      this.groupForm.resetForm();
+      this.messageService.add({
+        severity:'success',
+        summary: 'Success',
+        detail: 'Group created successfully'
+      })
+    } else{
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Error creating group'
+      })
+    }
   }
 
-  dismissSnackbar(): void {
-    this.snackBar.dismiss();
-  }
+
 }

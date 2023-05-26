@@ -2,703 +2,372 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="1ecb559632a836fcf1adf987c19d7bc843f3a36b" datatype="html">
-        <source>Manage Accounts</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/account/account.component.html</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="4d13a9cd5ed3dcee0eab22cb25198d43886942be" datatype="html">
         <source>Users</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/account/account.component.html</context>
+          <context context-type="sourcefile">src/app/admin/components/account/account.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c22ba03540aa3217da059f45e7eab138b51a96e2" datatype="html">
         <source>Groups</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/account/account.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="sourcefile">src/app/admin/components/account/account.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-table/user-table.component.html</context>
+          <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="6f03fe59bfc487aea35606489f45069532975998" datatype="html">
-        <source>Delete <x id="ICU" equiv-text="{type == deleteType.User, select, true {user} false {group}}"/></source>
+      <trans-unit id="a42e0b6f5e44594137c8b1aab0eac04d8401010f" datatype="html">
+        <source>Group Info</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/delete-confirmation/delete-confirmation.component.html</context>
+          <context context-type="sourcefile">src/app/admin/components/group-create/group-create.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2f955782b419782a826b86433a424c062724d91b" datatype="html">
-        <source>{VAR_SELECT, select, true {user} false {group}}</source>
+      <trans-unit id="a0d161faa5cfa475695e495b6a895fdcd114d6e3" datatype="html">
+        <source>Name *</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/delete-confirmation/delete-confirmation.component.html</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/delete-confirmation/delete-confirmation.component.html</context>
+          <context context-type="sourcefile">src/app/admin/components/group-create/group-create.component.html</context>
           <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6326db6917e973a8b44a20ea257f007b4221e864" datatype="html">
-        <source>Are you sure you want to permanently delete the <x id="ICU" equiv-text="{type == deleteType.User, select, true {user} false {group}}"/> <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{username}}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/delete-confirmation/delete-confirmation.component.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d7b35c384aecd25a516200d6921836374613dfe7" datatype="html">
-        <source>Cancel</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/delete-confirmation/delete-confirmation.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="826b25211922a1b46436589233cb6f1a163d89b7" datatype="html">
-        <source>Delete</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/delete-confirmation/delete-confirmation.component.html</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="fe601492819fd072c86ca41647f0ba018d3d7532" datatype="html">
-        <source>Group info</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-create/group-create.component.html</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
-        <source>Name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-create/group-create.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-table/group-table.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-table/group-table.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group-table/user-group-table.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group-table/user-group-table.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="05744efa74616ac9d5bbbf9a1a82a351908f7667" datatype="html">
         <source>Longest name</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-create/group-create.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="sourcefile">src/app/admin/components/group-create/group-create.component.html</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="52c9a103b812f258bcddc3d90a6e3f46871d25fe" datatype="html">
         <source>Save</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-create/group-create.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="sourcefile">src/app/admin/components/group-create/group-create.component.html</context>
+          <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">38</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5699f648abd8bd3f17f9030d4875f659a63fbec2" datatype="html">
-        <source>Group successfully created!</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-create/group-create.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8a66901e234c7132d9d9187e80d04fba935965c7" datatype="html">
-        <source>Error creating group!</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-create/group-create.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c042c28e4b743a7aaa943e9f7d8714f78662d54c" datatype="html">
         <source>Sync</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-sync/group-sync.component.html</context>
+          <context context-type="sourcefile">src/app/admin/components/group-sync/group-sync.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9bc4f5da3ebcb6b2c2f10c3801770735f5cd4334" datatype="html">
         <source>Import acronym from existing repositories</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-sync/group-sync.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="sourcefile">src/app/admin/components/group-sync/group-sync.component.html</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7aafd81526e4dbfbfe16413c3e1350f66939ec96" datatype="html">
-        <source> Delete </source>
+      <trans-unit id="6cd852cef77ac67ed96ff3fb59b4e330d99a9432" datatype="html">
+        <source>Search group</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-table/group-table.component.html</context>
-          <context context-type="linenumber">23,25</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-table/user-table.component.html</context>
-          <context context-type="linenumber">30,32</context>
+          <context context-type="sourcefile">src/app/admin/components/group-table/group-table.component.html</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cd3689241d7234eed0ffc67e08a2c93d2e91f712" datatype="html">
-        <source>Nothing to show</source>
+      <trans-unit id="c73e83c39b427a2443cb8836329401f0fe197727" datatype="html">
+        <source>Showing {first} to {last} of {totalRecords} entries</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/group-table/group-table.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="sourcefile">src/app/admin/components/group-table/group-table.component.html</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group-table/user-group-table.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="sourcefile">src/app/admin/components/user-table/user-table.component.html</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-table/user-table.component.html</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">13</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/occurrence/valid-occurence-table/valid-occurence-table.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">18</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">184</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a0905147adf4750edb7caaca2839beee4d4a9520" datatype="html">
-        <source> Groups </source>
+      <trans-unit id="63c96be733bef4cc1b42b5e5fd85f05f6f2f77cb" datatype="html">
+        <source> Name <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;name&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/groups/groups.component.html</context>
-          <context context-type="linenumber">5,7</context>
+          <context context-type="sourcefile">src/app/admin/components/group-table/group-table.component.html</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-group-table/user-group-table.component.html</context>
+          <context context-type="linenumber">31,33</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="d79d15b5581e6245d7028f7efa62255d8f4f61a5" datatype="html">
-        <source> Group list <x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>groups<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/></source>
+      <trans-unit id="826b25211922a1b46436589233cb6f1a163d89b7" datatype="html">
+        <source>Delete</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/groups/groups.component.html</context>
-          <context context-type="linenumber">8,10</context>
+          <context context-type="sourcefile">src/app/admin/components/group-table/group-table.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-table/user-table.component.html</context>
+          <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="05f0ced7672849ee3428ea60d3f538c92daf1518" datatype="html">
-        <source> Import </source>
+      <trans-unit id="381a47845b9a0634e4c8cca10beb2bc9dfac0a3e" datatype="html">
+        <source>Group list</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/groups/groups.component.html</context>
-          <context context-type="linenumber">17,19</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/users/users.component.html</context>
-          <context context-type="linenumber">17,19</context>
+          <context context-type="sourcefile">src/app/admin/components/groups/groups.component.html</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="670eab8f004b5dd6c4d11f2bdcffec3c316fd263" datatype="html">
-        <source> Import groups <x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>upload<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/></source>
+      <trans-unit id="5917d2ea5c48382d70ae2b71dbccddf6a865ff83" datatype="html">
+        <source>Import groups</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/groups/groups.component.html</context>
-          <context context-type="linenumber">20,22</context>
+          <context context-type="sourcefile">src/app/admin/components/groups/groups.component.html</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8bb8434ba5d230d12631469005afd41076b1f508" datatype="html">
-        <source> Create </source>
+      <trans-unit id="7b5c0c9bb11a50dda054496134547ade78c5030d" datatype="html">
+        <source>Create group</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/groups/groups.component.html</context>
-          <context context-type="linenumber">29,31</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/users/users.component.html</context>
-          <context context-type="linenumber">29,31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="78bc7771be8fede4ad1e959de6b98068c17eaa90" datatype="html">
-        <source> Create group <x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>group<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/groups/groups.component.html</context>
-          <context context-type="linenumber">32,34</context>
+          <context context-type="sourcefile">src/app/admin/components/groups/groups.component.html</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
         <source>Loading...</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/process-list/process-list.component.html</context>
+          <context context-type="sourcefile">src/app/admin/components/process-list/process-list.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="716099cc8421df59a2d60d791bcbee5598d70889" datatype="html">
         <source> Success </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/process-list/process-list.component.html</context>
+          <context context-type="sourcefile">src/app/admin/components/process-list/process-list.component.html</context>
           <context context-type="linenumber">10,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8ea6ac2d0dcbf052e6fa6ae2cf882b453b4857f7" datatype="html">
         <source> Error </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/process-list/process-list.component.html</context>
+          <context context-type="sourcefile">src/app/admin/components/process-list/process-list.component.html</context>
           <context context-type="linenumber">13,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9fbe8a9c4b787e9cc6760fd43aae0e430838e698" datatype="html">
         <source>Select file</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/upload-users/upload-users.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="sourcefile">src/app/admin/components/upload-users/upload-users.component.html</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4f6c6525fa323dd97afe70a2cedf2cfc7bdc4f4a" datatype="html">
         <source>No file selected</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/upload-users/upload-users.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="sourcefile">src/app/admin/components/upload-users/upload-users.component.html</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c13e8b7c8804285d4312c1f8c0f543237ee76229" datatype="html">
-        <source>Invalid file format</source>
+      <trans-unit id="e6813c3b5512d6371f91151ca704e636ba1af1c2" datatype="html">
+        <source>User Info</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/upload-users/upload-users.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2e36b0c73a53394a6e6268fa252f8d8e14788ef1" datatype="html">
-        <source>User info</source>
+      <trans-unit id="ee1e7340d053a2b891a8f08f6077ed2730170032" datatype="html">
+        <source>Username *</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="08c74dc9762957593b91f6eb5d65efdfc975bf48" datatype="html">
-        <source>Username</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
+        <source>Name</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-table/user-table.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3190ecd3db8f05ed505d5b010a89e20adcfb77e9" datatype="html">
+        <source>Email *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3a774cb2841935f9d00ddf802d94e102fb7cf41b" datatype="html">
         <source>Institutional phone</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1ba7568bba29f8d8e352f93e67002d0b548eb838" datatype="html">
-        <source>Position</source>
+      <trans-unit id="20d7ce4ae960d4f97e8ffd4dce640541a8236fbf" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{option.name}}"/> </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="a2f14a73f7a6e94479f67423cc51102da8d6f524" datatype="html">
-        <source>None</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="315cb2e132fd917883113bb225ed828fb8c5827a" datatype="html">
-        <source>Node Administrator</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5e99ca64fc6326bb988d980d840226982befe8ca" datatype="html">
-        <source>Assistant/Auxiliary</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1bb84d2c51101f2715e6c449ed72ed444b534622" datatype="html">
-        <source>Librarian</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="40f031445e9949ce7ea36102a4fa6130b69f0b2f" datatype="html">
-        <source>Repository Manager</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1d0472985f524168470acbfa795f78a3723fb935" datatype="html">
-        <source>Technical Responsible</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bb8d38336e3c80713535b9270ce33e9298e7eb5f" datatype="html">
         <source>Affiliation</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
-        <source>Password</source>
+      <trans-unit id="3e0377921db7694ce1439eeec0c617bd676e6632" datatype="html">
+        <source>Password *</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d4030f88eb87773287851a0065d7aa4921ecd799" datatype="html">
-        <source>User successfully created!</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="fbe85d5210c9dbe35cc834f3a7171d88a52aef2d" datatype="html">
-        <source>Error creating user!</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-create/user-create.component.html</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3eed3c0167ac14df9b8fcf72108d32ea25436c5d" datatype="html">
-        <source>Leave</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group-table/user-group-table.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="db5cc0c8d9d80c653f1b78ce2bfb1b41bc84ceeb" datatype="html">
-        <source>Join</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group-table/user-group-table.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="21435a342029a14d5a50bcebda1112a56b8a9b0d" datatype="html">
-        <source>User: <x id="INTERPOLATION" equiv-text="{{username}}"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group/user-group.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="98598bafc544f4bd7d3c0da7707d24c442f13e78" datatype="html">
         <source>Group Membership</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group/user-group.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="sourcefile">src/app/admin/components/user-group/user-group.component.html</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="db9253b806cf5396361f832db18e75b0d01c216f" datatype="html">
         <source>Available Groups</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group/user-group.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="sourcefile">src/app/admin/components/user-group/user-group.component.html</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="d9f474f2ebf232baa9812e9cf57ab45e782c1db8" datatype="html">
-        <source>Success! <x id="ICU" equiv-text="{typeMessage == userGroupAction.Leave, select, true {Removed}
-      false {Added}}"/> group membership</source>
+      <trans-unit id="4f4f3bbdbf791f7e9481784e8fb09a978bbc0399" datatype="html">
+        <source>Search username</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group/user-group.component.html</context>
-          <context context-type="linenumber">24,25</context>
+          <context context-type="sourcefile">src/app/admin/components/user-table/user-table.component.html</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="d7df45c15f2fd649272fd5aee55dd020364b1915" datatype="html">
-        <source>{VAR_SELECT, select, true {Removed} false {Added}}</source>
+      <trans-unit id="8c41194914f332233df0c0e26fd20df9b05c85e3" datatype="html">
+        <source> Username <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group/user-group.component.html</context>
-          <context context-type="linenumber">24,25</context>
+          <context context-type="sourcefile">src/app/admin/components/user-table/user-table.component.html</context>
+          <context context-type="linenumber">34,36</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="636c6a3bef464e4daedfa9341522c7f2cc284c1b" datatype="html">
-        <source>Error managing groups!</source>
+      <trans-unit id="58866bd2a411a7df43a1708322598f772a8f893e" datatype="html">
+        <source>User list</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-group/user-group.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="sourcefile">src/app/admin/components/users/users.component.html</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4d648baef1f09a144e2ddcf6d47165b968d7e548" datatype="html">
-        <source> Groups </source>
+      <trans-unit id="09bba45dda787a5a6bd901ada6ed23fd55d54534" datatype="html">
+        <source>Import users</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/user-table/user-table.component.html</context>
-          <context context-type="linenumber">39,41</context>
+          <context context-type="sourcefile">src/app/admin/components/users/users.component.html</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="49f16e12bc6f21411093d4941b807a5668d817c9" datatype="html">
-        <source> Users </source>
+      <trans-unit id="31cf824034489eb42f6a388d5980b98b8e1de015" datatype="html">
+        <source>Create user</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/users/users.component.html</context>
-          <context context-type="linenumber">5,7</context>
+          <context context-type="sourcefile">src/app/admin/components/users/users.component.html</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="dc62f77009ba5ea688f10bb4f9c9f6eed7626ace" datatype="html">
-        <source> User list <x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>recent_actors<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/></source>
+      <trans-unit id="5ca707824ab93066c7d9b44e1b8bf216725c2c22" datatype="html">
+        <source>Filter</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/users/users.component.html</context>
-          <context context-type="linenumber">8,10</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="416eef4e7b9558f7a5331cf280265c5136aad28a" datatype="html">
-        <source> Import users <x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>upload<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/users/users.component.html</context>
-          <context context-type="linenumber">20,22</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="bd75183ee6839fa85590b7de60a0f06bd9ab2865" datatype="html">
-        <source> Create user <x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>account_circle<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/account/users/users.component.html</context>
-          <context context-type="linenumber">32,34</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="77bbe324b08f6636fb50f673cea05313b86fb692" datatype="html">
-        <source>Start date</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="f60960faa2cd3e0db11e48688774d05dfa9d715b" datatype="html">
-        <source>End date</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="b860ff8f405e0b09b184c03f43c5f30944fd3bdf" datatype="html">
-        <source>Time Unit</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6738ff18c55e85741fad8a2d94c21e605ec9f3d3" datatype="html">
-        <source>Unitary</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2534f13e7f4e270e4799921aacd78f69ef80f254" datatype="html">
-        <source>Daily</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="fbf7ac0008332622d7380335be909c2d408303ac" datatype="html">
-        <source>Weekly</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5c7ea93dc8dff716e9531461e31bdb888e3e7f13" datatype="html">
-        <source>Monthly</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="f14641ebe74d0a343fe715afd9644e2c8e94eb23" datatype="html">
-        <source>Yearly</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="33f0204d19b2be14056c1985721d3fa02d1f0c11" datatype="html">
-        <source> Default </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">41,43</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="896beaa2e76d861fe400ab647a36949db510af77" datatype="html">
-        <source> Filter </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart-filter/harvesting-chart-filter.component.html</context>
-          <context context-type="linenumber">52,54</context>
+          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">102,104</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c3189e87fdef9dc8c8a2415e1e37d816293d0bcd" datatype="html">
         <source>Harvestings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="60d9d780a053755f976826a7456ab28d14b30749" datatype="html">
-        <source> Nothing to show </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
-          <context context-type="linenumber">14,16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="54de2cb5cda95aebe122f702ea36a0774bcbcf71" datatype="html">
-        <source>Valid Records</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0f49ecf5313dae03c6360d3e7e8af476ce40b71b" datatype="html">
-        <source>Invalid Records</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="a6a96b92b2456178b6248be5fb3f6cb556745477" datatype="html">
-        <source>Harvested Records</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="47bddb84808da1b42d7c3436a6acb2b085de8ad8" datatype="html">
-        <source>Harvesting history</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-source/harvesting-source.component.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="52a71879612477658b9db8f0b11f9c7785094489" datatype="html">
-        <source>In the graph below it is possible to view the results of the collections performed. It is possible to generate daily, weekly, monthly and yearly collection charts. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory collection rules of the repository. Invalid records are those that do not comply with the mandatory collection rules of the repository. Finally, the transformed records inform the number of documents that were collected. Normally, this number should equal the number of documents deposited in the repository.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-source/harvesting-source.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="dd6f8b096607b26cdb13f716e175e52030137c49" datatype="html">
-        <source> Harvested records </source>
+      <trans-unit id="59e98f20948c1a9dd0afe3f8bb8925a66c1f6c8c" datatype="html">
+        <source>ID <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;id&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
-          <context context-type="linenumber">22,24</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="085584f2a46db8753373ab3bfdc7e33984882406" datatype="html">
-        <source> Valid records </source>
+      <trans-unit id="8f1a4b0d63911b0e924f7c637082d21614faaa87" datatype="html">
+        <source>Harvested Record <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;harvestedSize&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
-          <context context-type="linenumber">31,33</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">69,71</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="edb12fb50035c16095e3b944ac631f60d7033586" datatype="html">
-        <source> Transformed records </source>
+      <trans-unit id="9682ad54339f66d329f21d6a1484618c818e6244" datatype="html">
+        <source>Valid records<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;validSize&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
-          <context context-type="linenumber">40,42</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="09d9c0d3ea4f1c3221f715cf74e87677443cd9ee" datatype="html">
-        <source> Invalid records </source>
+      <trans-unit id="f29ebd105fe0c0eca2319728ae1a21abaec3363c" datatype="html">
+        <source>Invalid records<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;invalidRecords&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
-          <context context-type="linenumber">55,57</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="203803bce1fff43a040395e465f62d28c8d912b6" datatype="html">
-        <source> Start </source>
+      <trans-unit id="ab6e31443841ab9f53aca76093d71b02c663460b" datatype="html">
+        <source>Transformed<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;transformedSize&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
-          <context context-type="linenumber">64,66</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0690032e3238565de5d343c9729a0821b68f86b5" datatype="html">
-        <source> End </source>
+      <trans-unit id="c35c8b1e2367b5819d68cffe6b8fb484ab93cee4" datatype="html">
+        <source>Start<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;startTime&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
-          <context context-type="linenumber">73,75</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c1ea1599681b0a94bc753088e54d3f3d89a1e307" datatype="html">
-        <source> Not available </source>
+      <trans-unit id="11e4812a6a84b46ffdae67e2524d3c74061f235f" datatype="html">
+        <source>End<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;endTime&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
-          <context context-type="linenumber">89,91</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ef752381b6aea79c14ba2823a1ccbd8ea4898a5f" datatype="html">
-        <source> Validations </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
-          <context context-type="linenumber">98,100</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5bce68ecdf737b50b53696835e431c3bb6286714" datatype="html">
@@ -706,63 +375,49 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/pages/harvesting/harvesting.component.html</context>
-          <context context-type="linenumber">1,3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7a57f7ece1d459c1a36a8304873b8747ac146bd8" datatype="html">
-        <source>Harvesting table</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/pages/harvesting/harvesting.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d3c93428880b56d7172d96b3f1ed191f3728899d" datatype="html">
-        <source>Below is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/harvesting/pages/harvesting/harvesting.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">3,5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="65cc4ab3b4c438e07c89be2b677d08369fb62da2" datatype="html">
         <source>Welcome</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c8f3e21f029fd5ea72baf43919d5cf93ba3d7873" datatype="html">
         <source>Dashboard for repository managers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b0a79cc2444f809076ec04358d0b7d86cb8f4bac" datatype="html">
-        <source>What&apos;s on the platform</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="00baff751c3df4a112785a035b167cdd3f728114" datatype="html">
-        <source> Information about the harvesting of deposit documents </source>
+      <trans-unit id="a0f8502b0782cbe277d8a64f2d57331b88990443" datatype="html">
+        <source>¿What&apos;s on the platform?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="f7c1a134eba5949a8b5f467a0334467ed1d96d49" datatype="html">
-        <source> Information about the harvesting of deposit documents</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c4cdd805c19f46f39d1c96247617def977c48753" datatype="html">
-        <source> Informative statistics and graphics</source>
+      <trans-unit id="a612508fe70bc2e7b8683e594713c41ba3374e10" datatype="html">
+        <source> Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>harvesting<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> of deposit documents. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ed1d1358ae73b3e12a3fcf7606af5228debcbe29" datatype="html">
+        <source> Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>documents validation.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7b15d2cacc3450fc1a582f17df670ea505124fae" datatype="html">
+        <source> Informative <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>statistics and graphics.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="419d940613972cc3fae9c8ea0a4306dbf80616e5" datatype="html">
@@ -772,62 +427,75 @@
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
-        <source>Statistics</source>
+      <trans-unit id="0ab9a92569c3b5e0ddfea44556453dc471a286af" datatype="html">
+        <source>Data harvesting</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">37</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="70be7d58e886182a2345e08f07694ebc80d75018" datatype="html">
         <source>Validations</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4ad881013f10e3622aa567718a1764a06cae44e0" datatype="html">
-        <source>Service in progress</source>
+      <trans-unit id="287fd156f43dc35c66e15b4db6ce4fc8343e85a8" datatype="html">
+        <source>In progress</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">64</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
         <source>Home</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="408cb6073e60c5d966296a3207fc596adca75e01" datatype="html">
+        <source>Admin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="15c1357ea36c119f48bc1d3d03c5384d7ae829b3" datatype="html">
+        <source>Harvesting</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="29881a45dafbe5aa05cd9d0441a4c0c2fb06df92" datatype="html">
         <source>Account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bb694b49d408265c91c62799c2b3a7e3151c824d" datatype="html">
+        <source>Logout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d44d102844d3e7cbce7e0bc66ce7c06051bd63b8" datatype="html">
         <source>Loading dashboard...</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/header/header.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f3da1a991743aabe2088144a26bb48399c936755" datatype="html">
@@ -838,7 +506,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/header/header.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="81b8ebafe5edcc94eee7da4479267da235f02ad1" datatype="html">
@@ -848,90 +516,216 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="047f50bc5b5d17b5bec0196355953e1a5c590ddb" datatype="html">
-        <source>Update</source>
+      <trans-unit id="1ba7568bba29f8d8e352f93e67002d0b548eb838" datatype="html">
+        <source>Position</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3ccd784df9305a33dd95e95d218f25cd2e326e19" datatype="html">
-        <source> Export CSV </source>
+      <trans-unit id="a2f14a73f7a6e94479f67423cc51102da8d6f524" datatype="html">
+        <source>None</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/components/table-exporter/table-exporter.component.html</context>
-          <context context-type="linenumber">2,4</context>
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="075758c31ec0be243625c9ffa86449edf82d5dc9" datatype="html">
-        <source> Conformity </source>
+      <trans-unit id="315cb2e132fd917883113bb225ed828fb8c5827a" datatype="html">
+        <source>Node Administrator</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/conformity/conformity-chart/conformity-chart.component.html</context>
-          <context context-type="linenumber">2,4</context>
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cb44ce5f57af6cd6946c87caaa0fe53dba2f9b3a" datatype="html">
-        <source>Mandatory rules</source>
+      <trans-unit id="5e99ca64fc6326bb988d980d840226982befe8ca" datatype="html">
+        <source>Assistant/Auxiliary</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/conformity/conformity-chart/conformity-chart.component.html</context>
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1bb84d2c51101f2715e6c449ed72ed444b534622" datatype="html">
+        <source>Librarian</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="40f031445e9949ce7ea36102a4fa6130b69f0b2f" datatype="html">
+        <source>Repository Manager</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1d0472985f524168470acbfa795f78a3723fb935" datatype="html">
+        <source>Technical Responsible</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4bd9485eac0de21ec8c1075a670a20107ab21441" datatype="html">
+        <source> Update </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">46,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cc20bedde02a1c4018c7e71454ffeb62c2ec593e" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{title}}"/> - Read more</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/info-card/info-card.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fc1b8d859a6cede9f94512a2d617d7757814303c" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{description}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/info-card/info-card.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6b7f6587593d85c35717cdc34548c2d6ab3675c7" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{name}}"/> <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; 
+       i18n-pTooltip pTooltip=&quot;{{toolTipDescription}}&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5fdd65c14541ffb0d05f388c6861f07e012449ba" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{toolTipDescription}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8dc95436c4bd07578c046a964b7f8be7ca9633cb" datatype="html">
+        <source> <x id="ICU" equiv-text="{mandatory, select, true {Mandatory rule: Yes} false {Mandatory rule: No}}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cb67fcf00d0f0d785d33006a1e90f0dfcbd19fc8" datatype="html">
+        <source>{VAR_SELECT, select, true {Mandatory rule: Yes} false {Mandatory rule: No}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a968df177708f1e559f74844a993287ec01c0f89" datatype="html">
+        <source> Zero only <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; 
+        i18n-pTooltip pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">13,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="15b300d80e6f102fcfdf7fb84f0d72683fdaf900" datatype="html">
+        <source>Number of valid occurrences for a rule to be valid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="07cdc9f5fb621a4246cce2877912d61f4f3c75c9" datatype="html">
-        <source>Not mandatory rules</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/conformity/conformity-chart/conformity-chart.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3b931272ca1bee3fa6a373f4efe75d425499a958" datatype="html">
-        <source> Conformity </source>
+      <trans-unit id="def4eca0112d66423af6c852e61515a52acd67fd" datatype="html">
+        <source> One only <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip
+        pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/conformity/conformity-grouped-chart/conformity-grouped-chart.component.html</context>
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">19,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="47640275cfaa2ad1652d8110eb9ae1565deba502" datatype="html">
+        <source> Zero or more <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip
+        pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">25,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7a774b44d4b92230c7f6039c9dd10c2bb20e19f9" datatype="html">
+        <source> One or more <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip 
+        pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">31,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e99981ab4cd035a74b285ae489af477bd7ba8030" datatype="html">
+        <source>All <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pToolTip
+      pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">38,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6a5137d000165eb069202373b6cbda8d3afdc4a6" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{occurrence}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="41453c3d7e0a1ac2e5c9e73d3f8f5bf9ec23b829" datatype="html">
+        <source>Export CSV</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/table-exporter/table-exporter.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7c133f3ac52210ea2708b23bc8511bf7b097ba6a" datatype="html">
-        <source> Occurrence </source>
+      <trans-unit id="045ed332fbb2645493d6955677247db0d1134c2d" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{title}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/validation-card/validation-card.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9466607694feacd93afef5282c25c5af274b921a" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{validationTitle}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/validation-card/validation-card.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cc3e9b469739cda95528710d8bd391f0e0925c9f" datatype="html">
+        <source> Ocurrence <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;value&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html</context>
-          <context context-type="linenumber">10,12</context>
+          <context context-type="linenumber">18,20</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/occurrence/valid-occurence-table/valid-occurence-table.component.html</context>
-          <context context-type="linenumber">10,12</context>
+          <context context-type="linenumber">17,19</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b11096296180e9b35211bbd77fb02ce4e8aa9a9a" datatype="html">
-        <source> Amount </source>
+      <trans-unit id="6f6025c19d12e6d72b44d6e022690249940afd64" datatype="html">
+        <source> Amount <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;count&quot;&gt;"/><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html</context>
-          <context context-type="linenumber">17,19</context>
+          <context context-type="linenumber">22,24</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/occurrence/valid-occurence-table/valid-occurence-table.component.html</context>
-          <context context-type="linenumber">17,19</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="b87aaa303e283d0bac21236e7fa9ac17e2f9f2c5" datatype="html">
-        <source>Records</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/record-invalid/record-invalid.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">76</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">75</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3ca02ca98af7d64ca38d3024107fbf6dea91c589" datatype="html">
-        <source>Records that contain the invalid &apos;&apos;<x id="INTERPOLATION" equiv-text="{{ getRule(ruleID).name }}"/>&apos;&apos; rule</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/record-invalid/record-invalid.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">21,23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0ee7a8b3788cf17604e0623075762c9d6eb54d05" datatype="html">
@@ -941,15 +735,11 @@
           <context context-type="linenumber">2,4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a87d3fc564c71a81d4560397f196f464dbb129b8" datatype="html">
-        <source> Identifier </source>
+      <trans-unit id="4e2591df099ddac796cda401c5f282da779d45f2" datatype="html">
+        <source>Identifier</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
-          <context context-type="linenumber">20,22</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-valid-table/records-valid-table.component.html</context>
-          <context context-type="linenumber">20,22</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="12ce9154fb4b6bd40e48658b72fe680d164e94e9" datatype="html">
@@ -959,43 +749,244 @@
           <context context-type="linenumber">27</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">136</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-valid-table/records-valid-table.component.html</context>
           <context context-type="linenumber">27</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="a7000ef1f1c524304b050122ada90231641ff7ea" datatype="html">
-        <source> <x id="ICU" equiv-text="{record.isValid, select, true {Valid} false {Invalid}}"/> </source>
+      <trans-unit id="414e6dcac23cd324d890b5d00e63e5ea5d02133f" datatype="html">
+        <source>Transformed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
-          <context context-type="linenumber">36,38</context>
+          <context context-type="linenumber">28</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">145,147</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-valid-table/records-valid-table.component.html</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c75a337d5f6ccdc2581d87fcf9e4d8030cfb2752" datatype="html">
-        <source>{VAR_SELECT, select, true {Valid} false {Invalid}}</source>
+      <trans-unit id="4f8b2bb476981727ab34ed40fde1218361f92c45" datatype="html">
+        <source>Details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5a11f84e47c85b2bc57f8e3379658ab32f3aa714" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{dataSource.id}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0ecd3a553e65d9944af23884b37001c286bc10db" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{dataSource.identifier}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e39aa5cbd8969111bb2dfe1cd52bc759f09b7308" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="ICU" equiv-text="{dataSource.isValid, select, true {Valid} false {invalid} }" xid="77795577178212309"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7a093853e0eed2cc0fb9cc0c270a03ae6afe1140" datatype="html">
+        <source>{VAR_SELECT, select, true {Valid} false {invalid}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e4191126433edf8876f6619d4543c806b77dabdd" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="ICU" equiv-text="{dataSource.isTransformed, select, true {Yes} false {No} }" xid="4271274461278199353"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">37</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="80a8a953396a732349a495a48e384fb5e63f4339" datatype="html">
+        <source>{VAR_SELECT, select, true {Yes} false {No}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e7eb2dacdc0f3c6ad6b156264ddb1a8e03bb2b2" datatype="html">
+        <source>Valid Record</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
           <context context-type="linenumber">146</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="2105a001277d7a7bd4468d72549abf77078dda97" datatype="html">
+        <source>Invalid Record</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">149</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b39ed6e1b60260e81c790f39f9e0f3cbfe9c9d88" datatype="html">
+        <source>Invalid ocurrence</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">154</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="13daaab8a4ac29e03ec6bc7c8bfbd99186b682ef" datatype="html">
+        <source>Valid ocurrence</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">159</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2c96bb62de512796ba50eccc750d04da431de8ca" datatype="html">
+        <source>Result of the evaluation of rules for:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">164</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9f30b7dee12906ea07107517ff7ef9b4d6ecd702" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{dialogTitle}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="379c7a54a3973adce12042f171a10852f96297e1" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ option.name }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="99ee4faa69cd2ea8e3678c1f557c0ff1f05aae46" datatype="html">
+        <source>Clear</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6cb5c3eb2ba1fc4bb5ef0773ec3ea8bd0c3ecd5a" datatype="html">
+        <source> Identifier <x id="START_TAG_P_COLUMNFILTER" ctype="x-p_columnfilter" equiv-text="&lt;p-columnFilter field=&quot;identifier&quot; 
+                  display=&quot;menu&quot; 
+                  [showAddButton]=&quot;false&quot; 
+                  [showMatchModes]=&quot;false&quot;
+                  [showOperator]=&quot;false&quot;
+                  [showClearButton]=&quot;false&quot;&gt;"/><x id="START_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;ng-template pTemplate=&quot;filter&quot;&gt;"/><x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;text&quot; 
+                      pInputText 
+                      [(ngModel)]=&quot;filter.oaiIdentifier&quot; 
+                      placeholder=&quot;Identifier&quot;
+                      (keydown.enter)=&quot;applyFilter()&quot;/&gt;"/><x id="CLOSE_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;/ng-template&gt;"/><x id="CLOSE_TAG_P_COLUMNFILTER" ctype="x-p_columnfilter" equiv-text="&lt;/p-columnFilter&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">58,73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0760b58fc7c7fd82c3ca599e4d16478b938b5667" datatype="html">
+        <source> Validation <x id="START_TAG_P_COLUMNFILTER" ctype="x-p_columnfilter" equiv-text="&lt;p-columnFilter field=&quot;isValid&quot;
+                  display=&quot;menu&quot;
+                  [showAddButton]=&quot;false&quot;
+                  [showMatchModes]=&quot;false&quot;
+                  [showOperator]=&quot;false&quot;
+                  [showClearButton]=&quot;false&quot;&gt;"/><x id="START_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;ng-template pTemplate=&quot;filter&quot;&gt;"/><x id="START_TAG_P_DROPDOWN" ctype="x-p_dropdown" equiv-text="&lt;p-dropdown 
+                      [options]=&quot;validOptions&quot; 
+                      [(ngModel)]=&quot;selectedValidation&quot; 
+                      optionLabel=&quot;name&quot; 
+                      placeholder=&quot;Validation&quot;
+                      (ngModelChange)=&quot;filter.isValid = $event.value; applyFilter()&quot;&gt;"/><x id="CLOSE_TAG_P_DROPDOWN" ctype="x-p_dropdown" equiv-text="&lt;/p-dropdown&gt;"/><x id="CLOSE_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;/ng-template&gt;"/><x id="CLOSE_TAG_P_COLUMNFILTER" ctype="x-p_columnfilter" equiv-text="&lt;/p-columnFilter&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">77,95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a70d214743b941421f75fdcbdceb641622f8ff3c" datatype="html">
+        <source><x id="START_LINK" ctype="x-a" equiv-text="&lt;a target=&quot;_blank&quot;
+                href=&quot;{{dataSource.origin}}?verb=GetRecord&amp;metadataPrefix={{dataSource.metadataPrefix}}&amp;identifier={{dataSource.identifier}}&quot;&gt;"/> <x id="INTERPOLATION" equiv-text="{{dataSource.identifier}}"/> <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">106,109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a87d3fc564c71a81d4560397f196f464dbb129b8" datatype="html">
+        <source> Identifier </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-valid-table/records-valid-table.component.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c75a337d5f6ccdc2581d87fcf9e4d8030cfb2752" datatype="html">
+        <source>{VAR_SELECT, select, true {Valid} false {Invalid}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-valid-table/records-valid-table.component.html</context>
           <context context-type="linenumber">35</context>
@@ -1004,436 +995,99 @@
       <trans-unit id="a3f446efcc0a2e4ca0fab256614e2b63dc935701" datatype="html">
         <source>Transformation</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-valid-table/records-valid-table.component.html</context>
           <context context-type="linenumber">41</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="48bdc9e84f697b2d83fd03c15e9158c220bd0b7c" datatype="html">
-        <source> Transformed </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
-          <context context-type="linenumber">50,52</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">161,163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="faa658527fef637d8d77654776786a0131a0eeca" datatype="html">
         <source> Details </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
-          <context context-type="linenumber">64,66</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">175,177</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-valid-table/records-valid-table.component.html</context>
           <context context-type="linenumber">57,59</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="073a735ca61175d74e74fa6d04791f78e9772b7d" datatype="html">
+        <source>Invalid mandatory rules</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">120,122</context>
+          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4e2591df099ddac796cda401c5f282da779d45f2" datatype="html">
-        <source>Identifier</source>
+      <trans-unit id="8650807af5f3b3939010d4f130340adfe5905ed8" datatype="html">
+        <source>Invalid not mandatory rules</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">126</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="99479f9b35593d64dbe0c0b498c4431a18505edd" datatype="html">
-        <source>Valid</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c145a34359b00a08aef9bf3fdf35a985aea25c8c" datatype="html">
-        <source>Invalid</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">53</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="414e6dcac23cd324d890b5d00e63e5ea5d02133f" datatype="html">
-        <source>Transformed</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-valid-table/records-valid-table.component.html</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4f20f2d5a6882190892e58b85f6ccbedfa737952" datatype="html">
-        <source>Yes</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3d3ae7deebc5949b0c1c78b9847886a94321d9fd" datatype="html">
-        <source>No</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7351f3ac05fe2b13ddbbf08273faf70b513c17d3" datatype="html">
         <source>Valid rules</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0f01f6051562eb04dab0ff2e9f68d819d702ba3e" datatype="html">
-        <source> (+<x id="INTERPOLATION" equiv-text="{{ filter.validRules?.length - 1 }}"/> <x id="ICU" equiv-text="{filter.validRules?.length === 2, select, true {other} false
-          {others}}"/>) </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">46,50</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0ed69d3bf5d3dd7a3af3070eb5182b9f4a3d198c" datatype="html">
-        <source>{VAR_SELECT, select, true {other} false {others}}</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">48,49</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="a0f857f05563991bceb0b7151a7c2b1b00b8b451" datatype="html">
-        <source>Invalid rules</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">61</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="f7925ccd99293a86004732448995537a9edb5dc0" datatype="html">
-        <source> (+<x id="INTERPOLATION" equiv-text="{{ filter.invalidRules?.length - 1 }}"/> <x id="ICU" equiv-text="{filter.invalidRules?.length === 2, select, true {other} false
-          {others}}"/>) </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">73,77</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="935bde77b16f3ad4ff093a008d3ebdf6200a4da0" datatype="html">
-        <source>{VAR_SELECT, select, true {other} false {others}}</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">75,76</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ba2f9c674d09dab0ea63fd5b3556807645aa1a54" datatype="html">
-        <source> Clear </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">92,94</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8f9b8478976d97fd2f02c16f3635871d696f5dd4" datatype="html">
-        <source> Transformation </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
-          <context context-type="linenumber">152,154</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8344d5460beb953be101716516097d9e5ad4cfe9" datatype="html">
-        <source>Result of the evaluation of rules for &quot;<x id="INTERPOLATION" equiv-text="{{ record.identifier }}"/>&quot; record</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7dc2f9a7598d442674b263ca5634c6ca71664123" datatype="html">
-        <source>{VAR_SELECT, select, true {Valid record} false {Invalid record}}</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="a6c3f4c1be21d38cdd8c9de40ad1c4c9cc31b3b4" datatype="html">
-        <source><x id="ICU" equiv-text="{record.isValid, select, true {Valid record} false {Invalid record}}"/> </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">8,9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="57df8e97d041220bf9b434ffc7bf21f08f342952" datatype="html">
-        <source>Invalid occurrence</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6443613d550e0fb57cc8d3ae2edbe92939166ee5" datatype="html">
-        <source>Valid occurrence</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8e231081d30ed6e2b709b69c848c1197673ba869" datatype="html">
-        <source>Invalid mandatory rules </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">27,28</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="106441a56c7d15f423cf290a72da27ae3722345f" datatype="html">
-        <source>Invalid not mandatory rules </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">29,30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="b219877a9566b4fa77e194760dc96ec361c8f742" datatype="html">
-        <source> <x id="ICU" equiv-text="{getRule(obj).mandatory, select, true {Mandatory rule: Yes} false
-                    {Mandatory rule: No}}"/> </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">51,54</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="e4661ea80102d4328b6de30560297d92a93a70d7" datatype="html">
-        <source>{VAR_SELECT, select, true {Mandatory rule: Yes} false {Mandatory rule: No}}</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">52,53</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">107,108</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="b8d940a614b9ee4895942bbc11e5ce2e3847a499" datatype="html">
-        <source>Zero only</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">58</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">114</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="26ad6ade8e47ae2d4065534f19664b08ce3597e8" datatype="html">
-        <source>One only</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">59</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">115</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="dd299ff7de8d533d29479f9f0bc4832de54814e3" datatype="html">
-        <source>Zero or more</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">60</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">116</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="bddbefb6719a512ecedb2384f6deea5e5260ebd6" datatype="html">
-        <source>One or more</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">61</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">117</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="dfc3c34e182ea73c5d784ff7c8135f087992dac1" datatype="html">
-        <source>All</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">62</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">118</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="15b300d80e6f102fcfdf7fb84f0d72683fdaf900" datatype="html">
-        <source>Number of valid occurrences for a rule to be valid</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">64</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">120</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4eb5a1c2f7661fe244d5a352b1b2e1a58bb7a0c0" datatype="html">
-        <source> <x id="ICU" equiv-text="{getRule(obj).mandatory, select, true {Mandatory rule: Yes} false
-                      {Mandatory rule: No}}"/> </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">106,109</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="facd4211397f7c806c908d65f3830da5ecec16cb" datatype="html">
-        <source>Transformed record XML</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">147</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="396111f33ef48eef016cd0eedb7be2ef882d7430" datatype="html">
-        <source> Close </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
-          <context context-type="linenumber">160,162</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-detail/validation-detail.component.html</context>
-          <context context-type="linenumber">22,24</context>
-        </context-group>
-        <note priority="1" from="description">Button close</note>
-      </trans-unit>
-      <trans-unit id="fd3977f0f933db221ab87f19a288973089904bf6" datatype="html">
-        <source>Rule</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-detail/validation-detail.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d2894b94ca9d4052c0c837c7b5c6070e561ad62c" datatype="html">
-        <source>Valid occurrences</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-detail/validation-detail.component.html</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d52c38726c99f29dc27d9e731c58445a3da1b75b" datatype="html">
-        <source>Invalid occurrences</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-detail/validation-detail.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5f41466ce35947cac6a216335ad7a4449d1bf3d4" datatype="html">
         <source>Show rules</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="20da2718b078b92db625c8a6659ae183cb0b1869" datatype="html">
-        <source>Mandatory</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="37fc359db28f5dc11076103f78d5f383cbfbaeec" datatype="html">
-        <source>Not mandatory</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ed9aa6838f4ff0591d548397fadece7b967750a4" datatype="html">
-        <source> ID </source>
+      <trans-unit id="1d4e788b33df212fc82042506cd8f2fe9b5adfd8" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{item.name}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">18,20</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="eec715de352a6b114713b30b640d319fa78207a0" datatype="html">
-        <source>Description</source>
+      <trans-unit id="8f4cd8361ac440632915cfff08ebc232b16ce311" datatype="html">
+        <source>Invalid records</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="86ccb5def0744c8083915e6bfbd9fba5310549af" datatype="html">
-        <source> Mandatory </source>
+      <trans-unit id="5fe63e3c62eea3ac8838bef9a2cb73a252ffd795" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{dataSource.name}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">35,37</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b3eb66eeadddffe1e5f430f181cf667105aa8a61" datatype="html">
-        <source> <x id="ICU" equiv-text="{rule.mandatory, select, true {Yes} false {No}}"/> </source>
+      <trans-unit id="c5cd05e19629a9bc1c16ff9218de3111588df728" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{dataSource.description}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">38,40</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a23cb2ec81ba19e74dbb28a026a980c743c6b835" datatype="html">
-        <source>{VAR_SELECT, select, true {Yes} false {No}}</source>
+      <trans-unit id="7c15048a17aa629caa614464711b5bd9628d4902" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Yes<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4e8d23ce0ce0da20af6738e54fb2efab8ed7a498" datatype="html">
-        <source> Conformity </source>
+      <trans-unit id="af747e4bb0d6d5010e1fb1080f529cf92e04bd7d" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>No<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">44,46</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a785c42b253697d45c3f165ad79ac814f7aa19c2" datatype="html">
-        <source>Records that contain this invalid rule</source>
+      <trans-unit id="29c1391c0b127646bee4306cfdba2053c83dd436" datatype="html">
+        <source>100%</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">95</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="211ea44dc2cf3e143aecf1c6a3dec831678e221a" datatype="html">
-        <source> Records </source>
+      <trans-unit id="43cf42a93dac65e60b8736df7ec94ef3ebd30443" datatype="html">
+        <source>Invalids</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">98,100</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="100c4dff8f4fa5a971cac24215e7ba81fdc645f8" datatype="html">
-        <source>Details about this rule</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adedc20a9166a8ea7d213378a0763e6623815910" datatype="html">
@@ -1442,7 +1096,7 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">6,9</context>
+          <context context-type="linenumber">7,10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fd7c3007ef6b99d900049b22c89ce562d7373612" datatype="html">
@@ -1450,28 +1104,7 @@
   the root URL /:acronym}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">7,8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5e8a8e2b69eb0facf5f7020ef2b1bb690c65a466" datatype="html">
-        <source>Harvested records</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ab834c3624e673277d5e4637e893958d6b666946" datatype="html">
-        <source>The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory collection rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory collection rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">68</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="072bdc6adab7c354e029329b33a7ab89a0d556ea" datatype="html">
-        <source>The data below presents the complete diagnosis of your institution&apos;s data collection. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">8,9</context>
         </context-group>
       </trans-unit>
     </body>

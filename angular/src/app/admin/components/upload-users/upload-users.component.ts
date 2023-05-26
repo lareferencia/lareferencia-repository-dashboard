@@ -1,36 +1,35 @@
+import { Component, ElementRef, ViewChild } from '@angular/core';
+
+import { ManageUsersService } from 'src/app/core/services/manage-users.service';
+import { FileService } from './../../../core/services/file.service';
+import { MessageService } from 'primeng/api';
+
 import { ProcessStatus } from './../../../shared/enums/process-status';
 import { ProcessListComponent } from './../process-list/process-list.component';
+
 import { ProcessInfo } from '../../../shared/models/process-info.model';
-import { FileService } from './../../../core/services/file.service';
-import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
-import { ManageUsersService } from 'src/app/core/services/manage-users.service';
 import { UserInfo } from 'src/app/shared/models/user-info.model';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-upload-users',
   templateUrl: './upload-users.component.html',
   styleUrls: ['./upload-users.component.css'],
+  providers:[MessageService]
 })
 export class UploadUsersComponent {
   @ViewChild('fileInput') fileInput: ElementRef;
-  @ViewChild('snackBarTemplate') snackBarTemplate: TemplateRef<any>;
   @ViewChild(ProcessListComponent) processListChild: ProcessListComponent; 
   file: File = null;
   users: UserInfo[] = [];
   process: ProcessInfo[] = [];
   message: string;
-  config: MatSnackBarConfig = {
-    duration: 4000,
-    horizontalPosition: 'center',
-    verticalPosition: 'top',
-    panelClass: ['msg-error']
-  };
+
 
   constructor(
     private manageUsersService: ManageUsersService,
     private fileService: FileService,
-    private snackBar: MatSnackBar
+    private messageService: MessageService
   ) {}
 
   onClickFileInputButton(): void {
@@ -43,16 +42,13 @@ export class UploadUsersComponent {
     this.fileInput.nativeElement.value = '';
   }
 
-  dismissSnackbar(): void {
-    this.snackBar.dismiss();
-  }
 
   async onChangeFileInput(): Promise<void> {
     this.users = [];
     const file: File = this.fileInput.nativeElement.files[0];
 
     if (!(file.size > 0)) {
-      this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
+      this.messageService.add({severity:'error', summary:'Error', detail:'Invalid file format'})
       throw new Error('Invalid file format');
     }
 
@@ -62,15 +58,16 @@ export class UploadUsersComponent {
       const csvSeparator = ',';
 
       if (lines[0].split(',').length != 6) {
-        this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
+        this.messageService.add({severity:'error', summary:'Error', detail:'Invalid file format'})
         throw new Error('Invalid file format');
+
       }
 
       lines.forEach((element, index) => {
         const cols: string[] = element.split(csvSeparator);
         if (index > 0 && cols.length > 1) {
           if (isNaN(parseInt(cols[4])) || parseInt(cols[4]) < 0 || parseInt(cols[4]) > 5) {
-            this.snackBar.openFromTemplate(this.snackBarTemplate, this.config);
+            this.messageService.add({severity:'error', summary:'Error', detail:'Invalid file format'})
             throw new Error('Invalid file format');
           }
 
