@@ -6,6 +6,7 @@
 
 <div class="p-4" *ngIf="!isLoadingResults">
   <app-validation-card
+    i18n-title
     title="Records that contain the invalid rule"
     [validationTitle]="ruleName"
     icon="pi pi-exclamation-triangle"

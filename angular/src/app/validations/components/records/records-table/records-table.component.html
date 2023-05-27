@@ -8,6 +8,7 @@
         <div class="flex gap-3">
     
           <p-multiSelect
+            i18n-placeholder
             placeholder="Valid rules" 
             [options]="rulesOptions" 
             [(ngModel)]="selectedValidRule" 
@@ -20,6 +21,7 @@
           </p-multiSelect>
         
           <p-multiSelect
+            i18n-placeholder
             placeholder="Invalid rules" 
             [options]="rulesOptions" 
             [(ngModel)]="selectedInvalidRule" 
@@ -44,7 +46,6 @@
       [rows]="pageSize"
       [totalRecords]="totalRecords"
       [showCurrentPageReport]="true"
-      i18n-currentPageReportTemplate
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [rowsPerPageOptions]="[10, 25, 50]"
       [loading]="isLoading"
@@ -66,7 +67,8 @@
                   <ng-template pTemplate="filter">
                     <input type="text" 
                       pInputText 
-                      [(ngModel)]="filter.oaiIdentifier" 
+                      [(ngModel)]="filter.oaiIdentifier"
+                      i18n-placeholder 
                       placeholder="Identifier"
                       (keydown.enter)="applyFilter()"/>
                   </ng-template>
@@ -86,7 +88,8 @@
                     <p-dropdown 
                       [options]="validOptions" 
                       [(ngModel)]="selectedValidation" 
-                      optionLabel="name" 
+                      optionLabel="name"
+                      i18n-placeholder 
                       placeholder="Validation"
                       (ngModelChange)="filter.isValid = $event.value; applyFilter()">
                     </p-dropdown>

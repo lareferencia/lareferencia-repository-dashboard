@@ -29,14 +29,6 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
   public dialogData: DialogDataTable;
   public visible:boolean;
 
-  displayedColumns: any[] = [
-    {value: 'ruleID', name: 'ID'},
-    {value: 'name', name: 'Name'},
-    {value: 'description', name: 'Description'},
-    {value: 'mandatory', name: 'Mandatory'},
-    {value: 'conformity', name: 'Conformity'},
-    {value: 'validCount', name: 'Valid records'},
-  ];
 
   constructor(
     private route: ActivatedRoute,

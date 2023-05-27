@@ -4,6 +4,8 @@
   <div class="col-12 p-3 harvesting-table-info
   animate__animated animate__fadeInLeft animate__faster">
     <app-info-card
+      i18n-title
+      i18n-description
       title="Harvesting table"
       description="This table is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.">
     </app-info-card>
@@ -17,10 +19,8 @@
       [paginator]="true"
       [rows]="pageSize"
       [totalRecords]="totalRecords"
-      i18n-totalRecords
       [showCurrentPageReport]="true"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      i18n-currentPageReportTemplate
       [rowsPerPageOptions]="[10, 25, 50]"
       [lazy]="true"
       [loading]="isLoading"
@@ -53,6 +53,8 @@
                 styleClass="p-button-rounded 
                 p-button-success"
                 (click)="detailClick(harvestingContent)"
+                pTooltip="See validation"
+                i18n-pTooltip
                 ></p-button>
 
               <p-button *ngIf="harvestingContent.deleted" 

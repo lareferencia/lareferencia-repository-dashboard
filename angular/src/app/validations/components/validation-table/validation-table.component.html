@@ -10,27 +10,54 @@
           [(ngModel)]="isMandatory" 
           optionLabel="name" 
           (ngModelChange)="loadRecords()">
-          <ng-template let-option>
-            <span i18n>{{ option.name }}</span>
-          </ng-template>
-
         </p-dropdown>
+
+
       </div>
       <p-table 
       [value]="dataSource"
       [paginator]="true"
       rows="10"
       [showCurrentPageReport]="true"
-      i18n-currentPageReportTemplate
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [rowsPerPageOptions]="[10, 25, 50]">
       <ng-template pTemplate="header" >
+
           <tr>
-              <th *ngFor="let item of displayedColumns" 
-              pSortableColumn="{{item.value}}">
+              <th pSortableColumn="ruleID">
                 <div class="flex align-items-center">
-                  <span i18n>{{item.name}}</span> 
-                  <p-sortIcon field="{{item}}"></p-sortIcon>
+                  <span i18n>ID</span> 
+                  <p-sortIcon field="ruleID"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="name">
+                <div class="flex align-items-center">
+                  <span i18n>Name</span> 
+                  <p-sortIcon field="name"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="description">
+                <div class="flex align-items-center">
+                  <span i18n>Description</span> 
+                  <p-sortIcon field="description"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="mandatory">
+                <div class="flex align-items-center">
+                  <span i18n>Mandatory</span> 
+                  <p-sortIcon field="mandatory"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="conformity">
+                <div class="flex align-items-center">
+                  <span i18n>Conformity</span> 
+                  <p-sortIcon field="conformity"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="validCount">
+                <div class="flex align-items-center">
+                  <span i18n>Valid record</span> 
+                  <p-sortIcon field="validCount"></p-sortIcon>
                 </div>
               </th>
               <th class="text-center" i18n>Invalid records</th>
