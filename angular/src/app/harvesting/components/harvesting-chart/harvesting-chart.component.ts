@@ -47,10 +47,10 @@ export class HarvestingChartComponent implements OnInit {
         this.data = {
         labels: sortedConent.map(harvesting => harvesting.startTime.toString().substring(0,10)),
         datasets: [
-            { type: 'bar', label: 'Invalidos', backgroundColor: '#D14D72',
+            { type: 'bar', label: 'Invalid', backgroundColor: '#CE5959',
               data: sortedConent.map(harvesting => (harvesting.harvestedSize - harvesting.validSize) ) },
 
-            { type: 'bar', label: 'Validos', backgroundColor: '#FFABAB',
+            { type: 'bar', label: 'Valid', backgroundColor: '#BACDDB',
               data: sortedConent.map(harvesting => harvesting.validSize)},
             ]
           };

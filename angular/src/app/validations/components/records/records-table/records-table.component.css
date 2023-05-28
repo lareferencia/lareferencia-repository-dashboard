@@ -10,7 +10,9 @@
 }
 :host ::ng-deep .p-datatable .p-datatable-tbody>tr>td {
   font-size: 0.8rem;
+  padding: 6px !important;
 }
+
 :host ::ng-deep .p-element .p-sorteable-column {
   display: flex;
 }
@@ -18,7 +20,6 @@
   color: white;
 }
 :host ::ng-deep .p-button {
-  width: 100%;
   font-family: 'Poppins';
 }
 :host ::ng-deep .p-datatable .p-datatable-loading-overlay {

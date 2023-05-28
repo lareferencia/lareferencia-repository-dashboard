@@ -104,15 +104,8 @@
                 </a>
             </td>
             <td>
-              <p-button *ngIf="dataSource.conformity == 100 && !admUser"
-                disabled="true"
-                styleClass="p-button-secondary p-button-sm"
-                label="100%"
-                ></p-button>
-
               <p-button
-                (onClick)="detailClick(dataSource)" 
-                *ngIf="dataSource.conformity < 100 || admUser"
+                (onClick)="detailClick(dataSource)"
                 styleClass="p-button-primary p-button-sm"
                 i18n-label
                 label="Details"
@@ -132,7 +125,6 @@
   [modal]="true" 
   [draggable]="false" 
   [resizable]="false"
-  [style]="{maxWidth: '90vw'}"
   (onHide)="onDialogHide()">
   <div>
     <app-validation-detail [dialogData]="dialogData"></app-validation-detail>

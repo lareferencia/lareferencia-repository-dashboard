@@ -30,9 +30,9 @@
       </ng-template>
       <ng-template pTemplate="body" let-dataSource>
           <tr>
-            <td i18n>{{dataSource.id}}</td>
-            <td i18n>{{dataSource.identifier}}</td>
-            <td i18n><b>{dataSource.isValid, select, true {Valid} false {invalid} }</b></td>
+            <td >{{dataSource.id}}</td>
+            <td >{{dataSource.identifier}}</td>
+            <td i18n><b>{dataSource.isValid, select, true {Invalid} false {Valid} }</b></td>
             <td i18n><b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
             <td>
               <p-button
