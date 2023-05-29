@@ -25,7 +25,6 @@ export class DrawerComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAdmin = this.authenticationService.isAdmUser()
-    console.log(this.isAdmin)
     
     this.menuService.activeRepo
       .subscribe( ({acronym}) => {

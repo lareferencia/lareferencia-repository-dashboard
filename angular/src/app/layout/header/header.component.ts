@@ -14,16 +14,19 @@ export class HeaderComponent implements OnInit {
 
   public menuRepositories: MenuRepositorie[] = [];
   public activeRepository: string;
-  public isLoading: boolean = true;
+  public isLoading = true;
 
   constructor( private menuService: MenuService) { }
 
   ngOnInit(): void {
-   
+
+   this.isLoading = true;
+
     this.menuService.menu.pipe(
+      
       filter((menu: Menu[]) => menu.length > 0),
       tap((menu: Menu[]) => {
-
+        
         this.menuRepositories = [
           {
             label: 'Repositories',
@@ -48,6 +51,7 @@ export class HeaderComponent implements OnInit {
         this.activeRepository = activeRepo.name;  
     });
   };
+
 
   toggleMenu(){
     this.menuService.toggleMenuOpen();

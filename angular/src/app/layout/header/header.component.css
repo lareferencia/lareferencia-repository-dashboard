@@ -2,7 +2,10 @@ h6 {
     margin: 0;
     margin-right: 8px;  
     cursor: poiner;
+    color: var(--color-primary);
+    font-family: 'Poppins';
 }
+
 
 .header-component{
     position: sticky; 
@@ -39,24 +42,28 @@ h6 {
 }
 
 :host ::ng-deep .p-menu .p-menuitem-link .p-menuitem-text {
-    color: #000 !important;
+    color: var(--color-secondary);
+    font-family: 'Poppins';
 }
 
 :host ::ng-deep .p-menu .p-menuitem-link .p-menuitem-icon {
-    color: #000 !important;
+    color: var(--color-primary);
 }
 
 :host ::ng-deep .p-menu .p-submenu-header{
-    color: #000 !important;
+    color: var(--color-primary);
     background: rgba(236,236,249,1) !important;
+    font-family: 'Poppins';
 }
 
 :host ::ng-deep .p-menu .p-menuitem-link{
     border: none;
+    transition: background 0.2s ease-in-out;
 }
 
 :host ::ng-deep .p-menu .p-menuitem-link:hover{
     background: rgba(236,236,249,1) !important;
+    transition: background 0.2s ease-in-out;
 }
 
 @media screen and (max-width: 570px) {

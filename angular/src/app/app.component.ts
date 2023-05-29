@@ -15,6 +15,7 @@ import { Harvesting } from './shared/models/harvesting.model';
 export class AppComponent implements OnInit {
   public repositoriesMenu: Menu[] = [];
   public admUser = false;
+  public isRepositoriesEmpty = false;
  
 
   constructor(
@@ -27,6 +28,13 @@ export class AppComponent implements OnInit {
     this.admUser = this.authenticationService.isAdmUser();
     this.harvestingService.getHarvestingList()
       .subscribe((harvestingList) => {
+
+        
+        //Vaidar que el usuario tenga al menos un repositorio
+        if(harvestingList.content.length <= 0) {
+          this.isRepositoriesEmpty = true;
+          return;
+        };
         this.resultHandler(harvestingList);
       });
     };

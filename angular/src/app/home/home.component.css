@@ -16,6 +16,15 @@ ul{
   padding: 0;
   margin: 0;
 }
+li{
+  color: var(--color-secondary);
+}
+span{
+  color: var(--color-secondary);
+}
+p {
+  color: var(--color-secondary);
+}
 
 .home-section {
   display: grid;

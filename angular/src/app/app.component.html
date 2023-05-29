@@ -3,7 +3,18 @@
     <div>
         <app-drawer></app-drawer>
     </div>
-    <div class="app-router-container">
+    <div *ngIf="!isRepositoriesEmpty" class="app-router-container">
         <router-outlet></router-outlet>
+    </div>
+    <div *ngIf="isRepositoriesEmpty animate__animated animate__fadeIn"
+        style="min-height: 75vh;" 
+        class="app-router-container flex flex-column justify-content-center align-items-center p-3">
+        <img style="width: 32%;" src="../assets/img/home-section-image.png" alt="">
+        <h2 class="text-center" style="color: var(--color-secondary)">
+            You don't have repositories yet
+        </h2>
+        <h5 class="text-center" style="color: var(--color-secondary)">
+            Please contact with the administrator
+        </h5>
     </div>
 </div>
