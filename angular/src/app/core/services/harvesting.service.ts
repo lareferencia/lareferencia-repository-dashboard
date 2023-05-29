@@ -23,14 +23,15 @@ export class HarvestingService {
     );
   }
 
-  getHarvestingHistoryByAcronym(sourceAcronym: string, pageNumber: number, pageSize: number, sortField?: string, sortOrder?: number): Observable<HarvestingHistory> {
+  getHarvestingHistoryByAcronym(sourceAcronym: string, page: number, size: number, sortField?: string, sortOrder?: number): Observable<HarvestingHistory> {
     let params = new HttpParams()
-      .append('pageNumber', pageNumber.toString())
-      .append('pageSize', pageSize.toString());
+      .append('page', page.toString())
+      .append('size', size.toString());
       
-    if (sortField && sortOrder !== undefined) {
-        params = params.append('sortField', sortField);
-        params = params.append('sortOrder', sortOrder.toString());
+    if (sortField && sortOrder) {
+        let sortValue: string;
+        sortOrder === 1 ? sortValue = `${sortField},asc` : sortValue = `${sortField},desc`
+        params = params.append('sort', sortValue);
     }
     return this.http
       .get<HarvestingHistory>(

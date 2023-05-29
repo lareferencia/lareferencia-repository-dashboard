@@ -17,7 +17,7 @@ export class HarvestingTableComponent implements OnInit {
   public acronym: string;
   public isLoadingResults = true;
   public harvestingContent: HarvestingContent[];
-  public pageSize: number = 80;
+  public pageSize: number = 10;
   public pageNumber: number;
   public totalRecords: number;
   public isLoading: boolean = true;
