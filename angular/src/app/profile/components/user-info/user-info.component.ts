@@ -7,6 +7,9 @@ import { UserInfo } from 'src/app/shared/models/user-info.model';
 
 import { MessageService } from 'primeng/api';
 
+interface Position{
+  name:string;
+}
 
 @Component({
   selector: 'app-user-info',
@@ -17,9 +20,10 @@ import { MessageService } from 'primeng/api';
 
 
 export class UserInfoComponent implements OnInit {
-  updatingSuccess = true;
-  userName: string;
-  user: UserInfo;
+  public updatingSuccess = true;
+  public userName: string;
+  public user: UserInfo;
+  public positions: Position[] = [];
  
   constructor(
     private manageUsersService: ManageUsersService,
@@ -32,9 +36,17 @@ export class UserInfoComponent implements OnInit {
     this.manageUsersService
       .getUser(this.userName)
       .subscribe((result) => (this.user = result));
+
+    this.positions = [
+      {name: 'Node Administrator'},
+      {name: 'Assistant/Auxiliary'},
+      {name: 'Librarian'},
+      {name: 'Repository Manager'},
+      {name: 'Technical Responsible'},
+      {name: 'None'},
+    ]
   }
 
-  //no hay validaciones acá
   onClickSave() {
     this.updatingSuccess = false;
 
@@ -47,15 +59,11 @@ export class UserInfoComponent implements OnInit {
   }
 
   private resultHandler(success: boolean) {
-
     this.updatingSuccess = true;
-    
     success === true
     ? this.messageService.add(
       { severity: 'success', summary: 'Info', detail: 'Information updated successfully!' })
     : this.messageService.add(
       { severity: 'error', summary: 'Info', detail: 'Error updating information!' })
-
-      
   }
 }

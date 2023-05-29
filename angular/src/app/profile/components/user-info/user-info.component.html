@@ -8,44 +8,21 @@
     </div>
 
     <form *ngIf="user" class="user-form animate__animated animate__fadeIn" >
-      <mat-form-field appearance="outline">
-        <mat-label i18n>Name</mat-label>
-        <input matInput [(ngModel)]="user.first_name" name="first_name">
-      </mat-form-field>
+        <input pInputText [(ngModel)]="user.first_name" name="first_name">
 
-      <mat-form-field appearance="outline">
-        <mat-label>E-mail</mat-label>
-        <input matInput [(ngModel)]="user.email" name="email">
-      </mat-form-field>
+        <input pInputText [(ngModel)]="user.email" name="email" i18n-placeholder placeholder="email">
 
-      <mat-form-field appearance="outline">
-        <mat-label i18n>Institutional phone</mat-label>
-        <input matInput [(ngModel)]="user.telephone" name="telephone">
-      </mat-form-field>
+        <input pInputText [(ngModel)]="user.telephone" name="telephone" i18n-placeholder placeholder="Telephone">
 
-      <mat-form-field appearance="outline">
-        <mat-label i18n>Position</mat-label>
-        <mat-select [(value)]="user.position">
-          <mat-option i18n>None</mat-option>
-          <mat-option i18n value="1">Node Administrator</mat-option>
-          <mat-option i18n value="2">Assistant/Auxiliary</mat-option>
-          <mat-option i18n value="3">Librarian</mat-option>
-          <mat-option i18n value="4">Repository Manager</mat-option>
-          <mat-option i18n value="5">Technical Responsible</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <p-dropdown [options]="positions" optionLabel="name"></p-dropdown>
 
-      <mat-form-field appearance="outline">
-        <mat-label i18n>Affiliation</mat-label>
-        <input matInput [(ngModel)]="user.affiliation" name="affiliation">
-      </mat-form-field>
+        <input class="mt-2" pInputText [(ngModel)]="user.affiliation" name="affiliation" i18n-placeholder placeholder="Affiliation">
 
       <p-toast position="bottom-right"></p-toast>
-        <button [disabled]="!updatingSuccess" 
-        mat-raised-button class="btn-primary" 
-        (click)="onClickSave()" i18n>
-        Update
-      </button>
+        <p-button [disabled]="!updatingSuccess"
+        (click)="onClickSave()" i18n
+        i18n-label label="Update">
+      </p-button>
     </form>
 
   </div>
