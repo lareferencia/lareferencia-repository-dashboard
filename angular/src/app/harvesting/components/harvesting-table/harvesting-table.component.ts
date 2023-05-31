@@ -59,13 +59,10 @@ export class HarvestingTableComponent implements OnInit {
     },
   ];
 
-
-
   constructor(
     private harvestingService: HarvestingService,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +72,7 @@ export class HarvestingTableComponent implements OnInit {
   onSort(event: SortEvent) {
     this.filter.sortField = event.field;
     this.filter.sortOrder = event.order === 1 ? 1 : -1;
+    console.log(this.filter)
     this.loadContent({
       first: 0,
       rows: this.pageSize,
@@ -94,6 +92,7 @@ export class HarvestingTableComponent implements OnInit {
       this.pageSize,
       this.filter.sortField,
       this.filter.sortOrder)
+
       .subscribe((result) => {
         this.isLoading = false;
         this.totalRecords = result.totalElements;
@@ -102,11 +101,7 @@ export class HarvestingTableComponent implements OnInit {
             ...harvestingContent,
             invalidRecords: harvestingContent.harvestedSize - harvestingContent.validSize,    
           };
-        }).sort(
-          (a, b) =>
-            new Date(b.startTime).getTime() -
-            new Date(a.startTime).getTime()
-        );
+        })
         this.csvData = result.content.map( (item) => {
           return{
             id: item.id,
