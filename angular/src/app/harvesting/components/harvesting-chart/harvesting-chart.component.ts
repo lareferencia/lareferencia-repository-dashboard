@@ -16,9 +16,11 @@ export class HarvestingChartComponent implements OnInit {
   public data: ChartData;
   public options:any;
   public pageNumber = 0;
-  public pageSize = 30;
+  public pageSize = 8;
+  public totalElements: number;
   public startDate: Date = new Date();
   public endDate: Date = new Date();
+  disabledPagination = false;
 
   constructor(
     private harvestingService: HarvestingService,
@@ -26,7 +28,16 @@ export class HarvestingChartComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.startDate.setFullYear(this.endDate.getFullYear() - 1);
+    this.startDate.setFullYear(this.endDate.getFullYear() - 2);
+    this.filtrar();
+  }
+
+  paginate(page: string){
+    if(page === "next" && this.pageNumber < (this.totalElements / this.pageSize) - 1 ){
+      this.pageNumber += 1;
+    } else if(page === "prev" && this.pageNumber > 0){
+      this.pageNumber -= 1;
+    }
     this.filtrar();
   }
 
@@ -35,22 +46,25 @@ export class HarvestingChartComponent implements OnInit {
 
     const acronym = this.route.snapshot.paramMap.get('acronym');
     this.harvestingService.getHarvestingHistoryByAcronymAndDate(acronym, this.pageNumber, this.pageSize, this.startDate, this.endDate)
-      .subscribe(({content}) => {
-
-        const sortedConent = content.sort((a, b) => {
+      .subscribe((content) => {
+        this.totalElements = content.totalElements
+        this.pageNumber > (this.totalElements / this.pageSize ) - 1 
+        ? this.disabledPagination = true
+        : this.disabledPagination = false;
+        
+        const sortedConent = content.content.sort((a, b) => {
           const dateA = new Date(a.startTime).getTime();
           const dateB = new Date(b.startTime).getTime();
           return dateA - dateB;
         });
 
-
         this.data = {
         labels: sortedConent.map(harvesting => harvesting.startTime.toString().substring(0,10)),
         datasets: [
-            { type: 'bar', label: 'Invalid', backgroundColor: '#CE5959',
+            { type: 'bar', label: 'Invalid', backgroundColor: 'rgba(252, 97, 97, 0.6)',
               data: sortedConent.map(harvesting => (harvesting.harvestedSize - harvesting.validSize) ) },
 
-            { type: 'bar', label: 'Valid', backgroundColor: '#BACDDB',
+            { type: 'bar', label: 'Valid', backgroundColor: 'rgba(0, 208, 222, 0.6)',
               data: sortedConent.map(harvesting => harvesting.validSize)},
             ]
           };

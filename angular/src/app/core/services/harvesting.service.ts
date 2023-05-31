@@ -46,8 +46,8 @@ export class HarvestingService {
 
   getHarvestingHistoryByAcronymAndDate(sourceAcronym: string, pageNumber: number, pageSize: number, startDate: Date, endDate: Date): Observable<HarvestingHistory> {
     const params = new HttpParams()
-      .append('pageNumber', pageNumber.toString())
-      .append('pageSize', pageSize.toString());
+    .append('size', pageSize.toString())
+    .append('page', pageNumber.toString());
 
     return this.http
       .get<HarvestingHistory>(
