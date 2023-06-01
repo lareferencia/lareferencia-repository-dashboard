@@ -1,5 +1,3 @@
-
-
 :root{
   --color-primary: #44486D;
   --color-secondary: #676B89;
@@ -8,7 +6,6 @@
 *{
   box-sizing: border-box;
 }
-
 
 html,
 body {
@@ -33,41 +30,6 @@ h1{
   margin-left: 55px;
 }
 
-.mat-progress-bar-buffer {
-  background: #e4e8eb;
-}
-
-.mat-progress-bar {
-  border-radius: 2px;
-}
-
-.msg-success {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.msg-success button {
-  color: white;
-}
-
-.msg-error {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.msg-error button {
-  color: white;
-}
-
-.msg-warning {
-  background-color: #ffc107;
-  color: black;
-}
-
-.msg-warning button {
-  color: black;
-}
-
 .tooltip-broker-message {
   border: 1px solid gray;
   border-radius: 2px;
@@ -83,7 +45,6 @@ h1{
 .mat-drawer-inner-container::-webkit-scrollbar {
   overflow-x: hidden;
 }
-
 
 .graph::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -104,56 +65,6 @@ h1{
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: #555;
 }
-
-.btn-primary {
-  background-color: var(--color-primary) !important;
-  border-color: #33426a !important;
-  border-style: solid !important;
-  color: white !important;
-}
-
-.btn-primary span{
-  color: white !important;
-}
-
-.btn-secondary {
-  border-color: #33426a !important;
-  border-style: solid !important;
-  color: #33426a !important;
-}
-
-/* .mat-form-field-flex {
-  background-color: white !important;
-} */
-
-.btn-disabled {
-  cursor: auto !important;
-  background-color: #cccccc !important;
-  color: #33426a;
-}
-
-.btn-disabled-green {
-  cursor: auto !important;
-  background-color: #00bab8 !important;
-  color: white;
-}
-
-.btn-disabled-red {
-  cursor: auto !important;
-  background-color: #f1686a !important;
-  color: white;
-}
-
-.btn-disabled:hover {
-  color: #33426a;
-}
-
-.btn-disabled-green:hover,
-.btn-disabled-red:hover,
-.btn-secondary:hover {
-  color: white;
-}
-
 
 
 @media screen and (max-width: 570px) {
