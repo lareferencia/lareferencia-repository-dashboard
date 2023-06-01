@@ -41,6 +41,11 @@ export class HarvestingChartComponent implements OnInit {
     this.filtrar();
   }
 
+  clearFilter(){
+    this.pageNumber = 0;
+    this.filtrar();
+  }
+
   filtrar(){
     this.loadingChart = true;
 

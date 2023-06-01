@@ -27,17 +27,20 @@
 <div class="flex bg-white p-3 justify-content-between" 
   style="border-radius: 10px;">
   <div class="flex">
-    <div class="mr-2">
+    <div class="mr-2 flex flex-column">
+      <span class="p-1 text-xs">Start date</span>
       <p-calendar [(ngModel)]="startDate" 
       dateFormat="dd.mm.yy" [showIcon]="true" placeholder="Start date"></p-calendar>
     </div>
-    <div>
+    <div class="flex flex-column">
+      <span class="p-1 text-xs">End date</span>
       <p-calendar [(ngModel)]="endDate" 
       dateFormat="dd.mm.yy" [showIcon]="true" placeholder="End date"></p-calendar>
     </div>
   </div>
-  <div>
-    <p-button label="Filter" i18n-label (onClick)="filtrar()" styleClass="primary p-button-sm"></p-button>
+  <div class="flex align-items-end">
+    <p-button label="Clear" i18n-label (onClick)="clearFilter()" styleClass="p-button-outlined p-button-sm"></p-button>
+    <p-button class="ml-3" label="Filter" i18n-label (onClick)="filtrar()" styleClass="p-button-sm"></p-button>
   </div>
 </div>
 
