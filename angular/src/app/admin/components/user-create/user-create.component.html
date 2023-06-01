@@ -1,19 +1,34 @@
 
 <h6 i18n>User Info</h6>
-<form name="userForm" #userForm="ngForm" class="user-form">
-  <input i18n-placeholder type="text" pInputText required placeholder="Username *" [(ngModel)]="user.username" />
-  <input i18n-placeholder type="text" pInputText placeholder="Name" [(ngModel)]="user.first_name" />
-  <input i18n-placeholder type="email" pInputText required placeholder="Email *" [(ngModel)]="user.email" />
-  <input i18n-placeholder type="number" pInputText placeholder="Institutional phone" [(ngModel)]="user.telephone" />
-  <p-dropdown [options]="positions" placeholder="Position" [(ngModel)]="user.position" optionLabel="name">
-    <ng-template let-option>
-      <span i18n> {{option.name}} </span>
-    </ng-template>
-    
-  </p-dropdown>
-  <input i18n-placeholder class="mt-2" type="number" pInputText placeholder="Affiliation" [(ngModel)]="user.affiliation" />
-  <input i18n-placeholder type="password" pInputText required placeholder="Password *" [(ngModel)]="user.password" />
+<form name="userForm" #userForm="ngForm" class="grid">
+  <div class="col-12 sm:col-6">
+    <input i18n-placeholder type="text" pInputText required placeholder="Username *" [(ngModel)]="user.username" />
+  </div>
+  <div class="col-12 sm:col-6">
+    <input i18n-placeholder type="text" pInputText placeholder="Name" [(ngModel)]="user.first_name" />
+  </div>
+  <div class="col-12 sm:col-6">
+    <input i18n-placeholder type="email" pInputText required placeholder="Email *" [(ngModel)]="user.email" />
+  </div>
+  <div class="col-12 sm:col-6">
+    <input i18n-placeholder type="password" pInputText required placeholder="Password *" [(ngModel)]="user.password" />
+  </div>
+  <div class="col-12 sm:col-4">
+    <input i18n-placeholder type="number" pInputText placeholder="Institutional phone" [(ngModel)]="user.telephone" />
+  </div>
+  <div class="col-12 sm:col-4">
+    <input i18n-placeholder type="number" pInputText placeholder="Affiliation" [(ngModel)]="user.affiliation" />
+  </div>
+  <div class="col-12 sm:col-4">
+    <p-dropdown [options]="positions" placeholder="Position" [(ngModel)]="user.position" optionLabel="name">
+      <ng-template let-option>
+        <span i18n> {{option.name}} </span>
+      </ng-template>
+    </p-dropdown>
+  </div>
   
   <p-toast></p-toast>
-  <p-button [loading]="loading" styleClass="p-button-sm" (click)="onClickSave()" i18n-label label="Save"></p-button>
+  <div class="col-12">
+    <p-button [loading]="loading" styleClass="p-button-sm" (click)="onClickSave()" i18n-label label="Save"></p-button>
+  </div>
 </form>

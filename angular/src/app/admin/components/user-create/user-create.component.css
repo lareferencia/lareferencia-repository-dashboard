@@ -1,14 +1,8 @@
-.message {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+:host ::ng-deep .p-button {
+  width: 30%;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+:host ::ng-deep .p-dropdown,
 input {
-  margin-bottom: 0.5rem;
+  width: 100%;
 }

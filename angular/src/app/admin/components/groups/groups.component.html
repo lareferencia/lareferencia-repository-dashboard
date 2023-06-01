@@ -3,6 +3,20 @@
     <p-accordionTab>
         <ng-template pTemplate="header">
             <div class="flex align-items-center">
+                <i class="pi pi-plus-circle mr-2"></i>
+                <span class="vertical-align-middle" i18n>Create group</span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+          <app-group-create></app-group-create>
+        </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+  
+  <p-accordion class="w-full">
+    <p-accordionTab>
+        <ng-template pTemplate="header">
+            <div class="flex align-items-center">
                 <i class="pi pi-users mr-2"></i>
                 <span class="vertical-align-middle" i18n>Group list</span>
             </div>
@@ -26,19 +40,4 @@
         </ng-template>
     </p-accordionTab>
   </p-accordion>
-
-  <p-accordion class="w-full">
-    <p-accordionTab>
-        <ng-template pTemplate="header">
-            <div class="flex align-items-center">
-                <i class="pi pi-plus-circle mr-2"></i>
-                <span class="vertical-align-middle" i18n>Create group</span>
-            </div>
-        </ng-template>
-        <ng-template pTemplate="content">
-          <app-group-create></app-group-create>
-        </ng-template>
-    </p-accordionTab>
-  </p-accordion>
-
 </div>
