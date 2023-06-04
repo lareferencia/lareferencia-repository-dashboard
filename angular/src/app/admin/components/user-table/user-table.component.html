@@ -21,8 +21,6 @@
       [paginator]="true"
       rows="10"
       [showCurrentPageReport]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      i18n-currentPageReportTemplate
       [rowsPerPageOptions]="[5, 10, 25]"
       loading
       [globalFilterFields]="['username']">
@@ -79,7 +77,6 @@
   *ngIf="dialogData"
   [header]="'Username: ' + dialogData.username"
   [(visible)]="visible" 
-  [modal]="true" 
   [draggable]="false" 
   [resizable]="false"
   [style]="{maxWidth: '90vw'}"
