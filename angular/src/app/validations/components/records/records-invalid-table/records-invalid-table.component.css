@@ -33,9 +33,6 @@
   font-size: 5rem;
 }
 
-:host ::ng-deep .p-inputtext {
-  width: 100px;
-}
 
 .table-container {
   position: relative;
