@@ -11,7 +11,6 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-user-group',
   templateUrl: './user-group.component.html',
-  styleUrls: ['./user-group.component.css'],
   providers: [MessageService]
 })
 export class UserGroupComponent  {
