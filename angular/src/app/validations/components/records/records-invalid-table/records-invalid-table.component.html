@@ -6,17 +6,21 @@
   <div class="table-container
   animate__animated animate__fadeInRight animate__faster"
   *ngIf="!isLoadingResults">
-    
     <div class="table-content-container">
+    
       <p-table
+      #userTable
       [value]="dataSource"
       [paginator]="true"
       [rows]="pageSize"
       [totalRecords]="totalRecords"
+      showCurrentPageReport="true"
       [rowsPerPageOptions]="[10, 25, 50]"
       [lazy]="true"
       (onLazyLoad)="loadRecords($event)"
+      [globalFilterFields]="['identifier']"
       >
+      
       <ng-template pTemplate="header">
           <tr>
             <th>ID</th>
