@@ -13,7 +13,7 @@ import { ChartData } from '../../interfaces/stack-chart.interface';
 export class HarvestingChartComponent implements OnInit {
 
   public loadingChart: boolean = true;
-  public data: ChartData;
+  public data: any;
   public options:any;
   public pageNumber = 0;
   public pageSize = 8;
@@ -71,6 +71,14 @@ export class HarvestingChartComponent implements OnInit {
 
             { type: 'bar', label: 'Valid', backgroundColor: 'rgba(0, 208, 222, 0.6)',
               data: sortedConent.map(harvesting => harvesting.validSize)},
+              {
+                type: 'line',
+                label: 'Transformed',
+                borderColor: 'rgba(0, 160, 171, 0.6)',
+                borderWidth: 2,
+                fill: false,
+                data: sortedConent.map(harvesting => harvesting.transformedSize)
+            },
             ]
           };
           this.loadingChart = false;
