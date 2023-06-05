@@ -8,6 +8,7 @@ import { LazyLoadEvent } from 'primeng/api';
 import { Validation } from 'src/app/shared/models/validation.model';
 import { Record } from 'src/app/shared/models/record.model';
 import { DialogData } from 'src/app/validations/interfaces/dialogData.interface';
+import { RecordsFilter } from 'src/app/shared/models/records-filter.model';
 
 @Component({
   selector: 'app-records-invalid-table',
@@ -32,6 +33,10 @@ export class RecordsInvalidTableComponent implements OnInit {
   public dialogData: DialogData;
   public visible:boolean;
   public dialogTitle: string;
+
+  public filter: RecordsFilter = {
+    oaiIdentifier: ''
+  };
   
   constructor(
     private validationService: ValidationService,
@@ -45,9 +50,19 @@ export class RecordsInvalidTableComponent implements OnInit {
     this.isLoadingResults = false;
   }
 
-  loadRecords(event: LazyLoadEvent) {
-    this.isLoadingResults = true;
+  applyFilter() {
+    this.loadRecords({ first: 0, rows: this.pageSize });
+  }
+  clearFilters() {
+    this.filter = {
+      oaiIdentifier: ''
+    }
+    this.loadRecords({ first: 0, rows: this.pageSize});
+  }
 
+  loadRecords(event: LazyLoadEvent) {
+
+    this.isLoadingResults = true;
     this.pageSize = event.rows;
     this.pageNumber = event.first / event.rows;
 
@@ -56,7 +71,8 @@ export class RecordsInvalidTableComponent implements OnInit {
       this.harvestingID,
       this.ruleID,
       this.pageNumber,
-      this.pageSize
+      this.pageSize,
+      this.filter
     ).subscribe((result) => {
       this.dataSource = result.content;
       this.totalRecords = result.totalElements;

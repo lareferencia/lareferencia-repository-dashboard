@@ -7,6 +7,15 @@
   animate__animated animate__fadeInRight animate__faster"
   *ngIf="!isLoadingResults">
     <div class="table-content-container">
+      <div class="p-3">
+        <input type="text" 
+          pInputText 
+          [(ngModel)]="filter.oaiIdentifier"
+          i18n-placeholder 
+          placeholder="Search identifier"
+          (keydown.enter)="this.applyFilter()"/>
+        <p-button class="ml-3" styleClass="p-button-outlined p-button-sm" i18n-label label="clear" (onClick)="clearFilters()"></p-button>
+      </div>
     
       <p-table
       #userTable

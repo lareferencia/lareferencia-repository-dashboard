@@ -37,11 +37,20 @@ export class ValidationService {
     );
   }
 
-  getRecordsByHarvestingIDInvalidRuleID(sourceAcronym: string, harvestingID: number, ruleID: number, pageNumber: number, pageSize: number): Observable<Records> {
-    const params = new HttpParams()
+  getRecordsByHarvestingIDInvalidRuleID(sourceAcronym: string, 
+      harvestingID: number, 
+      ruleID: number, 
+      pageNumber: number, 
+      pageSize: number,
+      filter: RecordsFilter): Observable<Records> {
+
+    let params = new HttpParams()
       .append('invalid_rules', ruleID.toString())
       .append('pageNumber', pageNumber.toString())
-      .append('pageSize', pageSize.toString());
+      .append('pageSize', pageSize.toString())
+
+      if (filter.oaiIdentifier !== null && filter.oaiIdentifier !== '')
+      params = params.append('oai_identifier', filter.oaiIdentifier);
 
     return this.http
       .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })

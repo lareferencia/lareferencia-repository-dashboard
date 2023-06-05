@@ -19,7 +19,6 @@
   color: white;
 }
 :host ::ng-deep .p-button {
-  width: 100%;
   font-family: 'Poppins';
 }
 
