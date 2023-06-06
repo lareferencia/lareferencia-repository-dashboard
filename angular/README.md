@@ -5,7 +5,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
 Angular v15 supports node.js versions: 14.20.x, 16.13.x and 18.10.x and supports TypeScript version 4.8 or later
 
-### Description
+## Description
 
 This application is an Angular project that uses the PrimeNG and Angular Material libraries to create a rich and functional user interfaces. It provides a wide range of ready-to-use components and functionalities.
 
