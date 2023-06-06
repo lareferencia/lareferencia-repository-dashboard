@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ValidationsRoutingModule } from './validations-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { MaterialModule } from '../material/material.module';
+import { PrimengMaterial } from '../primeng-material/primeng-material.module';
 import { RecordModule } from './components/records/record.module';
 import { OcurrenceModule } from './components/occurrence/occurrence.module';
 
@@ -23,7 +23,7 @@ import { ValidationComponent } from './pages/validation.component';
     CommonModule,
     ValidationsRoutingModule,
     SharedModule,
-    MaterialModule,
+    PrimengMaterial,
     RecordModule,
     // ConformityModule,
     OcurrenceModule
