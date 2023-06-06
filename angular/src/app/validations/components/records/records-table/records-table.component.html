@@ -83,7 +83,8 @@
                   [showAddButton]="false"
                   [showMatchModes]="false"
                   [showOperator]="false"
-                  [showClearButton]="false">
+                  [showClearButton]="false"
+                  (onApply)="applyFilter()">
                   <ng-template pTemplate="filter">
                     <p-dropdown 
                       [options]="validOptions" 
@@ -91,14 +92,37 @@
                       optionLabel="name"
                       i18n-placeholder 
                       placeholder="Validation"
-                      (ngModelChange)="filter.isValid = $event.value; applyFilter()">
+                      (ngModelChange)="filter.isValid = $event.value">
                     </p-dropdown>
                   </ng-template>
 
                 </p-columnFilter>
               </div>
             </th>
-            <th i18n>Transformed</th>
+            <th>
+              <div class="flex justify-content-center align-items-center" i18n>
+                Transformed
+                <p-columnFilter field="transformed"
+                  display="menu"
+                  [showAddButton]="false"
+                  [showMatchModes]="false"
+                  [showOperator]="false"
+                  [showClearButton]="false"
+                  (onApply)="applyFilter()">
+                  <ng-template pTemplate="filter">
+                    <p-dropdown 
+                      [options]="transformedOptions" 
+                      [(ngModel)]="selectedTransformedOption" 
+                      optionLabel="name"
+                      i18n-placeholder 
+                      placeholder="Transformed"
+                      (ngModelChange)="filter.isTransformed = $event.value">
+                    </p-dropdown>
+                  </ng-template>
+                </p-columnFilter>
+              </div>
+              
+            </th>
             <th i18n>Details</th>
           </tr>
       </ng-template>

@@ -16,8 +16,8 @@
     box-shadow: rgba(0, 208, 222, 0.3) 0px 6px 20px;
 }
 .yellow{
-    background-color: rgb(255, 211, 0);
-    box-shadow: rgba(255, 213, 0, 0.227) 0px 6px 20px;
+    background-color: rgb(236, 232, 199);
+    box-shadow: rgb(236, 232, 199, 0.3) 0px 6px 20px;
 }
 .card-quantifier{
     font-size: .875rem;

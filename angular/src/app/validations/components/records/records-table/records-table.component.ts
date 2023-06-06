@@ -37,6 +37,8 @@ export class RecordsTableComponent implements  OnInit {
   public rulesOptions: Rule[];
   public selectedValidRule: Rule;
   public selectedInvalidRule: Rule;
+  public transformedOptions: any[]
+  public selectedTransformedOption: any;
 
   public validOptions: validOptios[];
   public selectedValidation: boolean;
@@ -68,6 +70,10 @@ export class RecordsTableComponent implements  OnInit {
       {name: 'Valid', value: true},
       {name: 'All', value: null},
     ];
+    this.transformedOptions = [
+      {name: 'No', value: false},
+      {name: 'Yes', value: true}
+    ]
   }
   detailClick(record: Record): void {
     this.dialogTitle = record.identifier;
