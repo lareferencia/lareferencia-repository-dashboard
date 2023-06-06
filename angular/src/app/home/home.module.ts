@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MaterialModule } from 'src/app/material/material.module';
 import { HomeComponent } from './home.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PrimengMaterial } from '../primeng-material/primeng-material.module';
 
 
 
@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   declarations: [HomeComponent],
   imports: [
     CommonModule,
-    MaterialModule,
+    PrimengMaterial,
     SharedModule,
     RouterModule
   ],

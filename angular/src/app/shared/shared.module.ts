@@ -9,7 +9,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ValidationCardComponent } from './components/validation-card/validation-card.component';
 import { InfoCardComponent } from './components/info-card/info-card.component';
-import { MaterialModule } from '../material/material.module';
+import { PrimengMaterial } from '../primeng-material/primeng-material.module';
 import { RuleCardComponent } from './components/rule-card/rule-card.component';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { RuleCardComponent } from './components/rule-card/rule-card.component';
     MatCardModule,
     MatProgressBarModule,
     MatIconModule,
-    MaterialModule
+    PrimengMaterial
   ],
   exports: [
     FormsModule,

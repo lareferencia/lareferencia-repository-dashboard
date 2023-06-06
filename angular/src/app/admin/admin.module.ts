@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
-import { MaterialModule } from '../material/material.module';
+import { PrimengMaterial } from '../primeng-material/primeng-material.module';
 
 
 import { MainComponent } from './pages/main.component';
@@ -43,7 +43,7 @@ import { GroupCreateComponent } from './components/group-create/group-create.com
       FormsModule, 
       AdminRoutingModule,
       SharedModule,
-      MaterialModule
+      PrimengMaterial
     ],
     exports:[
       AccountComponent

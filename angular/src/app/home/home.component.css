@@ -68,6 +68,17 @@ p {
   margin-top: 3px;
 }
 
+
+
+.home-section-image-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-section-image-container img {
+  width: 90%;
+}
+
 .home-services {
   grid-column: 3 / 4;
   min-height: 80vh;
@@ -104,15 +115,6 @@ p {
   margin-left: 1rem;
   font-weight: 600;
  
-}
-
-.home-section-image-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.home-section-image-container img {
-  width: 100%;
 }
 
 .home-footer{

@@ -1,6 +1,6 @@
 <div class="table-container">
-  <div class="loading-shade" *ngIf="isLoadingResults">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  <div *ngIf="isLoadingResults">
+    <p-progressSpinner *ngIf="isLoadingResults"></p-progressSpinner>
   </div>
 
   <div class="table-container

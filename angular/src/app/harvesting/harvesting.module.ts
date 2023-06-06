@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HarvestingRoutingModule } from './harvesting-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { MaterialModule } from '../material/material.module';
+import { PrimengMaterial } from '../primeng-material/primeng-material.module';
 
 import { HarvestingComponent } from './pages/harvesting/harvesting.component';
 import { HarvestingTableComponent } from './components/harvesting-table/harvesting-table.component';
@@ -21,7 +21,7 @@ import { HarvestingChartComponent } from './components/harvesting-chart/harvesti
   imports: [
     CommonModule,
     HarvestingRoutingModule,
-    MaterialModule,
+    PrimengMaterial,
     SharedModule,
   ],
   exports: [HarvestingChartComponent],
