@@ -315,8 +315,8 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ab0259bac56e8203fd4fbf16b53169e457eb8151" datatype="html">
-        <source>In the graph it is possible to view the results of the collections performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory collection rules of the repository. Invalid records are those that do not comply with the mandatory collection rules of the repository. Finally, the transformed records inform the number of documents that were collected.</source>
+      <trans-unit id="78f21865396bd1b30aac85e98fa689215354785d" datatype="html">
+        <source>In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-source/harvesting-source.component.html</context>
           <context context-type="linenumber">13</context>
@@ -329,8 +329,8 @@
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4bd29fa0e0bffb2030934b2f0b1d7b879f659178" datatype="html">
-        <source>This table is the history of each collection performed. Each collection generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each collection performed. You can also view the start and end time of the collection process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the collection rules of the BDTD. Only the validations of the last collections made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest collections.</source>
+      <trans-unit id="f4a2a0b013f007f73fdd1d1ada4344d200070d60" datatype="html">
+        <source>This table is the history of each harvest performed. Each harvest generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each harvest performed. You can also view the start and end time of the harvest process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the harvest rules of the BDTD. Only the validations of the last harvestingss made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest harvestingss.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
           <context context-type="linenumber">10</context>
@@ -543,6 +543,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/info-card/info-card.component.html</context>
           <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fc1b8d859a6cede9f94512a2d617d7757814303c" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{description}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/info-card/info-card.component.html</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6b7f6587593d85c35717cdc34548c2d6ab3675c7" datatype="html">
@@ -1151,8 +1158,8 @@
           <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ab834c3624e673277d5e4637e893958d6b666946" datatype="html">
-        <source>The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory collection rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory collection rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown.</source>
+      <trans-unit id="725d2f880b0de578949cdc28515c11950a9990e1" datatype="html">
+        <source>The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory harvest rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory harvest rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">73</context>
@@ -1165,8 +1172,8 @@
           <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="072bdc6adab7c354e029329b33a7ab89a0d556ea" datatype="html">
-        <source>The data below presents the complete diagnosis of your institution&apos;s data collection. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.</source>
+      <trans-unit id="7752b5c3a98327e35f71820c04aa07bfb38bc890" datatype="html">
+        <source>The data below presents the complete diagnosis of your institution&apos;s data harvest. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">87</context>

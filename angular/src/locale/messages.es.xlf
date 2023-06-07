@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="pt">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="es">
     <body>
       <trans-unit id="4d13a9cd5ed3dcee0eab22cb25198d43886942be" datatype="html">
-        <source>Users</source><target>Usuários</target>
+        <source>Users</source><target>Usuarios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/account/account.component.html</context>
           <context context-type="linenumber">5</context>
@@ -21,28 +21,28 @@
         </context-group>
       </trans-unit>
       <trans-unit id="a42e0b6f5e44594137c8b1aab0eac04d8401010f" datatype="html">
-        <source>Group Info</source><target>Informações do Grupo</target>
+        <source>Group Info</source><target>Información del grupo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-create/group-create.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a0d161faa5cfa475695e495b6a895fdcd114d6e3" datatype="html">
-        <source>Name *</source><target>Nome*</target>
+        <source>Name *</source><target>Nombre *</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-create/group-create.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="05744efa74616ac9d5bbbf9a1a82a351908f7667" datatype="html">
-        <source>Longest name</source><target>Nome mais longo</target>
+        <source>Longest name</source><target>Nombre más largo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-create/group-create.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="52c9a103b812f258bcddc3d90a6e3f46871d25fe" datatype="html">
-        <source>Save</source><target>Salvar</target>
+        <source>Save</source><target>Guardar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-create/group-create.component.html</context>
           <context context-type="linenumber">12</context>
@@ -60,21 +60,21 @@
         </context-group>
       </trans-unit>
       <trans-unit id="9bc4f5da3ebcb6b2c2f10c3801770735f5cd4334" datatype="html">
-        <source>Import acronym from existing repositories</source><target>Importar acrônimo de repositórios existentes</target>
+        <source>Import acronym from existing repositories</source><target>Importar acronimos de repositorios existentes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-sync/group-sync.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6cd852cef77ac67ed96ff3fb59b4e330d99a9432" datatype="html">
-        <source>Search group</source><target>Grupo de pesquisa</target>
+        <source>Search group</source><target>Buscar grupo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-table/group-table.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c73e83c39b427a2443cb8836329401f0fe197727" datatype="html">
-        <source>Showing {first} to {last} of {totalRecords} entries</source><target>Mostrando {first} a {last} de entradas {totalRecords}</target>
+        <source>Showing {first} to {last} of {totalRecords} entries</source><target>Mostrando de {first} a {last} de {totalRecords} entradas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-table/group-table.component.html</context>
           <context context-type="linenumber">24</context>
@@ -89,7 +89,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="63c96be733bef4cc1b42b5e5fd85f05f6f2f77cb" datatype="html">
-        <source> Name <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;name&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target> Nome <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;name&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
+        <source> Name <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;name&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target> Nombre <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;name&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-table/group-table.component.html</context>
           <context context-type="linenumber">34,36</context>
@@ -100,7 +100,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="826b25211922a1b46436589233cb6f1a163d89b7" datatype="html">
-        <source>Delete</source><target>Excluir</target>
+        <source>Delete</source><target>Borrar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-table/group-table.component.html</context>
           <context context-type="linenumber">60</context>
@@ -111,7 +111,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="7b5c0c9bb11a50dda054496134547ade78c5030d" datatype="html">
-        <source>Create group</source><target>Criar grupo</target>
+        <source>Create group</source><target>Crear grupo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/groups/groups.component.html</context>
           <context context-type="linenumber">7</context>
@@ -132,56 +132,56 @@
         </context-group>
       </trans-unit>
       <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
-        <source>Loading...</source><target>Carregamento...</target>
+        <source>Loading...</source><target>Cargando...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/process-list/process-list.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="716099cc8421df59a2d60d791bcbee5598d70889" datatype="html">
-        <source> Success </source><target> Êxito </target>
+        <source> Success </source><target> Éxito </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/process-list/process-list.component.html</context>
           <context context-type="linenumber">10,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8ea6ac2d0dcbf052e6fa6ae2cf882b453b4857f7" datatype="html">
-        <source> Error </source><target> Erro </target>
+        <source> Error </source><target> Error </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/process-list/process-list.component.html</context>
           <context context-type="linenumber">13,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9fbe8a9c4b787e9cc6760fd43aae0e430838e698" datatype="html">
-        <source>Select file</source><target>Selecionar arquivo</target>
+        <source>Select file</source><target>Seleccionar archivo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/upload-users/upload-users.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4f6c6525fa323dd97afe70a2cedf2cfc7bdc4f4a" datatype="html">
-        <source>No file selected</source><target>Nenhum arquivo selecionado</target>
+        <source>No file selected</source><target>Ningún fichero seleccionado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/upload-users/upload-users.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e6813c3b5512d6371f91151ca704e636ba1af1c2" datatype="html">
-        <source>User Info</source><target>Informações do usuário</target>
+        <source>User Info</source><target>Información del usuario</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ee1e7340d053a2b891a8f08f6077ed2730170032" datatype="html">
-        <source>Username *</source><target>Nome de usuário *</target>
+        <source>Username *</source><target>Nombre de usuario *</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
-        <source>Name</source><target>Nome</target>
+        <source>Name</source><target>Nombre</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
           <context context-type="linenumber">8</context>
@@ -192,28 +192,28 @@
         </context-group>
       </trans-unit>
       <trans-unit id="3190ecd3db8f05ed505d5b010a89e20adcfb77e9" datatype="html">
-        <source>Email *</source><target>Email*</target>
+        <source>Email *</source><target>Correo electrónico *</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3e0377921db7694ce1439eeec0c617bd676e6632" datatype="html">
-        <source>Password *</source><target>Senha*</target>
+        <source>Password *</source><target>Contraseña *</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3a774cb2841935f9d00ddf802d94e102fb7cf41b" datatype="html">
-        <source>Institutional phone</source><target>Telefone institucional</target>
+        <source>Institutional phone</source><target>Teléfono institucional</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bb8d38336e3c80713535b9270ce33e9298e7eb5f" datatype="html">
-        <source>Affiliation</source><target>Afiliação</target>
+        <source>Affiliation</source><target>Afiliación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
           <context context-type="linenumber">20</context>
@@ -231,63 +231,63 @@
         </context-group>
       </trans-unit>
       <trans-unit id="98598bafc544f4bd7d3c0da7707d24c442f13e78" datatype="html">
-        <source>Group Membership</source><target>Participação em Grupo</target>
+        <source>Group Membership</source><target>Afiliación a grupos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-group/user-group.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="db9253b806cf5396361f832db18e75b0d01c216f" datatype="html">
-        <source>Available Groups</source><target>Grupos Disponíveis</target>
+        <source>Available Groups</source><target>Grupos disponibles</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-group/user-group.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4f4f3bbdbf791f7e9481784e8fb09a978bbc0399" datatype="html">
-        <source>Search username</source><target>Nome de usuário de pesquisa</target>
+        <source>Search username</source><target>Buscar nombre de usuario</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-table/user-table.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8c41194914f332233df0c0e26fd20df9b05c85e3" datatype="html">
-        <source> Username <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;username&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target> Nome de usuário <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;username&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
+        <source> Username <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;username&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target> Nombre de usuario <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;username&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-table/user-table.component.html</context>
           <context context-type="linenumber">32,34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="31cf824034489eb42f6a388d5980b98b8e1de015" datatype="html">
-        <source>Create user</source><target>Criar usuário</target>
+        <source>Create user</source><target>Crear usuario</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/users/users.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="58866bd2a411a7df43a1708322598f772a8f893e" datatype="html">
-        <source>User list</source><target>Lista de usuários</target>
+        <source>User list</source><target>Lista de usuarios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/users/users.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="09bba45dda787a5a6bd901ada6ed23fd55d54534" datatype="html">
-        <source>Import users</source><target>Importar usuários</target>
+        <source>Import users</source><target>Importar usuarios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/users/users.component.html</context>
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c3189e87fdef9dc8c8a2415e1e37d816293d0bcd" datatype="html">
-        <source>Harvestings</source><target>Colheitas</target>
+        <source>Harvestings</source><target>Cosechas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="99ee4faa69cd2ea8e3678c1f557c0ff1f05aae46" datatype="html">
-        <source>Clear</source><target>Claro</target>
+        <source>Clear</source><target>Limpiar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
           <context context-type="linenumber">42</context>
@@ -309,28 +309,28 @@
         </context-group>
       </trans-unit>
       <trans-unit id="47bddb84808da1b42d7c3436a6acb2b085de8ad8" datatype="html">
-        <source>Harvesting history</source><target>História da colheita</target>
+        <source>Harvesting history</source><target>Historia de la cosecha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-source/harvesting-source.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="78f21865396bd1b30aac85e98fa689215354785d" datatype="html">
-        <source>In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected.</source><target>No gráfico é possível visualizar os resultados das colheitas realizadas. O gráfico mostra três métricas, que são: registros válidos, inválidos e transformados. Registros válidos são aqueles que estão de acordo com as regras de colheita obrigatória vigentes do repositório. Registros inválidos são aqueles que não cumprem as regras de coleta obrigatórias do repositório. Por fim, os registros transformados informam o número de documentos coletados.</target>
+        <source>In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected.</source><target>En el gráfico se pueden ver los resultados de las cosechas realizadas. El gráfico muestra tres métricas, que son: registros válidos, inválidos y transformados. Los registros válidos son los que se ajustan a las normas de cosechas obligatorias vigentes en el depósito. Los registros no válidos son aquellos que no cumplen las normas de cosechas obligatorias del repositorio. Por último, los registros transformados informan del número de documentos que se cosecharon.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-source/harvesting-source.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7a57f7ece1d459c1a36a8304873b8747ac146bd8" datatype="html">
-        <source>Harvesting table</source><target>Mesa de colheita</target>
+        <source>Harvesting table</source><target>Tabla de cosecha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f4a2a0b013f007f73fdd1d1ada4344d200070d60" datatype="html">
-        <source>This table is the history of each harvest performed. Each harvest generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each harvest performed. You can also view the start and end time of the harvest process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the harvest rules of the BDTD. Only the validations of the last harvestingss made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest harvestingss.</source><target>Esta tabela é o histórico de cada colheita realizada. Cada colheita gera um identificador exclusivo, que é representado abaixo como um ID. Mostra numericamente quantos registros foram validados, invalidados e transformados em cada safra realizada. Você também pode visualizar a hora de início e término do processo de colheita, bem como baixar o arquivo de .csv contendo todas as informações descritas. Ao clicar em "validações", será apresentada uma página contendo o nível de cumprimento, em porcentagem, das regras de colheita do BDTD. Apenas as validações das últimas colheitas realizadas estarão disponíveis para visualização, portanto, não será possível visualizar a validação granular das colheitas mais antigas.</target>
+        <source>This table is the history of each harvest performed. Each harvest generates a unique identifier, which is represented below as an ID. It shows numerically how many records were validated, invalidated and transformed in each harvest performed. You can also view the start and end time of the harvest process, as well as download the .csv file containing all the information described. When clicking on “validations”, a page will be presented containing the level of compliance, in percentage, the harvest rules of the BDTD. Only the validations of the last harvestingss made will be available for viewing, therefore, it will not be possible to view the granular validation of the oldest harvestingss.</source><target>Esta tabla es el historial de cada cosecha realizada. Cada cosecha genera un identificador único, que se representa a continuación como ID. Muestra numéricamente cuántos registros se validaron, invalidaron y transformaron en cada cosecha realizada. También puede ver la hora de inicio y fin del proceso de cosecha, así como descargar el archivo .csv que contiene toda la información descrita. Al hacer clic en "validaciones", se presentará una página con el nivel de cumplimiento, en porcentaje, de las normas de cosecha de la BDTD. Sólo se podrán visualizar las validaciones de las últimas cosechas realizadas, por lo que no será posible visualizar la validación granular de las cosechas más antiguas.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
           <context context-type="linenumber">10</context>
@@ -344,7 +344,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c15e52c272673a7aba295d8739276d318dd398a3" datatype="html">
-        <source>Harvested Record</source><target>Recorde colhido</target>
+        <source>Harvested Record</source><target>Registro cosechado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
           <context context-type="linenumber">32</context>
@@ -358,7 +358,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="8f4cd8361ac440632915cfff08ebc232b16ce311" datatype="html">
-        <source>Invalid records</source><target>Registros inválidos</target>
+        <source>Invalid records</source><target>Registros no válidos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
           <context context-type="linenumber">34</context>
@@ -376,21 +376,21 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c35c8b1e2367b5819d68cffe6b8fb484ab93cee4" datatype="html">
-        <source>Start<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;startTime&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target>Começar<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;startTime&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
+        <source>Start<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;startTime&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target>Inicio<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;startTime&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="11e4812a6a84b46ffdae67e2524d3c74061f235f" datatype="html">
-        <source>End<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;endTime&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target>Fim<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;endTime&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
+        <source>End<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;endTime&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target>Fin<x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;endTime&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
           <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f49faa9515f93cac2fffc0e9e9eb306ed3c48894" datatype="html">
-        <source>See validation</source><target>Ver validação</target>
+        <source>See validation</source><target>Ver validación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
           <context context-type="linenumber">55</context>
@@ -398,7 +398,7 @@
       </trans-unit>
       <trans-unit id="5bce68ecdf737b50b53696835e431c3bb6286714" datatype="html">
         <source> Harvesting not found
-</source><target> Colheita não encontrada
+</source><target> Cosecha no encontrada
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/pages/harvesting/harvesting.component.html</context>
@@ -406,63 +406,63 @@
         </context-group>
       </trans-unit>
       <trans-unit id="65cc4ab3b4c438e07c89be2b677d08369fb62da2" datatype="html">
-        <source>Welcome</source><target>Bem-vindo</target>
+        <source>Welcome</source><target>Bienvenido</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c8f3e21f029fd5ea72baf43919d5cf93ba3d7873" datatype="html">
-        <source>Dashboard for repository managers</source><target>Painel para gerentes de repositório</target>
+        <source>Dashboard for repository managers</source><target>Dashboard para gestores de repositorios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a0f8502b0782cbe277d8a64f2d57331b88990443" datatype="html">
-        <source>¿What's on the platform?</source><target>¿O que há na plataforma?</target>
+        <source>¿What's on the platform?</source><target>¿Qué hay en la plataforma?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a612508fe70bc2e7b8683e594713c41ba3374e10" datatype="html">
-        <source> Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />harvesting<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> of deposit documents. </source><target> Informações sobre a <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />colheita<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> de documentos de depósito. </target>
+        <source> Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />harvesting<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> of deposit documents. </source><target> Información sobre la cosecha <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" /><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> de documentos de depósito. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ed1d1358ae73b3e12a3fcf7606af5228debcbe29" datatype="html">
-        <source> Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />documents validation.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target> Informações sobre a validação dos <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />documentos.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
+        <source> Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />documents validation.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target> Información sobre la validación de documentos <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7b15d2cacc3450fc1a582f17df670ea505124fae" datatype="html">
-        <source> Informative <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />statistics and graphics.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target> Estatísticas e gráficos informativos <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
+        <source> Informative <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />statistics and graphics.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target> Estadísticas y gráficos informativos <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="419d940613972cc3fae9c8ea0a4306dbf80616e5" datatype="html">
-        <source>Services</source><target>Serviços</target>
+        <source>Services</source><target>Servicios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0ab9a92569c3b5e0ddfea44556453dc471a286af" datatype="html">
-        <source>Data harvesting</source><target>Coleta de dados</target>
+        <source>Data harvesting</source><target>Cosecha de datos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="70be7d58e886182a2345e08f07694ebc80d75018" datatype="html">
-        <source>Validations</source><target>Validações</target>
+        <source>Validations</source><target>Validaciones</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">38</context>
@@ -473,7 +473,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="287fd156f43dc35c66e15b4db6ce4fc8343e85a8" datatype="html">
-        <source>In progress</source><target>Em andamento</target>
+        <source>In progress</source><target>En curso</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">42</context>
@@ -484,7 +484,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
-        <source>Home</source><target>Casa</target>
+        <source>Home</source><target>Inicio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
           <context context-type="linenumber">11</context>
@@ -498,49 +498,49 @@
         </context-group>
       </trans-unit>
       <trans-unit id="15c1357ea36c119f48bc1d3d03c5384d7ae829b3" datatype="html">
-        <source>Harvesting</source><target>Colheita</target>
+        <source>Harvesting</source><target>Cosecha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="29881a45dafbe5aa05cd9d0441a4c0c2fb06df92" datatype="html">
-        <source>Account</source><target>Conta</target>
+        <source>Account</source><target>Cuenta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="81b8ebafe5edcc94eee7da4479267da235f02ad1" datatype="html">
-        <source>Edit Info</source><target>Editar informações</target>
+        <source>Edit Info</source><target>Editar información</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0b15bf6fa1e5bdabc9fde97a14bee63a5d5e62f6" datatype="html">
-        <source>email</source><target>Email</target>
+        <source>email</source><target>Correo electrónico</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f4753d99682179b036b9704d4c3b758103e25db2" datatype="html">
-        <source>Telephone</source><target>Telefone</target>
+        <source>Telephone</source><target>Teléfono</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="047f50bc5b5d17b5bec0196355953e1a5c590ddb" datatype="html">
-        <source>Update</source><target>Atualização</target>
+        <source>Update</source><target>Actualizar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cc20bedde02a1c4018c7e71454ffeb62c2ec593e" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{title}}" /> - Read more</source><target><x id="INTERPOLATION" equiv-text="{{title}}" /> - Ler mais</target>
+        <source><x id="INTERPOLATION" equiv-text="{{title}}" /> - Read more</source><target><x id="INTERPOLATION" equiv-text="{{title}}" /> - Seguir leyendo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/info-card/info-card.component.html</context>
           <context context-type="linenumber">7</context>
@@ -577,7 +577,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="cb67fcf00d0f0d785d33006a1e90f0dfcbd19fc8" datatype="html">
-        <source>{VAR_SELECT, select, true {Mandatory rule: Yes} false {Mandatory rule: No}}</source><target>{VAR_SELECT, selecione, true {Regra obrigatória: Sim} false {Regra obrigatória: Não}}</target>
+        <source>{VAR_SELECT, select, true {Mandatory rule: Yes} false {Mandatory rule: No}}</source><target>{VAR_SELECT, select, true {Regla obligatoria: Sí} false {Regla obligatoria: No}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
           <context context-type="linenumber">9</context>
@@ -585,7 +585,7 @@
       </trans-unit>
       <trans-unit id="a968df177708f1e559f74844a993287ec01c0f89" datatype="html">
         <source> Zero only <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; 
-        i18n-pTooltip pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target> Apenas zero <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; 
+        i18n-pTooltip pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target> Sólo cero <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; 
         i18n-pTooltip pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
@@ -593,7 +593,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="15b300d80e6f102fcfdf7fb84f0d72683fdaf900" datatype="html">
-        <source>Number of valid occurrences for a rule to be valid</source><target>Número de ocorrências válidas para que uma regra seja válida</target>
+        <source>Number of valid occurrences for a rule to be valid</source><target>Número de ocurrencias válidas para que una regla sea válida</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
           <context context-type="linenumber">16</context>
@@ -613,7 +613,7 @@
       </trans-unit>
       <trans-unit id="def4eca0112d66423af6c852e61515a52acd67fd" datatype="html">
         <source> One only <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip
-        pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target> Um só <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip
+        pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target> Sólo uno <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip
         pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
@@ -622,7 +622,7 @@
       </trans-unit>
       <trans-unit id="47640275cfaa2ad1652d8110eb9ae1565deba502" datatype="html">
         <source> Zero or more <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip
-        pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target> Zero ou mais <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip
+        pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target> Cero o más <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip
         pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
@@ -631,7 +631,7 @@
       </trans-unit>
       <trans-unit id="7a774b44d4b92230c7f6039c9dd10c2bb20e19f9" datatype="html">
         <source> One or more <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip 
-        pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target> Um ou mais <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip 
+        pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target> Uno o varios <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pTooltip 
         pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
@@ -640,7 +640,7 @@
       </trans-unit>
       <trans-unit id="e99981ab4cd035a74b285ae489af477bd7ba8030" datatype="html">
         <source>All <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pToolTip
-      pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target>Todo <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pToolTip
+      pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></source><target>Todos <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;pi pi-question-circle text-xs&quot; i18n-pToolTip
       pTooltip=&quot;Number of valid occurrences for a rule to be valid&quot;&gt;" /><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
@@ -666,7 +666,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="cc3e9b469739cda95528710d8bd391f0e0925c9f" datatype="html">
-        <source> Ocurrence <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;value&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target> Ocorrência <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;value&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
+        <source> Ocurrence <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;value&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target> Ocurrencia <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;value&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html</context>
           <context context-type="linenumber">18,20</context>
@@ -677,7 +677,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="6f6025c19d12e6d72b44d6e022690249940afd64" datatype="html">
-        <source> Amount <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;count&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target> Quantidade <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;count&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
+        <source> Amount <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;count&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></source><target> Cantidad <x id="START_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;p-sortIcon field=&quot;count&quot;&gt;" /><x id="CLOSE_TAG_P_SORTICON" ctype="x-p_sorticon" equiv-text="&lt;/p-sortIcon&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/occurrence/invalid-occurence-table/invalid-occurence-table.component.html</context>
           <context context-type="linenumber">22,24</context>
@@ -688,21 +688,21 @@
         </context-group>
       </trans-unit>
       <trans-unit id="3c5d55d02ecb0700340230f3201359af2c1a3afd" datatype="html">
-        <source>Records that contain the invalid rule</source><target>Registros que contêm a regra inválida</target>
+        <source>Records that contain the invalid rule</source><target>Registros que contienen la regla inválida</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/record-invalid/record-invalid.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c55bc952121d2fc8a08bbbaab91aead610a0c7c6" datatype="html">
-        <source>Search identifier</source><target>Identificador de pesquisa</target>
+        <source>Search identifier</source><target>Buscar por identificador</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="608c2c2fd57206f39026b5f6226c5ba25a91495e" datatype="html">
-        <source>clear</source><target>claro</target>
+        <source>clear</source><target>borrar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">17</context>
@@ -720,7 +720,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="12ce9154fb4b6bd40e48658b72fe680d164e94e9" datatype="html">
-        <source>Validation</source><target>Validação</target>
+        <source>Validation</source><target>Validación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">37</context>
@@ -742,7 +742,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="4f8b2bb476981727ab34ed40fde1218361f92c45" datatype="html">
-        <source>Details</source><target>Detalhes</target>
+        <source>Details</source><target>Detalles</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">39</context>
@@ -790,7 +790,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="80a8a953396a732349a495a48e384fb5e63f4339" datatype="html">
-        <source>{VAR_SELECT, select, true {Yes} false {No}}</source><target>{VAR_SELECT, select, true {Sim} false {Não}}</target>
+        <source>{VAR_SELECT, select, true {Yes} false {No}}</source><target>{VAR_SELECT, select, true {Sí} false {No}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">47</context>
@@ -823,7 +823,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="b39ed6e1b60260e81c790f39f9e0f3cbfe9c9d88" datatype="html">
-        <source>Invalid ocurrence</source><target>Ocorrência inválida</target>
+        <source>Invalid ocurrence</source><target>Ocurrencia inválida</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">85</context>
@@ -834,7 +834,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="13daaab8a4ac29e03ec6bc7c8bfbd99186b682ef" datatype="html">
-        <source>Valid ocurrence</source><target>Ocorrência válida</target>
+        <source>Valid ocurrence</source><target>Ocurrencia válida</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">90</context>
@@ -845,7 +845,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="2c96bb62de512796ba50eccc750d04da431de8ca" datatype="html">
-        <source>Result of the evaluation of rules for:</source><target>Resultado da avaliação das regras para:</target>
+        <source>Result of the evaluation of rules for:</source><target>Resultado de la evaluación de las relgas para:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">95</context>
@@ -863,7 +863,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="7351f3ac05fe2b13ddbbf08273faf70b513c17d3" datatype="html">
-        <source>Valid rules</source><target>Regras válidas</target>
+        <source>Valid rules</source><target>Normas válidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
           <context context-type="linenumber">12</context>
@@ -885,7 +885,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="a0f857f05563991bceb0b7151a7c2b1b00b8b451" datatype="html">
-        <source>Invalid rules</source><target>Regras inválidas</target>
+        <source>Invalid rules</source><target>Normas inválidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
           <context context-type="linenumber">25</context>
@@ -931,7 +931,7 @@
                       optionLabel=&quot;name&quot;
                       i18n-placeholder 
                       placeholder=&quot;Validation&quot;
-                      (ngModelChange)=&quot;filter.isValid = $event.value&quot;&gt;" /><x id="CLOSE_TAG_P_DROPDOWN" ctype="x-p_dropdown" equiv-text="&lt;/p-dropdown&gt;" /><x id="CLOSE_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;/ng-template&gt;" /><x id="CLOSE_TAG_P_COLUMNFILTER" ctype="x-p_columnfilter" equiv-text="&lt;/p-columnFilter&gt;" /></source><target> Validação <x id="START_TAG_P_COLUMNFILTER" ctype="x-p_columnfilter" equiv-text="&lt;p-columnFilter field=&quot;isValid&quot;
+                      (ngModelChange)=&quot;filter.isValid = $event.value&quot;&gt;" /><x id="CLOSE_TAG_P_DROPDOWN" ctype="x-p_dropdown" equiv-text="&lt;/p-dropdown&gt;" /><x id="CLOSE_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;/ng-template&gt;" /><x id="CLOSE_TAG_P_COLUMNFILTER" ctype="x-p_columnfilter" equiv-text="&lt;/p-columnFilter&gt;" /></source><target> Validación <x id="START_TAG_P_COLUMNFILTER" ctype="x-p_columnfilter" equiv-text="&lt;p-columnFilter field=&quot;isValid&quot;
                   display=&quot;menu&quot;
                   [showAddButton]=&quot;false&quot;
                   [showMatchModes]=&quot;false&quot;
@@ -1004,28 +1004,28 @@
         </context-group>
       </trans-unit>
       <trans-unit id="7a093853e0eed2cc0fb9cc0c270a03ae6afe1140" datatype="html">
-        <source>{VAR_SELECT, select, true {Valid} false {invalid}}</source><target>{VAR_SELECT, select, true {Valid} false {invalid}}</target>
+        <source>{VAR_SELECT, select, true {Valid} false {invalid}}</source><target>{VAR_SELECT, select, true {Válido} false {inválido}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
           <context context-type="linenumber">138</context>
         </context-group>
       </trans-unit>
       <trans-unit id="073a735ca61175d74e74fa6d04791f78e9772b7d" datatype="html">
-        <source>Invalid mandatory rules</source><target>Regras obrigatórias inválidas</target>
+        <source>Invalid mandatory rules</source><target>Normas obligatorias inválidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8650807af5f3b3939010d4f130340adfe5905ed8" datatype="html">
-        <source>Invalid not mandatory rules</source><target>Regras inválidas e não obrigatórias</target>
+        <source>Invalid not mandatory rules</source><target>Normas no obligatorias inválidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d2894b94ca9d4052c0c837c7b5c6070e561ad62c" datatype="html">
-        <source>Valid occurrences</source><target>Ocorrências válidas</target>
+        <source>Valid occurrences</source><target>Ocurrencias válidos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-detail/validation-detail.component.html</context>
           <context context-type="linenumber">6</context>
@@ -1043,14 +1043,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c2e15943b12069a300b1bdba7e1cce6ca4bda2e2" datatype="html">
-        <source>Invalid occurences</source><target>Ocorrências inválidas</target>
+        <source>Invalid occurences</source><target>Ocurrencias inválidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-detail/validation-detail.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c145a34359b00a08aef9bf3fdf35a985aea25c8c" datatype="html">
-        <source>Invalid</source><target>Inválido</target>
+        <source>Invalid</source><target>No válido</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-detail/validation-detail.component.html</context>
           <context context-type="linenumber">20</context>
@@ -1061,7 +1061,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="5f41466ce35947cac6a216335ad7a4449d1bf3d4" datatype="html">
-        <source>Show rules</source><target>Mostrar regras</target>
+        <source>Show rules</source><target>Mostrar reglas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
           <context context-type="linenumber">8</context>
@@ -1075,21 +1075,21 @@
         </context-group>
       </trans-unit>
       <trans-unit id="eec715de352a6b114713b30b640d319fa78207a0" datatype="html">
-        <source>Description</source><target>Descrição</target>
+        <source>Description</source><target>Descripción</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
           <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="20da2718b078b92db625c8a6659ae183cb0b1869" datatype="html">
-        <source>Mandatory</source><target>Obrigatório</target>
+        <source>Mandatory</source><target>Obligatorio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
           <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="37a8637d6eaf46a8fa0b36d95a02f9e33c83c80a" datatype="html">
-        <source>Conformity</source><target>Conformidade</target>
+        <source>Conformity</source><target>Conformidad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
           <context context-type="linenumber">52</context>
@@ -1117,14 +1117,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="7c15048a17aa629caa614464711b5bd9628d4902" datatype="html">
-        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />Yes<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />Sim<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />Yes<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />Sí<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
           <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="af747e4bb0d6d5010e1fb1080f529cf92e04bd7d" datatype="html">
-        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />No<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />Não<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />No<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />No<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
           <context context-type="linenumber">72</context>
@@ -1157,22 +1157,22 @@
       </trans-unit>
       <trans-unit id="fd7c3007ef6b99d900049b22c89ce562d7373612" datatype="html">
         <source>{VAR_SELECT, select, true {Validations not found} false {Enter a source acronym in
-  the root URL /:acronym}}</source><target>{VAR_SELECT, selecione, true {Validações não encontradas} false {Insira um acrônimo de origem em
-  a URL raiz /:acronym}}</target>
+  the root URL /:acronym}}</source><target>{VAR_SELECT, select, true {Validaciones no encontradas} false {Introducir un acrónimo fuente en
+  la URL raíz /:acrónimo}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">8,9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="79d7e3e4af023cdf594fbf2b77e876f2d2d2d2aa" datatype="html">
-        <source>Total records in the last validation</source><target>Total de registros na última validação</target>
+        <source>Total records in the last validation</source><target>Total de registros en la última validación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b87aaa303e283d0bac21236e7fa9ac17e2f9f2c5" datatype="html">
-        <source>Records</source><target>Arquivo</target>
+        <source>Records</source><target>Registros</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">22</context>
@@ -1186,7 +1186,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="2b27d1edfd3d1b29dbc26c97f576a904feec1331" datatype="html">
-        <source>Total invalid records</source><target>Total de registros inválidos</target>
+        <source>Total invalid records</source><target>Total de registros no válidos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">53</context>
@@ -1197,28 +1197,28 @@
         </context-group>
       </trans-unit>
       <trans-unit id="2dc2aae770f41dcc56dfce073c0bf23a8687846c" datatype="html">
-        <source>Validation table</source><target>Tabela de validação</target>
+        <source>Validation table</source><target>Tabla de validación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="725d2f880b0de578949cdc28515c11950a9990e1" datatype="html">
-        <source>The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory harvest rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory harvest rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown.</source><target>O gráfico abaixo mostra o resultado das validações realizadas. Registros com 100% de nível de validação referem-se a registros que cumpriram as regras de coleta obrigatórias do repositório e se tornam registros válidos. Os registros que possuem nível de validação de 0,00% referem-se a registros que não atenderam às regras de coleta obrigatória do repositório e se tornaram registros inválidos. Nesse caso, o usuário tem a opção de visualizar quais foram as ocorrências inválidas no botão de detalhes, onde o valor dos metadados com as quantidades correspondentes são mostrados.</target>
+        <source>The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory harvest rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory harvest rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown.</source><target>El gráfico siguiente muestra el resultado de las validaciones realizadas. Los registros con un nivel de validación del 100% se refieren a registros que han cumplido las normas de cosecha obligatorias del repositorio y se convierten en registros válidos. Los registros que tienen un nivel de validación del 0,00% se refieren a registros que no cumplían las normas de cosecha obligatorias del repositorio y se convirtieron en registros no válidos. En este caso, el usuario tiene la opción de ver cuáles fueron las ocurrencias no válidas en el botón de detalles, donde se muestra el valor de los metadatos con las cantidades correspondientes.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="87d222091e079ff83a38a8efbe56e6600ff64433" datatype="html">
-        <source>Records table</source><target>Tabela de registros</target>
+        <source>Records table</source><target>Tabla de registros</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7752b5c3a98327e35f71820c04aa07bfb38bc890" datatype="html">
-        <source>The data below presents the complete diagnosis of your institution's data harvest. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.</source><target>Os dados abaixo apresentam o diagnóstico completo da coleta de dados da sua instituição. Aqui você pode verificar quais registros são válidos, quais são inválidos e o que torna um registro inválido. Além de permitir uma visualização personalizada, na qual é possível fazer combinações entre o tipo de registro (válido ou inválido) e o tipo de regra. No botão de detalhes, é possível visualizar a aplicabilidade e conformidade de cada regra de validação item por item.</target>
+        <source>The data below presents the complete diagnosis of your institution's data harvest. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.</source><target>Los datos que figuran a continuación presentan el diagnóstico completo de la cosecha de datos de su institución. Aquí puede comprobar qué registros son válidos, cuáles no y qué hace que un registro no sea válido. Además de permitir una vista personalizada, en la que es posible hacer combinaciones entre el tipo de registro (válido o no válido) y el tipo de regla. En el botón de detalles, es posible ver la aplicabilidad y el cumplimiento de cada regla de validación elemento por elemento.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">87</context>
