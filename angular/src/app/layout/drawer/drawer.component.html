@@ -2,36 +2,36 @@
 
     <mat-drawer mode="side" #drawer [opened]="!isMobileMenu || isMenuOpen" >
         <div style="display: flex; justify-content: center; padding-top: 1.5rem;">
-            <img style="width: 35px;" src="../../../../assets/img/favicon.png" alt="">
+            <img style="width: 35px;" src="assets/img/favicon.png" alt="">
         </div>
 
         <mat-nav-list class="nav-list">
             <a class="nav-list-a" routerLink="/" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
-              <img class="nav-list-img" src="../../../../assets/icons/home.svg" alt="">
+              <img class="nav-list-img" src="assets/icons/home.svg" alt="">
                 <span i18n class="nav-list-text">Home</span>
             </a>
             <a class="nav-list-a"  routerLink="/admin/accounts" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}"
               *ngIf="isAdmin">
-              <img class="nav-list-img" src="../../../../assets/icons/admin.svg" alt="">
+              <img class="nav-list-img" src="assets/icons/admin.svg" alt="">
               <span i18n class="nav-list-text">Admin</span>
             </a>
             <a class="nav-list-a" routerLink="/{{activeRepository}}/harvesting" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
-              <img class="nav-list-img" src="../../../../assets/icons/chart.svg" alt="">
+              <img class="nav-list-img" src="assets/icons/chart.svg" alt="">
               <span i18n class="nav-list-text">Harvesting</span>
             </a>
             <a class="nav-list-a"  routerLink="/{{activeRepository}}/validation/{{harvestingConentId}}" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
-              <img class="nav-list-img" src="../../../../assets/icons/validation.svg" alt="">
+              <img class="nav-list-img" src="assets/icons/validation.svg" alt="">
               <span i18n class="nav-list-text">Validations</span>
             </a>
             
 
 
             <a class="nav-list-a nav-list-a-user"  routerLink="/user/profile" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
-              <img class="nav-list-img" src="../../../../assets/icons/user.svg" alt="">
+              <img class="nav-list-img" src="assets/icons/user.svg" alt="">
               <span i18n class="nav-list-text">Account</span>
             </a>
             <a class="nav-list-a nav-list-a-logout" (click)="logout()">
-              <img class="nav-list-img" src="../../../../assets/icons/user-logout.svg" alt="">
+              <img class="nav-list-img" src="assets/icons/user-logout.svg" alt="">
               <span class="nav-list-text">Logout</span>
             </a>
         </mat-nav-list>

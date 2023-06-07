@@ -6,7 +6,7 @@
                 <h6>Loading dashboard...</h6>
             </div>
             <div class="header-burguer-menu" (click)="toggleMenu()">
-                <img style="width: 25px; cursor: pointer;" src="../../../assets/icons/menu-burguer.svg" alt="">
+                <img style="width: 25px; cursor: pointer;" src="gassets/icons/menu-burguer.svg" alt="">
             </div>
             <div *ngIf="!isLoading && menuRepositories[0] && menuRepositories[0].items.length <= 1"
                 class="menu-container">
@@ -19,12 +19,12 @@
                 <p-menu #menu [model]="menuRepositories" [popup]="true"></p-menu>
                 <h6>Dashboard / {{activeRepository}}</h6>
                 <img class="arrow" style="width: 18px;" 
-                    src="../../../../assets/icons/arrowdown.svg" alt="arrow">
+                    src="assets/icons/arrowdown.svg" alt="arrow">
             </div>
             <div class="header-logo-referencia">
                 <h6 style="margin-bottom: 0; margin-right: 8px;">Powered by</h6>
                 <img style="width: 140px" 
-                    src="../../../../assets/img/logo-footer.png" alt="">
+                    src="assets/img/logo-footer.png" alt="">
             </div>
         </div>
     </div>

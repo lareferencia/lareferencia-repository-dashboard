@@ -1,0 +1,67 @@
+    map $http_accept_language $accept_language {
+        ~*^es es;
+        ~*^pt pt;
+        ~*^en en;
+    }
+
+server {
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/auth.lareferencia.info/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/auth.lareferencia.info/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+ 
+    root /var/www/dashboard;
+
+    access_log /var/log/nginx/dashboard.access.log;
+    error_log /var/log/nginx/dashboard.error.log;    
+    
+    server_name validador.lareferencia.info;
+
+    # Fallback to default language if no preference defined by browser
+    if ($accept_language ~ "^$") {
+        set $accept_language "en";
+    }
+
+    # Redirect "/" to Angular application in the preferred language of the browser
+    rewrite ^/$ /$accept_language permanent;
+
+    # Everything under the Angular application is always redirected to Angular in the
+    # correct language
+    location ~ ^/(es|pt|en) {
+        try_files $uri /$1/index.html?$args;
+    }
+
+    location /api/v2 {
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto https;
+
+      proxy_pass http://127.0.0.1:8095/api/v2;
+    }
+
+    location /api/v2/swagger {
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto https;
+
+      proxy_pass http://127.0.0.1:8095/;
+    }
+
+}
+
+
+server {
+    if ($host = validador.lareferencia.info) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen [::]:80;
+    listen 80;    
+    
+    server_name validador.lareferencia.info;
+    return 404; # managed by Certbot
+}
