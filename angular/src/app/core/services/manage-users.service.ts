@@ -31,6 +31,7 @@ export class ManageUsersService {
     );
   }
 
+  //no hay validaciones acá
   updateUser(userName: string, userInfo: UserInfo): Observable<boolean> {
     return this.http
       .put<boolean>(`${this.baseurl}user/self/${userName}/update`, userInfo)

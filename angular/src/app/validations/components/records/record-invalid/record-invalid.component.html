@@ -1,0 +1,22 @@
+<div
+  *ngIf="isLoadingResults"
+  class="min-h-screen flex justify-content-center align-items-center">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="p-4" *ngIf="!isLoadingResults">
+  <app-validation-card
+    i18n-title
+    title="Records that contain the invalid rule"
+    [validationTitle]="ruleName"
+    icon="pi pi-exclamation-triangle"
+    color="#fc6161"
+    bgColor="rgb(252, 97, 97 , 0.30)"
+    imagePath="validation-invalid.svg"
+    shadowColor="0px 6px 20px rgba(252, 97, 97, 0.3)">
+  </app-validation-card>
+
+  <app-records-invalid-table
+  [validation]="validation"
+  ></app-records-invalid-table>
+</div>

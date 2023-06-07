@@ -1,0 +1,37 @@
+<div *ngIf="isLoading" class="flex justify-content-center p-6">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div *ngIf="!isLoading" class="table-container mt-3
+  animate__animated animate__fadeInRight animate__faster">
+    <div class="table-content-container">
+      <p-table 
+        [value]="dataSource"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        i18n-currentPageReportTemplate
+        [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header" >
+            <tr>
+                <th pSortableColumn="value"i18n>
+                  Ocurrence
+                  <p-sortIcon field="value"></p-sortIcon>
+                </th>
+                <th pSortableColumn="count" i18n>
+                  Amount
+                  <p-sortIcon field="count"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-dataSource>
+            <tr>
+              <td>{{dataSource.value}}</td>
+              <td>{{dataSource.count | number}}</td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+</div>
+<app-table-exporter *ngIf="!isLoading" [data]="csvData" [header]="headerData"></app-table-exporter>

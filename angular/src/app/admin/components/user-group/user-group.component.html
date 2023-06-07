@@ -1,0 +1,15 @@
+<div class="flex">
+  <div col="6">
+      <h5 i18n>Group Membership</h5>
+      <app-user-group-table #groupTableLeave [username]="dialogData.username" [action]="userGroupAction.Leave"
+        (actionClick)="actionClick($event)">
+      </app-user-group-table>
+    </div>
+    <div class="col-6">
+      <h5 i18n>Available Groups</h5>
+      <app-user-group-table #groupTableJoin [username]="dialogData.username" [action]="userGroupAction.Join"
+        (actionClick)="actionClick($event)">
+      </app-user-group-table>
+    </div>
+  <p-toast></p-toast>
+</div>

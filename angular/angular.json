@@ -1,5 +1,11 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "d9c285fc-4bd0-401a-9888-07e4e41c8a80",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -54,17 +60,28 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "sourceMap": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/custom-theme.scss",
+              "src/styles.css",
               "./node_modules/highlight.js/styles/github.css",
-              "src/styles.css"
+              "node_modules/animate.css/animate.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css"
             ],
-            "scripts": ["./node_modules/vega/build/vega.min.js"],
-            "allowedCommonJsDependencies": ["highlight.js"]
+            "scripts": [
+              "./node_modules/vega/build/vega.min.js",
+              "./node_modules/chart.js/dist/chart.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "highlight.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -95,15 +112,21 @@
               ]
             },
             "en": {
-              "localize": ["en"],
+              "localize": [
+                "en"
+              ],
               "main": "src/main.ts"
             },
             "pt": {
-              "localize": ["pt"],
+              "localize": [
+                "pt"
+              ],
               "main": "src/main.ts"
             },
             "es": {
-              "localize": ["es"],
+              "localize": [
+                "es"
+              ],
               "main": "src/main.ts"
             }
           }
@@ -111,6 +134,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "hmr": true,
             "browserTarget": "frontend:build"
           },
           "configurations": {
@@ -132,6 +156,15 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "frontend:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }

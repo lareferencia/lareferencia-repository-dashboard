@@ -1,0 +1,59 @@
+.profile-section{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.form-section{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  place-content: center;
+  min-height: 80vh;
+  background-color: white;
+  padding-bottom: 1rem;
+  padding-top: 1rem ;
+  border-radius: 10px;
+}
+h2{
+  text-align: center;
+  margin-top: 1.2rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem;
+  margin-left: 20%;
+  margin-right: 20%;
+  
+}
+input{
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+:host ::ng-deep .p-button{
+  font-family: 'Poppins';
+}
+
+
+@media screen and (max-width: 1380px) {
+ 
+}
+
+@media screen and (max-width: 600px) {
+  form {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  form {
+    margin-left: 6%;
+    margin-right: 6%;
+  }
+}
+

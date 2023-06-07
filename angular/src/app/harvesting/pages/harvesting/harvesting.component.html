@@ -1,0 +1,31 @@
+<div class="alert alert-danger" 
+     role="alert" 
+     *ngIf="error" i18n>
+  Harvesting not found
+</div>
+
+<div *ngIf="!error" >
+
+  <div *ngIf="isLoadingResults" 
+    class="min-h-screen flex justify-content-center align-items-center">
+      <p-progressSpinner></p-progressSpinner>
+  </div>
+
+  <div *ngIf="harvestingContent" class="p-3"
+   animate__animated animate__fadeIn>
+
+    <!-- Stack chart -->
+    <app-harvesting-source></app-harvesting-source>
+
+    <!-- Table -->
+    <app-harvesting-table></app-harvesting-table>
+
+  </div>
+</div>
+
+
+
+
+
+
+

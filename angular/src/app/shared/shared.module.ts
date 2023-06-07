@@ -7,17 +7,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatButtonModule } from '@angular/material/button';
+import { ValidationCardComponent } from './components/validation-card/validation-card.component';
+import { InfoCardComponent } from './components/info-card/info-card.component';
+import { PrimengMaterial } from '../primeng-material/primeng-material.module';
+import { RuleCardComponent } from './components/rule-card/rule-card.component';
 
 @NgModule({
-  declarations: [...fromComponents.components, ...fromDirectives.directives],
+  declarations: [...fromComponents.components, ...fromDirectives.directives, InfoCardComponent, ValidationCardComponent, RuleCardComponent],
   imports: [
     CommonModule,
     FormsModule,
     MatCardModule,
     MatProgressBarModule,
     MatIconModule,
-    MatButtonModule,
+    PrimengMaterial
   ],
   exports: [
     FormsModule,

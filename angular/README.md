@@ -1,14 +1,32 @@
-# Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+
+# Version
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
+Angular v15 supports node.js versions: 14.20.x, 16.13.x and 18.10.x and supports TypeScript version 4.8 or later
+
+## Description
+
+This application is an Angular project that uses the PrimeNG and Angular Material libraries to create a rich and functional user interfaces. It provides a wide range of ready-to-use components and functionalities.
+
+## Installation
+1. Clone the application repository from GitHub.
+2. Open the project folder in Visual Studio Code.
+3. Open a new termina
+4. l and execute the following command to install the project dependencies:
+`npm install`
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+If the "localize" property is set to "true", run `ng serve --configuration=es/en/pt` to start the server in a single language. If localize is set to "false", simply run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Localize
+
+Run `ng-extract-i18n` to generate an .xlf file with all the text marked with the i18n directive. Make 2 copies of that file, one named .es and the other .pt. After translating them, place the 3 files in the locale folder. This way, you will obtain 3 folders with the respective language when running `ng build`.
 
 ## Build
 

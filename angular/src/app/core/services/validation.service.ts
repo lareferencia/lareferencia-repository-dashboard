@@ -37,11 +37,20 @@ export class ValidationService {
     );
   }
 
-  getRecordsByHarvestingIDInvalidRuleID(sourceAcronym: string, harvestingID: number, ruleID: number, pageNumber: number, pageSize: number): Observable<Records> {
-    const params = new HttpParams()
+  getRecordsByHarvestingIDInvalidRuleID(sourceAcronym: string, 
+      harvestingID: number, 
+      ruleID: number, 
+      pageNumber: number, 
+      pageSize: number,
+      filter: RecordsFilter): Observable<Records> {
+
+    let params = new HttpParams()
       .append('invalid_rules', ruleID.toString())
       .append('pageNumber', pageNumber.toString())
-      .append('pageSize', pageSize.toString());
+      .append('pageSize', pageSize.toString())
+
+      if (filter.oaiIdentifier !== null && filter.oaiIdentifier !== '')
+      params = params.append('oai_identifier', filter.oaiIdentifier);
 
     return this.http
       .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })
@@ -67,6 +76,7 @@ export class ValidationService {
 
   getRecordsByHarvestingIDFilter(sourceAcronym: string, harvestingID: number, filter: RecordsFilter): Observable<Records> {
 
+
     let params = new HttpParams()
       .append('pageNumber', filter.pageNumber.toString())
       .append('pageSize', filter.pageSize.toString());
@@ -91,13 +101,13 @@ export class ValidationService {
         'invalid_rules',
         filter.invalidRules.map((x) => x.ruleID).join(',')
       );
-
     return this.http
       .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
       );
+
   }
 
   errorHandler(e: any): Observable<any> {

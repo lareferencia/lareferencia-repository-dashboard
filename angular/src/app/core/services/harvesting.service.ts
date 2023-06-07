@@ -4,7 +4,7 @@ import { Harvesting } from '../../shared/models/harvesting.model';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { HarvestingList } from '../../shared/models/harvesting-list.model';
 
@@ -23,11 +23,16 @@ export class HarvestingService {
     );
   }
 
-  getHarvestingHistoryByAcronym(sourceAcronym: string, pageNumber: number, pageSize: number): Observable<HarvestingHistory> {
-    const params = new HttpParams()
-      .append('pageNumber', pageNumber.toString())
-      .append('pageSize', pageSize.toString());
-
+  getHarvestingHistoryByAcronym(sourceAcronym: string, page: number, size: number, sortField?: string, sortOrder?: number): Observable<HarvestingHistory> {
+    let params = new HttpParams()
+      .append('page', page.toString())
+      .append('size', size.toString());
+      
+    if (sortField && sortOrder) {
+        let sortValue: string;
+        sortOrder === 1 ? sortValue = `${sortField},asc` : sortValue = `${sortField},desc`
+        params = params.append('sort', sortValue);
+    }
     return this.http
       .get<HarvestingHistory>(
         `${this.baseurl}${sourceAcronym}/history`,
@@ -41,8 +46,8 @@ export class HarvestingService {
 
   getHarvestingHistoryByAcronymAndDate(sourceAcronym: string, pageNumber: number, pageSize: number, startDate: Date, endDate: Date): Observable<HarvestingHistory> {
     const params = new HttpParams()
-      .append('pageNumber', pageNumber.toString())
-      .append('pageSize', pageSize.toString());
+    .append('size', pageSize.toString())
+    .append('page', pageNumber.toString());
 
     return this.http
       .get<HarvestingHistory>(
@@ -56,17 +61,19 @@ export class HarvestingService {
   }
 
   getHarvestingLastGoodKnowByAcronym(sourceAcronym: string): Observable<HarvestingContent> {
-    return this.http.get<HarvestingContent>(`${this.baseurl}${sourceAcronym}/lkg`).pipe(
+    return this.http.get<HarvestingContent>(`${this.baseurl}${sourceAcronym}/lkg`)
+    .pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
   }
 
   getHarvestingList(): Observable<HarvestingList> {
-    return this.http.get<HarvestingList>(`${this.baseurl}list`).pipe(
-      map((obj) => obj),
-      catchError((e) => this.errorHandler(e))
-    );
+    return this.http.get<HarvestingList>(`${this.baseurl}list`)
+    // .pipe(
+    //   map((obj) => obj),
+    //   catchError((e) => this.errorHandler(e))
+    // );
   }
 
   getMetadataXml(sourceAcronym: string, recordID: string): Observable<string> {

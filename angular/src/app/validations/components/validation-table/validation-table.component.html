@@ -1,0 +1,131 @@
+
+<div class="table-container
+  animate__animated animate__fadeInRight animate__faster">
+    <div class="table-content-container">
+      <div class="mb-3">
+        <p-dropdown
+          i18n-placeholder
+          placeholder="Show rules"
+          [options]="mandatoryOptions" 
+          [(ngModel)]="isMandatory" 
+          optionLabel="name" 
+          (ngModelChange)="loadRecords()">
+        </p-dropdown>
+
+
+      </div>
+      <p-table 
+      [value]="dataSource"
+      [paginator]="true"
+      rows="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]">
+      <ng-template pTemplate="header" >
+
+          <tr>
+              <th pSortableColumn="ruleID">
+                <div class="flex align-items-center">
+                  <span i18n>ID</span> 
+                  <p-sortIcon field="ruleID"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="name">
+                <div class="flex align-items-center">
+                  <span i18n>Name</span> 
+                  <p-sortIcon field="name"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="description">
+                <div class="flex align-items-center">
+                  <span i18n>Description</span> 
+                  <p-sortIcon field="description"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="mandatory">
+                <div class="flex align-items-center">
+                  <span i18n>Mandatory</span> 
+                  <p-sortIcon field="mandatory"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="conformity">
+                <div class="flex align-items-center">
+                  <span i18n>Conformity</span> 
+                  <p-sortIcon field="conformity"></p-sortIcon>
+                </div>
+              </th>
+              <th pSortableColumn="validCount">
+                <div class="flex align-items-center">
+                  <span i18n>Valid record</span> 
+                  <p-sortIcon field="validCount"></p-sortIcon>
+                </div>
+              </th>
+              <th class="text-center" i18n>Invalid records</th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+            <td>{{dataSource.ruleID}}</td>
+            <td i18n >{{dataSource.name}}</td>
+            <td i18n >{{dataSource.description}}</td>
+            <td *ngIf="dataSource.mandatory" i18n><b>Yes</b></td>
+            <td *ngIf="!dataSource.mandatory" i18n><b>No</b></td>
+            <td>
+              <div class="clearfix">
+                <div class="float-left">
+                  <strong>{{ dataSource.conformity / 100 | percent: '1.3' }}</strong>
+                </div>
+              </div>
+              <mat-progress-bar 
+                value="{{ dataSource.conformity > 0 
+                  ? dataSource.conformity 
+                  : 100 }}">
+              </mat-progress-bar>
+            </td>
+            <td>{{dataSource.validCount | number}}</td>
+            <td>
+              <p-button *ngIf="dataSource.conformity == 100"
+                disabled="true"
+                styleClass="p-button-secondary p-button-sm"
+                i18n-label
+                label="100%"
+                ></p-button>
+                <a
+                  target="_blank" 
+                  routerLink="/{{ this.acronym }}/validation/{{
+                  this.harvestingID
+                  }}/invalid_rule/{{ dataSource.ruleID }}">
+                  <p-button *ngIf="dataSource.conformity < 100"
+                  styleClass="p-button-danger p-button-sm"
+                  i18n-label
+                  label="Invalids"
+                  ></p-button>
+                </a>
+            </td>
+            <td>
+              <p-button
+                (onClick)="detailClick(dataSource)"
+                styleClass="p-button-primary p-button-sm"
+                i18n-label
+                label="Details"
+                ></p-button>
+            </td>
+          </tr>
+      </ng-template>
+  </p-table>
+  <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
+  </div>
+</div>
+
+<p-dialog
+  *ngIf="dialogData"
+  [header]="dialogData.name"
+  [(visible)]="visible" 
+  [modal]="true" 
+  [draggable]="false" 
+  [resizable]="false"
+  (onHide)="onDialogHide()">
+  <div>
+    <app-validation-detail [dialogData]="dialogData"></app-validation-detail>
+  </div>
+</p-dialog>

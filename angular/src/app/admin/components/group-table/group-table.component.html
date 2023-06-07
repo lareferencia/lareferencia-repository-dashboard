@@ -1,0 +1,69 @@
+<div class="flex justify-content-center">
+  <p-progressSpinner 
+    *ngIf="isLoadingData"
+    styleClass="w-4rem h-4rem" strokeWidth="8" animationDuration=".5s">
+  </p-progressSpinner>
+</div>
+
+<div *ngIf="!isLoadingData"  class="table-container
+  animate__animated animate__fadeIn animate__faster">
+    <div class="table-content-container">
+      <div class="mb-3">
+        <input pInputText type="text" 
+        (input)="userTable.filterGlobal($event.target.value, 'contains')" 
+        placeholder="Search group" 
+        i18n-placeholder
+        />
+      </div>
+    <p-table
+      #userTable 
+      [value]="dataSource"
+      [paginator]="true"
+      rows="5"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      i18n-currentPageReportTemplate
+      [rowsPerPageOptions]="[5, 10, 25]"
+      loading
+      [globalFilterFields]="['name']">
+
+      <ng-template pTemplate="header" >
+          <tr>
+              <th 
+              pSortableColumn="name">
+                <div class="flex align-items-center" i18n>
+                 Name 
+                  <p-sortIcon field="name"></p-sortIcon>
+                </div>
+              </th>
+              <th></th>
+              <th>
+                <p-button
+                (click)="loadRecords()" 
+                  icon="pi pi-sync" 
+                  styleClass="p-button-rounded 
+                  p-button-secondary 
+                  p-button-text">
+                </p-button>
+              </th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+            <td><b>{{dataSource.name}}</b></td>
+            <td>
+              <p-confirmPopup></p-confirmPopup>
+              <p-button
+                (click)="onDeleteUser($event, dataSource)" icon="pi pi-trash"
+                class="mr-3" 
+                styleClass="p-button-danger p-button-sm" 
+                i18n-label label="Delete" 
+                >
+              </p-button>
+            </td>
+          </tr>
+      </ng-template>
+  </p-table>
+  <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
+  </div>
+</div>

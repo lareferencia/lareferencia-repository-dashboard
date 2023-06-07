@@ -1,0 +1,48 @@
+
+
+<div class="chart">
+  <div class="chart-container">
+    <div class="chart-title"><span i18n>Harvestings</span></div>
+    
+    <div *ngIf="loadingChart" class="flex justify-content-center align-content-center">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+    
+    <div *ngIf="!loadingChart" class="animate__animated animate__fadeIn">
+      <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+    </div>
+
+    <div class="flex align-items-center">
+      <p-button [disabled]="disabledPagination" (onClick)="paginate('next')" icon="pi pi-angle-left"
+      styleClass="p-button-rounded p-button-text p-button-secondary">
+    </p-button>
+      <p-button [disabled]="pageNumber === 0" (onClick)="paginate('prev')"
+      icon="pi pi-angle-right"
+      styleClass="p-button-rounded p-button-text p-button-secondary">
+    </p-button>
+    </div>
+
+  </div>
+</div>
+<div class="flex bg-white p-3 justify-content-between" 
+  style="border-radius: 10px;">
+  <div class="flex">
+    <div class="mr-2 flex flex-column">
+      <span class="p-1 text-xs">Start date</span>
+      <p-calendar [(ngModel)]="startDate" 
+      dateFormat="dd.mm.yy" [showIcon]="true" placeholder="Start date"></p-calendar>
+    </div>
+    <div class="flex flex-column">
+      <span class="p-1 text-xs">End date</span>
+      <p-calendar [(ngModel)]="endDate" 
+      dateFormat="dd.mm.yy" [showIcon]="true" placeholder="End date"></p-calendar>
+    </div>
+  </div>
+  <div class="flex align-items-end">
+    <p-button label="Clear" i18n-label (onClick)="clearFilter()" styleClass="p-button-outlined p-button-sm"></p-button>
+    <p-button class="ml-3" label="Filter" i18n-label (onClick)="filtrar()" styleClass="p-button-sm"></p-button>
+  </div>
+</div>
+
+
+

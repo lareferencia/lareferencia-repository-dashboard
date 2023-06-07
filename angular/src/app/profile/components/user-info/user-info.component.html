@@ -1,0 +1,32 @@
+<div class="profile-section">
+  <div class="form-section">
+
+    <h2 i18n>Edit Info</h2>
+
+    <div *ngIf="!user" style="display: flex; justify-content: center; margin-top: 2rem;">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+
+    <form *ngIf="user" class="user-form animate__animated animate__fadeIn" >
+        <input pInputText [(ngModel)]="user.first_name" name="first_name">
+
+        <input pInputText [(ngModel)]="user.email" name="email" i18n-placeholder placeholder="email">
+
+        <input pInputText [(ngModel)]="user.telephone" name="telephone" i18n-placeholder placeholder="Telephone">
+
+        <p-dropdown [options]="positions" optionLabel="name"></p-dropdown>
+
+        <input class="mt-2" pInputText [(ngModel)]="user.affiliation" name="affiliation" i18n-placeholder placeholder="Affiliation">
+
+      <p-toast position="bottom-right"></p-toast>
+        <p-button [disabled]="!updatingSuccess"
+        (click)="onClickSave()" i18n
+        i18n-label label="Update">
+      </p-button>
+    </form>
+
+  </div>
+  
+</div>
+
+

@@ -21,11 +21,9 @@ export class VegaVizComponent implements OnInit {
     this.view = new vega.View(vega.parse(spec))
       .renderer('svg')
       .initialize('#' + this.id)
-      // .width(300)
-      // .height(300)
       .hover()
       .tooltip(tooltip.call)
-      .run();
+      .run()
 
     this.sendData(this.view);
   }

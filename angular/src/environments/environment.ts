@@ -3,17 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const keycloakConfig: any = {
-  url: 'http://demo.lareferencia.info:8280/auth/',
+  url: 'https://auth.lareferencia.info/auth/',
   realm: 'lareferencia',
   clientId: 'dashboard-lareferencia',
 };
 
 export const environment = {
   production: false,
-  harvestingService: 'http://dashboard.lareferencia.info/api/v2/harvesting/source/',
-  validationService: 'http://dashboard.lareferencia.info/api/v2/validation/source/',
-  brokerService: 'http://dashboard.lareferencia.info/api/v2/oabroker/source/',
-  securityService: 'http://dashboard.lareferencia.info/api/v2/security/management/',
+  harvestingService: 'https://validador.lareferencia.info/api/v2/harvesting/source/',
+  validationService: 'https://validador.lareferencia.info/api/v2/validation/source/',
+  brokerService: 'https://validador.lareferencia.info/api/v2/oabroker/source/',
+  securityService: 'https://validador.lareferencia.info/api/v2/security/management/',
   keycloakConfig: keycloakConfig,
 };
 

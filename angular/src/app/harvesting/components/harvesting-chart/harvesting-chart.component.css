@@ -1,0 +1,35 @@
+:host ::ng-deep .p-calendar .p-datepicker table td {
+  padding: 1px !important;
+}
+:host ::ng-deep .p-calendar .p-datepicker .ui-timepicker {
+  padding: 2px 0 0 0 !important;
+}
+:host ::ng-deep .p-calendar .ui-datepicker {
+  padding: 0.857em 0.857em 0 0.857em !important;
+}
+
+.chart {
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* display: flex; */
+  justify-content: center;
+  min-height: 50vh;
+  margin-bottom: 1.5rem;
+}
+.chart-container{
+  padding: 16px;
+  overflow: hidden;
+}
+
+.chart-card {
+  background-color: #eff9fc;
+  height: 95%;
+}
+
+.chart-title > span {
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.4px;
+  line-height: 1.2;
+  color: var(--color-primary);
+}

@@ -1,0 +1,203 @@
+
+  
+
+<div class="table-container
+  animate__animated animate__fadeInLeft animate__faster">
+    <div class="table-content-container">
+      <div class="table-filters-container">
+        <div class="flex gap-3">
+    
+          <p-multiSelect
+            i18n-placeholder
+            placeholder="Valid rules" 
+            [options]="rulesOptions" 
+            [(ngModel)]="selectedValidRule" 
+            [filter]="true" 
+            optionLabel="name"
+            (ngModelChange)="filter.validRules = $event; applyFilter()">
+            <ng-template let-option>
+              <span i18n>{{ option.name }}</span>
+            </ng-template>
+          </p-multiSelect>
+        
+          <p-multiSelect
+            i18n-placeholder
+            placeholder="Invalid rules" 
+            [options]="rulesOptions" 
+            [(ngModel)]="selectedInvalidRule" 
+            optionLabel="name"
+            (ngModelChange)="filter.invalidRules= $event; applyFilter()">
+            <ng-template let-option>
+              <span i18n>{{ option.name }}</span>
+            </ng-template>
+          </p-multiSelect>
+        </div>
+      
+        <div class="flex align-items-center">
+          <p-button label="Clear" i18n-label class="mr-2" styleClass="p-button-outlined p-button-sm p-button-secondary"
+          (onClick)="clearFilters()"></p-button>
+          <p-button label="Filter" i18n-label styleClass="p-button-sm p-button-primary"
+          (onClick)="applyFilter()"></p-button>
+        </div>
+      </div>
+      <p-table
+      [value]="dataSource"
+      [paginator]="true"
+      [rows]="pageSize"
+      [totalRecords]="totalRecords"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="isLoading"
+      [lazy]="true"
+      (onLazyLoad)="loadRecords($event)"
+      >
+      <ng-template pTemplate="header" >
+          <tr>
+            <th>ID</th>
+            <th>
+              <div class="flex justify-content-center align-items-center" i18n>
+                Identifier
+                <p-columnFilter field="identifier" 
+                  display="menu" 
+                  [showAddButton]="false" 
+                  [showMatchModes]="false"
+                  [showOperator]="false"
+                  [showClearButton]="false">
+                  <ng-template pTemplate="filter">
+                    <input type="text" 
+                      pInputText 
+                      [(ngModel)]="filter.oaiIdentifier"
+                      i18n-placeholder 
+                      placeholder="Identifier"
+                      (keydown.enter)="applyFilter()"/>
+                  </ng-template>
+                </p-columnFilter>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center align-items-center" i18n>
+                Validation
+                <p-columnFilter field="isValid"
+                  display="menu"
+                  [showAddButton]="false"
+                  [showMatchModes]="false"
+                  [showOperator]="false"
+                  [showClearButton]="false"
+                  (onApply)="applyFilter()">
+                  <ng-template pTemplate="filter">
+                    <p-dropdown 
+                      [options]="validOptions" 
+                      [(ngModel)]="selectedValidation" 
+                      optionLabel="name"
+                      i18n-placeholder 
+                      placeholder="Validation"
+                      (ngModelChange)="filter.isValid = $event.value">
+                    </p-dropdown>
+                  </ng-template>
+
+                </p-columnFilter>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center align-items-center" i18n>
+                Transformed
+                <p-columnFilter field="transformed"
+                  display="menu"
+                  [showAddButton]="false"
+                  [showMatchModes]="false"
+                  [showOperator]="false"
+                  [showClearButton]="false"
+                  (onApply)="applyFilter()">
+                  <ng-template pTemplate="filter">
+                    <p-dropdown 
+                      [options]="transformedOptions" 
+                      [(ngModel)]="selectedTransformedOption" 
+                      optionLabel="name"
+                      i18n-placeholder 
+                      placeholder="Transformed"
+                      (ngModelChange)="filter.isTransformed = $event.value">
+                    </p-dropdown>
+                  </ng-template>
+                </p-columnFilter>
+              </div>
+              
+            </th>
+            <th i18n>Details</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+            <td i18n>{{dataSource.id}}</td>
+            <td i18n>
+              <a target="_blank"
+                href="{{dataSource.origin}}?verb=GetRecord&metadataPrefix={{dataSource.metadataPrefix}}&identifier={{dataSource.identifier}}">
+                {{dataSource.identifier}}
+              </a>
+            </td>
+            <td i18n><b>{dataSource.isValid, select, true {Valid} false {invalid} }</b></td>
+            <td i18n><b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
+            <td>
+              <p-button *ngIf="dataSource.conformity == 100"
+                disabled="true"
+                styleClass="p-button-secondary p-button-sm"
+                label="100%"
+                ></p-button>
+              <p-button
+                (onClick)="detailClick(dataSource)"
+                styleClass="p-button-primary p-button-sm"
+                i18n-label
+                label="Details"
+                ></p-button>
+            </td>
+          </tr>
+      </ng-template>
+      
+  </p-table>
+  <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
+  </div>
+</div>
+
+<p-dialog
+  *ngIf="dialogData"
+  [(visible)]="visible" 
+  [modal]="true" 
+  [draggable]="false" 
+  [resizable]="false"
+  [closable]="false"
+  [style]="{minWidth: '90vw', maxWidth: '90vw'}"
+  (onHide)="onDialogHide()">
+  <ng-template pTemplate="header" class="grid">
+    <div class="grid flex-column col-2">
+      <p-tag *ngIf="dialogData.record.isValid" severity="success">
+        <span class="text-base font-normal" i18n>Valid Record</span>
+      </p-tag>
+      <p-tag *ngIf="!dialogData.record.isValid" severity="danger">
+        <span class="text-base font-normal" i18n>Invalid Record</span>
+      </p-tag>
+
+      <div class="flex align-items-center mt-3 mb-3">
+        <i class="pi pi-times-circle mr-2"></i>
+        <span class="text-sm font-semibold" i18n>Invalid ocurrence</span>
+      </div>
+
+      <div class="flex align-items-center">
+        <i class="pi pi-check-circle mr-2"></i>
+        <span class="text-sm font-semibold" i18n>Valid ocurrence</span>
+      </div>
+
+    </div>
+    <div class="col-8">
+      <h5 class="text-center font-normal" i18n>Result of the evaluation of rules for:</h5>
+      <b><h5 class="text-center font-bold">{{dialogTitle}}</h5></b>
+    </div>
+    <div class="col-2 flex justify-content-end">
+      <p-button 
+        icon="pi pi-times" 
+        styleClass="p-button-text p-button-sm p-button-secondary" 
+        (onClick)="visible = false"></p-button>
+    </div>
+  </ng-template>
+  
+    <app-evaluation-rules [dialogData]="dialogData"></app-evaluation-rules>
+</p-dialog>

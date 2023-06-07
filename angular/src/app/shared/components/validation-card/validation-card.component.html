@@ -1,0 +1,27 @@
+<div [ngStyle]="{'background-color':bgColor}" 
+  class="p-3 relative" style="border-radius: 10px;">
+
+    <span class="text-left font-medium">{{title}}</span>
+
+    <div class="flex justify-content-between mt-2">
+      <div [ngStyle]="{
+        'background-color': color,
+        'border-radius': '10px',
+        'padding': '0.5rem',
+        'box-shadow': shadowColor 
+        }">
+        <div class="flex align-items-center">
+          <i class="{{icon}} mr-2"></i>
+          <span>{{validationTitle}}</span>
+        </div>
+      </div>
+      <span class="flex align-items-center text-xl ml-3 font-medium">
+        {{validationData | number}}
+      </span>
+    </div>
+    <img class="absolute"  
+      style="bottom: 14px;
+      z-index: 0;
+      opacity: 0.7;
+      right: 12px;" [src]="'../../../assets/img/' + imagePath" alt="">
+  </div>

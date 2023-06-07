@@ -1,8 +1,0 @@
-<h2 mat-dialog-title i18n class="title">Delete {type == deleteType.User, select, true {user} false {group}}</h2>
-<mat-dialog-content class="mat-typography">
-  <h3 i18n>Are you sure you want to permanently delete the {type == deleteType.User, select, true {user} false {group}} <strong>{{username}}</strong></h3>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close i18n>Cancel</button>
-  <button mat-button color="warn" [mat-dialog-close]="true" cdkFocusInitial i18n>Delete</button>
-</mat-dialog-actions>

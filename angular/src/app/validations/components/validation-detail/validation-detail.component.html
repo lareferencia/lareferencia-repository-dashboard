@@ -1,0 +1,29 @@
+<div class="flex justify-content-center gap-3">
+    <div>
+      <app-validation-card
+        i18n-title
+        i18n-validationTitle
+        title="Valid occurrences"
+        bgColor="rgba(11, 209, 138, 0.3)"
+        color="rgb(11, 209, 138)"
+        validationTitle="Valid"
+        shadowColor="rgba(11, 209, 138, 0.3) 0px 6px 20px"
+        imagePath="validation-valid.svg"
+        icon="pi pi-check-circle"></app-validation-card>
+      <app-valid-occurence-table [rule]="dialogData"></app-valid-occurence-table>
+    </div>
+    <div>
+      <app-validation-card
+        i18n-title
+        i18n-validationTitle
+        title="Invalid occurences"
+        validationTitle="Invalid"
+        icon="pi pi-times-circle"
+        color="#fc6161"
+        bgColor="rgb(252, 97, 97 , 0.30)"
+        imagePath="validation-invalid.svg"
+        shadowColor="0px 6px 20px rgba(252, 97, 97, 0.3)">
+      </app-validation-card>
+      <app-invalid-occurence-table [rule]="dialogData"></app-invalid-occurence-table>
+    </div>
+</div>

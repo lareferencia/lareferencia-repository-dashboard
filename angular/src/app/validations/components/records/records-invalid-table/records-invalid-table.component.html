@@ -1,0 +1,107 @@
+<div class="table-container">
+  <div *ngIf="isLoadingResults">
+    <p-progressSpinner *ngIf="isLoadingResults"></p-progressSpinner>
+  </div>
+
+  <div class="table-container
+  animate__animated animate__fadeInRight animate__faster"
+  *ngIf="!isLoadingResults">
+    <div class="table-content-container">
+      <div class="p-3">
+        <input type="text" 
+          pInputText 
+          [(ngModel)]="filter.oaiIdentifier"
+          i18n-placeholder 
+          placeholder="Search identifier"
+          (keydown.enter)="this.applyFilter()"/>
+        <p-button class="ml-3" styleClass="p-button-outlined p-button-sm" i18n-label label="clear" (onClick)="clearFilters()"></p-button>
+      </div>
+    
+      <p-table
+      #userTable
+      [value]="dataSource"
+      [paginator]="true"
+      [rows]="pageSize"
+      [totalRecords]="totalRecords"
+      showCurrentPageReport="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [lazy]="true"
+      (onLazyLoad)="loadRecords($event)"
+      [globalFilterFields]="['identifier']"
+      >
+      
+      <ng-template pTemplate="header">
+          <tr>
+            <th>ID</th>
+            <th i18n>Identifier</th>
+            <th i18n>Validation</th>
+            <th i18n>Transformed</th>
+            <th i18n>Details</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+            <td >{{dataSource.id}}</td>
+            <td >{{dataSource.identifier}}</td>
+            <td i18n><b>{dataSource.isValid, select, true {Invalid} false {Valid} }</b></td>
+            <td i18n><b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
+            <td>
+              <p-button
+                (onClick)="detailClick(dataSource)"
+                styleClass="p-button-primary p-button-sm"
+                i18n-label
+                label="Details"
+                ></p-button>
+            </td>
+          </tr>
+      </ng-template>
+      
+  </p-table>
+  <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
+  </div>
+</div>
+</div>
+
+<p-dialog
+  *ngIf="dialogData"
+  [(visible)]="visible" 
+  [modal]="true" 
+  [draggable]="false" 
+  [resizable]="false"
+  [closable]="false"
+  [style]="{minWidth: '90vw', maxWidth: '90vw'}"
+  (onHide)="onDialogHide()">
+  <ng-template pTemplate="header" class="grid">
+    <div class="grid flex-column col-2">
+      <p-tag *ngIf="dialogData.record.isValid" severity="success">
+        <span class="text-base font-normal" i18n>Valid Record</span>
+      </p-tag>
+      <p-tag *ngIf="!dialogData.record.isValid" severity="danger">
+        <span class="text-base font-normal" i18n>Invalid Record</span>
+      </p-tag>
+
+      <div class="flex align-items-center mt-3 mb-3">
+        <i class="pi pi-times-circle mr-2"></i>
+        <span class="text-sm font-semibold" i18n>Invalid ocurrence</span>
+      </div>
+
+      <div class="flex align-items-center">
+        <i class="pi pi-check-circle mr-2"></i>
+        <span class="text-sm font-semibold" i18n>Valid ocurrence</span>
+      </div>
+
+    </div>
+    <div class="col-8">
+      <h5 class="text-center font-normal" i18n>Result of the evaluation of rules for:</h5>
+      <b><h5 class="text-center font-bold" i18n>{{dialogTitle}}</h5></b>
+    </div>
+    <div class="col-2 flex justify-content-end">
+      <p-button 
+        icon="pi pi-times" 
+        styleClass="p-button-text p-button-sm p-button-secondary" 
+        (onClick)="visible = false"></p-button>
+    </div>
+  </ng-template>
+  
+    <app-evaluation-rules [dialogData]="dialogData"></app-evaluation-rules>
+</p-dialog>

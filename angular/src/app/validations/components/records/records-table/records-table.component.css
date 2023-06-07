@@ -1,0 +1,69 @@
+:host ::ng-deep .p-datatable .p-datatable-tbody>tr>td,
+:host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+:host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
+  color: #5c6873;
+  font-size: 0.8rem;
+}
+:host ::ng-deep .p-datatable .p-datatable-tbody>tr>td {
+  font-size: 0.8rem;
+  padding: 6px !important;
+}
+
+:host ::ng-deep .p-element .p-sorteable-column {
+  display: flex;
+}
+:host ::ng-deep .pi .p-eye {
+  color: white;
+}
+:host ::ng-deep .p-button {
+  font-family: 'Poppins';
+}
+:host ::ng-deep .p-datatable .p-datatable-loading-overlay {
+  background: #8080804f;
+  opacity: 0.4;
+  border-radius: 10px;
+}
+:host ::ng-deep .p-datatable .p-datatable-loading-icon {
+  font-size: 5rem;
+}
+:host ::ng-deep .p-inputtext {
+  width: 100px;
+}
+:host ::ng-deep .p-tag {
+  padding: 10px 14px 10px 14px;
+  font-family: 'Poppins';
+}
+:host ::ng-deep .p-dialog-header {
+  align-items: baseline;
+}
+:host ::ng-deep .p-dialog-content {
+  overflow-x: hidden;
+}
+
+
+.table-container {
+  position: relative;
+  overflow: auto;
+}
+
+.table-content-container {
+  position: relative;
+  min-height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 16px;
+  overflow: auto;
+}
+
+.table-filters-container{
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}

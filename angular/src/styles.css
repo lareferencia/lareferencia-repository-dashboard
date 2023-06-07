@@ -1,60 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --color-primary: #44486D;
+  --color-secondary: #676B89;
+}
+
+*{
+  box-sizing: border-box;
+}
 
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(49.98% 52.41% at 44.18% 118.79%,rgba(252,120,136,.2) 0,rgba(252,82,102,0) 100%),radial-gradient(38.18% 50.85% at 43.11% -7.92%,rgba(50,138,245,.2) 0,rgba(50,138,245,0) 100%),radial-gradient(32.39% 65.68% at 101.26% 36.34%,rgba(98,57,198,.2) 0,rgba(98,57,198,0) 100%),radial-gradient(25.84% 56.13% at -7.92% 73.21%,rgba(192,16,239,.2) 0,rgba(192,16,239,0) 100%),#F9F8F9;
 }
 
-.bar-green > .mat-progress-bar-fill::after {
-  background-color: #2ecc71;
+h1,h2,h3,h4,h5,h6{
+  color: var(--color-primary);
 }
 
-.bar-red > .mat-progress-bar-fill::after {
-  background-color: #e74c3c;
+h1{
+  text-align: center;
 }
 
-.bar-yellow > .mat-progress-bar-fill::after {
-  background-color: #f1c40f;
-}
-
-.mat-progress-bar-buffer {
-  background: #e4e8eb;
-}
-
-.mat-progress-bar {
-  border-radius: 2px;
-}
-
-.msg-success {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.msg-success button {
-  color: white;
-}
-
-.msg-error {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.msg-error button {
-  color: white;
-}
-
-.msg-warning {
-  background-color: #ffc107;
-  color: black;
-}
-
-.msg-warning button {
-  color: black;
+.app-router-container{
+  margin-left: 55px;
 }
 
 .tooltip-broker-message {
@@ -69,23 +42,8 @@ body {
   width: 100%;
 }
 
-.mat-drawer-inner-container::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  background-color: #f5f5f5;
-}
-
 .mat-drawer-inner-container::-webkit-scrollbar {
-  width: 6px;
-  background-color: #f5f5f5;
-}
-
-.mat-drawer-inner-container::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: #cfcfcf;
+  overflow-x: hidden;
 }
 
 .graph::-webkit-scrollbar-track {
@@ -108,47 +66,10 @@ body {
   background-color: #555;
 }
 
-.btn-primary {
-  background-color: #33426a !important;
-  border-color: #33426a !important;
-  border-style: solid !important;
-  color: white !important;
-}
 
-.btn-secondary {
-  border-color: #33426a !important;
-  border-style: solid !important;
-  color: #33426a !important;
+@media screen and (max-width: 570px) {
+  .app-router-container{
+    margin-left: 0px;
+  }
 }
-
-.mat-form-field-flex {
-  background-color: white !important;
-}
-
-.btn-disabled {
-  cursor: auto !important;
-  background-color: #cccccc !important;
-  color: #33426a;
-}
-
-.btn-disabled-green {
-  cursor: auto !important;
-  background-color: #00bab8 !important;
-  color: white;
-}
-
-.btn-disabled-red {
-  cursor: auto !important;
-  background-color: #f1686a !important;
-  color: white;
-}
-
-.btn-disabled:hover {
-  color: #33426a;
-}
-
-.btn-disabled-green:hover,
-.btn-disabled-red:hover,
-.btn-secondary:hover {
-  color: white;
-}
+  

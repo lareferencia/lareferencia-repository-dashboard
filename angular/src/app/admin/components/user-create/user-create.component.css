@@ -1,0 +1,8 @@
+:host ::ng-deep .p-button {
+  width: 30%;
+}
+
+:host ::ng-deep .p-dropdown,
+input {
+  width: 100%;
+}

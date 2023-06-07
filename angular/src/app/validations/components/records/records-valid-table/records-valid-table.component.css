@@ -1,0 +1,36 @@
+/* .full-width-table {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  color: #5c6873;
+  background-color: #e4e7ea;
+  font-size: 0.9rem;
+}
+
+.table-container {
+  position: relative;
+  min-height: 200px;
+}
+
+.table-content-container {
+  position: relative;
+  overflow: auto;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */

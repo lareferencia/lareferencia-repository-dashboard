@@ -1,0 +1,38 @@
+:host ::ng-deep .p-datatable .p-datatable-tbody>tr>td,
+:host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
+  border: none;
+  font-family: 'Poppins', sans-serif;
+}
+:host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
+  color: #5c6873;
+  font-size: 0.8rem;
+}
+:host ::ng-deep .p-datatable .p-datatable-tbody>tr>td {
+  font-size: 0.8rem;
+}
+:host ::ng-deep .p-element .p-sorteable-column {
+  display: flex;
+}
+:host ::ng-deep .pi .p-eye {
+  color: white;
+}
+:host ::ng-deep .p-button {
+  font-family: 'Poppins';
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody>tr>td{
+  padding: 6px !important;
+}
+
+.table-container {
+  position: relative;
+  overflow: auto;
+}
+
+.table-content-container {
+  position: relative;
+  min-height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: auto;
+}
