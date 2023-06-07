@@ -12,8 +12,8 @@ This application is an Angular project that uses the PrimeNG and Angular Materia
 ## Installation
 1. Clone the application repository from GitHub.
 2. Open the project folder in Visual Studio Code.
-3. Open a new termina
-4. l and execute the following command to install the project dependencies:
+3. Open a new terminal
+4. Execute the following command to install the project dependencies:
 `npm install`
 
 ## Development server
