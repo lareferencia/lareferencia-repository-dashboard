@@ -6,10 +6,12 @@ import { ManageUsersService } from 'src/app/core/services/manage-users.service';
 import { UserInfo } from 'src/app/shared/models/user-info.model';
 
 import { MessageService } from 'primeng/api';
+import { PositionType } from 'src/app/shared/enums/user-position';
 
 
-interface PositionTypes{
-  name: string
+interface PositionOptions{
+  label: string,
+  value: PositionType
 }
 
 @Component({
@@ -23,7 +25,7 @@ export class UserCreateComponent implements OnInit  {
 
   public loading = false;
   public user = {} as UserInfo;
-  public positions: PositionTypes[];
+  public positions: PositionOptions[];
 
 
   constructor(
@@ -32,17 +34,19 @@ export class UserCreateComponent implements OnInit  {
   ) {}
 
   ngOnInit(): void {
-    this.positions = [
-      { name: 'Node Administrator'},
-      { name: 'Assistant/Auxiliary'},
-      { name: 'Librarian'},
-      { name: 'Repository Manager'},
-      { name: 'Technical Responsible'},
-    ]
+      this.positions = [
+        { label: 'Node Administrator', value: PositionType.NodeAdministrator },
+        { label: 'Assistant/Auxiliary', value: PositionType.AssistantAuxiliary },
+        { label: 'Librarian', value: PositionType.Librarian },
+        { label: 'Repository Manager', value: PositionType.RepositoryManager },
+        { label: 'Technical Responsible', value: PositionType.TechnicalResponsible }
+      ];
   }
 
   onClickSave() {
     this.loading = true;
+
+    console.log(this.user)
 
     if (!this.userForm.invalid 
         && this.user.username.length > 0 

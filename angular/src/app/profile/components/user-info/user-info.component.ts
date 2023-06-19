@@ -6,9 +6,11 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 import { UserInfo } from 'src/app/shared/models/user-info.model';
 
 import { MessageService } from 'primeng/api';
+import { PositionType } from 'src/app/shared/enums/user-position';
 
-interface Position{
-  name:string;
+interface PositionOptions{
+  label:string;
+  value: PositionType;
 }
 
 @Component({
@@ -23,7 +25,7 @@ export class UserInfoComponent implements OnInit {
   public updatingSuccess = true;
   public userName: string;
   public user: UserInfo;
-  public positions: Position[] = [];
+  public positions: PositionOptions[] = [];
  
   constructor(
     private manageUsersService: ManageUsersService,
@@ -35,23 +37,32 @@ export class UserInfoComponent implements OnInit {
     this.userName = await this.authenticationService.getUserName();
     this.manageUsersService
       .getUser(this.userName)
-      .subscribe((result) => (this.user = result));
+      .subscribe((result) => {
+       this.user = result
+       console.log(result)
+      });
+      
+      this.positions = [
+        { label: 'Node Administrator', value: PositionType.NodeAdministrator },
+        { label: 'Assistant/Auxiliary', value: PositionType.AssistantAuxiliary },
+        { label: 'Librarian', value: PositionType.Librarian },
+        { label: 'Repository Manager', value: PositionType.RepositoryManager },
+        { label: 'Technical Responsible', value: PositionType.TechnicalResponsible }
+      ];
+  }
 
-    this.positions = [
-      {name: 'Node Administrator'},
-      {name: 'Assistant/Auxiliary'},
-      {name: 'Librarian'},
-      {name: 'Repository Manager'},
-      {name: 'Technical Responsible'},
-      {name: 'None'},
-    ]
+  check(event){
+    console.log(event)
+
   }
 
   onClickSave() {
     this.updatingSuccess = false;
 
-    if( this.userName.length < 1) return;
+    console.log(this.user.position)
 
+    if( this.userName.length < 1) return;
+    
     this.manageUsersService.updateUser(this.userName, this.user).subscribe(
       (result) => this.resultHandler(result),
       () => this.resultHandler(false)

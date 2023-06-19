@@ -14,7 +14,12 @@
 
         <input pInputText [(ngModel)]="user.telephone" name="telephone" i18n-placeholder placeholder="Telephone">
 
-        <p-dropdown [options]="positions" optionLabel="name"></p-dropdown>
+        <p-dropdown
+          optionLabel="label"
+          optionValue="value" 
+          [(ngModel)]="user.position" 
+          [options]="positions" 
+          (onChange)="check($event)"></p-dropdown>
 
         <input class="mt-2" pInputText [(ngModel)]="user.affiliation" name="affiliation" i18n-placeholder placeholder="Affiliation">
 

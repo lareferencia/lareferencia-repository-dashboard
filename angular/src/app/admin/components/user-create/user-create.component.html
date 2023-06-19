@@ -20,10 +20,7 @@
     <input i18n-placeholder type="number" pInputText placeholder="Affiliation" [(ngModel)]="user.affiliation" />
   </div>
   <div class="col-12 sm:col-4">
-    <p-dropdown [options]="positions" placeholder="Position" [(ngModel)]="user.position" optionLabel="name">
-      <ng-template let-option>
-        <span i18n> {{option.name}} </span>
-      </ng-template>
+    <p-dropdown [options]="positions" placeholder="Position" [(ngModel)]="user.position" optionLabel="label" optionValue="value">
     </p-dropdown>
   </div>
   

@@ -4,7 +4,7 @@ import { environment } from './../../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user.model';
 
 @Injectable({
@@ -26,13 +26,14 @@ export class ManageUsersService {
 
   getUser(userName: string): Observable<UserInfo> {
     return this.http.get<UserInfo>(`${this.baseurl}user/self/${userName}`).pipe(
-      map((obj) => obj),
+      tap((obj) => console.log(obj)),
       catchError(this.errorHandler)
     );
   }
 
   //no hay validaciones acá
   updateUser(userName: string, userInfo: UserInfo): Observable<boolean> {
+
     return this.http
       .put<boolean>(`${this.baseurl}user/self/${userName}/update`, userInfo)
       .pipe(
