@@ -18,8 +18,7 @@
           optionLabel="label"
           optionValue="value" 
           [(ngModel)]="user.position" 
-          [options]="positions" 
-          (onChange)="check($event)"></p-dropdown>
+          [options]="positions"></p-dropdown>
 
         <input class="mt-2" pInputText [(ngModel)]="user.affiliation" name="affiliation" i18n-placeholder placeholder="Affiliation">
 

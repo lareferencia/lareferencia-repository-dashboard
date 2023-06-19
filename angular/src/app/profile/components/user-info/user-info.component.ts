@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ManageUsersService } from 'src/app/core/services/manage-users.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
-import { UserInfo } from 'src/app/shared/models/user-info.model';
-
 import { MessageService } from 'primeng/api';
 import { PositionType } from 'src/app/shared/enums/user-position';
 
@@ -24,7 +22,7 @@ interface PositionOptions{
 export class UserInfoComponent implements OnInit {
   public updatingSuccess = true;
   public userName: string;
-  public user: UserInfo;
+  public user: any;
   public positions: PositionOptions[] = [];
  
   constructor(
@@ -39,7 +37,7 @@ export class UserInfoComponent implements OnInit {
       .getUser(this.userName)
       .subscribe((result) => {
        this.user = result
-       console.log(result)
+       this.user.position = parseInt(this.user.position);
       });
       
       this.positions = [
@@ -51,18 +49,11 @@ export class UserInfoComponent implements OnInit {
       ];
   }
 
-  check(event){
-    console.log(event)
-
-  }
 
   onClickSave() {
     this.updatingSuccess = false;
 
-    console.log(this.user.position)
-
     if( this.userName.length < 1) return;
-    
     this.manageUsersService.updateUser(this.userName, this.user).subscribe(
       (result) => this.resultHandler(result),
       () => this.resultHandler(false)

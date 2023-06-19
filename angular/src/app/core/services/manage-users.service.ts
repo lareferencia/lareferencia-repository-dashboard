@@ -26,7 +26,7 @@ export class ManageUsersService {
 
   getUser(userName: string): Observable<UserInfo> {
     return this.http.get<UserInfo>(`${this.baseurl}user/self/${userName}`).pipe(
-      tap((obj) => console.log(obj)),
+      map((obj) => obj),
       catchError(this.errorHandler)
     );
   }
