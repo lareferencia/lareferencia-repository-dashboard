@@ -20,6 +20,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { MenuModule } from 'primeng/menu';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { TabViewModule } from 'primeng/tabview';
+
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     CalendarModule,
     MenuModule,
     KeyFilterModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    TabViewModule
     ],
 })
 export class PrimengMaterial { }
