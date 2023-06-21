@@ -3,27 +3,40 @@
 
     <h2 i18n>Edit Info</h2>
 
-    <div *ngIf="!user" style="display: flex; justify-content: center; margin-top: 2rem;">
+    <div *ngIf="isLoading" style="display: flex; justify-content: center; margin-top: 2rem;">
       <p-progressSpinner></p-progressSpinner>
     </div>
 
-    <form *ngIf="user" class="user-form animate__animated animate__fadeIn" >
-        <input pInputText [(ngModel)]="user.first_name" name="first_name">
+    <form [formGroup]="userForm" *ngIf="!isLoading" class="user-form animate__animated animate__fadeIn" >
+        <input pInputText formControlName="first_name">
 
-        <input pInputText [(ngModel)]="user.email" name="email" i18n-placeholder placeholder="email">
+        <input pInputText formControlName="email" i18n-placeholder placeholder="email">
 
-        <input pInputText [(ngModel)]="user.telephone" name="telephone" i18n-placeholder placeholder="Telephone">
+        <span class="text-xs mt-1 text-cyan-900" 
+          *ngIf="userForm.controls['email'].getError('required')">
+          This field is required
+        </span>
+
+        <span class="text-xs mt-1 text-cyan-900" 
+          *ngIf="userForm.controls['email'].getError('email')">
+          The entered value is not correct
+        </span>
+
+        <input pInputText formControlName="telephone"i18n-placeholder placeholder="Telephone">
 
         <p-dropdown
+          class="mt-2"
           optionLabel="label"
           optionValue="value" 
-          [(ngModel)]="user.position" 
+          formControlName="position"
           [options]="positions"></p-dropdown>
 
-        <input class="mt-2" pInputText [(ngModel)]="user.affiliation" name="affiliation" i18n-placeholder placeholder="Affiliation">
+        <input class="mt-2" pInputText  formControlName="affiliation" i18n-placeholder placeholder="Affiliation">
 
       <p-toast position="bottom-right"></p-toast>
-        <p-button [disabled]="!updatingSuccess"
+        <p-button
+        class="mt-2" 
+        [disabled]="!updatingSuccess"
         (click)="onClickSave()" i18n
         i18n-label label="Update">
       </p-button>

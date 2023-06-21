@@ -31,7 +31,7 @@ form {
 }
 input{
   color: var(--color-primary);
-  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 :host ::ng-deep .p-button{
