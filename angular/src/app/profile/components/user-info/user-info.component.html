@@ -8,7 +8,7 @@
     </div>
 
     <form [formGroup]="userForm" *ngIf="!isLoading" class="user-form animate__animated animate__fadeIn" >
-        <input pInputText formControlName="first_name">
+        <input pInputText placeholder-i18n placeholder="Name" formControlName="first_name">
 
         <input pInputText formControlName="email" i18n-placeholder placeholder="email">
 
