@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ManageUsersService } from 'src/app/core/services/manage-users.service';
 
-import { UserInfo } from 'src/app/shared/models/user-info.model';
 
 import { MessageService } from 'primeng/api';
 import { PositionType } from 'src/app/shared/enums/user-position';
@@ -21,17 +20,27 @@ interface PositionOptions{
   providers: [MessageService]
 })
 export class UserCreateComponent implements OnInit  {
-  @ViewChild('userForm', {static: false}) userForm: NgForm;
 
   public loading = false;
-  public user = {} as UserInfo;
   public positions: PositionOptions[];
+  public userCreateForm: FormGroup;
 
 
   constructor(
     private manageUsersService: ManageUsersService,
-    private messageService: MessageService
-  ) {}
+    private messageService: MessageService,
+    private fb: FormBuilder
+  ) {
+    this.userCreateForm = this.fb.group({
+      username: [null, [Validators.required, Validators.minLength(2)]],
+      first_name: [null],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(6)]],
+      telephone: [null],
+      affiliation: [null],
+      position: [null],
+    })
+  }
 
   ngOnInit(): void {
       this.positions = [
@@ -43,29 +52,27 @@ export class UserCreateComponent implements OnInit  {
       ];
   }
 
+  isValidField(field: string): boolean{
+    return this.userCreateForm.controls[field].hasError('required')
+      && this.userCreateForm.controls[field].touched;
+  }
+
   onClickSave() {
     this.loading = true;
+    this.userCreateForm.markAllAsTouched();
 
-    console.log(this.user)
-
-    if (!this.userForm.invalid 
-        && this.user.username.length > 0 
-        && this.user.email.includes('@')
-        && this.user.password.length > 0) {
-
-      this.manageUsersService.createUser(this.user).subscribe(
-        (result) => this.resultHandler(result),
-        () => this.resultHandler(false)
-      );
-    } else {
+    if(this.userCreateForm.invalid){
       this.loading = false;
+      return;
     }
+    this.manageUsersService.createUser(this.userCreateForm.value).subscribe(
+      (result) => this.resultHandler(result),
+         () => this.resultHandler(false));
   }
 
   private resultHandler(success: boolean) {
     this.loading = false
     if (success) {
-      this.userForm.resetForm();
       this.messageService.add({
         severity:'success',
         summary: 'Success',

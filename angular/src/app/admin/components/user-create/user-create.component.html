@@ -1,26 +1,68 @@
 
 <h6 i18n>User Info</h6>
-<form name="userForm" #userForm="ngForm" class="grid">
+<form [formGroup]="userCreateForm" class="grid">
+
   <div class="col-12 sm:col-6">
-    <input i18n-placeholder type="text" pInputText required placeholder="Username *" [(ngModel)]="user.username" />
+    <input i18n-placeholder type="text" 
+      pInputText placeholder="Username *" formControlName="username" />
+      <span *ngIf="isValidField('username')"
+        class="text-xs mt-1 text-cyan-900" i18n >
+        This field is required
+      </span>
+      <span *ngIf="userCreateForm.controls['username'].getError('minlength')
+        && userCreateForm.controls['username'].touched"
+        class="text-xs mt-1 text-cyan-900" i18n >
+        The field needs at least 2 characters
+      </span>
   </div>
+
   <div class="col-12 sm:col-6">
-    <input i18n-placeholder type="text" pInputText placeholder="Name" [(ngModel)]="user.first_name" />
+    <input i18n-placeholder type="text" 
+      pInputText placeholder="Name" formControlName="first_name" />
   </div>
+
   <div class="col-12 sm:col-6">
-    <input i18n-placeholder type="email" pInputText required placeholder="Email *" [(ngModel)]="user.email" />
+    <input i18n-placeholder type="email" 
+      pInputText placeholder="Email *" formControlName="email" />
+      <span *ngIf="isValidField('email')"
+        class="text-xs mt-1 text-cyan-900" i18n >
+        This field is required
+      </span>
+      <span *ngIf="userCreateForm.controls['email'].getError('email')
+        && userCreateForm.controls['email'].touched"
+        class="text-xs mt-1 text-cyan-900" i18n >
+        The entered value is not correct
+      </span>
   </div>
+
   <div class="col-12 sm:col-6">
-    <input i18n-placeholder type="password" pInputText required placeholder="Password *" [(ngModel)]="user.password" />
+    <input i18n-placeholder type="password" 
+      pInputText placeholder="Password *" formControlName="password" />
+      <span *ngIf="isValidField('password')"
+        class="text-xs mt-1 text-cyan-900" i18n >
+        This field is required
+      </span>
+      <span *ngIf="userCreateForm.controls['password'].getError('minlength')
+        && userCreateForm.controls['password'].touched"
+        class="text-xs mt-1 text-cyan-900" i18n >
+        The field needs at least 6 characters
+      </span>
+      
   </div>
+
   <div class="col-12 sm:col-4">
-    <input i18n-placeholder type="number" pInputText placeholder="Institutional phone" [(ngModel)]="user.telephone" />
+    <input i18n-placeholder type="text" 
+      pInputText placeholder="Institutional phone" formControlName="telephone" />
   </div>
+
   <div class="col-12 sm:col-4">
-    <input i18n-placeholder type="number" pInputText placeholder="Affiliation" [(ngModel)]="user.affiliation" />
+    <input i18n-placeholder type="text" 
+      pInputText placeholder="Affiliation" formControlName="affiliation" />
   </div>
+
   <div class="col-12 sm:col-4">
-    <p-dropdown [options]="positions" placeholder="Position" [(ngModel)]="user.position" optionLabel="label" optionValue="value">
+    <p-dropdown [options]="positions" 
+      placeholder="Position" formControlName="position" optionLabel="label" optionValue="value">
     </p-dropdown>
   </div>
   
