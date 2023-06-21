@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { AuthenticationService } from '../../core/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drawer',
@@ -20,7 +21,8 @@ export class DrawerComponent implements OnInit {
   constructor( 
     private menuService: MenuService,
     private harvestingService: HarvestingService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +55,8 @@ export class DrawerComponent implements OnInit {
   }
 
   logout(){
+    this.router.navigate(['/']); 
     this.authenticationService.logout();
+    localStorage.clear();
   }
 }
