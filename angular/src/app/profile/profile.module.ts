@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { MainComponent } from './pages/main/main.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     SharedModule,
     ProfileRoutingModule,
     PrimengMaterial,
+    ReactiveFormsModule
   ]
 })
 export class ProfileModule { }

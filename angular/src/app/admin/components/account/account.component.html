@@ -1,20 +1,20 @@
-<div class="grid p-3">
 
-  <div class="col-12 md:col-6 animate__animated animate__fadeInLeft animate__faster">
-    <div class="p-4 bg-white border-10">
-      <h4 class="p-3 font-semibold" i18n>Users</h4>
-      <app-users></app-users>
-    </div>
+<div class="m-4">
+  <p-tabView>
+      <p-tabPanel i18n-header header="Users">
+        <div class=" animate__animated animate__fadeIn animate__faster">
+          <div class="p-4 bg-white border-10">
+            <app-users></app-users>
+          </div>
+        </div>
 
-
-  </div>
-
-  <div class="col-12 md:col-6 animate__animated animate__fadeInRight animate__faster">
-    <div class="p-4 bg-white border-10">  
-      <h4 class="p-3 font-semibold" i18n>Groups</h4>
-      <app-groups></app-groups>
-    </div>
-
-  </div>
-  
+      </p-tabPanel>
+      <p-tabPanel i18n-header header="Groups">
+        <div class=" animate__animated animate__fadeIn animate__faster">
+          <div class="p-4 bg-white border-10">  
+            <app-groups></app-groups>
+          </div>
+        </div>
+      </p-tabPanel>
+  </p-tabView>
 </div>

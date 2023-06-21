@@ -24,6 +24,11 @@
   padding: 6px !important;
 }
 
+:host ::ng-deep .p-dialog{
+  max-height: 70vh!important;
+}
+
+
 .table-container {
   position: relative;
   overflow: auto;
