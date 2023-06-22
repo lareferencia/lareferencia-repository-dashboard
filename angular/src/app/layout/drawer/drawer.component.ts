@@ -56,7 +56,8 @@ export class DrawerComponent implements OnInit {
 
   logout(){
     this.router.navigate(['/']); 
-    this.authenticationService.logout();
     localStorage.clear();
+    
+    this.authenticationService.logout();
   }
 }
