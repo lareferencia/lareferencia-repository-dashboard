@@ -29,8 +29,6 @@ export class AppComponent implements OnInit {
     this.harvestingService.getHarvestingList()
       .subscribe((harvestingList) => {
 
-        
-        //Vaidar que el usuario tenga al menos un repositorio
         if(harvestingList.content.length <= 0) {
           this.isRepositoriesEmpty = true;
           return;

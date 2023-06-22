@@ -6,18 +6,18 @@
         <source>Users</source><target>Usuarios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/account/account.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c22ba03540aa3217da059f45e7eab138b51a96e2" datatype="html">
         <source>Groups</source><target>Grupos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/account/account.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-table/user-table.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a42e0b6f5e44594137c8b1aab0eac04d8401010f" datatype="html">
@@ -49,7 +49,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c042c28e4b743a7aaa943e9f7d8714f78662d54c" datatype="html">
@@ -60,7 +60,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="9bc4f5da3ebcb6b2c2f10c3801770735f5cd4334" datatype="html">
-        <source>Import acronym from existing repositories</source><target>Importar acronimos de repositorios existentes</target>
+        <source>Import acronym from existing repositories</source><target>Importar acrónimos de repositorios existentes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/group-sync/group-sync.component.html</context>
           <context context-type="linenumber">3</context>
@@ -107,7 +107,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-table/user-table.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7b5c0c9bb11a50dda054496134547ade78c5030d" datatype="html">
@@ -177,14 +177,36 @@
         <source>Username *</source><target>Nombre de usuario *</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7ded5a55baf61945e11e80f6e84fe33ef4f207e9" datatype="html">
+        <source> This field is required </source><target> Este campo es obligatorio </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">28,30</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">42,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6ac63b00616cd2daa0a673b3177986f648397885" datatype="html">
+        <source> The field needs at least 2 characters </source><target> El campo necesita al menos 2 caracteres </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">14,16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
         <source>Name</source><target>Nombre</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-table/validation-table.component.html</context>
@@ -195,39 +217,46 @@
         <source>Email *</source><target>Correo electrónico *</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0405dcc7a38aa5997e4cab98c75b50bb039a5573" datatype="html">
+        <source> The entered value is not correct </source><target> El valor introducido no es correcto </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">33,35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3e0377921db7694ce1439eeec0c617bd676e6632" datatype="html">
         <source>Password *</source><target>Contraseña *</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ffd5dbefb7e30b28dcac431d47173660b0b53a76" datatype="html">
+        <source> The field needs at least 6 characters </source><target> El campo necesita al menos 6 caracteres </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
+          <context context-type="linenumber">47,49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3a774cb2841935f9d00ddf802d94e102fb7cf41b" datatype="html">
         <source>Institutional phone</source><target>Teléfono institucional</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bb8d38336e3c80713535b9270ce33e9298e7eb5f" datatype="html">
         <source>Affiliation</source><target>Afiliación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="20d7ce4ae960d4f97e8ffd4dce640541a8236fbf" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{option.name}}" /> </source><target> <x id="INTERPOLATION" equiv-text="{{option.name}}" /> </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/admin/components/user-create/user-create.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="98598bafc544f4bd7d3c0da7707d24c442f13e78" datatype="html">
@@ -290,7 +319,7 @@
         <source>Clear</source><target>Limpiar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">46</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
@@ -301,7 +330,7 @@
         <source>Filter</source><target>Filtro</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">47</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
@@ -309,14 +338,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="47bddb84808da1b42d7c3436a6acb2b085de8ad8" datatype="html">
-        <source>Harvesting history</source><target>Historia de la cosecha</target>
+        <source>Harvesting history</source><target>Historial de cosecha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-source/harvesting-source.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="78f21865396bd1b30aac85e98fa689215354785d" datatype="html">
-        <source>In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected.</source><target>En el gráfico se pueden ver los resultados de las cosechas realizadas. El gráfico muestra tres métricas, que son: registros válidos, inválidos y transformados. Los registros válidos son los que se ajustan a las normas de cosechas obligatorias vigentes en el depósito. Los registros no válidos son aquellos que no cumplen las normas de cosechas obligatorias del repositorio. Por último, los registros transformados informan del número de documentos que se cosecharon.</target>
+        <source>In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected.</source><target>En el gráfico se pueden ver los resultados de las cosechas realizadas. El gráfico muestra tres métricas, que son: registros válidos, inválidos y transformados. Los registros válidos son los que se ajustan a las normas de cosecha obligatorias vigentes en el repositorio. Los registros no válidos son aquellos que no cumplen las normas de cosecha obligatorias del repositorio. Por último, los registros transformados informan del número de documentos que se cosecharon.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-source/harvesting-source.component.html</context>
           <context context-type="linenumber">13</context>
@@ -529,14 +558,14 @@
         <source>Telephone</source><target>Teléfono</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="047f50bc5b5d17b5bec0196355953e1a5c590ddb" datatype="html">
-        <source>Update</source><target>Actualizar</target>
+        <source>Update</source><target>Actualización</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cc20bedde02a1c4018c7e71454ffeb62c2ec593e" datatype="html">
@@ -688,21 +717,21 @@
         </context-group>
       </trans-unit>
       <trans-unit id="3c5d55d02ecb0700340230f3201359af2c1a3afd" datatype="html">
-        <source>Records that contain the invalid rule</source><target>Registros que contienen la regla inválida</target>
+        <source>Records that contain the invalid rule</source><target>Registros que contienen la regla no válida</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/record-invalid/record-invalid.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c55bc952121d2fc8a08bbbaab91aead610a0c7c6" datatype="html">
-        <source>Search identifier</source><target>Buscar por identificador</target>
+        <source>Search identifier</source><target>Identificador de búsqueda</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="608c2c2fd57206f39026b5f6226c5ba25a91495e" datatype="html">
-        <source>clear</source><target>borrar</target>
+        <source>clear</source><target>Limpiar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">17</context>
@@ -772,7 +801,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="7beb4b078fdade6047749cc30651ff96376cc922" datatype="html">
-        <source>{VAR_SELECT, select, true {Invalid} false {Valid}}</source><target>{VAR_SELECT, select, true {Inválido} false {Válido}}</target>
+        <source>{VAR_SELECT, select, true {Invalid} false {Valid}}</source><target>{VAR_SELECT, select, true {Invalid} false {Valid}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">46</context>
@@ -812,7 +841,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="2105a001277d7a7bd4468d72549abf77078dda97" datatype="html">
-        <source>Invalid Record</source><target>Registro inválido</target>
+        <source>Invalid Record</source><target>Registro no válido</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">80</context>
@@ -845,7 +874,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="2c96bb62de512796ba50eccc750d04da431de8ca" datatype="html">
-        <source>Result of the evaluation of rules for:</source><target>Resultado de la evaluación de las relgas para:</target>
+        <source>Result of the evaluation of rules for:</source><target>Resultado de la evaluación de las normas para:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">95</context>
@@ -863,7 +892,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="7351f3ac05fe2b13ddbbf08273faf70b513c17d3" datatype="html">
-        <source>Valid rules</source><target>Normas válidas</target>
+        <source>Valid rules</source><target>Reglas válidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
           <context context-type="linenumber">12</context>
@@ -885,7 +914,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="a0f857f05563991bceb0b7151a7c2b1b00b8b451" datatype="html">
-        <source>Invalid rules</source><target>Normas inválidas</target>
+        <source>Invalid rules</source><target>Reglas no válidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
           <context context-type="linenumber">25</context>
@@ -1011,14 +1040,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="073a735ca61175d74e74fa6d04791f78e9772b7d" datatype="html">
-        <source>Invalid mandatory rules</source><target>Normas obligatorias inválidas</target>
+        <source>Invalid mandatory rules</source><target>Reglas obligatorias no válidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8650807af5f3b3939010d4f130340adfe5905ed8" datatype="html">
-        <source>Invalid not mandatory rules</source><target>Normas no obligatorias inválidas</target>
+        <source>Invalid not mandatory rules</source><target>Reglas no obligatorias no válidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/rule/evaluation-rules/evaluation-rules.component.html</context>
           <context context-type="linenumber">7</context>
@@ -1043,7 +1072,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="c2e15943b12069a300b1bdba7e1cce6ca4bda2e2" datatype="html">
-        <source>Invalid occurences</source><target>Ocurrencias inválidas</target>
+        <source>Invalid occurences</source><target>Ocurrencias no válidas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/validation-detail/validation-detail.component.html</context>
           <context context-type="linenumber">19</context>
