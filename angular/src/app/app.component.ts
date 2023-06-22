@@ -25,11 +25,9 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    localStorage.clear();
     this.admUser = this.authenticationService.isAdmUser();
     this.harvestingService.getHarvestingList()
       .subscribe((harvestingList) => {
-
 
         if(harvestingList.content.length <= 0) {
           this.isRepositoriesEmpty = true;
