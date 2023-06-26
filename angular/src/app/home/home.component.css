@@ -95,10 +95,8 @@ p {
   padding: 2rem;
 }
 
-.home-services-card-container a{
-  cursor: pointer;
+.services-item, .services-item-inprogress {
   padding: 20px;
-  background: #F9F8F9;
   display: flex;
   align-items: center;
   transition: ease-in-out 0.3s;
@@ -106,8 +104,17 @@ p {
   text-decoration: none;
 }
 
-.home-services-card-container a:hover{
-  background: #E9E6E9;
+.services-item-inprogress {
+  background: #f9f8f9d8;
+}
+
+.services-item {
+  cursor: pointer;
+  background: #f1eff1;
+}
+
+.services-item:hover{
+  background: #e9e6e9;
   transition: ease-in-out 0.3s;
 }
 
