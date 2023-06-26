@@ -5,7 +5,7 @@ import { HarvestingComponent } from './pages/harvesting/harvesting.component';
 
 const routes: Routes = [
     {
-        path:'harvesting',
+        path:'',
         component: HarvestingComponent,
     },
 ]
