@@ -345,7 +345,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="78f21865396bd1b30aac85e98fa689215354785d" datatype="html">
-        <source>In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected.</source>
+        <source>In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected. It is possible to use the filter below this graph to select the date range and view specific harvests. The graph displays harvests in groups of ten, so it is possible to navigate within the graph if the selected interval has more than ten harvests. Use the 'clear' button to return the graph to its initial state, showing the harvests from the last two years.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-source/harvesting-source.component.html</context>
           <context context-type="linenumber">13</context>
