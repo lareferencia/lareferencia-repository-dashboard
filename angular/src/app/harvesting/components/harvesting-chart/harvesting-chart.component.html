@@ -1,51 +1,72 @@
 
+<div class="grid">
 
-<div class="chart">
-  <div class="chart-container">
-    <div class="chart-title"><span i18n>Harvestings</span></div>
-    
-    <div *ngIf="loadingChart" class="flex justify-content-center align-content-center">
-      <p-progressSpinner></p-progressSpinner>
-    </div>
-    
-    <div *ngIf="!loadingChart" class="animate__animated animate__fadeIn">
-      <p-chart type="bar" [data]="data" [options]="options"></p-chart>
-    </div>
+<!-- CHART -->
+<div class="col-12 md:col-8">
 
-    <div class="flex align-items-center">
-      <p-button [disabled]="disabledPagination" (onClick)="paginate('next')" icon="pi pi-angle-left"
-      styleClass="p-button-rounded p-button-text p-button-secondary">
-    </p-button>
-      <p-button [disabled]="pageNumber === 0" (onClick)="paginate('prev')"
-      icon="pi pi-angle-right"
-      styleClass="p-button-rounded p-button-text p-button-secondary">
-    </p-button>
-    </div>
+  <!-- SATCK CHART -->
+  <div class="chart">
+    <div class="chart-container">
+      <div class="chart-title"><span i18n>Harvestings</span></div>
 
+      <div *ngIf="loadingChart" class="flex justify-content-center align-content-center">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+
+      <div *ngIf="!loadingChart" class="animate__animated animate__fadeIn">
+        <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+      </div>
+
+      <div class="flex align-items-center">
+        <p-button [disabled]="disabledPagination" (onClick)="paginate('next')" icon="pi pi-angle-left"
+        styleClass="p-button-rounded p-button-text p-button-secondary">
+      </p-button>
+        <p-button [disabled]="pageNumber === 0" (onClick)="paginate('prev')"
+        icon="pi pi-angle-right"
+        styleClass="p-button-rounded p-button-text p-button-secondary">
+      </p-button>
+    </div>
   </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="grid m-0 bg-white p-3" 
+    style="border-radius: 10px;">
+  
+    <div class="col-12 md:col-8 flex">
+      
+      <div class="mr-2 flex flex-column">
+        <span class="p-1 text-xs">Start date</span>
+        <p-calendar [(ngModel)]="startDate" 
+        dateFormat="dd.mm.yy" [showIcon]="true" placeholder="Start date"></p-calendar>
+      </div>
+    
+      <div class="flex flex-column">
+        <span class="p-1 text-xs">End date</span>
+        <p-calendar [(ngModel)]="endDate" 
+        dateFormat="dd.mm.yy" [showIcon]="true" placeholder="End date"></p-calendar>
+      </div>
+    </div>
+  
+    <div class="col-12 md:col-4 flex align-items-end">
+      <p-button label="Clear" i18n-label (onClick)="clearFilter()" styleClass="p-button-outlined p-button-sm"></p-button>
+      <p-button class="ml-3" label="Filter" i18n-label (onClick)="filtrar()" styleClass="p-button-sm"></p-button>
+    </div>
+  
+  </div>
+
 </div>
-<div class="grid bg-white p-3" 
-  style="border-radius: 10px;">
 
-  <div class="col-12 md:col-8 flex">
-    
-    <div class="mr-2 flex flex-column">
-      <span class="p-1 text-xs">Start date</span>
-      <p-calendar [(ngModel)]="startDate" 
-      dateFormat="dd.mm.yy" [showIcon]="true" placeholder="Start date"></p-calendar>
-    </div>
-
-    <div class="flex flex-column">
-      <span class="p-1 text-xs">End date</span>
-      <p-calendar [(ngModel)]="endDate" 
-      dateFormat="dd.mm.yy" [showIcon]="true" placeholder="End date"></p-calendar>
-    </div>
-  </div>
-
-  <div class="col-12 md:col-4 flex align-items-end">
-    <p-button label="Clear" i18n-label (onClick)="clearFilter()" styleClass="p-button-outlined p-button-sm"></p-button>
-    <p-button class="ml-3" label="Filter" i18n-label (onClick)="filtrar()" styleClass="p-button-sm"></p-button>
-  </div>
+<!-- CARD -->
+<div class="col-12 lg:col-4  haversting-source-info-container animate__animated animate__fadeInDown animate__faster">
+    <app-info-card
+      isOpen="true"
+      i18n-title
+      i18n-description
+      title="Harvesting history"
+      description="In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected. It is possible to use the filter below this graph to select the date range and view specific harvests. The graph displays harvests in groups of ten, so it is possible to navigate within the graph if the selected interval has more than ten harvests. Use the 'clear' button to return the graph to its initial state, showing the harvests from the last two years.">
+    </app-info-card>
+</div>
 
 </div>
 
