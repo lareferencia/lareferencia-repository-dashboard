@@ -1,6 +1,6 @@
 
 <p-accordion>
-  <p-accordionTab >
+  <p-accordionTab [selected]="isOpen" >
 
     <ng-template pTemplate="header">
       <div class="flex align-items-center">
@@ -11,8 +11,7 @@
       </div>
     </ng-template>
 
-    <ng-template pTemplate="content">
-
+    <ng-template pTemplate="content min-h-full">
       <mat-card>
         <p i18n>{{description}}</p>
       </mat-card>  
