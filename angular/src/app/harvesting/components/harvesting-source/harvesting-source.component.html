@@ -1,18 +1,8 @@
-<div class="grid">
+<div>
   
-  <div class="col-12 lg:col-8 p-3 animate__animated animate__fadeInDown animate__faster">
+  <div class="p-2 animate__animated animate__fadeInDown animate__faster">
     <app-harvesting-chart> </app-harvesting-chart>
   </div>
-
-  <div class="col-12 lg:col-4 p-3 haversting-source-info-container animate__animated animate__fadeInDown animate__faster"
-    *ngIf="harvestingHistory?.content.length > 1">
-    <app-info-card
-      i18n-title
-      i18n-description
-      title="Harvesting history"
-      description="In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected."></app-info-card>
-  </div>
-
 </div>
 
 

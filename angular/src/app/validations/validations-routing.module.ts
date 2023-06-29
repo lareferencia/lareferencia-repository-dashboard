@@ -7,15 +7,15 @@ import { ValidationComponent } from './pages/validation.component';
 
 const routes: Routes = [
     {
-        path: 'validation/:harvestingID',
+        path: ':harvestingID',
         component: ValidationComponent,
     },
     {
-        path: 'validation/:harvestingID/invalid_rule/:ruleID',
+        path: ':harvestingID/invalid_rule/:ruleID',
         component: RecordInvalidComponent
     },
     // {
-    //     path: 'validation/:harvestingID/valid_rule/:ruleID',
+    //     path: ':harvestingID/valid_rule/:ruleID',
     //     component: RecordValidComponent
     // }
 ];

@@ -16,12 +16,12 @@ const routes: Routes = [
     canActivate: [AuthenticationService],
   },
   {
-    path: ':acronym',
+    path: ':acronym/validation',
     loadChildren: () => import('./validations/validations.module').then(m => m.ValidationsModule),
     canActivate: [AuthenticationService],
   },
   {
-    path: ':acronym',
+    path: ':acronym/harvesting',
     loadChildren: () => import('./harvesting/harvesting.module').then(m => m.HarvestingModule),
     canActivate: [AuthenticationService],
   },
@@ -38,7 +38,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: "top" 
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
