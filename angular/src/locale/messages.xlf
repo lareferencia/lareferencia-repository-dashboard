@@ -349,7 +349,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="98601da5f8a9628f8987fd1fde2521d786004bdf" datatype="html">
-        <source>In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were transformed. It is possible to use the filter below this graph to select the date range and view specific harvests. The graph displays harvests in groups of ten, so it is possible to navigate within the graph if the selected interval has more than ten harvests. Use the &apos;clear&apos; button to return the graph to its initial state, showing the harvests from the last two years.</source>
+        <source>In the graph it is possible to view the results of the harvestingss performed. The chart shows three metrics, which are: valid, invalid and transformed records. Valid records are those that are in accordance with the current mandatory harvest rules of the repository. Invalid records are those that do not comply with the mandatory harvest rules of the repository. Finally, the transformed records inform the number of documents that were collected. It is possible to use the filter below this graph to select the date range and view specific harvests. The graph displays harvests in groups of ten, so it is possible to navigate within the graph if the selected interval has more than ten harvests. Use the &apos;clear&apos; button to return the graph to its initial state, showing the harvests from the last two years.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-chart/harvesting-chart.component.html</context>
           <context context-type="linenumber">67</context>
@@ -427,6 +427,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
           <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="849c3dd43c743aa577c770548964534ba1addeb2" datatype="html">
+        <source>Old harvesting, data not available</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
+          <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5bce68ecdf737b50b53696835e431c3bb6286714" datatype="html">
