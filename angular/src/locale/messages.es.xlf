@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="es-419">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="es">
     <body>
       <trans-unit id="4d13a9cd5ed3dcee0eab22cb25198d43886942be" datatype="html">
         <source>Users</source><target>Usuarios</target>
@@ -429,6 +429,7 @@
           <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
+
       <trans-unit id="849c3dd43c743aa577c770548964534ba1addeb2" datatype="html">
         <source>Old harvesting, data not available</source><target>Cosecha antigua, datos no disponibles</target>
         <context-group purpose="location">
@@ -436,15 +437,15 @@
           <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
+
       <trans-unit id="5bce68ecdf737b50b53696835e431c3bb6286714" datatype="html">
-        <source> Harvesting not found
-</source><target> Cosecha no encontrada
-</target>
+        <source> Harvesting not found</source><target> Cosecha no encontrada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/harvesting/pages/harvesting/harvesting.component.html</context>
           <context context-type="linenumber">3,5</context>
         </context-group>
       </trans-unit>
+      
       <trans-unit id="65cc4ab3b4c438e07c89be2b677d08369fb62da2" datatype="html">
         <source>Welcome</source><target>Bienvenido</target>
         <context-group purpose="location">
