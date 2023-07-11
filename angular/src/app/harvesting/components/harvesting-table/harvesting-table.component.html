@@ -1,7 +1,7 @@
 
 <div class="grid">
   
-  <div class="col-12 p-3 harvesting-table-info
+  <div class="col-12 pt-3 harvesting-table-info
   animate__animated animate__fadeInLeft animate__faster">
     <app-info-card
       i18n-title
@@ -11,7 +11,7 @@
     </app-info-card>
   </div>
 
-  <div class="table-container col-12 px-3
+  <div class="table-container col-12 
   animate__animated animate__fadeInRight animate__faster">
     <div class="table-content-container">
     <p-table 
@@ -67,7 +67,9 @@
           </tr>
       </ng-template>
   </p-table>
-  <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
+  <div class="p-2">
+    <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
+  </div>
 </div>
 </div>
   

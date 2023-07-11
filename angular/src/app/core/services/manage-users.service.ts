@@ -31,7 +31,6 @@ export class ManageUsersService {
     );
   }
 
-  //no hay validaciones acá
   updateUser(userName: string, userInfo: UserInfo): Observable<boolean> {
 
     return this.http

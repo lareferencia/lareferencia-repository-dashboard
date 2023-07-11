@@ -1,14 +1,19 @@
-<h6 i18n>Group Info</h6>
-<form name="groupForm" #groupForm="ngForm" class="grid">
-  <div class="col-12 sm:col-6">
-    <input i18n-placeholder type="text" pInputText required placeholder="Name *" [(ngModel)]="group.name" />
+<div class="flex justify-content-center">
+  <div>
+    <h6 i18n class="text-center my-3">Group Info</h6>
+    
+    <form name="groupForm" #groupForm="ngForm" class="grid">
+      <div class="col-12 sm:col-6">
+        <input i18n-placeholder type="text" pInputText required placeholder="Name *" [(ngModel)]="group.name" />
+      </div>
+      <div class="col-12 sm:col-6">
+        <input i18n-placeholder type="text" pInputText placeholder="Longest name" [(ngModel)]="group.long_name" />
+      </div>
+      
+      <p-toast position="bottom-right"></p-toast>
+      <div class="col-12">
+        <p-button [loading]="loading" styleClass="p-button-sm" (click)="onClickSave()" i18n-label label="Save"></p-button>
+      </div>
+    </form>
   </div>
-  <div class="col-12 sm:col-6">
-    <input i18n-placeholder type="text" pInputText placeholder="Longest name" [(ngModel)]="group.long_name" />
-  </div>
-
-  <p-toast position="bottom-right"></p-toast>
-  <div class="col-12">
-    <p-button [loading]="loading" styleClass="p-button-sm" (click)="onClickSave()" i18n-label label="Save"></p-button>
-  </div>
-</form>
+</div>
