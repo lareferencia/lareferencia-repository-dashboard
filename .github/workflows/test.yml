@@ -44,12 +44,7 @@ jobs:
       with:
         tag_name: ${{ env.PACKAGE_VERSION }}
         release_name: Release ${{ env.PACKAGE_VERSION }}
-        body: |
-          Changes in this Release:
-          - Add feature A
-          - Fix bug B
-        draft: false
-        prerelease: false
+ 
 
     - name: Upload Release Asset
       id: upload-release-asset
