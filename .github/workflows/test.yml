@@ -20,13 +20,17 @@ jobs:
     - name: package-version
       run: node -p -e '`PACKAGE_VERSION=${require("./angular/package.json").version}`' >> $GITHUB_ENV
      
+    - name: Install Angular CLI
+      working-directory: ./angular
+      run: npm install -g @angular/cli
+
     - name: Install dependencies
       working-directory: ./angular
       run: npm install
 
-    - name: Build
+    - name: Build Angular
       working-directory: ./angular
-      run: npm run build:prod
+      run: ng build --prod --localize 
 
     - name: Create Release
       id: create_release
