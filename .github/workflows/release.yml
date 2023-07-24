@@ -32,6 +32,10 @@ jobs:
       working-directory: ./angular
       run: ng build --localize 
 
+    - name: Write version to file
+      working-directory: ./angular/dist
+      run: echo $PACKAGE_VERSION > version.txt
+
     - name: Compress Build
       working-directory: ./angular/dist
       run: zip -r ../dashboard.zip .
