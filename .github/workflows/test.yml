@@ -32,6 +32,10 @@ jobs:
       working-directory: ./angular
       run: ng build --localize 
 
+    - name: Compress Build
+      working-directory: ./angular/dist
+      run: zip -r ../dashboard.zip .
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1.0.0
@@ -54,8 +58,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./angular/dist/angular.zip
-        asset_name: angular.zip
+        asset_path: ./angular/dashboard.zip
+        asset_name: dashboard.zip
         asset_content_type: application/zip
 
    
