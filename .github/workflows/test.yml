@@ -30,7 +30,7 @@ jobs:
 
     - name: Build Angular
       working-directory: ./angular
-      run: ng build --prod --localize 
+      run: ng build --localize 
 
     - name: Create Release
       id: create_release
