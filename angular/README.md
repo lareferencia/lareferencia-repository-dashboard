@@ -28,6 +28,18 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng-extract-i18n` to generate an .xlf file with all the text marked with the i18n directive. Make 2 copies of that file, one named .es and the other .pt. After translating them, place the 3 files in the locale folder. This way, you will obtain 3 folders with the respective language when running `ng build`.
 
+## Make translation corrections.
+
+Inside the "locale" folder, you will find the "message.xlf" files. You should select the file associated with the language you want to correct.
+
+![Alt text](image-1.png)
+
+Within this file, you will find "trans-unit" tags, and inside these tags, you will find two other tags called "source" and "target". The original text in English is located within the "source" tag, and the translation is inside the "target" tag.
+
+![Alt text](image.png)
+
+To make corrections, simply modify the text inside the "target" tag. Afterward, save the changes and push them to the open pull request.
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
@@ -43,3 +55,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
