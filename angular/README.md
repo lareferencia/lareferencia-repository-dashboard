@@ -34,7 +34,7 @@ Inside the "locale" folder, you will find the "message.xlf" files. You should se
 
 ![Alt text](image-1.png)
 
-Within this file, you will find <trans-unit></trans-unit> tags, and inside these tags, you will find two other tags called <source></source> and <target></target>. The original text in English is located within the "source" tag, and the translation is inside the "target" tag.
+Within this file, you will find "trans-unit" tags, and inside these tags, you will find two other tags called "source" and "target". The original text in English is located within the "source" tag, and the translation is inside the "target" tag.
 
 ![Alt text](image.png)
 
