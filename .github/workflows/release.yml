@@ -1,0 +1,63 @@
+name: Build and Deploy to release
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: package-version
+      run: node -p -e '`PACKAGE_VERSION=${require("./angular/package.json").version}`' >> $GITHUB_ENV
+     
+    - name: Install Angular CLI
+      working-directory: ./angular
+      run: npm install -g @angular/cli
+
+    - name: Install dependencies
+      working-directory: ./angular
+      run: npm install
+
+    - name: Build Angular
+      working-directory: ./angular
+      run: ng build --localize 
+
+    - name: Write version to file
+      working-directory: ./angular/dist
+      run: echo $PACKAGE_VERSION > version.txt
+
+    - name: Compress Build
+      working-directory: ./angular/dist
+      run: zip -r ../dashboard.zip .
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.PACKAGE_VERSION }}
+        release_name: Release ${{ env.PACKAGE_VERSION }}
+
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./angular/dashboard.zip
+        asset_name: dashboard.zip
+        asset_content_type: application/zip
+
+   
