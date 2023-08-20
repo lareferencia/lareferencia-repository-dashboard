@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthenticationService } from './core/services/authentication.service';
 import { HomeComponent } from './home/home.component';
+import { statistics } from 'src/environments/environment';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
     loadChildren: () => import('./harvesting/harvesting.module').then(m => m.HarvestingModule),
     canActivate: [AuthenticationService],
   },
+  statistics.showModule ? {
+    path: 'statistics',
+    loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule),
+  } : null,
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
@@ -37,8 +42,11 @@ const routes: Routes = [
   }
 ];
 
+const filteredRoutes = routes.filter(route => route !== null);
+
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
+  imports: [RouterModule.forRoot(filteredRoutes, {
     scrollPositionRestoration: "top" 
   })],
   exports: [RouterModule],
