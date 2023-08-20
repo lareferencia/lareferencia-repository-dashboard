@@ -8,6 +8,12 @@ export const keycloakConfig: any = {
   clientId: 'dashboard-lareferencia',
 };
 
+export const statistics = {
+  showModule: false,
+  source:'SITEID::1'
+}
+
+
 export const environment = {
   production: false,
   harvestingService: 'https://validador.lareferencia.info/api/v2/harvesting/source/',
