@@ -36,6 +36,9 @@ export class HomeComponent   {
       })
     });
   }
+  onStatisticsNavigate(){
+    this.router.navigate(['statistics']);
+  }
 }
 
 
