@@ -9,8 +9,8 @@ export const keycloakConfig: any = {
 };
 
 export const statistics = {
-  showModule: false,
-  source:'SITEID::1'
+  showModule: true,
+  source:'OPENDOAR::1329'
 }
 
 
