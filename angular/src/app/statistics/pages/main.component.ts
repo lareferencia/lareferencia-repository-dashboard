@@ -32,19 +32,12 @@ export class MainComponent implements OnInit {
       country: '[[ISO-país]]',
       national_source: '[[SITEID::XXX]]',
       repository_source: statistics.source,
-      preview: false,
+      preview: true,
     };
 
     const widget = document.createElement('script');
-    widget.src = '/assets/index-db7f8927.js';
+    widget.src = '/assets/widget.js';
 
-    widget.onload = () => {
-      const cssLink = document.createElement('link');
-      cssLink.rel = 'stylesheet';
-      cssLink.href = '/assets/index-5f18fb7c.css';
-      document.head.appendChild(cssLink);
-  };
-  
     
     const container = document.getElementById('my-widget');
     if (container) {
