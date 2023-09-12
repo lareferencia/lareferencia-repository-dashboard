@@ -27,16 +27,12 @@ export class MainComponent implements OnInit {
       })
     ).subscribe(data => {
       this.resultHandler(data.attributes.stats_source_id)
-      console.log(data.attributes);
-      
-      console.log(data.attributes.stats_source_id);
-      
+      console.log(data);
     });    
   }
 
   resultHandler( stats_source_id:string ){
 
-    console.log(stats_source_id, 'en dashboard');
     
     window['lrw'] = {
       widget_div_id: 'usage-stats',
