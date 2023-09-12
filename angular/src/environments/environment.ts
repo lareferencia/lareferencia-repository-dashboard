@@ -10,7 +10,6 @@ export const keycloakConfig: any = {
 
 export const statistics = {
   showModule: true,
-  source:'OPENDOAR::1329'
 }
 
 
