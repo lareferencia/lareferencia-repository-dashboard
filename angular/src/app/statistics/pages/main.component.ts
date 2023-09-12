@@ -57,10 +57,20 @@ export class MainComponent implements OnInit {
       },
       country: '[[ISO-país]]',
       national_source: '[[SITEID::XXX]]',
+<<<<<<< HEAD
       repository_source: stats_source_id,
       preview: false,
     };
 
+=======
+      repository_source: statistics.source,
+      preview: true,
+    };
+
+    const widget = document.createElement('script');
+    widget.src = '/assets/widget.js';
+
+>>>>>>> 225e6776de2d077d60f5f2d1057d0e61a9ec622f
     
     const widget = document.createElement('script');
     widget.src = '/assets/widget.js';
