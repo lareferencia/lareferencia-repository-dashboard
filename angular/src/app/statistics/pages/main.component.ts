@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { HarvestingService } from 'src/app/core/services/harvesting.service';
+import { MenuService } from 'src/app/core/services/menu.service';
 import { statistics } from 'src/environments/environment';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main',
@@ -9,10 +12,33 @@ import { statistics } from 'src/environments/environment';
 export class MainComponent implements OnInit {
   
   repository_source = statistics.source;
+  acronym: string;
+
+  constructor( 
+    private menuSrvice: MenuService,
+    private harvestingSrvice: HarvestingService 
+    ){}
 
 
   ngOnInit(): void {
+    
+    this.menuSrvice.activeRepo.pipe(
+      switchMap(repo => {
+        return this.harvestingSrvice.getHarvestingByAcronym(repo.acronym)
+      })
+    ).subscribe(data => {
+      this.resultHandler(data.attributes.stats_source_id)
+      console.log(data.attributes);
+      
+      console.log(data.attributes.stats_source_id);
+      
+    });    
+  }
 
+  resultHandler( stats_source_id:string ){
+
+    console.log(stats_source_id, 'en dashboard');
+    
     window['lrw'] = {
       widget_div_id: 'usage-stats',
       //identifier: ´´,
@@ -31,24 +57,18 @@ export class MainComponent implements OnInit {
       },
       country: '[[ISO-país]]',
       national_source: '[[SITEID::XXX]]',
-      repository_source: statistics.source,
+      repository_source: stats_source_id,
       preview: false,
     };
 
-    const widget = document.createElement('script');
-    widget.src = '/assets/index-db7f8927.js';
-
-    widget.onload = () => {
-      const cssLink = document.createElement('link');
-      cssLink.rel = 'stylesheet';
-      cssLink.href = '/assets/index-5f18fb7c.css';
-      document.head.appendChild(cssLink);
-  };
-  
     
+    const widget = document.createElement('script');
+    widget.src = '/assets/widget.js';
+  
     const container = document.getElementById('my-widget');
     if (container) {
       container.appendChild(widget);
     }
-  }
+    
+  } 
 }
