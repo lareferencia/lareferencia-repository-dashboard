@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
   resultHandler( stats_source_id:string ){
 
     
-    window['lrw'] = {
+    window['lrhw'] = {
       widget_div_id: 'usage-stats',
       //identifier: ´´,
       //identifier_meta_field: 'eprints.eprintid',
