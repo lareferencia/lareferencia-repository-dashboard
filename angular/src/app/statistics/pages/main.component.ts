@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
-import { statistics } from 'src/environments/environment';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
