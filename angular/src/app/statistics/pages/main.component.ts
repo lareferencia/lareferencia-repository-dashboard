@@ -32,22 +32,20 @@ export class MainComponent implements OnInit {
 
   resultHandler( stats_source_id:string ){
 
-    
     window['lrhw'] = {
-      widget_div_id: 'usage-stats',
       //identifier: ´´,
       //identifier_meta_field: 'eprints.eprintid',
       //identifier_prefix: '',
       //identifier_regex: '',
       event_labels: {
-          'view': 'Vistas',
-          'download': 'Descargas',
-          'outlink': 'Enlaces'
+        view: 'Vistas',
+        download: 'Descargas',
+        outlink: 'Enlaces'
       },
       scope_labels: {
-          'L': 'LA Referencia',
-          'N': '[[Nombre Nodo Nacional]]',
-          'R': '[[Nombre Repositorio]]'
+        L: 'LA Referencia',
+        N: '[[Nombre nodo nacional]]',
+        R: '[[Nombre repositorio]]'
       },
       country: '[[ISO-país]]',
       national_source: '[[SITEID::XXX]]',
