@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { switchMap } from 'rxjs/operators';
+import { AppConfigService } from '../../core/services/loadAppConfig.service';
 
 @Component({
   selector: 'app-main',
@@ -14,11 +15,16 @@ export class MainComponent implements OnInit {
 
   constructor( 
     private menuSrvice: MenuService,
-    private harvestingSrvice: HarvestingService 
+    private harvestingSrvice: HarvestingService,
+    private appConfigService: AppConfigService, 
     ){}
 
 
   ngOnInit(): void {
+
+    const algo = this.appConfigService.getConfig()
+    console.log(algo);
+    
     
     this.menuSrvice.activeRepo.pipe(
       switchMap(repo => {
@@ -26,7 +32,6 @@ export class MainComponent implements OnInit {
       })
     ).subscribe(data => {
       this.resultHandler(data.attributes.stats_source_id)
-      console.log(data);
     });    
   }
 
