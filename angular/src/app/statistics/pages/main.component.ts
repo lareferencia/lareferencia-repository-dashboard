@@ -22,8 +22,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const algo = this.appConfigService.getConfig()
-    console.log(algo);
+    const widgetConfig = this.appConfigService.getConfig()
+    console.log(widgetConfig);
     
     
     this.menuSrvice.activeRepo.pipe(
@@ -60,8 +60,7 @@ export class MainComponent implements OnInit {
 
     const widget = document.createElement('script');
     widget.type = 'module'; // Agrega el atributo type="module" aquí
-    // widget.src = 'https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.1/dist/widget.js';
-    widget.src = '/assets/widget.js';
+    widget.src = 'https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.1/dist/widget.js';
 
     const container = document.getElementById('my-widget');
     if (container) {
