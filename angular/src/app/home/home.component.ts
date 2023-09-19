@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MenuService } from '../core/services/menu.service';
 import { HarvestingService } from '../core/services/harvesting.service';
+import { AppConfigService } from '../core/services/app-config.service';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +12,20 @@ import { HarvestingService } from '../core/services/harvesting.service';
 })
 
 
-export class HomeComponent   {
+export class HomeComponent implements OnInit {
+
+  statisticsModuleIsActive: boolean; 
 
   constructor( 
     private menuService: MenuService,
     private harvestingService: HarvestingService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private appConfig: AppConfigService
+  ) {}
+
+  ngOnInit(): void {
+    this.statisticsModuleIsActive = this.appConfig.getStatisticsModuleStatus();
+  }
 
   onHarvestingNavigate(){
     this.menuService.activeRepo
