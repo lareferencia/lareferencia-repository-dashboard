@@ -12,7 +12,7 @@ import { HomeModule } from './home/home.module';
 import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
-import { AppConfigService } from './core/services/loadAppConfig.service';
+import { AppConfigService } from './core/services/app-config.service';
 // import { BrokerModule } from './components/broker/broker.module';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
