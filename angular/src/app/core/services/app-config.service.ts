@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppConfig, StatisticsModule } from 'src/app/shared/models/app-config.model';
+import { AppConfig, HistoricStats } from 'src/app/shared/models/app-config.model';
 
 
 @Injectable()
 export class AppConfigService {
   private appConfig: AppConfig;
-  private statisticsModule: StatisticsModule;
+  private historicStatsData: HistoricStats;
+  private isActive_statisticsModule: boolean;
 
   constructor(private http: HttpClient) { }
 
@@ -15,14 +16,20 @@ export class AppConfigService {
       .toPromise()
       .then(data => {
         this.appConfig = data;
-        this.statisticsModule = data.statistics_module;
+        this.historicStatsData = data.statistics_module.historic_stats;
+        this.isActive_statisticsModule = data.statistics_module.active
       });
   }
 
-  getConfig() {
+  getAppConfig() {
     return this.appConfig;
-  }
-  getStatisticsModuleConfig(){
-    return this.statisticsModule
+  };
+
+  getHistoricStatsData(){
+    return this.historicStatsData
+  };
+
+  getStatisticsModuleStatus(): boolean{
+    return this.isActive_statisticsModule
   }
 }
