@@ -3,7 +3,7 @@ import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { switchMap } from 'rxjs/operators';
 import { AppConfigService } from '../../core/services/app-config.service';
-import { StatisticsModule } from 'src/app/shared/models/app-config.model';
+import { HistoricStats } from 'src/app/shared/models/app-config.model';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +11,6 @@ import { StatisticsModule } from 'src/app/shared/models/app-config.model';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  
   acronym: string;
 
   constructor( 
@@ -20,10 +19,9 @@ export class MainComponent implements OnInit {
     private appConfigService: AppConfigService, 
     ){}
 
-
   ngOnInit(): void {
 
-    const widgetConfig = this.appConfigService.getStatisticsModuleConfig()
+    const widgetConfig = this.appConfigService.getHistoricStatsData()
     console.log(widgetConfig);
     
     this.menuSrvice.activeRepo.pipe(
@@ -35,7 +33,7 @@ export class MainComponent implements OnInit {
     });    
   }
 
-  resultHandler( stats_source_id:string, widgetConfig: StatisticsModule ){
+  resultHandler( stats_source_id:string, widgetConfig: HistoricStats ){
 
     window['lrhw'] = {
       //identifier: ´´,
@@ -59,7 +57,7 @@ export class MainComponent implements OnInit {
     };
 
     const widget = document.createElement('script');
-    widget.type = 'module'; // Agrega el atributo type="module" aquí
+    widget.type = 'module';
     widget.src = 'https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.1/dist/widget.js';
 
     const container = document.getElementById('my-widget');
