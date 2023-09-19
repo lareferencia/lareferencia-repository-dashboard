@@ -10,16 +10,13 @@ import {
     UrlSegment,
   } from '@angular/router';
 
-
-
-
 import { AppConfigService } from '../services/app-config.service';
 
   const checkStadisticModuleStatus = () => {
     const appConfig = inject(AppConfigService);
     const router: Router = inject(Router);
 
-    const isActivated = appConfig.getStatisticsModuleConfig().active
+    const isActivated = appConfig.getStatisticsModuleStatus();
 
     if(!isActivated){
         return router.navigate(['/']);
@@ -33,7 +30,7 @@ import { AppConfigService } from '../services/app-config.service';
    
     return checkStadisticModuleStatus();
   };
-   
+
   export const canMatchGuard: CanMatchFn = ( 
     route: Route,
     segments: UrlSegment[]
