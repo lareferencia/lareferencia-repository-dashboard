@@ -2,23 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from './../../../environments/environment';
 import { GroupInfo } from 'src/app/shared/models/group-info.model';
 import { Group } from 'src/app/shared/models/group.model';
+import { AppConfigService } from './app-config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ManageGroupsService {
-  private baseurl: string = environment.securityService;
-  constructor(private http: HttpClient) {}
+  private baseurl: string;
+
+  constructor(private http: HttpClient, private appConfig: AppConfigService) {
+    this.baseurl = appConfig.getAdminModuleData().endpoints.securityService
+  };
 
   getGroup(groupName: string): Observable<GroupInfo> {
     return this.http.get<GroupInfo>(`${this.baseurl}group/admin/${groupName}`).pipe(
       map((obj) => obj),
       catchError(this.errorHandler)
     );
-  }
+  };
 
   createGroup(groupInfo: GroupInfo): Observable<boolean> {
     return this.http
@@ -27,7 +30,7 @@ export class ManageGroupsService {
         map((obj) => obj),
         catchError(this.errorHandler)
       );
-  }
+  };
 
   updateGroup(groupName: string, groupInfo: GroupInfo): Observable<boolean> {
     return this.http
@@ -36,7 +39,7 @@ export class ManageGroupsService {
         map((obj) => obj),
         catchError(this.errorHandler)
       );
-  }
+  };
 
   deleteGroup(groupName: string): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseurl}group/admin/${groupName}/delete`).pipe(
@@ -50,9 +53,9 @@ export class ManageGroupsService {
       map((obj) => obj.map((value) => ({ name: value }))),
       catchError(this.errorHandler)
     );
-  }
+  };
 
   private errorHandler(error: HttpErrorResponse) {
     return throwError(error);
-  }
+  };
 }

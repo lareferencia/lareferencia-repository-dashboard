@@ -6,14 +6,17 @@ import { catchError, map } from 'rxjs/operators';
 import { BrokerEvents } from './../../shared/models/broker-events.model';
 import { environment } from './../../../environments/environment';
 import { BrokerEventsFilter } from './../../shared/models/broker-events-filter.model';
+import { AppConfigService } from './app-config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BrokerService {
-  private baseurl: string = environment.brokerService;
+  private baseurl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, appConfig: AppConfigService) {
+    this.baseurl = appConfig.getBrokerModuleData().endpoints.brokerService;
+  }
 
   getEventsByAcronym(sourceAcronym: string, filter: BrokerEventsFilter): Observable<BrokerEvents> {
     let params = new HttpParams()

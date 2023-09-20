@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthenticationService } from './core/services/authentication.service';
 import { HomeComponent } from './home/home.component';
-import { statistics } from 'src/environments/environment';
+import { canActivateGuard, canMatchGuard } from './core/guards/statistics-module.guard';
 
 const routes: Routes = [
   {
@@ -25,11 +25,12 @@ const routes: Routes = [
     path: ':acronym/harvesting',
     loadChildren: () => import('./harvesting/harvesting.module').then(m => m.HarvestingModule),
     canActivate: [AuthenticationService],
-  },
-  statistics.showModule ? {
+  },{
     path: 'statistics',
     loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule),
-  } : null,
+    canActivate: [canActivateGuard], //Anclamos la función del canActive
+    canMatch: [canMatchGuard], //Anclamos la función del canMatch
+  },
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),

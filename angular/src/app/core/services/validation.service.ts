@@ -6,15 +6,17 @@ import { map, catchError } from 'rxjs/operators';
 import { Validation } from '../../shared/models/validation.model';
 import { Occurence } from '../../shared/models/occurrence.model';
 import { Records } from '../../shared/models/records.model';
-import { environment } from '../../../environments/environment';
+import { AppConfigService } from './app-config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ValidationService {
-  private baseurl: string = environment.validationService;
+  private baseurl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private appConfig: AppConfigService) {
+    this.baseurl = appConfig.getValidationModuleData().endpoints.validationService;
+   }
 
   getValidationResultsByHarvestingID(sourceAcronym: string, harvestingID: number): Observable<Validation> {
     return this.http.get<Validation>(`${this.baseurl}${sourceAcronym}/${harvestingID}`).pipe(
