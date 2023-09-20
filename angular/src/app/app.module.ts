@@ -13,13 +13,8 @@ import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
 import { AppConfigService } from './core/services/app-config.service';
+import { appInitializerFn } from './app-config-init';
 // import { BrokerModule } from './components/broker/broker.module';
-
-const appInitializerFn = (appConfig: AppConfigService) => {
-  return () => {
-    return appConfig.loadAppConfig();
-  };
-};
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,7 +41,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       multi: true,
-      deps: [KeycloakService],
+      deps: [KeycloakService, AppConfigService],
     },
   ],
   bootstrap: [AppComponent],
