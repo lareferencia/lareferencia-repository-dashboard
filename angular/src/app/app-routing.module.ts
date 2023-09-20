@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthenticationService } from './core/services/authentication.service';
 import { HomeComponent } from './home/home.component';
-import { statistics } from 'src/environments/environment';
 import { canActivateGuard, canMatchGuard } from './core/guards/statistics-module.guard';
 
 const routes: Routes = [
