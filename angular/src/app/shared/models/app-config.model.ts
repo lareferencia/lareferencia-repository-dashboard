@@ -2,8 +2,8 @@ export interface AppConfig {
   authentication_module: AuthenticationModule;
   main_module:           MainModule;
   admin_module:          AdminModule;
-  historic_module:       Module;
-  validation_module:     Module;
+  historic_module:       HistoricModule;
+  validation_module:     ValidationModule;
   statistics_module:     StatisticsModule;
   broker_module:         BrokerModule;
 }
@@ -41,12 +41,21 @@ export interface BrokerModuleEndpoints {
   brokerService: string;
 }
 
-export interface Module {
+export interface HistoricModule {
+  active:    boolean;
+  endpoints: HistoricModuleEndpoints;
+}
+export interface HistoricModuleEndpoints {
+  harvestingService: string;
+  validationService: string;
+}
+
+export interface ValidationModule {
   active:    boolean;
   endpoints: HistoricModuleEndpoints;
 }
 
-export interface HistoricModuleEndpoints {
+export interface ValidationModuleEndpoints {
   harvestingService: string;
   validationService: string;
 }
