@@ -1,19 +1,22 @@
 import { Group } from './../../shared/models/group.model';
 import { UserInfo } from 'src/app/shared/models/user-info.model';
-import { environment } from './../../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user.model';
+import { AppConfigService } from './app-config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ManageUsersService {
-  private baseurl: string = environment.securityService;
 
-  constructor(private http: HttpClient) {}
+  private baseurl: string;
+
+  constructor(private http: HttpClient, private appConfig: AppConfigService) {
+    this.baseurl = appConfig.getAdminModuleData().endpoints.securityService
+  }
 
   createUser(userInfo: UserInfo): Observable<boolean> {
     return this.http

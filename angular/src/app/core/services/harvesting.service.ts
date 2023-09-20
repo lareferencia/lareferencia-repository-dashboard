@@ -5,16 +5,21 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, catchError, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
 import { HarvestingList } from '../../shared/models/harvesting-list.model';
+
+import { AppConfigService } from './app-config.service';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class HarvestingService {
-  private baseurl: string = environment.harvestingService;
 
-  constructor(private http: HttpClient) {}
+  private baseurl: string;
+
+  constructor(private http: HttpClient, private appConfig: AppConfigService) {
+    this.baseurl = this.appConfig.getHistoricModuleData().endpoints.harvestingService;
+  }
 
   getHarvestingByAcronym(sourceAcronym: string): Observable<Harvesting> {
     return this.http.get<Harvesting>(`${this.baseurl}${sourceAcronym}`).pipe(
