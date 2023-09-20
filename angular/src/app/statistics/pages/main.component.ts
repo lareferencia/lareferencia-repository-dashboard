@@ -4,14 +4,16 @@ import { MenuService } from 'src/app/core/services/menu.service';
 import { switchMap } from 'rxjs/operators';
 import { AppConfigService } from '../../core/services/app-config.service';
 import { HistoricStats } from 'src/app/shared/models/app-config.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit, OnDestroy  {
+export class MainComponent implements OnInit  {
   acronym: string;
+
 
   constructor( 
     private menuSrvice: MenuService,
@@ -32,14 +34,7 @@ export class MainComponent implements OnInit, OnDestroy  {
     });    
   }
 
-  ngOnDestroy(): void {
-    // Realiza la limpieza necesaria al destruir el componente.
-    // Por ejemplo, puedes eliminar el script agregado al DOM.
-    const widgetScript = document.querySelector('script[type="module"]');
-    if (widgetScript) {
-      widgetScript.remove();
-    }
-  }
+
 
   resultHandler( stats_source_id:string, widgetConfig: HistoricStats ){
 
