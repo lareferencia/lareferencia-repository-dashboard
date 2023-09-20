@@ -56,7 +56,7 @@
             },
             "country": "[[ISO-país]]",
             "national_source": "[[SITEID::XXX]]",
-            "preview": false
+            "preview": true
         }
     },
 
