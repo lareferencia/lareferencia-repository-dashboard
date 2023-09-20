@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { switchMap } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { HistoricStats } from 'src/app/shared/models/app-config.model';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy  {
   acronym: string;
 
   constructor( 
@@ -22,7 +22,6 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
 
     const widgetConfig = this.appConfigService.getHistoricStatsData()
-    console.log(widgetConfig);
     
     this.menuSrvice.activeRepo.pipe(
       switchMap(repo => {
@@ -31,6 +30,15 @@ export class MainComponent implements OnInit {
     ).subscribe(data => {
       this.resultHandler(data.attributes.stats_source_id, widgetConfig)
     });    
+  }
+
+  ngOnDestroy(): void {
+    // Realiza la limpieza necesaria al destruir el componente.
+    // Por ejemplo, puedes eliminar el script agregado al DOM.
+    const widgetScript = document.querySelector('script[type="module"]');
+    if (widgetScript) {
+      widgetScript.remove();
+    }
   }
 
   resultHandler( stats_source_id:string, widgetConfig: HistoricStats ){
@@ -57,8 +65,8 @@ export class MainComponent implements OnInit {
     };
 
     const widget = document.createElement('script');
-    // widget.type = 'module';
-    widget.src = 'https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.1/dist/widget.js';
+    widget.type = 'module';
+    widget.src = 'https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.2/dist/chunks/widget.js';
 
     const container = document.getElementById('my-widget');
     if (container) {
