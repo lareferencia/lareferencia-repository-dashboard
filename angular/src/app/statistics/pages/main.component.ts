@@ -57,7 +57,7 @@ export class MainComponent implements OnInit {
     };
 
     const widget = document.createElement('script');
-    widget.type = 'module';
+    // widget.type = 'module';
     widget.src = 'https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.1/dist/widget.js';
 
     const container = document.getElementById('my-widget');
