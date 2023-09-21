@@ -17,8 +17,11 @@ export class AppConfigService {
 
   constructor(private http: HttpClient) { }
 
+  public isInitialized = false; // Agrega esta propiedad
+
+
   loadAppConfig(): Promise<void> {
-    return this.http.get<AppConfig>('/assets/data/appConfig.json')
+    return this.http.get<AppConfig>('./assets/data/appConfig.json')
       .toPromise()
       .then(data => {
         this.appConfig = data;
@@ -30,7 +33,14 @@ export class AppConfigService {
         this.brokerModuleData = data.broker_module;
         this.authModuleData = data.authentication_module;
         this.keycloakConfig = data.authentication_module.key_cloack_config;
-      });
+        this.isInitialized = true; // Marca como inicializado cuando tiene éxito
+      })
+      .catch((error) => {
+        console.log('Error loading the application config');
+        this.isInitialized = false;
+        console.log(this.isInitialized);
+        
+      })
   }
 
   //General json data

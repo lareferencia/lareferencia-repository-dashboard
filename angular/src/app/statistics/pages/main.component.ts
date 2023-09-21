@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { switchMap } from 'rxjs/operators';
 import { AppConfigService } from '../../core/services/app-config.service';
 import { HistoricStats } from 'src/app/shared/models/app-config.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit  {
   acronym: string;
 
   constructor( 
@@ -22,8 +23,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
 
     const widgetConfig = this.appConfigService.getHistoricStatsData()
-    console.log(widgetConfig);
-    
+
     this.menuSrvice.activeRepo.pipe(
       switchMap(repo => {
         return this.harvestingSrvice.getHarvestingByAcronym(repo.acronym)
@@ -57,8 +57,7 @@ export class MainComponent implements OnInit {
     };
 
     const widget = document.createElement('script');
-    widget.type = 'module';
-    widget.src = 'https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.1/dist/widget.js';
+    widget.src = widgetConfig.widget_url;
 
     const container = document.getElementById('my-widget');
     if (container) {

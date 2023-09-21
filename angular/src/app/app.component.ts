@@ -7,6 +7,7 @@ import { AuthenticationService } from './core/services/authentication.service';
 import { Menu } from './shared/models/menu.model';
 import { HarvestingList } from './shared/models/harvesting-list.model';
 import { Harvesting } from './shared/models/harvesting.model';
+import { AppConfigService } from './core/services/app-config.service';
 
 @Component({
   selector: 'app-root',
@@ -22,9 +23,17 @@ export class AppComponent implements OnInit {
     private menuService: MenuService,
     private harvestingService: HarvestingService,
     private authenticationService: AuthenticationService,
+    public appConfigService: AppConfigService
   ) {}
 
   ngOnInit(): void {
+    if(this.appConfigService.isInitialized){
+      const onInitErrorMsg = document.getElementById('oninit-error');
+      if(onInitErrorMsg){
+        onInitErrorMsg.style.display='none';
+      }
+    }
+    
     this.admUser = this.authenticationService.isAdmUser();
     this.harvestingService.getHarvestingList()
       .subscribe((harvestingList) => {
