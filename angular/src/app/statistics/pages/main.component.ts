@@ -14,7 +14,6 @@ import { Subscription } from 'rxjs';
 export class MainComponent implements OnInit  {
   acronym: string;
 
-
   constructor( 
     private menuSrvice: MenuService,
     private harvestingSrvice: HarvestingService,
@@ -24,7 +23,7 @@ export class MainComponent implements OnInit  {
   ngOnInit(): void {
 
     const widgetConfig = this.appConfigService.getHistoricStatsData()
-    
+
     this.menuSrvice.activeRepo.pipe(
       switchMap(repo => {
         return this.harvestingSrvice.getHarvestingByAcronym(repo.acronym)
@@ -33,8 +32,6 @@ export class MainComponent implements OnInit  {
       this.resultHandler(data.attributes.stats_source_id, widgetConfig)
     });    
   }
-
-
 
   resultHandler( stats_source_id:string, widgetConfig: HistoricStats ){
 
@@ -60,8 +57,7 @@ export class MainComponent implements OnInit  {
     };
 
     const widget = document.createElement('script');
-    widget.type = 'module';
-    widget.src = 'https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.2/dist/chunks/widget.js';
+    widget.src = widgetConfig.widget_url;
 
     const container = document.getElementById('my-widget');
     if (container) {
