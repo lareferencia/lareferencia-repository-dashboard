@@ -42,7 +42,7 @@
         "active": true,
 
         "historic_stats": { 
-            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.3/dist/historic-widget.js",
+            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.4/dist/historic-widget.js",
 
             "event_labels": {
                 "view": "Vistas",

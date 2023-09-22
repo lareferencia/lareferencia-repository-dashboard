@@ -39,17 +39,15 @@
       </a>
       <a [class]="statisticsModuleIsActive ? 'services-item' : 'services-item-inprogress'" (click)="onStatisticsNavigate()">
         <img style="width: 24px; opacity: 0.7;" [class]="statisticsModuleIsActive ? 'opacity-100' : 'opacity-0'" src="assets/icons/statistics.svg" alt=""> 
-        <span i18n [class]="statisticsModuleIsActive ? 'opacity-100' : 'opacity-0'">Statistics</span>
+        <span i18n [class]="statisticsModuleIsActive ? 'opacity-100' : 'opacity-0'">Usage statistics</span>
       </a>
       <a class="services-item-inprogress" >
-        <img style="width: 24px; opacity: 0.7;" src="assets/icons/progress.svg" alt=""> 
-        <span i18n>In progress</span>
       </a>
     </div>
   </mat-card>
 </div>
 <div class="home-footer" >
-  <h6 style="margin-bottom: 0; margin-right: 8px;">Powered by</h6>
+  <h6 style="margin-bottom: 0; margin-right: 8px;" i18n>Powered by</h6>
   <img style="width: 180px;" src="assets/img/logo-footer.png" alt="">
 </div>
 

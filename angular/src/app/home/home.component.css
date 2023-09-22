@@ -106,11 +106,13 @@ p {
 
 .services-item-inprogress {
   background: #f9f8f9d8;
+  height: 70px;
 }
 
 .services-item {
   cursor: pointer;
   background: #f1eff1;
+  height: 70px;
 }
 
 .services-item:hover{

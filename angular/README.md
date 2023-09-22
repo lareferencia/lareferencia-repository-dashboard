@@ -26,7 +26,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Localize
 
-Run `ng-extract-i18n` to generate an .xlf file with all the text marked with the i18n directive. Make 2 copies of that file, one named .es and the other .pt. After translating them, place the 3 files in the locale folder. This way, you will obtain 3 folders with the respective language when running `ng build`.
+Run `ng extract-i18n` to generate an .xlf file with all the text marked with the i18n directive. Make 2 copies of that file, one named .es and the other .pt. After translating them, place the 3 files in the locale folder. This way, you will obtain 3 folders with the respective language when running `ng build`.
 
 ## Make translation corrections.
 

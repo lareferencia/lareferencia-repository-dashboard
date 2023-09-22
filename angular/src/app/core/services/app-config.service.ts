@@ -39,7 +39,16 @@ export class AppConfigService {
         console.log('Error loading the application config');
         this.isInitialized = false;
         console.log(this.isInitialized);
-        
+        if(!this.isInitialized){
+          const onInitErrorMsg = document.querySelector('body');
+          if(onInitErrorMsg){
+            onInitErrorMsg.innerHTML = `
+            <div id="oninit-error"> 
+              <h3>No te olvides de configurar el JSON.</h3>
+            </div>
+            `
+          }
+        }
       })
   }
 
