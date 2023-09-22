@@ -459,34 +459,36 @@
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a0f8502b0782cbe277d8a64f2d57331b88990443" datatype="html">
-        <source>¿What's on the platform?</source><target>¿Qué hay en la plataforma?</target>
+
+      <trans-unit id="ec58f83f1bbfc2edb877badec0b508f97a59b987" datatype="html">
+        <source>What&apos;s on the platform?</source><target>¿Qué hay en la plataforma?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a612508fe70bc2e7b8683e594713c41ba3374e10" datatype="html">
-        <source> Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />harvesting<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> of deposit documents. </source><target> Información sobre la cosecha de documentos.<x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" /><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> </target>
+      <trans-unit id="3dba259582464d65d1b72372c86172f30e550454" datatype="html">
+        <source>Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>harvesting<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> of deposit documents.</source><target>Información a cerca de <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>cocechas<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> de repositorios.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ed1d1358ae73b3e12a3fcf7606af5228debcbe29" datatype="html">
-        <source> Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />documents validation.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target> Información sobre la validación de documentos.<x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" /><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
+      <trans-unit id="a577cdbfd110c79ec8915b76a2c6edf5fd2d944b" datatype="html">
+        <source>Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>documents validation.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source><target>Información a cerca de <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>validación de metadatos.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7b15d2cacc3450fc1a582f17df670ea505124fae" datatype="html">
-        <source> Informative <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />statistics and graphics.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></source><target> Estadísticas y gráficos informativos.<x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" /><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /></target>
+      <trans-unit id="5d6e045a97c8f7df35817da8e134aa03311c5a29" datatype="html">
+        <source>Informative <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>statistics and graphics.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source><target>Estadísticas y gráficos <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>informativos.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
+
       <trans-unit id="419d940613972cc3fae9c8ea0a4306dbf80616e5" datatype="html">
         <source>Services</source><target>Servicios</target>
         <context-group purpose="location">
@@ -501,6 +503,7 @@
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
+
       <trans-unit id="70be7d58e886182a2345e08f07694ebc80d75018" datatype="html">
         <source>Validations</source><target>Validación de metadatos</target>
         <context-group purpose="location">
@@ -508,17 +511,23 @@
           <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
-        <source>Statistics</source><target>Estadisticas de uso</target>
+
+      <trans-unit id="893964df4abf2968d52042ded9c1b6d0e342403b" datatype="html">
+        <source>Usage statistics</source><target>Estadisticas de uso</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">42</context>
         </context-group>
+      </trans-unit>
+
+      <trans-unit id="596d65263456e81ac98fb7f8d616bf01adfc17a8" datatype="html">
+        <source>Powered by</source><target>Desarrollado por</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
+
       <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
         <source>Home</source><target>Inicio</target>
         <context-group purpose="location">
@@ -533,6 +542,7 @@
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
+
       <trans-unit id="12ce9154fb4b6bd40e48658b72fe680d164e94e9" datatype="html">
         <source>Validation</source><target>Validación</target>
         <context-group purpose="location">
@@ -548,6 +558,15 @@
           <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
+        <source>Statistics</source><target>Estadísticas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+
+
       <trans-unit id="29881a45dafbe5aa05cd9d0441a4c0c2fb06df92" datatype="html">
         <source>Account</source><target>Cuenta</target>
         <context-group purpose="location">
@@ -707,6 +726,20 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/table-exporter/table-exporter.component.html</context>
           <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4141c9c40b7f8904af1c4ade8941d74aa921453e" datatype="html">
+        <source>Historical usage statistics</source><target>Estadísticas de uso históricas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/statistics/pages/main.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a249bb440dd52b8cbfffbeae0c281ef5b78dead7" datatype="html">
+        <source>In the following chart, it is possible to observe downloads, views, and links at the national node level. Additionally, you can break down the chart view by day, week, and month using the buttons located at the top and left. You can also display data for 1 month, 3 months, or 6 months using the buttons located at the bottom right. Finally, with the horizontal bar located below the chart, we can select a custom interval.</source><target>En el siguiente gráfico es posible ver las descargas, vistas y enlaces a nivel de nodo nacional. A su vez, es posible dividir la vista del gráfico por día, semana y mes, con los botones ubicados arriba y a la izquierda, y poder plasmar en el gráfico datos de 1 mes, 3 meses o 6 semes, con los botones ubicados abajo a la derecha. Por último, con la barra horizontal ubicada bajo el gráfico, podemos elegir un intervalo personalizado</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/statistics/pages/main.component.html</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cc3e9b469739cda95528710d8bd391f0e0925c9f" datatype="html">
