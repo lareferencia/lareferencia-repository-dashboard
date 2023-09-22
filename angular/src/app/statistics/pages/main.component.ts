@@ -57,7 +57,8 @@ export class MainComponent implements OnInit  {
     };
 
     const widget = document.createElement('script');
-    widget.src = widgetConfig.widget_url;
+    // widget.src = widgetConfig.widget_url;
+    widget.src = 'assets/historic-widget.js';
 
     const container = document.getElementById('my-widget');
     if (container) {

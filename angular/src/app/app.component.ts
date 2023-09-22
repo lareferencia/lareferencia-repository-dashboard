@@ -27,10 +27,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if(this.appConfigService.isInitialized){
+    if(!this.appConfigService.isInitialized){
       const onInitErrorMsg = document.getElementById('oninit-error');
       if(onInitErrorMsg){
-        onInitErrorMsg.style.display='none';
+        onInitErrorMsg.innerHTML = '<h1>No te olvides de configurar el JSON.</h1>'
       }
     }
     
