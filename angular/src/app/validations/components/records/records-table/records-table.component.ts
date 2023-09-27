@@ -79,6 +79,8 @@ export class RecordsTableComponent implements  OnInit {
     this.dialogTitle = record.identifier;
     record.rules = this.validation.rulesByID;
     this.visible = true;
+    console.log(record);
+    
     this.dialogData = { record, acronym: this.acronym };
   }
 
@@ -110,6 +112,8 @@ export class RecordsTableComponent implements  OnInit {
         this.isLoading = false;
 
         this.dataSource = result.content
+        console.log(result);
+        
         this.totalRecords = result.totalElements;
 
         this.csvData = result.content.map((x) => {
