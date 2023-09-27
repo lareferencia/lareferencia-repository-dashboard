@@ -12,29 +12,22 @@ import {
 
 import { AppConfigService } from '../services/app-config.service';
 
-  const checkStadisticModuleStatus = () => {
-    const appConfig = inject(AppConfigService);
-    const router: Router = inject(Router);
-
-    const isActivated = appConfig.getStatisticsModuleStatus();
-
-    if(!isActivated){
-        return router.navigate(['/']);
-    }
-
-  }
+  
   export const canActivateGuard: CanActivateFn = ( 
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) => {
    
-    return checkStadisticModuleStatus();
+    return checkStadisticModuleStatus(route);
   };
 
-  export const canMatchGuard: CanMatchFn = ( 
-    route: Route,
-    segments: UrlSegment[]
-  ) => {
-   
-    return checkStadisticModuleStatus();
-  };
+
+  const checkStadisticModuleStatus = (route: ActivatedRouteSnapshot) => {
+    const appConfig = inject(AppConfigService);
+    const router: Router = inject(Router);
+    const { path } = route.routeConfig
+    const isActivated = appConfig.getModuleStatus( path );
+    if(!isActivated){
+        return router.navigate(['/']);
+    }
+  }

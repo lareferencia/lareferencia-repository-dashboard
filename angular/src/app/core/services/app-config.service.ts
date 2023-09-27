@@ -70,8 +70,24 @@ export class AppConfigService {
     return this.historicStatsData;
   };
 
-  getStatisticsModuleStatus(): boolean{
-    return this.isActive_statisticsModule
+  getModuleStatus( path: string ): boolean{
+
+    let module: string;
+
+    switch (path){
+      case 'statistics':
+      module = 'statistics_module';
+      break;
+    case ':acronym/validation':
+      module = 'validation_module';
+      break;
+    case ':acronym/harvesting':
+      module = 'historic_module';
+      break;
+    default:
+    }
+    return this.appConfig[module].active
+  
   };
 
   //Historic module

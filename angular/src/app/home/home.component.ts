@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.statisticsModuleIsActive = this.appConfig.getStatisticsModuleStatus();
+    this.statisticsModuleIsActive = this.appConfig.getModuleStatus('statistics');
   }
 
   onHarvestingNavigate(){
