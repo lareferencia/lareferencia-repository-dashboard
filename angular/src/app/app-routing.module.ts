@@ -20,15 +20,18 @@ const routes: Routes = [
     path: ':acronym/validation',
     loadChildren: () => import('./validations/validations.module').then(m => m.ValidationsModule),
     canActivate: [AuthenticationService, canActivateGuard],
+    data:{module: 'validation_module'}
   },
   {
     path: ':acronym/harvesting',
     loadChildren: () => import('./harvesting/harvesting.module').then(m => m.HarvestingModule),
     canActivate: [AuthenticationService, canActivateGuard],
+    data:{module: 'historic_module'}
   },{
     path: 'statistics',
     loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule),
     canActivate: [AuthenticationService, canActivateGuard],
+    data:{module: 'statistics_module'}
   },
   {
     path: 'admin',
