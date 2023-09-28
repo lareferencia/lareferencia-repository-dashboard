@@ -4,6 +4,7 @@ import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { AuthenticationService } from '../../core/services/authentication.service';
 import { Router } from '@angular/router';
+import { AppConfigService } from 'src/app/core/services/app-config.service';
 
 @Component({
   selector: 'app-drawer',
@@ -22,6 +23,7 @@ export class DrawerComponent implements OnInit {
     private menuService: MenuService,
     private harvestingService: HarvestingService,
     private authenticationService: AuthenticationService,
+    private appConfig: AppConfigService,
     private router: Router,
   ) { }
 
@@ -59,5 +61,9 @@ export class DrawerComponent implements OnInit {
     localStorage.clear();
     
     this.authenticationService.logout();
+  }
+
+  isModuleActive( module:string ){
+    return this.appConfig.getModuleStatus(module); 
   }
 }
