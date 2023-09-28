@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthenticationService } from './core/services/authentication.service';
 import { HomeComponent } from './home/home.component';
-import { canActivateGuard, canMatchGuard } from './core/guards/statistics-module.guard';
+import { canActivateGuard } from './core/guards/activate-modules.guard';
 
 const routes: Routes = [
   {
@@ -19,17 +19,19 @@ const routes: Routes = [
   {
     path: ':acronym/validation',
     loadChildren: () => import('./validations/validations.module').then(m => m.ValidationsModule),
-    canActivate: [AuthenticationService],
+    canActivate: [AuthenticationService, canActivateGuard],
+    data:{module: 'validation_module'}
   },
   {
     path: ':acronym/harvesting',
     loadChildren: () => import('./harvesting/harvesting.module').then(m => m.HarvestingModule),
-    canActivate: [AuthenticationService],
+    canActivate: [AuthenticationService, canActivateGuard],
+    data:{module: 'historic_module'}
   },{
     path: 'statistics',
     loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule),
-    canActivate: [canActivateGuard], //Anclamos la función del canActive
-    canMatch: [canMatchGuard], //Anclamos la función del canMatch
+    canActivate: [AuthenticationService, canActivateGuard],
+    data:{module: 'statistics_module'}
   },
   {
     path: 'admin',

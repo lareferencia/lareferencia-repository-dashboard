@@ -7,7 +7,6 @@ import { AdminModule, AppConfig, AuthenticationModule, BrokerModule, HistoricMod
 export class AppConfigService {
   private appConfig: AppConfig;
   private historicStatsData: HistoricStats;
-  private isActive_statisticsModule: boolean;
   private historicModuleData: HistoricModule;
   private validationModuleData: ValidationModule;
   private adminModuleData: AdminModule;
@@ -17,44 +16,52 @@ export class AppConfigService {
 
   constructor(private http: HttpClient) { }
 
-  public isInitialized = false; // Agrega esta propiedad
+  public isInitialized = false;
 
 
   loadAppConfig(): Promise<void> {
     return this.http.get<AppConfig>('./assets/data/appConfig.json')
       .toPromise()
       .then(data => {
-        this.appConfig = data;
-        this.historicStatsData = data.statistics_module.historic_stats;
-        this.isActive_statisticsModule = data.statistics_module.active;
-        this.historicModuleData = data.historic_module;
-        this.validationModuleData = data.validation_module;
-        this.adminModuleData = data.admin_module;
-        this.brokerModuleData = data.broker_module;
-        this.authModuleData = data.authentication_module;
-        this.keycloakConfig = data.authentication_module.key_cloack_config;
-        this.isInitialized = true; // Marca como inicializado cuando tiene éxito
+        this.initializeAppConfig(data);
+        this.isInitialized = true;
       })
-      .catch((error) => {
+      .catch(error => {
         console.log('Error loading the application config');
         this.isInitialized = false;
-        console.log(this.isInitialized);
-        if(!this.isInitialized){
-          const onInitErrorMsg = document.querySelector('body');
-          if(onInitErrorMsg){
-            onInitErrorMsg.innerHTML = `
-            <div id="oninit-error"> 
-              <h3>No te olvides de configurar el JSON.</h3>
-            </div>
-            `
-          }
-        }
-      })
-  }
+        this.displayOnInitErrorMessage();
+      });
+  };
+  
+  private initializeAppConfig(data: AppConfig): void {
+    this.appConfig = data;
+    this.historicStatsData = data.statistics_module.historic_stats;
+    this.historicModuleData = data.historic_module;
+    this.validationModuleData = data.validation_module;
+    this.adminModuleData = data.admin_module;
+    this.brokerModuleData = data.broker_module;
+    this.authModuleData = data.authentication_module;
+    this.keycloakConfig = data.authentication_module.key_cloack_config;
+  };
+  
+  private displayOnInitErrorMessage(): void {
+    const onInitErrorMsg = document.querySelector('body');
+    if (onInitErrorMsg) {
+      onInitErrorMsg.innerHTML = `
+        <div id="oninit-error"> 
+          <h3>El archivo "appConfig.json" debe ser configurado.</h3>
+        </div>
+      `;
+    }
+  };
 
   //General json data
   getAppConfig() {
     return this.appConfig;
+  };
+
+  getModuleStatus( module: string ): boolean{    
+    return this.appConfig[module].active
   };
 
   //Auth module
@@ -68,10 +75,6 @@ export class AppConfigService {
   //Statistics module
   getHistoricStatsData(){
     return this.historicStatsData;
-  };
-
-  getStatisticsModuleStatus(): boolean{
-    return this.isActive_statisticsModule
   };
 
   //Historic module

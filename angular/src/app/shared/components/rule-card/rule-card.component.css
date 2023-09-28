@@ -26,10 +26,8 @@
 
 }
 .occurrence-text{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 40ch;
+    max-width: 50ch; /* Establece el ancho máximo en 50 caracteres */
+    white-space: pre-wrap; /* Permite saltos de línea y conserva espacios en blanco */
 }
 span{
     color: var(--color-primary);

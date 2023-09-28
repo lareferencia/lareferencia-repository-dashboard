@@ -10,20 +10,24 @@
               <img class="nav-list-img" src="assets/icons/home.svg" alt="">
                 <span i18n class="nav-list-text">Home</span>
             </a>
+            
             <a class="nav-list-a"  routerLink="/admin/accounts" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}"
               *ngIf="isAdmin">
               <img class="nav-list-img" src="assets/icons/admin.svg" alt="">
               <span i18n class="nav-list-text">Admin</span>
             </a>
-            <a class="nav-list-a" routerLink="/{{activeRepository}}/harvesting" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
+
+            <a [class]="isModuleActive('historic_module') ? 'flex nav-list-a' : 'hidden' " routerLink="/{{activeRepository}}/harvesting" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="assets/icons/chart.svg" alt="">
               <span i18n class="nav-list-text">Harvestings</span>
             </a>
-            <a class="nav-list-a"  routerLink="/{{activeRepository}}/validation/{{harvestingConentId}}" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
+
+            <a [class]="isModuleActive('validation_module') ? 'flex nav-list-a' : 'hidden' "  routerLink="/{{activeRepository}}/validation/{{harvestingConentId}}" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="assets/icons/validation.svg" alt="">
               <span i18n class="nav-list-text">Validation</span>
             </a>
-            <a class="nav-list-a" routerLink="/statistics/statistics" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
+
+            <a [class]="isModuleActive('statistics_module') ? 'flex nav-list-a' : 'hidden' " routerLink="/statistics/statistics" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="assets/icons/statistics.svg" alt="">
               <span i18n class="nav-list-text">Statistics</span>
             </a>

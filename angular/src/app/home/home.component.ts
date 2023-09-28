@@ -14,7 +14,6 @@ import { AppConfigService } from '../core/services/app-config.service';
 
 export class HomeComponent implements OnInit {
 
-  statisticsModuleIsActive: boolean; 
 
   constructor( 
     private menuService: MenuService,
@@ -24,7 +23,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.statisticsModuleIsActive = this.appConfig.getStatisticsModuleStatus();
   }
 
   onHarvestingNavigate(){
@@ -46,6 +44,11 @@ export class HomeComponent implements OnInit {
   }
   onStatisticsNavigate(){
     this.router.navigate(['statistics']);
+  }
+
+  isModuleActive( path: string ){
+    return this.appConfig.getModuleStatus(path);
+
   }
 }
 
