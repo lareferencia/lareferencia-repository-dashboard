@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthenticationService } from './core/services/authentication.service';
 import { HomeComponent } from './home/home.component';
-import { canActivateGuard } from './core/guards/statistics-module.guard';
+import { canActivateGuard } from './core/guards/activate-modules.guard';
 
 const routes: Routes = [
   {
