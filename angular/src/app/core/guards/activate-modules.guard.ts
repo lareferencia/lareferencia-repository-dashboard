@@ -3,11 +3,8 @@ import { inject } from '@angular/core';
 import {
     ActivatedRouteSnapshot,
     CanActivateFn,
-    CanMatchFn,
-    Route,
     Router,
     RouterStateSnapshot,
-    UrlSegment,
   } from '@angular/router';
 
 import { AppConfigService } from '../services/app-config.service';

@@ -40,6 +40,12 @@ const routes: Routes = [
     data: { roles: ['dashboard-admin'] },
   },
   {
+    path: 'harvesting-admin',
+    loadChildren: () => import('./harvesting-admin/harvesting-admin.module').then(m => m.HarvestingAdminModule),
+    canActivate: [AuthenticationService, canActivateGuard],
+    data: {module: 'harvesting_admin_module'}
+  },
+  {
     path:'**',
     redirectTo: '',
   }

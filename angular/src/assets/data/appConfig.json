@@ -22,6 +22,10 @@
         }
     },
 
+    "harvesting_admin_module": {
+        "active": true
+    },
+
     "historic_module": {
         "active": true,
         "endpoints": {
