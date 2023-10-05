@@ -23,7 +23,10 @@
     },
 
     "harvesting_admin_module": {
-        "active": true
+        "active": true,
+        "endpoints":{
+            "networkService": "./assets/data/networks.json"
+        }
     },
 
     "historic_module": {

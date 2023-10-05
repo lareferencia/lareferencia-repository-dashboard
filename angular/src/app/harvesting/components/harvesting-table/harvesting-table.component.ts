@@ -72,7 +72,7 @@ export class HarvestingTableComponent implements OnInit {
   onSort(event: SortEvent) {
     this.filter.sortField = event.field;
     this.filter.sortOrder = event.order === 1 ? 1 : -1;
-    console.log(this.filter)
+    
     this.loadContent({
       first: 0,
       rows: this.pageSize,

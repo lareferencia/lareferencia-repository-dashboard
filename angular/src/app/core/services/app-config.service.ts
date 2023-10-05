@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AdminModule, AppConfig, AuthenticationModule, BrokerModule, HistoricModule, HistoricStats, KeyCloackConfig, ValidationModule } from 'src/app/shared/models/app-config.model';
+import { AdminModule, AppConfig, AuthenticationModule, BrokerModule, HarvestingAdminModule, HistoricModule, HistoricStats, KeyCloackConfig, ValidationModule } from 'src/app/shared/models/app-config.model';
 
 
 @Injectable()
@@ -12,6 +12,7 @@ export class AppConfigService {
   private adminModuleData: AdminModule;
   private brokerModuleData: BrokerModule;
   private authModuleData: AuthenticationModule;
+  private harvestingAdminModule: HarvestingAdminModule;
   private keycloakConfig: KeyCloackConfig
 
   constructor(private http: HttpClient) { }
@@ -39,6 +40,7 @@ export class AppConfigService {
     this.historicModuleData = data.historic_module;
     this.validationModuleData = data.validation_module;
     this.adminModuleData = data.admin_module;
+    this.harvestingAdminModule = data.harvesting_admin_module;
     this.brokerModuleData = data.broker_module;
     this.authModuleData = data.authentication_module;
     this.keycloakConfig = data.authentication_module.key_cloack_config;
@@ -80,6 +82,11 @@ export class AppConfigService {
   //Historic module
   getHistoricModuleData(){
     return this.historicModuleData;
+  };
+
+  //Havesting Administrator module
+  getHarvestingAdminModuleData(){
+    return this.harvestingAdminModule;
   };
 
   //Validation module

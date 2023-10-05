@@ -6,6 +6,7 @@ export interface AppConfig {
   validation_module:     ValidationModule;
   statistics_module:     StatisticsModule;
   broker_module:         BrokerModule;
+  harvesting_admin_module: HarvestingAdminModule;
 }
 
 export interface AdminModule {
@@ -15,6 +16,15 @@ export interface AdminModule {
 
 export interface AdminModuleEndpoints {
   securityService: string;
+}
+
+export interface HarvestingAdminModule {
+  active:   boolean;
+  endpoints: HarvestingAdminModuleEndpoints;
+}
+
+export interface HarvestingAdminModuleEndpoints {
+  networkService: string;
 }
 
 export interface AuthenticationModule {

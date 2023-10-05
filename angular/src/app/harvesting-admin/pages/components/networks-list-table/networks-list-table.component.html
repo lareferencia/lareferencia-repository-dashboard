@@ -1,0 +1,47 @@
+
+<div class="table-content-container p-3">
+  <p-table 
+      [value]="networksList"
+      [paginator]="true"
+      [rows]="pageSize"
+      [totalRecords]="totalRecords"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [lazy]="true"
+      [loading]="isLoading"
+      (onLazyLoad)="loadContent($event)"
+      (onSort)="onSort($event)">
+
+      <ng-template pTemplate="header" >
+          <tr>
+              <th i18n pSortableColumn="networkID">
+                ID
+                <p-sortIcon field="networkID"></p-sortIcon>
+            </th>
+              <th i18n pSortableColumn="acronym">
+                Acronym
+                <p-sortIcon field="acronym"></p-sortIcon>
+            </th>
+              <th i18n pSortableColumn="name">
+                Repositorie
+                <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th i18n pSortableColumn="institution">
+                Institution
+                <p-sortIcon field="institution"></p-sortIcon>
+              </th>
+
+              <th i18n >Harvesting</th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-networksList>
+          <tr>
+            <td>{{networksList.networkID}}</td>
+            <td>{{networksList.acronym}}</td>
+            <td>{{networksList.name}}</td>
+            <td>{{networksList.institution}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>

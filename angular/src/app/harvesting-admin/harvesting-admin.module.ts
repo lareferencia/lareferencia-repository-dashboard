@@ -3,15 +3,21 @@ import { CommonModule } from "@angular/common";
 
 import { MainComponent } from "./pages/main.component";
 import { HarvestingAdminRoutingModule } from "./harvesting-admin-routing.module";
+import { NetworksListTableComponent } from './pages/components/networks-list-table/networks-list-table.component';
+import { PrimengMaterial } from "../primeng-material/primeng-material.module";
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
     declarations: [
-        MainComponent
+        MainComponent,
+        NetworksListTableComponent
     ],
     imports: [
         CommonModule,
-        HarvestingAdminRoutingModule
+        HarvestingAdminRoutingModule,
+        PrimengMaterial,
+        SharedModule
     ],
 })
 
