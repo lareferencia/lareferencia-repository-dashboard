@@ -19,18 +19,21 @@ import { NetworksList } from 'src/app/shared/models/harvesting-admin.model';
 
 
 
-    getNetworkList(pageSize: number, pageNumber: number, sortField?: string, sortOrder?: number): Observable<NetworksList> {
+    getNetworkList(filter, sortField?: string, sortOrder?: number): Observable<NetworksList> {
       let params = new HttpParams()
-        .append('size', pageSize.toString())
-        .append('page', pageNumber.toString());
+      .append('pageNumber', filter.pageNumber.toString())
+      .append('pageSize', filter.pageSize.toString());
+
+      if (filter.acronym != null && filter.acronym != '')
+      params = params.append('acronym', filter.acronym);
 
         if (sortField && sortOrder) {
           let sortValue: string;
           sortOrder === 1 ? sortValue = `${sortField},asc` : sortValue = `${sortField},desc`
           params = params.append('sort', sortValue);
-          
       }
 
+      
         return this.http
         .get<NetworksList>(this.baseurl, { params }).pipe(
           map((obj) => obj),

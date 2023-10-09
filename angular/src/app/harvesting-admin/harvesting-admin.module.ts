@@ -6,12 +6,14 @@ import { HarvestingAdminRoutingModule } from "./harvesting-admin-routing.module"
 import { NetworksListTableComponent } from './pages/components/networks-list-table/networks-list-table.component';
 import { PrimengMaterial } from "../primeng-material/primeng-material.module";
 import { SharedModule } from "../shared/shared.module";
+import { ValidatorsFormComponent } from './pages/components/validators-form/validators-form.component';
 
 
 @NgModule({
     declarations: [
         MainComponent,
-        NetworksListTableComponent
+        NetworksListTableComponent,
+        ValidatorsFormComponent
     ],
     imports: [
         CommonModule,

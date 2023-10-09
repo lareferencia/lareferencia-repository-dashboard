@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SortEvent } from 'primeng/api';
+import { LazyLoadEvent, SortEvent } from 'primeng/api';
 import { HarvestingAdminService } from 'src/app/core/services/harvesting-admin.service';
 import { Network } from 'src/app/shared/models/harvesting-admin.model';
 
@@ -17,7 +17,7 @@ export class NetworksListTableComponent {
   totalRecords: number;
 
 
-  public filter = {
+  public filter: any = {
     sortField: '',
     sortOrder: 1,
   };
@@ -39,14 +39,26 @@ export class NetworksListTableComponent {
     });
   }
 
-  loadContent(event) {
-    this.pageNumber = event.first / event.rows;
-    this.pageSize = event.rows;
+  clearFilters() {
+    this.filter = {};
+    this.applyFilter();
+  }
 
-    this.harvestingAdminList.getNetworkList(this.pageNumber, this.pageSize)
+  applyFilter() {
+    this.loadContent({ first: 0, rows: this.pageSize });
+  }
+
+  loadContent(event: LazyLoadEvent) {
+    this.filter = {
+      ...this.filter,
+      pageSize: event.rows,
+      pageNumber: event.first / event.rows,
+    };
+
+    this.harvestingAdminList.getNetworkList(this.filter)
       .subscribe((data) => {
         this.totalRecords = data.totalElements;
-        this.networksList = data.networks;
+        this.networksList = data.networks;        
       });
   }
 

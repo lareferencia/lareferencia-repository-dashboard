@@ -1,3 +1,33 @@
-<main class="p-3">    
-    <networks-list-table></networks-list-table>
+
+<main class="p-3 ">
+    <p-tabView>
+        <p-tabPanel>
+            <ng-template pTemplate="header"> 
+                <i class="pi pi-list"></i>
+                <span class="ml-2">Repositories administration</span>   
+            </ng-template>
+                <section>    
+                    <networks-list-table></networks-list-table>
+                </section>
+        </p-tabPanel>
+        <p-tabPanel>
+            <ng-template pTemplate="header"> 
+                <i class="pi pi-check-square"></i>
+                <span class="ml-2">Edit validators</span>   
+            </ng-template>
+            <section>
+                <validators-form></validators-form>
+            </section>
+        </p-tabPanel>
+        <p-tabPanel>
+            <ng-template pTemplate="header"> 
+                <i class="pi pi-sliders-h"></i>
+                <span class="ml-2">Edit transformers</span>   
+            </ng-template>
+            <p>
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
+                qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+            </p>
+        </p-tabPanel>
+    </p-tabView>
 </main>

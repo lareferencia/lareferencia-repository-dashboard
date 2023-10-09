@@ -1,0 +1,8 @@
+.border-10 {
+    border-radius: 10px;
+  }
+  :host ::ng-deep .p-tabview .p-tabview-nav{
+    border-radius: 6px;
+  }
+  
+  

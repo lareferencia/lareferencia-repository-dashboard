@@ -468,7 +468,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="3dba259582464d65d1b72372c86172f30e550454" datatype="html">
-        <source>Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>harvesting<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> of deposit documents.</source><target>Información a cerca de <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>cocechas<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> de repositorios.</target>
+        <source>Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>harvesting<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> of deposit documents.</source><target>Información a cerca de <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>cosechas<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> de repositorios.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
           <context context-type="linenumber">17</context>
