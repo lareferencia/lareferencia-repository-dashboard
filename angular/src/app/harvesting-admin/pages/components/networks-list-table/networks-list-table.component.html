@@ -1,0 +1,127 @@
+
+<div class="table-content-container p-3">
+  <div class="flex gap-3 mb-5">
+    <p-button styleClass="p-button-sm" i18n-label label="Add repositorie" icon="pi pi-plus">
+    </p-button>
+    <p-button styleClass="p-button-outlined p-button-secondary p-button-sm" icon="pi pi-spinner" i18n-label label="Update">
+    </p-button>
+    <p-button styleClass="p-button-outlined p-button-danger p-button-sm" icon="pi pi-stop-circle" i18n-label label="Turn off update">
+    </p-button>
+  </div>
+  <hr>
+  <p-table 
+      [value]="networksList"
+      [paginator]="true"
+      [rows]="pageSize"
+      [totalRecords]="totalRecords"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [lazy]="true"
+      [loading]="isLoading"
+      (onLazyLoad)="loadContent($event)"
+      (onSort)="onSort($event)">
+
+      <ng-template pTemplate="header" >
+          <tr>
+              <th i18n pSortableColumn="networkID" class="font-bold">
+                ID
+                <p-sortIcon field="networkID"></p-sortIcon>
+            </th>
+              <th i18n pSortableColumn="acronym" class="font-bold w-2">
+                Acronym
+                <p-sortIcon field="acronym"></p-sortIcon>
+            </th>
+              <th i18n pSortableColumn="name" class="font-bold w-2">
+                Repositorie
+                <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th i18n pSortableColumn="institution" class="font-bold w-2">
+                Institution
+                <p-sortIcon field="institution"></p-sortIcon>
+              </th>
+
+              <th i18n>
+               <span class="font-bold text-center block w-full">Harvesting</span>
+              </th>
+              <th></th>
+          </tr>
+          <tr>
+            <th>
+            </th>
+            <th>
+              <p-columnFilter type="text" field="acronym" [showMenu]="false">
+                <ng-template pTemplate="filter">
+                  <input type="text" 
+                    pInputText 
+                    [(ngModel)]="filter.acronym"
+                    placeholder="Acronym"
+                    (keydown.enter)="applyFilter()"/>
+                </ng-template>
+              </p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter type="text" field="name" [showMenu]="false">
+                <ng-template pTemplate="filter">
+                  <input type="text" 
+                    pInputText 
+                    [(ngModel)]="filter.name"
+                    placeholder="Name"
+                    (keydown.enter)="applyFilter()"/>
+                </ng-template>
+              </p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter type="text" field="institution" [showMenu]="false">
+                <ng-template pTemplate="filter">
+                  <input type="text" 
+                    pInputText 
+                    [(ngModel)]="filter.institution"
+                    placeholder="Institution"
+                    (keydown.enter)="applyFilter()"/>
+                </ng-template>
+              </p-columnFilter>
+            </th>
+            <th></th>
+            <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-networksList>
+          <tr>
+            <td>{{networksList.networkID}}</td>
+            <td>{{networksList.acronym}}</td>
+            <td>{{networksList.name}}</td>
+            <td class="w-2">{{networksList.institution}}</td>
+            <td>
+              <div class="flex gap-6 justify-content-between">
+                <div>
+                  <div>
+                    <span *ngIf="networksList.lstSnapshotStatus === 'VALID'; else cosechaFallida"class="font-semibold">
+                      Cosecha validada
+                    </span>
+                    <ng-template #cosechaFallida>
+                      <span class="font-semibold">Cosecha fallida</span>
+                    </ng-template>
+                  </div>
+                  <div>
+                    <i class="pi pi-clock" style="font-size: 12px"></i>
+                    <span class="text-sm ml-1">{{networksList.lstSnapshotDate}}</span>
+                  </div>
+                </div>
+
+                <div class="flex gap-1 align-items-center">
+                  <div>
+                    <span class="text-xs">#: {{networksList.size}}</span>
+                  </div> |
+                  <div>
+                    <span class="text-xs">V: {{networksList.validSize}}</span>
+                  </div> |
+                  <div>
+                    <span class="text-xs">T: {{networksList.transformedSize}}</span>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
