@@ -127,7 +127,7 @@
               
             </th>
             <th i18n>Details</th>
-            <th i18n>Publication</th>
+            <th i18n>Portal</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-dataSource>
@@ -155,29 +155,28 @@
                 ></p-button>
             </td>
             <td>
-                <p-button
+                <a 
+                  [href]="getPublicationUrl(dataSource.id)" 
+                  target="_blank"
                   *ngIf="dataSource.isValid" 
-                  icon="pi pi-globe" 
-                  styleClass="p-button-rounded p-button-outlined p-button-lg" 
-                  (onClick)="getPublicationUrl(dataSource.id)"
-                ></p-button>
+                  >
+                    <p-button
+                    icon="pi pi-globe" 
+                    styleClass="p-button-rounded p-button-outlined p-button-lg" 
+                  ></p-button>
+                </a>
                 <p-button
                   *ngIf="!dataSource.isValid"
                   class="opacity-90" 
                   icon="pi pi-globe" 
                   styleClass="p-button-rounded p-button-text p-button-lg" 
-                  (onClick)="getPublicationUrl(dataSource.id)"
                   disabled="true"
                 ></p-button>
             </td>
           </tr>
       </ng-template>
-      
       </p-table>
     </div>
-
-
-
   <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter>
   </div>
 </div>
