@@ -3,7 +3,7 @@
     "authentication_module": {
         "active": true,
         "endpoints": {
-            "authService": "https://auth.lareferencia.info/auth/"
+            "authService": "https://auth.lareferencia.info/"
         },
 
         "key_cloack_config": {
