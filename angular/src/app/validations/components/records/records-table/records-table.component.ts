@@ -84,14 +84,12 @@ export class RecordsTableComponent implements  OnInit {
     this.dialogData = { record, acronym: this.acronym };
   };
 
-  getPublicationUrl(id: string){
-
-    const baseUrl = this.appConfig.getValidationModuleData().endpoints.portalService;
+  getPublicationUrl(id: string) {
+    const portalUrl = this.appConfig.getValidationModuleData().endpoints.portalService;
     const splits = id.split('-');
-    if(splits.length > 1){
-      
-      window.open(`${baseUrl}${splits[1]}`, "_blank")
-      return `${baseUrl}${splits[1]}`;
+
+    if (splits.length > 1) {
+      return`${portalUrl}${splits[1]}`;
     }
   }
 
