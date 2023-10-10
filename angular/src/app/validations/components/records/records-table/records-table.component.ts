@@ -11,6 +11,7 @@ import { Validation } from 'src/app/shared/models/validation.model';
 import { RecordsFilter } from 'src/app/shared/models/records-filter.model';
 import { DialogData } from 'src/app/validations/interfaces/dialogData.interface';
 import { validOptios } from 'src/app/validations/interfaces/validOptions.interface';
+import { AppConfigService } from 'src/app/core/services/app-config.service';
 
 
 @Component({
@@ -54,6 +55,7 @@ export class RecordsTableComponent implements  OnInit {
   constructor(
     private validationService: ValidationService,
     private route: ActivatedRoute,
+    private appConfig: AppConfigService
   ) {}
 
   ngOnInit() {
@@ -78,10 +80,19 @@ export class RecordsTableComponent implements  OnInit {
   detailClick(record: Record): void {
     this.dialogTitle = record.identifier;
     record.rules = this.validation.rulesByID;
-    this.visible = true;
-    console.log(record);
-    
+    this.visible = true;    
     this.dialogData = { record, acronym: this.acronym };
+  };
+
+  getPublicationUrl(id: string){
+
+    const baseUrl = this.appConfig.getValidationModuleData().endpoints.portalService;
+    const splits = id.split('-');
+    if(splits.length > 1){
+      
+      window.open(`${baseUrl}${splits[1]}`, "_blank")
+      return `${baseUrl}${splits[1]}`;
+    }
   }
 
   onDialogHide(){
@@ -110,10 +121,7 @@ export class RecordsTableComponent implements  OnInit {
       .subscribe((result) => {
 
         this.isLoading = false;
-
         this.dataSource = result.content
-        console.log(result);
-        
         this.totalRecords = result.totalElements;
 
         this.csvData = result.content.map((x) => {

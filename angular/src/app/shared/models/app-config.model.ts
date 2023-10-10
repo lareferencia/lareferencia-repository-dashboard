@@ -55,6 +55,7 @@ export interface HistoricModule {
   active:    boolean;
   endpoints: HistoricModuleEndpoints;
 }
+
 export interface HistoricModuleEndpoints {
   harvestingService: string;
   validationService: string;
@@ -62,12 +63,13 @@ export interface HistoricModuleEndpoints {
 
 export interface ValidationModule {
   active:    boolean;
-  endpoints: HistoricModuleEndpoints;
+  endpoints: ValidationModuleEndpoints;
 }
 
 export interface ValidationModuleEndpoints {
   harvestingService: string;
   validationService: string;
+  portalService:string;
 }
 
 export interface MainModule {

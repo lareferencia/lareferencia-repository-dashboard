@@ -1,6 +1,6 @@
 
 <div class="table-content-container p-3">
-  <div class="flex gap-3">
+  <div class="flex gap-3 mb-5">
     <p-button styleClass="p-button-sm" i18n-label label="Add repositorie" icon="pi pi-plus">
     </p-button>
     <p-button styleClass="p-button-outlined p-button-secondary p-button-sm" icon="pi pi-spinner" i18n-label label="Update">
@@ -8,6 +8,7 @@
     <p-button styleClass="p-button-outlined p-button-danger p-button-sm" icon="pi pi-stop-circle" i18n-label label="Turn off update">
     </p-button>
   </div>
+  <hr>
   <p-table 
       [value]="networksList"
       [paginator]="true"
@@ -26,15 +27,15 @@
                 ID
                 <p-sortIcon field="networkID"></p-sortIcon>
             </th>
-              <th i18n pSortableColumn="acronym" class="font-bold">
+              <th i18n pSortableColumn="acronym" class="font-bold w-2">
                 Acronym
                 <p-sortIcon field="acronym"></p-sortIcon>
             </th>
-              <th i18n pSortableColumn="name" class="font-bold">
+              <th i18n pSortableColumn="name" class="font-bold w-2">
                 Repositorie
                 <p-sortIcon field="name"></p-sortIcon>
               </th>
-              <th i18n pSortableColumn="institution" class="font-bold">
+              <th i18n pSortableColumn="institution" class="font-bold w-2">
                 Institution
                 <p-sortIcon field="institution"></p-sortIcon>
               </th>
