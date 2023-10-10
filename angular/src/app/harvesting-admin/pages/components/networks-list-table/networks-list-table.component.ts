@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LazyLoadEvent, SortEvent } from 'primeng/api';
 import { HarvestingAdminService } from 'src/app/core/services/harvesting-admin.service';
 import { Network } from 'src/app/shared/models/harvesting-admin.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'networks-list-table',
@@ -23,7 +24,8 @@ export class NetworksListTableComponent {
   };
 
 
-  constructor( private harvestingAdminList: HarvestingAdminService) { }
+  constructor( private harvestingAdminList: HarvestingAdminService,
+    private router: Router) { }
 
 
   onSort(event: SortEvent) {

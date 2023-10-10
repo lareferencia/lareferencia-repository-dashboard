@@ -24,6 +24,8 @@ export class RecordsTableComponent implements  OnInit {
 
   @Input() validation: Validation;
 
+  public portalUrl: string;
+
   public dataSource: Record[];
   public pageSize = 10;
   public harvestingID: number;
@@ -56,9 +58,11 @@ export class RecordsTableComponent implements  OnInit {
     private validationService: ValidationService,
     private route: ActivatedRoute,
     private appConfig: AppConfigService
-  ) {}
+  ) { this.portalUrl = this.appConfig.getValidationModuleData().endpoints.portalService; }
 
   ngOnInit() {
+    
+
     this.harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
     this.acronym = this.route.snapshot.paramMap.get('acronym');
 
@@ -85,11 +89,10 @@ export class RecordsTableComponent implements  OnInit {
   };
 
   getPublicationUrl(id: string) {
-    const portalUrl = this.appConfig.getValidationModuleData().endpoints.portalService;
     const splits = id.split('-');
-
-    if (splits.length > 1) {
-      return`${portalUrl}${splits[1]}`;
+    console.log(this.portalUrl);
+    if (this.portalUrl && splits.length > 1) {
+      return`${this.portalUrl}${splits[1]}`;
     }
   }
 

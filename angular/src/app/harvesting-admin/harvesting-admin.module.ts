@@ -7,13 +7,15 @@ import { NetworksListTableComponent } from './pages/components/networks-list-tab
 import { PrimengMaterial } from "../primeng-material/primeng-material.module";
 import { SharedModule } from "../shared/shared.module";
 import { ValidatorsFormComponent } from './pages/components/validators-form/validators-form.component';
+import { NetworkEditorComponent } from './pages/components/network-editor/network-editor.component';
 
 
 @NgModule({
     declarations: [
         MainComponent,
         NetworksListTableComponent,
-        ValidatorsFormComponent
+        ValidatorsFormComponent,
+        NetworkEditorComponent
     ],
     imports: [
         CommonModule,
