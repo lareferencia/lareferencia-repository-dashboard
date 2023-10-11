@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "properties": {
+      "acronym": {
+        "type": "string",
+        "minLength": 2,
+        "maxLength": 10,
+        "title": "Acrónimo repositorio",
+        "description": "Acrónimo identificatorio del repositorio (debe ser único)",
+        "required": true
+      },
+      "name": {
+        "type": "string",
+        "minLength": 2,
+        "title": "Repositorio",
+        "description": "Nombre de repositorio",
+        "required": true
+      },
+      "institutionAcronym": {
+        "type": "string",
+        "minLength": 2,
+        "title": "Acrónimo Institución",
+        "description": "Acrónimo de la Institución",
+        "required": true
+      },
+      "institutionName": {
+        "type": "string",
+        "minLength": 2,
+        "title": "Institución",
+        "description": "Nombre Institución",
+        "required": true
+      },
+      "published": {
+        "type": "boolean",
+        "title": "¿Es pública?",
+        "description": "La red es visible al público"
+      },
+      "scheduleCronExpression": {
+        "type": "string",
+        "title": "Cron de cosecha",
+        "description": "Expresión cron para programar la cosecha",
+        "default": "* 0 0 29 2 *"
+      },
+      "originURL": {
+        "type": "string",
+        "title": "OAI-PMH URL",
+        "description": "Harvesting URL",
+        "required": false
+      },
+      "metadataPrefix": {
+        "title": "Metadata Prefix",
+        "type": "string",
+        "enum": ["mtd-br", "imf", "mets", "oai_dc", "xoai", "mtd2-br", "oai_openaire", "oai_openaire_jats", "oai_datacite"],
+        "default": "oai_dc"
+      },
+      "sets": {
+        "type": "array",
+        "title": "Sets",
+        "items": {
+          "type": "string",
+          "title": "SetSpec"
+        }
+      },
+      "metadataStoreSchema": {
+        "title": "Metadata Store Format",
+        "type": "string",
+        "enum": ["xoai", "xoai_openaire"],
+        "default": "xoai"
+      }
+    }
+  }
