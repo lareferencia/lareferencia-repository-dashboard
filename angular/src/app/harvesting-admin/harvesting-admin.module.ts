@@ -21,7 +21,8 @@ import { NetworkEditorComponent } from './pages/components/network-editor/networ
         CommonModule,
         HarvestingAdminRoutingModule,
         PrimengMaterial,
-        SharedModule
+        SharedModule,
+        
     ],
 })
 
