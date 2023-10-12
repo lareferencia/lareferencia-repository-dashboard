@@ -1,2 +1,30 @@
-<p>network-editor works!</p>
+<div class="p-6 bg-white">
+    <form [formGroup]="dynamicForm" (ngSubmit)="saveForm()" novalidate class="grid" >
 
+            <div class="col-4" *ngFor="let field of formFields" [ngSwitch]="field.interface">
+                <label class="block">{{ field.title }}</label>
+
+                <input
+                    type="text"
+                    *ngSwitchCase="'text'"
+                    pInputText
+                    formControlName="{{ field.name }}"
+                    />
+
+                    <p-checkbox
+                    *ngSwitchCase="'checkbox'"
+                    formControlName="{{ field.name }}"
+                    >
+                    </p-checkbox>
+
+                <p-dropdown
+                    *ngSwitchCase="'dropdown'"
+                    formControlName="{{ field.name }}"
+                    [options]="field.options"
+                    ></p-dropdown>
+            </div>
+
+            <p-button label="submit" type="submit"></p-button>
+
+    </form>
+</div>

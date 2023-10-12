@@ -21,6 +21,8 @@ import { MenuModule } from 'primeng/menu';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { TabViewModule } from 'primeng/tabview';
+import { CheckboxModule } from 'primeng/checkbox';
+
 
 
 
@@ -46,7 +48,8 @@ import { TabViewModule } from 'primeng/tabview';
     MenuModule,
     KeyFilterModule,
     ConfirmPopupModule,
-    TabViewModule
+    TabViewModule,
+    CheckboxModule
     ],
 })
 export class PrimengMaterial { }
