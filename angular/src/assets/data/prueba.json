@@ -54,6 +54,7 @@
         "type": "boolean",
         "interface": "checkbox",
         "title": "¿Es pública?",
+        "value": true,
         "description": "La red es visible al público",
         "validators":{
           "required": true

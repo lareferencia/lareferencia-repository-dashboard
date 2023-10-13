@@ -9,6 +9,7 @@ import { SharedModule } from "../shared/shared.module";
 import { ValidatorsFormComponent } from './pages/components/validators-form/validators-form.component';
 import { NetworkEditorComponent } from './pages/components/network-editor/network-editor.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PrincipalFormComponent } from './pages/components/network-editor/principal-form/principal-form.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         MainComponent,
         NetworksListTableComponent,
         ValidatorsFormComponent,
-        NetworkEditorComponent
+        NetworkEditorComponent,
+        PrincipalFormComponent
     ],
     imports: [
         CommonModule,
