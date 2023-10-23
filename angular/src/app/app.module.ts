@@ -26,7 +26,7 @@ import { appInitializerFn } from './app-config-init';
     HomeModule,
     // BrokerModule,
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
   ],
   providers: [
     AppConfigService,

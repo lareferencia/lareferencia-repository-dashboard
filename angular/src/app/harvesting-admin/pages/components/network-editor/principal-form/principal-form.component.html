@@ -1,44 +1,6 @@
 <div class="p-6 bg-white" style="max-width: 1200px; margin: 0 auto; border-radius: 10px;">
-  <form [formGroup]="dynamicForm" (ngSubmit)="saveForm()" novalidate>
-      <div class="flex flex-wrap gap-6" >
-          <div *ngFor="let field of formFields" [ngSwitch]="field.interface">
-              <label class="font-semibold">{{ field.title }}</label>
-              <div class="flex flex-column">
-                  <input
-                  type="text"
-                  *ngSwitchCase="'text'"
-                  pInputText
-                  formControlName="{{ field.name }}"
-                  />
-                  <span
-                      *ngSwitchCase="'text'" 
-                      class="text-xs mt-2 text-green-800">
-                      {{field.description}}
-                  </span>
-              </div>
-              <div class="flex gap-3">
-                <p-checkbox
-                  *ngSwitchCase="'checkbox'"
-                  formControlName="{{ field.name }}"
-                  [binary]="true"
-                  >
-                </p-checkbox>
-                <span *ngSwitchCase="'checkbox'" class="text-xs mt-2 text-green-800">
-                  {{field.description}}
-                </span>
-              </div>
-              <p-dropdown
-                  *ngSwitchCase="'dropdown'"
-                  formControlName="{{ field.name }}"
-                  [options]="field.options"
-                  placeholder="select one"
-                  >
-              </p-dropdown>
-          </div>
-      </div>
-      <div class="mt-6 flex">
-          <p-button label="Back" styleClass="p-button-secondary" routerLink="/harvesting-admin"></p-button>
-          <p-button class="ml-3" label="Save" type="submit" styleClass="p-button"></p-button>
-      </div>
+  <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="fields">
+    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+    <button type="submit" class="btn btn-primary submit-button" [disabled]="!form.valid">Submit</button>
   </form>
 </div>

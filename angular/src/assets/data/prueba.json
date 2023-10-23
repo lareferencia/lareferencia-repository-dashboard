@@ -1,164 +1,72 @@
 {
-    "data": [
-      {
-        "name": "acronym",
+  "type": "object",
+  "properties": {
+    "acronym": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 10,
+      "title": "Acrónimo repositorio",
+      "description": "Acrónimo identificatorio del repositorio (debe ser único)",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "title": "Repositorio",
+      "description": "Nombre de repositorio",
+      "required": true
+    },
+    "institutionAcronym": {
+      "type": "string",
+      "minLength": 2,
+      "title": "Acrónimo Institución",
+      "description": "Acrónimo de la Institución",
+      "required": true
+    },
+    "institutionName": {
+      "type": "string",
+      "minLength": 2,
+      "title": "Institución",
+      "description": "Nombre Institución",
+      "required": true
+    },
+    "published": {
+      "type": "boolean",
+      "title": "¿Es pública?",
+      "description": "La red es visible al público"
+    },
+    "scheduleCronExpression": {
+      "type": "string",
+      "title": "Cron de cosecha",
+      "description": "Expresión cron para programar la cosecha",
+      "default": "* 0 0 29 2 *"
+    },
+    "originURL": {
+      "type": "string",
+      "title": "OAI-PMH URL",
+      "description": "Harvesting URL",
+      "required": false
+    },
+    "metadataPrefix": {
+      "title": "Metadata Prefix",
+      "type": "string",
+      "enum": ["mtd-br", "imf", "mets", "oai_dc", "xoai", "mtd2-br", "oai_openaire", "oai_openaire_jats", "oai_datacite"],
+      "default": "oai_dc"
+    },
+    "sets": {
+      "type": "array",
+      "title": "Sets",
+      "items": {
         "type": "string",
-        "value": "AR",
-        "interface": "text",
-        "minLength": 2,
-        "maxLength": 10,
-        "title": "Acrónimo repositorio",
-        "description": "Acrónimo identificatorio del repositorio (debe ser único)",
-        "validators":{
-          "required": true
-        }
-      },
-      {
-        "name": "name", 
-        "type": "string",
-        "value": "Argentina",
-        "interface": "text",
-        "minLength": 2,
-        "title": "Repositorio",
-        "description": "Nombre de repositorio",
-        "validators":{
-          "required": true
-        }
-      },
-      {
-        "name":"institutionAcronym",
-        "type": "string",
-        "value": "MINCYT",
-        "interface": "text",
-        "minLength": 2,
-        "title": "Acrónimo Institución",
-        "description": "Acrónimo de la Institución",
-        "validators":{
-          "required": true
-        }
-      },
-      {
-        "name": "institutionName",
-        "type": "string",
-        "value": "MINCYT",
-        "interface": "text",
-        "minLength": 2,
-        "title": "Institución",
-        "description": "Nombre Institución",
-        "validators":{
-          "required": true
-        }
-      },
-      {
-        "name": "published",
-        "type": "boolean",
-        "interface": "checkbox",
-        "title": "¿Es pública?",
-        "value": true,
-        "description": "La red es visible al público",
-        "validators":{
-          "required": true
-        }
-      },
-      {
-        "name": "scheduleCronExpression",
-        "type": "string",
-        "value": "*0 0 1 1*",
-        "title": "Cron de cosecha",
-        "interface": "text",
-        "description": "Expresión cron para programar la cosecha",
-        "default": "* 0 0 29 2 *",
-        "validators":{
-          "required": true
-        }
-      },
-      {
-        "name": "originURL",
-        "type": "string",
-        "value": "http://oai.repositorio.mincyt.gov.ar/lareferencia",
-        "interface": "text",
-        "title": "OAI-PMH URL",
-        "description": "Harvesting URL",
-        "validators":{
-          "required": true
-        }
-      },
-      {
-        "name": "metadataPrefix",
-        "title": "Metadata Prefix",
-        "interface": "dropdown",
-        "type": "string",
-        "options": [
-          {
-            "label":"mtd-br",
-            "value": "mtd-br"
-          },
-          {
-            "label":"imf",
-            "value": "imf"
-          },
-          {
-            "label":"mets",
-            "value": "mets"
-          },
-          {
-            "label":"oai_dc",
-            "value": "oai_dc"
-          },
-          {
-            "label":"xoai",
-            "value": "xoai"
-          },
-          {
-            "label":"mtd2-br",
-            "value": "mtd2-br"
-          },
-          {
-            "label":"oai_openaire",
-            "value": "oai_openaire"
-          },
-          {
-            "label":"oai_openaire_jats",
-            "value": "oai_openaire_jats"
-          },
-          {
-            "label":"oai_datacite",
-            "value": "oai_datacite"
-          }
-        ],
-        "default": "oai_dc"
-      },
-      {
-        "name": "sets",
-        "type": "array",
-        "title": "Sets",
-        "items": {
-          "type": "string",
-          "title": "SetSpec"
-        },
-        "validators":{
-          "required": true
-        }
-      },
-      {
-        "name": "metadataStoreSchema",
-        "title": "Metadata Store Format",
-        "type": "string",
-        "interface": "dropdown",
-        "options": [
-          {
-            "label":"xoai",
-            "value": "xoai"
-          },
-          {
-            "label":"xoai openaire",
-            "value": "xoai_openaire"
-          }
-        ],
-        "default": "xoai",
-        "validators":{
-          "required": true
-        }
+        "title": "SetSpec"
       }
-    ]
-  }
+    },
+    "metadataStoreSchema": {
+      "title": "Metadata Store Format",
+      "type": "string",
+      "enum": ["xoai", "xoai_openaire"],
+      "default": "xoai"
+    }
+  },
+  "required": ["acronym", "name", "institutionAcronym", "institutionName"]
+}
