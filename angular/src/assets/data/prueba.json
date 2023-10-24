@@ -1,5 +1,7 @@
 {
   "type": "object",
+  "title": "Network information",
+  "description": "Edit network information.",
   "properties": {
     "acronym": {
       "type": "string",
@@ -53,6 +55,12 @@
       "enum": ["mtd-br", "imf", "mets", "oai_dc", "xoai", "mtd2-br", "oai_openaire", "oai_openaire_jats", "oai_datacite"],
       "default": "oai_dc"
     },
+    "metadataStoreSchema": {
+      "title": "Metadata Store Format",
+      "type": "string",
+      "enum": ["xoai", "xoai_openaire"],
+      "default": "xoai"
+    },
     "sets": {
       "type": "array",
       "title": "Sets",
@@ -60,12 +68,6 @@
         "type": "string",
         "title": "SetSpec"
       }
-    },
-    "metadataStoreSchema": {
-      "title": "Metadata Store Format",
-      "type": "string",
-      "enum": ["xoai", "xoai_openaire"],
-      "default": "xoai"
     }
   },
   "required": ["acronym", "name", "institutionAcronym", "institutionName"]

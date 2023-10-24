@@ -19,7 +19,7 @@ import { FieldArrayType } from '@ngx-formly/core';
       <div *ngFor="let field of field.fieldGroup; let i = index"
         class="flex gap-3">
         <formly-field [field]="field"></formly-field>
-        <div *ngIf="field.props.removable !== false" class="flex flex-column justify-content-end p-1">
+        <div *ngIf="field.props.removable !== false" class="flex flex-column justify-content-end p-2">
           <button class="btn btn-danger" type="button" (click)="remove(i)">-</button>
         </div>
       </div>

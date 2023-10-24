@@ -21,9 +21,7 @@ export class PrincipalFormComponent  {
   {this.loadExample() }
   
   loadExample(){
-    this.http.get<any>('assets/data/prueba.json').subscribe((schema) => {
-      
-      console.log(schema);
+    this.http.get<any>('assets/data/prueba.json').subscribe((schema) => {      
       this.fields = [this.formlyJsonschema.toFieldConfig(schema)];
       this.form = new FormGroup({});
       this.model = {};
@@ -31,6 +29,6 @@ export class PrincipalFormComponent  {
     });
   }
   submit() {
-    alert(JSON.stringify(this.model));
+    console.log(this.model)
   }
 }

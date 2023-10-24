@@ -12,54 +12,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PrincipalFormComponent } from './pages/components/network-editor/principal-form/principal-form.component';
 import { FormlyPrimeNGModule } from "@ngx-formly/primeng";
 import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
-import { ObjectTypeComponent } from "./pages/components/network-editor/form-types/object.type";
-import { ArrayTypeComponent } from "./pages/components/network-editor/form-types/array.type";
+import { ObjectTypeComponent } from "./pages/components/network-editor/formly-types/object.type";
+import { ArrayTypeComponent } from "./pages/components/network-editor/formly-types/array.type";
+import { constValidationMessage, exclusiveMaximumValidationMessage, exclusiveMinimumValidationMessage, maxItemsValidationMessage, maxLengthValidationMessage, maxValidationMessage, minItemsValidationMessage, minLengthValidationMessage, minValidationMessage, multipleOfValidationMessage, typeValidationMessage } from "./pages/util/error-messages";
+import { SimpleFieldWrapper } from "./pages/components/network-editor/formly-wrappers/field.wrapper";
 
-export function minItemsValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should NOT have fewer than ${field.props.minItems} items`;
-  }
-  
-  export function maxItemsValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should NOT have more than ${field.props.maxItems} items`;
-  }
-  
-  export function minLengthValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should NOT be shorter than ${field.props.minLength} characters`;
-  }
-  
-  export function maxLengthValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should NOT be longer than ${field.props.maxLength} characters`;
-  }
-  
-  export function minValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should be >= ${field.props.min}`;
-  }
-  
-  export function maxValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should be <= ${field.props.max}`;
-  }
-  
-  export function multipleOfValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should be multiple of ${field.props.step}`;
-  }
-  
-  export function exclusiveMinimumValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should be > ${field.props.step}`;
-  }
-  
-  export function exclusiveMaximumValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should be < ${field.props.step}`;
-  }
-  
-  export function constValidationMessage(error: any, field: FormlyFieldConfig) {
-    return `should be equal to constant "${field.props.const}"`;
-  }
-  
-  export function typeValidationMessage({ schemaType }: any) {
-    return `should be "${schemaType[0]}".`;
-  }
 
-  
 @NgModule({
     declarations: [
         MainComponent,
@@ -68,7 +26,8 @@ export function minItemsValidationMessage(error: any, field: FormlyFieldConfig) 
         NetworkEditorComponent,
         PrincipalFormComponent,
         ObjectTypeComponent,
-        ArrayTypeComponent
+        ArrayTypeComponent,
+        SimpleFieldWrapper
     ],
     imports: [
         CommonModule,
@@ -96,6 +55,11 @@ export function minItemsValidationMessage(error: any, field: FormlyFieldConfig) 
             types: [
               { name: 'object', component: ObjectTypeComponent },
               { name: 'array', component: ArrayTypeComponent },
+              { name: 'string', wrappers: ['simple-form-field'] },
+              { name: 'enum', wrappers: ['simple-form-field'] },
+            ],
+            wrappers: [
+              { name: 'simple-form-field', component: SimpleFieldWrapper },
             ],
           }),
         ReactiveFormsModule,
