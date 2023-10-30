@@ -41,9 +41,9 @@ import { appInitializerFn } from './app-config-init';
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       multi: true,
-      deps: [KeycloakService, AppConfigService],
+      deps: [KeycloakService, AppConfigService]
     },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

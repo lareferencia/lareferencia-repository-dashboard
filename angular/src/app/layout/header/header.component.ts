@@ -3,7 +3,8 @@ import { filter, tap, switchMap } from 'rxjs/operators';
 
 import { MenuService } from 'src/app/core/services/menu.service';
 
-import { Menu, MenuRepositorie } from 'src/app/shared/models/menu.model';
+import { Menu } from 'src/app/shared/models/menu.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,16 @@ import { Menu, MenuRepositorie } from 'src/app/shared/models/menu.model';
 })
 export class HeaderComponent implements OnInit {
 
-  public menuRepositories: MenuRepositorie[] = [];
   public activeRepository: string;
   public isLoading = true;
 
-  constructor( private menuService: MenuService) { }
+  public menuList: Menu[];
+  public selectedMenu: Menu;
+  public filteredMenus: Menu[] | undefined;
+
+  constructor( 
+    private menuService: MenuService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -26,23 +32,9 @@ export class HeaderComponent implements OnInit {
       
       filter((menu: Menu[]) => menu.length > 0),
       tap((menu: Menu[]) => {
-        
-        this.menuRepositories = [
-          {
-            label: 'Repositories',
-            items: menu.map(menuItem => (
-              {
-                label: menuItem.name,
-                routerLink: [`${menuItem.acronym}/harvesting`],
-                command: () => {
-                  this.menuService.activeRepo.next(menuItem);
-                  localStorage.setItem('activeRepository', JSON.stringify(menuItem));
-                }
-              }
-            ))
-          }
-        ];
+        this.menuList = menu;
         this.isLoading = false;
+        
       }),
       switchMap((menu: Menu[]) => {
         return this.menuService.activeRepo;
@@ -50,10 +42,34 @@ export class HeaderComponent implements OnInit {
       ).subscribe((activeRepo: Menu) => {
         this.activeRepository = activeRepo.name;  
     });
-  };
 
+    
+  };
 
   toggleMenu(){
     this.menuService.toggleMenuOpen();
   }
+
+
+  filterMenu(event: any) {
+    let filtered: any[] = [];
+    let query = event.query;
+    for(let i = 0; i < this.menuList.length; i++) {
+        let menu = this.menuList[i];
+        if (menu.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+            filtered.push(menu);
+        }
+    }
+    this.filteredMenus = filtered;
+  }
+
+  onSelectItem(menuItem: Menu) {
+    console.log(menuItem);
+    this.menuService.activeRepo.next(menuItem);
+    localStorage.setItem('activeRepository', JSON.stringify(menuItem));
+    this.router.navigate([`${menuItem.acronym}/harvesting`]);
+    
+    
+  }
+
 };

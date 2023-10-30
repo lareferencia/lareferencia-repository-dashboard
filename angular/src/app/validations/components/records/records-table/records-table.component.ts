@@ -90,7 +90,6 @@ export class RecordsTableComponent implements  OnInit {
 
   getPublicationUrl(id: string) {
     const splits = id.split('-');
-    console.log(this.portalUrl);
     if (this.portalUrl && splits.length > 1) {
       return`${this.portalUrl}${splits[1]}`;
     }
