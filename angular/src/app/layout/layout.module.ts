@@ -5,6 +5,9 @@ import { PrimengMaterial } from '../primeng-material/primeng-material.module';
 
 import { DrawerComponent } from './drawer/drawer.component';
 import { HeaderComponent } from './header/header.component';
+import { FormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -14,7 +17,8 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     PrimengMaterial,
-    CommonModule
+    CommonModule,
+    FormsModule,
   ],
   exports: [ HeaderComponent, DrawerComponent ],
 })
