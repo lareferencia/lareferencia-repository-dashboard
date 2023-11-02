@@ -50,7 +50,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     KeyFilterModule,
     ConfirmPopupModule,
     TabViewModule,
-    AutoCompleteModule
+    AutoCompleteModule,
     CheckboxModule
     ],
 })
