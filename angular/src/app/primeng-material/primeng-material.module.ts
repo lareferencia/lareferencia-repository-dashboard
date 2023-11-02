@@ -22,6 +22,7 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { TabViewModule } from 'primeng/tabview';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 
@@ -50,6 +51,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     ConfirmPopupModule,
     TabViewModule,
     AutoCompleteModule
+    CheckboxModule
     ],
 })
 export class PrimengMaterial { }
