@@ -8,18 +8,22 @@
             <div class="header-burguer-menu" (click)="toggleMenu()">
                 <img style="width: 25px; cursor: pointer;" src="assets/icons/menu-burguer.svg" alt="">
             </div>
-            <div *ngIf="!isLoading && menuRepositories[0] && menuRepositories[0].items.length <= 1"
+            <div *ngIf="!isLoading && menuList && menuList.length <= 1"
                 class="menu-container">
                 <h6>Dashboard / {{activeRepository}}</h6>
             </div>
-            <div *ngIf="!isLoading && menuRepositories[0] && menuRepositories[0].items.length >= 2"
+            <div *ngIf="!isLoading && menuList && menuList.length >= 2"
                     class="menu-container"
-                    style="cursor: pointer" 
-                (mouseenter)="menu.show($event)" (mouseleave)="menu.hide()">
-                <p-menu #menu [model]="menuRepositories" [popup]="true"></p-menu>
-                <h6>Dashboard / {{activeRepository}}</h6>
-                <img class="arrow" style="width: 18px;" 
-                    src="assets/icons/arrowdown.svg" alt="arrow">
+                    style="cursor: pointer">
+            <p-autoComplete 
+                [(ngModel)]="selectedMenu" 
+                [dropdown]="true" 
+                [suggestions]="filteredMenus" 
+                (completeMethod)="filterMenu($event)" 
+                field="name"
+                (onSelect)="onSelectItem($event)"
+                [placeholder]="activeRepository"
+            ></p-autoComplete>
             </div>
             <div class="header-logo-referencia">
                 <h6 style="margin-bottom: 0; margin-right: 8px;" i18n>Powered by</h6>

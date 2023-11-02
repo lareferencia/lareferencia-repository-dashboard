@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration=en",
@@ -39,7 +39,9 @@
     "tslib": "^2.0.0",
     "vega": "^5.13.0",
     "vega-tooltip": "^0.24.1",
-    "zone.js": "~0.11.8"
+    "zone.js": "~0.11.8",
+    "@ngx-formly/core": "^6.0.0",
+    "@ngx-formly/primeng": "^6.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.5",
@@ -51,6 +53,7 @@
     "@angular/cli": "^15.2.5",
     "@angular/compiler-cli": "^15.2.6",
     "@angularclass/hmr": "^3.0.0",
+    "@ngx-formly/schematics": "^6.2.1",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.48.2",
     "@typescript-eslint/parser": "5.48.2",
