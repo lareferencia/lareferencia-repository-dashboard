@@ -39,8 +39,7 @@
                 Institution
                 <p-sortIcon field="institution"></p-sortIcon>
               </th>
-
-              <th i18n>
+              <th>
                <span class="font-bold text-center block w-full">Harvesting</span>
               </th>
               <th></th>
@@ -81,7 +80,12 @@
                 </ng-template>
               </p-columnFilter>
             </th>
-            <th></th>
+            <th>
+              <div class="flex gap-3">
+                <div>Ultima cosecha valida</div> |
+                <div>Ultima cosecha</div> 
+              </div>
+            </th>
             <th></th>
           </tr>
       </ng-template>
@@ -92,32 +96,108 @@
             <td>{{networksList.name}}</td>
             <td class="w-2">{{networksList.institution}}</td>
             <td>
-              <div class="flex gap-6 justify-content-between">
-                <div>
-                  <div>
-                    <span *ngIf="networksList.lstSnapshotStatus === 'VALID'; else cosechaFallida"class="font-semibold">
-                      Cosecha validada
-                    </span>
-                    <ng-template #cosechaFallida>
-                      <span class="font-semibold">Cosecha fallida</span>
+              <div class="flex gap-6">
+
+                <!-- Panel ultima cocecha valida -->
+                <div *ngIf="networksList.lgkSnapshotID">
+                  <p-overlayPanel #op>
+                    <ng-template pTemplate="content">
+                      <div>
+                        <div>
+                          <span class="font-semibold">
+                            Cosecha validada
+                          </span>
+                        </div>
+                        <div>
+                          <i class="pi pi-clock" style="font-size: 12px"></i>
+                          <span class="text-sm ml-1">{{networksList.lgkSnapshotDate}}</span>
+                        </div>
+                        <div class="gap-1 align-items-center">
+
+                          <div class="flex align-items-center gap-3 mb-3 mt-3">
+                            <p-badge value="Size:"></p-badge>
+                            <span class="text-xs font-bold">{{networksList.lgkSize}}</span>
+                          </div>
+                          
+                          <div class="flex align-items-center gap-3 mb-3">
+                            <p-badge value="Valid:"></p-badge>
+                            <span class="text-xs font-bold">{{networksList.lgkValidSize}}</span>
+                          </div>
+  
+                          <div class="flex align-items-center gap-3">
+                            <p-badge value="Transformed:"></p-badge>
+                            <span class="text-xs font-bold">{{networksList.lgkTransformedSize}}</span>
+                          </div>
+                          
+                        </div>
+                      </div>
                     </ng-template>
-                  </div>
-                  <div>
-                    <i class="pi pi-clock" style="font-size: 12px"></i>
-                    <span class="text-sm ml-1">{{networksList.lstSnapshotDate}}</span>
-                  </div>
+                  </p-overlayPanel>
+                  <p-button 
+                    (click)="op.toggle($event)"
+                    label="watch"
+                    icon="pi pi-eye" 
+                    styleClass="p-button-outlined
+                    p-button-success"
+                    size="large"
+                    ></p-button>
+                </div>
+                <div *ngIf="!networksList.lgkSnapshotID">
+                  <p-button
+                  disabled="true"
+                  label="watch"
+                  icon="pi pi-eye-slash" 
+                  styleClass="p-button-danger"
+                  size="large"
+                  ></p-button>
                 </div>
 
-                <div class="flex gap-1 align-items-center">
-                  <div>
-                    <span class="text-xs">#: {{networksList.size}}</span>
-                  </div> |
-                  <div>
-                    <span class="text-xs">V: {{networksList.validSize}}</span>
-                  </div> |
-                  <div>
-                    <span class="text-xs">T: {{networksList.transformedSize}}</span>
-                  </div>
+                <!-- Panel ultima cosecha -->
+                <div>
+                  <p-overlayPanel #op>
+                    <ng-template pTemplate="content">
+                      <div>
+                        <div>
+                          <span *ngIf="networksList.lstSnapshotStatus === 'VALID'; else cosechaFallida"class="font-semibold">
+                            Cosecha validada
+                          </span>
+                          <ng-template #cosechaFallida>
+                            <span class="font-semibold">Cosecha fallida</span>
+                          </ng-template>
+                        </div>
+                        <div>
+                          <i class="pi pi-clock" style="font-size: 12px"></i>
+                          <span class="text-sm ml-1">{{networksList.lstSnapshotDate}}</span>
+                        </div>
+                      </div>
+                      <div class="gap-1 align-items-center">
+
+                        <div class="flex align-items-center gap-3 mb-3 mt-3">
+                          <p-badge value="Size:"></p-badge>
+                          <span class="text-xs font-bold">{{networksList.lstSize}}</span>
+                        </div>
+
+                        <div class="flex align-items-center gap-3 mb-3">
+                          <p-badge value="Valid:"></p-badge>
+                          <span class="text-xs font-bold">{{networksList.lstValidSize}}</span>
+                        </div>
+
+                        <div class="flex align-items-center gap-3">
+                          <p-badge value="Transformed:"></p-badge>
+                          <span class="text-xs font-bold">{{networksList.lstTransformedSize}}</span>
+                        </div>
+                        
+                      </div>
+                    </ng-template>
+                  </p-overlayPanel>
+                  <p-button 
+                    (click)="op.toggle($event)"
+                    label="{{networksList.lstSnapshotStatus === 'VALID' ? 'Valid' : 'Failed'}}"
+                    icon="pi pi-eye" 
+                    [styleClass]="'p-button-outlined ' + (networksList.lstSnapshotStatus === 'VALID' ? 'p-button-success' : 'p-button-danger')"
+
+                    size="large"
+                    ></p-button>
                 </div>
               </div>
             </td>

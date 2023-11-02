@@ -21,28 +21,32 @@
                 "repository_id": "",
                 "stats_source_id": "SITEID::59"
             },
-            "running": [],
-            "queued": [],
-            "scheduled": [
-                "AllActions(88 days)"
+            "running": [
+                "Harvesting"
             ],
-            "snapshotID": 3108,
-            "datestamp": "2023-09-25 15:50:31",
-            "size": 339978,
-            "validSize": 336568,
+            "queued": [
+                "Transform/Validate(0%)(I)"
+            ],
+            "scheduled": [
+                "AllActions(60 days)"
+            ],
+            "snapshotID": 3134,
+            "datestamp": "2023-10-13 18:18:04",
+            "size": 342693,
+            "validSize": 339283,
             "transformedSize": 705,
-            "lgkSnapshotID": 3108,
-            "lgkSnapshotDate": "2023-09-25 15:50:31",
-            "lgkSize": 339978,
-            "lgkValidSize": 336568,
+            "lgkSnapshotID": 3134,
+            "lgkSnapshotDate": "2023-10-13 18:18:04",
+            "lgkSize": 342693,
+            "lgkValidSize": 339283,
             "lgkTransformedSize": 705,
-            "lstSnapshotID": 3108,
-            "lstSnapshotDate": "2023-09-25 15:50:31",
-            "lstSnapshotStatus": "VALID",
+            "lstSnapshotID": 3142,
+            "lstSnapshotDate": "2023-11-01 14:52:50",
+            "lstSnapshotStatus": "HARVESTING",
             "lstIndexStatus": "UNKNOWN",
-            "lstSize": 339978,
-            "lstValidSize": 336568,
-            "lstTransformedSize": 705
+            "lstSize": 13700,
+            "lstValidSize": 0,
+            "lstTransformedSize": 0
         },
         {
             "networkID": 2,
@@ -121,11 +125,6 @@
             "size": 53475,
             "validSize": 53475,
             "transformedSize": 2174,
-            "lgkSnapshotID": 2956,
-            "lgkSnapshotDate": "2023-08-08 18:54:23",
-            "lgkSize": 53475,
-            "lgkValidSize": 53475,
-            "lgkTransformedSize": 2174,
             "lstSnapshotID": 3110,
             "lstSnapshotDate": "2023-09-25 13:08:57",
             "lstSnapshotStatus": "HARVESTING_FINISHED_ERROR",

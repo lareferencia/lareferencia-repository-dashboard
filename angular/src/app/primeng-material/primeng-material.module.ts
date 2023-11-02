@@ -23,6 +23,10 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { TabViewModule } from 'primeng/tabview';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CheckboxModule } from 'primeng/checkbox';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { BadgeModule } from 'primeng/badge';
+
+
 
 
 
@@ -51,7 +55,9 @@ import { CheckboxModule } from 'primeng/checkbox';
     ConfirmPopupModule,
     TabViewModule,
     AutoCompleteModule,
-    CheckboxModule
+    CheckboxModule,
+    OverlayPanelModule,
+    BadgeModule
     ],
 })
 export class PrimengMaterial { }

@@ -1,0 +1,52 @@
+{
+    "totalElements": 12,
+    "totalPages": 1,
+    "pageNumber": 0,
+    "pageSize": 25,
+    "networks": [
+        {
+            "networkID": 1,
+            "institutionAcronym": "MINCYT",
+            "acronym": "AR",
+            "name": "Argentina",
+            "institution": "MINCYT",
+            "attributes": {
+                "@class": "org.lareferencia.backend.network.LAReferenciaNetworkAttributes",
+                "type": "LRHarverster",
+                "email": "test@mail.com",
+                "phone": "",
+                "url": "",
+                "country": "",
+                "software": "",
+                "repository_id": "",
+                "stats_source_id": "SITEID::59"
+            },
+            "running": [
+                "Harvesting"
+            ],
+            "queued": [
+                "Transform/Validate(0%)(I)"
+            ],
+            "scheduled": [
+                "AllActions(60 days)"
+            ],
+            "snapshotID": 3134,
+            "datestamp": "2023-10-13 18:18:04",
+            "size": 342693,
+            "validSize": 339283,
+            "transformedSize": 705,
+            "lgkSnapshotID": 3134,
+            "lgkSnapshotDate": "2023-10-13 18:18:04",
+            "lgkSize": 342693,
+            "lgkValidSize": 339283,
+            "lgkTransformedSize": 705,
+            "lstSnapshotID": 3142,
+            "lstSnapshotDate": "2023-11-01 14:52:50",
+            "lstSnapshotStatus": "HARVESTING",
+            "lstIndexStatus": "UNKNOWN",
+            "lstSize": 13700,
+            "lstValidSize": 0,
+            "lstTransformedSize": 0
+        }
+    ]
+}
