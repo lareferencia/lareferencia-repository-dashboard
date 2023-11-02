@@ -26,45 +26,7 @@ h6 {
     display: flex;
     align-items: center;
 }
-.menu-container:hover .arrow{
-    transform: rotate(180deg);
-}
 
-.arrow{
-    transition: transform 0.3s ease-in-out;
-    transform: rotate(0deg);
-}
-
-
-:host ::ng-deep .p-menu {
-    background: white;
-    border: none;
-}
-
-:host ::ng-deep .p-menu .p-menuitem-link .p-menuitem-text {
-    color: var(--color-secondary);
-    font-family: 'Poppins';
-}
-
-:host ::ng-deep .p-menu .p-menuitem-link .p-menuitem-icon {
-    color: var(--color-primary);
-}
-
-:host ::ng-deep .p-menu .p-submenu-header{
-    color: var(--color-primary);
-    background: rgba(236,236,249,1) !important;
-    font-family: 'Poppins';
-}
-
-:host ::ng-deep .p-menu .p-menuitem-link{
-    border: none;
-    transition: background 0.2s ease-in-out;
-}
-
-:host ::ng-deep .p-menu .p-menuitem-link:hover{
-    background: rgba(236,236,249,1) !important;
-    transition: background 0.2s ease-in-out;
-}
 
 @media screen and (max-width: 570px) {
     .header-logo-referencia{
@@ -80,5 +42,34 @@ h6 {
     .header-burguer-menu{
         display: none;
     }
+}
+
+:host ::ng-deep .p-button {
+    background-color: transparent;
+    border: none;
+}
+
+:host ::ng-deep .p-button:hover {
+    background-color: transparent;
+}
+
+:host ::ng-deep .p-button span {
+    color: var(--color-primary);
+}
+
+:host ::ng-deep .p-inputtext {
+    border-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-family: 'Poppins';
+    margin-left: 3px;
+    text-align: center;
+    font-weight: bold;
+}
+
+:host ::ng-deep .p-autocomplete-dd .p-autocomplete-input {
+    border-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 

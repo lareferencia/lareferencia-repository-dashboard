@@ -7,8 +7,9 @@ export interface Menu {
 
 export interface MenuItem {
   label: string;
-  routerLink: string[];
-  command: () => void;
+  routerLink?: string[];
+  command?: () => void;
+  escape?: boolean;
 }
 
 export interface MenuRepositorie {
