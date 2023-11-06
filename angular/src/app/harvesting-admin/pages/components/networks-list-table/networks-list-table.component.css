@@ -21,6 +21,10 @@
   width: 100%;
   font-family: 'Poppins';
 }
+/* :host ::ng-deep .p-divider {
+  width: 140px
+} */
+
 
 
 

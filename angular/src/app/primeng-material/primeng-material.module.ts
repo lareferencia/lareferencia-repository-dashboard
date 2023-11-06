@@ -25,6 +25,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CheckboxModule } from 'primeng/checkbox';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BadgeModule } from 'primeng/badge';
+import { DividerModule } from 'primeng/divider';
+
 
 
 
@@ -57,7 +59,8 @@ import { BadgeModule } from 'primeng/badge';
     AutoCompleteModule,
     CheckboxModule,
     OverlayPanelModule,
-    BadgeModule
+    BadgeModule,
+    DividerModule
     ],
 })
 export class PrimengMaterial { }
