@@ -7,9 +7,12 @@
 :host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
   color: #5c6873;
   font-size: 0.8rem;
+  padding: 0.5rem;
+  padding-left: 0;
 }
 :host ::ng-deep .p-datatable .p-datatable-tbody>tr>td {
   font-size: 0.8rem;
+  padding-left: 0;
 }
 :host ::ng-deep .p-element .p-sorteable-column {
   display: flex;
@@ -24,9 +27,6 @@
 /* :host ::ng-deep .p-divider {
   width: 140px
 } */
-
-
-
 
 .table-content-container {
     position: relative;
