@@ -24,6 +24,8 @@
     "@angular/platform-browser": "^15.2.6",
     "@angular/platform-browser-dynamic": "^15.2.6",
     "@angular/router": "^15.2.6",
+    "@ngx-formly/core": "^6.0.0",
+    "@ngx-formly/primeng": "^6.0.0",
     "@npmcli/fs": "^3.1.0",
     "animate.css": "^4.1.1",
     "chart.js": "^4.2.1",
@@ -39,9 +41,7 @@
     "tslib": "^2.0.0",
     "vega": "^5.13.0",
     "vega-tooltip": "^0.24.1",
-    "zone.js": "~0.11.8",
-    "@ngx-formly/core": "^6.0.0",
-    "@ngx-formly/primeng": "^6.0.0"
+    "zone.js": "^0.13.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.5",
