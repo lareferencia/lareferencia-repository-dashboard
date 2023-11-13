@@ -24,8 +24,7 @@ export class NetworksListTableComponent {
   };
 
 
-  constructor( private harvestingAdminList: HarvestingAdminService,
-    private router: Router) { }
+  constructor( private harvestingAdminList: HarvestingAdminService) { }
 
 
   onSort(event: SortEvent) {

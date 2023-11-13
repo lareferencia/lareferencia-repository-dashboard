@@ -13,6 +13,7 @@
     overflow: hidden;
     width: 55px;
     position: fixed;
+    border: none;
   }
   
   .mat-drawer:hover {
