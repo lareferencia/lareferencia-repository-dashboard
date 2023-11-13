@@ -48,6 +48,7 @@ export class NetworksListTableComponent {
 
   applyFilter() {
     this.loadContent({ first: 0, rows: this.pageSize });
+    
   }
 
   loadContent(event: LazyLoadEvent) {
@@ -56,7 +57,7 @@ export class NetworksListTableComponent {
       pageSize: event.rows,
       pageNumber: event.first / event.rows,
     };
-
+    console.log(this.filter);
     this.harvestingAdminList.getNetworkList(this.filter)
       .subscribe((data) => {
         this.totalRecords = data.totalElements;

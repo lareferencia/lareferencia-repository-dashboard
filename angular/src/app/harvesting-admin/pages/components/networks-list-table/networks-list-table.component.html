@@ -1,14 +1,13 @@
 
 <div class="table-content-container p-3">
-  <div class="flex gap-3 mb-5">
-    <p-button styleClass="p-button-sm" i18n-label label="Add repositorie" icon="pi pi-plus">
+  <div class="flex gap-3 mb-3">
+    <p-button styleClass="p-button-sm" i18n-label label="Add repository" icon="pi pi-plus">
     </p-button>
     <p-button styleClass="p-button-outlined p-button-secondary p-button-sm" icon="pi pi-spinner" i18n-label label="Update">
     </p-button>
     <p-button styleClass="p-button-outlined p-button-danger p-button-sm" icon="pi pi-stop-circle" i18n-label label="Turn off update">
     </p-button>
   </div>
-  <hr>
   <p-table 
       [value]="networksList"
       [paginator]="true"
@@ -26,61 +25,65 @@
             <th i18n class="font-bold">
                 ID
             </th>
-              <th i18n pSortableColumn="acronym" class="font-bold w-2">
+              <th i18n class="font-bold w-2">
                 Acronym
-                <p-sortIcon field="acronym"></p-sortIcon>
+              <p-columnFilter field="acronym" 
+                display="menu" 
+                [showAddButton]="false" 
+                [showMatchModes]="false"
+                [showOperator]="false"
+                [showClearButton]="false">
+                <ng-template pTemplate="filter">
+                  <input type="text" 
+                    pInputText 
+                    [(ngModel)]="filter.acronym"
+                    i18n-placeholder 
+                    placeholder="Identifier"
+                    (keydown.enter)="applyFilter()"/>
+                </ng-template>
+              </p-columnFilter>
             </th>
-              <th i18n pSortableColumn="name" class="font-bold w-2">
-                Repositorie
-                <p-sortIcon field="name"></p-sortIcon>
+              <th i18n class="font-bold w-2">
+                Repository
+              <p-columnFilter field="name" 
+                display="menu" 
+                [showAddButton]="false" 
+                [showMatchModes]="false"
+                [showOperator]="false"
+                [showClearButton]="false">
+                <ng-template pTemplate="filter">
+                  <input type="text" 
+                    pInputText 
+                    [(ngModel)]="filter.name"
+                    i18n-placeholder 
+                    placeholder="Identifier"
+                    (keydown.enter)="applyFilter()"/>
+                </ng-template>
+              </p-columnFilter>
               </th>
               <th i18n pSortableColumn="institution" class="font-bold w-2">
                 Institution
-                <p-sortIcon field="institution"></p-sortIcon>
+              <p-columnFilter field="institution" 
+                display="menu" 
+                [showAddButton]="false" 
+                [showMatchModes]="false"
+                [showOperator]="false"
+                [showClearButton]="false">
+                <ng-template pTemplate="filter">
+                  <input type="text" 
+                    pInputText 
+                    [(ngModel)]="filter.institution"
+                    i18n-placeholder 
+                    placeholder="Identifier"
+                    (keydown.enter)="applyFilter()"/>
+                </ng-template>
+              </p-columnFilter>
+
               </th>
               <th>
                <span class="font-bold text-center block w-full">Harvesting</span>
               </th>
               <th></th>
-          </tr>
-          <tr>
-            <th>
-            </th>
-            <th>
-              <p-columnFilter type="text" field="acronym" [showMenu]="false">
-                <ng-template pTemplate="filter">
-                  <input type="text" 
-                    pInputText 
-                    [(ngModel)]="filter.acronym"
-                    placeholder="Acronym"
-                    (keydown.enter)="applyFilter()"/>
-                </ng-template>
-              </p-columnFilter>
-            </th>
-            <th>
-              <p-columnFilter type="text" field="name" [showMenu]="false">
-                <ng-template pTemplate="filter">
-                  <input type="text" 
-                    pInputText 
-                    [(ngModel)]="filter.name"
-                    placeholder="Name"
-                    (keydown.enter)="applyFilter()"/>
-                </ng-template>
-              </p-columnFilter>
-            </th>
-            <th>
-              <p-columnFilter type="text" field="institution" [showMenu]="false">
-                <ng-template pTemplate="filter">
-                  <input type="text" 
-                    pInputText 
-                    [(ngModel)]="filter.institution"
-                    placeholder="Institution"
-                    (keydown.enter)="applyFilter()"/>
-                </ng-template>
-              </p-columnFilter>
-            </th>
-            <th></th>
-            <th></th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-networksList>
@@ -146,7 +149,7 @@
                 </div>
               </div>
 
-              <div class="flex align-items-center w-14rem" *ngIf="!networksList.lgkSnapshotID">
+              <div class="flex align-items-center w-16rem" *ngIf="!networksList.lgkSnapshotID">
                 <span class="font-semibold mr-2">
                   No hay cosecha validada
                 </span>
@@ -203,7 +206,9 @@
                     <p-badge value="valido" severity="success"></p-badge>
                   </div>
                   <ng-template #cosechaFallida>
-                    <p-badge value="fallido" severity="danger"></p-badge>
+                    <div class="mb-1">
+                      <p-badge value="fallido" severity="danger"></p-badge>
+                    </div>
                   </ng-template>
                   
                   <div>
