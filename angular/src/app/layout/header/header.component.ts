@@ -52,14 +52,16 @@ export class HeaderComponent implements OnInit {
 
 
   filterMenu(event: any) {
-    let filtered: any[] = [];
-    let query = event.query;
-    for(let i = 0; i < this.menuList.length; i++) {
-        let menu = this.menuList[i];
-        if (menu.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-            filtered.push(menu);
-        }
+    const filtered: any[] = [];
+    const query = event.query.toLowerCase(); // Convertir la consulta a minúsculas
+  
+    for (let i = 0; i < this.menuList.length; i++) {
+      const menu = this.menuList[i];
+      if (menu.name.toLowerCase().includes(query)) {
+        filtered.push(menu);
+      }
     }
+  
     this.filteredMenus = filtered;
   }
 
