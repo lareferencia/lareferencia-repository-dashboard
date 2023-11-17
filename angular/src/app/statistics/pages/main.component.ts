@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { switchMap } from 'rxjs/operators';
 import { AppConfigService } from '../../core/services/app-config.service';
 import { HistoricStats } from 'src/app/shared/models/app-config.model';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
