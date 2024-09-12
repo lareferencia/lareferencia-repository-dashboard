@@ -11,7 +11,8 @@ import { HistoricStats } from 'src/app/shared/models/app-config.model';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit  {
-  acronym: string;
+  public label: string;
+  public errorMessage: string;
 
   constructor( 
     private menuSrvice: MenuService,
@@ -22,43 +23,38 @@ export class MainComponent implements OnInit  {
   ngOnInit(): void {
 
     const widgetConfig = this.appConfigService.getHistoricStatsData()
-
     this.menuSrvice.activeRepo.pipe(
       switchMap(repo => {
+        this.label = repo.name;
         return this.harvestingSrvice.getHarvestingByAcronym(repo.acronym)
       })
-    ).subscribe(data => {
-      this.resultHandler(data.attributes.stats_source_id, widgetConfig)
+    ).subscribe(data => {            
+      this.resultHandler(data.attributes.stats_source_id, widgetConfig, data.institutionName)
     });    
   }
 
-  resultHandler( stats_source_id:string, widgetConfig: HistoricStats ){
-
+  resultHandler( stats_source_id: string, widgetConfig: HistoricStats, institutionName: string){
+    if (!stats_source_id) {
+      this.errorMessage = 'No statistics source id found';
+      return;
+    }
     window['lrhw'] = {
-      //identifier: ´´,
-      //identifier_meta_field: 'eprints.eprintid',
-      //identifier_prefix: '',
-      //identifier_regex: '',
-      event_labels: {
-        view: widgetConfig.event_labels.view,
-        download: widgetConfig.event_labels.download,
-        outlink: widgetConfig.event_labels.outlink
-      },
-      scope_labels: {
-        L:  widgetConfig.scope_labels.L,
-        N: widgetConfig.scope_labels.N,
-        R:  widgetConfig.scope_labels.R
-      },
-      country: widgetConfig.country,
-      national_source:  widgetConfig.national_source,
-      repository_source: stats_source_id,
-      preview: widgetConfig.preview,
-    };
+      parameters: {
+        widget_div_id: "lrhw-widget",
+        default_repository: {
+            label: `${institutionName} - ${this.label}`,
+            value: stats_source_id,
+          },
+        scope_labels: {
+          N: institutionName,
+        },
+      }
+    }
 
     const widget = document.createElement('script');
     widget.src = widgetConfig.widget_url;
 
-    const container = document.getElementById('my-widget');
+    const container = document.getElementById('lrhw-widget');
     if (container) {
       container.appendChild(widget);
     }
