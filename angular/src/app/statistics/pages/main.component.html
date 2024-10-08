@@ -9,27 +9,15 @@
               description="In the following chart, it is possible to observe downloads, views, and links at the national node level. Additionally, you can break down the chart view by day, week, and month using the buttons located at the top and left. You can also display data for 1 month, 3 months, or 6 months using the buttons located at the bottom right. Finally, with the horizontal bar located below the chart, we can select a custom interval.">
             </app-info-card>
         </div>
-        <div class="widget_container mt-3">
-            <div id="my-widget">
-            </div>
+        <!-- If errorMessege -->
+        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            {{ errorMessage }}
+        </div>
+        <div id="widget-container" class="mt-3">
+            
         </div>
     </div>
 
-
-    <!-- <div class="col-12 p-0 animate__animated animate__fadeInDown animate__faster">
-        <div class="col-12">
-            <app-info-card
-                i18n-title
-                i18n-description
-                title="Widget"
-                description=""> 
-            </app-info-card>
-        </div>
-        <div class="col-12">
-            <div class="widget_container" style="display: flex; justify-content: center; align-items: center;">
-            </div>
-        </div>
-    </div> -->
 </div>
 
 
