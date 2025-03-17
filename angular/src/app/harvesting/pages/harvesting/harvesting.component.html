@@ -11,16 +11,37 @@
       <p-progressSpinner></p-progressSpinner>
   </div>
 
-  <div *ngIf="harvestingContent" class="p-3"
+  <div *ngIf="harvestingContent" class="pt-3"
    animate__animated animate__fadeIn>
 
+
+   <div class="mt-3">
+    <p-tabView>
+        <p-tabPanel i18n-header header="Harvesting">
+          <div class=" animate__animated animate__fadeIn animate__faster">
+            <div class="p-4 bg-transparent border-10">
+              <app-harvesting-source></app-harvesting-source>
+            </div>
+          </div>
+  
+        </p-tabPanel>
+        <p-tabPanel i18n-header header="Harvesting table">
+          <div class=" animate__animated animate__fadeIn animate__faster">
+            <div class="p-4 border-10">  
+              <app-harvesting-table></app-harvesting-table>
+            </div>
+          </div>
+        </p-tabPanel>
+    </p-tabView>
+  </div>
+
     <!-- Stack chart -->
-    <app-harvesting-source></app-harvesting-source>
 
     <!-- Table -->
-    <app-harvesting-table></app-harvesting-table>
 
   </div>
+
+  
 </div>
 
 

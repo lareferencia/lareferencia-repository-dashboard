@@ -4,6 +4,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { initializeKeycloak } from './keycloak-init';
 
+
 import { AuthenticationService } from './core/services/authentication.service';
 
 import { LayoutModule } from './layout/layout.module';

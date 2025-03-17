@@ -31,12 +31,14 @@
               <img class="nav-list-img" src="assets/icons/statistics.svg" alt="">
               <span i18n class="nav-list-text">Statistics</span>
             </a>
-            
-            
-            
-            
 
-
+            <a [class]="isModuleActive('harvesting_admin_module') ? 'flex nav-list-a' : 'hidden' " routerLink="/harvesting-admin/harvesting-admin" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
+              <img class="nav-list-img" src="assets/icons/harvesting-admin.svg" alt="">
+              <span i18n class="nav-list-text">H. admin</span>
+            </a>
+            
+            
+  
             <a class="nav-list-a nav-list-a-user"  routerLink="/user/profile" routerLinkActive="nav-list-active" [routerLinkActiveOptions]="{exact:true}">
               <img class="nav-list-img" src="assets/icons/user.svg" alt="">
               <span i18n class="nav-list-text">Account</span>

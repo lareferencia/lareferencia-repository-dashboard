@@ -16,6 +16,7 @@ import { ObjectTypeComponent } from "./pages/components/network-editor/formly-ty
 import { ArrayTypeComponent } from "./pages/components/network-editor/formly-types/array.type";
 import { constValidationMessage, exclusiveMaximumValidationMessage, exclusiveMinimumValidationMessage, maxItemsValidationMessage, maxLengthValidationMessage, maxValidationMessage, minItemsValidationMessage, minLengthValidationMessage, minValidationMessage, multipleOfValidationMessage, typeValidationMessage } from "./pages/util/error-messages";
 import { SimpleFieldWrapper } from "./pages/components/network-editor/formly-wrappers/field.wrapper";
+import { NetworksDashboardComponent } from "./pages/components/networks-list-table/components/networks-dashboard/networks-dashboard.component";
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { SimpleFieldWrapper } from "./pages/components/network-editor/formly-wra
         PrincipalFormComponent,
         ObjectTypeComponent,
         ArrayTypeComponent,
-        SimpleFieldWrapper
+        SimpleFieldWrapper,
     ],
     imports: [
         CommonModule,
@@ -35,6 +36,7 @@ import { SimpleFieldWrapper } from "./pages/components/network-editor/formly-wra
         PrimengMaterial,
         SharedModule,
         ReactiveFormsModule,
+        NetworksDashboardComponent,
         FormlyModule.forRoot({
             validationMessages: [
               { name: 'required', message: 'This field is required' },

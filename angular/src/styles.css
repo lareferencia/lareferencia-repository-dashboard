@@ -14,7 +14,7 @@ body {
 }
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: radial-gradient(49.98% 52.41% at 44.18% 118.79%,rgba(252,120,136,.2) 0,rgba(252,82,102,0) 100%),radial-gradient(38.18% 50.85% at 43.11% -7.92%,rgba(50,138,245,.2) 0,rgba(50,138,245,0) 100%),radial-gradient(32.39% 65.68% at 101.26% 36.34%,rgba(98,57,198,.2) 0,rgba(98,57,198,0) 100%),radial-gradient(25.84% 56.13% at -7.92% 73.21%,rgba(192,16,239,.2) 0,rgba(192,16,239,0) 100%),#F9F8F9;
 }
 
@@ -33,7 +33,9 @@ h1{
 }
 
 .app-router-container{
-  margin-left: 55px;
+  max-width: 1440px;
+  margin: 0 auto;
+  /* margin-left: 55px; */
 }
 
 .tooltip-broker-message {
@@ -72,7 +74,11 @@ h1{
   background-color: #555;
 }
 
-
+@media screen and (max-width: 1520px) {
+  .app-router-container{
+    margin-left: 55px;
+  }
+}
 @media screen and (max-width: 570px) {
   .app-router-container{
     margin-left: 0px;

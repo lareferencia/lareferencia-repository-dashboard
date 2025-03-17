@@ -3,11 +3,12 @@ import { LazyLoadEvent, SortEvent } from 'primeng/api';
 import { HarvestingAdminService } from 'src/app/core/services/harvesting-admin.service';
 import { Network } from 'src/app/shared/models/harvesting-admin.model';
 import { Router } from '@angular/router';
+import { NetworksDashboardComponent } from './components/networks-dashboard/networks-dashboard.component';
 
 @Component({
   selector: 'networks-list-table',
   templateUrl: './networks-list-table.component.html',
-  styleUrls: ['./networks-list-table.component.css']
+  styleUrls: ['./networks-list-table.component.css'],
 })
 export class NetworksListTableComponent {
 

@@ -45,8 +45,13 @@
         <span i18n [class]="isModuleActive('statistics_module') ? 'opacity-100' : 'opacity-0'">Usage statistics</span>
       </a>
 
-      <a class="services-item-inprogress" >
+      <a [class]="isModuleActive('harvesting_admin_module') ? 'services-item' : 'services-item-inprogress'" (click)="onHarvestingAdminNavigate()">
+        <img style="width: 24px; opacity: 0.7;" [class]="isModuleActive('harvesting_admin_module') ? 'opacity-100' : 'opacity-0'" src="assets/icons/harvesting-admin.svg" alt=""> 
+        <span i18n [class]="isModuleActive('harvesting_admin_module') ? 'opacity-100' : 'opacity-0'">Harvesting admin</span>
       </a>
+
+      <!-- <a class="services-item-inprogress" >
+      </a> -->
     </div>
   </mat-card>
 </div>
