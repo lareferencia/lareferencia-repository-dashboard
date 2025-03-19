@@ -56,13 +56,22 @@
                       </p-button>
 
                       <p-overlayPanel #op>
+
+
                         <div>
-                          <span>Ejecutar acciones configuradas</span>
-                          <p-divider/>
-                          <div class="flex flex-column">
+                          <!-- <span>Ejecutar acciones configuradas</span> -->
+                          <!-- <p-divider/> -->
+                          <div class="flex flex-column gap-2">
                             <span class="mb-4 font-bold">Acciones individuales</span>
-                            <div class="flex justify-content-between align-items-center">
-                              <span> Harvesting </span>
+
+
+                            <div class="flex justify-content-between gap-4 align-items-center">
+
+                              <div class="flex gap-2">
+                                <p-checkbox [binary]="true" />
+                                <span> Harvesting </span>
+                              </div>
+
                               <div class="flex justify-content-end gap-1">
                                 <p-button styleClass="p-button-primary p-button-sm" pTooltip="Full">F</p-button>
                                 <p-button styleClass="p-button-primary p-button-sm" pTooltip="Incremental">I</p-button>
@@ -71,9 +80,54 @@
                                 </p-button>
                               </div>
                             </div>
+
+                            <div class="flex justify-content-between gap-4 align-items-center">
+
+                              <div class="flex gap-2">
+                                <p-checkbox [binary]="true" />
+                                <span> Validation </span>
+                              </div>
+
+                              <div class="flex justify-content-end gap-1">
+                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Full">F</p-button>
+                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Incremental">I</p-button>
+                                <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
+                                  <i class="pi pi-file-edit" style="font-size: 1.5rem; color: grey;" ></i>
+                                </p-button>
+                              </div>
+                            </div>
+
+                            <div class="flex justify-content-between gap-4 align-items-center">
+
+                              <div class="flex gap-2">
+                                <p-checkbox [binary]="true" />
+                                <span> Index front </span>
+                              </div>
+
+                              <div class="flex justify-content-end gap-1">
+                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Full">F</p-button>
+                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Incremental">I</p-button>
+                                <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
+                                  <i class="pi pi-file-edit" style="font-size: 1.5rem; color: grey;" ></i>
+                                </p-button>
+                              </div>
+                            </div>
+                            
+                            <p-divider/>
+
+                            <span class="p-buttonset">
+                              <button disabled pButton pRipple icon="pi pi-play" label="Start" pTooltip="Ejecutar marcadas"></button>
+                              <button disabled pButton pRipple icon="pi pi-stop" label="Stop"></button>
+                              <button pButton pRipple icon="pi pi-calendar" label="Calendar"></button>
+                              <button pButton pRipple icon="pi pi-clock" label="Cron"></button>
+
+                          </span>
+
+
                           </div>
 
                         </div>
+
                       </p-overlayPanel>
 
                       <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
