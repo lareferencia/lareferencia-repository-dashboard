@@ -1,12 +1,18 @@
 
 <div class="table-content-container p-3">
-  <div class="flex gap-3 mb-5">
-    <p-button styleClass="p-button-sm" i18n-label label="Add repositorie" icon="pi pi-plus">
-    </p-button>
-    <p-button styleClass="p-button-outlined p-button-secondary p-button-sm" icon="pi pi-spinner" i18n-label label="Update">
-    </p-button>
-    <p-button styleClass="p-button-outlined p-button-danger p-button-sm" icon="pi pi-stop-circle" i18n-label label="Turn off update">
-    </p-button>
+  <div class="flex justify-content-between mb-5">
+
+    <div class="flex gap-3 align-items-center">
+      <p-button styleClass="p-button-sm" i18n-label label="Add repositorie" icon="pi pi-plus"></p-button>
+      <p-button styleClass="p-button-outlined p-button-secondary p-button-sm" icon="pi pi-spinner" i18n-label label="Update"></p-button>
+      <p-button styleClass="p-button-outlined p-button-danger p-button-sm" icon="pi pi-stop-circle" i18n-label label="Turn off update"></p-button>
+    </div>
+
+    <div class="flex align-items-center gap-3">
+      <p-badge value="Running process 15/45" severity="warn"></p-badge>
+      <p-badge value="Queued process 15/45" severity="info"></p-badge>
+    </div>
+
   </div>
   <hr>
   <p-table 
@@ -23,24 +29,25 @@
 
       <ng-template pTemplate="body" let-networksList>
 
+        <!-- ACCORDION FOR EVERY REPO -->
         <p-accordion expandIcon="pi pi-angle-down" collapseIcon="pi pi-angle-up">
           <p-accordionTab >
-              <!-- <repositories-list-table></repositories-list-table> -->
+
               <ng-template pTemplate="header"> 
                 <div class="w-11 flex justify-content-between align-items-center">
-                  <!-- Contenedor con distribución igual de los elementos -->
+                 
+                  <!-- CONTAINER WITH THE ELEMENTS -->
                   <div class="flex w-full justify-content-between gap-3 align-items-center">
                     <span class="flex-1 text-left">{{ networksList.networkID }}</span>
                     <span class="flex-1 text-left">{{ networksList.acronym }}</span>
                     <span class="flex-1 text-left">{{ networksList.name }}</span>
                     <span class="flex-1 text-left" style="min-width: 250px;">{{ networksList.institution }}</span>
-                
                     <div class="flex-1 text-left">
-                      <span *ngIf="networksList.lstSnapshotStatus === 'VALID'; else cosechaFallida"class="font-semibold">
-                        <p-badge value="Cosecha validada" badgeSize="xlarge" severity="success" />
+                      <span *ngIf="networksList.lstSnapshotStatus === 'VALID'; else harvestingFailed"class="font-semibold">
+                        <p-badge value="Valid harvest" badgeSize="xlarge" severity="success" />
                       </span>
-                      <ng-template #cosechaFallida>
-                        <p-badge value="Cosecha fallida" badgeSize="xlarge" severity="danger" />
+                      <ng-template #harvestingFailed>
+                        <p-badge value="Harvesting failed" badgeSize="xlarge" severity="danger" />
                       </ng-template>
                       <div>
                         <i class="pi pi-clock" style="font-size: 12px"></i>
@@ -48,88 +55,15 @@
                       </div>
                     </div>
                 
+                    <!-- ACTIONS AND EDIT BUTTONS COANTAINER -->
                     <div class="flex-1 text-left flex justify-content-end align-items-center">
 
-                      <!-- ACTIONS BUTTON -->
-                      <p-button (onClick)="op.toggle($event)" styleClass="p-button-text p-button-sm" pTooltip="Actions">
-                        <i class="pi pi-cog" style="font-size: 1.2rem; color: grey; " ></i>
-                      </p-button>
 
-                      <p-overlayPanel #op>
+                      <!-- ACTIOS COMPONENT -->
+                      <Actions-panel></Actions-panel>
 
-
-                        <div>
-                          <!-- <span>Ejecutar acciones configuradas</span> -->
-                          <!-- <p-divider/> -->
-                          <div class="flex flex-column gap-2">
-                            <span class="mb-4 font-bold">Acciones individuales</span>
-
-
-                            <div class="flex justify-content-between gap-4 align-items-center">
-
-                              <div class="flex gap-2">
-                                <p-checkbox [binary]="true" />
-                                <span> Harvesting </span>
-                              </div>
-
-                              <div class="flex justify-content-end gap-1">
-                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Full">F</p-button>
-                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Incremental">I</p-button>
-                                <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
-                                  <i class="pi pi-file-edit" style="font-size: 1.5rem; color: grey;" ></i>
-                                </p-button>
-                              </div>
-                            </div>
-
-                            <div class="flex justify-content-between gap-4 align-items-center">
-
-                              <div class="flex gap-2">
-                                <p-checkbox [binary]="true" />
-                                <span> Validation </span>
-                              </div>
-
-                              <div class="flex justify-content-end gap-1">
-                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Full">F</p-button>
-                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Incremental">I</p-button>
-                                <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
-                                  <i class="pi pi-file-edit" style="font-size: 1.5rem; color: grey;" ></i>
-                                </p-button>
-                              </div>
-                            </div>
-
-                            <div class="flex justify-content-between gap-4 align-items-center">
-
-                              <div class="flex gap-2">
-                                <p-checkbox [binary]="true" />
-                                <span> Index front </span>
-                              </div>
-
-                              <div class="flex justify-content-end gap-1">
-                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Full">F</p-button>
-                                <p-button styleClass="p-button-primary p-button-sm" pTooltip="Incremental">I</p-button>
-                                <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
-                                  <i class="pi pi-file-edit" style="font-size: 1.5rem; color: grey;" ></i>
-                                </p-button>
-                              </div>
-                            </div>
-                            
-                            <p-divider/>
-
-                            <span class="p-buttonset">
-                              <button disabled pButton pRipple icon="pi pi-play" label="Start" pTooltip="Ejecutar marcadas"></button>
-                              <button disabled pButton pRipple icon="pi pi-stop" label="Stop"></button>
-                              <button pButton pRipple icon="pi pi-calendar" label="Calendar"></button>
-                              <button pButton pRipple icon="pi pi-clock" label="Cron"></button>
-
-                          </span>
-
-
-                          </div>
-
-                        </div>
-
-                      </p-overlayPanel>
-
+                     
+                      <!-- EDIT BUTTON -->
                       <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
                         <i class="pi pi-file-edit" style="font-size: 1.2rem; color: grey; " ></i>
                       </p-button>
@@ -138,7 +72,8 @@
                 </div>
                 
               </ng-template>
-              <!-- Content -->
+
+              <!-- DASHBOARD CONTENT -->
               <div >
                   <app-networks-dashboard [network]="networksList" ></app-networks-dashboard>
               </div>

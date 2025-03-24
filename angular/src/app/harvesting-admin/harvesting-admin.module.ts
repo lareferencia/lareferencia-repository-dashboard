@@ -17,6 +17,7 @@ import { ArrayTypeComponent } from "./pages/components/network-editor/formly-typ
 import { constValidationMessage, exclusiveMaximumValidationMessage, exclusiveMinimumValidationMessage, maxItemsValidationMessage, maxLengthValidationMessage, maxValidationMessage, minItemsValidationMessage, minLengthValidationMessage, minValidationMessage, multipleOfValidationMessage, typeValidationMessage } from "./pages/util/error-messages";
 import { SimpleFieldWrapper } from "./pages/components/network-editor/formly-wrappers/field.wrapper";
 import { NetworksDashboardComponent } from "./pages/components/networks-list-table/components/networks-dashboard/networks-dashboard.component";
+import { ActionsPanelComponent } from './pages/components/networks-list-table/components/actions-panel/actions-panel.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NetworksDashboardComponent } from "./pages/components/networks-list-tab
         ObjectTypeComponent,
         ArrayTypeComponent,
         SimpleFieldWrapper,
+        ActionsPanelComponent,
     ],
     imports: [
         CommonModule,
