@@ -4,22 +4,25 @@
   [ngClass]="['alert', error ? 'alert-danger' : 'alert-warning']"
   role="alert"
   *ngIf="error || firstAccess"
-  i18n >
+  i18n
+>
   {error, select, true {Validations not found} false {Enter a source acronym in
   the root URL /:acronym}}
 </div>
 
-<div *ngIf="isLoadingResults" class="min-h-screen flex justify-content-center align-items-center">
-    <p-progressSpinner></p-progressSpinner>
+<div
+  *ngIf="isLoadingResults"
+  class="min-h-screen flex justify-content-center align-items-center"
+>
+  <p-progressSpinner></p-progressSpinner>
 </div>
 
-<div *ngIf="!firstAccess && !error && validation" class="p-3">
- 
-
-<div class="grid">
-  <div class="col-12 md:col-4 p-2 
-    animate__animated animate__fadeInDown animate__faster">
-        <app-validation-card
+<div *ngIf="!firstAccess && !error && validation" class="pt-3">
+  <div class="grid">
+    <div
+      class="col-12 md:col-4 p-2 animate__animated animate__fadeInDown animate__faster"
+    >
+      <app-validation-card
         title="Total records harvested"
         validationTitle="Records"
         i18n-title
@@ -29,72 +32,95 @@
         color="#00d0de"
         bgColor="rgb(0, 208, 222 , 0.30)"
         imagePath="validation-record.svg"
-        shadowColor="0px 6px 20px rgba(0, 208, 222, 0.3)">
+        shadowColor="0px 6px 20px rgba(0, 208, 222, 0.3)"
+      >
       </app-validation-card>
     </div>
 
-  <div class="col-12 md:col-4 p-2
-    animate__animated animate__fadeInDown animate__faster">
-    <app-validation-card
-      validationTitle="Valid"
-      title="Total valid records"
-      i18n-title
-      i18n-validationTitle
-      [validationData]="validation.validSize"
-      icon="pi pi-check-circle"
-      color="#0bd18a"
-      bgColor="rgb(11, 209, 138 , 0.30)"
-      imagePath="validation-valid.svg"
-      shadowColor="0px 6px 20px rgba(11, 209, 138, 0.3)">
-    </app-validation-card>
+    <div
+      class="col-12 md:col-4 p-2 animate__animated animate__fadeInDown animate__faster"
+    >
+      <app-validation-card
+        validationTitle="Valid"
+        title="Total valid records"
+        i18n-title
+        i18n-validationTitle
+        [validationData]="validation.validSize"
+        icon="pi pi-check-circle"
+        color="#0bd18a"
+        bgColor="rgb(11, 209, 138 , 0.30)"
+        imagePath="validation-valid.svg"
+        shadowColor="0px 6px 20px rgba(11, 209, 138, 0.3)"
+      >
+      </app-validation-card>
+    </div>
+
+    <div
+      class="col-12 md:col-4 p-2 animate__animated animate__fadeInDown animate__faster"
+    >
+      <app-validation-card
+        title="Total invalid records"
+        i18n-title
+        i18n-validationTitle
+        validationTitle="Invalid"
+        [validationData]="validation.size - validation.validSize"
+        icon="pi pi-times-circle"
+        color="#fc6161"
+        bgColor="rgb(252, 97, 97 , 0.30)"
+        imagePath="validation-invalid.svg"
+        shadowColor="0px 6px 20px rgba(252, 97, 97, 0.3)"
+      >
+      </app-validation-card>
+    </div>
   </div>
 
-  <div class="col-12 md:col-4 p-2
-    animate__animated animate__fadeInDown animate__faster">
-    <app-validation-card
-      title="Total invalid records"
-      i18n-title
-      i18n-validationTitle
-      validationTitle="Invalid"
-      [validationData]="validation.size - validation.validSize"
-      icon="pi pi-times-circle"
-      color="#fc6161"
-      bgColor="rgb(252, 97, 97 , 0.30)"
-      imagePath="validation-invalid.svg"
-      shadowColor="0px 6px 20px rgba(252, 97, 97, 0.3)">
-    </app-validation-card>
-  </div>
-</div>
+  <div class="mt-2">
+    <p-tabView>
+      <p-tabPanel i18n-header header="Validations">
+        <div class="animate__animated animate__fadeIn animate__faster">
+          <div class="p-4 bg-transparent border-10">
+            <div
+              class="pb-3 pt-2 animate__animated animate__fadeInLeft animate__faster"
+            >
+              <app-info-card
+                title="Total invalid records"
+                i18n-title
+                i18n-description
+                title="Validation table"
+                description="The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory harvest rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory harvest rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown."
+              >
+              </app-info-card>
+            </div>
 
-<div>
-  <div class="pb-3 pt-2
-  animate__animated animate__fadeInLeft animate__faster">
-    <app-info-card
-      title="Total invalid records"
-      i18n-title
-      i18n-description
-      title="Validation table"
-      description="The graph below shows the result of the validations performed. Records with 100% validation level refer to records that have complied with the mandatory harvest rules of the repository and become valid records. Records that have a 0.00%  validation level refer to records that did not comply with the mandatory harvest rules of the repository and became invalid records. In this case, the user has the option of viewing which were the invalid occurrences in the details button, where the metadata value with the corresponding quantities are shown.">
-    </app-info-card>
-  </div>
+            <div>
+              <app-validation-table
+                [validation]="validation"
+              ></app-validation-table>
+            </div>
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel i18n-header header="Records">
+        <div class="animate__animated animate__fadeIn animate__faster">
+          <div class="p-4 border-10">
+            <div
+              class="py-3 animate__animated animate__fadeInRight animate__faster"
+            >
+              <app-info-card
+                i18n-title
+                i18n-description
+                title="Records table"
+                description="The data below presents the complete diagnosis of your institution's data harvest. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item."
+              >
+              </app-info-card>
+            </div>
 
-  <div>
-    <app-validation-table [validation]="validation"></app-validation-table>
+            <div>
+              <app-records-table [validation]="validation"></app-records-table>
+            </div>
+          </div>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
   </div>
-
-  <div class="py-3
-    animate__animated animate__fadeInRight animate__faster">
-    <app-info-card
-      i18n-title
-      i18n-description
-      title="Records table"
-      description="The data below presents the complete diagnosis of your institution's data harvest. Here you can check which records are valid, which are invalid and what makes a record invalid. In addition to allowing a customized view, in which it is possible to make combinations between the type of record (valid or invalid) and the type of rule. In the details button, it is possible to view the applicability and compliance of each validation rule item by item.">
-    </app-info-card>
-  </div>
-
-  <div>
-    <app-records-table [validation]="validation"></app-records-table>
-  </div>
-</div>
-
 </div>

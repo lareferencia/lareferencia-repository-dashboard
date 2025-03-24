@@ -4,6 +4,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+  font-weight: 400;
+}
+
+
 :host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
   color: #5c6873;
   font-size: 0.8rem;
@@ -21,7 +26,6 @@
   width: 100%;
   font-family: 'Poppins';
 }
-
 
 
 .table-content-container {

@@ -1,5 +1,113 @@
 
 <div class="table-content-container p-3">
+  <div class="flex justify-content-between mb-5">
+
+    <div class="flex gap-3 align-items-center">
+      <p-button styleClass="p-button-sm" i18n-label label="Add repositorie" icon="pi pi-plus"></p-button>
+      <p-button styleClass="p-button-outlined p-button-secondary p-button-sm" icon="pi pi-spinner" i18n-label label="Update"></p-button>
+      <p-button styleClass="p-button-outlined p-button-danger p-button-sm" icon="pi pi-stop-circle" i18n-label label="Turn off update"></p-button>
+    </div>
+
+    <div class="flex align-items-center gap-3">
+      <p-badge value="Running process 15/45" severity="warn"></p-badge>
+      <p-badge value="Queued process 15/45" severity="info"></p-badge>
+    </div>
+
+  </div>
+  <hr>
+  <p-table 
+      [value]="networksList"
+      [paginator]="true"
+      [rows]="pageSize"
+      [totalRecords]="totalRecords"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [lazy]="true"
+      [loading]="isLoading"
+      (onLazyLoad)="loadContent($event)"
+      (onSort)="onSort($event)">
+
+      <ng-template pTemplate="body" let-networksList>
+
+        <!-- ACCORDION FOR EVERY REPO -->
+        <p-accordion expandIcon="pi pi-angle-down" collapseIcon="pi pi-angle-up">
+          <p-accordionTab >
+
+              <ng-template pTemplate="header"> 
+                <div class="w-11 flex justify-content-between align-items-center">
+                 
+                  <!-- CONTAINER WITH THE ELEMENTS -->
+                  <div class="flex w-full justify-content-between gap-3 align-items-center">
+                    <span class="flex-1 text-left">{{ networksList.networkID }}</span>
+                    <span class="flex-1 text-left">{{ networksList.acronym }}</span>
+                    <span class="flex-1 text-left">{{ networksList.name }}</span>
+                    <span class="flex-1 text-left" style="min-width: 250px;">{{ networksList.institution }}</span>
+                    <div class="flex-1 text-left">
+                      <span *ngIf="networksList.lstSnapshotStatus === 'VALID'; else harvestingFailed"class="font-semibold">
+                        <p-badge value="Valid harvest" badgeSize="xlarge" severity="success" />
+                      </span>
+                      <ng-template #harvestingFailed>
+                        <p-badge value="Harvesting failed" badgeSize="xlarge" severity="danger" />
+                      </ng-template>
+                      <div>
+                        <i class="pi pi-clock" style="font-size: 12px"></i>
+                        <span class="text-sm ml-1">{{networksList.lstSnapshotDate}}</span>
+                      </div>
+                    </div>
+                
+                    <!-- ACTIONS AND EDIT BUTTONS COANTAINER -->
+                    <div class="flex-1 text-left flex justify-content-end align-items-center">
+
+
+                      <!-- ACTIOS COMPONENT -->
+                      <Actions-panel></Actions-panel>
+
+                     
+                      <!-- EDIT BUTTON -->
+                      <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
+                        <i class="pi pi-file-edit" style="font-size: 1.2rem; color: grey; " ></i>
+                      </p-button>
+                    </div>
+                  </div>
+                </div>
+                
+              </ng-template>
+
+              <!-- DASHBOARD CONTENT -->
+              <div >
+                  <app-networks-dashboard [network]="networksList" ></app-networks-dashboard>
+              </div>
+          </p-accordionTab> 
+        </p-accordion>
+        
+      </ng-template>
+
+
+  </p-table>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="table-content-container p-3">
   <div class="flex gap-3 mb-5">
     <p-button styleClass="p-button-sm" i18n-label label="Add repositorie" icon="pi pi-plus">
     </p-button>
@@ -126,9 +234,14 @@
                 icon="pi pi-file-edit"
                 styleClass=" p-button-text p-button-secondary p-button"
                 routerLink="/harvesting-admin/{{networksList.networkID}}"
-                  ></p-button>
+                ></p-button>
+            </td>
+            <td>
+              <p-button label="Tools" icon="pi pi-wrench" styleClass="text-xs p-button-xs p-button-outlined" 
+              ></p-button>
             </td>
           </tr>
       </ng-template>
   </p-table>
-</div>
+</div> -->
+

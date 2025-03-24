@@ -46,6 +46,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['statistics']);
   }
 
+  onHarvestingAdminNavigate(){
+    this.router.navigate(['harvesting-admin']);
+  }
+
   isModuleActive( path: string ){
     return this.appConfig.getModuleStatus(path);
 

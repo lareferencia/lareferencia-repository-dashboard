@@ -1,0 +1,182 @@
+
+
+<div class="flex p-2">
+  <!-- INFO -->
+  <div class="p-2">
+    <h3>General Info</h3>
+    <p-divider />
+    <h4>Ultimas 3 cosechas</h4>
+
+    <div class="table-container">
+      <div class="table-content-container">
+        <div class="mb-3">
+          <p-table
+            [value]="lastHarvests"
+            [paginator]="true"
+            rows="10"
+            [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10, 25, 50]"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th>
+                  <div class="flex align-items-center">
+                    <span>ID</span>
+                  </div>
+                </th>
+
+                <th>
+                  <div class="flex align-items-center">
+                    <span>Status</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex align-items-center">
+                    <span>Start</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex align-items-center">
+                    <span>End</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex align-items-center">
+                    <span>Records</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex align-items-center">
+                    <span>Valid</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex align-items-center">
+                    <span>Transformed</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex align-items-center">
+                    <span>Deleted</span>
+                  </div>
+                </th>
+                <th></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-lastHarvests>
+              <tr class="bg-blue-100">
+                <td>1</td>
+                <td>Cosecha fallida</td>
+                <td>2025-03-17 10:12:01</td>
+                <td>2025-03-17 11:39:56</td>
+                <td>298310</td>
+                <td>0</td>
+                <td>0</td>
+                <td>No</td>
+                <td>
+                  <p-button
+                    styleClass="p-button-primary p-button-sm"
+                    label="Log"
+                  ></p-button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>2</td>
+                <td>Cosecha fallida</td>
+                <td>2025-03-17 10:12:01</td>
+                <td>2025-03-17 11:39:56</td>
+                <td>298310</td>
+                <td>0</td>
+                <td>0</td>
+                <td>No</td>
+                <td>
+                  <p-button
+                    styleClass="p-button-primary p-button-sm"
+                    label="Log"
+                  ></p-button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>3</td>
+                <td>Cosecha fallida</td>
+                <td>2025-03-17 10:12:01</td>
+                <td>2025-03-17 11:39:56</td>
+                <td>298310</td>
+                <td>0</td>
+                <td>0</td>
+                <td>No</td>
+                <td>
+                  <p-button
+                    styleClass="p-button-primary p-button-sm"
+                    label="Log"
+                  ></p-button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+          <!-- <app-table-exporter [data]="csvData" [header]="headerData"></app-table-exporter> -->
+        </div>
+      </div>
+      <!-- 
+<p-dialog
+*ngIf="dialogData"
+[header]="dialogData.name"
+[(visible)]="visible" 
+[modal]="true" 
+[draggable]="false" 
+[resizable]="false"
+(onHide)="onDialogHide()">
+<div>
+  <app-validation-detail [dialogData]="dialogData"></app-validation-detail>
+</div>
+</p-dialog> -->
+    </div>
+  </div>
+
+  <!-- ACCIONES -->
+  <div class="border-left-1 border-cyan-100 p-2">
+    <h3>Accions</h3>
+    <p-divider />
+
+    <!-- EN EJECUCION -->
+    <div class="flex align-items-center justify-content-start gap-4 mb-4">
+      <div class="flex align-items-center gap-2 w-4">
+        <i class="pi pi-play" style="font-size: 1rem; color: grey"></i>
+        <span>En ejecución:</span>
+      </div>
+
+      <p-badge value="Cosechando" badgeSize="xlarge" severity="success" />
+
+      <i
+        class="pi pi-spin pi-spinner"
+        style="font-size: 1.2rem; color: grey"
+      ></i>
+    </div>
+
+    <!-- EN COLA -->
+    <div class="flex align-items-center justify-content-start gap-4 mb-4">
+      <div class="flex align-items-center gap-2 w-4">
+        <i class="pi pi-list" style="font-size: 1rem; color: grey"></i>
+        <span>En cola:</span>
+      </div>
+      <div class="flex gap-1">
+        <p-badge value="Trasnf/Validation" badgeSize="xlarge" severity="info" />
+        <p-badge value="Indexing" badgeSize="xlarge" severity="info" />
+      </div>
+    </div>
+
+    <!-- PROGRAMADAS -->
+    <div class="flex align-items-center justify-content-start gap-4">
+      <div class="flex align-items-center gap-2 w-4">
+        <i class="pi pi-calendar" style="font-size: 1rem; color: grey"></i>
+        <span>Programadas:</span>
+      </div>
+      <div class="flex gap-1">
+        <p-badge value="Cocechando" badgeSize="xlarge" severity="warn" />
+        <p-badge value="Transf/Validation" badgeSize="xlarge" severity="warn" />
+      </div>
+    </div>
+  </div>
+</div>

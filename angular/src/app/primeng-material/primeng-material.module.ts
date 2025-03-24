@@ -23,6 +23,10 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { TabViewModule } from 'primeng/tabview';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CheckboxModule } from 'primeng/checkbox';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { DividerModule } from 'primeng/divider';
+import { BadgeModule } from 'primeng/badge';
+
 
 
 
@@ -34,6 +38,9 @@ import { CheckboxModule } from 'primeng/checkbox';
     MatListModule,
 
     ProgressSpinnerModule,
+    BadgeModule,
+    DividerModule,
+    OverlayPanelModule,
     ToastModule,
     ChartModule,
     TableModule,

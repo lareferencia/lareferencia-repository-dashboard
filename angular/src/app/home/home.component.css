@@ -31,7 +31,7 @@ p {
   grid-template-columns: 2fr 1rem 1fr;
   place-content: center;
   align-items: center;
-  padding: 1rem 1rem 1rem 1rem;
+  padding-top: 1rem;
   position: relative;
 }
 
@@ -42,7 +42,7 @@ p {
   display: flex;
   justify-content: space-around;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .home-info-container {
@@ -87,7 +87,7 @@ p {
   justify-content: center;
   padding-bottom: 1rem;
   padding-top: 1rem ;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 .home-services-card-container{
   display: grid;
