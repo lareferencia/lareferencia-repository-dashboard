@@ -8,6 +8,15 @@
   font-weight: 400;
 }
 
+:host ::ng-deep .p-accordion .p-accordion-header a:hover {
+  text-decoration: none;
+}
+
+:host ::ng-deep .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+  box-shadow: none;
+}
+
+
 
 :host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
   color: #5c6873;

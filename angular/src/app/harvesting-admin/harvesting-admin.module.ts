@@ -18,6 +18,7 @@ import { constValidationMessage, exclusiveMaximumValidationMessage, exclusiveMin
 import { SimpleFieldWrapper } from "./pages/components/network-editor/formly-wrappers/field.wrapper";
 import { NetworksDashboardComponent } from "./pages/components/networks-list-table/components/networks-dashboard/networks-dashboard.component";
 import { ActionsPanelComponent } from './pages/components/networks-list-table/components/actions-panel/actions-panel.component';
+import { TransformersComponent } from './pages/components/transformers/transformers.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { ActionsPanelComponent } from './pages/components/networks-list-table/co
         ArrayTypeComponent,
         SimpleFieldWrapper,
         ActionsPanelComponent,
+        TransformersComponent,
     ],
     imports: [
         CommonModule,

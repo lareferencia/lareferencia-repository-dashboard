@@ -15,20 +15,14 @@ import { PrimengMaterial } from 'src/app/primeng-material/primeng-material.modul
 
 export class NetworksDashboardComponent implements OnInit {
 
-@Input() network: Network;
+@Input() network: Network[] ;
 
-// <td >Cosecha fallida	</td>
-//           <td >2025-03-17 10:12:01	</td>
-//           <td >2025-03-17 11:39:56	</td>
-//           <td>298310</td>
-//           <td>298310</td>
-//           <td>0</td>
-//           <td>0</td>
-//           <td>No</td>
+
 lastHarvests = [
   { id: 1, status: 'Cosecha fallida', start: '2025-03-17 10:12:01', end: '2025-03-17 11:39:56', total: 298310, harvested: 298310, failed: 0, pending: 0, retry: 'No' },
 ]
 ngOnInit() {
-  console.log(this.network); 
+  console.log(this.network);
+  
  }
 }

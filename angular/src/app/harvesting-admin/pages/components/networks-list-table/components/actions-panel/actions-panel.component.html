@@ -1,4 +1,6 @@
- 
+<p-toast></p-toast>
+<p-confirmDialog [style]="{width: '30vw'}"></p-confirmDialog>
+
  <!-- ACTION BUTTON -->
  <p-button (onClick)="op.toggle($event)" styleClass="p-button-text p-button-sm" pTooltip="Actions">
     <i class="pi pi-cog" style="font-size: 1.2rem; color: grey; " ></i>
@@ -6,90 +8,60 @@
 
   <!--  ACTIONS DASHBOARD -->
   <p-overlayPanel #op>
-    <div>
+    <div class="p-4">
       <!-- <span>Ejecutar acciones configuradas</span> -->
       <!-- <p-divider/> -->
       <div class="flex flex-column gap-2">
-        <span class="mb-4 font-bold">Acciones individuales</span>
 
-        
-
-        <div *ngFor="let action of actions" class="flex justify-content-between gap-4 align-items-center">
-
-          <div class="flex gap-2">
-            <p-checkbox [binary]="true" />
-            <span> {{ action.description }} </span>
-          </div>
-
-          <div class="flex justify-content-end gap-1">
-            <p-button styleClass="p-button-outlined p-button-sm" pTooltip="Full" label="Full"></p-button>
-            <p-button *ngIf="action.incremental" styleClass="p-button-outlined p-button-sm" pTooltip="Incremental">Incremental</p-button>
-            <p-button  (onClick)="config.toggle($event)" styleClass="p-button-text p-button-sm" pTooltip="Edit">
-              <i class="pi pi-file-edit" style="font-size: 1.2rem; color: grey;" ></i>
-            </p-button>
-          </div>
-
-          
-
-        </div>
-        
-        <!-- <div class="flex justify-content-between gap-4 align-items-center">
-
-          <div class="flex gap-2">
-            <p-checkbox [binary]="true" />
-            <span> Validation </span>
-          </div>
-
-          <div class="flex justify-content-end gap-1">
-            <p-button styleClass="p-button-outlined p-button-sm" pTooltip="Full">Full</p-button>
-            <p-button styleClass="p-button-outlined p-button-sm" pTooltip="Incremental">Incremental</p-button>
-            <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
-              <i class="pi pi-file-edit" style="font-size: 1.2rem; color: grey;" ></i>
-            </p-button>
-          </div>
-        </div>
-
-        <div class="flex justify-content-between gap-4 align-items-center">
-
-          <div class="flex gap-2">
-            <p-checkbox [binary]="true" />
-            <span> Index front </span>
-          </div>
-
-          <div class="flex justify-content-end gap-1">
-            <p-button styleClass="p-button-outlined p-button-sm" pTooltip="Full">Full</p-button>
-            <p-button styleClass="p-button-outlined p-button-sm" pTooltip="Incremental">Incremental</p-button>
-            <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
-              <i class="pi pi-file-edit" style="font-size: 1.2rem; color: grey;" ></i>
-            </p-button>
-          </div>
-        </div> -->
-
+        <!-- OVERLAY WITH ACTIONS CONFIG -->
         <p-overlayPanel #config>
           <div class="flex flex-column">
             <span class="font-bold">Configurations</span>
             <p-divider/>
-            <div class="flex gap-2 mb-2">
-              <span> Full force </span>
+            <div *ngFor="let property of actionPropsConfig?.properties" class="flex gap-2 mb-2">
+              <span> {{property.name}} </span>
               <p-checkbox [binary]="true" />
             </div>
-
-            <div class="flex gap-2 mb-2">
-              <span> Otro </span>
-              <p-checkbox [binary]="true" />
-            </div>
-
+              
               <p-button styleClass="p-button-sm w-full" label="Save"></p-button>
-
           </div>
 
         </p-overlayPanel>
-        
+
+        <span class="font-bold">Acciones individuales</span>
+
         <p-divider/>
 
+        <!-- ACTIONS LIST -->
+        <div *ngFor="let action of actions" class="grid">
+  
+          <div class="col-6 flex gap-2 align-items-center">
+            <p-checkbox [binary]="true" 
+            [ngModel]="isSelected"
+            (onChange)="toggleAction(action)"
+            />
+            <span> {{ action.description }} </span>
+          </div>
+        
+          <!-- Contenedor para alinear los botones uniformemente -->
+          <div class="col-6 flex gap-1 ">
+            
+            <p-button (click)="confirm1()" styleClass="p-button-outlined p-button-sm" pTooltip="Full" label="Full"></p-button>
+            <p-button *ngIf="action.incremental" styleClass="p-button-outlined p-button-sm" pTooltip="Incremental">Incremental</p-button>
+            <p-button *ngIf="action.properties.length > 0" (click)="openConfig($event, action, config)" styleClass="p-button-text p-button-sm" pTooltip="Edit">
+              <i class="pi pi-file-edit" style="font-size: 1.2rem; color: grey;"></i>
+            </p-button>
+          </div>
+        
+        </div>
+        
+           
+        <p-divider/>
+
+        <!-- SELECTED ACTIONS CONTROL -->
         <span class="font-bold mb-2 text-sm">Control de acciones seleccionadas</span>
         <span class="p-buttonset">
-          <button disabled pButton pRipple icon="pi pi-play" label="Start" pTooltip="Ejecutar marcadas"></button>
+          <button [disabled]="selectedActions.length === 0 " pButton pRipple icon="pi pi-play" label="Start" pTooltip="Ejecutar marcadas"></button>
           <button disabled pButton pRipple icon="pi pi-stop" label="Stop"></button>
           <button pButton pRipple icon="pi pi-calendar" label="Calendar"></button>
           <button (click)="cronConfig.toggle($event)" pButton pRipple icon="pi pi-clock" label="Cron"></button>
@@ -99,6 +71,8 @@
       </div>
 
     </div>
+
+    <!-- CRON CONFIG -->
     <p-overlayPanel #cronConfig>
       <div>
         <span class="font-bold">Harvesting cron</span>

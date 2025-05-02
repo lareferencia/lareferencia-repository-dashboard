@@ -1,20 +1,112 @@
 
-<div class="table-content-container p-3">
+<div class="table-content-container pt-3">
   <div class="flex justify-content-between mb-5">
 
-    <div class="flex gap-3 align-items-center">
-      <p-button styleClass="p-button-sm" i18n-label label="Add repositorie" icon="pi pi-plus"></p-button>
+    
+    <div class="flex align-items-center gap-3">
+      <p-badge value="Running process 0/45" severity="warn"></p-badge>
+      <p-badge value="Queued process 0/45" severity="info"></p-badge>
+       <!-- Button on click console log the selectedNetworks -->
+       <p-button [pTooltip]="selectedNetworkIDs.size === 0 ? 'Select at least one network' : 'Execute bulk actions'" 
+       [disabled]="selectedNetworkIDs.size === 0" label="Bulk actions" 
+       icon="pi pi-cog" styleClass="p-button-sm"
+       (onClick)="bulkActionsPanel.toggle($event)"
+       ></p-button>
+    </div>
+
+    <div class="flex gap-3">
+      <p-button (onClick)="newNetwork.toggle($event)" styleClass="p-button-sm" i18n-label label="New" icon="pi pi-plus"></p-button>
       <p-button styleClass="p-button-outlined p-button-secondary p-button-sm" icon="pi pi-spinner" i18n-label label="Update"></p-button>
       <p-button styleClass="p-button-outlined p-button-danger p-button-sm" icon="pi pi-stop-circle" i18n-label label="Turn off update"></p-button>
     </div>
 
-    <div class="flex align-items-center gap-3">
-      <p-badge value="Running process 15/45" severity="warn"></p-badge>
-      <p-badge value="Queued process 15/45" severity="info"></p-badge>
+  </div>
+  
+  <!-- NEW NETWORK -->
+  <p-overlayPanel #newNetwork>
+    <app-network-editor></app-network-editor>
+  </p-overlayPanel>
+
+  <!-- BULK ACTIONS PANEL -->
+  <p-overlayPanel #bulkActionsPanel>
+    <div class="p-4">
+      <!-- <span>Ejecutar acciones configuradas</span> -->
+      <!-- <p-divider/> -->
+      <div class="flex flex-column gap-2">
+
+        <!-- OVERLAY WITH ACTIONS CONFIG -->
+        <p-overlayPanel #config>
+          <div class="flex flex-column">
+            <span class="font-bold">Configurations</span>
+            <p-divider/>
+            <!-- <div *ngFor="let property of selectedAction?.properties" class="flex gap-2 mb-2">
+              <span> {{property.name}} </span>
+              <p-checkbox [binary]="true" />
+            </div> -->
+              <p-button styleClass="p-button-sm w-full" label="Save"></p-button>
+          </div>
+
+        </p-overlayPanel>
+
+        <span class="font-bold">Bulk actions in selected networks</span>
+
+        <p-divider/>
+
+        <!-- ACTIONS LIST -->
+        <div *ngFor="let action of actions" class="grid">
+  
+          <div class="col-6 flex gap-2 align-items-center">
+            <!-- <p-checkbox [binary]="true" /> -->
+            <span> {{ action.description }} </span>
+          </div>
+        
+          <!-- Contenedor para alinear los botones uniformemente -->
+          <div class="col-6 flex gap-1 ">
+            <p-button styleClass="p-button-outlined p-button-sm" pTooltip="Full" label="Full"></p-button>
+            <p-button *ngIf="action.incremental" styleClass="p-button-outlined p-button-sm" pTooltip="Incremental">Incremental</p-button>
+            <p-button *ngIf="action.properties.length > 0"
+              styleClass="p-button-text p-button-sm" pTooltip="Edit">
+              <i class="pi pi-file-edit" style="font-size: 1.2rem; color: grey;"></i>
+            </p-button>
+          </div>
+        
+        </div>
+        
+           
+        <!-- <p-divider/> -->
+
+        <!-- SELECTED ACTIONS CONTROL -->
+        <!-- <span class="font-bold mb-2 text-sm">Control de acciones seleccionadas</span>
+        <span class="p-buttonset">
+          <button disabled pButton pRipple icon="pi pi-play" label="Start" pTooltip="Ejecutar marcadas"></button>
+          <button disabled pButton pRipple icon="pi pi-stop" label="Stop"></button>
+          <button pButton pRipple icon="pi pi-calendar" label="Calendar"></button>
+          <button (click)="cronConfig.toggle($event)" pButton pRipple icon="pi pi-clock" label="Cron"></button>
+        </span> -->
+
+
+      </div>
+
     </div>
 
-  </div>
+    <!-- CRON CONFIG -->
+    <p-overlayPanel #cronConfig>
+      <div>
+        <span class="font-bold">Harvesting cron</span>
+        <p-divider/>
+        <div class="mb-2">
+          <input class="w-full" type="text" pInputText placeholder="* 0 0 29 2 *"  />
+        </div>
+        <p-button styleClass="p-button-sm w-full" label="Save"></p-button>
+
+      </div>
+
+    </p-overlayPanel>
+
+  </p-overlayPanel>
+
   <hr>
+  
   <p-table 
       [value]="networksList"
       [paginator]="true"
@@ -25,49 +117,83 @@
       [lazy]="true"
       [loading]="isLoading"
       (onLazyLoad)="loadContent($event)"
-      (onSort)="onSort($event)">
+      (onSort)="onSort($event)"
+      [(selection)]="selectedNetworks"
+      >
 
-      <ng-template pTemplate="body" let-networksList>
+      <ng-template class="flex" pTemplate="body" let-networksList>
 
         <!-- ACCORDION FOR EVERY REPO -->
+       
+      <tr class="flex align-items-center">
+        <div class="mr-3">
+          <p-checkbox 
+          [binary]="true"
+          [ngModel]="isSelected(networksList.networkID)"
+          (onChange)="toggleSelection(networksList.networkID)">
+        </p-checkbox>
+        </div>
+
         <p-accordion expandIcon="pi pi-angle-down" collapseIcon="pi pi-angle-up">
           <p-accordionTab >
 
               <ng-template pTemplate="header"> 
-                <div class="w-11 flex justify-content-between align-items-center">
+                <div class="w-11 ">
                  
                   <!-- CONTAINER WITH THE ELEMENTS -->
-                  <div class="flex w-full justify-content-between gap-3 align-items-center">
-                    <span class="flex-1 text-left">{{ networksList.networkID }}</span>
-                    <span class="flex-1 text-left">{{ networksList.acronym }}</span>
-                    <span class="flex-1 text-left">{{ networksList.name }}</span>
-                    <span class="flex-1 text-left" style="min-width: 250px;">{{ networksList.institution }}</span>
-                    <div class="flex-1 text-left">
-                      <span *ngIf="networksList.lstSnapshotStatus === 'VALID'; else harvestingFailed"class="font-semibold">
-                        <p-badge value="Valid harvest" badgeSize="xlarge" severity="success" />
-                      </span>
-                      <ng-template #harvestingFailed>
-                        <p-badge value="Harvesting failed" badgeSize="xlarge" severity="danger" />
-                      </ng-template>
+                  <div style="display: grid; grid-template-columns: 80px 100px 150px 1fr auto 20px 20px; align-items: center; gap: 1rem;">
+                    
+                    <div >{{networksList.networkID}}</div>
+                    <div >{{ networksList.acronym }}</div>
+                    <div >{{ networksList.name }}</div>
+                    <div >{{ networksList.institution }}</div>
+
+                    <!-- LAST VALID HARVEST -->
+                    <div *ngIf="networksList.lgkSnapshotID" class="flex gap-2 align-items-center">
                       <div>
                         <i class="pi pi-clock" style="font-size: 12px"></i>
-                        <span class="text-sm ml-1">{{networksList.lstSnapshotDate}}</span>
+                        <span class="ml-1 text-sm ">{{ networksList.lgkSnapshotDate }}</span>
                       </div>
+                      <p-badge value="Last valid harvest" badgeSize="xlarge" severity="success"></p-badge>
                     </div>
-                
-                    <!-- ACTIONS AND EDIT BUTTONS COANTAINER -->
-                    <div class="flex-1 text-left flex justify-content-end align-items-center">
 
-
-                      <!-- ACTIOS COMPONENT -->
-                      <Actions-panel></Actions-panel>
-
-                     
-                      <!-- EDIT BUTTON -->
-                      <p-button styleClass="p-button-text p-button-sm" pTooltip="Edit">
-                        <i class="pi pi-file-edit" style="font-size: 1.2rem; color: grey; " ></i>
-                      </p-button>
+                    <!-- ONLY ONE BUT NOT VALIDATED -->
+                    <div *ngIf="!networksList.lgkSnapshotID && networksList.lstSnapshotID" class="flex gap-2 align-items-center">
+                      <div>
+                        <i class="pi pi-clock" style="font-size: 12px"></i>
+                        <span class="ml-1 text-sm ">{{ networksList.lstSnapshotDate }}</span>
+                      </div>
+                      <p-badge value="Harvest without validation" badgeSize="xlarge" styleClass="bg-yellow-500"></p-badge>
                     </div>
+
+                    <!-- SOURCE WITHOUT HARVESTS -->
+                    <div *ngIf="!networksList.lgkSnapshotID && !networksList.lstSnapshotID" class="flex gap-2 align-items-center">
+                      <p-badge value="No harvests for this source" badgeSize="xlarge" severity="Info"></p-badge>
+                    </div>
+
+
+
+                    <!-- LAS HARVEST WITH ERRORS -->
+                    <div *ngIf="networksList.lstSnapshotStatus === 'HARVESTING_FINISHED_ERROR';" class="flex align-items-end">
+                      <i pTooltip="There are failed harvests" 
+                        class="pi pi-exclamation-triangle" 
+                        style="font-size: 1.2rem; font-weight : bold; color: red">
+                      </i>
+                    </div>
+
+                    <!-- LAST HARVEST NO VALIDATED -->
+                    <div *ngIf="networksList.lstSnapshotStatus === 'NO_VALIDATED';" class="flex align-items-end">
+                      <i pTooltip="There are harvests that are not validated" 
+                        class="pi pi-exclamation-triangle" 
+                        style="font-size: 1.2rem; font-weight: bold; color: rgb(234, 234, 49)">
+                      </i>
+                    </div>
+
+
+                    <div class="flex align-items-center">
+                      <i class="pi pi-spin pi-spinner" style="font-size: 1.2rem; color: grey"></i>
+                    </div>
+
                   </div>
                 </div>
                 
@@ -79,7 +205,23 @@
               </div>
           </p-accordionTab> 
         </p-accordion>
-        
+
+        <div class=" flex justify-content-end align-items-center">
+          <Actions-panel [actions]="actions"></Actions-panel>
+
+          <!-- MAKE THIS A NEW COMPONENT -->
+          <p-button (onClick)="edit.toggle($event)" styleClass="p-button-text p-button-sm" pTooltip="Edit">
+            <i class="pi pi-file-edit" style="font-size: 1.1rem; color: grey; " ></i>
+          </p-button>
+        </div>
+
+      </tr>
+
+      <!-- EDIT NETWORK -->
+      <p-overlayPanel #edit>
+        <app-network-editor></app-network-editor>
+      </p-overlayPanel>
+      
       </ng-template>
 
 

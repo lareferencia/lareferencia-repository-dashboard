@@ -1,103 +1,67 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { OverlayPanel } from 'primeng/overlaypanel';
+import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
+
 
 @Component({
   selector: 'Actions-panel',
   templateUrl: './actions-panel.component.html',
-  styleUrls: ['./actions-panel.component.css']
+  styleUrls: ['./actions-panel.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 export class ActionsPanelComponent implements OnInit {
 
-  constructor() { }
+  @Input() actions: any[] = [];
 
-  public actions: any  = [];
-  ngOnInit(): void {
+  actionPropsConfig: any = null;
+  selectedActions: any = [];
 
-    this.actions = [
-      {
-          workers: ["harvestingWorker"],
-          incremental: true,
-          properties: [
-              { name: "FORCE_FULL_HARVESTING", description: "Force full harvesting?" }
-          ],
-          runOnSchedule: true,
-          allwaysRunOnSchedule: true,
-          name: "HARVESTING_ACTION",
-          description: "Harvesting"
+
+  constructor(private confirmationService: ConfirmationService, private messageService: MessageService) { }
+  ngOnInit(): void { }
+
+
+  confirm1() {
+    console.log('confirm1');
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
       },
-      {
-          workers: ["validationWorker"],
-          incremental: true,
-          properties: [
-              { name: "DETAILED_DIAGNOSE", description: "Perform detailed diagnostics (occurrences)" }
-          ],
-          runOnSchedule: true,
-          allwaysRunOnSchedule: true,
-          name: "VALIDATION_ACTION",
-          description: "Validation/Transf"
-      },
-      {
-          workers: ["frontendIndexerWorker"],
-          incremental: true,
-          properties: [
-              { name: "INDEX_FRONTEND", description: "Index on frontend?" },
-              { name: "INDEX_FULLTEXT", description: "Index full text?" }
-          ],
-          runOnSchedule: true,
-          allwaysRunOnSchedule: false,
-          name: "FRONTEND_INDEXING_ACTION",
-          description: "Index Frontend"
-      },
-      {
-          workers: ["frontendDeleteWorker"],
-          incremental: false,
-          properties: [],
-          runOnSchedule: false,
-          allwaysRunOnSchedule: false,
-          name: "FRONTEND_DELETE_ACTION",
-          description: "UnIndex Frontend"
-      },
-      {
-          workers: ["xoaiIndexerWorker"],
-          incremental: true,
-          properties: [
-              { name: "INDEX_XOAI", description: "Export to OAI-PMH Provider?" }
-          ],
-          runOnSchedule: true,
-          allwaysRunOnSchedule: false,
-          name: "XOAI_INDEXING_ACTION",
-          description: "Index OAI-PMH"
-      },
-      {
-          workers: ["xoaiDeleteWorker"],
-          incremental: false,
-          properties: [],
-          runOnSchedule: false,
-          allwaysRunOnSchedule: false,
-          name: "XOAI_DELETE_ACTION",
-          description: "UnIndex OAI-PMH"
-      },
-      {
-          workers: ["networkCleanWorker"],
-          incremental: false,
-          properties: [
-              { name: "CLEAN_NETWORK", description: "Clean old snapshots?" }
-          ],
-          runOnSchedule: true,
-          allwaysRunOnSchedule: false,
-          name: "NETWORK_CLEAN_ACTION",
-          description: "Clean snapshots"
-      },
-      {
-          workers: ["networkDeleteWorker"],
-          incremental: false,
-          properties: [],
-          runOnSchedule: false,
-          allwaysRunOnSchedule: false,
-          name: "NETWORK_DELETE_ACTION",
-          description: "Clean network (!)"
+      reject: (type) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+            break;
+          case ConfirmEventType.CANCEL:
+            this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'You have cancelled' });
+            break;
+        }
       }
-  ];
-  
+    });
   }
 
+
+  isSelected(action: any) {
+    return this.selectedActions.includes(action);
+  }
+  toggleAction(action: any) {
+    if (this.isSelected(action)) {
+      this.selectedActions = this.selectedActions.filter((a: any) => a !== action);
+    } else {
+      this.selectedActions.push(action);
+    }
+    console.log(this.selectedActions);
+
+  }
+
+  openConfig(event: Event, action: any, config: OverlayPanel) {
+    this.actionPropsConfig = { ...action };
+    config.toggle(event);
+
+    console.log(this.actionPropsConfig);
+
+  }
 }

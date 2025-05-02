@@ -1,0 +1,4 @@
+
+::ng-deep .p-datatable .p-datatable-tbody>tr>td  {
+  padding: .5rem;
+}
