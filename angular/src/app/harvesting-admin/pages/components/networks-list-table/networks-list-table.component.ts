@@ -13,7 +13,7 @@ import { NetworksDashboardComponent } from './components/networks-dashboard/netw
 export class NetworksListTableComponent implements OnInit {
 
   networksList: Network[];
-  pageSize: number = 10;
+  pageSize: number = 20;
   pageNumber: number;
   isLoading: boolean = false;
   totalRecords: number;
