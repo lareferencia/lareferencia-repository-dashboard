@@ -24,6 +24,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const widgetConfig = this.appConfigService.getHistoricStatsData();
+    
     this.menuService.activeRepo.pipe(
       switchMap(repo => {
         this.label = repo.name;
@@ -52,7 +53,8 @@ export class MainComponent implements OnInit, OnDestroy {
           value: stats_source_id,
         },
         scope_labels: {
-          N: institutionName,
+          N: widgetConfig.is_national_aggregator ? widgetConfig.scope_labels.N : institutionName,
+          R: widgetConfig.is_national_aggregator ? institutionName : ''
         },
       }
     };

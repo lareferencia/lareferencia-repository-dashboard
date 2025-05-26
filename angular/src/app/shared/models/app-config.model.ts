@@ -82,6 +82,7 @@ export interface StatisticsModule {
 
 export interface HistoricStats {
   widget_url:      string;
+  is_national_aggregator: boolean;
   event_labels:    EventLabels;
   scope_labels:    ScopeLabels;
   country:         string;

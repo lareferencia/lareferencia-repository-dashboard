@@ -10,7 +10,7 @@ h6 {
 .header-component{
     max-width: 1440px;
     margin: 0 auto;
-    position: sticky; 
+    /* position: sticky;  */
     top: 0; 
     /* width: calc(100% - 61px); */
     /* margin-left: 44px; */
