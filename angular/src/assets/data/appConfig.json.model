@@ -50,18 +50,29 @@
         "active": true,
 
         "historic_stats": { 
-            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.1.4/dist/assets/chunks/historic-widget.js",
+            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.1.6/dist/assets/chunks/historic-widget.js",
 
-            "scope_labels": {
-                "L": "LA Referencia",
-                "N": "[[Nombre nodo nacional]]",
-                "R": "[[Nombre repositorio]]"
+            "is_national_aggregator": false,
+
+            "widget_div_id": "lrhw-widget",
+		    "repositories_list": [
+		    	{
+		    	    "label":"[[Nombre del repositorio]]",
+		    	    "value": "[[id del repositior, por ejemplo opendoar::xxxx]]"
+		    	},
+		    	{
+		    	    "label":"[[Nombre del repositorio]]",
+		    	    "value": "[[id del repositior, por ejemplo opendoar::xxxx]]"
+		    	}
+		        ],
+ 		        "default_repository":
+		        	{
+		        	"label":"[[Nombre del repositorio]]",
+ 		            "value": "[[id del repositorio, por ejemplo opendoar::xxxx]]"
+ 		        },
+		        "scope_labels": { "N": "Nombre Nodo Nacional" }
+		        }
             },
-            "country": "[[ISO-país]]",
-            "national_source": "[[SITEID::XXX]]",
-            "preview": false
-        }
-    },
 
     "broker_module": {
         "active": false,
