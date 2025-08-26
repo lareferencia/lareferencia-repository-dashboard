@@ -34,6 +34,9 @@ speed-measure-plugin*.json
 #config files
 appConfig.json
 
+#dummy
+networks.json
+
 
 # misc
 /.angular/cache
