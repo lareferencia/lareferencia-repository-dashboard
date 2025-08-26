@@ -85,7 +85,7 @@ export class RecordsTableComponent implements  OnInit {
     this.dialogTitle = record.identifier;
     record.rules = this.validation.rulesByID;
     this.visible = true;    
-    this.dialogData = { record, acronym: this.acronym };
+    this.dialogData = { record, acronym: this.acronym };    
   };
 
   getPublicationUrl(id: string) {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { HarvestingService } from 'src/app/core/services/harvesting.service';
+// import { HarvestingService } from 'src/app/core/services/harvesting.service';
 
 import { Record } from 'src/app/shared/models/record.model';
 import { DialogData } from 'src/app/validations/interfaces/dialogData.interface';
@@ -14,20 +14,20 @@ export class EvaluationRulesComponent implements OnInit {
 
   @Input() dialogData: DialogData; 
   public record: Record;
-  public xml: string;
+  // public xml: string;
   public acronym: string;
 
   constructor(
-    private service: HarvestingService,
+    // private service: HarvestingService,
   ) {}
 
   ngOnInit(): void {
     this.record = this.dialogData.record;
     this.acronym = this.dialogData.acronym;
 
-    this.service.getMetadataXml(this.acronym, this.record.id).subscribe(result=> {
-      this.xml = result;
-    })
+    // this.service.getMetadataXml(this.acronym, this.record.id).subscribe(result=> {
+    //   this.xml = result;
+    // })
   }
 
   getRule(ruleID: string) {
