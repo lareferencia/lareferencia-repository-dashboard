@@ -866,8 +866,8 @@
           <context context-type="linenumber">142</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7e7eb2dacdc0f3c6ad6b156264ddb1a8e03bb2b2" datatype="html">
-        <source>Valid Record</source><target>Registro válido</target>
+      <trans-unit id="eda427bb59efd1eedc969bb7e99317cfdec9bca2" datatype="html">
+        <source>Valid for this rule</source><target>Válido para esta regla</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">77</context>
@@ -877,8 +877,8 @@
           <context context-type="linenumber">180</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2105a001277d7a7bd4468d72549abf77078dda97" datatype="html">
-        <source>Invalid Record</source><target>Registro no válido</target>
+      <trans-unit id="ac11d602f17c4caaf94f665bf2e418aa5bfe321c" datatype="html">
+        <source>Invalid for this rule</source><target>Inválido para esta regla</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
           <context context-type="linenumber">80</context>

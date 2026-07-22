@@ -1,9 +1,9 @@
 {
   "name": "frontend",
-  "version": "2.1.9",
+  "version": "2.2.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration=en --port 8080",
+    "start": "ng serve --configuration=es --port 8080",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

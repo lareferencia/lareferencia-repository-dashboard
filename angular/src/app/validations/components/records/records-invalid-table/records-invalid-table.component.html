@@ -43,7 +43,7 @@
           <tr>
             <td >{{dataSource.id}}</td>
             <td >{{dataSource.identifier}}</td>
-            <td i18n><b>{dataSource.isValid, select, true {Invalid} false {Valid} }</b></td>
+            <td i18n><b>{dataSource.isValid, select, true {Valid} false {Invalid} }</b></td>
             <td i18n><b>{dataSource.isTransformed, select, true {Yes} false {No} }</b></td>
             <td>
               <p-button
@@ -74,10 +74,10 @@
   <ng-template pTemplate="header" class="grid">
     <div class="grid flex-column col-2">
       <p-tag *ngIf="dialogData.record.isValid" severity="success">
-        <span class="text-base font-normal" i18n>Valid Record</span>
+        <span class="text-base font-normal" i18n>Valid for this rule</span>
       </p-tag>
       <p-tag *ngIf="!dialogData.record.isValid" severity="danger">
-        <span class="text-base font-normal" i18n>Invalid Record</span>
+        <span class="text-base font-normal" i18n>Invalid for this rule</span>
       </p-tag>
 
       <div class="flex align-items-center mt-3 mb-3">
