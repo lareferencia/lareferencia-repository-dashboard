@@ -38,18 +38,6 @@ h1{
   /* margin-left: 55px; */
 }
 
-.tooltip-broker-message {
-  border: 1px solid gray;
-  border-radius: 2px;
-  padding: 1px 5px 4px 5px;
-  font-size: 15px;
-  white-space: pre-wrap;
-  color: gray !important;
-  background-color: rgba(255, 255, 255, 0.9);
-  max-width: unset !important;
-  width: 100%;
-}
-
 .mat-drawer-inner-container::-webkit-scrollbar {
   overflow-x: hidden;
 }
