@@ -38,16 +38,12 @@ export class HomeComponent implements OnInit {
       this.harvestingService.getHarvestingLastGoodKnowByAcronym(acronym)
         .subscribe(({id}) =>{
           this.router.navigate([`${acronym}/validation/${id}`])
-        }, () =>{this.router.navigate([`${acronym}/validation/-1`])
+        }, (error) => { this.router.navigate([`${acronym}/validation/${error.status === 404 ? 0 : -1}`]);
       })
     });
   }
   onStatisticsNavigate(){
     this.router.navigate(['statistics']);
-  }
-
-  onHarvestingAdminNavigate(){
-    this.router.navigate(['harvesting-admin']);
   }
 
   isModuleActive( path: string ){

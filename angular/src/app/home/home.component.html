@@ -40,14 +40,9 @@
         <span i18n [class]="isModuleActive('validation_module') ? 'opacity-100' : 'opacity-0'" >Validations</span>
       </a>
 
-      <a [class]="isModuleActive('statistics_module') ? 'services-item' : 'services-item-inprogress'" (click)="onStatisticsNavigate()">
-        <img style="width: 24px; opacity: 0.7;" [class]="isModuleActive('statistics_module') ? 'opacity-100' : 'opacity-0'" src="assets/icons/statistics.svg" alt=""> 
-        <span i18n [class]="isModuleActive('statistics_module') ? 'opacity-100' : 'opacity-0'">Usage statistics</span>
-      </a>
-
-      <a [class]="isModuleActive('harvesting_admin_module') ? 'services-item' : 'services-item-inprogress'" (click)="onHarvestingAdminNavigate()">
-        <img style="width: 24px; opacity: 0.7;" [class]="isModuleActive('harvesting_admin_module') ? 'opacity-100' : 'opacity-0'" src="assets/icons/harvesting-admin.svg" alt=""> 
-        <span i18n [class]="isModuleActive('harvesting_admin_module') ? 'opacity-100' : 'opacity-0'">Harvesting admin</span>
+      <a *ngIf="isModuleActive('statistics_module')" class="services-item" (click)="onStatisticsNavigate()">
+        <img style="width: 24px; opacity: 0.7;" class="opacity-100" src="assets/icons/statistics.svg" alt="">
+        <span i18n class="opacity-100">Usage statistics</span>
       </a>
 
       <!-- <a class="services-item-inprogress" >
@@ -59,4 +54,3 @@
   <h6 style="margin-bottom: 0; margin-right: 8px;" i18n>Powered by</h6>
   <img style="width: 180px;" src="assets/img/logo-footer.png" alt="">
 </div>
-

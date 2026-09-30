@@ -15,25 +15,28 @@ export class ValidationService {
   private baseurl: string;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
-    this.baseurl = appConfig.getValidationModuleData().endpoints.validationService;
+    this.baseurl = `${appConfig.getApiBaseUrl()}/dashboard/validation/source/`;
    }
 
   getValidationResultsByHarvestingID(sourceAcronym: string, harvestingID: number): Observable<Validation> {
-    return this.http.get<Validation>(`${this.baseurl}${sourceAcronym}/${harvestingID}`).pipe(
-      map(obj => obj),
+    return this.http.get<Validation>(`${this.baseurl}${sourceAcronym}/${harvestingID}`, { withCredentials: true }).pipe(
+      map(obj => ({
+        ...obj,
+        rulesByID: Array.isArray(obj.rulesByID) ? obj.rulesByID : Object.values(obj.rulesByID || {}),
+      })),
       catchError(e => this.errorHandler(e))
     );
   }
 
   getValidOccurrencesByHarvestingIDRuleID(sourceAcronym: string, harvestingID: number, ruleID: number): Observable<Occurence[]> {
-    return this.http.get<Occurence>(`${this.baseurl}${sourceAcronym}/${harvestingID}/valid_occrs/${ruleID}`).pipe(
+    return this.http.get<Occurence[]>(`${this.baseurl}${sourceAcronym}/${harvestingID}/valid_occrs/${ruleID}`, { withCredentials: true }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
   }
 
   getInValidOccurrencesByHarvestingIDRuleID(sourceAcronym: string, harvestingID: number, ruleID: number): Observable<Occurence[]> {
-    return this.http.get<Occurence>(`${this.baseurl}${sourceAcronym}/${harvestingID}/invalid_occrs/${ruleID}`).pipe(
+    return this.http.get<Occurence[]>(`${this.baseurl}${sourceAcronym}/${harvestingID}/invalid_occrs/${ruleID}`, { withCredentials: true }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
@@ -55,7 +58,7 @@ export class ValidationService {
       params = params.append('oai_identifier', filter.oaiIdentifier);
 
     return this.http
-      .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })
+      .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params, withCredentials: true })
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
@@ -69,7 +72,7 @@ export class ValidationService {
       .append('pageSize', pageSize.toString());
 
     return this.http
-      .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })
+      .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params, withCredentials: true })
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
@@ -104,7 +107,7 @@ export class ValidationService {
         filter.invalidRules.map((x) => x.ruleID).join(',')
       );
     return this.http
-      .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params })
+      .get<Records>(`${this.baseurl}${sourceAcronym}/${harvestingID}/records`, { params, withCredentials: true })
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))

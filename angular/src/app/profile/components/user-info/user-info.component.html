@@ -1,49 +1,11 @@
-<div class="profile-section">
+<section class="profile-section" *ngIf="authenticationService.currentUser as user">
   <div class="form-section">
-
-    <h2 i18n>Edit Info</h2>
-
-    <div *ngIf="isLoading" style="display: flex; justify-content: center; margin-top: 2rem;">
-      <p-progressSpinner></p-progressSpinner>
-    </div>
-
-    <form [formGroup]="userForm" *ngIf="!isLoading" class="user-form animate__animated animate__fadeIn" >
-        <input pInputText placeholder-i18n placeholder="Name" formControlName="first_name">
-
-        <input pInputText formControlName="email" i18n-placeholder placeholder="email">
-
-        <span class="text-xs mt-1 text-cyan-900" 
-          *ngIf="userForm.controls['email'].getError('required')">
-          This field is required
-        </span>
-
-        <span class="text-xs mt-1 text-cyan-900" 
-          *ngIf="userForm.controls['email'].getError('email')">
-          The entered value is not correct
-        </span>
-
-        <input pInputText formControlName="telephone"i18n-placeholder placeholder="Telephone">
-
-        <p-dropdown
-          class="mt-2"
-          optionLabel="label"
-          optionValue="value" 
-          formControlName="position"
-          [options]="positions"></p-dropdown>
-
-        <input class="mt-2" pInputText  formControlName="affiliation" i18n-placeholder placeholder="Affiliation">
-
-      <p-toast position="bottom-right"></p-toast>
-        <p-button
-        class="mt-2" 
-        [disabled]="!updatingSuccess"
-        (click)="onClickSave()" i18n
-        i18n-label label="Update">
-      </p-button>
-    </form>
-
+    <h2 i18n>Account</h2>
+    <dl>
+      <dt i18n>Username</dt><dd>{{ user.username }}</dd>
+      <dt i18n>Role</dt><dd>{{ user.roles.join(', ') }}</dd>
+      <dt i18n>Readable repository IDs</dt><dd>{{ user.readableNetworkIds.join(', ') || 'All repositories' }}</dd>
+    </dl>
+    <p i18n>Contact an administrator to change your account or repository permissions.</p>
   </div>
-  
-</div>
-
-
+</section>

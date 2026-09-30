@@ -3,6 +3,7 @@
 
 <div class="table-container
   animate__animated animate__fadeInLeft animate__faster">
+    <div *ngIf="loadError" class="alert alert-danger" role="alert" i18n>Unable to load records</div>
     <div class="table-content-container">
       <div class="table-filters-container">
         <div class="flex gap-3">

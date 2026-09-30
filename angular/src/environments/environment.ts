@@ -15,11 +15,3 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-
-
-// harvestingService: 'https://validador.lareferencia.info/api/v2/harvesting/source/',
-  // validationService: 'https://validador.lareferencia.info/api/v2/validation/source/',
-  // brokerService: 'https://validador.lareferencia.info/api/v2/oabroker/source/',
-  // securityService: 'https://validador.lareferencia.info/api/v2/security/management/',
-  // keycloakConfig: keycloakConfig,

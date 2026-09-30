@@ -26,7 +26,5 @@ import { AppConfigService } from '../services/app-config.service';
     const { module } = route.data
     const isActivated = appConfig.getModuleStatus( module );
     
-    if(!isActivated){
-        return router.navigate(['/']);
-    }
+    return isActivated ? true : router.createUrlTree(['/']);
   }

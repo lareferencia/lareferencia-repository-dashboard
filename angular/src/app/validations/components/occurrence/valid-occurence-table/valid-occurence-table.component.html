@@ -1,7 +1,8 @@
 <div *ngIf="isLoading" class="flex justify-content-center p-6">
   <p-progressSpinner></p-progressSpinner>
 </div>
-<div *ngIf="!isLoading" class="table-container mt-3
+<div *ngIf="loadError" class="alert alert-danger" role="alert" i18n>Unable to load occurrences</div>
+<div *ngIf="!isLoading && !loadError" class="table-container mt-3
   animate__animated animate__fadeInRight animate__faster">
     <div class="table-content-container">
       <p-table 
@@ -33,4 +34,4 @@
       </p-table>
     </div>
 </div>
-<app-table-exporter *ngIf="!isLoading" [data]="csvData" [header]="headerData"></app-table-exporter>
+<app-table-exporter *ngIf="!isLoading && !loadError" [data]="csvData" [header]="headerData"></app-table-exporter>

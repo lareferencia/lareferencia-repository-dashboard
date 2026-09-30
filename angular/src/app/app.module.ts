@@ -1,9 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
-import { initializeKeycloak } from './keycloak-init';
-
 
 import { AuthenticationService } from './core/services/authentication.service';
 
@@ -15,17 +12,16 @@ import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { AppConfigService } from './core/services/app-config.service';
 import { appInitializerFn } from './app-config-init';
-// import { BrokerModule } from './components/broker/broker.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    KeycloakAngularModule,
     CoreModule,
+    AuthModule,
     HomeModule,
-    // BrokerModule,
     AppRoutingModule,
     LayoutModule,
   ],
@@ -35,15 +31,9 @@ import { appInitializerFn } from './app-config-init';
       provide: APP_INITIALIZER,
       useFactory: appInitializerFn,
       multi: true,
-      deps: [AppConfigService]
+      deps: [AppConfigService, AuthenticationService]
     },
     AuthenticationService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService, AppConfigService]
-    },
   ],
   bootstrap: [AppComponent]
 })

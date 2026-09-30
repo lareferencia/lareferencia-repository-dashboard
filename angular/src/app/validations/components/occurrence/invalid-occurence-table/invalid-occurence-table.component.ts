@@ -17,6 +17,7 @@ export class InvalidOccurenceTableComponent implements OnInit {
 
 
   public isLoading = true;
+  public loadError = false;
   public dataSource: any;
   public displayedColumns = ['value', 'count'];
   public csvData: Occurence[];
@@ -37,17 +38,21 @@ export class InvalidOccurenceTableComponent implements OnInit {
 
   loadData(){
     this.isLoading = true;
+    this.loadError = false;
     this.subscription = this.validationService
       .getInValidOccurrencesByHarvestingIDRuleID(
         this.rule.acronym,
         this.rule.harvestingID,
         this.rule.ruleID
       )
-      .subscribe((result) => {
+      .subscribe({ next: (result) => {
         this.isLoading = false;
         this.csvData = result;
         this.headerData = ['Ocurrence','Amount'];
         this.dataSource = result;
-      });
+      }, error: () => {
+        this.isLoading = false;
+        this.loadError = true;
+      }});
   }
 }

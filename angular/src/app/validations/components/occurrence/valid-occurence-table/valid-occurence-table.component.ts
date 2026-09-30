@@ -19,6 +19,7 @@ export class ValidOccurenceTableComponent implements OnInit {
   public csvData: Occurence[];
   public headerData: any[];
   public isLoading = true;
+  public loadError = false;
 
   constructor(private validationService: ValidationService) {}
 
@@ -30,11 +31,14 @@ export class ValidOccurenceTableComponent implements OnInit {
         this.rule.harvestingID,
         this.rule.ruleID
       )
-      .subscribe((result) => {
+      .subscribe({ next: (result) => {
         this.isLoading = false;
         this.csvData = result;
         this.headerData = ['Ocurrence', 'Amount'];
         this.dataSource = result;
-      });
+      }, error: () => {
+        this.isLoading = false;
+        this.loadError = true;
+      }});
   }
 }

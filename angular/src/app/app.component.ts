@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { MenuService } from './core/services/menu.service';
 import { HarvestingService } from './core/services/harvesting.service';
-import { AuthenticationService } from './core/services/authentication.service';
-
 import { Menu } from './shared/models/menu.model';
-import { HarvestingList } from './shared/models/harvesting-list.model';
-import { Harvesting } from './shared/models/harvesting.model';
-import { AppConfigService } from './core/services/app-config.service';
+import { AuthenticationService } from './core/services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -15,59 +11,53 @@ import { AppConfigService } from './core/services/app-config.service';
 })
 export class AppComponent implements OnInit {
   public repositoriesMenu: Menu[] = [];
-  public admUser = false;
   public isRepositoriesEmpty = false;
+  public isLoadingRepositories = true;
+  public repositoryLoadError = false;
  
 
   constructor(
     private menuService: MenuService,
     private harvestingService: HarvestingService,
-    private authenticationService: AuthenticationService,
-    public appConfigService: AppConfigService
+    public authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
-    if(!this.appConfigService.isInitialized){
-      const onInitErrorMsg = document.getElementById('oninit-error');
-      if(onInitErrorMsg){
-        onInitErrorMsg.innerHTML = '<h1>No te olvides de configurar el JSON.</h1>'
+    this.authenticationService.user$.subscribe(user => {
+      if (user) this.loadRepositories();
+      else {
+        this.repositoriesMenu = [];
+        this.isLoadingRepositories = false;
+        this.isRepositoriesEmpty = false;
+        this.menuService.menu.next([]);
       }
-    }
-    
-    this.admUser = this.authenticationService.isAdmUser();
-    this.harvestingService.getHarvestingList()
-      .subscribe((harvestingList) => {
+    });
+  }
 
-        if(harvestingList.content.length <= 0) {
-          this.isRepositoriesEmpty = true;
-          return;
-        };
-        this.resultHandler(harvestingList);
-      });
-    };
-
-  private resultHandler(harvestingList: HarvestingList ) {
-    harvestingList.content.forEach((harvesting: Harvesting) => {
-      this.repositoriesMenu.push({
-        id: harvesting.id,
-        name: harvesting.name,
-        acronym: harvesting.acronym,
-      });
-    });    
-    
-    this.repositoriesMenu = this.repositoriesMenu
-      .sort((a, b) => +(a.name > b.name) || -(a.name < b.name));
-
-    if ( this.repositoriesMenu.length === harvestingList.content.length ) {
-      this.menuService.menu.next(this.repositoriesMenu);
-      
-      // Set active repository by local storage
-      const activeRepository = localStorage.getItem('activeRepository');
-      if (activeRepository) return this.menuService.activeRepo.next(JSON.parse(activeRepository));
-
-      // Set active repository by first repository if local storage is empty
-      this.menuService.activeRepo.next(this.repositoriesMenu[0]);
-
-    };
-  };
+  private loadRepositories(): void {
+    this.isLoadingRepositories = true;
+    this.repositoryLoadError = false;
+    this.harvestingService.getAllHarvestings().subscribe({
+      next: harvestings => {
+        this.repositoriesMenu = harvestings.map(item => ({ id: item.id, name: item.name, acronym: item.acronym }))
+          .sort((a, b) => a.name.localeCompare(b.name));
+        this.isRepositoriesEmpty = this.repositoriesMenu.length === 0;
+        this.menuService.menu.next(this.repositoriesMenu);
+        if (!this.repositoriesMenu.length) return;
+        const saved = localStorage.getItem('activeRepository');
+        let savedMenu: Menu | undefined;
+        try {
+          const savedId = saved ? JSON.parse(saved)?.id : undefined;
+          savedMenu = this.repositoriesMenu.find(item => item.id === savedId);
+        } catch { localStorage.removeItem('activeRepository'); }
+        this.menuService.activeRepo.next(savedMenu || this.repositoriesMenu[0]);
+      },
+      error: () => {
+        this.isRepositoriesEmpty = false;
+        this.repositoryLoadError = true;
+        this.isLoadingRepositories = false;
+      },
+      complete: () => { this.isLoadingRepositories = false; },
+    });
+  }
 }

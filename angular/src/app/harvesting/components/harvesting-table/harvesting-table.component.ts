@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthenticationService } from './../../../core/services/authentication.service';
 import { HarvestingService } from '../../../core/services/harvesting.service';
 
 import { HarvestingContent } from 'src/app/shared/models/harvesting-content.model';
@@ -21,12 +20,10 @@ export class HarvestingTableComponent implements OnInit {
   public pageNumber: number;
   public totalRecords: number;
   public isLoading: boolean = true;
+  public loadError = false;
 
   public csvData: any[];
   public headerData: any[];
-  admUser = false;
-
-
   public filter = {
     sortField: '',
     sortOrder: 1,
@@ -83,6 +80,7 @@ export class HarvestingTableComponent implements OnInit {
 
   loadContent(event: LazyLoadEvent){
     this.isLoading = true;
+    this.loadError = false;
     this.pageNumber = event.first / event.rows;
     this.pageSize = event.rows;
 
@@ -93,7 +91,7 @@ export class HarvestingTableComponent implements OnInit {
       this.filter.sortField,
       this.filter.sortOrder)
 
-      .subscribe((result) => {
+      .subscribe({ next: (result) => {
         this.isLoading = false;
         this.totalRecords = result.totalElements;
         this.harvestingContent = result.content.map((harvestingContent) => {
@@ -113,7 +111,13 @@ export class HarvestingTableComponent implements OnInit {
             endTime: item.endTime,
           }
         });
-      });
+      }, error: () => {
+        this.isLoading = false;
+        this.loadError = true;
+        this.harvestingContent = [];
+        this.totalRecords = 0;
+        this.csvData = [];
+      }});
       this.headerData = [
         'id',
         'harvestedSize',

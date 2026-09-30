@@ -1,7 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
-import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 import { Validation } from '../../../shared/models/validation.model';
 import { Rule } from '../../../shared/models/rule.model';
@@ -23,7 +22,6 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
   public acronym: string;
   public csvData: any[];
   public headerData: any[];
-  public admUser = false;
   public mandatoryOptions: MandatoryOption[];
   public isMandatory: MandatoryOption;
   public dialogData: DialogDataTable;
@@ -31,12 +29,10 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
 
 
   constructor(
-    private route: ActivatedRoute,
-    private authenticationService: AuthenticationService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.admUser = this.authenticationService.isAdmUser();
     this.harvestingID = Number(
       this.route.snapshot.paramMap.get('harvestingID')
     );

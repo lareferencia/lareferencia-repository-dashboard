@@ -13,6 +13,7 @@ import { ChartData } from '../../interfaces/stack-chart.interface';
 export class HarvestingChartComponent implements OnInit {
 
   public loadingChart: boolean = true;
+  public loadError = false;
   public data: any;
   public options:any;
   public pageNumber = 0;
@@ -48,10 +49,11 @@ export class HarvestingChartComponent implements OnInit {
 
   filtrar(){
     this.loadingChart = true;
+    this.loadError = false;
 
     const acronym = this.route.snapshot.paramMap.get('acronym');
     this.harvestingService.getHarvestingHistoryByAcronymAndDate(acronym, this.pageNumber, this.pageSize, this.startDate, this.endDate)
-      .subscribe((content) => {
+      .subscribe({ next: (content) => {
         this.totalElements = content.totalElements
         this.pageNumber > (this.totalElements / this.pageSize ) - 1 
         ? this.disabledPagination = true
@@ -82,7 +84,11 @@ export class HarvestingChartComponent implements OnInit {
             ]
           };
           this.loadingChart = false;
-        });
+        }, error: () => {
+          this.loadingChart = false;
+          this.loadError = true;
+          this.data = null;
+        }});
         this.options = {
         maintainAspectRatio: false,
         aspectRatio: 0.8,

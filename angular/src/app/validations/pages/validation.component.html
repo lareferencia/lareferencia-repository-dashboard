@@ -6,8 +6,7 @@
   *ngIf="error || firstAccess"
   i18n
 >
-  {error, select, true {Validations not found} false {Enter a source acronym in
-  the root URL /:acronym}}
+  {error, select, true {Unable to load validations} false {No valid harvests are available for this repository}}
 </div>
 
 <div

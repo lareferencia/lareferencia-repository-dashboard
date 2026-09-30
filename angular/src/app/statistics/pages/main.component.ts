@@ -24,6 +24,10 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const widgetConfig = this.appConfigService.getHistoricStatsData();
+    if (!widgetConfig?.widget_url) {
+      this.errorMessage = 'Statistics are not configured';
+      return;
+    }
     
     this.menuService.activeRepo.pipe(
       switchMap(repo => {
@@ -94,8 +98,8 @@ export class MainComponent implements OnInit, OnDestroy {
         existingDiv.remove();
       }
 
-      const existingScript = Array.from(container.getElementsByTagName('script')).find(script => 
-        script.src.includes(this.widgetId)
+      const existingScript = Array.from(container.getElementsByTagName('script')).find(script =>
+        script.src.includes('historic-widget')
       );
       if (existingScript) {
         existingScript.remove();

@@ -1,13 +1,21 @@
+<app-login *ngIf="!authenticationService.currentUser"></app-login>
+<ng-container *ngIf="authenticationService.currentUser">
 <app-header></app-header>
 <div>
     <div>
         <app-drawer></app-drawer>
     </div>
-    <div *ngIf="!isRepositoriesEmpty" class="app-router-container">
+    <div *ngIf="!isRepositoriesEmpty && !isLoadingRepositories && !repositoryLoadError" class="app-router-container">
         <router-outlet></router-outlet>
     </div>
-    <div *ngIf="isRepositoriesEmpty"
-        style="min-height: 75vh;" 
+    <div *ngIf="repositoryLoadError && !isLoadingRepositories"
+        style="min-height: 75vh;"
+        class="app-router-container flex flex-column justify-content-center align-items-center p-3 animate__animated animate__fadeIn">
+        <h2 class="text-center" style="color: var(--color-secondary)" i18n>Unable to load your repositories</h2>
+        <h5 class="text-center" style="color: var(--color-secondary)" i18n>Please refresh the page or contact an administrator</h5>
+    </div>
+    <div *ngIf="isRepositoriesEmpty && !isLoadingRepositories && !repositoryLoadError"
+        style="min-height: 75vh;"
         class="app-router-container flex flex-column justify-content-center align-items-center p-3 animate__animated animate__fadeIn">
         <img style="width: 32%;" src="assets/img/home-section-image.png" alt="">
         <h2 class="text-center" style="color: var(--color-secondary)">
@@ -18,4 +26,4 @@
         </h5>
     </div>
 </div>
-
+</ng-container>

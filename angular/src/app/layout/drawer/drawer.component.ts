@@ -17,7 +17,7 @@ export class DrawerComponent implements OnInit {
   public harvestingConentId: number;
   public isMobileMenu = true;
   public isMenuOpen = false;
-  public isAdmin = false;
+  public logoutError = false;
 
   constructor( 
     private menuService: MenuService,
@@ -28,8 +28,6 @@ export class DrawerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isAdmin = this.authenticationService.isAdmUser()
-    
     this.menuService.activeRepo
       .subscribe( ({acronym}) => {
         this.activeRepository = acronym;
@@ -56,11 +54,15 @@ export class DrawerComponent implements OnInit {
       });
   }
 
-  logout(){
-    this.router.navigate(['/']); 
-    localStorage.clear();
-    
-    this.authenticationService.logout();
+  async logout(){
+    this.logoutError = false;
+    try {
+      await this.authenticationService.logout();
+      localStorage.removeItem('activeRepository');
+      await this.router.navigate(['/login']);
+    } catch {
+      this.logoutError = true;
+    }
   }
 
   isModuleActive( module:string ){

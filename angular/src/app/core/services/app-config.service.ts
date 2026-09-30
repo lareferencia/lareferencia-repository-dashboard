@@ -1,19 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AdminModule, AppConfig, AuthenticationModule, BrokerModule, HarvestingAdminModule, HistoricModule, HistoricStats, KeyCloackConfig, ValidationModule } from 'src/app/shared/models/app-config.model';
+import { AppConfig, HistoricStats } from 'src/app/shared/models/app-config.model';
 
 
 @Injectable()
 export class AppConfigService {
   private appConfig: AppConfig;
   private historicStatsData: HistoricStats;
-  private historicModuleData: HistoricModule;
-  private validationModuleData: ValidationModule;
-  private adminModuleData: AdminModule;
-  private brokerModuleData: BrokerModule;
-  private authModuleData: AuthenticationModule;
-  private harvestingAdminModule: HarvestingAdminModule;
-  private keycloakConfig: KeyCloackConfig
 
   constructor(private http: HttpClient) { }
 
@@ -36,14 +29,7 @@ export class AppConfigService {
   
   private initializeAppConfig(data: AppConfig): void {
     this.appConfig = data;
-    this.historicStatsData = data.statistics_module.historic_stats;
-    this.historicModuleData = data.historic_module;
-    this.validationModuleData = data.validation_module;
-    this.adminModuleData = data.admin_module;
-    this.harvestingAdminModule = data.harvesting_admin_module;
-    this.brokerModuleData = data.broker_module;
-    this.authModuleData = data.authentication_module;
-    this.keycloakConfig = data.authentication_module.key_cloack_config;
+    this.historicStatsData = data.statistics_module?.historic_stats;
   };
   
   private displayOnInitErrorMessage(): void {
@@ -62,45 +48,25 @@ export class AppConfigService {
     return this.appConfig;
   };
 
-  getModuleStatus( module: string ): boolean{    
-    return this.appConfig[module].active
+  getModuleStatus(module: string): boolean {
+    const modules = this.appConfig as unknown as Record<string, { active?: boolean }>;
+    return Boolean(modules?.[module]?.active);
   };
 
-  //Auth module
-  getAuthModuleData(){
-    return this.authModuleData
-  };
-  getKeyCloackConfig(){
-    this.keycloakConfig;
-  };
+  getApiBaseUrl(): string {
+    return (this.appConfig?.apiBaseUrl || '/api/v5').replace(/\/$/, '');
+  }
 
   //Statistics module
   getHistoricStatsData(){
     return this.historicStatsData;
   };
 
-  //Historic module
-  getHistoricModuleData(){
-    return this.historicModuleData;
-  };
-
-  //Havesting Administrator module
-  getHarvestingAdminModuleData(){
-    return this.harvestingAdminModule;
-  };
-
-  //Validation module
-  getValidationModuleData(){
-    return this.validationModuleData
-  };
-
-  //Admin module
-  getAdminModuleData(){
-    return this.adminModuleData
+  getValidationPortalUrl(): string | undefined {
+    return this.appConfig?.validation_module?.portalService;
   }
 
-  //Broker module
-  getBrokerModuleData(){
-    return this.brokerModuleData
+  getValidationModuleData() {
+    return this.appConfig?.validation_module;
   };
 }

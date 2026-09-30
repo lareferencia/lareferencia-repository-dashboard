@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
-import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 import { Harvesting } from 'src/app/shared/models/harvesting.model';
 import { Validation } from 'src/app/shared/models/validation.model';
@@ -19,26 +18,27 @@ export class ValidationComponent implements OnInit {
   public isLoadingResults = true;
   public validation: Validation;
   public harvesting: Harvesting;
-  public admUser = false;
 
   constructor(
     private route: ActivatedRoute,
     private validationService: ValidationService,
-    private harvestingService: HarvestingService,
-    private authenticationService: AuthenticationService
+    private harvestingService: HarvestingService
   ) {}
   
   ngOnInit(): void {
-    this.admUser = this.authenticationService.isAdmUser();
-    
     this.route.params.subscribe(() => {
       
       this.validation = null;
+      this.firstAccess = false;
+      this.error = false;
       this.isLoadingResults = true;
       const harvestingID = Number(this.route.snapshot.paramMap.get('harvestingID'));
       const acronym = this.route.snapshot.paramMap.get('acronym');
 
-      if (harvestingID != 0) {
+      if (harvestingID < 0) {
+        this.error = true;
+        this.isLoadingResults = false;
+      } else if (harvestingID !== 0) {
         this.validationService
           .getValidationResultsByHarvestingID(acronym, harvestingID)
           .subscribe((result) => {

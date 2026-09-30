@@ -12,8 +12,9 @@
       <div *ngIf="loadingChart" class="flex justify-content-center align-content-center">
         <p-progressSpinner></p-progressSpinner>
       </div>
+      <div *ngIf="loadError" class="alert alert-danger" role="alert" i18n>Unable to load harvesting chart</div>
 
-      <div *ngIf="!loadingChart" class="animate__animated animate__fadeIn">
+      <div *ngIf="!loadingChart && !loadError" class="animate__animated animate__fadeIn">
         <p-chart type="bar" [data]="data" [options]="options"></p-chart>
       </div>
 
@@ -69,6 +70,5 @@
 </div>
 
 </div>
-
 
 

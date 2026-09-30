@@ -32,6 +32,7 @@ export class RecordsTableComponent implements  OnInit {
   public acronym: string;
   public totalRecords:number;
   public isLoading = true;
+  public loadError = false;
 
   public dialogData: DialogData;
   public visible:boolean;
@@ -58,7 +59,7 @@ export class RecordsTableComponent implements  OnInit {
     private validationService: ValidationService,
     private route: ActivatedRoute,
     private appConfig: AppConfigService
-  ) { this.portalUrl = this.appConfig.getValidationModuleData().endpoints.portalService; }
+  ) { this.portalUrl = this.appConfig.getValidationPortalUrl(); }
 
   ngOnInit() {
     
@@ -110,6 +111,7 @@ export class RecordsTableComponent implements  OnInit {
 
   loadRecords(event: LazyLoadEvent) {
     this.isLoading = true;
+    this.loadError = false;
 
     this.filter = {
       ...this.filter,
@@ -118,7 +120,7 @@ export class RecordsTableComponent implements  OnInit {
     };
 
     this.validationService.getRecordsByHarvestingIDFilter(this.acronym, this.harvestingID, this.filter)
-      .subscribe((result) => {
+      .subscribe({ next: (result) => {
 
         this.isLoading = false;
         this.dataSource = result.content
@@ -132,7 +134,13 @@ export class RecordsTableComponent implements  OnInit {
             tranformation: x.isTransformed,
           };
         });
-      });
+      }, error: () => {
+        this.isLoading = false;
+        this.loadError = true;
+        this.dataSource = [];
+        this.totalRecords = 0;
+        this.csvData = [];
+      }});
 
       this.headerData = ['ID', 'Identifier', 'Validation']
   }

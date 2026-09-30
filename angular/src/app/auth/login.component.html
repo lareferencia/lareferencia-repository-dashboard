@@ -1,0 +1,25 @@
+<main class="login-page">
+  <form class="login-card" (ngSubmit)="submit()">
+    <div class="login-heading">
+      <span class="login-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M20 5h-3V3H7v2H4v6h3v2H4v8h8v-8H9v-2h8V9h3V5ZM10 15v4H6v-4h4Zm5-6H9V5h6v4Zm3-2h4v4h-4V7Z"/></svg>
+      </span>
+      <div><h1>Dashboard</h1><span class="login-subtitle" i18n>LA Referencia v5</span></div>
+    </div>
+    <p class="login-description" i18n>Sign in to view your repositories and their harvesting results.</p>
+    <p class="login-error" *ngIf="error" role="alert" i18n>Sign in failed. Check your credentials or try again later.</p>
+    <p class="login-error" *ngIf="accessDenied" role="alert" i18n>Your account does not have access to Dashboard. Ask an administrator for the Dashboard role.</p>
+    <div class="login-field">
+      <label for="username" i18n>Username</label>
+      <input id="username" name="username" [(ngModel)]="username" autocomplete="username" required autofocus>
+    </div>
+    <div class="login-field">
+      <label for="password" i18n>Password</label>
+      <input id="password" name="password" [(ngModel)]="password" type="password" autocomplete="current-password" required>
+    </div>
+    <button type="submit" [disabled]="pending || !username || !password">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 8h-1V6a5 5 0 0 0-10 0v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2ZM9 6a3 3 0 0 1 6 0v2H9V6Zm9 14H6V10h12v10Z"/></svg>
+      <span *ngIf="!pending" i18n>Sign in</span><span *ngIf="pending" i18n>Signing in…</span>
+    </button>
+  </form>
+</main>

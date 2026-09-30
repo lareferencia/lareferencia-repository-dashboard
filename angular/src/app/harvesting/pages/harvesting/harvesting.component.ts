@@ -48,7 +48,7 @@ export class HarvestingComponent implements OnInit {
           },
           () => {
             this.error = true;
-            
+            this.isLoadingResults = false;
           }
         );
       this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
