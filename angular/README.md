@@ -1,60 +1,54 @@
+# LA Referencia Repository Dashboard
 
+Angular single-page dashboard for reading authorized repository harvesting history and validation results through the Harvester v5 API. It does not administer users, technical accounts, tokens, repositories, harvesting configuration, or broker events.
 
-# Version
+## Requirements and local setup
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
-Angular v15 supports node.js versions: 14.20.x, 16.13.x and 18.10.x and supports TypeScript version 4.8 or later
+The Maven-integrated build pins Node.js 18.20.8 and npm 10.8.2. For standalone local work, Node.js 18 is recommended.
 
-## Description
+```sh
+npm ci
+npm start
+```
 
-This application is an Angular project that uses the PrimeNG and Angular Material libraries to create a rich and functional user interfaces. It provides a wide range of ready-to-use components and functionalities.
+The development server runs on port 8080. The Harvester API must be available under the same origin through a reverse proxy, or configured with credentialed CORS. The session cookie is `HttpOnly`, `Secure`, and `SameSite=Lax`; use HTTPS for browser testing. Angular CLI's dev server does not proxy API requests by default.
 
-## Installation
-1. Clone the application repository from GitHub.
-2. Open the project folder in Visual Studio Code.
-3. Open a new terminal
-4. Execute the following command to install the project dependencies:
-`npm install`
+## Runtime configuration
 
-## Development server
+`src/assets/data/appConfig.json` is loaded at startup. Its default API base is `/api/v5`. Dashboard read compatibility routes are isolated under `/api/v5/dashboard`; native v5 routes are unchanged. Statistics are disabled by default and may be enabled with `statistics_module.active` and a valid `historic_stats.widget_url`.
 
-If the "localize" property is set to "true", run `ng serve --configuration=es/en/pt` to start the server in a single language. If localize is set to "false", simply run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The external statistics widget loads only when enabled and the selected repository has `attributes.stats_source_id`. No session credential or bearer token is sent to it. Harvesting and validation views do not depend on the widget.
 
-## Code scaffolding
+## Authentication and authorization
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The login screen authenticates a human local Harvester user through `GET /api/v5/auth/csrf`, `POST /api/v5/auth/login`, and restores the session through `GET /api/v5/me`. Logout calls `POST /api/v5/auth/logout`. Browser calls use the session cookie and CSRF cookie/header pair. Passwords are held only while submitting the login form. There is no Keycloak, HTTP Basic, or browser bearer-token flow. Technical service accounts are for API clients and cannot log in to this UI.
 
-## Localize
+`ADMIN` can read all repositories; `DASHBOARD` sees only assigned repositories. `READER` and service-account tokens cannot access the dashboard API. Client-side filtering is navigation only: the Harvester API independently authorizes direct repository and snapshot requests. Users, assignments, service accounts, and token lifecycle are managed in the Harvester Admin Web. The dashboard account page is read-only. Existing `READER` users are not changed automatically; an administrator must explicitly grant the `DASHBOARD` role where appropriate.
 
-Run `ng extract-i18n` to generate an .xlf file with all the text marked with the i18n directive. Make 2 copies of that file, one named .es and the other .pt. After translating them, place the 3 files in the locale folder. This way, you will obtain 3 folders with the respective language when running `ng build`.
+Create the first administrator using the Harvester Shell's interactive local security command after applying database migrations; do not configure a default password. See the platform [authentication guide](../../docs/AUTHENTICATION.md) and [v5 API contract](../../docs/HARVESTER_MANAGEMENT_API_V5.md).
 
-## Make translation corrections.
+## Included functions and removed legacy
 
-Inside the "locale" folder, you will find the "message.xlf" files. You should select the file associated with the language you want to correct.
+- Authorized repository selector, harvesting history/chart, validation summaries, records, filters, and occurrence details through the v5 dashboard adapter.
+- Optional external historic statistics widget and read-only account/session details.
+- Removed: Keycloak login, old user/group administration, harvesting configuration administration, and OpenAIRE Broker.
 
-![Alt text](image-1.png)
+The platform Maven module at `../pom.xml` publishes localized builds into
+`lareferencia-lrharvester-app/dashboard-static/{en,es,pt}`. The Harvester serves them
+under `/dashboard/`. In Docker development, use
+`http://dashboard.localhost:8188/dashboard/es/` in isolated mode; the Nginx gateway
+allows only auth/session endpoints and GET requests under `/api/v5/dashboard/**` for
+that host. Production must configure its own TLS-enabled dashboard hostname and proxy
+the same allowlist. The Angular package by itself is not an authorization boundary.
 
-Within this file, you will find "trans-unit" tags, and inside these tags, you will find two other tags called "source" and "target". The original text in English is located within the "source" tag, and the translation is inside the "target" tag.
+## Build and localization
 
-![Alt text](image.png)
+```sh
+npm run build
+```
 
-To make corrections, simply modify the text inside the "target" tag. Afterward, save the changes and push them to the open pull request.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-
-
+This creates localized bundles with `/dashboard/{en,es,pt}/` base paths. To build and
+publish the dashboard from the platform root, run
+`./Docker/docker-dev.sh build dashboard`. English, Spanish, and Portuguese translations
+are configured in `angular.json`. Update the relevant XLF catalogs when changing text
+marked with `i18n`.
