@@ -13,7 +13,7 @@
 
   <div class="table-container col-12 
   animate__animated animate__fadeInRight animate__faster">
-    <div *ngIf="loadError" class="alert alert-danger" role="alert" i18n>Unable to load harvesting history</div>
+    <div *ngIf="loadError" class="alert alert-danger" role="alert" i18n="@@dashboardHistoryLoadError">Unable to load harvesting history</div>
     <div class="table-content-container">
     <p-table 
       [value]="harvestingContent"

@@ -2,7 +2,7 @@
   <p-progressSpinner></p-progressSpinner>
 </div>
 
-<div *ngIf="loadError" class="alert alert-danger" role="alert" i18n>Unable to load occurrences</div>
+<div *ngIf="loadError" class="alert alert-danger" role="alert" i18n="@@dashboardOccurrencesLoadError">Unable to load occurrences</div>
 <div *ngIf="!isLoading && !loadError" class="table-container mt-3
   animate__animated animate__fadeInRight animate__faster">
     <div class="table-content-container">

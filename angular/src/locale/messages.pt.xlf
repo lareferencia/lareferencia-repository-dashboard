@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="pt-BR">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="pt">
     <body>
       <trans-unit id="4d13a9cd5ed3dcee0eab22cb25198d43886942be" datatype="html">
         <source>Users</source><target>Usuários</target>
@@ -1256,6 +1256,24 @@
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
           <context context-type="linenumber">91</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="dashboardValidationsLoadError" datatype="html">
+        <source>Unable to load validations</source><target>Não foi possível carregar as validações</target>
+      </trans-unit>
+      <trans-unit id="dashboardNoValidHarvests" datatype="html">
+        <source>No valid harvests are available for this repository</source><target>Este repositório ainda não tem coletas válidas</target>
+      </trans-unit>
+      <trans-unit id="dashboardHistoryLoadError" datatype="html">
+        <source>Unable to load harvesting history</source><target>Não foi possível carregar o histórico de coletas</target>
+      </trans-unit>
+      <trans-unit id="dashboardChartLoadError" datatype="html">
+        <source>Unable to load harvesting chart</source><target>Não foi possível carregar o gráfico de coletas</target>
+      </trans-unit>
+      <trans-unit id="dashboardOccurrencesLoadError" datatype="html">
+        <source>Unable to load occurrences</source><target>Não foi possível carregar as ocorrências</target>
+      </trans-unit>
+      <trans-unit id="dashboardRecordsLoadError" datatype="html">
+        <source>Unable to load records</source><target>Não foi possível carregar os registros</target>
       </trans-unit>
     </body>
   </file>

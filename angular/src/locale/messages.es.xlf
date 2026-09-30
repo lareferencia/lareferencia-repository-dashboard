@@ -1290,6 +1290,24 @@
           <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="dashboardValidationsLoadError" datatype="html">
+        <source>Unable to load validations</source><target>No se pudieron cargar las validaciones</target>
+      </trans-unit>
+      <trans-unit id="dashboardNoValidHarvests" datatype="html">
+        <source>No valid harvests are available for this repository</source><target>Este repositorio aún no tiene cosechas válidas</target>
+      </trans-unit>
+      <trans-unit id="dashboardHistoryLoadError" datatype="html">
+        <source>Unable to load harvesting history</source><target>No se pudo cargar el historial de cosechas</target>
+      </trans-unit>
+      <trans-unit id="dashboardChartLoadError" datatype="html">
+        <source>Unable to load harvesting chart</source><target>No se pudo cargar el gráfico de cosechas</target>
+      </trans-unit>
+      <trans-unit id="dashboardOccurrencesLoadError" datatype="html">
+        <source>Unable to load occurrences</source><target>No se pudieron cargar las ocurrencias</target>
+      </trans-unit>
+      <trans-unit id="dashboardRecordsLoadError" datatype="html">
+        <source>Unable to load records</source><target>No se pudieron cargar los registros</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
