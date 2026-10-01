@@ -1308,6 +1308,182 @@
       <trans-unit id="dashboardRecordsLoadError" datatype="html">
         <source>Unable to load records</source><target>No se pudieron cargar los registros</target>
       </trans-unit>
+      <trans-unit id="dashboardRetry" datatype="html">
+        <source>Retry</source>
+        <target>Reintentar</target>
+      </trans-unit>
+      <trans-unit id="ab5681692d9c3713d67f5332c13d406591170f67" datatype="html">
+        <source>Unable to load your repositories</source>
+        <target>No se pudieron cargar tus repositorios</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e118d6028b9cbe0528954eb5dfcf0e07271e523c" datatype="html">
+        <source>Please refresh the page or contact an administrator</source>
+        <target>Actualiza la página o contacta con un administrador</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6d78d0ec139f1315d612bf78a727c75c57a83c01" datatype="html">
+        <source>LA Referencia v5</source>
+        <target>LA Referencia v5</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5dd082ebf12ce4c27fea9d7a8a34855c2ee3da7c" datatype="html">
+        <source>Sign in to view your repositories and their harvesting results.</source>
+        <target>Inicia sesión para ver tus repositorios y los resultados de sus cosechas.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6b8e8c4ff23f7237f1ade77ff142fa21eea4c047" datatype="html">
+        <source>Sign in failed. Check your credentials or try again later.</source>
+        <target>No se pudo iniciar sesión. Comprueba tus credenciales o inténtalo más tarde.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a4e08607f337675138c157897c1fe6cf82c3962c" datatype="html">
+        <source>Your account does not have access to Dashboard. Ask an administrator for the Dashboard role.</source>
+        <target>Tu cuenta no tiene acceso al Dashboard. Solicita el rol Dashboard a un administrador.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="08c74dc9762957593b91f6eb5d65efdfc975bf48" datatype="html">
+        <source>Username</source>
+        <target>Usuario</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
+        <source>Password</source>
+        <target>Contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="287d3301a32a65a1b31116bda5d3a6463158c42a" datatype="html">
+        <source>Sign in</source>
+        <target>Iniciar sesión</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="32d9f8d603f699782697230505ccc9567c6a8400" datatype="html">
+        <source>Signing in…</source>
+        <target>Iniciando sesión…</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d255132255503cbc2ad54960643be751775b0a00" datatype="html">
+        <source>Harvesting able</source>
+        <target>Cosecha habilitada</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="15c1357ea36c119f48bc1d3d03c5384d7ae829b3" datatype="html">
+        <source>Harvesting</source>
+        <target>Cosecha</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/harvesting/pages/harvesting/harvesting.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5c8ea0443990792280e53ee2cc87e577940c95cf" datatype="html">
+        <source>Table</source>
+        <target>Tabla</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/harvesting/pages/harvesting/harvesting.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a19303db2a2cd59e20e343edb36450d845b22f46" datatype="html">
+        <source>Sign out failed. Please try again.</source>
+        <target>No se pudo cerrar sesión. Inténtalo de nuevo.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c36a66f2107e8da5371ebc9d15c2008dff567f46" datatype="html">
+        <source>Role</source>
+        <target>Rol</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="530f2e223971707cfd74992eab363523ec567785" datatype="html">
+        <source>Readable repository IDs</source>
+        <target>IDs de repositorios con permiso de lectura</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4dd5dcf7447cf6ff67fe78bb5c593c4e1ca8c41d" datatype="html">
+        <source>Contact an administrator to change your account or repository permissions.</source>
+        <target>Contacta con un administrador para cambiar tu cuenta o los permisos de los repositorios.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d670b5a40a905272ba11fd78794a5b88797c16b5" datatype="html">
+        <source>
+          <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />
+          <x id="ICU" equiv-text="{dataSource.isValid, select, true {Valid} false {Invalid} }" xid="2103915050453217508" />
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" />
+        </source>
+        <target>
+          <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />
+          <x id="ICU" equiv-text="{dataSource.isValid, select, true {Valid} false {Invalid} }" xid="2103915050453217508" />
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="439d0bb13be3621d87e1d4dd9008775d6ae733ea" datatype="html">
+        <source>{VAR_SELECT, select, true {Valid} false {Invalid}}</source>
+        <target>{VAR_SELECT, select, true {Válido} false {Inválido}}</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6aac700f6329534e15ce6f9a4d526a004c1d1785" datatype="html">
+        <source>Portal</source>
+        <target>Portal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">131</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>

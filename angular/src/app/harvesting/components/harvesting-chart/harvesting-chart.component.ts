@@ -43,11 +43,15 @@ export class HarvestingChartComponent implements OnInit {
   }
 
   clearFilter(){
+    this.endDate = new Date();
+    this.startDate = new Date();
+    this.startDate.setFullYear(this.endDate.getFullYear() - 2);
     this.pageNumber = 0;
     this.filtrar();
   }
 
-  filtrar(){
+  filtrar(resetPage = false){
+    if (resetPage) this.pageNumber = 0;
     this.loadingChart = true;
     this.loadError = false;
 
@@ -55,9 +59,7 @@ export class HarvestingChartComponent implements OnInit {
     this.harvestingService.getHarvestingHistoryByAcronymAndDate(acronym, this.pageNumber, this.pageSize, this.startDate, this.endDate)
       .subscribe({ next: (content) => {
         this.totalElements = content.totalElements
-        this.pageNumber > (this.totalElements / this.pageSize ) - 1 
-        ? this.disabledPagination = true
-        : this.disabledPagination = false;
+        this.disabledPagination = (this.pageNumber + 1) * this.pageSize >= this.totalElements;
         
         const sortedConent = content.content.sort((a, b) => {
           const dateA = new Date(a.startTime).getTime();
@@ -68,14 +70,15 @@ export class HarvestingChartComponent implements OnInit {
         this.data = {
         labels: sortedConent.map(harvesting => harvesting.startTime.toString().substring(0,10)),
         datasets: [
-            { type: 'bar', label: 'Invalid', backgroundColor: 'rgba(252, 97, 97, 0.6)',
+            { type: 'bar', label: 'Invalid', backgroundColor: 'rgba(252, 97, 97, 0.6)', stack: 'records',
               data: sortedConent.map(harvesting => (harvesting.harvestedSize - harvesting.validSize) ) },
 
-            { type: 'bar', label: 'Valid', backgroundColor: 'rgba(0, 208, 222, 0.6)',
+            { type: 'bar', label: 'Valid', backgroundColor: 'rgba(0, 208, 222, 0.6)', stack: 'records',
               data: sortedConent.map(harvesting => harvesting.validSize)},
               {
                 type: 'line',
                 label: 'Transformed',
+                stack: 'transformed',
                 borderColor: 'rgba(0, 160, 171, 0.6)',
                 borderWidth: 2,
                 fill: false,
@@ -93,7 +96,7 @@ export class HarvestingChartComponent implements OnInit {
         maintainAspectRatio: false,
         aspectRatio: 0.8,
         plugins: {
-            tooltips: {
+            tooltip: {
                 mode: 'index',
                 intersect: false
             },

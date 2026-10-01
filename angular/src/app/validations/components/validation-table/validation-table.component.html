@@ -77,9 +77,7 @@
                 </div>
               </div>
               <mat-progress-bar 
-                value="{{ dataSource.conformity > 0 
-                  ? dataSource.conformity 
-                  : 100 }}">
+                [value]="dataSource.conformity">
               </mat-progress-bar>
             </td>
             <td>{{dataSource.validCount | number}}</td>

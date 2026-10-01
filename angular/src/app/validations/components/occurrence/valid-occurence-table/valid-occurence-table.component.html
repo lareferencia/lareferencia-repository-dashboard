@@ -1,3 +1,4 @@
+<p-button *ngIf="loadError" label="Retry" i18n-label="@@dashboardRetry" (onClick)="loadData()"></p-button>
 <div *ngIf="isLoading" class="flex justify-content-center p-6">
   <p-progressSpinner></p-progressSpinner>
 </div>

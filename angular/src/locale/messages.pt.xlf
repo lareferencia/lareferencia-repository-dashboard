@@ -621,7 +621,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="cb67fcf00d0f0d785d33006a1e90f0dfcbd19fc8" datatype="html">
-        <source>{VAR_SELECT, select, true {Mandatory rule: Yes} false {Mandatory rule: No}}</source><target>{VAR_SELECT, selecione, true {Regra obrigatória: Sim} false {Regra obrigatória: Não}}</target>
+        <source>{VAR_SELECT, select, true {Mandatory rule: Yes} false {Mandatory rule: No}}</source><target>{VAR_SELECT, select, true {Regra obrigatória: Sim} false {Regra obrigatória: Não}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/rule-card/rule-card.component.html</context>
           <context context-type="linenumber">9</context>
@@ -1190,7 +1190,7 @@
       </trans-unit>
       <trans-unit id="fd7c3007ef6b99d900049b22c89ce562d7373612" datatype="html">
         <source>{VAR_SELECT, select, true {Validations not found} false {Enter a source acronym in
-  the root URL /:acronym}}</source><target>{VAR_SELECT, selecione, true {Validações não encontradas} false {Insira um acrônimo de origem em
+  the root URL /:acronym}}</source><target>{VAR_SELECT, select, true {Validações não encontradas} false {Insira um acrônimo de origem em
   a URL raiz /:acronym}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/validations/pages/validation.component.html</context>
@@ -1274,6 +1274,262 @@
       </trans-unit>
       <trans-unit id="dashboardRecordsLoadError" datatype="html">
         <source>Unable to load records</source><target>Não foi possível carregar os registros</target>
+      </trans-unit>
+      <trans-unit id="dashboardRetry" datatype="html">
+        <source>Retry</source>
+        <target>Tentar novamente</target>
+      </trans-unit>
+      <trans-unit id="ab5681692d9c3713d67f5332c13d406591170f67" datatype="html">
+        <source>Unable to load your repositories</source>
+        <target>Não foi possível carregar seus repositórios</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e118d6028b9cbe0528954eb5dfcf0e07271e523c" datatype="html">
+        <source>Please refresh the page or contact an administrator</source>
+        <target>Atualize a página ou entre em contato com um administrador</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6d78d0ec139f1315d612bf78a727c75c57a83c01" datatype="html">
+        <source>LA Referencia v5</source>
+        <target>LA Referencia v5</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5dd082ebf12ce4c27fea9d7a8a34855c2ee3da7c" datatype="html">
+        <source>Sign in to view your repositories and their harvesting results.</source>
+        <target>Entre para ver seus repositórios e os resultados de suas coletas.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6b8e8c4ff23f7237f1ade77ff142fa21eea4c047" datatype="html">
+        <source>Sign in failed. Check your credentials or try again later.</source>
+        <target>Não foi possível entrar. Verifique suas credenciais ou tente novamente mais tarde.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a4e08607f337675138c157897c1fe6cf82c3962c" datatype="html">
+        <source>Your account does not have access to Dashboard. Ask an administrator for the Dashboard role.</source>
+        <target>Sua conta não tem acesso ao Dashboard. Solicite a função Dashboard a um administrador.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="08c74dc9762957593b91f6eb5d65efdfc975bf48" datatype="html">
+        <source>Username</source>
+        <target>Usuário</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
+        <source>Password</source>
+        <target>Senha</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="287d3301a32a65a1b31116bda5d3a6463158c42a" datatype="html">
+        <source>Sign in</source>
+        <target>Entrar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="32d9f8d603f699782697230505ccc9567c6a8400" datatype="html">
+        <source>Signing in…</source>
+        <target>Entrando…</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d255132255503cbc2ad54960643be751775b0a00" datatype="html">
+        <source>Harvesting able</source>
+        <target>Coleta habilitada</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/harvesting/components/harvesting-table/harvesting-table.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="15c1357ea36c119f48bc1d3d03c5384d7ae829b3" datatype="html">
+        <source>Harvesting</source>
+        <target>Coleta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/harvesting/pages/harvesting/harvesting.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5c8ea0443990792280e53ee2cc87e577940c95cf" datatype="html">
+        <source>Table</source>
+        <target>Tabela</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/harvesting/pages/harvesting/harvesting.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ec58f83f1bbfc2edb877badec0b508f97a59b987" datatype="html">
+        <source>What's on the platform?</source>
+        <target>O que há na plataforma?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3dba259582464d65d1b72372c86172f30e550454" datatype="html">
+        <source>Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />harvesting<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> of deposit documents.</source>
+        <target>Informações sobre a <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />coleta<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> de documentos dos repositórios.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a577cdbfd110c79ec8915b76a2c6edf5fd2d944b" datatype="html">
+        <source>Information about the <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />documents validation.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" />
+        </source>
+        <target>Informações sobre a <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />validação de documentos.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5d6e045a97c8f7df35817da8e134aa03311c5a29" datatype="html">
+        <source>Informative <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />statistics and graphics.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" />
+        </source>
+        <target>Informações sobre <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />estatísticas e gráficos.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="893964df4abf2968d52042ded9c1b6d0e342403b" datatype="html">
+        <source>Usage statistics</source>
+        <target>Estatísticas de uso</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="596d65263456e81ac98fb7f8d616bf01adfc17a8" datatype="html">
+        <source>Powered by</source>
+        <target>Desenvolvido por</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/header/header.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
+        <source>Statistics</source>
+        <target>Estatísticas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a19303db2a2cd59e20e343edb36450d845b22f46" datatype="html">
+        <source>Sign out failed. Please try again.</source>
+        <target>Não foi possível sair. Tente novamente.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layout/drawer/drawer.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c36a66f2107e8da5371ebc9d15c2008dff567f46" datatype="html">
+        <source>Role</source>
+        <target>Função</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="530f2e223971707cfd74992eab363523ec567785" datatype="html">
+        <source>Readable repository IDs</source>
+        <target>IDs dos repositórios com permissão de leitura</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4dd5dcf7447cf6ff67fe78bb5c593c4e1ca8c41d" datatype="html">
+        <source>Contact an administrator to change your account or repository permissions.</source>
+        <target>Entre em contato com um administrador para alterar sua conta ou as permissões dos repositórios.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/components/user-info/user-info.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4141c9c40b7f8904af1c4ade8941d74aa921453e" datatype="html">
+        <source>Historical usage statistics</source>
+        <target>Histórico de estatísticas de uso</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/statistics/pages/main.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a249bb440dd52b8cbfffbeae0c281ef5b78dead7" datatype="html">
+        <source>In the following chart, it is possible to observe downloads, views, and links at the national node level. Additionally, you can break down the chart view by day, week, and month using the buttons located at the top and left. You can also display data for 1 month, 3 months, or 6 months using the buttons located at the bottom right. Finally, with the horizontal bar located below the chart, we can select a custom interval.</source>
+        <target>O gráfico a seguir mostra downloads, visualizações e links do nó nacional. Você pode agrupar os dados por dia, semana ou mês com os botões na parte superior esquerda, e exibir períodos de 1, 3 ou 6 meses com os botões na parte inferior direita. A barra horizontal abaixo do gráfico permite selecionar um intervalo personalizado.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/statistics/pages/main.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d670b5a40a905272ba11fd78794a5b88797c16b5" datatype="html">
+        <source>
+          <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />
+          <x id="ICU" equiv-text="{dataSource.isValid, select, true {Valid} false {Invalid} }" xid="2103915050453217508" />
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" />
+        </source>
+        <target>
+          <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;" />
+          <x id="ICU" equiv-text="{dataSource.isValid, select, true {Valid} false {Invalid} }" xid="2103915050453217508" />
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="439d0bb13be3621d87e1d4dd9008775d6ae733ea" datatype="html">
+        <source>{VAR_SELECT, select, true {Valid} false {Invalid}}</source>
+        <target>{VAR_SELECT, select, true {Válido} false {Inválido}}</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-invalid-table/records-invalid-table.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6aac700f6329534e15ce6f9a4d526a004c1d1785" datatype="html">
+        <source>Portal</source>
+        <target>Portal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/validations/components/records/records-table/records-table.component.html</context>
+          <context context-type="linenumber">131</context>
+        </context-group>
       </trans-unit>
     </body>
   </file>

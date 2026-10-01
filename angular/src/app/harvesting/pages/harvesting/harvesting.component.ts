@@ -27,7 +27,10 @@ export class HarvestingComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.params.subscribe(() => {
+    this.route.params.subscribe(() => this.loadHarvesting());
+  }
+
+  loadHarvesting(): void {
       this.error = false;
       this.harvestingContent = null;
       this.isLoadingResults = true;
@@ -54,6 +57,5 @@ export class HarvestingComponent implements OnInit {
       this.harvestingService.getHarvestingByAcronym(acronym).subscribe(harvesting => {
         this.harvesting = harvesting;
       })
-    });
-  }
+}
 }

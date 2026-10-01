@@ -76,8 +76,7 @@
               "node_modules/primeflex/primeflex.css"
             ],
             "scripts": [
-              "./node_modules/vega/build/vega.min.js",
-              "./node_modules/chart.js/dist/chart.js"
+              "./node_modules/vega/build/vega.min.js"
             ],
             "allowedCommonJsDependencies": [
               "highlight.js"

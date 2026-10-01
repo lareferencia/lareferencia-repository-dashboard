@@ -13,6 +13,7 @@
         class="app-router-container flex flex-column justify-content-center align-items-center p-3 animate__animated animate__fadeIn">
         <h2 class="text-center" style="color: var(--color-secondary)" i18n>Unable to load your repositories</h2>
         <h5 class="text-center" style="color: var(--color-secondary)" i18n>Please refresh the page or contact an administrator</h5>
+        <button type="button" class="p-button" (click)="loadRepositories()" i18n="@@dashboardRetry">Retry</button>
     </div>
     <div *ngIf="isRepositoriesEmpty && !isLoadingRepositories && !repositoryLoadError"
         style="min-height: 75vh;"

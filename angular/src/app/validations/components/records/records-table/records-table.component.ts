@@ -102,6 +102,10 @@ export class RecordsTableComponent implements  OnInit {
 
   clearFilters() {
     this.filter = {};
+    this.selectedValidRule = null;
+    this.selectedInvalidRule = null;
+    this.selectedValidation = null;
+    this.selectedTransformedOption = null;
     this.applyFilter();
   }
 

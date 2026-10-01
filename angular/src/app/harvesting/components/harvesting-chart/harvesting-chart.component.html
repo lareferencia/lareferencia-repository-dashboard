@@ -14,15 +14,16 @@
       </div>
       <div *ngIf="loadError" class="alert alert-danger" role="alert" i18n="@@dashboardChartLoadError">Unable to load harvesting chart</div>
 
+      <p-button *ngIf="loadError" label="Retry" i18n-label="@@dashboardRetry" (onClick)="filtrar()"></p-button>
       <div *ngIf="!loadingChart && !loadError" class="animate__animated animate__fadeIn">
         <p-chart type="bar" [data]="data" [options]="options"></p-chart>
       </div>
 
       <div class="flex align-items-center">
-        <p-button [disabled]="disabledPagination" (onClick)="paginate('next')" icon="pi pi-angle-left"
+        <p-button [disabled]="loadingChart || loadError || disabledPagination" (onClick)="paginate('next')" icon="pi pi-angle-left"
         styleClass="p-button-rounded p-button-text p-button-secondary">
       </p-button>
-        <p-button [disabled]="pageNumber === 0" (onClick)="paginate('prev')"
+        <p-button [disabled]="loadingChart || loadError || pageNumber === 0" (onClick)="paginate('prev')"
         icon="pi pi-angle-right"
         styleClass="p-button-rounded p-button-text p-button-secondary">
       </p-button>
@@ -51,7 +52,7 @@
   
     <div class="col-12 md:col-4 flex align-items-end">
       <p-button label="Clear" i18n-label (onClick)="clearFilter()" styleClass="p-button-outlined p-button-sm"></p-button>
-      <p-button class="ml-3" label="Filter" i18n-label (onClick)="filtrar()" styleClass="p-button-sm"></p-button>
+      <p-button class="ml-3" label="Filter" i18n-label [disabled]="!startDate || !endDate || startDate > endDate" (onClick)="filtrar(true)" styleClass="p-button-sm"></p-button>
     </div>
   
   </div>

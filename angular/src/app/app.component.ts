@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  private loadRepositories(): void {
+  loadRepositories(): void {
     this.isLoadingRepositories = true;
     this.repositoryLoadError = false;
     this.harvestingService.getAllHarvestings().subscribe({

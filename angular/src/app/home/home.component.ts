@@ -25,21 +25,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onHarvestingNavigate(){
-    this.menuService.activeRepo
-      .subscribe( ({acronym}) => {
-        this.router.navigate([`${acronym}/harvesting`]);
-      });
+  onHarvestingNavigate() {
+    const { acronym } = this.menuService.activeRepo.value;
+    this.router.navigate([acronym, 'harvesting']);
   }
 
-  onValidationNavigate(){
-    this.menuService.activeRepo
-    .subscribe( ({acronym}) => {
-      this.harvestingService.getHarvestingLastGoodKnowByAcronym(acronym)
-        .subscribe(({id}) =>{
-          this.router.navigate([`${acronym}/validation/${id}`])
-        }, (error) => { this.router.navigate([`${acronym}/validation/${error.status === 404 ? 0 : -1}`]);
-      })
+  onValidationNavigate() {
+    const { acronym } = this.menuService.activeRepo.value;
+    this.harvestingService.getHarvestingLastGoodKnowByAcronym(acronym).subscribe({
+      next: ({ id }) => this.router.navigate([acronym, 'validation', id]),
+      error: error => this.router.navigate([acronym, 'validation', error.status === 404 ? 0 : -1]),
     });
   }
   onStatisticsNavigate(){

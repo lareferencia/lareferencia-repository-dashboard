@@ -1,3 +1,4 @@
+<p-button *ngIf="error" label="Retry" i18n-label="@@dashboardRetry" (onClick)="loadHarvesting()"></p-button>
 <div class="alert alert-danger" 
      role="alert" 
      *ngIf="error" i18n>

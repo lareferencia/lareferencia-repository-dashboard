@@ -23,7 +23,10 @@ export class ValidOccurenceTableComponent implements OnInit {
 
   constructor(private validationService: ValidationService) {}
 
-  ngOnInit() {
+  ngOnInit() { this.loadData(); }
+
+  loadData() {
+    this.loadError = false;
     this.isLoading = true;
     this.validationService
       .getValidOccurrencesByHarvestingIDRuleID(

@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 import { Validation } from '../../../shared/models/validation.model';
@@ -13,7 +13,7 @@ import { MandatoryOption } from '../../interfaces/mandatoryOptions.interface';
   templateUrl: './validation-table.component.html',
   styleUrls: ['./validation-table.component.css'],
 })
-export class ValidationTableComponent implements AfterViewInit, OnInit {
+export class ValidationTableComponent implements OnInit {
   
   @Input() validation: Validation;
 
@@ -42,10 +42,7 @@ export class ValidationTableComponent implements AfterViewInit, OnInit {
       {name: 'Not mandatory', value: false},
       {name: 'All', value: null}
     ];
-  }
-
-  ngAfterViewInit() {
-    this.loadRecords()
+    this.loadRecords();
   }
 
   loadRecords() {

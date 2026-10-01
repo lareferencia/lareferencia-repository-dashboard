@@ -1,3 +1,4 @@
+<p-button *ngIf="error" label="Retry" i18n-label="@@dashboardRetry" (onClick)="retryValidation()"></p-button>
 <div *ngIf="error" class="alert alert-danger" role="alert" i18n="@@dashboardValidationsLoadError">Unable to load validations</div>
 <div *ngIf="firstAccess" class="alert alert-warning" role="alert" i18n="@@dashboardNoValidHarvests">No valid harvests are available for this repository</div>
 

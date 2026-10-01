@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { HarvestingService } from 'src/app/core/services/harvesting.service';
@@ -21,12 +21,16 @@ export class ValidationComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private validationService: ValidationService,
     private harvestingService: HarvestingService
   ) {}
   
   ngOnInit(): void {
-    this.route.params.subscribe(() => {
+    this.route.params.subscribe(() => this.loadValidation());
+  }
+
+  loadValidation(): void {
       
       this.validation = null;
       this.firstAccess = false;
@@ -74,6 +78,23 @@ export class ValidationComponent implements OnInit {
         this.firstAccess = true;
         this.isLoadingResults = false;
       }
-   });
+}
+  retryValidation(): void {
+    if (Number(this.route.snapshot.paramMap.get('harvestingID')) > 0) {
+      this.loadValidation();
+      return;
+    }
+    const acronym = this.route.snapshot.paramMap.get('acronym');
+    this.error = false;
+    this.firstAccess = false;
+    this.isLoadingResults = true;
+    this.harvestingService.getHarvestingLastGoodKnowByAcronym(acronym).subscribe({
+      next: ({ id }) => this.router.navigate([acronym, 'validation', id]),
+      error: error => {
+        this.firstAccess = error.status === 404;
+        this.error = !this.firstAccess;
+        this.isLoadingResults = false;
+      },
+    });
   }
 }
