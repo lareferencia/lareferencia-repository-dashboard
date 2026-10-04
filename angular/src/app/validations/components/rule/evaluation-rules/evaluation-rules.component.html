@@ -16,10 +16,7 @@
     <div class="col-4">
       <div *ngFor="let rule of dialogData.record.invalidRulesID">
         <app-rule-card
-          *ngIf="
-          dialogData.record.validOccurrencesByRuleID[rule] 
-          || record.invalidOccurrencesByRuleID[rule]
-          && getRule(rule).mandatory"
+          *ngIf="getRule(rule)?.mandatory === true"
 
           [name]="getRule(rule).name"
           [quantifier]="getRule(rule).quantifier"
@@ -36,10 +33,7 @@
     <div class="col-4">
       <div *ngFor="let rule of dialogData.record.invalidRulesID">
         <app-rule-card
-          *ngIf="
-          dialogData.record.validOccurrencesByRuleID[rule] 
-          || record.invalidOccurrencesByRuleID[rule]
-          && !getRule(rule).mandatory"
+          *ngIf="getRule(rule)?.mandatory === false"
 
           [name]="getRule(rule).name"
           [quantifier]="getRule(rule).quantifier"
@@ -56,10 +50,7 @@
     <div class="col-4">
       <div *ngFor="let rule of dialogData.record.validRulesID">
         <app-rule-card
-          *ngIf="
-          dialogData.record.validOccurrencesByRuleID[rule] 
-          || record.invalidOccurrencesByRuleID[rule]
-          && !getRule(rule).mandatory"
+          *ngIf="getRule(rule)"
 
           [name]="getRule(rule).name"
           [quantifier]="getRule(rule).quantifier"
