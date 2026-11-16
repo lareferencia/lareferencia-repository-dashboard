@@ -35,3 +35,10 @@ de autenticación y lectura necesarias; no ofrece el API administrativo de React
 
 Referencias: [Docker Dev](../docs/DOCKER_DEV.md),
 [autenticación](../docs/AUTHENTICATION.md), [workspace](../githelper.md).
+
+## Publicación
+
+Las releases se coordinan desde el repositorio de plataforma. Este repositorio
+ejecuta CI en los PR y en main, usando el lockfile y el Angular CLI local; guarda
+el build como artefacto de Actions y no crea releases independientes al mergear
+cambios de documentación o numeración.
