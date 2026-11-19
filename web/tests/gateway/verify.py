@@ -48,7 +48,7 @@ def verify(browser, origin, output):
     page.screenshot(path=str(output / "portada-pa.png"), animations="disabled")
     page.get_by_role("link", name="Cosechas", exact=True).click()
     table = page.get_by_role("table", name="Cosechas")
-    expect(table.get_by_role("link", name="#4", exact=True)).to_be_visible()
+    expect(table.get_by_role("link", name="Ver diagnóstico #4", exact=True)).to_be_visible()
     page.get_by_role("link", name="Inicio", exact=True).click()
     expect(selector).to_have_value("PA · Nodo Panama")
     selector.fill("areand")

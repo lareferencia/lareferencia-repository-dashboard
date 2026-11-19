@@ -143,6 +143,33 @@ const historicRow = {
   invalidRulesID: ['5', '99'], validRulesID: [], validOccurrencesByRuleID: {}, invalidOccurrencesByRuleID: {},
 }
 
+it('pages through the snapshot choices without changing the open diagnosis', async () => {
+  const history = '/api/v5/dashboard/harvesting/source/AREANDINA/history?page='
+  const order = '&size=20&sort=endTime%2Cdesc&sort=id%2Cdesc'
+  fixture({
+    [history + '0' + order]: () => Response.json({ content: [{ id: 6 }], totalElements: 21 }),
+    [history + '1' + order]: () => Response.json({ content: [{ id: 5 }], totalElements: 21 }),
+  })
+  await open('/AREANDINA/validation/6')
+  const pagination = within(await screen.findByRole('navigation', { name: 'Páginas del selector de cosechas' }))
+  fireEvent.click(pagination.getByRole('button', { name: 'Ir a la página 2' }))
+  expect(screen.getByRole('heading', { name: 'AREANDINA · Snapshot #6' })).toBeVisible()
+  fireEvent.mouseDown(screen.getByRole('combobox', { name: 'Snapshot' }))
+  expect(await screen.findByRole('option', { name: '#5 · Validado' })).toBeVisible()
+  expect(screen.getByRole('option', { name: '#6 · Validado', selected: true })).toBeVisible()
+})
+
+it('shows record validity consistently in the list and detail', async () => {
+  const validRow = { ...historicRow, id: 'a2', identifier: 'oai:test/2', isValid: true }
+  fixture({ [recordsPath + firstPage]: () => Response.json({ content: [historicRow, validRow], totalElements: 2 }) })
+  await open('/AREANDINA/validation/6?view=records')
+  const table = within(await screen.findByRole('table', { name: 'Registros seleccionados' }))
+  expect(await table.findByRole('cell', { name: 'Válido' })).toBeVisible()
+  expect(table.getByRole('cell', { name: 'Inválido' })).toBeVisible()
+  fireEvent.click(table.getByRole('button', { name: validRow.identifier }))
+  expect(within(await screen.findByRole('dialog')).getByText('Válido')).toBeVisible()
+})
+
 it('retries a failed records request without losing the report or its filters', async () => {
   let attempts = 0
   fixture({ [recordsPath + 'invalid_rules=5&' + firstPage]: () => ++attempts === 1
@@ -223,20 +250,26 @@ it('guards a history deep link for another network before sending a request', as
   expect(get.mock.calls.some(([path]) => path.includes('/PA/'))).toBe(false)
 })
 
-it('keeps a deleted snapshot in the history and retries the same failed page', async () => {
+it('shows plain snapshot IDs and links only to available diagnostics after retrying the page', async () => {
   let attempts = 0
   const path = '/api/v5/dashboard/harvesting/source/AREANDINA/history?page=0&size=10&sort=endTime%2Cdesc&sort=id%2Cdesc'
   fixture({
     '/dashboard/es/assets/data/appConfig.json': () => Response.json({ historic_module: { active: true }, validation_module: { active: true } }),
-    [path]: () => ++attempts === 1 ? new Response(null, { status: 503 }) : Response.json({ totalElements: 1,
-      content: [{ id: 6, deleted: true, startTime: null, endTime: null, harvestedSize: 4, validSize: null, transformedSize: 0 }] }),
+    [path]: () => ++attempts === 1 ? new Response(null, { status: 503 }) : Response.json({ totalElements: 2, content: [
+      { id: 6, deleted: false, startTime: null, endTime: null, harvestedSize: 4, validSize: 2, transformedSize: 0 },
+      { id: 5, deleted: true, startTime: null, endTime: null, harvestedSize: 4, validSize: null, transformedSize: 0 },
+    ] }),
   })
   await open('/AREANDINA/harvesting?view=table')
   fireEvent.click(await screen.findByRole('button', { name: 'Reintentar' }))
   const table = within(await screen.findByRole('table', { name: 'Cosechas' }))
-  expect(table.getByRole('cell', { name: '6' })).toBeVisible()
-  expect(table.queryByRole('link')).toBeNull()
-  expect(table.getAllByText('—')).toHaveLength(5)
+  expect(table.getByRole('columnheader', { name: 'Diagnóstico' })).toBeVisible()
+  expect(table.getByRole('cell', { name: '#6', exact: true })).toBeVisible()
+  const deleted = within(table.getByRole('row', { name: /^#5 / }))
+  expect(deleted.getByRole('cell', { name: '#5' })).toBeVisible()
+  expect(deleted.queryByRole('link')).toBeNull()
+  expect(deleted.getAllByText('—')).toHaveLength(6)
+  expect(table.getByRole('link', { name: 'Ver diagnóstico #6' })).toHaveAttribute('href', '/AREANDINA/validation/6')
 })
 
 it.each(['https://portal.example/Record/', undefined])('respects the optional portal URL on a bookmarked record page (%s)', async portal => {

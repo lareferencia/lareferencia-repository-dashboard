@@ -23,11 +23,14 @@ export function HarvestTable({ rows, acronym, validation, sort, onSort }: Props)
     const seconds = durationSeconds(row)
     return <TableRow key={row.id}>
       {historyColumns.map(([key]) => <TableCell key={key}>
-        {key === 'id' && validation && row.deleted === false
-          ? <Button component={Link} to={`/${encodeURIComponent(acronym)}/validation/${row.id}`}>#{row.id}</Button>
-          : format(row[key])}
+        {key === 'id' ? `#${row.id}` : format(row[key])}
       </TableCell>)}
       <TableCell sx={{ whiteSpace: 'nowrap' }}>{seconds === null ? '—' : durationLabel(seconds, i18n.language)}</TableCell>
+      {validation && <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>
+        {row.deleted === false ? <Button component={Link} size="small"
+          aria-label={`${t('openDiagnostics')} #${row.id}`}
+          to={`/${encodeURIComponent(acronym)}/validation/${row.id}`}>{t('openDiagnostics')}</Button> : '—'}
+      </TableCell>}
     </TableRow>
   }
   return <TableContainer><Table size="small" aria-label={t('history')}>
@@ -37,7 +40,9 @@ export function HarvestTable({ rows, acronym, validation, sort, onSort }: Props)
       return <TableCell key={key} sortDirection={active ? direction : false}>{onSort && field ?
         <TableSortLabel active={active} direction={active ? direction : 'asc'}
           onClick={() => onSort(field + (active && direction === 'asc' ? ',desc' : ',asc'))}>{t(label)}</TableSortLabel> : t(label)}</TableCell>
-    })}<TableCell>{t('duration')}</TableCell></TableRow></TableHead>
+    })}<TableCell>{t('duration')}</TableCell>
+      {validation && <TableCell align="right">{t('diagnostics')}</TableCell>}
+    </TableRow></TableHead>
     <TableBody>{rows.map(renderRow)}</TableBody>
   </Table></TableContainer>
 }

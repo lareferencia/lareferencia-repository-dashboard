@@ -76,7 +76,7 @@ function RecordIdentity({ row, portal }: { row: ValidationRecord; portal?: strin
       <Typography id="record-id" fontWeight={700} sx={{ overflowWrap: 'anywhere' }}>{row.identifier}</Typography></Box>
     <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
       <Chip color={row.isValid == null ? 'default' : row.isValid ? 'success' : 'error'}
-        label={row.isValid == null ? '—' : t(row.isValid ? 'validated' : 'invalidRecord')} />
+        label={row.isValid == null ? '—' : t(row.isValid ? 'validRecord' : 'invalidRecord')} />
       {row.isTransformed && <Chip color="warning" label={t('is_transformed')} />}
       {row.setSpec && <Chip size="small" variant="outlined" label={'Set: ' + row.setSpec} />}
       {row.metadataPrefix && <Chip size="small" variant="outlined" label={row.metadataPrefix} />}

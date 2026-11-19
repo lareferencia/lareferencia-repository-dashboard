@@ -21,7 +21,7 @@ function RecordTable({ rows, rules, portal, empty, ...scope }: ReportScope & { e
     <TableBody>{rows.map(row => <TableRow hover key={row.id}>
       <TableCell><Button size="small" sx={{ p: 0, color: 'text.primary', fontWeight: 400, textAlign: 'left', overflowWrap: 'anywhere' }}
         onClick={() => setSelected(row)}>{row.identifier}</Button></TableCell>
-      <TableCell><Chip size="small" color={row.isValid == null ? 'default' : row.isValid ? 'success' : 'error'} label={row.isValid == null ? '—' : t(row.isValid ? 'validated' : 'invalidRecord')} /></TableCell>
+      <TableCell><Chip size="small" color={row.isValid == null ? 'default' : row.isValid ? 'success' : 'error'} label={row.isValid == null ? '—' : t(row.isValid ? 'validRecord' : 'invalidRecord')} /></TableCell>
       <TableCell>{row.isTransformed ? <Chip size="small" color="warning" label={t('is_transformed')} /> : '—'}</TableCell>
       <TableCell>{row.invalidRulesID?.length ?? '—'}</TableCell><TableCell align="right"><Button size="small" startIcon={<DescriptionOutlined />} onClick={() => setSelected(row)}>{t('detail')}</Button></TableCell>
     </TableRow>)}

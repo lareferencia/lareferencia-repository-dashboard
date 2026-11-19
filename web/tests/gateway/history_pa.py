@@ -82,13 +82,15 @@ def verify(page, origin, output, password):
 
     table = page.get_by_role("table", name="Cosechas", exact=True)
     expect(table.get_by_role("row")).to_have_count(4)
-    assert table.get_by_role("link").all_text_contents() == ["#1", "#3", "#4"]
     for i, row_id in enumerate((1, 3, 4), start=1):
-        cells = table.get_by_role("row").nth(i).get_by_role("cell").all_text_contents()
+        table_row = table.get_by_role("row").nth(i)
+        cells = table_row.get_by_role("cell").all_text_contents()
         row = rows[row_id]
         counts = [row["harvestedSize"], row["validSize"], row["harvestedSize"] - row["validSize"], row["transformedSize"]]
+        assert cells[0] == f"#{row_id}"
         assert [int(cell.replace(".", "")) for cell in cells[1:5]] == counts
-        assert cells[-1] == display(metrics(row)[3], 3)
+        assert cells[7] == display(metrics(row)[3], 3)
+        expect(table_row.get_by_role("link", name=f"Ver diagnóstico #{row_id}")).to_be_visible()
 
     comparison_table = page.get_by_role("table", name="Comparación de cosechas")
     toggle = page.get_by_role("button", name="Comparar dos cosechas", exact=True)
