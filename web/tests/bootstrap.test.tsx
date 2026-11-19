@@ -63,6 +63,38 @@ it('shows a distinct empty state for users without assignments', async () => {
   expect(await screen.findByText('No hay repositorios asignados.')).toBeVisible()
 })
 
+it('switches the landing page reports together with the repository', async () => {
+  const pa = { id: 1, acronym: 'PA', name: 'Nodo Panama' }
+  const get = fixture({
+    '/dashboard/es/assets/data/appConfig.json': () => Response.json({ historic_module: { active: true }, validation_module: { active: true } }),
+    '/api/v5/dashboard/harvesting/source/list?page=0&size=100': () => Response.json({ content: [pa, source], totalElements: 2 }),
+  })
+  await open()
+  const input = await screen.findByRole('combobox', { name: 'Repositorio' })
+  act(() => input.focus())
+  fireEvent.change(input, { target: { value: 'nodo' } })
+  fireEvent.click(await screen.findByRole('option', { name: 'PA · Nodo Panama' }))
+  expect(screen.getByRole('heading', { name: pa.name })).toBeVisible()
+  expect(screen.getByRole('link', { name: 'Cosechas' })).toHaveAttribute('href', '/PA/harvesting')
+  expect(screen.getByRole('link', { name: 'Validaciones' })).toHaveAttribute('href', '/PA/validation')
+  expect(screen.queryByRole('link', { name: 'Estadísticas' })).toBeNull()
+  expect(get.mock.calls.some(([url]) => url.endsWith('/source/PA'))).toBe(false)
+})
+
+it('finds a repository by acronym on the fourth page of authorized sources', async () => {
+  const sources = Array.from({ length: 347 }, (_, id) => ({ id, name: 'Fuente ' + id, acronym: 'R' + id }))
+  fixture(Object.fromEntries([0, 1, 2, 3].map(page => [
+    '/api/v5/dashboard/harvesting/source/list?page=' + page + '&size=100',
+    () => Response.json({ content: sources.slice(page * 100, (page + 1) * 100), totalElements: sources.length }),
+  ])))
+  await open()
+  const input = await screen.findByRole('combobox', { name: 'Repositorio' })
+  act(() => input.focus())
+  fireEvent.change(input, { target: { value: 'R346' } })
+  fireEvent.click(await screen.findByRole('option', { name: 'R346 · Fuente 346' }))
+  expect(screen.getByRole('link', { name: 'Validaciones' })).toHaveAttribute('href', '/R346/validation')
+})
+
 it('retries configuration before starting a session', async () => {
   let requests = 0
   fixture({ '/dashboard/es/assets/data/appConfig.json': () => ++requests === 1 ? new Response(null, { status: 503 }) : Response.json({}) })

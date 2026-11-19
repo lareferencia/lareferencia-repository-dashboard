@@ -26,10 +26,13 @@ def dates(page, start, end):
 
 
 def history(page, origin, output):
+    expect(page.get_by_role("heading", name="¿Qué quieres consultar?")).to_be_visible()
+    page.get_by_role("combobox", name="Repositorio").fill("areandina")
+    page.get_by_role("option", name=re.compile("^AREANDINA ·")).click()
     page.get_by_role("link", name="Cosechas", exact=True).click()
     plot = page.get_by_role("group", name="Registros por cosecha")
     expect(plot).to_be_visible()
-    table = page.get_by_role("table", name="Cosechas")
+    table = page.get_by_role("table", name="Cosechas", exact=True)
     row = table.get_by_role("row").nth(1)
     expect(row).to_contain_text("#6")
     with page.expect_response(lambda r: f"/history/{DAY}/{DAY}?" in r.url) as day:
@@ -104,16 +107,17 @@ def multi_page_history(page, origin, output):
     pattern = "**" + API + "/history/**"
     page.route(pattern, history_page)
     page.goto(origin + HISTORY)
-    table = page.get_by_role("table", name="Cosechas")
+    table = page.get_by_role("table", name="Cosechas", exact=True)
     expect(table.get_by_role("row")).to_have_count(9)
     assert table.get_by_role("link").all_text_contents() == [f"#{n}" for n in range(2, 10)]
     expect(table.get_by_role("row").nth(1).get_by_role("cell").nth(4)).to_have_text("10")
     expect(page.get_by_role("img", name="Registros por cosecha")).to_be_visible()
     page.screenshot(path=str(output / "grafico-simulado.png"))
+    page.get_by_role("button", name="Comparar dos cosechas").click()
     page.get_by_role("combobox", name=re.compile("^Referencia")).click()
     page.get_by_role("option", name=re.compile("^#2 ")).click()
-    expect(page.get_by_role("heading", name="#2 → #9")).to_be_visible()
-    expect(page.get_by_text("+70 pp", exact=False)).to_be_visible()
+    expect(page.get_by_role("table", name="Comparación de cosechas").get_by_role("columnheader", name="#9", exact=True)).to_be_visible()
+    expect(page.get_by_text("70 puntos porcentuales más", exact=False)).to_be_visible()
     for label, heading in [("Tasa de validez", "Tasa de validez"), ("Duración", "Duración (min)")]:
         page.get_by_role("combobox", name=re.compile("^Indicador")).click()
         page.get_by_role("option", name=label, exact=True).click()
@@ -127,12 +131,12 @@ def multi_page_history(page, origin, output):
     expect(table.get_by_role("link", name="#1", exact=True)).to_be_visible()
     page.get_by_role("combobox", name=re.compile("^Comparar con")).click()
     page.get_by_role("option", name=re.compile("^#1 ")).click()
-    expect(page.get_by_role("heading", name="#2 → #1")).to_be_visible()
-    expect(page.get_by_text("−10 pp", exact=False)).to_be_visible()
+    expect(page.get_by_role("table", name="Comparación de cosechas").get_by_role("columnheader", name="#1", exact=True)).to_be_visible()
+    expect(page.get_by_text("10 puntos porcentuales menos", exact=False)).to_be_visible()
     page.get_by_role("tab", name="Tabla").click()
     expect(table.get_by_role("row")).to_have_count(10)
     page.get_by_role("tab", name="Evolución").click()
-    expect(page.get_by_role("heading", name="#2 → #1")).to_be_visible()
+    expect(page.get_by_role("table", name="Comparación de cosechas").get_by_role("columnheader", name="#1", exact=True)).to_be_visible()
     page.unroute(pattern)
 
 
@@ -200,7 +204,7 @@ def widget_cases(page, origin, real_script, widget, provider, output):
     def sources(intercept):
         data = intercept.fetch().json()
         data["content"].append({"id": 99, "acronym": "TEST", "name": "Teste"})
-        data["totalElements"] = 2
+        data["totalElements"] = len(data["content"])
         intercept.fulfill(json=data)
     page.route("**/source/list?*", sources)
     page.route("**/source/TEST", lambda r: r.fulfill(json={"id": 99, "acronym": "TEST", "name": "Teste",

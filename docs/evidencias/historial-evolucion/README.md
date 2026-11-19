@@ -4,9 +4,24 @@ Pruebas de aceptación en la copia Docker, 19 de noviembre de 2026. Se comprobó
 
 ## Cómo leer la vista
 
-En **Evolución**, la cosecha más reciente de la página se compara inicialmente con la anterior. **Referencia** y **Comparar con** permiten elegir otro par. Cada indicador muestra el valor de la segunda cosecha, su diferencia con la primera y el valor de referencia. La diferencia entre tasas se expresa en puntos porcentuales. Si falta un dato o el denominador es cero, se muestra un guion.
+El gráfico abre la vista **Evolución**. Al pulsar **Comparar dos cosechas**, la tabla propone las dos últimas cosechas de la página. Se puede elegir otra pareja en **Referencia** y **Comparar con**. Los selectores incluyen la fecha y la hora de finalización en la zona del navegador. Cada cosecha tiene acceso a su propio diagnóstico cuando está disponible. La tabla indica el cambio de la segunda respecto de la primera y conserva el par al volver del diagnóstico. Si falta un dato o el denominador es cero, se muestra un guion.
 
 El gráfico permite alternar entre volumen, tasa de validez y duración en minutos. En volumen, las barras apilan válidos e inválidos. La línea de transformados se representa por separado porque esas transformaciones pueden corresponder a registros ya contabilizados. Cada página del gráfico contiene hasta ocho cosechas en orden cronológico. Al visitar otra página, sus cosechas quedan disponibles en los selectores del mismo repositorio e intervalo. Cambiar el intervalo reinicia la comparación.
+
+## PA #3 y #4 con la comparación bajo demanda
+
+La cuenta `dashboard` abrió el historial por el gateway. La tabla comparativa se abrió mediante el botón y se cerró desde **Ocultar comparación**. En Chrome con zona horaria de Madrid, #3 terminó el **4 de octubre de 2026 a las 09:17** y #4 a las **10:50** del mismo día. Los dos enlaces abrieron sus respectivos informes y ambas consultas de diagnóstico devolvieron HTTP 200 con 3444 registros.
+
+| Indicador | #3 | #4 | Cambio |
+| --- | ---: | ---: | --- |
+| Duración redondeada al segundo | 14 h 9 min 42 s | 1 h 29 min 40 s | 12 h 40 min 2 s menos |
+| Cosechados | 3444 | 3444 | Sin cambio |
+| Tasa de validez | 100 % | 100 % | Sin cambio |
+| Transformados | 0 | 0 | Sin cambio |
+
+Los valores de más de una hora se muestran en horas y minutos. Se comprobó el regreso desde ambos diagnósticos y que las cuatro columnas caben a 390 px de ancho. El mismo recorrido permite cambiar a #1 como referencia y contrasta también sus diferencias frente a #4 con la API.
+
+[Evolución al entrar](pa-3-4/evolucion.png) · [Comparación abierta](pa-3-4/comparacion.png) · [Comparación móvil](pa-3-4/comparacion-movil.png) · [Respuesta del gateway](pa-3-4/historial-api.json) · [Cálculo de las diferencias](pa-3-4/comparacion.tsv)
 
 ## AREANDINA con datos de la copia
 
@@ -24,6 +39,8 @@ El gráfico permite alternar entre volumen, tasa de validez y duración en minut
 
 ## PA con tres cosechas reales
 
+Las siguientes capturas documentan el diseño anterior con tarjetas y la comparación #1 frente a #4.
+
 En Chrome se abrió **PA · Nodo Panama** por el gateway de la copia y se filtró del 3 al 4 de octubre de 2026, ambos inclusive. Se utilizó la cuenta `developer` con su rol ADMIN existente. La asignación de la cuenta `dashboard` cubre únicamente AREANDINA. El dashboard consultó el historial real y recibió las cosechas #4, #3 y #1. El gráfico y la tabla de Evolución las presentaron de la más antigua a la más reciente.
 
 Se eligió **#1** en **Referencia** con **#4** en **Comparar con**. La prueba recalculó las cuatro diferencias a partir de la respuesta HTTP y comprobó el valor de destino, el de referencia y su diferencia en cada tarjeta. También cotejó la fila de cada ejecución con los totales de la API. La lectura independiente de PostgreSQL confirmó tamaños y marcas de tiempo de las tres. [Respuesta JSON](pa/historial-api.json) · [Texto de las tarjetas y diferencias calculadas](pa/comparacion.tsv) · [Consulta a PostgreSQL](pa/postgres.tsv)
@@ -38,7 +55,7 @@ Se eligió **#1** en **Referencia** con **#4** en **Comparar con**. La prueba re
 
 La pantalla muestra horas y minutos para duraciones de al menos una hora. Por eso la tarjeta de #4 muestra **1 h 29 min** y la diferencia **+1 h 25 min**. El gráfico también permite distinguir las ejecuciones #3 y #4: ambas tienen 3444 registros válidos, pero #3 duró 14 h 9 min 42 s. [Captura de volumen](pa/volumen.png) · [Captura de duración](pa/duracion.png)
 
-La solicitud de la interfaz obtuvo HTTP 200. Se puede repetir con Chrome y Playwright desde `web/`. El script solicita la contraseña por terminal y guarda la respuesta real, los resultados de las aserciones y ambas capturas en el directorio indicado. [Prueba de aceptación](../../../web/tests/gateway/history_pa.py)
+La solicitud de la interfaz obtuvo HTTP 200. Para probar también el diseño actual con Chrome y Playwright, ejecutar desde `web/`. El script solicita la contraseña de la cuenta `dashboard` y guarda las capturas de #3 y #4. [Prueba de aceptación](../../../web/tests/gateway/history_pa.py)
 
 ```sh
 python3 tests/gateway/history_pa.py /tmp/prueba-historial-pa

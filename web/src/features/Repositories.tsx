@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react'
-import { Alert, Autocomplete, Box, Button, LinearProgress, Paper, Stack, TextField, Typography } from '@mui/material'
+import { Alert, Autocomplete, Box, Button, LinearProgress, Stack, TextField, Typography } from '@mui/material'
 import { useQuery } from '@tanstack/react-query'
 import { Link, Navigate, Route, Routes, useMatch, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -9,6 +9,7 @@ import { ReadError } from '../auth/Session'
 import { AppLayout, type ModuleLink } from '../app/AppLayout'
 import type { Language } from '../i18n'
 import { HarvestHistory } from './harvesting/HarvestHistory'
+import { RepositoryHome } from './RepositoryHome'
 import { Statistics } from './Statistics'
 import { Validation } from './Validation'
 
@@ -33,19 +34,21 @@ export function Repositories({ api, user, config, logout, language }: {
   if (selected && config.statistics_module.active) links.push({ label: 'statistics', to: root + '/statistics' })
   const home = <Navigate to="/" replace />
   const denied = <Alert severity="warning">{t('denied')}</Alert>
+  const landing = Boolean(useMatch('/'))
   const report = (section === 'validation' || section === 'harvesting') && Boolean(selected)
-  const selector = <SourceSelector sources={sources} selected={selected} onSelect={value => {
+  function selectSource(value: Source) {
     localStorage.setItem(storageKey, String(value.id))
     setPreferred(String(value.id))
     if (scoped) navigate(`/${encodeURIComponent(value.acronym)}/${section}`)
-  }} />
-  return <AppLayout language={language} links={links} profileName={user.displayName || user.username} account={report ? logout : undefined}><Stack spacing={3}>
-    {!report && <Stack direction="row" alignItems="center" justifyContent="space-between"><Button component={Link} to="/user/profile">{user.displayName || user.username}</Button>{logout}</Stack>}
+  }
+  const selector = <SourceSelector sources={sources} selected={selected} onSelect={selectSource} hint={landing ? t('repositorySearchHint') : undefined} />
+  return <AppLayout language={language} links={links} profileName={user.displayName || user.username} account={report || landing ? logout : undefined}><Stack spacing={3}>
+    {!report && !landing && <Stack direction="row" alignItems="center" justifyContent="space-between"><Button component={Link} to="/user/profile">{user.displayName || user.username}</Button>{logout}</Stack>}
     {query.isPending ? <LinearProgress /> : query.isError ? <ReadError retry={() => void query.refetch()} /> :
       <>
-        {!report && selector}
+        {!report && !landing && selector}
         <Routes>
-          <Route index element={selected ? <Home api={api} selected={selected} links={links} /> : <Typography component="h1" variant="h4">{t('dashboard')}</Typography>} />
+          <Route index element={<RepositoryHome selected={selected} selector={selector} links={links} />} />
           <Route path="login" element={<Navigate to="/" replace />} />
           <Route path="user/profile" element={<Stack spacing={1}><Typography component="h1" variant="h4">{t('profile')}</Typography>
             <Typography>{user.username} · {user.roles.join(', ')}</Typography>
@@ -65,27 +68,11 @@ export function Repositories({ api, user, config, logout, language }: {
   </Stack></AppLayout>
 }
 
-function SourceSelector({ sources, selected, onSelect }: { sources: Source[]; selected?: Source; onSelect: (source: Source) => void }) {
+function SourceSelector({ sources, selected, onSelect, hint }: { sources: Source[]; selected?: Source; hint?: string; onSelect: (source: Source) => void }) {
   const { t } = useTranslation()
   if (!sources.length) return <Alert severity="info">{t('noRepos')}</Alert>
-  return <Box sx={{ maxWidth: 640 }}><Autocomplete options={sources} value={selected ?? null}
+  return <Box sx={{ maxWidth: 640 }}><Autocomplete autoHighlight getOptionKey={source => source.id} options={sources} value={selected ?? null}
     isOptionEqualToValue={(a, b) => a.id === b.id} getOptionLabel={source => `${source.acronym} · ${source.name}`}
     onChange={(_, value) => { if (value) onSelect(value) }}
-    renderInput={params => <TextField {...params} label={t('repository')} />} /></Box>
-}
-
-function Home({ api, selected, links }: { api: DashboardApi; selected: Source; links: ModuleLink[] }) {
-  const { t } = useTranslation()
-  const detail = useQuery({ queryKey: ['source', selected.id], queryFn: ({ signal }) => api.source(selected, signal) })
-  if (detail.isPending) return <LinearProgress />
-  if (detail.isError) return <ReadError retry={() => void detail.refetch()} />
-  return <Stack spacing={2}>
-    <Typography component="h1" variant="h4">{t('dashboard')}</Typography>
-    <Paper variant="outlined" sx={{ p: 2 }}>
-      <Typography component="h2" variant="h6">{detail.data.name}</Typography>
-      {detail.data.institutionName && <Typography>{detail.data.institutionName}</Typography>}
-      {links.map(link => <Button key={link.label} component={Link} to={link.to}>{t(link.label)}</Button>)}
-      {!links.length && <Typography>{t('empty')}</Typography>}
-    </Paper>
-  </Stack>
+    renderInput={params => <TextField {...params} label={t('repository')} helperText={hint} />} /></Box>
 }

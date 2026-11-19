@@ -1,4 +1,4 @@
-"""Comparación de las cosechas históricas #1 y #4 de PA en la copia Docker."""
+"""Comparación de las cosechas históricas #3 y #4 de PA en la copia Docker."""
 import argparse
 import csv
 from datetime import datetime
@@ -23,7 +23,7 @@ def metrics(row):
             row["transformedSize"], round(elapsed.total_seconds())]
 
 
-def display(value, index, delta=False):
+def display(value, index):
     n = abs(value)
     if index == 3:
         if n >= 3600:
@@ -35,8 +35,8 @@ def display(value, index, delta=False):
     else:
         text = f"{n:,.0f}".replace(",", ".") if n >= 10000 else f"{n:g}"
         if index == 1:
-            text += " pp" if delta else " %"
-    return ("−" if value < 0 else "+" if value > 0 and delta else "") + text
+            text += " %"
+    return text
 
 
 def screenshot(page, path):
@@ -45,14 +45,28 @@ def screenshot(page, path):
     page.screenshot(path=str(path), full_page=True, animations="disabled")
 
 
+def verify_changes(page, comparison_table, reference, target):
+    comparison = []
+    a, b = metrics(reference), metrics(target)
+    for i, label in enumerate(["Cosechados", "Tasa de validez", "Transformados", "Duración"]):
+        delta = b[i] - a[i]
+        row = comparison_table.get_by_role("row").filter(has=page.get_by_role("rowheader", name=label, exact=True))
+        status = "Sin cambio" if delta == 0 else (f"{abs(delta):g} puntos porcentuales" if i == 1 else display(abs(delta), i)) + (" menos" if delta < 0 else " más")
+        for cell, expected in enumerate([display(a[i], i), display(b[i], i), status]):
+            expect(row.get_by_role("cell").nth(cell)).to_have_text(expected)
+        comparison.append([label, a[i], b[i], delta, status])
+
+    return comparison
+
+
 def verify(page, output, password):
     page.goto(ORIGIN + "/dashboard/es/")
-    page.get_by_label("Usuario").fill("developer")
+    page.get_by_label("Usuario").fill("dashboard")
     page.get_by_label("Contraseña").fill(password)
     page.get_by_role("button", name="Iniciar sesión").click()
-    expect(page.get_by_role("combobox", name="Repositorio")).to_be_visible()
+    expect(page.get_by_role("heading", name="¿Qué quieres consultar?")).to_be_visible()
     me = page.request.get(ORIGIN + "/api/v5/me")
-    assert me.ok and "ADMIN" in me.json()["roles"]
+    assert me.ok and "DASHBOARD" in me.json()["roles"]
 
     page.goto(ORIGIN + ROUTE)
     expect(page.get_by_role("combobox", name="Repositorio")).to_have_value("PA · Nodo Panama")
@@ -66,7 +80,7 @@ def verify(page, output, password):
     rows = {row["id"]: row for row in payload["content"]}
     assert set(rows) == {1, 3, 4} and payload["totalElements"] == 3
 
-    table = page.get_by_role("table", name="Cosechas")
+    table = page.get_by_role("table", name="Cosechas", exact=True)
     expect(table.get_by_role("row")).to_have_count(4)
     assert table.get_by_role("link").all_text_contents() == ["#1", "#3", "#4"]
     for i, row_id in enumerate((1, 3, 4), start=1):
@@ -76,31 +90,46 @@ def verify(page, output, password):
         assert [int(cell.replace(".", "")) for cell in cells[1:5]] == counts
         assert cells[-1] == display(metrics(row)[3], 3)
 
+    comparison_table = page.get_by_role("table", name="Comparación de cosechas")
+    toggle = page.get_by_role("button", name="Comparar dos cosechas", exact=True)
+    expect(comparison_table).to_have_count(0)
+    expect(toggle).to_have_attribute("aria-expanded", "false")
+    expect(page.get_by_role("img", name="Registros por cosecha")).to_be_visible()
+    screenshot(page, output / "evolucion.png")
+    toggle.click()
+    expect(comparison_table).to_be_visible()
+    for label, stamp in [("^Referencia", "#3 · 4 oct 2026, 9:17"), ("^Comparar con", "#4 · 4 oct 2026, 10:50")]:
+        expect(page.get_by_role("combobox", name=re.compile(label))).to_contain_text(stamp)
+
+    comparison = verify_changes(page, comparison_table, rows[3], rows[4])
+
+    # The captured section includes the time selectors, both diagnosis links and all four changes.
+    panel = comparison_table.locator("xpath=ancestor::section[1]")
+    panel.screenshot(path=str(output / "comparacion.png"), animations="disabled")
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.wait_for_function("document.documentElement.scrollWidth === 390", timeout=5000)
+    assert comparison_table.evaluate("(table) => table.scrollWidth <= table.parentElement.clientWidth")
+    panel.screenshot(path=str(output / "comparacion-movil.png"), animations="disabled")
+    page.set_viewport_size({"width": 1440, "height": 1060})
+    for snapshot in [3, 4]:
+        endpoint = f"/api/v5/dashboard/validation/source/PA/{snapshot}"
+        with page.expect_response(lambda r: urlsplit(r.url).path == endpoint) as diagnostic:
+            panel.get_by_role("link", name=f"Ver diagnóstico #{snapshot}").click()
+        assert diagnostic.value.status == 200 and diagnostic.value.json()["size"] == rows[snapshot]["harvestedSize"]
+        expect(page.get_by_role("heading", name=f"PA · Snapshot #{snapshot}")).to_be_visible()
+        page.go_back()
+        expect(comparison_table).to_be_visible()
+
     page.get_by_role("combobox", name=re.compile("^Referencia")).click()
     page.get_by_role("option", name=re.compile("^#1 ")).click()
-    expect(page.get_by_role("heading", name="#1 → #4")).to_be_visible()
-    expect(page.get_by_role("link", name="Ver diagnóstico #4")).to_have_attribute("href", re.compile(r"/PA/validation/4$"))
-    comparison = []
-    a, b = metrics(rows[1]), metrics(rows[4])
-    for i, label in enumerate(["Cosechados", "Tasa de validez", "Transformados", "Duración"]):
-        delta = b[i] - a[i]
-        caption = f"{display(delta, i, True)} · #1 ({display(a[i], i)})"
-        card = page.get_by_text(caption, exact=True).locator("..")
-        expect(card.get_by_text(label, exact=True)).to_be_visible()
-        expect(card.get_by_text(display(b[i], i), exact=True)).to_be_visible()
-        comparison.append([label, a[i], b[i], delta, card.inner_text().replace("\n", " | ")])
-
-    expect(page.get_by_role("img", name="Registros por cosecha")).to_be_visible()
-    screenshot(page, output / "volumen.png")
-    page.get_by_role("combobox", name=re.compile("^Indicador")).click()
-    page.get_by_role("option", name="Duración", exact=True).click()
-    expect(page.get_by_role("img", name="Duración (min)")).to_be_visible()
-    screenshot(page, output / "duracion.png")
-
+    verify_changes(page, comparison_table, rows[1], rows[4])
+    page.get_by_role("button", name="Ocultar comparación").click()
+    expect(comparison_table).to_have_count(0)
+    expect(toggle).to_be_visible()
     (output / "historial-api.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
     with (output / "comparacion.tsv").open("w", newline="") as f:
         writer = csv.writer(f, delimiter="\t", lineterminator="\n")
-        writer.writerow(["indicador", "referencia_1", "destino_4", "diferencia", "texto_visible"])
+        writer.writerow(["indicador", "referencia_3", "destino_4", "diferencia", "texto_visible"])
         writer.writerows(comparison)
     print(f"HTTP {api.status} {api.request.method} {api.url}")
     for item in comparison:
@@ -111,7 +140,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
     output = parser.parse_args().output
-    password = getpass("Contraseña de developer en la copia: ")
+    password = getpass("Contraseña de dashboard en la copia: ")
     with sync_playwright() as pw:
         browser = pw.chromium.launch(channel="chrome")
         ctx = browser.new_context(locale="es-ES", timezone_id="Europe/Madrid", viewport={"width": 1440, "height": 1060})

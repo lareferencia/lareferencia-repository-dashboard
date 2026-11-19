@@ -67,9 +67,9 @@ function Results({ api, source, validation, request, chart, series, update }: {
   return <>
     {query.isPending && <LinearProgress />}
     {query.isError && <ReadError retry={() => void query.refetch()} />}
-    <HarvestComparison rows={chart ? rows : []} choices={choices} total={total} acronym={source.acronym} validation={validation} />
     {data && (rows.length ? <>
       {chart && <HarvestTrend rows={rows} total={total} series={series} setSeries={v => update({ series: v })} acronym={source.acronym} validation={validation} />}
+      {chart && <HarvestComparison rows={rows} choices={choices} total={total} acronym={source.acronym} validation={validation} />}
       <Paper variant="outlined" sx={{ overflow: 'hidden' }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={1} sx={{ px: 2, py: 1.5 }}>
           <Box><Typography component="h2" variant="h6">{t('history')}</Typography>
@@ -101,6 +101,7 @@ export function HarvestHistory({ api, source, validation, repositorySelector }: 
   const series = rawSeries === 'validRate' || rawSeries === 'duration' ? rawSeries : 'volume'
   const update: Update = changes => {
     const next = new URLSearchParams(params)
+    if ('from' in changes && (changes.from !== request.from || changes.to !== request.to)) next.delete('compare')
     if (!('series' in changes)) next.delete('page')
     for (const [key, value] of Object.entries(changes)) {
       if (value) next.set(key, value)
