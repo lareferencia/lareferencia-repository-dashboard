@@ -28,6 +28,8 @@ Los directorios estáticos de Admin y Dashboard son independientes.
 
 ## Acceso
 
+Para configurar los módulos, las estadísticas de uso y los permisos, consulta la [guía de configuración en inglés](docs/CONFIGURATION.md).
+
 Harvester sirve el Dashboard bajo `/dashboard/` (redirige a `/dashboard/es/`).
 En Compose normal se accede por `http://localhost:8090/dashboard/es/`; en Docker
 Dev aislado por `http://localhost:8190/dashboard/es/` o por el gateway
