@@ -27,7 +27,7 @@ def dates(page, start, end):
 
 def history(page, origin, output):
     page.get_by_role("link", name="Cosechas", exact=True).click()
-    plot = page.get_by_role("img", name="Registros por cosecha")
+    plot = page.get_by_role("group", name="Registros por cosecha")
     expect(plot).to_be_visible()
     table = page.get_by_role("table", name="Cosechas")
     row = table.get_by_role("row").nth(1)
@@ -39,10 +39,19 @@ def history(page, origin, output):
     item = data["content"][0]
     assert [item[k] for k in ("harvestedSize", "validSize", "transformedSize", "deleted")] == [4000, 0, 0, False]
     assert item["startTime"].startswith(DAY + "T18:01:") and item["endTime"].startswith(DAY + "T18:16:")
-    expect(row).to_contain_text("18:16")
+    expect(row).to_contain_text("20:16")
+    expect(row).to_contain_text("14min 37s")
     page.screenshot(path=str(output / "grafico.png"), animations="disabled")
-    # Click the centre of the only stacked bar, then return to the same calendar interval.
-    plot.click(position={"x": int(plot.bounding_box()["width"] * 0.52), "y": 145})
+    page.set_viewport_size({"width": 390, "height": 844})
+    expect(page.get_by_role("heading", name="Historial de cosechas")).to_be_visible()
+    assert page.evaluate("document.documentElement.scrollWidth") == 390
+    period = page.locator("summary").filter(has_text="Intervalo")
+    period.click()
+    expect(page.get_by_label("Desde")).to_have_value(DAY)
+    period.click()
+    page.screenshot(path=str(output / "movil.png"), full_page=True, animations="disabled")
+    page.set_viewport_size({"width": 1440, "height": 1000})
+    page.get_by_role("link", name="Ver diagnóstico #6").click()
     expect(page).to_have_url(origin + REPORT)
     expect(page.get_by_role("link", name="#5 Language")).to_be_visible()
     page.go_back()
@@ -53,11 +62,11 @@ def history(page, origin, output):
     expect(plot).to_be_visible()
     page.get_by_role("tab", name="Tabla").click()
     sort = table.get_by_text("Cosechados", exact=True)
-    with page.expect_response(lambda r: "/history?" in r.url and "sort=size%2Casc" in r.url) as sorted_page:
+    with page.expect_response(lambda r: "/history/" in r.url and "sort=size%2Casc" in r.url) as sorted_page:
         sort.click()
     assert sorted_page.value.ok and sorted_page.value.json()["totalElements"] == 1
     page.get_by_label("Filas por página").select_option("25")
-    expect(row).to_contain_text("18:01")
+    expect(row).to_contain_text("20:01")
     with page.expect_download() as event:
         page.get_by_role("button", name="CSV de la página actual").click()
     target = output / "historial.csv"
@@ -83,8 +92,9 @@ def multi_page_history(page, origin, output):
     # One real snapshot cannot exercise a second chart page or a nonzero transformed series.
     def history_page(intercept):
         query = parse_qs(urlsplit(intercept.request.url).query)
-        assert query["size"] == ["8"]
-        ids = range(9, 1, -1) if query["page"] == ["0"] else [1]
+        size = int(query["size"][0])
+        offset = size * int(query["page"][0])
+        ids = list(range(9, 0, -1))[offset:offset + size]
         rows = [{
             "id": n, "startTime": f"2026-01-{n:02}T00:00:00", "endTime": f"2026-01-{n:02}T01:00:00",
             "harvestedSize": 100, "validSize": n * 10, "transformedSize": n * 5, "deleted": False,
@@ -100,9 +110,29 @@ def multi_page_history(page, origin, output):
     expect(table.get_by_role("row").nth(1).get_by_role("cell").nth(4)).to_have_text("10")
     expect(page.get_by_role("img", name="Registros por cosecha")).to_be_visible()
     page.screenshot(path=str(output / "grafico-simulado.png"))
+    page.get_by_role("combobox", name=re.compile("^Referencia")).click()
+    page.get_by_role("option", name=re.compile("^#2 ")).click()
+    expect(page.get_by_role("heading", name="#2 → #9")).to_be_visible()
+    expect(page.get_by_text("+70 pp", exact=False)).to_be_visible()
+    for label, heading in [("Tasa de validez", "Tasa de validez"), ("Duración", "Duración (min)")]:
+        page.get_by_role("combobox", name=re.compile("^Indicador")).click()
+        page.get_by_role("option", name=label, exact=True).click()
+        expect(page.get_by_role("img", name=heading)).to_be_visible()
+        if label == "Tasa de validez":
+            expect(page.get_by_role("listbox")).to_have_count(0)
+            page.evaluate("window.scrollTo(0, 0)")
+            page.screenshot(path=str(output / "comparacion-simulada.png"), full_page=True, animations="disabled")
     page.get_by_role("button").filter(has_text=re.compile("^2$")).click()
     expect(table.get_by_role("row")).to_have_count(2)
     expect(table.get_by_role("link", name="#1", exact=True)).to_be_visible()
+    page.get_by_role("combobox", name=re.compile("^Comparar con")).click()
+    page.get_by_role("option", name=re.compile("^#1 ")).click()
+    expect(page.get_by_role("heading", name="#2 → #1")).to_be_visible()
+    expect(page.get_by_text("−10 pp", exact=False)).to_be_visible()
+    page.get_by_role("tab", name="Tabla").click()
+    expect(table.get_by_role("row")).to_have_count(10)
+    page.get_by_role("tab", name="Evolución").click()
+    expect(page.get_by_role("heading", name="#2 → #1")).to_be_visible()
     page.unroute(pattern)
 
 

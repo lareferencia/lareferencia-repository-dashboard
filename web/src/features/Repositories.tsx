@@ -33,16 +33,17 @@ export function Repositories({ api, user, config, logout, language }: {
   if (selected && config.statistics_module.active) links.push({ label: 'statistics', to: root + '/statistics' })
   const home = <Navigate to="/" replace />
   const denied = <Alert severity="warning">{t('denied')}</Alert>
-  const diagnostic = section === 'validation' && Boolean(selected)
-  return <AppLayout language={language} links={links} profileName={user.displayName || user.username} account={diagnostic ? logout : undefined}><Stack spacing={3}>
-    {!diagnostic && <Stack direction="row" alignItems="center" justifyContent="space-between"><Button component={Link} to="/user/profile">{user.displayName || user.username}</Button>{logout}</Stack>}
+  const report = (section === 'validation' || section === 'harvesting') && Boolean(selected)
+  const selector = <SourceSelector sources={sources} selected={selected} onSelect={value => {
+    localStorage.setItem(storageKey, String(value.id))
+    setPreferred(String(value.id))
+    if (scoped) navigate(`/${encodeURIComponent(value.acronym)}/${section}`)
+  }} />
+  return <AppLayout language={language} links={links} profileName={user.displayName || user.username} account={report ? logout : undefined}><Stack spacing={3}>
+    {!report && <Stack direction="row" alignItems="center" justifyContent="space-between"><Button component={Link} to="/user/profile">{user.displayName || user.username}</Button>{logout}</Stack>}
     {query.isPending ? <LinearProgress /> : query.isError ? <ReadError retry={() => void query.refetch()} /> :
       <>
-        {!diagnostic && <SourceSelector sources={sources} selected={selected} onSelect={value => {
-          localStorage.setItem(storageKey, String(value.id))
-          setPreferred(String(value.id))
-          if (scoped) navigate(`/${encodeURIComponent(value.acronym)}/${section}`)
-        }} />}
+        {!report && selector}
         <Routes>
           <Route index element={selected ? <Home api={api} selected={selected} links={links} /> : <Typography component="h1" variant="h4">{t('dashboard')}</Typography>} />
           <Route path="login" element={<Navigate to="/" replace />} />
@@ -50,7 +51,7 @@ export function Repositories({ api, user, config, logout, language }: {
             <Typography>{user.username} · {user.roles.join(', ')}</Typography>
             <Typography>{t('repository')}: {sources.map(s => s.acronym).join(', ')}</Typography></Stack>} />
           <Route path=":acronym/harvesting" element={!config.historic_module.active ? home : !selected ? denied :
-            <HarvestHistory api={api} source={selected} validation={config.validation_module.active} />} />
+            <HarvestHistory repositorySelector={selector} api={api} source={selected} validation={config.validation_module.active} />} />
           <Route path=":acronym/statistics" element={!config.statistics_module.active ? home : !selected ? denied :
             <Statistics api={api} source={selected} config={config.statistics_module.historic_stats} />} />
           {['statistics', 'statistics/statistics'].map(path => <Route key={path} path={path}

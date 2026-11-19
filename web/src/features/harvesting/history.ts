@@ -46,5 +46,33 @@ export function counts(row: Harvest) {
 }
 
 export function chronological(rows: Harvest[]) {
-  return [...rows].sort((a, b) => (a.startTime || '').localeCompare(b.startTime || '') || a.id - b.id)
+  const time = (row: Harvest) => harvestInstant(row.endTime || row.startTime)?.getTime() ?? -Infinity
+  return [...rows].sort((a, b) => time(a) - time(b) || a.id - b.id)
+}
+
+// The compatibility API returns UTC timestamps with or without an explicit offset.
+export function harvestInstant(value: string | null | undefined) {
+  if (!value) return null
+  const date = new Date(/(?:Z|[+-]\d\d:\d\d)$/i.test(value) ? value : value + 'Z')
+  return Number.isFinite(date.valueOf()) ? date : null
+}
+
+export function durationSeconds(row: Harvest) {
+  const start = harvestInstant(row.startTime)
+  const end = harvestInstant(row.endTime)
+  if (!start || !end || end < start) return null
+  return Math.round((end.getTime() - start.getTime()) / 1000)
+}
+
+export function validPercent(row: Harvest) {
+  if (!row.harvestedSize || row.validSize == null) return null
+  return 100 * row.validSize / row.harvestedSize
+}
+
+export function durationLabel(seconds: number, lang: string) {
+  const number = (n: number, unit: string) =>
+    new Intl.NumberFormat(lang, { style: 'unit', unit, unitDisplay: 'narrow' }).format(n)
+  if (seconds < 60) return number(seconds, 'second')
+  if (seconds < 3600) return number(Math.floor(seconds / 60), 'minute') + ' ' + number(seconds % 60, 'second')
+  return number(Math.floor(seconds / 3600), 'hour') + ' ' + number(Math.floor(seconds % 3600 / 60), 'minute')
 }

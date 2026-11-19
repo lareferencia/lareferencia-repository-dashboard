@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Harvest, Source, Summary } from '../../api/dashboard'
+import { harvestInstant } from '../harvesting/history'
 import { SelectField } from './SelectField'
 
 function historyPage(api: DashboardApi, acronym: string, page: number) {
@@ -12,12 +13,8 @@ function historyPage(api: DashboardApi, acronym: string, page: number) {
 }
 
 export function snapshotDate(row: Harvest | undefined, language: string) {
-  const value = row?.endTime || row?.startTime
-  if (!value) return ''
-  // The compatibility adapter serializes the harvester's UTC LocalDateTime without an offset.
-  const date = new Date(/(?:Z|[+-]\d\d:\d\d)$/i.test(value) ? value : value + 'Z')
-  return Number.isNaN(date.valueOf()) ? '' :
-    new Intl.DateTimeFormat(language, { dateStyle: 'short', timeStyle: 'short' }).format(date)
+  const date = harvestInstant(row?.endTime || row?.startTime)
+  return date ? new Intl.DateTimeFormat(language, { dateStyle: 'short', timeStyle: 'short' }).format(date) : ''
 }
 
 export function SnapshotHeader({ api, source, snapshot, summary }: {

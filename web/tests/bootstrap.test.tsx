@@ -204,7 +204,7 @@ it('keeps a deleted snapshot in the history and retries the same failed page', a
   const table = within(await screen.findByRole('table', { name: 'Cosechas' }))
   expect(table.getByRole('cell', { name: '6' })).toBeVisible()
   expect(table.queryByRole('link')).toBeNull()
-  expect(table.getAllByText('—')).toHaveLength(4)
+  expect(table.getAllByText('—')).toHaveLength(5)
 })
 
 it.each(['https://portal.example/Record/', undefined])('respects the optional portal URL on a bookmarked record page (%s)', async portal => {
