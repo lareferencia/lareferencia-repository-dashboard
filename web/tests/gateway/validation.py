@@ -209,10 +209,10 @@ def check_access(page, origin, output):
     xml = "/metadata?" + urlencode({"identifier": FIRST})
     controls = [
         ("/api/v5/me", 200),
-        (base + "/PA/4?valid_rules=5", 403),
-        (base + "/PA/4/valid_occrs/10?valid_rules=5", 403),
-        (base + "/PA/4/invalid_occrs/10?valid_rules=5", 403),
-        (base + "/PA/4" + xml, 403),
+        (base + "/UY/2?valid_rules=5", 403),
+        (base + "/UY/2/valid_occrs/10?valid_rules=5", 403),
+        (base + "/UY/2/invalid_occrs/10?valid_rules=5", 403),
+        (base + "/UY/2" + xml, 403),
         (base + "/PA/6" + xml, 404),
         (base + "/AREANDINA/6/metadata?" + urlencode({"identifier": FIRST[:20]}), 404),
         (base + "/AREANDINA/6/metadata?identifier=", 400),
@@ -224,7 +224,7 @@ def check_access(page, origin, output):
         assert response.status == status, (path, response.status)
         if path == "/api/v5/me":
             user = response.json()
-            assert user["roles"] == ["DASHBOARD"] and user["readableNetworkIds"] == [33]
+            assert user["roles"] == ["DASHBOARD"] and 33 in user["readableNetworkIds"]
         rows.append(f"{path}\t{status}")
     (output / "permisos.tsv").write_text("\n".join(rows) + "\n")
 

@@ -14,12 +14,12 @@
     <artifactId>lareferencia-repository-dashboard</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <dashboard.node.dir>${project.basedir}/angular</dashboard.node.dir>
+        <dashboard.node.dir>${project.build.directory}/frontend</dashboard.node.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <node.version>v18.20.8</node.version>
-        <npm.version>10.8.2</npm.version>
-        <dashboard.frontend>angular</dashboard.frontend>
-        <dashboard.dist>angular/dist/frontend</dashboard.dist>
+        <node.version>v22.14.0</node.version>
+        <npm.version>10.9.2</npm.version>
+        <dashboard.frontend>web</dashboard.frontend>
+        <dashboard.dist>web/dist</dashboard.dist>
         <dashboard.static.dir>${project.basedir}/../lareferencia-lrharvester-app/dashboard-static</dashboard.static.dir>
     </properties>
     <build>
@@ -90,11 +90,6 @@
         <profile>
             <id>dashboard-react</id>
             <properties>
-                <dashboard.node.dir>${project.build.directory}/frontend</dashboard.node.dir>
-                <dashboard.frontend>web</dashboard.frontend>
-                <dashboard.dist>web/dist</dashboard.dist>
-                <node.version>v22.14.0</node.version>
-                <npm.version>10.9.2</npm.version>
                 <dashboard.static.dir>${project.build.directory}/react-static</dashboard.static.dir>
             </properties>
             <build><plugins><plugin>

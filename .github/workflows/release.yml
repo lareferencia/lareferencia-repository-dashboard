@@ -12,42 +12,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18.20.8'
-          cache: npm
-          cache-dependency-path: angular/package-lock.json
-      - name: Check inherited npm version
-        run: |
-          python3 - <<'PY'
-          import json, xml.etree.ElementTree as E
-          ns = '{http://maven.apache.org/POM/4.0.0}'
-          version = E.parse('pom.xml').getroot().findtext(ns + 'parent/' + ns + 'version')
-          for frontend in ('angular', 'web'):
-              package = json.load(open(frontend + '/package.json'))
-              lock = json.load(open(frontend + '/package-lock.json'))
-              assert package['version'] == lock['version'] == lock['packages']['']['version'] == version
-          PY
-      - name: Install pinned npm
-        run: npm install --global npm@10.8.2
-      - name: Install dependencies
-        working-directory: angular
-        run: npm ci --no-audit --no-fund
-      - name: Build localized dashboard
-        working-directory: angular
-        run: npm run build
-      - uses: actions/upload-artifact@v4
-        with:
-          name: dashboard-${{ github.sha }}
-          path: angular/dist/frontend/
-          if-no-files-found: error
-
-  react:
-    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: web
@@ -60,12 +24,23 @@ jobs:
           node-version-file: web/.nvmrc
           cache: npm
           cache-dependency-path: web/package-lock.json
+      - name: Check inherited npm version
+        working-directory: .
+        run: |
+          python3 - <<'PY'
+          import json, xml.etree.ElementTree as E
+          ns = '{http://maven.apache.org/POM/4.0.0}'
+          version = E.parse('pom.xml').getroot().findtext(ns + 'parent/' + ns + 'version')
+          package = json.load(open('web/package.json'))
+          lock = json.load(open('web/package-lock.json'))
+          assert package['version'] == lock['version'] == lock['packages']['']['version'] == version
+          PY
       - run: npm install --global npm@10.9.2
       - run: npm ci --no-audit --no-fund
       - run: npm test
       - run: npm run build
       - uses: actions/upload-artifact@v4
         with:
-          name: dashboard-react-preview-${{ github.sha }}
+          name: dashboard-${{ github.sha }}
           path: web/dist/
           if-no-files-found: error

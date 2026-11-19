@@ -1,8 +1,8 @@
 # Dashboard React
 
-Aplicación candidata del dashboard. Se puede instalar y compilar copiando únicamente esta carpeta. La cuenta inicia sesión con la API v5 y el selector ofrece sus repositorios autorizados. Desde Validaciones se abre el último snapshot válido. Los enlaces al informe y a cada regla se pueden guardar y recargar. [Recorrido E2 y pruebas por el gateway](../docs/evidencias/e2-react/README.md)
+Interfaz publicada en `/dashboard/`. Se puede instalar y compilar copiando únicamente esta carpeta. La cuenta inicia sesión con la API v5 y el selector ofrece sus repositorios autorizados. Desde Validaciones se abre el último snapshot válido. Los enlaces al informe y a cada regla se pueden guardar y recargar. [Recorrido E2 y pruebas por el gateway](../docs/evidencias/e2-react/README.md)
 
-El perfil Maven optativo `dashboard-react` empaqueta el candidato. La ficha permite consultar el XML histórico y el informe aplica los mismos filtros a resumen, registros y frecuencias. [Comparación final con el admin](../docs/evidencias/comparacion-final-validaciones/README.md) · [Empaquetado y reversión](../docs/evidencias/e5-react/README.md)
+El perfil Maven optativo `dashboard-react` genera un ZIP independiente en `target/`; la compilación Maven predeterminada publica React en el harvester. La ficha permite consultar el XML histórico y el informe aplica los mismos filtros a resumen, registros y frecuencias. [Comparación final con el admin](../docs/evidencias/comparacion-final-validaciones/README.md) · [Empaquetado y reversión](../docs/evidencias/e5-react/README.md)
 
 ## Desarrollo
 
@@ -36,4 +36,4 @@ El tema y los estilos de navegación se tomaron del admin-web en `5dacfdb`. El l
 
 El 19 de noviembre de 2026 se copió solo `web/` a un directorio temporal, se instalaron las dependencias del lock con Node/npm en las versiones indicadas y pasaron TypeScript, los dos casos Vitest y el build de producción. En Chrome se verificaron las tres entradas, el cambio de idioma desde una ruta profunda con query y fragmento, recarga, navegación a Inicio y viewport móvil de 390 px. El bundle compartido midió 555 kB minificados (175 kB gzip); Vite emitió el aviso de tamaño de chunk. [Escritorio ES](../docs/evidencias/e1-react/es-escritorio.png) · [Móvil PT](../docs/evidencias/e1-react/pt-movil.png)
 
-La CI propuesta añade el job `react` y un artefacto de preview identificado por SHA. El POM y el procedimiento Docker siguen publicando Angular. La huella SHA-256 de `/dashboard/es/main.js` en el harvester local fue idéntica antes y después de E1: `1ef70d67f8de04dd0641c3467be5ba9701b2459983213a69feea4368841fcb15`.
+Durante E1, React se compilaba como preview y el POM y Docker aún publicaban Angular. La huella SHA-256 de `/dashboard/es/main.js` en el harvester local fue idéntica antes y después de E1: `1ef70d67f8de04dd0641c3467be5ba9701b2459983213a69feea4368841fcb15`.

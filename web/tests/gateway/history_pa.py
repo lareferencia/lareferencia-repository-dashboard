@@ -59,16 +59,16 @@ def verify_changes(page, comparison_table, reference, target):
     return comparison
 
 
-def verify(page, output, password):
-    page.goto(ORIGIN + "/dashboard/es/")
+def verify(page, origin, output, password):
+    page.goto(origin + "/dashboard/es/")
     page.get_by_label("Usuario").fill("dashboard")
     page.get_by_label("Contraseña").fill(password)
     page.get_by_role("button", name="Iniciar sesión").click()
     expect(page.get_by_role("heading", name="¿Qué quieres consultar?")).to_be_visible()
-    me = page.request.get(ORIGIN + "/api/v5/me")
+    me = page.request.get(origin + "/api/v5/me")
     assert me.ok and "DASHBOARD" in me.json()["roles"]
 
-    page.goto(ORIGIN + ROUTE)
+    page.goto(origin + ROUTE)
     expect(page.get_by_role("combobox", name="Repositorio")).to_have_value("PA · Nodo Panama")
     page.get_by_label("Desde").fill("2026-10-03")
     page.get_by_label("Hasta").fill("2026-10-04")
@@ -139,14 +139,18 @@ def verify(page, output, password):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
-    output = parser.parse_args().output
-    password = getpass("Contraseña de dashboard en la copia: ")
+    parser.add_argument("--origin", default=ORIGIN, help="Gateway Docker local que sirve el dashboard")
+    args = parser.parse_args()
+    if urlsplit(args.origin).hostname not in {"dashboard.localhost", "localhost", "127.0.0.1"}:
+        parser.error("Se requiere un destino local")
+    output = args.output
+    password = getpass("Contraseña de dashboard: ")
     with sync_playwright() as pw:
         browser = pw.chromium.launch(channel="chrome")
         ctx = browser.new_context(locale="es-ES", timezone_id="Europe/Madrid", viewport={"width": 1440, "height": 1060})
         output.mkdir(parents=True, exist_ok=True)
         try:
-            verify(ctx.new_page(), output, password)
+            verify(ctx.new_page(), args.origin.rstrip("/"), output, password)
         finally:
             ctx.close()
             browser.close()
