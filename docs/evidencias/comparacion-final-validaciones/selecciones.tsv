@@ -1,0 +1,5 @@
+filtros	resumen	registros	aprueban_10	fallan_10	ocurrencias_validas_10	ocurrencias_invalidas_10
+global	4000	4000	1312	2688	1312	8659
+valid_rules=5	1871	1871	1309	562	1309	6314
+invalid_rules=5	2129	2129	3	2126	3	2345
+valid_rules=5&invalid_rules=5	0	0	0	0	0	0

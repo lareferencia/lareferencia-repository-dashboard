@@ -1,0 +1,15 @@
+﻿ID;Name;Description;Mandatory;Conformity;Valid records
+1;"Publication Date (M)";"A date associated with an event in the life cycle of the resource.";TRUE;"100.000";4000
+2;"Subject";"Verifica dc:subject no vacio";FALSE;"98.675";3947
+3;"Description";"Verifica dc:description no vacío";FALSE;"99.775";3991
+4;"Relation";"Verifica dc:relation no vacío";FALSE;"66.500";2660
+5;"Language";"Debe existir al menos una ocurrencia de dc:language iso-639-3";FALSE;"46.775";1871
+6;"Thesis - Contributor";"Si el elemento dc.type es = a tesis entonces dc.contributor es obligatorio.";FALSE;"100.000";4000
+7;"Title";"Verifica que exista dc:title";TRUE;"100.000";4000
+8;"Embargo End Date (MA)";"Fecha partir a partir de la cual el OD estará en AA. Solo si el campo Nivel de Accesibilidad (dc:rights) informa OD bajo período de embargo (info:eu-repo/semantics/embargoedAccess)";FALSE;"99.800";3992
+9;"Resource Identifier (M)";"Debe existir al menos una ocurrencia de dc:identifier apuntando a URL válida";TRUE;"100.000";4000
+10;"Access Level (M)";"Nivel de acceso debe ser openAccess, embargoedAccess";TRUE;"32.800";1312
+11;"Publication Version (R)";"to indicate the status in the publication process.";FALSE;"38.750";1550
+12;"Format";"Verifica que dc:format contenga ocurrencia en vocabulario mime types";FALSE;"47.175";1887
+13;"Creator";"Verifica que exista dc:creator no vacío";TRUE;"0.000";0
+14;"Publication Type (M)";"Publication types";TRUE;"14.125";565

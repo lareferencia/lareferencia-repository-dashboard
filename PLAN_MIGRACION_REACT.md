@@ -89,6 +89,8 @@ Los estados que siguen son criterios de aceptación propuestos. Este documento e
 
 ### E0 · Congelar la referencia y preparar datos
 
+[Referencia ejecutada en Angular con la cuenta DASHBOARD y AREANDINA #6: pantallas, traza HTTP, controles SQLite y CSV](docs/evidencias/e0-areandina-6/README.md).
+
 1. Partir del commit del dashboard fijado en el lock de plataforma. Crear la rama de trabajo en el módulo al empezar la implementación y apuntar la rama/revisión de cada módulo en el registro de pruebas.
 2. Usar una copia del clúster PostgreSQL detenido, configuración del harvester, SQLite con su WAL y almacén de metadatos. Desactivar programaciones en la copia. Crear cuentas de prueba y asignaciones restringidas. Preparar un snapshot completo, uno con evidencia parcial y una fuente sin válido. [Preparación utilizada para el admin](https://github.com/lareferencia/lareferencia-platform/blob/693385a3158d0a321dbabff9fdf341b3eb6943f0/docs/ADMIN_UI_VERIFICACION.md)
 3. Ejecutar Angular desde el host dashboard y registrar cada fila de §2. Guardar por caso: revisión, ruta, usuario de prueba por rol, red/snapshot, captura, petición y respuesta saneadas, cifra de control y comportamiento esperado. Registrar si el defecto se reprodujo o si solo se conoce por lectura de código.
@@ -97,6 +99,8 @@ Los estados que siguen son criterios de aceptación propuestos. Este documento e
 **Salida:** referencia de paridad repetible y lista de diferencias deliberadas. Se puede iniciar la base visual mientras se prepara el widget.
 
 ### E1 · Construcción autónoma y empaquetado de prueba
+
+[Implementación y verificación local de E1](web/README.md). Build aislado en tres idiomas. El job React queda preparado para la siguiente ejecución de CI.
 
 1. Crear `web/{src,public,tests}`. Organizar `src/app` para bootstrap/router/tema, `src/auth` para sesión, `src/api` para transporte y DTO, `src/features` por pantalla y `src/i18n` por idioma. Crear package y lock y fijar Node/npm como en el admin.
 2. Configurar Vite y Router para las rutas `/dashboard/{es,en,pt}/`. Una opción es generar tres entradas localizadas con un build por base y el mismo código fuente. Elegir idioma a partir de la URL; mantener al cambiar idioma el acrónimo, snapshot, regla y parámetros aplicables.
@@ -108,6 +112,8 @@ Los estados que siguen son criterios de aceptación propuestos. Este documento e
 
 ### E2 · Primer recorrido completo con datos reales
 
+Verificado el 19 de noviembre de 2026 con la cuenta `dashboard` por el gateway local. La tabla de AREANDINA #6 y el detalle de Language coinciden con las cifras de E0. [Pruebas, capturas y reproducción de E2](docs/evidencias/e2-react/README.md)
+
 1. Implementar §3, las dos envolturas de cliente y las primeras llamadas H/list, H/{red}, H/{red}/lkg y V/{red}/{snap}. Testear normalización de DTO con JSON saneado obtenido en E0. Devolver un error tipado cuando falte un dato indispensable.
 2. Montar selector, portada, perfil y menú; al rehidratar una selección guardada reconciliarla con la identidad y el listado devuelto. Hacer que el acrónimo del favorito y el de la cabecera coincidan. Separar «configuración no disponible», «sin redes», «sin cosecha válida» y «sesión expirada».
 3. Servir el candidato en el destino estático de una **segunda instalación de prueba** o alternar bundles completos en la copia aislada. Conservar el hostname y las reglas reales de Nginx. Vite directo ayuda durante desarrollo; el resultado de aceptación es el observado por el gateway.
@@ -116,6 +122,8 @@ Los estados que siguen son criterios de aceptación propuestos. Este documento e
 **Salida:** primera demo al usuario. Es el punto para revisar el aspecto visual, decidir alcance de filtros y recalibrar el esfuerzo antes de portar las demás pantallas.
 
 ### E3 · Diagnóstico de validación y exportaciones
+
+Implementado en el candidato React y verificado el 19 de noviembre de 2026. La comparación con E0 registra filtros, ficha, frecuencias globales, CSV descargados y control SQLite. [Evidencias y reproducción de E3](docs/evidencias/e3-react/README.md)
 
 1. Separar el catálogo histórico, los contadores y el estado de búsqueda. Canonizar listas de IDs, guardar filtros y página en la URL, resetear página al filtrar y descartar las reglas del snapshot anterior cuando corresponda. Buscar por identificador con Enter o botón.
 2. Portar tabla de registros, enlace de fallos por regla, ficha con agrupación y diálogos. Modelar obligatoriedad y captura con tres estados. Mantener resultados de regla cuando falten valores; tratar una base de detalle ausente como evidencia parcial. Consultar los grupos de ocurrencias al abrir el diálogo.
@@ -127,6 +135,8 @@ Los estados que siguen son criterios de aceptación propuestos. Este documento e
 
 ### E4 · Cosechas, estadísticas e instalación configurable
 
+Verificado el 19 de noviembre de 2026. El historial real de AREANDINA coincide con E0. La aceptación distingue las pruebas del widget con fuente de prueba de las cifras externas que requieren un ID real. [Evidencias y reproducción de E4](docs/evidencias/e4-react/README.md)
+
 1. Implementar H/history con traducción explícita entre columnas visuales y campos de ordenamiento admitidos. Conservar campos derivados, navegación desde fila y exportación de siete columnas del historial.
 2. Portar el gráfico de tres series. Comprobar el intervalo por día, la transición de año, las páginas de ocho y la superposición de transformados. Ofrecer los datos también en una tabla legible.
 3. Encapsular el widget en el ciclo de vida React. Al cambiar de fuente retirar suscripciones/instancia previa, actualizar parámetros y limpiar elementos al desmontar. Probar que el script se carga una vez por montaje y que un error de proveedor no bloquea historial o validación.
@@ -135,6 +145,12 @@ Los estados que siguen son criterios de aceptación propuestos. Este documento e
 **Salida:** inventario de §2 completo. Registrar aparte los casos de servicios externos que hayan pasado con simulación y los que se verificaron con integración real.
 
 ### E5 · Integración de build, entrega y reversión
+
+[Ensayo Maven, gateway y reversión en Docker](docs/evidencias/e5-react/README.md)
+
+Después de E5 se autorizó y verificó la ampliación de lectura por red para XML histórico, resumen y frecuencias filtradas. La decisión sobre logs sigue abierta. [Contrato probado, capturas y comparación con SQLite](docs/evidencias/diagnostico-v5/README.md)
+
+La comparación final con el admin sobre AREANDINA #6 cubre once estados con capturas de ambas interfaces, fecha local, paginación, ficha y XML. [Resultados y reproducción](docs/evidencias/comparacion-final-validaciones/README.md)
 
 | Punto a revisar | Cambio y verificación |
 |---|---|

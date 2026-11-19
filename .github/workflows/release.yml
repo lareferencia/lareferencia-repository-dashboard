@@ -27,9 +27,10 @@ jobs:
           import json, xml.etree.ElementTree as E
           ns = '{http://maven.apache.org/POM/4.0.0}'
           version = E.parse('pom.xml').getroot().findtext(ns + 'parent/' + ns + 'version')
-          package = json.load(open('angular/package.json'))
-          lock = json.load(open('angular/package-lock.json'))
-          assert package['version'] == lock['version'] == lock['packages']['']['version'] == version
+          for frontend in ('angular', 'web'):
+              package = json.load(open(frontend + '/package.json'))
+              lock = json.load(open(frontend + '/package-lock.json'))
+              assert package['version'] == lock['version'] == lock['packages']['']['version'] == version
           PY
       - name: Install pinned npm
         run: npm install --global npm@10.8.2
@@ -43,4 +44,28 @@ jobs:
         with:
           name: dashboard-${{ github.sha }}
           path: angular/dist/frontend/
+          if-no-files-found: error
+
+  react:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: web/.nvmrc
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm install --global npm@10.9.2
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dashboard-react-preview-${{ github.sha }}
+          path: web/dist/
           if-no-files-found: error

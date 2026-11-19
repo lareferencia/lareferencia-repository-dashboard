@@ -1,0 +1,179 @@
+{
+  "size": 4000,
+  "validSize": 0,
+  "transformedSize": 0,
+  "rules": [
+    {
+      "ruleID": 1,
+      "name": "Publication Date (M)",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": true,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 4000,
+      "invalidCount": 0
+    },
+    {
+      "ruleID": 2,
+      "name": "Subject",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": false,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 3947,
+      "invalidCount": 53
+    },
+    {
+      "ruleID": 3,
+      "name": "Description",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": false,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 3991,
+      "invalidCount": 9
+    },
+    {
+      "ruleID": 4,
+      "name": "Relation",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": false,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 2660,
+      "invalidCount": 1340
+    },
+    {
+      "ruleID": 5,
+      "name": "Language",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": false,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 1871,
+      "invalidCount": 2129
+    },
+    {
+      "ruleID": 6,
+      "name": "Thesis - Contributor",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": false,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 4000,
+      "invalidCount": 0
+    },
+    {
+      "ruleID": 7,
+      "name": "Title",
+      "quantifier": "ALL",
+      "mandatory": true,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 4000,
+      "invalidCount": 0
+    },
+    {
+      "ruleID": 8,
+      "name": "Embargo End Date (MA)",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": false,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 3992,
+      "invalidCount": 8
+    },
+    {
+      "ruleID": 9,
+      "name": "Resource Identifier (M)",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": true,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 4000,
+      "invalidCount": 0
+    },
+    {
+      "ruleID": 10,
+      "name": "Access Level (M)",
+      "quantifier": "ONE_ONLY",
+      "mandatory": true,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 1312,
+      "invalidCount": 2688
+    },
+    {
+      "ruleID": 11,
+      "name": "Publication Version (R)",
+      "quantifier": "ONE_ONLY",
+      "mandatory": false,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 1550,
+      "invalidCount": 2450
+    },
+    {
+      "ruleID": 12,
+      "name": "Format",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": false,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 1887,
+      "invalidCount": 2113
+    },
+    {
+      "ruleID": 13,
+      "name": "Creator",
+      "quantifier": "ONE_OR_MORE",
+      "mandatory": true,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 0,
+      "invalidCount": 4000
+    },
+    {
+      "ruleID": 14,
+      "name": "Publication Type (M)",
+      "quantifier": "ONE_ONLY",
+      "mandatory": true,
+      "occurrenceCaptureEnabled": null,
+      "validCount": 565,
+      "invalidCount": 3435
+    }
+  ],
+  "5-valid_occrs": {
+    "distinct": 4,
+    "count": 1874
+  },
+  "5-invalid_occrs": {
+    "distinct": 5,
+    "count": 2449
+  },
+  "10-valid_occrs": {
+    "distinct": 2,
+    "count": 1312
+  },
+  "10-invalid_occrs": {
+    "distinct": 48,
+    "count": 8659
+  },
+  "valid_rules=5": [
+    200,
+    1871,
+    10
+  ],
+  "invalid_rules=5": [
+    200,
+    2129,
+    10
+  ],
+  "is_valid=true": [
+    200,
+    0,
+    0
+  ],
+  "is_valid=false": [
+    200,
+    4000,
+    10
+  ],
+  "is_transformed=true": [
+    200,
+    0,
+    0
+  ],
+  "valid_rules=5&invalid_rules=5": [
+    200,
+    0,
+    0
+  ]
+}
