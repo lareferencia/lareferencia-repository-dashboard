@@ -68,7 +68,7 @@ def compare_rules(page, admin, language, shot):
     page.get_by_text("Cumplimiento de reglas", exact=True).evaluate("el => el.scrollIntoView()")
     shot("reglas")
 
-    language.get_by_text("Ocurrencias", exact=True).click()
+    language.get_by_text("Ocurrencias" if admin else "Ver ocurrencias", exact=True).click()
     dialog = page.get_by_role("dialog")
     expect(dialog.get_by_text("2274", exact=True)).to_be_visible()
     shot("frecuencias")

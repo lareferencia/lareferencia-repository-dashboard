@@ -39,7 +39,7 @@ export function Rules({ rules, filename, total }: { rules: Rule[]; total: number
     </Stack>
     {captureOffForAll && <Alert severity="info" sx={{ mx: 2, mt: 1.5 }}>{t('captureOffForAll')}</Alert>}
     <TableContainer><Table size="small" aria-label={t('rules')}><TableHead><TableRow>
-      {['rule', 'requirement', 'passed', 'failed', 'conformity', 'failureRate', 'detail'].map(key => <TableCell key={key} align={['passed','failed','conformity','failureRate'].includes(key) ? 'right' : 'left'}>{t(key)}</TableCell>)}
+      {['rule', 'requirement', 'passed', 'failed', 'conformity', 'failureRate', 'occurrences'].map(key => <TableCell key={key} align={['passed','failed','conformity','failureRate','occurrences'].includes(key) ? 'right' : 'left'}>{t(key)}</TableCell>)}
     </TableRow></TableHead><TableBody>{visible.map(rule => {
       const captureOff = occurrenceCountsUnavailable(rule)
       const name = rule.name || '#' + rule.ruleID
@@ -54,10 +54,9 @@ export function Rules({ rules, filename, total }: { rules: Rule[]; total: number
         <TableCell align="right"><Button sx={{ color: rule.invalidCount ? 'error.main' : 'text.secondary', minWidth: 0 }} component={Link} aria-label={t('showFailures', { id: rule.ruleID })}
           to={{ search: failures(rule.ruleID) }}>{rule.invalidCount}</Button></TableCell>
         <TableCell align="right">{conformity(rule)}</TableCell><TableCell align="right">{conformity(rule, rule.invalidCount)}</TableCell>
-        <TableCell align="right">{captureOff ? <>
-          <Button size="small" disabled>{t('occurrences')}</Button>
-          {!captureOffForAll && <Typography variant="caption" display="block" color="text.secondary">{t('captureOffShort')}</Typography>}
-        </> : <Button size="small" component={Link} to={target}>{t('occurrences')}</Button>}</TableCell>
+        <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>{captureOff ?
+          <Typography variant="body2" color="text.secondary">{t('captureOffShort')}</Typography> :
+          <Button size="small" component={Link} to={target}>{t('viewOccurrences')}</Button>}</TableCell>
       </TableRow>
     })}</TableBody></Table></TableContainer>
   </Paper>

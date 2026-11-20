@@ -238,14 +238,15 @@ it('disables occurrences for rules with capture off or no stored historical valu
   await open('/AREANDINA/validation/6')
   const table = within(await screen.findByRole('table', { name: 'Reglas' }))
   const disabled = within(table.getByRole('row', { name: /Language/ }))
-  expect(disabled.getByRole('button', { name: 'Ocurrencias' })).toBeDisabled()
-  expect(disabled.getByText('Sin recuento de ocurrencias')).toBeVisible()
+  expect(disabled.getByText('Sin recuento')).toBeVisible()
+  expect(disabled.queryByRole('link', { name: 'Ver ocurrencias' })).toBeNull()
   expect(disabled.queryByRole('link', { name: '#5 Language' })).toBeNull()
   expect(disabled.getAllByRole('cell')[2]).toHaveTextContent('2')
   expect(disabled.getAllByRole('cell')[3]).toHaveTextContent('2')
   const historical = within(table.getByRole('row', { name: /Historical without values/ }))
-  expect(historical.getByRole('button', { name: 'Ocurrencias' })).toBeDisabled()
-  expect(table.getAllByRole('link', { name: 'Ocurrencias' })).toHaveLength(3)
+  expect(historical.getByText('Sin recuento')).toBeVisible()
+  expect(historical.queryByRole('link', { name: 'Ver ocurrencias' })).toBeNull()
+  expect(table.getAllByRole('link', { name: 'Ver ocurrencias' })).toHaveLength(3)
 })
 
 it('explains unavailable occurrences when every rule has capture off, including on deep links', async () => {
@@ -259,7 +260,8 @@ it('explains unavailable occurrences when every rule has capture off, including 
   expect(get.mock.calls.some(([path]) => path.includes('_occrs/'))).toBe(false)
   fireEvent.click(dialog.getByRole('button', { name: 'Cerrar' }))
   expect(screen.getByText('Ninguna regla de este snapshot tiene recuento de ocurrencias.')).toBeVisible()
-  expect(screen.getByRole('button', { name: 'Ocurrencias' })).toBeDisabled()
+  expect(screen.getByText('Sin recuento', { exact: true })).toBeVisible()
+  expect(screen.queryByRole('link', { name: 'Ver ocurrencias' })).toBeNull()
 })
 
 it('retries a frequency group independently and preserves the counts of an unnamed rule', async () => {
