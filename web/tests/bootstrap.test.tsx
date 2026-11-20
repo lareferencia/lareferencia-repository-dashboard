@@ -226,6 +226,38 @@ it('keeps a nonempty historical summary visible when the unfiltered detail is em
   expect(screen.getByRole('heading', { name: 'AREANDINA · Snapshot #6' })).toBeVisible()
 })
 
+it('disables occurrences only for rules with capture explicitly off', async () => {
+  const report = '/api/v5/dashboard/validation/source/AREANDINA/6'
+  fixture({ [report]: () => Response.json({ ...summary, rulesByID: {
+    5: { ...summary.rulesByID[5], occurrenceCaptureEnabled: false },
+    6: { ...summary.rulesByID[5], ruleID: 6, name: 'Vocabulary', occurrenceCaptureEnabled: true },
+    7: { ...summary.rulesByID[5], ruleID: 7, name: 'Historical', occurrenceCaptureEnabled: null },
+  } }) })
+  await open('/AREANDINA/validation/6')
+  const table = within(await screen.findByRole('table', { name: 'Reglas' }))
+  const disabled = within(table.getByRole('row', { name: /Language/ }))
+  expect(disabled.getByRole('button', { name: 'Ocurrencias' })).toBeDisabled()
+  expect(disabled.getByText('Sin recuento de ocurrencias')).toBeVisible()
+  expect(disabled.queryByRole('link', { name: '#5 Language' })).toBeNull()
+  expect(disabled.getAllByRole('cell')[2]).toHaveTextContent('2')
+  expect(disabled.getAllByRole('cell')[3]).toHaveTextContent('2')
+  expect(table.getAllByRole('link', { name: 'Ocurrencias' })).toHaveLength(2)
+})
+
+it('explains unavailable occurrences when every rule has capture off, including on deep links', async () => {
+  const report = '/api/v5/dashboard/validation/source/AREANDINA/6'
+  const get = fixture({ [report]: () => Response.json({ ...summary, rulesByID: {
+    5: { ...summary.rulesByID[5], occurrenceCaptureEnabled: false },
+  } }) })
+  await open('/AREANDINA/validation/6?rule=5')
+  const dialog = within(await screen.findByRole('dialog'))
+  expect(dialog.getByText('Esta regla no tiene recuento de ocurrencias en este snapshot.')).toBeVisible()
+  expect(get.mock.calls.some(([path]) => path.includes('_occrs/'))).toBe(false)
+  fireEvent.click(dialog.getByRole('button', { name: 'Cerrar' }))
+  expect(screen.getByText('Ninguna regla de este snapshot tiene recuento de ocurrencias.')).toBeVisible()
+  expect(screen.getByRole('button', { name: 'Ocurrencias' })).toBeDisabled()
+})
+
 it('retries a frequency group independently and preserves the counts of an unnamed rule', async () => {
   const report = '/api/v5/dashboard/validation/source/AREANDINA/6'
   let attempts = 0

@@ -1,4 +1,4 @@
-import { Button, Chip, Paper, Typography, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { Alert, Button, Chip, Paper, Typography, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { Rule } from '../../api/dashboard'
@@ -9,6 +9,7 @@ import { SelectField } from './SelectField'
 export function Rules({ rules, filename, total }: { rules: Rule[]; total: number; filename: string }) {
   const { t, i18n } = useTranslation()
   const [params, setParams] = useSearchParams()
+  const captureOffForAll = rules.length > 0 && rules.every(rule => rule.occurrenceCaptureEnabled === false)
   const requirement = params.get('requirement') || ''
   const kind = (rule: Rule) => rule.mandatory == null ? 'unknownRequirement' : rule.mandatory ? 'mandatory' : 'optional'
   const sort = params.get('sortRules') || 'mandatory'
@@ -35,18 +36,28 @@ export function Rules({ rules, filename, total }: { rules: Rule[]; total: number
         onChange={value => setParams(changeParams(params, 'requirement', [value]))} />
       <Button onClick={exportRules}>{t('csvRules')}</Button>
     </Stack>
+    {captureOffForAll && <Alert severity="info" sx={{ mx: 2, mt: 1.5 }}>{t('captureOffForAll')}</Alert>}
     <TableContainer><Table size="small" aria-label={t('rules')}><TableHead><TableRow>
       {['rule', 'requirement', 'passed', 'failed', 'conformity', 'failureRate', 'detail'].map(key => <TableCell key={key} align={['passed','failed','conformity','failureRate'].includes(key) ? 'right' : 'left'}>{t(key)}</TableCell>)}
-    </TableRow></TableHead><TableBody>{visible.map(rule => <TableRow key={rule.ruleID} hover>
-      <TableCell><Typography component={Link} aria-label={`#${rule.ruleID} ${rule.name}`}
-        color="inherit" fontWeight={700} sx={{ textDecoration: 'none' }} to={{ search: changeParams(params, 'rule', [String(rule.ruleID)]).toString() }}>
-        {rule.name || '#' + rule.ruleID}</Typography><Typography variant="caption" display="block" color="text.secondary">{rule.description}</Typography></TableCell>
-      <TableCell>{rule.mandatory ? <Chip size="small" color="warning" label={t('mandatory')} /> : t(kind(rule))}</TableCell>
-      <TableCell align="right">{rule.validCount}</TableCell>
-      <TableCell align="right"><Button sx={{ color: rule.invalidCount ? 'error.main' : 'text.secondary', minWidth: 0 }} component={Link} aria-label={t('showFailures', { id: rule.ruleID })}
-        to={{ search: failures(rule.ruleID) }}>{rule.invalidCount}</Button></TableCell>
-      <TableCell align="right">{conformity(rule)}</TableCell><TableCell align="right">{conformity(rule, rule.invalidCount)}</TableCell>
-      <TableCell align="right"><Button size="small" component={Link} to={{ search: changeParams(params, 'rule', [String(rule.ruleID)]).toString() }}>{t('occurrences')}</Button></TableCell>
-    </TableRow>)}</TableBody></Table></TableContainer>
+    </TableRow></TableHead><TableBody>{visible.map(rule => {
+      const captureOff = rule.occurrenceCaptureEnabled === false
+      const name = rule.name || '#' + rule.ruleID
+      const target = { search: changeParams(params, 'rule', [String(rule.ruleID)]).toString() }
+      return <TableRow key={rule.ruleID} hover>
+        <TableCell>{captureOff ? <Typography fontWeight={700}>{name}</Typography> :
+          <Typography component={Link} aria-label={`#${rule.ruleID} ${rule.name}`} color="inherit" fontWeight={700}
+            sx={{ textDecoration: 'none' }} to={target}>{name}</Typography>}
+          <Typography variant="caption" display="block" color="text.secondary">{rule.description}</Typography></TableCell>
+        <TableCell>{rule.mandatory ? <Chip size="small" color="warning" label={t('mandatory')} /> : t(kind(rule))}</TableCell>
+        <TableCell align="right">{rule.validCount}</TableCell>
+        <TableCell align="right"><Button sx={{ color: rule.invalidCount ? 'error.main' : 'text.secondary', minWidth: 0 }} component={Link} aria-label={t('showFailures', { id: rule.ruleID })}
+          to={{ search: failures(rule.ruleID) }}>{rule.invalidCount}</Button></TableCell>
+        <TableCell align="right">{conformity(rule)}</TableCell><TableCell align="right">{conformity(rule, rule.invalidCount)}</TableCell>
+        <TableCell align="right">{captureOff ? <>
+          <Button size="small" disabled>{t('occurrences')}</Button>
+          {!captureOffForAll && <Typography variant="caption" display="block" color="text.secondary">{t('captureOffShort')}</Typography>}
+        </> : <Button size="small" component={Link} to={target}>{t('occurrences')}</Button>}</TableCell>
+      </TableRow>
+    })}</TableBody></Table></TableContainer>
   </Paper>
 }
