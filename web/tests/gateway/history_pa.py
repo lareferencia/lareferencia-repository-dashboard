@@ -82,7 +82,7 @@ def verify(page, origin, output, password):
 
     table = page.get_by_role("table", name="Cosechas", exact=True)
     expect(table.get_by_role("row")).to_have_count(4)
-    for i, row_id in enumerate((1, 3, 4), start=1):
+    for i, row_id in enumerate((4, 3, 1), start=1):
         table_row = table.get_by_role("row").nth(i)
         cells = table_row.get_by_role("cell").all_text_contents()
         row = rows[row_id]

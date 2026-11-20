@@ -143,18 +143,20 @@ const historicRow = {
   invalidRulesID: ['5', '99'], validRulesID: [], validOccurrencesByRuleID: {}, invalidOccurrencesByRuleID: {},
 }
 
-it('pages through the snapshot choices without changing the open diagnosis', async () => {
+it('includes older snapshots in a single selector without changing the open diagnosis', async () => {
   const history = '/api/v5/dashboard/harvesting/source/AREANDINA/history?page='
-  const order = '&size=20&sort=endTime%2Cdesc&sort=id%2Cdesc'
+  const order = '&size=100&sort=endTime%2Cdesc&sort=id%2Cdesc'
   fixture({
-    [history + '0' + order]: () => Response.json({ content: [{ id: 6 }], totalElements: 21 }),
-    [history + '1' + order]: () => Response.json({ content: [{ id: 5 }], totalElements: 21 }),
+    [history + '0' + order]: () => Response.json({
+      content: Array.from({ length: 100 }, (_, i) => ({ id: 105 - i, deleted: i !== 99 })), totalElements: 101,
+    }),
+    [history + '1' + order]: () => Response.json({ content: [{ id: 5 }], totalElements: 101 }),
   })
   await open('/AREANDINA/validation/6')
-  const pagination = within(await screen.findByRole('navigation', { name: 'Páginas del selector de cosechas' }))
-  fireEvent.click(pagination.getByRole('button', { name: 'Ir a la página 2' }))
-  expect(screen.getByRole('heading', { name: 'AREANDINA · Snapshot #6' })).toBeVisible()
-  fireEvent.mouseDown(screen.getByRole('combobox', { name: 'Snapshot' }))
+  const selector = await screen.findByRole('combobox', { name: 'Snapshot' })
+  expect(await within(selector).findByText('#6 · Validado')).toBeVisible()
+  expect(screen.queryByRole('navigation', { name: 'Páginas del selector de cosechas' })).toBeNull()
+  fireEvent.mouseDown(selector)
   expect(await screen.findByRole('option', { name: '#5 · Validado' })).toBeVisible()
   expect(screen.getByRole('option', { name: '#6 · Validado', selected: true })).toBeVisible()
 })

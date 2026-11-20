@@ -54,28 +54,29 @@ function Results({ api, source, validation, request, chart, series, update }: {
   const query = useQuery({ queryKey: [...prefix, request.sort, request.size, request.page],
     queryFn: ({ signal }) => api.history(source.acronym, request, signal) })
   const data = query.data
-  const rows = useMemo(() => chart ? chronological(data?.content || []) : data?.content || [], [data, chart])
+  const rows = data?.content
+  const trendRows = useMemo(() => chart && rows ? chronological(rows) : [], [chart, rows])
   // Keep previously visited harvests available for comparisons across pages of the same interval.
   const choices = cache.getQueriesData<{ content: Harvest[] }>({ queryKey: prefix })
     .flatMap(([, page]) => page?.content || [])
   const total = data?.totalElements ?? 0
   const pages = Math.ceil(total / request.size)
-  function exportPage() {
+  function exportPage(rows: Harvest[]) {
     downloadCsv(`${source.acronym}-history-p${request.page + 1}`, historyColumns.map(([key]) => key),
       rows.map(counts).map(row => historyColumns.map(([key]) => row[key])))
   }
   return <>
     {query.isPending && <LinearProgress />}
     {query.isError && <ReadError retry={() => void query.refetch()} />}
-    {data && (rows.length ? <>
-      {chart && <HarvestTrend rows={rows} total={total} series={series} setSeries={v => update({ series: v })} acronym={source.acronym} validation={validation} />}
-      {chart && <HarvestComparison rows={rows} choices={choices} total={total} acronym={source.acronym} validation={validation} />}
+    {rows && (rows.length ? <>
+      {chart && <HarvestTrend rows={trendRows} total={total} series={series} setSeries={v => update({ series: v })} acronym={source.acronym} validation={validation} />}
+      {chart && <HarvestComparison rows={trendRows} choices={choices} total={total} acronym={source.acronym} validation={validation} />}
       <Paper variant="outlined" sx={{ overflow: 'hidden' }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={1} sx={{ px: 2, py: 1.5 }}>
           <Box><Typography component="h2" variant="h6">{t('history')}</Typography>
             <Typography variant="body2" color="text.secondary">{total === 1 ? t('oneHarvest') : t('rowsOfTotal', { start: request.page * request.size + 1,
               end: request.page * request.size + rows.length, total: total.toLocaleString(i18n.language) })}</Typography></Box>
-          <Button onClick={exportPage} startIcon={<FileDownloadOutlined />}>{t('csvPage')}</Button>
+          <Button onClick={() => exportPage(rows)} startIcon={<FileDownloadOutlined />}>{t('csvPage')}</Button>
         </Stack>
         <HarvestTable rows={rows} acronym={source.acronym} validation={validation}
           sort={chart ? undefined : request.sort} onSort={chart ? undefined : sort => update({ sort })} />

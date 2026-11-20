@@ -1,4 +1,5 @@
-import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from '@mui/material'
+import DescriptionOutlined from '@mui/icons-material/DescriptionOutlined'
+import { IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Tooltip } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { Harvest } from '../../api/dashboard'
@@ -27,9 +28,11 @@ export function HarvestTable({ rows, acronym, validation, sort, onSort }: Props)
       </TableCell>)}
       <TableCell sx={{ whiteSpace: 'nowrap' }}>{seconds === null ? '—' : durationLabel(seconds, i18n.language)}</TableCell>
       {validation && <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>
-        {row.deleted === false ? <Button component={Link} size="small"
-          aria-label={`${t('openDiagnostics')} #${row.id}`}
-          to={`/${encodeURIComponent(acronym)}/validation/${row.id}`}>{t('openDiagnostics')}</Button> : '—'}
+        {row.deleted === false ? <Tooltip title={`${t('openDiagnostics')} #${row.id}`}>
+          <IconButton component={Link} size="small" color="primary"
+            aria-label={`${t('openDiagnostics')} #${row.id}`}
+            to={`/${encodeURIComponent(acronym)}/validation/${row.id}`}><DescriptionOutlined fontSize="small" /></IconButton>
+        </Tooltip> : '—'}
       </TableCell>}
     </TableRow>
   }

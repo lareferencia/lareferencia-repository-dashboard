@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { Alert, Box, Button, Chip, Pagination, Paper, Stack, Typography } from '@mui/material'
+import { Alert, Box, Button, Chip, Paper, Stack, Typography } from '@mui/material'
 import { useQuery } from '@tanstack/react-query'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -7,11 +6,16 @@ import type { DashboardApi, Harvest, Source, Summary } from '../../api/dashboard
 import { harvestInstant } from '../harvesting/history'
 import { SelectField } from './SelectField'
 
-const snapshotsPerPage = 20
-
-function historyPage(api: DashboardApi, acronym: string, page: number) {
-  return { queryKey: ['snapshot-choices', acronym, page], queryFn: ({ signal }: { signal: AbortSignal }) =>
-    api.history(acronym, { page, size: snapshotsPerPage, sort: 'endTime,desc', from: '', to: '' }, signal) }
+async function availableSnapshots(api: DashboardApi, acronym: string, signal: AbortSignal) {
+  const rows = new Map<number, Harvest>()
+  const size = 100
+  for (let page = 0; ; page++) {
+    const { content, totalElements } = await api.history(acronym, { page, size, sort: 'endTime,desc', from: '', to: '' }, signal)
+    for (const row of content) {
+      if (!row.deleted) rows.set(row.id, row)
+    }
+    if (!content.length || (page + 1) * size >= totalElements) return [...rows.values()]
+  }
 }
 
 export function snapshotDate(row: Harvest | undefined, language: string) {
@@ -25,13 +29,11 @@ export function SnapshotHeader({ api, source, snapshot, summary }: {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const { state } = useLocation()
-  const [page, setPage] = useState(0)
-  const first = useQuery(historyPage(api, source.acronym, 0))
-  const history = useQuery(historyPage(api, source.acronym, page))
-  const totalPages = Math.ceil((history.data?.totalElements ?? first.data?.totalElements ?? 0) / snapshotsPerPage)
-  const rows = history.data?.content.filter(row => !row.deleted) || []
+  const history = useQuery({ queryKey: ['snapshot-choices', source.acronym],
+    queryFn: ({ signal }) => availableSnapshots(api, source.acronym, signal) })
+  const rows = history.data || []
   const chosen = state?.source === source.id && state.harvest?.id === snapshot ? state.harvest as Harvest : undefined
-  const current = first.data?.content.find(row => row.id === snapshot && !row.deleted) || rows.find(row => row.id === snapshot) || chosen
+  const current = rows.find(row => row.id === snapshot) || chosen
   const date = snapshotDate(current, i18n.language)
   const label = (id: number, row?: Harvest) => ['#' + id, row && t('validatedSnapshot'), snapshotDate(row, i18n.language)].filter(Boolean).join(' · ')
   const options: [string, string][] = rows.map(row => [String(row.id), label(row.id, row)])
@@ -52,10 +54,6 @@ export function SnapshotHeader({ api, source, snapshot, summary }: {
         <Box sx={{ '& .MuiSelect-select': { whiteSpace: { xs: 'normal', md: 'nowrap' } } }}><SelectField label="Snapshot" value={String(snapshot)} options={options}
           onChange={id => navigate(`/${encodeURIComponent(source.acronym)}/validation/${id}`,
             { state: { source: source.id, harvest: rows.find(row => String(row.id) === id) } })} /></Box>
-        {totalPages > 1 && <Stack spacing={0.5}>
-          <Typography variant="caption" color="text.secondary">{t('snapshotPages')}</Typography>
-          <Pagination aria-label={t('snapshotPages')} size="small" page={page + 1} count={totalPages} onChange={(_, n) => setPage(n - 1)} />
-        </Stack>}
         {history.isError && <Alert severity="warning">{t('historyUnavailable')}</Alert>}
       </Stack>
       {current && <Chip color="success" label={t('validatedSnapshot')} sx={{ alignSelf: { xs: 'flex-start', md: 'auto' } }} />}

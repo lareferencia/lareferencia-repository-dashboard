@@ -79,7 +79,7 @@ def history(page, origin, output):
     assert headers == ["id", "harvestedSize", "validSize", "invalidRecords", "transformedSize", "startTime", "endTime"]
     assert record == ["6", "4000", "0", "4000", "0", item["startTime"], item["endTime"]]
     page.screenshot(path=str(output / "tabla.png"))
-    page.get_by_role("link", name="#6", exact=True).click()
+    table.get_by_role("link", name="Ver diagnóstico #6", exact=True).click()
     expect(page.get_by_role("link", name="#5 Language")).to_be_visible()
     page.go_back()
     expect(page.get_by_label("Filas por página")).to_have_value("25")
@@ -109,8 +109,8 @@ def multi_page_history(page, origin, output):
     page.goto(origin + HISTORY)
     table = page.get_by_role("table", name="Cosechas", exact=True)
     expect(table.get_by_role("row")).to_have_count(9)
-    assert table.get_by_role("link").all_text_contents() == [f"#{n}" for n in range(2, 10)]
-    expect(table.get_by_role("row").nth(1).get_by_role("cell").nth(4)).to_have_text("10")
+    assert table.locator("tbody td:first-child").all_text_contents() == [f"#{n}" for n in range(9, 1, -1)]
+    expect(table.get_by_role("row").nth(1).get_by_role("cell").nth(4)).to_have_text("45")
     expect(page.get_by_role("img", name="Registros por cosecha")).to_be_visible()
     page.screenshot(path=str(output / "grafico-simulado.png"))
     page.get_by_role("button", name="Comparar dos cosechas").click()
@@ -128,7 +128,7 @@ def multi_page_history(page, origin, output):
             page.screenshot(path=str(output / "comparacion-simulada.png"), full_page=True, animations="disabled")
     page.get_by_role("button").filter(has_text=re.compile("^2$")).click()
     expect(table.get_by_role("row")).to_have_count(2)
-    expect(table.get_by_role("link", name="#1", exact=True)).to_be_visible()
+    expect(table.get_by_role("link", name="Ver diagnóstico #1", exact=True)).to_be_visible()
     page.get_by_role("combobox", name=re.compile("^Comparar con")).click()
     page.get_by_role("option", name=re.compile("^#1 ")).click()
     expect(page.get_by_role("table", name="Comparación de cosechas").get_by_role("columnheader", name="#1", exact=True)).to_be_visible()
