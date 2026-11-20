@@ -4,12 +4,13 @@ import { useTranslation } from 'react-i18next'
 import type { Rule } from '../../api/dashboard'
 import { downloadCsv } from './csv'
 import { changeParams } from './filters'
+import { occurrenceCountsUnavailable } from './occurrences'
 import { SelectField } from './SelectField'
 
 export function Rules({ rules, filename, total }: { rules: Rule[]; total: number; filename: string }) {
   const { t, i18n } = useTranslation()
   const [params, setParams] = useSearchParams()
-  const captureOffForAll = rules.length > 0 && rules.every(rule => rule.occurrenceCaptureEnabled === false)
+  const captureOffForAll = rules.length > 0 && rules.every(occurrenceCountsUnavailable)
   const requirement = params.get('requirement') || ''
   const kind = (rule: Rule) => rule.mandatory == null ? 'unknownRequirement' : rule.mandatory ? 'mandatory' : 'optional'
   const sort = params.get('sortRules') || 'mandatory'
@@ -40,7 +41,7 @@ export function Rules({ rules, filename, total }: { rules: Rule[]; total: number
     <TableContainer><Table size="small" aria-label={t('rules')}><TableHead><TableRow>
       {['rule', 'requirement', 'passed', 'failed', 'conformity', 'failureRate', 'detail'].map(key => <TableCell key={key} align={['passed','failed','conformity','failureRate'].includes(key) ? 'right' : 'left'}>{t(key)}</TableCell>)}
     </TableRow></TableHead><TableBody>{visible.map(rule => {
-      const captureOff = rule.occurrenceCaptureEnabled === false
+      const captureOff = occurrenceCountsUnavailable(rule)
       const name = rule.name || '#' + rule.ruleID
       const target = { search: changeParams(params, 'rule', [String(rule.ruleID)]).toString() }
       return <TableRow key={rule.ruleID} hover>

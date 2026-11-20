@@ -226,12 +226,14 @@ it('keeps a nonempty historical summary visible when the unfiltered detail is em
   expect(screen.getByRole('heading', { name: 'AREANDINA · Snapshot #6' })).toBeVisible()
 })
 
-it('disables occurrences only for rules with capture explicitly off', async () => {
+it('disables occurrences for rules with capture off or no stored historical values', async () => {
   const report = '/api/v5/dashboard/validation/source/AREANDINA/6'
   fixture({ [report]: () => Response.json({ ...summary, rulesByID: {
     5: { ...summary.rulesByID[5], occurrenceCaptureEnabled: false },
     6: { ...summary.rulesByID[5], ruleID: 6, name: 'Vocabulary', occurrenceCaptureEnabled: true },
     7: { ...summary.rulesByID[5], ruleID: 7, name: 'Historical', occurrenceCaptureEnabled: null },
+    8: { ...summary.rulesByID[5], ruleID: 8, name: 'Historical without values', occurrenceCaptureEnabled: null, storedOccurrencesAvailable: false },
+    9: { ...summary.rulesByID[5], ruleID: 9, name: 'Historical with values', occurrenceCaptureEnabled: null, storedOccurrencesAvailable: true },
   } }) })
   await open('/AREANDINA/validation/6')
   const table = within(await screen.findByRole('table', { name: 'Reglas' }))
@@ -241,7 +243,9 @@ it('disables occurrences only for rules with capture explicitly off', async () =
   expect(disabled.queryByRole('link', { name: '#5 Language' })).toBeNull()
   expect(disabled.getAllByRole('cell')[2]).toHaveTextContent('2')
   expect(disabled.getAllByRole('cell')[3]).toHaveTextContent('2')
-  expect(table.getAllByRole('link', { name: 'Ocurrencias' })).toHaveLength(2)
+  const historical = within(table.getByRole('row', { name: /Historical without values/ }))
+  expect(historical.getByRole('button', { name: 'Ocurrencias' })).toBeDisabled()
+  expect(table.getAllByRole('link', { name: 'Ocurrencias' })).toHaveLength(3)
 })
 
 it('explains unavailable occurrences when every rule has capture off, including on deep links', async () => {

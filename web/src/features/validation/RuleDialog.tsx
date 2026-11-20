@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Rule } from '../../api/dashboard'
 import { ReadError } from '../../auth/Session'
 import { downloadCsv } from './csv'
-import { emptyEvidence } from './RecordDetail'
+import { emptyEvidence, occurrenceCountsUnavailable } from './occurrences'
 
 type Scope = { api: DashboardApi; acronym: string; snapshot: number; filters: string }
 const pageSize = 10
@@ -38,7 +38,7 @@ export function RuleDialog({ rule, close, ...scope }: Scope & { rule?: Rule; clo
   return <Dialog open onClose={close} fullWidth maxWidth="md" aria-labelledby="rule-title">
     <DialogTitle id="rule-title">{rule ? `#${rule.ruleID} ${rule.name}` : t('missingRule')}</DialogTitle>
     {rule && <DialogContent dividers><Stack spacing={1.5}>
-      {rule.occurrenceCaptureEnabled === false ? <Alert severity="info">{t('captureOff')}</Alert> :
+      {occurrenceCountsUnavailable(rule) ? <Alert severity="info">{t('captureOff')}</Alert> :
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
         <Frequencies {...scope} rule={rule} group="valid" />
         <Frequencies {...scope} rule={rule} group="invalid" />

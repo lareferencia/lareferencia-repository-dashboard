@@ -5,6 +5,7 @@ import { HistoricalXml, XmlActions } from './HistoricalXml'
 import { Box, Button, Chip, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Stack, Tab, Tabs, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Rule, ValidationRecord } from '../../api/dashboard'
+import { emptyEvidence } from './occurrences'
 
 function httpUrl(value?: string) {
   if (!value || !URL.canParse(value)) return null
@@ -27,12 +28,6 @@ function portalUrl(recordId: string, base?: string) {
   const split = recordId.indexOf('-')
   const id = split > 0 && recordId.slice(split + 1)
   return id && httpUrl(base) ? base + encodeURIComponent(id) : null
-}
-
-export function emptyEvidence(rule?: Rule) {
-  if (rule?.occurrenceCaptureEnabled === false) return 'captureOff'
-  if (rule?.occurrenceCaptureEnabled === true) return 'noOccurrences'
-  return 'captureUnknown'
 }
 
 function Evaluation({ id, rule, row }: { id: string; rule?: Rule; row: ValidationRecord }) {

@@ -7,7 +7,7 @@ export type Harvest = {
 export type HistoryRequest = {
   page: number; size: number; sort: string; from: string; to: string
 }
-export type Rule = { ruleID: number; name: string; description?: string; mandatory: boolean | null; occurrenceCaptureEnabled?: boolean | null; quantifier: string | null; validCount: number; invalidCount: number }
+export type Rule = { ruleID: number; name: string; description?: string; mandatory: boolean | null; occurrenceCaptureEnabled?: boolean | null; storedOccurrencesAvailable?: boolean | null; quantifier: string | null; validCount: number; invalidCount: number }
 export type Summary = { size: number; validSize: number; transformedSize: number; rulesByID: Record<string, Rule> | Rule[] }
 export type ValidationRecord = {
   id: string; identifier: string; snapshotID: number
