@@ -3,7 +3,7 @@ import RestartAlt from '@mui/icons-material/RestartAlt'
 import { Autocomplete, Button, IconButton, Tooltip, Paper, Stack, TextField } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import type { Rule } from '../../api/dashboard'
-import { SelectField } from './SelectField'
+import { SelectField } from '../../shared/SelectField'
 
 export function IdentifierSearch({ initial, onSearch }: { initial: string; onSearch: (value: string) => void }) {
   const { t } = useTranslation()

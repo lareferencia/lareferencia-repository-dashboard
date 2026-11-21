@@ -3,7 +3,7 @@ import { IconButton, Table, TableBody, TableCell, TableContainer, TableHead, Tab
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { Harvest } from '../../api/dashboard'
-import { counts, historyColumns, harvestInstant, durationLabel, durationSeconds } from './history'
+import { hasDiagnostic, counts, historyColumns, harvestInstant, durationLabel, durationSeconds } from './history'
 
 type Props = {
   rows: Harvest[]; acronym: string; validation: boolean; sort?: string; onSort?: (sort: string) => void
@@ -28,7 +28,7 @@ export function HarvestTable({ rows, acronym, validation, sort, onSort }: Props)
       </TableCell>)}
       <TableCell sx={{ whiteSpace: 'nowrap' }}>{seconds === null ? '—' : durationLabel(seconds, i18n.language)}</TableCell>
       {validation && <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>
-        {row.deleted === false ? <Tooltip title={`${t('openDiagnostics')} #${row.id}`}>
+        {hasDiagnostic(row) ? <Tooltip title={`${t('openDiagnostics')} #${row.id}`}>
           <IconButton component={Link} size="small" color="primary"
             aria-label={`${t('openDiagnostics')} #${row.id}`}
             to={`/${encodeURIComponent(acronym)}/validation/${row.id}`}><DescriptionOutlined fontSize="small" /></IconButton>

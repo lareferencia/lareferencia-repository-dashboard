@@ -5,13 +5,9 @@ import { HistoricalXml, XmlActions } from './HistoricalXml'
 import { Box, Button, Chip, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Stack, Tab, Tabs, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Rule, ValidationRecord } from '../../api/dashboard'
-import { emptyEvidence } from './occurrences'
-
-function httpUrl(value?: string) {
-  if (!value || !URL.canParse(value)) return null
-  const url = new URL(value)
-  return ['http:', 'https:'].includes(url.protocol) ? url : null
-}
+import { httpUrl } from '../../shared/httpUrl'
+import { emptyEvidence, ruleRequirement } from './ruleDetails'
+import { RecordStatus } from './RecordStatus'
 
 export function getRecordUrl(record: Pick<ValidationRecord, 'origin' | 'metadataPrefix' | 'identifier'>) {
   const url = httpUrl(record.origin)
@@ -34,7 +30,6 @@ function Evaluation({ id, rule, row }: { id: string; rule?: Rule; row: Validatio
   const { t } = useTranslation()
   const passed = row.validRulesID?.map(String).includes(id)
   const accent = passed ? 'success' : rule?.mandatory ? 'error' : 'warning'
-  const kind = rule?.mandatory == null ? 'unknownRequirement' : rule.mandatory ? 'mandatory' : 'optional'
   const valid = row.validOccurrencesByRuleID?.[id] || []
   const invalid = row.invalidOccurrencesByRuleID?.[id] || []
   const values = (items: string[], approved: boolean) => items.length > 0 && <Box sx={{ px: 1.25, py: 1 }}>
@@ -53,7 +48,7 @@ function Evaluation({ id, rule, row }: { id: string; rule?: Rule; row: Validatio
       <Chip size="small" color={accent} label={t(passed ? 'approved' : 'failedRecordRule')} />
     </Stack>
     <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap">
-      <Chip size="small" variant="outlined" label={t(kind)} />
+      <Chip size="small" variant="outlined" label={t(ruleRequirement(rule))} />
       <Chip size="small" variant="outlined" title={rule?.quantifier || undefined}
         label={t('quantifier') + ' · ' + (rule?.quantifier ? t('quantifiers.' + rule.quantifier, { defaultValue: rule.quantifier }) : '—')} />
     </Stack>
@@ -70,8 +65,7 @@ function RecordIdentity({ row, portal }: { row: ValidationRecord; portal?: strin
     <Box><Typography variant="overline" color="text.secondary" fontWeight={800}>{t('identifier')}</Typography>
       <Typography id="record-id" fontWeight={700} sx={{ overflowWrap: 'anywhere' }}>{row.identifier}</Typography></Box>
     <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-      <Chip color={row.isValid == null ? 'default' : row.isValid ? 'success' : 'error'}
-        label={row.isValid == null ? '—' : t(row.isValid ? 'validRecord' : 'invalidRecord')} />
+      <RecordStatus valid={row.isValid} />
       {row.isTransformed && <Chip color="warning" label={t('is_transformed')} />}
       {row.setSpec && <Chip size="small" variant="outlined" label={'Set: ' + row.setSpec} />}
       {row.metadataPrefix && <Chip size="small" variant="outlined" label={row.metadataPrefix} />}

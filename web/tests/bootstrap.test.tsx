@@ -14,6 +14,7 @@ const summary = { size: 4, validSize: 0, transformedSize: 0, rulesByID: {
 function fixture(overrides: Record<string, () => Response | Promise<Response>> = {}) {
   const routes: Record<string, () => Response | Promise<Response>> = {
     '/dashboard/es/assets/data/appConfig.json': () => Response.json({ validation_module: { active: true } }),
+    '/api/v5/dashboard/harvesting/source/AREANDINA/harvest/6': () => Response.json({ id: 6, deleted: false }),
     '/api/v5/me': () => Response.json(user),
     '/api/v5/dashboard/harvesting/source/list?page=0&size=100': () => Response.json({ content: [source], totalElements: 1 }),
     '/api/v5/dashboard/validation/source/AREANDINA/6': () => Response.json(summary),
@@ -81,18 +82,20 @@ it('switches the landing page reports together with the repository', async () =>
   expect(get.mock.calls.some(([url]) => url.endsWith('/source/PA'))).toBe(false)
 })
 
-it('finds a repository by acronym on the fourth page of authorized sources', async () => {
+it('searches a large authorized directory without loading intermediate pages', async () => {
   const sources = Array.from({ length: 347 }, (_, id) => ({ id, name: 'Fuente ' + id, acronym: 'R' + id }))
-  fixture(Object.fromEntries([0, 1, 2, 3].map(page => [
-    '/api/v5/dashboard/harvesting/source/list?page=' + page + '&size=100',
-    () => Response.json({ content: sources.slice(page * 100, (page + 1) * 100), totalElements: sources.length }),
-  ])))
+  const list = '/api/v5/dashboard/harvesting/source/list?page=0&size=100'
+  const get = fixture({
+    [list]: () => Response.json({ content: sources.slice(0, 100), totalElements: sources.length }),
+    [list + '&search=R346']: () => Response.json({ content: [sources[346]], totalElements: 1 }),
+  })
   await open()
   const input = await screen.findByRole('combobox', { name: 'Repositorio' })
   act(() => input.focus())
   fireEvent.change(input, { target: { value: 'R346' } })
   fireEvent.click(await screen.findByRole('option', { name: 'R346 · Fuente 346' }))
   expect(screen.getByRole('link', { name: 'Validaciones' })).toHaveAttribute('href', '/R346/validation')
+  expect(get.mock.calls.some(([url]) => url.includes('list?page=1'))).toBe(false)
 })
 
 it('retries configuration before starting a session', async () => {
@@ -103,7 +106,7 @@ it('retries configuration before starting a session', async () => {
   expect(await screen.findByText('No hay servicios habilitados.')).toBeVisible()
 })
 
-it('loads further pages of the authorized list for a bookmarked repository', async () => {
+it('resolves a bookmarked repository beyond the initial directory page', async () => {
   fixture({
     '/api/v5/dashboard/harvesting/source/list?page=0&size=100': () => Response.json({ content: [{ ...source, id: 1, acronym: 'PA' }], totalElements: 2 }),
     '/api/v5/dashboard/harvesting/source/list?page=1&size=100': () => Response.json({ content: [source], totalElements: 2 }),
@@ -143,9 +146,27 @@ const historicRow = {
   invalidRulesID: ['5', '99'], validRulesID: [], validOccurrencesByRuleID: {}, invalidOccurrencesByRuleID: {},
 }
 
+it('recovers from a malformed session without exposing private routes', async () => {
+  let attempts = 0
+  fixture({ '/api/v5/me': () => Response.json(++attempts === 1 ? { ...user, roles: null } : user) })
+  await open()
+  fireEvent.click(await screen.findByRole('button', { name: 'Reintentar' }))
+  expect(await screen.findByRole('combobox', { name: 'Repositorio' })).toBeVisible()
+})
+
+it('retries a malformed record page and keeps the requested cohort', async () => {
+  let attempts = 0
+  fixture({ [recordsPath + 'invalid_rules=5&' + firstPage]: () => Response.json({
+    totalElements: 1, content: [++attempts === 1 ? { ...historicRow, invalidRulesID: {} } : historicRow],
+  }) })
+  await open('/AREANDINA/validation/6?view=records&invalid_rules=5')
+  fireEvent.click(await screen.findByRole('button', { name: 'Reintentar' }))
+  expect(await screen.findByRole('button', { name: historicRow.identifier })).toBeVisible()
+})
+
 it('includes older snapshots in a single selector without changing the open diagnosis', async () => {
   const history = '/api/v5/dashboard/harvesting/source/AREANDINA/history?page='
-  const order = '&size=100&sort=endTime%2Cdesc&sort=id%2Cdesc'
+  const order = '&size=100&sort=endTime%2Cdesc&sort=id%2Cdesc&availableOnly=true'
   fixture({
     [history + '0' + order]: () => Response.json({
       content: Array.from({ length: 100 }, (_, i) => ({ id: 105 - i, deleted: i !== 99 })), totalElements: 101,
@@ -157,6 +178,7 @@ it('includes older snapshots in a single selector without changing the open diag
   expect(await within(selector).findByText('#6 · Validado')).toBeVisible()
   expect(screen.queryByRole('navigation', { name: 'Páginas del selector de cosechas' })).toBeNull()
   fireEvent.mouseDown(selector)
+  fireEvent.click(await screen.findByRole('option', { name: 'Cargar más' }))
   expect(await screen.findByRole('option', { name: '#5 · Validado' })).toBeVisible()
   expect(screen.getByRole('option', { name: '#6 · Validado', selected: true })).toBeVisible()
 })
@@ -257,7 +279,7 @@ it('explains unavailable occurrences when every rule has capture off, including 
   await open('/AREANDINA/validation/6?rule=5')
   const dialog = within(await screen.findByRole('dialog'))
   expect(dialog.getByText('Esta regla no tiene recuento de ocurrencias en este snapshot.')).toBeVisible()
-  expect(get.mock.calls.some(([path]) => path.includes('_occrs/'))).toBe(false)
+  expect(get.mock.calls.some(([path]) => path.includes('frequencies/') || path.includes('_occrs/'))).toBe(false)
   fireEvent.click(dialog.getByRole('button', { name: 'Cerrar' }))
   expect(screen.getByText('Ninguna regla de este snapshot tiene recuento de ocurrencias.')).toBeVisible()
   expect(screen.getByText('Sin recuento', { exact: true })).toBeVisible()
@@ -271,8 +293,8 @@ it('retries a frequency group independently and preserves the counts of an unnam
     [report]: () => Response.json({ ...summary, rulesByID: {
       5: { ...summary.rulesByID[5], name: null, occurrenceCaptureEnabled: true },
     } }),
-    [report + '/valid_occrs/5']: () => Response.json([{ value: 'spa', count: 2 }]),
-    [report + '/invalid_occrs/5']: () => ++attempts === 1 ? new Response(null, { status: 503 }) : Response.json([]),
+    [report + '/frequencies/5/valid?pageNumber=0&pageSize=10']: () => Response.json({ content: [{ value: 'spa', count: 2 }], totalElements: 1, totalOccurrences: 2 }),
+    [report + '/frequencies/5/invalid?pageNumber=0&pageSize=10']: () => ++attempts === 1 ? new Response(null, { status: 503 }) : Response.json({ content: [], totalElements: 0, totalOccurrences: 0 }),
   })
   await open('/AREANDINA/validation/6?rule=5')
   const dialog = within(await screen.findByRole('dialog'))
@@ -288,6 +310,23 @@ it('guards a history deep link for another network before sending a request', as
   await open('/PA/harvesting?view=table')
   expect(await screen.findByText('Acceso denegado')).toBeVisible()
   expect(get.mock.calls.some(([path]) => path.includes('/PA/'))).toBe(false)
+})
+
+it('opens the legacy statistics bookmark with the authorized source and a relative widget URL', async () => {
+  fixture({
+    '/dashboard/es/assets/data/appConfig.json': () => Response.json({
+      statistics_module: { active: true, historic_stats: { widget_url: './widget.js' } },
+    }),
+    '/api/v5/dashboard/harvesting/source/AREANDINA': () => Response.json({
+      ...source, attributes: { stats_source_id: 'stats-33' },
+    }),
+  })
+  await open('/statistics/statistics')
+  const main = within(await screen.findByRole('main'))
+  const frame = await main.findByTitle('Estadísticas')
+  expect(frame).toHaveAttribute('sandbox', 'allow-scripts')
+  expect(frame.getAttribute('srcdoc')).toContain(new URL('./widget.js', document.baseURI).href)
+  expect(frame.getAttribute('srcdoc')).toContain('stats-33')
 })
 
 it('shows plain snapshot IDs and links only to available diagnostics after retrying the page', async () => {

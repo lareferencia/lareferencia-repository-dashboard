@@ -5,7 +5,8 @@ import { Alert, Box, Button, LinearProgress, IconButton, Tooltip, Stack, TextFie
 import type { UseQueryResult } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { HttpError } from '../../api/dashboard'
-import { ReadError } from '../../auth/Session'
+import { downloadText } from '../../shared/downloads'
+import { ReadError } from '../../shared/ReadError'
 
 export function HistoricalXml({ result }: { result: UseQueryResult<string, Error> }) {
   const { t } = useTranslation()
@@ -14,15 +15,6 @@ export function HistoricalXml({ result }: { result: UseQueryResult<string, Error
     return <Alert severity="info">{t('xmlUnavailable')}</Alert>
   if (result.isError) return <ReadError retry={() => void result.refetch()} />
   return <XmlViewer xml={result.data} />
-}
-
-function downloadXml(xml: string, identifier: string) {
-  const url = URL.createObjectURL(new Blob([xml], { type: 'application/xml;charset=utf-8' }))
-  const link = document.createElement('a')
-  link.href = url
-  link.download = identifier.replace(/[^\p{L}\p{N}._-]/gu, '_') + '.xml'
-  link.click()
-  setTimeout(() => URL.revokeObjectURL(url), 0)
 }
 
 function XmlViewer({ xml }: { xml: string }) {
@@ -50,7 +42,7 @@ function XmlViewer({ xml }: { xml: string }) {
   </Stack>
 }
 
-// Paint markup as React text nodes, preserving the archived text byte for byte on export.
+// Render tags as text. Copy and download use the original XML string.
 function coloredTags(text: string) {
   return text.split(/(<[^>]*>)/g).map((part, i) => i % 2 === 0 ? part :
     <span key={i} style={{ color: part.startsWith('</') ? '#93c5fd' : '#7dd3fc' }}>{part}</span>)
@@ -60,12 +52,20 @@ export function XmlActions({ xml, identifier }: { xml: string; identifier: strin
   const { t } = useTranslation()
   const [notice, setNotice] = useState('')
   const copy = async () => {
-    try { await navigator.clipboard.writeText(xml); setNotice('xmlCopied') }
-    catch { setNotice('xmlCopyFailed') }
+    try {
+      await navigator.clipboard.writeText(xml)
+      setNotice('xmlCopied')
+    } catch {
+      setNotice('xmlCopyFailed')
+    }
+  }
+  function downloadXml() {
+    const filename = identifier.replace(/[^\p{L}\p{N}._-]/gu, '_') + '.xml'
+    downloadText(filename, xml, 'application/xml;charset=utf-8')
   }
   return <>
     {notice && <Typography variant="caption" role="status">{t(notice)}</Typography>}
     <Tooltip title={t('copyXml')}><IconButton aria-label={t('copyXml')} onClick={copy}><ContentCopyOutlined /></IconButton></Tooltip>
-    <Button startIcon={<DownloadOutlined />} onClick={() => downloadXml(xml, identifier)}>{t('downloadXml')}</Button>
+    <Button startIcon={<DownloadOutlined />} onClick={downloadXml}>{t('downloadXml')}</Button>
   </>
 }

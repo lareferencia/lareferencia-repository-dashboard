@@ -3,19 +3,17 @@ import { useQuery } from '@tanstack/react-query'
 import { Navigate, useParams, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { HttpError, type DashboardApi, type Source, type Summary } from '../api/dashboard'
-import { ReadError } from '../auth/Session'
+import { ReadError } from '../shared/ReadError'
 import { Records } from './validation/Records'
 import { Rules } from './validation/Rules'
 import { RuleDialog } from './validation/RuleDialog'
 import { SnapshotHeader } from './validation/SnapshotPicker'
 import { IdentifierSearch, RecordFilters } from './validation/RecordFilters'
-import { diagnosticFilters, recordQuery, changeParams } from './validation/filters'
+import { changeParams, diagnosticFilters } from './validation/filters'
 
-export function Validation({ api, sources, portal }: { api: DashboardApi; sources: Source[]; portal?: string }) {
+export function Validation({ api, source, portal }: { api: DashboardApi; source: Source; portal?: string }) {
   const { t } = useTranslation()
-  const { acronym, snapshot, failedRule } = useParams()
-  const source = sources.find(item => item.acronym === acronym)
-  if (!source) return <Alert severity="warning">{t('denied')}</Alert>
+  const { snapshot, failedRule } = useParams()
   if (snapshot === undefined) return <Latest api={api} source={source} />
   const id = Number(snapshot)
   if (!/^\d+$/.test(snapshot) || !Number.isSafeInteger(id) || id < 1) return <Alert severity="info">{t('noSnapshot')}</Alert>
@@ -39,35 +37,41 @@ function Latest({ api, source }: { api: DashboardApi; source: Source }) {
 function Report({ api, source, id, portal }: { api: DashboardApi; source: Source; id: number; portal?: string }) {
   const { t } = useTranslation()
   const [params, setParams] = useSearchParams()
-  const filters = diagnosticFilters(params).toString()
-  const summaryQuery = (selection: string) => ({
-    queryKey: ['summary', source.id, id, selection],
-    queryFn: ({ signal }: { signal: AbortSignal }) => api.summary(source.acronym, id, selection, signal),
+  const filters = diagnosticFilters(params)
+  const selection = filters.toString()
+  const summaryQuery = (queryString: string) => ({
+    queryKey: ['summary', source.id, id, queryString],
+    queryFn: ({ signal }: { signal: AbortSignal }) => api.summary(source.acronym, id, queryString, signal),
   })
-  const query = useQuery(summaryQuery(''))
-  const selected = useQuery(summaryQuery(filters))
-  if (query.isPending) return <LinearProgress />
-  if (query.error instanceof HttpError && [403, 404].includes(query.error.status))
-    return <Alert severity="warning">{t(query.error.status === 403 ? 'denied' : 'noSnapshot')}</Alert>
-  if (query.isError) return <ReadError retry={() => void query.refetch()} />
-  const { size, rulesByID } = query.data
-  const rules = Object.values(rulesByID).sort((a, b) => a.ruleID - b.ruleID)
-  const selectedRules = Object.values(selected.data?.rulesByID ?? {}).sort((a, b) => a.ruleID - b.ruleID)
+  // The header and filter choices describe the entire snapshot, even when the selection is empty.
+  const snapshot = useQuery(summaryQuery(''))
+  const selected = useQuery(summaryQuery(selection))
+  if (snapshot.isPending) return <LinearProgress />
+  if (snapshot.error instanceof HttpError && [403, 404].includes(snapshot.error.status)) {
+    return <Alert severity="warning">{t(snapshot.error.status === 403 ? 'denied' : 'noSnapshot')}</Alert>
+  }
+  if (snapshot.isError) return <ReadError retry={() => void snapshot.refetch()} />
+  const rules = orderedRules(snapshot.data)
+  const selectedRules = orderedRules(selected.data)
   const rule = selectedRules.find(item => String(item.ruleID) === params.get('rule'))
   const scope = { api, acronym: source.acronym, snapshot: id }
   const close = () => setParams(changeParams(params, 'rule', []), { replace: true })
   return <Stack spacing={3}>
-    <SnapshotHeader api={api} source={source} snapshot={id} summary={query.data} />
+    <SnapshotHeader api={api} source={source} snapshot={id} summary={snapshot.data} />
     {selected.isError ? <ReadError retry={() => void selected.refetch()} /> : !selected.data ? <LinearProgress /> :
       <MetricCards summary={selected.data} />}
-    <RecordFilters query={recordQuery(params)} rules={rules}
+    <RecordFilters query={filters} rules={rules}
       change={(field, values) => setParams(changeParams(params, field, values, true))} clear={() => setParams({})} />
     {selected.isSuccess && <Rules rules={selectedRules} total={selected.data.size} filename={`${source.acronym}-${id}-rules`} />}
     <IdentifierSearch key={params.get('oai_identifier') || ''} initial={params.get('oai_identifier') || ''}
       onSearch={value => setParams(changeParams(params, 'oai_identifier', [value], true))} />
-    <Records {...scope} rules={rules} portal={portal} total={size} />
-    {selected.isSuccess && params.has('rule') && <RuleDialog key={params.get('rule') + '/' + filters} {...scope} filters={filters} rule={rule} close={close} />}
+    <Records {...scope} rules={rules} portal={portal} total={snapshot.data.size} filters={filters} />
+    {selected.isSuccess && params.has('rule') && <RuleDialog key={params.get('rule') + '/' + selection} {...scope} filters={selection} rule={rule} close={close} />}
   </Stack>
+}
+
+function orderedRules(summary?: Summary) {
+  return Object.values(summary?.rulesByID ?? {}).sort((a, b) => a.ruleID - b.ruleID)
 }
 
 function MetricCards({ summary }: { summary: Summary }) {

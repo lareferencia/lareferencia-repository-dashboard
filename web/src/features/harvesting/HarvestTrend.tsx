@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { Harvest } from '../../api/dashboard'
 import type { Series } from './HarvestChart'
-import { counts } from './history'
+import { hasDiagnostic, counts } from './history'
 
 const HarvestChart = lazy(() => import('./HarvestChart'))
 
@@ -34,7 +34,7 @@ export function HarvestTrend({ rows, total, series, setSeries, acronym, validati
   const { t } = useTranslation()
   const navigate = useNavigate()
   const open = useCallback((row: Harvest) => {
-    if (validation && row.deleted === false) navigate(`/${encodeURIComponent(acronym)}/validation/${row.id}`)
+    if (validation && hasDiagnostic(row)) navigate(`/${encodeURIComponent(acronym)}/validation/${row.id}`)
   }, [acronym, navigate, validation])
   return <Paper variant="outlined" sx={{ p: { xs: 2, md: 2.5 } }}>
     <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" gap={1} alignItems={{ sm: 'center' }}>

@@ -1,6 +1,6 @@
-// The same query string identifies the API request and the React Query cache entry.
 export const pageSizes = [10, 25, 50, 100] as const
 
+// Canonical rule order gives equivalent bookmarked filters the same API URL and cache key.
 export function diagnosticFilters(params: URLSearchParams) {
   const query = new URLSearchParams()
   for (const field of ['valid_rules', 'invalid_rules']) {
@@ -17,10 +17,11 @@ export function diagnosticFilters(params: URLSearchParams) {
   return query
 }
 
-export function recordQuery(params: URLSearchParams) {
-  const query = diagnosticFilters(params)
+export function recordQuery(params: URLSearchParams, filters = diagnosticFilters(params)) {
+  // Pagination belongs only to records. The summary and frequencies share the original filters.
+  const query = new URLSearchParams(filters)
   const page = Number(params.get('pageNumber'))
-  query.set('pageNumber', String(Number.isSafeInteger(page) && page >= 0 ? page : 0))
+  query.set('pageNumber', String(Number.isSafeInteger(page) && page >= 0 && page <= 2_147_483_647 ? page : 0))
   const size = pageSizes.find(n => n === Number(params.get('pageSize'))) ?? 25
   query.set('pageSize', String(size))
   return query

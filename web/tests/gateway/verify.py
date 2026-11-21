@@ -1,4 +1,4 @@
-"""Chrome + API real. Solicita la contraseña por terminal o DASHBOARD_TEST_PASSWORD."""
+"""Exercise Chrome against the live local API. Read the password from the environment or prompt."""
 import argparse
 import getpass
 import os

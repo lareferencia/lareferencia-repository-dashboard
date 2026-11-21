@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest'
 import type { Harvest } from '../src/api/dashboard'
-import { chartRange, chronological, counts, durationSeconds, validPercent, historyRequest, validRange } from '../src/features/harvesting/history'
+import { hasDiagnostic, chartRange, chronological, counts, durationSeconds, validPercent, historyRequest, validRange } from '../src/features/harvesting/history'
 
 const today = new Date(2026, 0, 1)
 const snapshot: Harvest = { id: 6, harvestedSize: 4000, validSize: 0, transformedSize: 0,
@@ -42,4 +42,9 @@ it('compares elapsed time and validation percentages without inventing missing v
   expect(validPercent(snapshot)).toBe(0)
   expect(validPercent({ ...snapshot, harvestedSize: 0 })).toBeNull()
   expect(validPercent({ ...snapshot, validSize: 1000 })).toBe(25)
+})
+
+it('allows a historical diagnostic unless the snapshot is explicitly deleted', () => {
+  for (const deleted of [false, null, undefined]) expect(hasDiagnostic({ ...snapshot, deleted })).toBe(true)
+  expect(hasDiagnostic({ ...snapshot, deleted: true })).toBe(false)
 })

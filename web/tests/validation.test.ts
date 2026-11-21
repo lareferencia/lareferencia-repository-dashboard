@@ -1,8 +1,32 @@
 import { snapshotDate } from '../src/features/validation/SnapshotPicker'
 import { expect, it } from 'vitest'
-import { changeParams, recordQuery } from '../src/features/validation/filters'
-import { serializeCsv } from '../src/features/validation/csv'
+import { changeParams, diagnosticFilters, recordQuery } from '../src/features/validation/filters'
+import { serializeCsv } from '../src/shared/downloads'
 import { getRecordUrl } from '../src/features/validation/RecordDetail'
+import type { Rule } from '../src/api/dashboard'
+import { emptyEvidence, occurrenceCountsUnavailable } from '../src/features/validation/ruleDetails'
+
+it('adds pagination to records without changing the shared summary and frequency filters', () => {
+  const params = new URLSearchParams('invalid_rules=5&pageNumber=2&pageSize=50')
+  const filters = diagnosticFilters(params)
+  expect(recordQuery(params, filters).toString()).toBe('invalid_rules=5&pageNumber=2&pageSize=50')
+  expect(filters.toString()).toBe('invalid_rules=5')
+})
+
+it('gives the saved capture setting precedence and preserves unknown historical evidence', () => {
+  const rule: Rule = { ruleID: 5, name: 'Language', mandatory: null, quantifier: null, validCount: 0, invalidCount: 0 }
+  for (const [capture, stored, unavailable, message] of [
+    [false, true, true, 'captureOff'],
+    [true, false, false, 'noOccurrences'],
+    [null, false, true, 'captureOff'],
+    [null, true, false, 'noOccurrences'],
+    [undefined, undefined, false, 'captureUnknown'],
+  ] as const) {
+    const historical = { ...rule, occurrenceCaptureEnabled: capture, storedOccurrencesAvailable: stored }
+    expect(occurrenceCountsUnavailable(historical)).toBe(unavailable)
+    expect(emptyEvidence(historical)).toBe(message)
+  }
+})
 
 it('canonicalizes multiple rules and keeps false filters and reserved identifier characters', () => {
   const params = new URLSearchParams('valid_rules=5,2&valid_rules=05&invalid_rules=5&is_valid=false&is_transformed=false&rule=10')
@@ -39,4 +63,10 @@ it('shows the same snapshot time for compatibility timestamps and native UTC ins
     harvestedSize: 4000, validSize: 0, transformedSize: 0 }, 'es')
   expect(stamp('2026-10-04T18:16:00')).toBe(stamp('2026-10-04T18:16:00Z'))
   expect(stamp('2026-10-04T20:16:00+02:00')).toBe(stamp('2026-10-04T18:16:00Z'))
+})
+
+it('recovers bookmarks whose record page exceeds the Java API range', () => {
+  for (const [input, expected] of [['2147483647', '2147483647'], ['2147483648', '0']]) {
+    expect(recordQuery(new URLSearchParams({ pageNumber: input })).get('pageNumber')).toBe(expected)
+  }
 })

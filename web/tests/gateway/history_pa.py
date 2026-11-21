@@ -1,4 +1,4 @@
-"""Comparación de las cosechas históricas #3 y #4 de PA en la copia Docker."""
+"""Compare PA harvests #3 and #4 in the local Docker copy."""
 import argparse
 import csv
 from datetime import datetime

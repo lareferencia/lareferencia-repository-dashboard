@@ -46,7 +46,10 @@ export default defineConfig({
   base: '/dashboard/',
   appType: 'mpa',
   plugins: [dashboardEntries(), react()],
-  build: { rollupOptions: { input: languages.map(lang => `${lang}/index.html`) } },
+  build: { rollupOptions: {
+    input: languages.map(lang => `${lang}/index.html`),
+    output: { manualChunks: { react: ['react', 'react-dom/client'] } },
+  } },
   server: { host: '127.0.0.1', port: 5174, strictPort: true,
     proxy: { '/api/v5': {
       target: process.env.DASHBOARD_GATEWAY_ORIGIN || 'http://127.0.0.1:8188',

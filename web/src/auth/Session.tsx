@@ -4,11 +4,7 @@ import { Alert, Box, Button, LinearProgress, Paper, Stack, TextField, Typography
 import { QueryClient, QueryClientProvider, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { dashboardApi, HttpError, type DashboardApi, type User } from '../api/dashboard'
-
-export function ReadError({ retry }: { retry: () => void }) {
-  const { t } = useTranslation()
-  return <Alert severity="error" action={<Button onClick={retry}>{t('retry')}</Button>}>{t('readError')}</Alert>
-}
+import { ReadError } from '../shared/ReadError'
 
 function Login({ api, signedIn }: { api: DashboardApi; signedIn: (user: User) => void }) {
   const { t } = useTranslation()

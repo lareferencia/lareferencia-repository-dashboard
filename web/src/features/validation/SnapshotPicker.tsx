@@ -1,22 +1,10 @@
-import { Alert, Box, Button, Chip, Paper, Stack, Typography } from '@mui/material'
-import { useQuery } from '@tanstack/react-query'
+import { useState } from 'react'
+import { Alert, Box, Button, Chip, MenuItem, Paper, Stack, TextField, Typography } from '@mui/material'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Harvest, Source, Summary } from '../../api/dashboard'
-import { harvestInstant } from '../harvesting/history'
-import { SelectField } from './SelectField'
-
-async function availableSnapshots(api: DashboardApi, acronym: string, signal: AbortSignal) {
-  const rows = new Map<number, Harvest>()
-  const size = 100
-  for (let page = 0; ; page++) {
-    const { content, totalElements } = await api.history(acronym, { page, size, sort: 'endTime,desc', from: '', to: '' }, signal)
-    for (const row of content) {
-      if (!row.deleted) rows.set(row.id, row)
-    }
-    if (!content.length || (page + 1) * size >= totalElements) return [...rows.values()]
-  }
-}
+import { harvestInstant, hasDiagnostic } from '../harvesting/history'
 
 export function snapshotDate(row: Harvest | undefined, language: string) {
   const date = harvestInstant(row?.endTime || row?.startTime)
@@ -29,11 +17,23 @@ export function SnapshotHeader({ api, source, snapshot, summary }: {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const { state } = useLocation()
-  const history = useQuery({ queryKey: ['snapshot-choices', source.acronym],
-    queryFn: ({ signal }) => availableSnapshots(api, source.acronym, signal) })
-  const rows = history.data || []
-  const chosen = state?.source === source.id && state.harvest?.id === snapshot ? state.harvest as Harvest : undefined
-  const current = rows.find(row => row.id === snapshot) || chosen
+  const [open, setOpen] = useState(false)
+  const history = useInfiniteQuery({
+    queryKey: ['snapshot-choices', source.acronym],
+    enabled: open,
+    staleTime: 60_000,
+    initialPageParam: 0,
+    queryFn: ({ pageParam, signal }) => api.history(source.acronym, {
+      page: pageParam, size: 100, sort: 'endTime,desc', from: '', to: '',
+    }, signal, true),
+    getNextPageParam: (last, pages) => last.content.length && pages.length * 100 < last.totalElements ? pages.length : undefined,
+  })
+  const rows = history.data?.pages.flatMap(page => page.content).filter(hasDiagnostic) ?? []
+  const navigationHarvest = state?.source === source.id && state.harvest?.id === snapshot ? state.harvest as Harvest : undefined
+  const chosen = rows.find(row => row.id === snapshot) ?? navigationHarvest
+  const detail = useQuery({ queryKey: ['harvest', source.acronym, snapshot], enabled: !chosen,
+    queryFn: ({ signal }) => api.harvest(source.acronym, snapshot, signal) })
+  const current = chosen ?? detail.data
   const date = snapshotDate(current, i18n.language)
   const label = (id: number, row?: Harvest) => ['#' + id, row && t('validatedSnapshot'), snapshotDate(row, i18n.language)].filter(Boolean).join(' · ')
   const options: [string, string][] = rows.map(row => [String(row.id), label(row.id, row)])
@@ -51,10 +51,22 @@ export function SnapshotHeader({ api, source, snapshot, summary }: {
     </Stack>
     <Paper variant="outlined" sx={{ p: 2 }}><Stack direction={{ xs: 'column', md: 'row' }} spacing={2} alignItems={{ md: 'flex-start' }}>
       <Stack spacing={1} sx={{ minWidth: { md: 320 }, maxWidth: '100%' }}>
-        <Box sx={{ '& .MuiSelect-select': { whiteSpace: { xs: 'normal', md: 'nowrap' } } }}><SelectField label="Snapshot" value={String(snapshot)} options={options}
-          onChange={id => navigate(`/${encodeURIComponent(source.acronym)}/validation/${id}`,
-            { state: { source: source.id, harvest: rows.find(row => String(row.id) === id) } })} /></Box>
-        {history.isError && <Alert severity="warning">{t('historyUnavailable')}</Alert>}
+        <TextField select size="small" label="Snapshot" value={String(snapshot)}
+          slotProps={{ select: { open, onOpen: () => setOpen(true), onClose: event => {
+            if (!(event.target instanceof Element && event.target.closest('[data-load-more]'))) setOpen(false)
+          } } }}
+          onChange={event => {
+            const id = event.target.value
+            if (id === 'more') { void history.fetchNextPage(); return }
+            navigate(`/${encodeURIComponent(source.acronym)}/validation/${id}`, { state: { source: source.id, harvest: rows.find(row => String(row.id) === id) } })
+          }}>
+          {options.map(([id, text]) => <MenuItem key={id} value={id}>{text}</MenuItem>)}
+          {history.hasNextPage && <MenuItem value="more" data-load-more disabled={history.isFetchingNextPage}>{t('loadMore')}</MenuItem>}
+        </TextField>
+        {(history.isError || detail.isError) && <Alert severity="warning" action={<Button onClick={() => {
+          if (history.isError) void history.refetch()
+          if (detail.isError) void detail.refetch()
+        }}>{t('retry')}</Button>}>{t('historyUnavailable')}</Alert>}
       </Stack>
       {current && <Chip color="success" label={t('validatedSnapshot')} sx={{ alignSelf: { xs: 'flex-start', md: 'auto' } }} />}
       <Typography variant="body2" color="text.secondary">{t('filterScope')}</Typography>

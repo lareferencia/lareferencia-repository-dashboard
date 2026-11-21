@@ -11,13 +11,30 @@ import { Repositories } from '../features/Repositories'
 
 export function App({ language }: { language: Language }) {
   const { t } = useTranslation()
-  const config = useQuery({ queryKey: ['config', language], queryFn: () => loadConfig(`/dashboard/${language}`), retry: false, staleTime: Infinity })
+  // Each language entry can serve its own deployment configuration.
+  const config = useQuery({
+    queryKey: ['config', language],
+    queryFn: () => loadConfig(`/dashboard/${language}`),
+    retry: false,
+    staleTime: Infinity,
+  })
   const localizedTheme = useMemo(() => createTheme(theme, { es: esES, en: enUS, pt: ptBR }[language]), [language])
-  return <ThemeProvider theme={localizedTheme}><CssBaseline />
-    {config.isPending ? <LinearProgress /> : config.isError ? <Alert severity="error"
-      action={<Button onClick={() => void config.refetch()}>{t('retry')}</Button>}>{t('configError')}</Alert> :
-      <Session base={config.data.apiBaseUrl}>{(api, user, logout) =>
-        <Repositories api={api} user={user} config={config.data} logout={logout} language={language} />}
-      </Session>}
+
+  let content
+  if (config.isPending) {
+    content = <LinearProgress />
+  } else if (config.isError) {
+    content = <Alert severity="error" action={<Button onClick={() => void config.refetch()}>{t('retry')}</Button>}>
+      {t('configError')}
+    </Alert>
+  } else {
+    const settings = config.data
+    content = <Session base={settings.apiBaseUrl}>{(api, user, logout) =>
+      <Repositories api={api} user={user} config={settings} logout={logout} language={language} />}
+    </Session>
+  }
+  return <ThemeProvider theme={localizedTheme}>
+    <CssBaseline />
+    {content}
   </ThemeProvider>
 }

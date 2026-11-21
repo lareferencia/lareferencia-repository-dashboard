@@ -4,7 +4,8 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Source } from '../api/dashboard'
 import type { HistoricStats } from '../app/config'
-import { ReadError } from '../auth/Session'
+import { ReadError } from '../shared/ReadError'
+import { httpUrl } from '../shared/httpUrl'
 
 function widgetDocument(url: string, source: Source, id: string, config: HistoricStats, language: string) {
   const institution = source.institutionName || ''
@@ -14,8 +15,7 @@ function widgetDocument(url: string, source: Source, id: string, config: Histori
     default_repository: { label: [institution, source.name].filter(Boolean).join(' - '), value: id },
     scope_labels: { N: national ? config.scope_labels?.N || '' : institution, R: national ? institution : '' },
   }
-  // The provider mounts itself on this ID and does not expose its unmount callback.
-  // Giving it a document of its own also disposes of its listeners on navigation.
+  // Escape the HTML script delimiter even inside JSON strings supplied by the repository.
   const literal = (value: unknown) => JSON.stringify(value).replaceAll('<', '\\u003c')
   return `<!doctype html><meta charset="utf-8"><div id="lrhw-widget"></div><script>
     // LRHW 1.1.6 checks document.cookie at startup. Keep that state inside this frame.
@@ -37,7 +37,10 @@ function Widget({ html }: { html: string }) {
   const [failed, setFailed] = useState(false)
   useEffect(() => {
     function onMessage(event: MessageEvent) {
-      if (frame.current && event.source === frame.current.contentWindow && event.data === 'lrhw-load-error') setFailed(true)
+      // A sandboxed frame has an opaque origin. Identify this widget by its window.
+      if (frame.current && event.source === frame.current.contentWindow && event.data === 'lrhw-load-error') {
+        setFailed(true)
+      }
     }
     window.addEventListener('message', onMessage)
     return () => window.removeEventListener('message', onMessage)
@@ -49,12 +52,11 @@ function Widget({ html }: { html: string }) {
 
 export function Statistics({ api, source, config }: { api: DashboardApi; source: Source; config?: HistoricStats }) {
   const { t, i18n } = useTranslation()
-  const url = config?.widget_url && URL.canParse(config.widget_url, document.baseURI) ? new URL(config.widget_url, document.baseURI) : null
-  const configured = url && ['https:', 'http:'].includes(url.protocol)
-  const detail = useQuery({ queryKey: ['source', source.id], enabled: Boolean(configured),
-    queryFn: ({ signal }) => api.source(source, signal) })
+  const url = httpUrl(config?.widget_url, document.baseURI)
+  const detail = useQuery({ queryKey: ['source', source.id], enabled: Boolean(url),
+    queryFn: ({ signal }) => api.source(source.acronym, signal, source.id) })
   let content
-  if (!configured || !config) content = <Alert severity="info">{t('widgetConfig')}</Alert>
+  if (!url || !config) content = <Alert severity="info">{t('widgetConfig')}</Alert>
   else if (detail.isError) content = <ReadError retry={() => void detail.refetch()} />
   else if (!detail.data) content = <LinearProgress />
   else {

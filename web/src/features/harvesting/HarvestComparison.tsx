@@ -1,9 +1,11 @@
-import { Box, Button, MenuItem, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material'
+import { ReadError } from '../../shared/ReadError'
+import { useQuery } from '@tanstack/react-query'
+import { Alert, LinearProgress, Box, Button, MenuItem, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material'
 import CompareArrows from '@mui/icons-material/CompareArrows'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import type { Harvest } from '../../api/dashboard'
-import { chronological, durationLabel, durationSeconds, harvestInstant, validPercent } from './history'
+import { HttpError, type DashboardApi, type Harvest } from '../../api/dashboard'
+import { hasDiagnostic, chronological, durationLabel, durationSeconds, harvestInstant, validPercent } from './history'
 
 const metrics = [
   { key: 'duration', read: durationSeconds },
@@ -23,19 +25,21 @@ function amount(n: number | null, metric: Metric, lang: string) {
 
 function DiagnosticLink({ row, acronym }: { row: Harvest; acronym: string }) {
   const { t } = useTranslation()
-  return row.deleted === false ? <Button component={Link} size="small"
+  return hasDiagnostic(row) ? <Button component={Link} size="small"
     to={`/${encodeURIComponent(acronym)}/validation/${row.id}`}>{t('openDiagnostics')} #{row.id}</Button> : null
 }
 
 function ComparisonSummary({ reference, target }: { reference: Harvest; target: Harvest }) {
   const { t, i18n } = useTranslation()
-  const a = durationSeconds(reference), b = durationSeconds(target)
-  if (a === null || b === null || reference.harvestedSize === null || target.harvestedSize === null) return null
+  const referenceSeconds = durationSeconds(reference)
+  const targetSeconds = durationSeconds(target)
+  if (referenceSeconds === null || targetSeconds === null || reference.harvestedSize === null || target.harvestedSize === null) return null
   const volume = target.harvestedSize - reference.harvestedSize
   const context = { first: reference.id, second: target.id, count: Math.abs(volume) }
   const records = t(volume === 0 ? 'sameVolume' : volume > 0 ? 'higherVolume' : 'lowerVolume', context)
-  const elapsed = a === b ? t('sameDuration') : t('elapsedChange', {
-    change: t(b > a ? 'amountMore' : 'amountLess', { value: durationLabel(Math.abs(b - a), i18n.language) }),
+  const seconds = targetSeconds - referenceSeconds
+  const elapsed = seconds === 0 ? t('sameDuration') : t('elapsedChange', {
+    change: t(seconds > 0 ? 'amountMore' : 'amountLess', { value: durationLabel(Math.abs(seconds), i18n.language) }),
   })
   return <Typography variant="body2" sx={{ mb: 2 }}>{records} {elapsed}</Typography>
 }
@@ -43,12 +47,15 @@ function ComparisonSummary({ reference, target }: { reference: Harvest; target: 
 function ComparisonTable({ reference, target }: { reference: Harvest; target: Harvest }) {
   const { t, i18n } = useTranslation()
   const lang = i18n.language
-  function change(a: number | null, b: number | null, key: Metric) {
-    if (a === null || b === null) return '—'
-    if (a === b) return t('unchanged')
-    const diff = Math.abs(b - a)
-    const value = key === 'validRate' ? t('percentagePoints', { value: new Intl.NumberFormat(lang, { maximumFractionDigits: 2 }).format(diff) }) : amount(diff, key, lang)
-    return t(b > a ? 'amountMore' : 'amountLess', { value })
+  function change(delta: number | null, key: Metric) {
+    if (delta === null) return '—'
+    if (delta === 0) return t('unchanged')
+    // Differences between two validity rates are expressed in percentage points.
+    const magnitude = Math.abs(delta)
+    const value = key === 'validRate'
+      ? t('percentagePoints', { value: new Intl.NumberFormat(lang, { maximumFractionDigits: 2 }).format(magnitude) })
+      : amount(magnitude, key, lang)
+    return t(delta > 0 ? 'amountMore' : 'amountLess', { value })
   }
   return <TableContainer><Table size="small" aria-label={t('comparison')} sx={{
     fontVariantNumeric: 'tabular-nums',
@@ -63,19 +70,21 @@ function ComparisonTable({ reference, target }: { reference: Harvest; target: Ha
       <TableCell>#{reference.id}</TableCell><TableCell>#{target.id}</TableCell><TableCell>{t('difference')}</TableCell>
     </TableRow></TableHead>
     <TableBody>{metrics.map(({ key, read }) => {
-      const a = read(reference), b = read(target)
-      const different = a !== null && b !== null && a !== b
+      const before = read(reference)
+      const after = read(target)
+      const delta = before === null || after === null ? null : after - before
+      const different = delta !== null && delta !== 0
       return <TableRow key={key}>
-        <TableCell component="th" scope="row">{t(key)}</TableCell><TableCell>{amount(a, key, lang)}</TableCell>
-        <TableCell>{amount(b, key, lang)}</TableCell>
-        <TableCell sx={{ fontWeight: different ? 700 : 400, color: different ? 'primary.main' : 'text.secondary' }}>{change(a, b, key)}</TableCell>
+        <TableCell component="th" scope="row">{t(key)}</TableCell><TableCell>{amount(before, key, lang)}</TableCell>
+        <TableCell>{amount(after, key, lang)}</TableCell>
+        <TableCell sx={{ fontWeight: different ? 700 : 400, color: different ? 'primary.main' : 'text.secondary' }}>{change(delta, key)}</TableCell>
       </TableRow>
     })}</TableBody>
   </Table></TableContainer>
 }
 
-export function HarvestComparison({ rows, choices, total, acronym, validation }: {
-  rows: Harvest[]; choices: Harvest[]; total: number; acronym: string; validation: boolean
+export function HarvestComparison({ rows, choices, total, acronym, validation, api, from, to }: {
+  api: DashboardApi; from: string; to: string; rows: Harvest[]; choices: Harvest[]; total: number; acronym: string; validation: boolean
 }) {
   const { t, i18n } = useTranslation()
   const [params, setParams] = useSearchParams()
@@ -84,9 +93,24 @@ export function HarvestComparison({ rows, choices, total, acronym, validation }:
     const date = harvestInstant(row.endTime || row.startTime)
     return '#' + row.id + (date ? ' · ' + format.format(date) : '')
   }
+  const options = new Map(choices.map(row => [row.id, row]))
+  const pair = params.get('compare')
+  const ids = pair?.split(',').map(Number) ?? []
+  const validPair = ids.length === 2 && ids[0] !== ids[1] && ids.every(id => Number.isSafeInteger(id) && id > 0)
+  const missing = validPair ? ids.filter(id => !options.has(id)) : []
+  const lookup = useQuery({
+    queryKey: ['comparison-harvests', acronym, from, to, ...missing],
+    enabled: missing.length > 0,
+    queryFn: ({ signal }) => Promise.all(missing.map(id => api.harvest(acronym, id, signal, from, to))),
+  })
+  for (const row of lookup.data ?? []) options.set(row.id, row)
+  const unavailable = lookup.error instanceof HttpError && [403, 404].includes(lookup.error.status)
+  const notice = pair && (!validPair || unavailable) ? <Alert severity="info">{t('comparisonUnavailable')}</Alert> :
+    lookup.isError ? <ReadError retry={() => void lookup.refetch()} /> : missing.length && lookup.isPending ? <LinearProgress /> : null
   const latest = rows.at(-1)
-  if (!latest) return null
+  if (!latest) return notice
   if (total === 1) return <Paper variant="outlined" sx={{ p: 2 }}>
+    {notice}
     <Stack direction="row" alignItems="center" justifyContent="space-between" flexWrap="wrap">
       <Typography variant="h6" component="h2">{label(latest)}</Typography>
       {validation && <DiagnosticLink row={latest} acronym={acronym} />}
@@ -96,11 +120,12 @@ export function HarvestComparison({ rows, choices, total, acronym, validation }:
         <Typography fontWeight={700}>{amount(read(latest), key, i18n.language)}</Typography></Box>)}</Stack>
   </Paper>
 
-  const options = new Map(choices.map(row => [row.id, row]))
-  const [first, second] = (params.get('compare') || '').split(',').map(Number)
-  const reference = options.get(first), target = options.get(second)
+  const [first, second] = ids
+  const reference = options.get(first)
+  const target = options.get(second)
   const expanded = Boolean(reference && target && first !== second)
-  const previous = rows.at(-2) ?? choices.find(row => row.id !== latest.id)
+  const newestFirst = expanded ? chronological([...options.values()]).reverse() : []
+  const previous = rows.at(-2) ?? [...options.values()].find(row => row.id !== latest.id)
   // Keeping the pair in this history entry restores it after visiting either diagnosis.
   function select(a?: number, b?: number) {
     const next = new URLSearchParams(params)
@@ -112,7 +137,7 @@ export function HarvestComparison({ rows, choices, total, acronym, validation }:
     <TextField fullWidth select size="small" id={isReference ? 'reference-harvest' : 'target-harvest'}
       label={t(isReference ? 'referenceHarvest' : 'comparedHarvest')} value={row.id}
       onChange={event => isReference ? select(Number(event.target.value), other.id) : select(other.id, Number(event.target.value))}>
-      {chronological([...options.values()]).reverse().map(item =>
+      {newestFirst.map(item =>
         <MenuItem key={item.id} value={item.id} disabled={item.id === other.id}>{label(item)}</MenuItem>)}
     </TextField>
     {validation && <DiagnosticLink row={row} acronym={acronym} />}
@@ -127,6 +152,7 @@ export function HarvestComparison({ rows, choices, total, acronym, validation }:
       </Button>
       {!previous && <Typography variant="body2">{t('comparePages')}</Typography>}
     </Stack>
+    {notice}
     {expanded && reference && target && <Box id="comparison-panel">
       <Box sx={{ px: { xs: 2, md: 3 }, pb: 1.5 }}>
         <ComparisonSummary reference={reference} target={target} />

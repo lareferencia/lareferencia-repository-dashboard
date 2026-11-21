@@ -5,11 +5,12 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { Navigate, useSearchParams } from 'react-router-dom'
 import type { DashboardApi, Rule, ValidationRecord } from '../../api/dashboard'
-import { ReadError } from '../../auth/Session'
-import { downloadCsv } from './csv'
+import { ReadError } from '../../shared/ReadError'
+import { downloadCsv } from '../../shared/downloads'
 import { changeParams, pageSizes, recordQuery } from './filters'
 import { RecordDetail } from './RecordDetail'
-import { SelectField } from './SelectField'
+import { RecordStatus } from './RecordStatus'
+import { SelectField } from '../../shared/SelectField'
 
 type ReportScope = { api: DashboardApi; acronym: string; snapshot: number }
 
@@ -21,7 +22,7 @@ function RecordTable({ rows, rules, portal, empty, ...scope }: ReportScope & { e
     <TableBody>{rows.map(row => <TableRow hover key={row.id}>
       <TableCell><Button size="small" sx={{ p: 0, color: 'text.primary', fontWeight: 400, textAlign: 'left', overflowWrap: 'anywhere' }}
         onClick={() => setSelected(row)}>{row.identifier}</Button></TableCell>
-      <TableCell><Chip size="small" color={row.isValid == null ? 'default' : row.isValid ? 'success' : 'error'} label={row.isValid == null ? '—' : t(row.isValid ? 'validRecord' : 'invalidRecord')} /></TableCell>
+      <TableCell><RecordStatus valid={row.isValid} size="small" /></TableCell>
       <TableCell>{row.isTransformed ? <Chip size="small" color="warning" label={t('is_transformed')} /> : '—'}</TableCell>
       <TableCell>{row.invalidRulesID?.length ?? '—'}</TableCell><TableCell align="right"><Button size="small" startIcon={<DescriptionOutlined />} onClick={() => setSelected(row)}>{t('detail')}</Button></TableCell>
     </TableRow>)}
@@ -31,12 +32,12 @@ function RecordTable({ rows, rules, portal, empty, ...scope }: ReportScope & { e
     {selected && <RecordDetail {...scope} row={selected} rules={rules} portal={portal} close={() => setSelected(null)} />}</>
 }
 
-export function Records({ api, acronym, snapshot, rules, portal, total }: {
-  api: DashboardApi; acronym: string; snapshot: number; rules: Rule[]; portal?: string; total: number
+export function Records({ api, acronym, snapshot, rules, portal, total, filters }: ReportScope & {
+  rules: Rule[]; portal?: string; total: number; filters: URLSearchParams
 }) {
   const { t } = useTranslation()
   const [params, setParams] = useSearchParams()
-  const query = recordQuery(params)
+  const query = recordQuery(params, filters)
   const search = query.toString()
   const ids = [...query.getAll('valid_rules'), ...query.getAll('invalid_rules')]
   const known = ids.every(id => rules.some(rule => String(rule.ruleID) === id))
@@ -62,7 +63,7 @@ export function Records({ api, acronym, snapshot, rules, portal, total }: {
     ['ID', t('identifier'), t('is_valid'), t('is_transformed')],
     data.content.map(row => [row.id, row.identifier, row.isValid, row.isTransformed]))
   // Without filters the page should account for the records in the historical summary.
-  const missingDetail = total > 0 && !data.totalElements && query.size === 2
+  const missingDetail = total > 0 && !data.totalElements && filters.size === 0
   return <Stack ref={section} spacing={2}>
     <Paper variant="outlined" sx={{ overflow: 'hidden' }}>
       <Stack direction="row" alignItems="center" justifyContent="space-between" flexWrap="wrap" sx={{ px: 2, py: 1.5, borderBottom: 1, borderColor: 'divider' }}>

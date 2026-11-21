@@ -5,13 +5,13 @@ import ShowChart from '@mui/icons-material/ShowChart'
 import TableRowsOutlined from '@mui/icons-material/TableRowsOutlined'
 import FileDownloadOutlined from '@mui/icons-material/FileDownloadOutlined'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { Navigate, useLocation, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Harvest, HistoryRequest, Source } from '../../api/dashboard'
-import { ReadError } from '../../auth/Session'
-import { downloadCsv } from '../validation/csv'
-import { SelectField } from '../validation/SelectField'
-import { chronological, counts, historyColumns, historyRequest, validRange } from './history'
+import { ReadError } from '../../shared/ReadError'
+import { downloadCsv } from '../../shared/downloads'
+import { SelectField } from '../../shared/SelectField'
+import { chronological, counts, historyColumns, historyRequest, tablePageSizes, validRange } from './history'
 import { HarvestComparison } from './HarvestComparison'
 import { HarvestTrend } from './HarvestTrend'
 import { HarvestTable } from './HarvestTable'
@@ -49,6 +49,7 @@ function Results({ api, source, validation, request, chart, series, update }: {
   api: DashboardApi; source: Source; validation: boolean; request: HistoryRequest; chart: boolean; series: Series; update: Update
 }) {
   const { t, i18n } = useTranslation()
+  const [params] = useSearchParams()
   const cache = useQueryClient()
   const prefix = ['history', source.id, request.from, request.to]
   const query = useQuery({ queryKey: [...prefix, request.sort, request.size, request.page],
@@ -65,12 +66,18 @@ function Results({ api, source, validation, request, chart, series, update }: {
     downloadCsv(`${source.acronym}-history-p${request.page + 1}`, historyColumns.map(([key]) => key),
       rows.map(counts).map(row => historyColumns.map(([key]) => row[key])))
   }
+  // A bookmarked comparison survives a history page that disappeared since the link was saved.
+  if (chart && params.has('compare') && request.page > 0 && total > 0 && rows?.length === 0) {
+    const first = new URLSearchParams(params)
+    first.delete('page')
+    return <Navigate to={'?' + first} replace />
+  }
   return <>
     {query.isPending && <LinearProgress />}
     {query.isError && <ReadError retry={() => void query.refetch()} />}
     {rows && (rows.length ? <>
       {chart && <HarvestTrend rows={trendRows} total={total} series={series} setSeries={v => update({ series: v })} acronym={source.acronym} validation={validation} />}
-      {chart && <HarvestComparison rows={trendRows} choices={choices} total={total} acronym={source.acronym} validation={validation} />}
+      {chart && <HarvestComparison api={api} from={request.from} to={request.to} rows={trendRows} choices={choices} total={total} acronym={source.acronym} validation={validation} />}
       <Paper variant="outlined" sx={{ overflow: 'hidden' }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={1} sx={{ px: 2, py: 1.5 }}>
           <Box><Typography component="h2" variant="h6">{t('history')}</Typography>
@@ -82,11 +89,11 @@ function Results({ api, source, validation, request, chart, series, update }: {
           sort={chart ? undefined : request.sort} onSort={chart ? undefined : sort => update({ sort })} />
         {(!chart || pages > 1) && <Stack direction={{ xs: 'column', sm: 'row' }} alignItems="center" justifyContent="center" gap={1.5} sx={{ p: 1.5 }}>
           {pages > 1 && <Pagination size="small" siblingCount={0} count={pages} page={request.page + 1} onChange={(_, n) => update({ page: String(n - 1) })} />}
-          {!chart && <Box><SelectField native label={t('pageSize')} value={String(request.size)} options={[10, 25, 50].map(n => [String(n), String(n)])}
+          {!chart && <Box><SelectField native label={t('pageSize')} value={String(request.size)} options={tablePageSizes.map(n => [String(n), String(n)])}
             onChange={size => update({ size })} /></Box>}
         </Stack>}
       </Paper>
-    </> : <Alert severity="info" action={request.page > 0 && <Button onClick={() => update({ page: '' })}>{t('firstPage')}</Button>}>{t('noHarvests')}</Alert>)}
+    </> : <><Alert severity="info" action={request.page > 0 && <Button onClick={() => update({ page: '' })}>{t('firstPage')}</Button>}>{t('noHarvests')}</Alert>{chart && params.has('compare') && <Alert severity="info">{t('comparisonUnavailable')}</Alert>}</>)}
   </>
 }
 
