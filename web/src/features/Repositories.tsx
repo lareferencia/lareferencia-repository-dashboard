@@ -1,6 +1,6 @@
-import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react'
-import { Alert, Autocomplete, Box, Button, LinearProgress, Stack, TextField, Typography } from '@mui/material'
-import { useInfiniteQuery, useQuery, useQueryClient } from '@tanstack/react-query'
+import { lazy, Suspense, useState, type ReactNode } from 'react'
+import { Alert, Button, LinearProgress, Stack, Typography } from '@mui/material'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Link, Navigate, Route, Routes, useMatch, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { HttpError, type DashboardApi, type Source, type User } from '../api/dashboard'
@@ -8,6 +8,7 @@ import type { RuntimeConfig } from '../app/config'
 import { ReadError } from '../shared/ReadError'
 import { AppLayout, type ModuleLink } from '../app/AppLayout'
 import type { Language } from '../i18n'
+import { RepositorySelector, useDirectory } from './RepositorySelector'
 import { RepositoryHome } from './RepositoryHome'
 
 const HarvestHistory = lazy(() => import('./harvesting/HarvestHistory').then(module => ({ default: module.HarvestHistory })))
@@ -49,7 +50,7 @@ export function Repositories({ api, user, config, logout, language }: {
     setPreferred(String(value.id))
     if (scoped) navigate(`/${encodeURIComponent(value.acronym)}/${section}`)
   }
-  const selector = <SourceSelector api={api} directory={query} sources={sources} selected={selected} onSelect={selectSource} hint={landing ? t('repositorySearchHint') : undefined} />
+  const selector = <RepositorySelector api={api} directory={query} sources={sources} selected={selected} onSelect={selectSource} hint={landing ? t('repositorySearchHint') : undefined} />
   return <AppLayout language={language} links={links} profileName={user.displayName || user.username} account={showAccountHeader ? undefined : logout}><Stack spacing={3}>
     {showAccountHeader && <Stack direction="row" alignItems="center" justifyContent="space-between"><Button component={Link} to="/user/profile">{user.displayName || user.username}</Button>{logout}</Stack>}
     {pending ? <LinearProgress /> : failed ? <ReadError retry={() => void failed.refetch()} /> :
@@ -99,44 +100,4 @@ function useSelectedRepository(api: DashboardApi, acronym: string | undefined, p
   const pending = query.isPending || (!inList && lookup.isFetching && !lookup.data)
   const failed = query.isError ? query : !inList && lookup.isError ? lookup : undefined
   return { query, sources, selected, pending, failed }
-}
-
-function useDirectory(api: DashboardApi, term = '', enabled = true) {
-  return useInfiniteQuery({
-    queryKey: ['repositories', term],
-    queryFn: ({ pageParam, signal }) => api.sourcePage(pageParam, signal, term),
-    initialPageParam: 0,
-    getNextPageParam: (last, pages) => last.content.length && pages.reduce((n, p) => n + p.content.length, 0) < last.totalElements
-      ? pages.length : undefined,
-    enabled,
-    staleTime: 60_000,
-  })
-}
-
-function SourceSelector({ api, directory, sources, selected, onSelect, hint }: {
-  api: DashboardApi; directory: ReturnType<typeof useDirectory>; sources: Source[]; selected?: Source
-  hint?: string; onSelect: (source: Source) => void
-}) {
-  const { t } = useTranslation()
-  const [input, setInput] = useState('')
-  const [term, setTerm] = useState('')
-  useEffect(() => {
-    const timer = setTimeout(() => setTerm(input.trim()), 180)
-    return () => clearTimeout(timer)
-  }, [input])
-  const remote = Boolean(term && directory.hasNextPage)
-  const matches = useDirectory(api, term, remote)
-  const list = remote ? matches : directory
-  const options = remote ? matches.data?.pages.flatMap(page => page.content) ?? [] : sources
-  if (!sources.length) return <Alert severity="info">{t('noRepos')}</Alert>
-  return <Box sx={{ maxWidth: 640 }}>
-    <Autocomplete autoHighlight getOptionKey={source => source.id} options={options} value={selected ?? null}
-      loading={remote && matches.isFetching} filterOptions={remote ? items => items : undefined}
-      isOptionEqualToValue={(a, b) => a.id === b.id} getOptionLabel={source => `${source.acronym} · ${source.name}`}
-      onInputChange={(_, value, reason) => setInput(reason === 'input' ? value : '')}
-      onChange={(_, value) => { if (value) onSelect(value) }}
-      renderInput={params => <TextField {...params} label={t('repository')} helperText={hint} />} />
-    {remote && matches.isError && <ReadError retry={() => void matches.refetch()} />}
-    {list.hasNextPage && <Button size="small" disabled={list.isFetchingNextPage} onMouseDown={event => event.preventDefault()} onClick={() => void list.fetchNextPage()}>{t('loadMore')}</Button>}
-  </Box>
 }

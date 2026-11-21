@@ -1,11 +1,11 @@
 import { ReadError } from '../../shared/ReadError'
-import { useQuery } from '@tanstack/react-query'
 import { Alert, LinearProgress, Box, Button, MenuItem, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material'
 import CompareArrows from '@mui/icons-material/CompareArrows'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { HttpError, type DashboardApi, type Harvest } from '../../api/dashboard'
+import type { DashboardApi, Harvest } from '../../api/dashboard'
 import { hasDiagnostic, chronological, durationLabel, durationSeconds, harvestInstant, validPercent } from './history'
+import { useHarvestComparison } from './useHarvestComparison'
 
 const metrics = [
   { key: 'duration', read: durationSeconds },
@@ -87,26 +87,16 @@ export function HarvestComparison({ rows, choices, total, acronym, validation, a
   api: DashboardApi; from: string; to: string; rows: Harvest[]; choices: Harvest[]; total: number; acronym: string; validation: boolean
 }) {
   const { t, i18n } = useTranslation()
-  const [params, setParams] = useSearchParams()
+  const { comparison, options, select } = useHarvestComparison(api, acronym, from, to, choices)
   const format = new Intl.DateTimeFormat(i18n.language, { dateStyle: 'medium', timeStyle: 'short' })
   function label(row: Harvest) {
     const date = harvestInstant(row.endTime || row.startTime)
     return '#' + row.id + (date ? ' · ' + format.format(date) : '')
   }
-  const options = new Map(choices.map(row => [row.id, row]))
-  const pair = params.get('compare')
-  const ids = pair?.split(',').map(Number) ?? []
-  const validPair = ids.length === 2 && ids[0] !== ids[1] && ids.every(id => Number.isSafeInteger(id) && id > 0)
-  const missing = validPair ? ids.filter(id => !options.has(id)) : []
-  const lookup = useQuery({
-    queryKey: ['comparison-harvests', acronym, from, to, ...missing],
-    enabled: missing.length > 0,
-    queryFn: ({ signal }) => Promise.all(missing.map(id => api.harvest(acronym, id, signal, from, to))),
-  })
-  for (const row of lookup.data ?? []) options.set(row.id, row)
-  const unavailable = lookup.error instanceof HttpError && [403, 404].includes(lookup.error.status)
-  const notice = pair && (!validPair || unavailable) ? <Alert severity="info">{t('comparisonUnavailable')}</Alert> :
-    lookup.isError ? <ReadError retry={() => void lookup.refetch()} /> : missing.length && lookup.isPending ? <LinearProgress /> : null
+  let notice
+  if (comparison.status === 'unavailable') notice = <Alert severity="info">{t('comparisonUnavailable')}</Alert>
+  if (comparison.status === 'loading') notice = <LinearProgress />
+  if (comparison.status === 'error') notice = <ReadError retry={comparison.retry} />
   const latest = rows.at(-1)
   if (!latest) return notice
   if (total === 1) return <Paper variant="outlined" sx={{ p: 2 }}>
@@ -120,23 +110,18 @@ export function HarvestComparison({ rows, choices, total, acronym, validation, a
         <Typography fontWeight={700}>{amount(read(latest), key, i18n.language)}</Typography></Box>)}</Stack>
   </Paper>
 
-  const [first, second] = ids
-  const reference = options.get(first)
-  const target = options.get(second)
-  const expanded = Boolean(reference && target && first !== second)
-  const newestFirst = expanded ? chronological([...options.values()]).reverse() : []
-  const previous = rows.at(-2) ?? [...options.values()].find(row => row.id !== latest.id)
-  // Keeping the pair in this history entry restores it after visiting either diagnosis.
-  function select(a?: number, b?: number) {
-    const next = new URLSearchParams(params)
-    if (a !== undefined && b !== undefined) next.set('compare', a + ',' + b)
-    else next.delete('compare')
-    setParams(next, { replace: true, preventScrollReset: true })
+  const expanded = comparison.status === 'open'
+  const newestFirst = expanded ? chronological(options).reverse() : []
+  const previous = rows.at(-2) ?? options.find(row => row.id !== latest.id)
+  function toggle() {
+    if (expanded) select()
+    else if (previous && latest) select([previous.id, latest.id])
   }
+
   const picker = (row: Harvest, other: Harvest, isReference: boolean) => <Stack gap={.5} alignItems="flex-start" sx={{ minWidth: 0 }}>
     <TextField fullWidth select size="small" id={isReference ? 'reference-harvest' : 'target-harvest'}
       label={t(isReference ? 'referenceHarvest' : 'comparedHarvest')} value={row.id}
-      onChange={event => isReference ? select(Number(event.target.value), other.id) : select(other.id, Number(event.target.value))}>
+      onChange={event => isReference ? select([Number(event.target.value), other.id]) : select([other.id, Number(event.target.value)])}>
       {newestFirst.map(item =>
         <MenuItem key={item.id} value={item.id} disabled={item.id === other.id}>{label(item)}</MenuItem>)}
     </TextField>
@@ -145,23 +130,23 @@ export function HarvestComparison({ rows, choices, total, acronym, validation, a
   return <Paper component="section" variant="outlined" sx={{ overflow: 'hidden' }}>
     <Stack direction="row" alignItems="center" justifyContent="space-between" flexWrap="wrap" gap={1} sx={{ px: { xs: 2, md: 3 }, py: 1.5 }}>
       {expanded && <Typography component="h2" variant="h5">{t('comparison')}</Typography>}
-      <Button startIcon={<CompareArrows />} variant={expanded ? 'text' : 'outlined'} disabled={!previous}
+      <Button startIcon={<CompareArrows />} variant={expanded ? 'text' : 'outlined'} disabled={!expanded && !previous}
         aria-expanded={expanded} aria-controls={expanded ? 'comparison-panel' : undefined}
-        onClick={() => expanded ? select() : select(previous?.id, latest.id)}>
+        onClick={toggle}>
         {t(expanded ? 'hideComparison' : 'compareTwo')}
       </Button>
       {!previous && <Typography variant="body2">{t('comparePages')}</Typography>}
     </Stack>
     {notice}
-    {expanded && reference && target && <Box id="comparison-panel">
+    {expanded && <Box id="comparison-panel">
       <Box sx={{ px: { xs: 2, md: 3 }, pb: 1.5 }}>
-        <ComparisonSummary reference={reference} target={target} />
+        <ComparisonSummary reference={comparison.reference} target={comparison.target} />
         <Box sx={{ display: 'grid', gridTemplateColumns: { sm: 'repeat(2, minmax(0, 1fr))' }, gap: 1.5 }}>
-          {picker(reference, target, true)}{picker(target, reference, false)}
+          {picker(comparison.reference, comparison.target, true)}{picker(comparison.target, comparison.reference, false)}
         </Box>
-        {total > options.size && <Typography variant="caption">{t('comparePages')}</Typography>}
+        {total > options.length && <Typography variant="caption">{t('comparePages')}</Typography>}
       </Box>
-      <ComparisonTable reference={reference} target={target} />
+      <ComparisonTable reference={comparison.reference} target={comparison.target} />
     </Box>}
   </Paper>
 }

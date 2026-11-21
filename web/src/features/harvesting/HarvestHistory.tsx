@@ -1,20 +1,17 @@
 import { useMemo, type ReactNode } from 'react'
-import { Alert, Box, Button, LinearProgress, Pagination, Paper, Stack, Tab, Tabs, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Alert, Box, Button, LinearProgress, Paper, Stack, Tab, Tabs, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
 import DateRangeOutlined from '@mui/icons-material/DateRangeOutlined'
 import ShowChart from '@mui/icons-material/ShowChart'
 import TableRowsOutlined from '@mui/icons-material/TableRowsOutlined'
-import FileDownloadOutlined from '@mui/icons-material/FileDownloadOutlined'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Navigate, useLocation, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Harvest, HistoryRequest, Source } from '../../api/dashboard'
 import { ReadError } from '../../shared/ReadError'
-import { downloadCsv } from '../../shared/downloads'
-import { SelectField } from '../../shared/SelectField'
-import { chronological, counts, historyColumns, historyRequest, tablePageSizes, validRange } from './history'
+import { chronological, historyRequest, validRange } from './history'
 import { HarvestComparison } from './HarvestComparison'
 import { HarvestTrend } from './HarvestTrend'
-import { HarvestTable } from './HarvestTable'
+import { HarvestTablePage } from './HarvestTable'
 import type { Series } from './HarvestChart'
 
 type Update = (changes: Record<string, string>) => void
@@ -45,55 +42,55 @@ function DateFilter({ request, chart, update }: { request: HistoryRequest; chart
   </Box>
 }
 
-function Results({ api, source, validation, request, chart, series, update }: {
+function HistoryResults({ api, source, validation, request, chart, series, update }: {
   api: DashboardApi; source: Source; validation: boolean; request: HistoryRequest; chart: boolean; series: Series; update: Update
 }) {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const [params] = useSearchParams()
   const cache = useQueryClient()
   const prefix = ['history', source.id, request.from, request.to]
-  const query = useQuery({ queryKey: [...prefix, request.sort, request.size, request.page],
-    queryFn: ({ signal }) => api.history(source.acronym, request, signal) })
-  const data = query.data
-  const rows = data?.content
-  const trendRows = useMemo(() => chart && rows ? chronological(rows) : [], [chart, rows])
-  // Keep previously visited harvests available for comparisons across pages of the same interval.
-  const choices = cache.getQueriesData<{ content: Harvest[] }>({ queryKey: prefix })
-    .flatMap(([, page]) => page?.content || [])
-  const total = data?.totalElements ?? 0
-  const pages = Math.ceil(total / request.size)
-  function exportPage(rows: Harvest[]) {
-    downloadCsv(`${source.acronym}-history-p${request.page + 1}`, historyColumns.map(([key]) => key),
-      rows.map(counts).map(row => historyColumns.map(([key]) => row[key])))
+  const query = useQuery({
+    queryKey: [...prefix, request.sort, request.size, request.page],
+    queryFn: ({ signal }) => api.history(source.acronym, request, signal),
+  })
+  const page = query.data
+  const trendRows = useMemo(() => chart && page ? chronological(page.content) : [], [chart, page])
+  if (query.isPending) return <LinearProgress />
+
+  // A failed refresh can still have a previously loaded page to show.
+  const error = query.isError && <ReadError retry={() => void query.refetch()} />
+  if (!page) return error
+  const { content: rows, totalElements: total } = page
+  if (!rows.length) {
+    const comparing = chart && params.has('compare')
+    // Restore the bookmarked pair even if its old history page has disappeared.
+    if (comparing && request.page > 0 && total > 0) {
+      const first = new URLSearchParams(params)
+      first.delete('page')
+      return <Navigate to={'?' + first} replace />
+    }
+    return <>
+      {error}
+      <Alert severity="info" action={request.page > 0 && <Button onClick={() => update({ page: '' })}>{t('firstPage')}</Button>}>
+        {t('noHarvests')}
+      </Alert>
+      {comparing && <Alert severity="info">{t('comparisonUnavailable')}</Alert>}
+    </>
   }
-  // A bookmarked comparison survives a history page that disappeared since the link was saved.
-  if (chart && params.has('compare') && request.page > 0 && total > 0 && rows?.length === 0) {
-    const first = new URLSearchParams(params)
-    first.delete('page')
-    return <Navigate to={'?' + first} replace />
-  }
+
+  // Include visited pages of this source and date range in the comparison choices.
+  const choices = chart ? cache.getQueriesData<{ content: Harvest[] }>({ queryKey: prefix })
+    .flatMap(([, page]) => page?.content ?? []) : []
   return <>
-    {query.isPending && <LinearProgress />}
-    {query.isError && <ReadError retry={() => void query.refetch()} />}
-    {rows && (rows.length ? <>
-      {chart && <HarvestTrend rows={trendRows} total={total} series={series} setSeries={v => update({ series: v })} acronym={source.acronym} validation={validation} />}
-      {chart && <HarvestComparison api={api} from={request.from} to={request.to} rows={trendRows} choices={choices} total={total} acronym={source.acronym} validation={validation} />}
-      <Paper variant="outlined" sx={{ overflow: 'hidden' }}>
-        <Stack direction="row" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={1} sx={{ px: 2, py: 1.5 }}>
-          <Box><Typography component="h2" variant="h6">{t('history')}</Typography>
-            <Typography variant="body2" color="text.secondary">{total === 1 ? t('oneHarvest') : t('rowsOfTotal', { start: request.page * request.size + 1,
-              end: request.page * request.size + rows.length, total: total.toLocaleString(i18n.language) })}</Typography></Box>
-          <Button onClick={() => exportPage(rows)} startIcon={<FileDownloadOutlined />}>{t('csvPage')}</Button>
-        </Stack>
-        <HarvestTable rows={rows} acronym={source.acronym} validation={validation}
-          sort={chart ? undefined : request.sort} onSort={chart ? undefined : sort => update({ sort })} />
-        {(!chart || pages > 1) && <Stack direction={{ xs: 'column', sm: 'row' }} alignItems="center" justifyContent="center" gap={1.5} sx={{ p: 1.5 }}>
-          {pages > 1 && <Pagination size="small" siblingCount={0} count={pages} page={request.page + 1} onChange={(_, n) => update({ page: String(n - 1) })} />}
-          {!chart && <Box><SelectField native label={t('pageSize')} value={String(request.size)} options={tablePageSizes.map(n => [String(n), String(n)])}
-            onChange={size => update({ size })} /></Box>}
-        </Stack>}
-      </Paper>
-    </> : <><Alert severity="info" action={request.page > 0 && <Button onClick={() => update({ page: '' })}>{t('firstPage')}</Button>}>{t('noHarvests')}</Alert>{chart && params.has('compare') && <Alert severity="info">{t('comparisonUnavailable')}</Alert>}</>)}
+    {error}
+    {chart && <>
+      <HarvestTrend rows={trendRows} total={total} series={series} setSeries={value => update({ series: value })}
+        acronym={source.acronym} validation={validation} />
+      <HarvestComparison api={api} from={request.from} to={request.to} rows={trendRows} choices={choices}
+        total={total} acronym={source.acronym} validation={validation} />
+    </>}
+    <HarvestTablePage rows={rows} total={total} request={request} chart={chart} acronym={source.acronym}
+      validation={validation} update={update} />
   </>
 }
 
@@ -131,7 +128,7 @@ export function HarvestHistory({ api, source, validation, repositorySelector }: 
       </Tabs>
       <DateFilter key={location.key} request={request} chart={chart} update={update} />
     </Paper>
-    {validRange(request, chart) ? <Results key={JSON.stringify([source.id, request.from, request.to])} api={api} source={source}
+    {validRange(request, chart) ? <HistoryResults key={JSON.stringify([source.id, request.from, request.to])} api={api} source={source}
       validation={validation} request={request} chart={chart} series={series} update={update} /> :
       <Alert severity="warning">{t('invalidRange')}</Alert>}
   </Stack>
