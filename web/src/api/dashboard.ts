@@ -1,8 +1,9 @@
 import type { Harvest, HistoryRequest, Occurrence, Source, Summary, User, ValidationRecord } from './types'
+import {
+  InvalidDashboardResponse, isCount, isOccurrence, isPageOf, isRecord, isSource, normalizeSummary, parseUser, type Page,
+} from './responses'
 
 export type { Harvest, HistoryRequest, Occurrence, Rule, Source, Summary, User, ValidationRecord } from './types'
-
-type Page<T> = { content: T[]; totalElements: number }
 
 function reportPath(acronym: string, snapshot: number) {
   return `/dashboard/validation/source/${encodeURIComponent(acronym)}/${snapshot}`
@@ -10,56 +11,6 @@ function reportPath(acronym: string, snapshot: number) {
 
 export class HttpError extends Error {
   constructor(readonly status: number) { super(`HTTP ${status}`) }
-}
-
-class InvalidDashboardResponse extends Error {}
-
-function isSource(item: Source) {
-  return item && Number.isSafeInteger(item.id) && typeof item.name === 'string' && typeof item.acronym === 'string'
-}
-
-function hasPageTotals<T>(page: Page<T>) {
-  return page && Array.isArray(page.content) && Number.isSafeInteger(page.totalElements) && page.totalElements >= 0
-}
-
-function parseUser(user: User) {
-  if (!user || typeof user.username !== 'string' || !user.username.trim() ||
-      (user.displayName != null && typeof user.displayName !== 'string') ||
-      typeof user.serviceAccount !== 'boolean' || !Array.isArray(user.roles) || !user.roles.every(role => typeof role === 'string') ||
-      !Array.isArray(user.readableNetworkIds) || !user.readableNetworkIds.every(Number.isSafeInteger)) {
-    throw new InvalidDashboardResponse('Invalid session')
-  }
-  return user
-}
-
-function isRecord(row: ValidationRecord, snapshot: number) {
-  const textList = (values: unknown) => Array.isArray(values) && values.every(value => typeof value === 'string')
-  const ruleIds = (ids: unknown) => ids == null || (Array.isArray(ids) && ids.every(id => typeof id === 'string' || Number.isSafeInteger(id)))
-  const valueMap = (map: unknown) => map == null || (typeof map === 'object' && !Array.isArray(map) && Object.values(map).every(textList))
-  return row && typeof row.id === 'string' && !!row.id && typeof row.identifier === 'string' && !!row.identifier &&
-    row.snapshotID === snapshot && [row.origin, row.setSpec, row.metadataPrefix].every(v => v == null || typeof v === 'string') &&
-    [row.isValid, row.isTransformed].every(v => v == null || typeof v === 'boolean') &&
-    ruleIds(row.validRulesID) && ruleIds(row.invalidRulesID) && valueMap(row.validOccurrencesByRuleID) && valueMap(row.invalidOccurrencesByRuleID)
-}
-
-function areOccurrences(items: Occurrence[]) {
-  return Array.isArray(items) && items.every(item => item && typeof item.value === 'string' && Number.isSafeInteger(item.count) && item.count >= 0)
-}
-
-function normalizeSummary(summary: Summary) {
-  const totals = [summary.size, summary.validSize, summary.transformedSize]
-  if (!totals.every(Number.isSafeInteger) || !summary.rulesByID || typeof summary.rulesByID !== 'object') {
-    throw new InvalidDashboardResponse('Invalid summary')
-  }
-  for (const rule of Object.values(summary.rulesByID)) {
-    if (!rule || ![rule.ruleID, rule.validCount, rule.invalidCount].every(Number.isSafeInteger)) {
-      throw new InvalidDashboardResponse('Invalid rule')
-    }
-    // Older snapshots can preserve counts and rule IDs without a catalog entry.
-    if (typeof rule.name !== 'string') rule.name = ''
-    if (typeof rule.mandatory !== 'boolean') rule.mandatory = null
-  }
-  return summary
 }
 
 export function dashboardApi(base: string, expire: () => void) {
@@ -93,12 +44,14 @@ export function dashboardApi(base: string, expire: () => void) {
       if (search) params.set('search', search)
       if (id !== undefined) params.set('id', String(id))
       const data = await request<Page<Source>>('/dashboard/harvesting/source/list?' + params, { signal })
-      if (!hasPageTotals(data) || !data.content.every(source => isSource(source) && (id === undefined || source.id === id))) throw new InvalidDashboardResponse('Invalid source list')
+      if (!isPageOf(data, source => isSource(source, id))) {
+        throw new InvalidDashboardResponse('Invalid source list')
+      }
       return data
     },
     async source(acronym: string, signal: AbortSignal, expectedId?: number) {
       const detail = await request<Source>(`/dashboard/harvesting/source/${encodeURIComponent(acronym)}`, { signal })
-      if (!isSource(detail) || detail.acronym !== acronym || (expectedId !== undefined && expectedId !== detail.id)) {
+      if (!isSource(detail, expectedId) || detail.acronym !== acronym) {
         throw new InvalidDashboardResponse('Invalid source detail')
       }
       return detail
@@ -117,7 +70,7 @@ export function dashboardApi(base: string, expire: () => void) {
       const range = from && to ? `/${encodeURIComponent(from)}/${encodeURIComponent(to)}` : ''
       const path = `/dashboard/harvesting/source/${encodeURIComponent(acronym)}/history${range}?${params}`
       const result = await request<Page<Harvest>>(path, { signal })
-      if (!hasPageTotals(result) || !result.content.every(row => row && Number.isSafeInteger(row.id))) {
+      if (!isPageOf(result, row => Number.isSafeInteger(row?.id))) {
         throw new InvalidDashboardResponse('Invalid history page')
       }
       return result
@@ -129,7 +82,9 @@ export function dashboardApi(base: string, expire: () => void) {
     },
     async records(acronym: string, snapshot: number, query: string, signal: AbortSignal) {
       const page = await request<Page<ValidationRecord>>(reportPath(acronym, snapshot) + '/records?' + query, { signal })
-      if (!hasPageTotals(page) || !page.content.every(row => isRecord(row, snapshot))) throw new InvalidDashboardResponse('Invalid records page')
+      if (!isPageOf(page, row => isRecord(row, snapshot))) {
+        throw new InvalidDashboardResponse('Invalid records page')
+      }
       return page
     },
     async metadata(acronym: string, snapshot: number, identifier: string, signal: AbortSignal) {
@@ -141,7 +96,7 @@ export function dashboardApi(base: string, expire: () => void) {
     async occurrences(acronym: string, snapshot: number, rule: number, group: 'valid' | 'invalid', filters: string, signal: AbortSignal) {
       const path = reportPath(acronym, snapshot) + `/${group}_occrs/${rule}`
       const items = await request<Occurrence[]>(path + (filters && '?' + filters), { signal })
-      if (!areOccurrences(items)) {
+      if (!Array.isArray(items) || !items.every(isOccurrence)) {
         throw new InvalidDashboardResponse('Invalid occurrence counts')
       }
       return items
@@ -153,7 +108,7 @@ export function dashboardApi(base: string, expire: () => void) {
       params.set('pageSize', String(size))
       const path = reportPath(acronym, snapshot) + `/frequencies/${rule}/${group}?${params}`
       const result = await request<Page<Occurrence> & { totalOccurrences: number }>(path, { signal })
-      if (!hasPageTotals(result) || !areOccurrences(result.content) || !Number.isSafeInteger(result.totalOccurrences) || result.totalOccurrences < 0) {
+      if (!isPageOf(result, isOccurrence) || !isCount(result.totalOccurrences)) {
         throw new InvalidDashboardResponse('Invalid frequency page')
       }
       return result
