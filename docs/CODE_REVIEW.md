@@ -59,7 +59,7 @@ The platform fixture lives in `testing/dashboard-validation/`. Its README descri
 
 - From `web/`: `npm ci`, `npm test` (40 tests passed). From the platform root: `mvn -pl lareferencia-repository-dashboard -Pdashboard-react package`. The package includes the localized HTML, catalogs and route assets.
 - From the platform root: `mvn -pl lareferencia-lrharvester-app -am -Dno-frontends -Dtest=HistoricalValidationReportTest,ApiV5DashboardCompatibilityControllerTest -Dsurefire.failIfNoSpecifiedTests=false package`. Six real-SQLite tests and six v5 controller tests passed. Maven also reported existing Javadoc errors in core and OCLC while packaging the runnable JAR successfully.
-- Browser checks included a production React build, the matching harvester in the copy, and the original PA/AREANDINA fixtures. The external usage-statistics provider was outside the run. Its widget configuration and failure handling are covered by the existing fixture checks. [Widget checks](../web/tests/gateway/history.py)
+- Browser checks included a production React build, the matching harvester in the copy, and the original PA/AREANDINA fixtures. The fixture checks covered widget configuration and failure handling. A subsequent check with Uruguay matched both usage counters against a separate request to the live provider for the same period. [Uruguay evidence](evidencias/estadisticas-uy/README.md) [Widget checks](../web/tests/gateway/history.py)
 
 ### Harvest comparison regression
 

@@ -16,6 +16,8 @@ El filtro consulta los días de **fin de cosecha** con ambos extremos incluidos.
 
 En el candidato local React se monta bajo el puerto 62241. Sus llamadas pasan por el host dashboard de Nginx. Angular continuó servido por el gateway en 8188 y por Spring en 8190. La huella SHA-256 de su `/dashboard/es/main.js` siguió coincidiendo con E0: `1ef70d67f8de04dd0641c3467be5ba9701b2459983213a69feea4368841fcb15`.
 
+La verificación posterior con Nodo Uruguay comparó las tarjetas de vistas y descargas con una consulta independiente al proveedor. [Resultados de Uruguay](../estadisticas-uy/README.md)
+
 ## Casos que requieren datos de prueba
 
 AREANDINA tiene un solo snapshot en esta instalación y carece de `attributes.stats_source_id`. Para comprobar los casos siguientes se variaron las respuestas dentro de un contexto de navegador de prueba. La base de Docker y la configuración servida a otros navegadores conservaron sus valores.
