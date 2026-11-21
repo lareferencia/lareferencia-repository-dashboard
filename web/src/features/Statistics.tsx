@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Source } from '../api/dashboard'
 import type { HistoricStats } from '../app/config'
+import { theme } from '../app/theme'
 import { ReadError } from '../shared/ReadError'
 import { httpUrl } from '../shared/httpUrl'
 
@@ -17,7 +18,10 @@ function widgetDocument(url: string, source: Source, id: string, config: Histori
   }
   // Escape the HTML script delimiter even inside JSON strings supplied by the repository.
   const literal = (value: unknown) => JSON.stringify(value).replaceAll('<', '\\u003c')
-  return `<!doctype html><meta charset="utf-8"><div id="lrhw-widget"></div><script>
+  // The iframe has its own document. LRHW's shadow tree inherits its base font from here.
+  return `<!doctype html><meta charset="utf-8">
+  <style>html { font-family: ${theme.typography.fontFamily}; }</style>
+  <div id="lrhw-widget"></div><script>
     // LRHW 1.1.6 checks document.cookie at startup. Keep that state inside this frame.
     Object.defineProperty(document, 'cookie', { value: ${literal('i18next=' + encodeURIComponent(language))}, writable: true });
     document.documentElement.lang = ${literal(language)};
