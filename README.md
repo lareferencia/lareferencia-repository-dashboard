@@ -28,7 +28,7 @@ Los directorios estáticos de Admin y Dashboard son independientes.
 
 ## Acceso
 
-Para configurar los módulos, las estadísticas de uso y los permisos, consulta la [guía de configuración en inglés](docs/CONFIGURATION.md).
+Consulta cómo [activar o desactivar los módulos](docs/CONFIGURATION.md#enable-or-disable-modules), [configurar las estadísticas de uso](docs/CONFIGURATION.md#usage-statistics) y [asignar acceso a repositorios](docs/CONFIGURATION.md#accounts-and-api-access) en la guía de configuración en inglés.
 
 Para trabajar en el código, la revisión técnica reúne los puntos de entrada, los cambios de mantenimiento y las pruebas de regresión. [Revisión del dashboard React](docs/CODE_REVIEW.md)
 

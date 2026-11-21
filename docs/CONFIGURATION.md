@@ -6,22 +6,31 @@ The Repository Dashboard reads a public JSON file at startup. This file controls
 
 Edit [`web/config/appConfig.json`](../web/config/appConfig.json) to set the installation defaults. A build copies this file to `{es,en,pt}/assets/data/appConfig.json` within the dashboard output. Harvester publishes those files at `/dashboard/<language>/assets/data/appConfig.json`. The URL determines the language: `en`, `es`, or `pt`. Opening `/dashboard/` in Harvester redirects to `/dashboard/es/`.
 
-Use the template as the source of truth for future builds. In an existing deployment, you can also update the three served JSON files and reload the dashboard. Apply installation-wide settings to all three copies so switching languages keeps the same modules and endpoints. Rebuilding regenerates those files from the template. Keep credentials, tokens, and other secrets out of this public file.
+Keep credentials, tokens, and other secrets out of this public file.
 
-The shipped template enables **Harvests** and **Validations**. It disables **Statistics** by default.
+## Enable or disable modules
+
+Each switch applies to every repository in the dashboard. Harvester controls which repositories each account can access.
+
+| Module | JSON setting | Shipped default | What enabling it adds |
+| --- | --- | --- | --- |
+| Harvests | `historic_module.active` | `true` | Harvest history, trends, comparisons, and CSV export. |
+| Validations | `validation_module.active` | `true` | Validation reports. When Harvests is also enabled, its history links to available diagnostics. |
+| Statistics | `statistics_module.active` | `false` | Usage statistics. Each repository needs a provider ID to display figures. See [Usage statistics](#usage-statistics). |
+
+1. In the template, find the module and change only its `active` value. Use the JSON boolean `true` to enable it or `false` to disable it. Keep the module's other settings so you can turn it back on later. Omitting the entire module also disables it.
+2. Build and publish the dashboard to apply the template. To apply a change immediately to an existing deployment, edit `assets/data/appConfig.json` under each of the three published language directories (`es`, `en`, and `pt`). Keep the template in sync because the next build regenerates those copies.
+3. Reload the dashboard and select a repository. Enabled modules appear in the navigation. Opening a saved URL for a disabled module shows Home. To check the effective switch in Spanish, for example, open `/dashboard/es/assets/data/appConfig.json`. [Configuration loader](../web/src/app/config.ts) · [Module routes](../web/src/features/Repositories.tsx)
+
+## API and module settings
 
 | Setting | Purpose |
 | --- | --- |
 | `apiBaseUrl` | Base URL for local authentication, session checks, and dashboard reads. The default is `/api/v5`. Keep this path when the UI and API share an origin. |
-| `historic_module.active` | Shows **Harvests**, including the history table, trends, comparisons, and CSV export. |
-| `validation_module.active` | Shows **Validations** and enables links to available diagnostics in **Harvests**. |
 | `validation_module.portalService` | Optional HTTP(S) URL prefix for the **Portal** link in a record's details. Use the complete record URL prefix, including any trailing slash required by the portal. The dashboard appends the encoded portal identifier from a compatible record ID. Records without a portal identifier omit the link. |
-| `statistics_module.active` | Shows **Statistics**. Configure the widget and the repository's statistics source ID to display data. |
 | `statistics_module.historic_stats.widget_url` | URL of the LRHW JavaScript bundle. The template points to LRHW 1.1.6. Use an HTTPS URL on an HTTPS installation. |
 | `statistics_module.historic_stats.is_national_aggregator` | Set to `true` for a national aggregator or `false` to use the institution name as the main scope label. |
 | `statistics_module.historic_stats.scope_labels.N` | Label for the national scope when national aggregator mode is enabled. In that mode the dashboard fills the repository scope label (`R`) with the institution name. |
-
-Use JSON booleans (`true` and `false`) for the `active` flags. An omitted module is disabled. A disabled module is hidden from navigation and opening one of its URLs shows Home. [Configuration loader](../web/src/app/config.ts) · [Module routes](../web/src/features/Repositories.tsx)
 
 ## Usage statistics
 
