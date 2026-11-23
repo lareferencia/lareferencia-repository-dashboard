@@ -64,3 +64,11 @@ The platform fixture lives in `testing/dashboard-validation/`. Its README descri
 ### Harvest comparison regression
 
 The history screen tests open a three-ID bookmark with its first two harvests already loaded. The unavailable notice appears and the comparison stays closed. Clicking **Compare two harvests** then opens a valid pair. Another test restores a pair after its original page disappears and a lookup for one harvest needs a retry. Both use the React routes with controlled API responses. The suite passed all 42 cases and the localized production build completed with Node 22.14.0. [History screen tests](../web/tests/harvestHistory.test.tsx)
+
+### RC6 follow-up
+
+- The history date form keeps both draft dates when the comparison opens or closes. **Apply** sends the draft interval, and **Reset** clears the draft even when the default interval is already applied. The comparison regression reproduced the lost dates before the fix and now covers opening, closing and applying. [History screen tests](../web/tests/harvestHistory.test.tsx)
+- The validation record type reflects historical responses. Rule IDs can be strings or numbers, and metadata, outcomes and rule evidence can be omitted or null. The compatibility fixture now checks the same record shape at compile time and through the API client. [Record type](../web/src/api/types.ts) · [API response tests](../web/tests/apiResponses.test.ts)
+- Both `npm run typecheck` and the production build check the test sources. CI already runs the production build, so the same type checks apply there. The history retry test waits for the recovery action and verifies the second request. [TypeScript configuration](../web/tsconfig.app.json) · [CI workflow](../.github/workflows/release.yml)
+
+On 23 November 2026, Node 22.14.0 and npm 10.9.2 passed the type check and all 54 Vitest cases. The production build generated the Spanish, English and Portuguese entries.

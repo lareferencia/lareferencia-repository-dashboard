@@ -4,7 +4,7 @@ import DateRangeOutlined from '@mui/icons-material/DateRangeOutlined'
 import ShowChart from '@mui/icons-material/ShowChart'
 import TableRowsOutlined from '@mui/icons-material/TableRowsOutlined'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { Navigate, useLocation, useSearchParams } from 'react-router-dom'
+import { Navigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { DashboardApi, Harvest, HistoryRequest, Source } from '../../api/dashboard'
 import { ReadError } from '../../shared/ReadError'
@@ -27,8 +27,13 @@ function DateFilter({ request, chart, update }: { request: HistoryRequest; chart
     }}>
     {(['from', 'to'] as const).map(field => <TextField key={field} name={field} label={t(field)} type="date" size="small"
       required={chart} defaultValue={request[field]} slotProps={{ inputLabel: { shrink: true } }} />)}
-    <Stack direction="row" gap={1}><Button type="submit" variant="outlined">{t('apply')}</Button>
-      <Button onClick={() => update({ from: '', to: '' })}>{t('resetRange')}</Button></Stack>
+    <Stack direction="row" gap={1}>
+      <Button type="submit" variant="outlined">{t('apply')}</Button>
+      <Button onClick={event => {
+        event.currentTarget.form?.reset()
+        update({ from: '', to: '' })
+      }}>{t('resetRange')}</Button>
+    </Stack>
   </Stack>
   if (!compact) return form
   const format = new Intl.DateTimeFormat(i18n.language, { dateStyle: 'short' })
@@ -99,9 +104,10 @@ export function HarvestHistory({ api, source, validation, repositorySelector }: 
 }) {
   const { t } = useTranslation()
   const [params, setParams] = useSearchParams()
-  const location = useLocation()
   const chart = params.get('view') !== 'table'
   const request = historyRequest(params, chart, new Date())
+  // The date draft follows the repository and applied interval. Comparison and paging preserve it.
+  const rangeKey = JSON.stringify([source.id, request.from, request.to])
   const rawSeries = params.get('series')
   const series = rawSeries === 'validRate' || rawSeries === 'duration' ? rawSeries : 'volume'
   const update: Update = changes => {
@@ -126,9 +132,9 @@ export function HarvestHistory({ api, source, validation, repositorySelector }: 
         <Tab value="chart" icon={<ShowChart />} iconPosition="start" label={t('evolution')} />
         <Tab value="table" icon={<TableRowsOutlined />} iconPosition="start" label={t('table')} />
       </Tabs>
-      <DateFilter key={location.key} request={request} chart={chart} update={update} />
+      <DateFilter key={rangeKey} request={request} chart={chart} update={update} />
     </Paper>
-    {validRange(request, chart) ? <HistoryResults key={JSON.stringify([source.id, request.from, request.to])} api={api} source={source}
+    {validRange(request, chart) ? <HistoryResults key={rangeKey} api={api} source={source}
       validation={validation} request={request} chart={chart} series={series} update={update} /> :
       <Alert severity="warning">{t('invalidRange')}</Alert>}
   </Stack>

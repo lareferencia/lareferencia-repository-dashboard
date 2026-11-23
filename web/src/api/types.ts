@@ -52,19 +52,20 @@ export type Summary = {
   rulesByID: Record<string, Rule> | Rule[]
 }
 
+// Archived records can omit metadata and outcomes or use numeric rule IDs.
 export type ValidationRecord = {
   id: string
   identifier: string
   snapshotID: number
-  origin?: string
-  setSpec?: string
-  metadataPrefix?: string
-  isValid: boolean | null
-  isTransformed: boolean | null
-  validRulesID: string[]
-  invalidRulesID: string[]
-  validOccurrencesByRuleID: Record<string, string[]>
-  invalidOccurrencesByRuleID: Record<string, string[]>
+  origin?: string | null
+  setSpec?: string | null
+  metadataPrefix?: string | null
+  isValid?: boolean | null
+  isTransformed?: boolean | null
+  validRulesID?: (string | number)[] | null
+  invalidRulesID?: (string | number)[] | null
+  validOccurrencesByRuleID?: Record<string, string[]> | null
+  invalidOccurrencesByRuleID?: Record<string, string[]> | null
 }
 
 export type Occurrence = { value: string; count: number }

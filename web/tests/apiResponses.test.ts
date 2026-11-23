@@ -1,5 +1,5 @@
 import { afterEach, expect, it, vi } from 'vitest'
-import { dashboardApi } from '../src/api/dashboard'
+import { dashboardApi, type ValidationRecord } from '../src/api/dashboard'
 
 const api = dashboardApi('/api/v5', () => {})
 const signal = new AbortController().signal
@@ -25,7 +25,7 @@ it.each([
 const record = { id: 'old-1', identifier: 'oai:test/1', snapshotID: 6 }
 
 it('preserves absent and null historical fields, mixed rule IDs and stored values', async () => {
-  const content = [record, {
+  const content: ValidationRecord[] = [record, {
     ...record, id: 'old-2', identifier: 'oai:test/2', isValid: null, origin: null,
     validRulesID: [5, '9'], invalidRulesID: null,
     validOccurrencesByRuleID: { 5: ['eng', 'spa'] }, invalidOccurrencesByRuleID: null,
