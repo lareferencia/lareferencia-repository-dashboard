@@ -1,0 +1,7 @@
+﻿"ID";"Regla";"Descripción";"Obligatoriedad";"Conformidad";"Aprueban";"Fallan"
+"1";"Publication Date (M)";"A date associated with an event in the life cycle of the resource.";"Obligatoria";"100%";"4000";"0"
+"7";"Title";"Verifica que exista dc:title";"Obligatoria";"100%";"4000";"0"
+"9";"Resource Identifier (M)";"Debe existir al menos una ocurrencia de dc:identifier apuntando a URL válida";"Obligatoria";"100%";"4000";"0"
+"10";"Access Level (M)";"Nivel de acceso debe ser openAccess, embargoedAccess";"Obligatoria";"32,8%";"1312";"2688"
+"13";"Creator";"Verifica que exista dc:creator no vacío";"Obligatoria";"0%";"0";"4000"
+"14";"Publication Type (M)";"Publication types";"Obligatoria";"14,125%";"565";"3435"

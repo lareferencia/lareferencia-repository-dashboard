@@ -1,4 +1,6 @@
-# LA Referencia Repository Dashboard
+# Archived Angular dashboard
+
+This directory documents the former Angular build and deployment. The current platform builds React from `web/`. Use the [dashboard README](../README.md) and [React configuration guide](../docs/CONFIGURATION.md) for a new installation.
 
 Angular single-page dashboard for reading authorized repository harvesting history and validation results through the Harvester v5 API. It does not administer users, technical accounts, tokens, repositories, harvesting configuration, or broker events.
 

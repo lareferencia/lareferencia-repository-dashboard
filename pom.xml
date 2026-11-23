@@ -7,16 +7,19 @@
     <parent>
         <groupId>org.lareferencia</groupId>
         <artifactId>lareferencia-parent</artifactId>
-        <version>5.0.0-rc4</version>
+        <version>5.0.0-rc5</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.lareferencia</groupId>
     <artifactId>lareferencia-repository-dashboard</artifactId>
     <packaging>pom</packaging>
     <properties>
+        <dashboard.node.dir>${project.build.directory}/frontend</dashboard.node.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <node.version>v18.20.8</node.version>
-        <npm.version>10.8.2</npm.version>
+        <node.version>v22.14.0</node.version>
+        <npm.version>10.9.2</npm.version>
+        <dashboard.frontend>web</dashboard.frontend>
+        <dashboard.dist>web/dist</dashboard.dist>
         <dashboard.static.dir>${project.basedir}/../lareferencia-lrharvester-app/dashboard-static</dashboard.static.dir>
     </properties>
     <build>
@@ -26,7 +29,8 @@
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.15.1</version>
                 <configuration>
-                    <workingDirectory>${project.basedir}/angular</workingDirectory>
+                    <installDirectory>${dashboard.node.dir}</installDirectory>
+                    <workingDirectory>${project.basedir}/${dashboard.frontend}</workingDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -73,7 +77,7 @@
                                     <fileset dir="${dashboard.static.dir}"/>
                                 </delete>
                                 <copy todir="${dashboard.static.dir}" overwrite="true">
-                                    <fileset dir="${project.basedir}/angular/dist/frontend"/>
+                                    <fileset dir="${project.basedir}/${dashboard.dist}"/>
                                 </copy>
                             </target>
                         </configuration>
@@ -82,4 +86,28 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>dashboard-react</id>
+            <properties>
+                <dashboard.static.dir>${project.build.directory}/react-static</dashboard.static.dir>
+            </properties>
+            <build><plugins><plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions><execution>
+                    <id>package-react-dashboard</id>
+                    <phase>package</phase>
+                    <goals><goal>run</goal></goals>
+                    <configuration>
+                        <target xmlns:mvn="http://maven.apache.org/ANTRUN">
+                            <zip destfile="${project.build.directory}/${project.build.finalName}-react.zip"
+                                 basedir="${dashboard.static.dir}"/>
+                            <mvn:attachartifact file="${project.build.directory}/${project.build.finalName}-react.zip"
+                                                classifier="react" type="zip"/>
+                        </target>
+                    </configuration>
+                </execution></executions>
+            </plugin></plugins></build>
+        </profile>
+    </profiles>
 </project>

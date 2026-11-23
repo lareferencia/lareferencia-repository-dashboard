@@ -1,0 +1,11 @@
+ruta	http
+/api/v5/me	200
+/api/v5/dashboard/validation/source/PA/4?valid_rules=5	403
+/api/v5/dashboard/validation/source/PA/4/valid_occrs/10?valid_rules=5	403
+/api/v5/dashboard/validation/source/PA/4/invalid_occrs/10?valid_rules=5	403
+/api/v5/dashboard/validation/source/PA/4/metadata?identifier=oai%3Adigitk.areandina.edu.co%3Aareandina%2F1000	403
+/api/v5/dashboard/validation/source/PA/6/metadata?identifier=oai%3Adigitk.areandina.edu.co%3Aareandina%2F1000	404
+/api/v5/dashboard/validation/source/AREANDINA/6/metadata?identifier=oai%3Adigitk.areandina	404
+/api/v5/dashboard/validation/source/AREANDINA/6/metadata?identifier=	400
+/api/v5/snapshots/6/diagnostics/records/metadata?identifier=oai%3Adigitk.areandina.edu.co%3Aareandina%2F1000	404
+/api/v5/dashboard/validation/source/AREANDINA/6/metadata?identifier=oai%3Adigitk.areandina.edu.co%3Aareandina%2F1000	401

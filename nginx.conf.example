@@ -1,3 +1,5 @@
+# Archived Angular deployment example (API v2).
+# For React, use docs/CONFIGURATION.md and the v5 gateway routes documented there.
     map $http_accept_language $accept_language {
         ~*^es es;
         ~*^pt pt;

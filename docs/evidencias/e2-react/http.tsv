@@ -1,0 +1,17 @@
+metodo	ruta	http
+GET	/api/v5/me	401
+GET	/api/v5/auth/csrf	200
+POST	/api/v5/auth/login	200
+GET	/api/v5/dashboard/harvesting/source/list	200
+GET	/api/v5/dashboard/harvesting/source/AREANDINA	200
+GET	/api/v5/me	200
+GET	/api/v5/dashboard/harvesting/source/AREANDINA/lkg	200
+GET	/api/v5/dashboard/validation/source/AREANDINA/6	200
+GET	/api/v5/me	200
+GET	/api/v5/dashboard/harvesting/source/list	200
+GET	/api/v5/dashboard/validation/source/AREANDINA/6	200
+GET	/api/v5/dashboard/harvesting/source/PA	403
+GET	/api/v5/networks	404
+GET	/api/v5/auth/csrf	200
+POST	/api/v5/auth/logout	204
+GET	/api/v5/me	401

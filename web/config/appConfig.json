@@ -1,0 +1,16 @@
+{
+  "apiBaseUrl": "/api/v5",
+  "historic_module": { "active": true },
+  "validation_module": {
+    "active": true,
+    "portalService": "https://www.lareferencia.info/vufind/Record/"
+  },
+  "statistics_module": {
+    "active": false,
+    "historic_stats": {
+      "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.1.6/dist/assets/chunks/historic-widget.js",
+      "is_national_aggregator": false,
+      "scope_labels": { "N": "National node", "R": "Repository" }
+    }
+  }
+}

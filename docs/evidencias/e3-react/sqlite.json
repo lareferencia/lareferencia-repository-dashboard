@@ -1,0 +1,37 @@
+{
+  "integrity": "ok",
+  "records_valid_transformed_pass5_fail5": [
+    4000,
+    0,
+    0,
+    1871,
+    2129
+  ],
+  "rule_valid_count_distinct": [
+    [
+      5,
+      0,
+      2449,
+      5
+    ],
+    [
+      5,
+      1,
+      1874,
+      4
+    ],
+    [
+      10,
+      0,
+      8659,
+      48
+    ],
+    [
+      10,
+      1,
+      1312,
+      2
+    ]
+  ],
+  "rule10_within_pass5": 7623
+}

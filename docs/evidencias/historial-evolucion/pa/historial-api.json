@@ -1,0 +1,59 @@
+{
+  "content": [
+    {
+      "id": 4,
+      "startTime": "2026-10-04T07:20:55.9971",
+      "endTime": "2026-10-04T08:50:35.608776",
+      "status": "VALID",
+      "harvestedSize": 3444,
+      "validSize": 3444,
+      "transformedSize": 0,
+      "deleted": false
+    },
+    {
+      "id": 3,
+      "startTime": "2026-10-03T17:08:16.682102",
+      "endTime": "2026-10-04T07:17:58.396903",
+      "status": "VALID",
+      "harvestedSize": 3444,
+      "validSize": 3444,
+      "transformedSize": 0,
+      "deleted": false
+    },
+    {
+      "id": 1,
+      "startTime": "2026-10-03T16:46:10.000805",
+      "endTime": "2026-10-03T16:50:34.101001",
+      "status": "VALID",
+      "harvestedSize": 25400,
+      "validSize": 25400,
+      "transformedSize": 0,
+      "deleted": false
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 8,
+    "sort": {
+      "empty": false,
+      "sorted": true,
+      "unsorted": false
+    },
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": true,
+  "totalElements": 3,
+  "totalPages": 1,
+  "size": 8,
+  "number": 0,
+  "sort": {
+    "empty": false,
+    "sorted": true,
+    "unsorted": false
+  },
+  "first": true,
+  "numberOfElements": 3,
+  "empty": false
+}

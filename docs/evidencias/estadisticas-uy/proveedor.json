@@ -1,0 +1,469 @@
+{
+  "conversions": {
+    "value": 16974.0
+  },
+  "level": {
+    "doc_count_error_upper_bound": 0,
+    "sum_other_doc_count": 0,
+    "buckets": [
+      {
+        "key": "R",
+        "doc_count": 12076,
+        "conversions": {
+          "value": 6809.0
+        },
+        "downloads": {
+          "value": 84295.0
+        },
+        "outlinks": {
+          "value": 0.0
+        },
+        "views": {
+          "value": 118589.0
+        }
+      },
+      {
+        "key": "N",
+        "doc_count": 60855,
+        "conversions": {
+          "value": 8786.0
+        },
+        "downloads": {
+          "value": 48.0
+        },
+        "outlinks": {
+          "value": 9000.0
+        },
+        "views": {
+          "value": 270378.0
+        }
+      },
+      {
+        "key": "L",
+        "doc_count": 8263,
+        "conversions": {
+          "value": 1379.0
+        },
+        "downloads": {
+          "value": 1.0
+        },
+        "outlinks": {
+          "value": 1417.0
+        },
+        "views": {
+          "value": 143487.0
+        }
+      }
+    ]
+  },
+  "downloads": {
+    "value": 84344.0
+  },
+  "outlinks": {
+    "value": 10417.0
+  },
+  "time": {
+    "buckets": [
+      {
+        "key_as_string": "2025-12-01T00:00:00.000Z",
+        "key": 1764547200000,
+        "doc_count": 8857,
+        "level": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "R",
+              "doc_count": 1693,
+              "conversions": {
+                "value": 706.0
+              },
+              "downloads": {
+                "value": 13335.0
+              },
+              "outlinks": {
+                "value": 0.0
+              },
+              "views": {
+                "value": 19194.0
+              }
+            },
+            {
+              "key": "N",
+              "doc_count": 4344,
+              "conversions": {
+                "value": 1316.0
+              },
+              "downloads": {
+                "value": 8.0
+              },
+              "outlinks": {
+                "value": 1358.0
+              },
+              "views": {
+                "value": 5494.0
+              }
+            },
+            {
+              "key": "L",
+              "doc_count": 2820,
+              "conversions": {
+                "value": 154.0
+              },
+              "downloads": {
+                "value": 0.0
+              },
+              "outlinks": {
+                "value": 155.0
+              },
+              "views": {
+                "value": 133220.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2026-01-01T00:00:00.000Z",
+        "key": 1767225600000,
+        "doc_count": 1400,
+        "level": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "R",
+              "doc_count": 1184,
+              "conversions": {
+                "value": 72.0
+              },
+              "downloads": {
+                "value": 1378.0
+              },
+              "outlinks": {
+                "value": 0.0
+              },
+              "views": {
+                "value": 1078.0
+              }
+            },
+            {
+              "key": "L",
+              "doc_count": 216,
+              "conversions": {
+                "value": 8.0
+              },
+              "downloads": {
+                "value": 0.0
+              },
+              "outlinks": {
+                "value": 8.0
+              },
+              "views": {
+                "value": 1122.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2026-02-01T00:00:00.000Z",
+        "key": 1769904000000,
+        "doc_count": 3524,
+        "level": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "R",
+              "doc_count": 1727,
+              "conversions": {
+                "value": 396.0
+              },
+              "downloads": {
+                "value": 4243.0
+              },
+              "outlinks": {
+                "value": 0.0
+              },
+              "views": {
+                "value": 9247.0
+              }
+            },
+            {
+              "key": "N",
+              "doc_count": 1569,
+              "conversions": {
+                "value": 420.0
+              },
+              "downloads": {
+                "value": 1.0
+              },
+              "outlinks": {
+                "value": 427.0
+              },
+              "views": {
+                "value": 1788.0
+              }
+            },
+            {
+              "key": "L",
+              "doc_count": 228,
+              "conversions": {
+                "value": 69.0
+              },
+              "downloads": {
+                "value": 0.0
+              },
+              "outlinks": {
+                "value": 71.0
+              },
+              "views": {
+                "value": 474.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2026-03-01T00:00:00.000Z",
+        "key": 1772323200000,
+        "doc_count": 11122,
+        "level": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "R",
+              "doc_count": 1818,
+              "conversions": {
+                "value": 1290.0
+              },
+              "downloads": {
+                "value": 13892.0
+              },
+              "outlinks": {
+                "value": 0.0
+              },
+              "views": {
+                "value": 23408.0
+              }
+            },
+            {
+              "key": "N",
+              "doc_count": 8597,
+              "conversions": {
+                "value": 1800.0
+              },
+              "downloads": {
+                "value": 8.0
+              },
+              "outlinks": {
+                "value": 1833.0
+              },
+              "views": {
+                "value": 16302.0
+              }
+            },
+            {
+              "key": "L",
+              "doc_count": 707,
+              "conversions": {
+                "value": 213.0
+              },
+              "downloads": {
+                "value": 0.0
+              },
+              "outlinks": {
+                "value": 219.0
+              },
+              "views": {
+                "value": 1133.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2026-04-01T00:00:00.000Z",
+        "key": 1775001600000,
+        "doc_count": 19246,
+        "level": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "R",
+              "doc_count": 1837,
+              "conversions": {
+                "value": 1485.0
+              },
+              "downloads": {
+                "value": 18109.0
+              },
+              "outlinks": {
+                "value": 0.0
+              },
+              "views": {
+                "value": 23275.0
+              }
+            },
+            {
+              "key": "N",
+              "doc_count": 16313,
+              "conversions": {
+                "value": 1931.0
+              },
+              "downloads": {
+                "value": 8.0
+              },
+              "outlinks": {
+                "value": 1985.0
+              },
+              "views": {
+                "value": 80212.0
+              }
+            },
+            {
+              "key": "L",
+              "doc_count": 1096,
+              "conversions": {
+                "value": 232.0
+              },
+              "downloads": {
+                "value": 0.0
+              },
+              "outlinks": {
+                "value": 236.0
+              },
+              "views": {
+                "value": 1597.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2026-05-01T00:00:00.000Z",
+        "key": 1777593600000,
+        "doc_count": 14388,
+        "level": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "R",
+              "doc_count": 1876,
+              "conversions": {
+                "value": 1540.0
+              },
+              "downloads": {
+                "value": 17137.0
+              },
+              "outlinks": {
+                "value": 0.0
+              },
+              "views": {
+                "value": 14538.0
+              }
+            },
+            {
+              "key": "N",
+              "doc_count": 10222,
+              "conversions": {
+                "value": 1831.0
+              },
+              "downloads": {
+                "value": 13.0
+              },
+              "outlinks": {
+                "value": 1872.0
+              },
+              "views": {
+                "value": 21534.0
+              }
+            },
+            {
+              "key": "L",
+              "doc_count": 2290,
+              "conversions": {
+                "value": 363.0
+              },
+              "downloads": {
+                "value": 1.0
+              },
+              "outlinks": {
+                "value": 378.0
+              },
+              "views": {
+                "value": 4519.0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key_as_string": "2026-06-01T00:00:00.000Z",
+        "key": 1780272000000,
+        "doc_count": 22657,
+        "level": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "R",
+              "doc_count": 1941,
+              "conversions": {
+                "value": 1320.0
+              },
+              "downloads": {
+                "value": 16201.0
+              },
+              "outlinks": {
+                "value": 0.0
+              },
+              "views": {
+                "value": 27849.0
+              }
+            },
+            {
+              "key": "N",
+              "doc_count": 19810,
+              "conversions": {
+                "value": 1488.0
+              },
+              "downloads": {
+                "value": 10.0
+              },
+              "outlinks": {
+                "value": 1525.0
+              },
+              "views": {
+                "value": 145048.0
+              }
+            },
+            {
+              "key": "L",
+              "doc_count": 906,
+              "conversions": {
+                "value": 340.0
+              },
+              "downloads": {
+                "value": 0.0
+              },
+              "outlinks": {
+                "value": 350.0
+              },
+              "views": {
+                "value": 1422.0
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "views": {
+    "value": 532454.0
+  }
+}
