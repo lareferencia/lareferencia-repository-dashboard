@@ -10,14 +10,23 @@ const historicRow = {
 }
 
 it('retries a malformed record page and keeps the requested cohort', async () => {
+  const url = recordsPath + 'invalid_rules=5&' + firstPage
+  let validResponse = false
   let attempts = 0
-  fixture({ [recordsPath + 'invalid_rules=5&' + firstPage]: () => Response.json({
-    totalElements: 1, content: [++attempts === 1 ? { ...historicRow, invalidRulesID: {} } : historicRow],
-  }) })
+  fixture({ [url]: () => {
+    attempts++
+    return Response.json({
+      totalElements: 1, content: [validResponse ? historicRow : { ...historicRow, invalidRulesID: {} }],
+    })
+  } })
   await open('/AREANDINA/validation/6?view=records&invalid_rules=5')
-  fireEvent.click(await screen.findByRole('button', { name: 'Reintentar' }))
-  expect(await screen.findByRole('button', { name: historicRow.identifier })).toBeVisible()
-})
+  const retry = await screen.findByRole('button', { name: 'Reintentar' }, { timeout: 5_000 })
+  expect(attempts).toBe(1)
+  validResponse = true
+  fireEvent.click(retry)
+  expect(await screen.findByRole('button', { name: historicRow.identifier }, { timeout: 5_000 })).toBeVisible()
+  expect(attempts).toBe(2)
+}, 15_000)
 
 it('shows record validity consistently in the list and detail', async () => {
   const validRow = { ...historicRow, id: 'a2', identifier: 'oai:test/2', isValid: true }
