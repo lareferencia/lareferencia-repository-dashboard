@@ -1,6 +1,16 @@
 import type es from './es'
 
 export default {
+  dark: 'dARK identifiers',
+  darkGuide: 'Review the ARKs assigned to this repository, their status and last update.',
+  openDark: 'View identifiers',
+  darkSearch: 'Search by ARK or OAI identifier',
+  darkUpdated: 'Updated (UTC)',
+  darkFrom: 'Updated from (UTC)',
+  darkTo: 'Updated through (UTC)',
+  darkCsv: 'Download results as CSV',
+  darkEmpty: 'This repository has no assigned dARK identifiers yet.',
+  darkStates: { RESERVED: 'Reserved', DRAFT: 'Draft', UPDATE: 'Update', PUBLISHED: 'Published', TOMBSTONE: 'Withdrawn', ERROR: 'Error' },
   loadMore: 'Load more',
   comparisonUnavailable: 'A harvest is unavailable in this date range.',
   sameVolume: '#{{second}} harvested the same number of records as #{{first}}.',

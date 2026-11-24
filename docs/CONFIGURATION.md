@@ -16,6 +16,7 @@ Each switch applies to every repository in the dashboard. Harvester controls whi
 | --- | --- | --- | --- |
 | Harvests | `historic_module.active` | `true` | Harvest history, trends, comparisons, and CSV export. |
 | Validations | `validation_module.active` | `true` | Validation reports. When Harvests is also enabled, its history links to available diagnostics. |
+| dARK identifiers | `dark_module.active` | `false` | Read-only identifier report with filters and a full CSV download. |
 | Statistics | `statistics_module.active` | `false` | Usage statistics. Each repository needs a provider ID to display figures. See [Usage statistics](#usage-statistics). |
 
 1. In the template, find the module and change only its `active` value. Use the JSON boolean `true` to enable it or `false` to disable it. Keep the module's other settings so you can turn it back on later. Omitting the entire module also disables it.
@@ -31,6 +32,14 @@ Each switch applies to every repository in the dashboard. Harvester controls whi
 | `statistics_module.historic_stats.widget_url` | URL of the LRHW JavaScript bundle. The template points to LRHW 1.1.6. Use an HTTPS URL on an HTTPS installation. |
 | `statistics_module.historic_stats.is_national_aggregator` | Set to `true` for a national aggregator or `false` to use the institution name as the main scope label. |
 | `statistics_module.historic_stats.scope_labels.N` | Label for the national scope when national aggregator mode is enabled. In that mode the dashboard fills the repository scope label (`R`) with the institution name. |
+
+## dARK identifiers
+
+Set `"dark_module": { "active": true }` and open **dARK identifiers** for a repository. A direct link uses `/dashboard/<language>/<repository-acronym>/dark`. Deploy the Harvester version that provides the dARK dashboard endpoints before enabling the module.
+
+The report shows each assigned ARK, its OAI identifier, the last tracking state recorded by Harvester, and the last update in UTC. Network read permissions apply to the report and its CSV. Each row must have an ARK and a recorded source network. Historical imports without source provenance appear once the staging worker records their network. Sharing a NAAN does not grant access to another network's records.
+
+Select a state, enter part of an ARK or OAI identifier, or set either end of the update date range. Both dates include the entire UTC day. Select **Apply**, then **Download results as CSV** to download every matching row across pages. Use **Clear filters** to download all assigned identifiers. CSV timestamps use UTC, and state codes use their English API names.
 
 ## Usage statistics
 

@@ -5,6 +5,7 @@
     "active": true,
     "portalService": "https://www.lareferencia.info/vufind/Record/"
   },
+  "dark_module": { "active": false },
   "statistics_module": {
     "active": false,
     "historic_stats": {

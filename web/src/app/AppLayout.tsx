@@ -2,6 +2,7 @@ import AccountTreeOutlined from '@mui/icons-material/AccountTreeOutlined'
 import DashboardOutlined from '@mui/icons-material/DashboardOutlined'
 import TimelapseOutlined from '@mui/icons-material/TimelapseOutlined'
 import FactCheckOutlined from '@mui/icons-material/FactCheckOutlined'
+import LinkOutlined from '@mui/icons-material/LinkOutlined'
 import BarChartOutlined from '@mui/icons-material/BarChartOutlined'
 import MenuOutlined from '@mui/icons-material/MenuOutlined'
 import { Avatar, Box, Container, Divider, Drawer, IconButton, List, ListItemButton, ListItemIcon, ListItemText, MenuItem, Select, Stack, Toolbar, Typography } from '@mui/material'
@@ -10,7 +11,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 import { languages, type Language } from '../i18n'
 
-const icons = { history: TimelapseOutlined, validation: FactCheckOutlined, statistics: BarChartOutlined }
+const icons = { history: TimelapseOutlined, validation: FactCheckOutlined, statistics: BarChartOutlined, dark: LinkOutlined }
 
 export type ModuleLink = { label: keyof typeof icons; to: string }
 

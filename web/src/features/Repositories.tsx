@@ -13,12 +13,13 @@ import { RepositoryHome } from './RepositoryHome'
 
 const HarvestHistory = lazy(() => import('./harvesting/HarvestHistory').then(module => ({ default: module.HarvestHistory })))
 const Validation = lazy(() => import('./Validation').then(module => ({ default: module.Validation })))
+const DarkReport = lazy(() => import('./dark/DarkReport'))
 const Statistics = lazy(() => import('./Statistics').then(module => ({ default: module.Statistics })))
 
 function isRepositorySection(acronym?: string, section?: string) {
   // The unscoped statistics/statistics bookmark predates repository-specific routes.
   if (section === 'statistics') return acronym !== 'statistics'
-  return section === 'validation' || section === 'harvesting'
+  return section === 'validation' || section === 'harvesting' || section === 'dark'
 }
 
 export function Repositories({ api, user, config, logout, language }: {
@@ -38,10 +39,11 @@ export function Repositories({ api, user, config, logout, language }: {
   if (selected && config.historic_module.active) links.push({ label: 'history', to: root + '/harvesting' })
   if (selected && config.validation_module.active) links.push({ label: 'validation', to: root + '/validation' })
   if (selected && config.statistics_module.active) links.push({ label: 'statistics', to: root + '/statistics' })
+  if (selected && config.dark_module.active) links.push({ label: 'dark', to: root + '/dark' })
   const home = <Navigate to="/" replace />
   const denied = <Alert severity="warning">{t('denied')}</Alert>
   const landing = Boolean(useMatch('/'))
-  const report = (section === 'validation' || section === 'harvesting') && Boolean(selected)
+  const report = (section === 'validation' || section === 'harvesting' || section === 'dark') && Boolean(selected)
   const showAccountHeader = !report && !landing
   function selectSource(value: Source) {
     cache.setQueryData(['source-id', String(value.id)], value)
@@ -65,6 +67,8 @@ export function Repositories({ api, user, config, logout, language }: {
             {query.hasNextPage && <Button disabled={query.isFetchingNextPage} onClick={() => void query.fetchNextPage()}>{t('loadMore')}</Button>}</Stack>} />
           <Route path=":acronym/harvesting" element={!config.historic_module.active ? home : !selected ? denied :
             <HarvestHistory repositorySelector={selector} api={api} source={selected} validation={config.validation_module.active} />} />
+          <Route path=":acronym/dark" element={!config.dark_module.active ? home : !selected ? denied :
+            <DarkReport key={selected.id} api={api} source={selected} selector={selector} />} />
           <Route path=":acronym/statistics" element={!config.statistics_module.active ? home : !selected ? denied :
             <Statistics api={api} source={selected} config={config.statistics_module.historic_stats} />} />
           {['statistics', 'statistics/statistics'].map(path => <Route key={path} path={path}

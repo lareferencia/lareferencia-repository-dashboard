@@ -1,6 +1,16 @@
 import type es from './es'
 
 export default {
+  dark: 'Identificadores dARK',
+  darkGuide: 'Consulte os ARKs atribuídos ao repositório, seu estado e a última atualização.',
+  openDark: 'Ver identificadores',
+  darkSearch: 'Buscar por ARK ou identificador OAI',
+  darkUpdated: 'Atualizado (UTC)',
+  darkFrom: 'Atualizado desde (UTC)',
+  darkTo: 'Atualizado até (UTC)',
+  darkCsv: 'Baixar resultados em CSV',
+  darkEmpty: 'Este repositório ainda não tem identificadores dARK atribuídos.',
+  darkStates: { RESERVED: 'Reservado', DRAFT: 'Rascunho', UPDATE: 'Atualização', PUBLISHED: 'Publicado', TOMBSTONE: 'Retirado', ERROR: 'Erro' },
   loadMore: 'Carregar mais',
   comparisonUnavailable: 'Uma das coletas está indisponível neste intervalo.',
   sameVolume: '#{{second}} coletou a mesma quantidade de registros que #{{first}}.',

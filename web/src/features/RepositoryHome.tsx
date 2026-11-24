@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Alert, Box, ButtonBase, Paper, Stack, Typography } from '@mui/material'
 import ArrowForward from '@mui/icons-material/ArrowForward'
+import LinkOutlined from '@mui/icons-material/LinkOutlined'
 import BarChartOutlined from '@mui/icons-material/BarChartOutlined'
 import FactCheckOutlined from '@mui/icons-material/FactCheckOutlined'
 import HistoryOutlined from '@mui/icons-material/HistoryOutlined'
@@ -14,6 +15,7 @@ import type { ModuleLink } from '../app/AppLayout'
 const services = {
   history: { icon: HistoryOutlined, description: 'historyGuide', action: 'openHistory', color: '#245d80', tint: '#e8f1f8' },
   validation: { icon: FactCheckOutlined, description: 'validationGuide', action: 'openValidation', color: '#286b58', tint: '#e4f1ea' },
+  dark: { icon: LinkOutlined, description: 'darkGuide', action: 'openDark', color: '#32587b', tint: '#e7eff7' },
   statistics: { icon: BarChartOutlined, description: 'statisticsGuide', action: 'openStatistics', color: '#805d1b', tint: '#faf0d9' },
 }
 

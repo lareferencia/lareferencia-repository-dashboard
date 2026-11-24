@@ -1,3 +1,4 @@
+import { isDarkRow, type DarkRow } from './dark'
 import type { Harvest, HistoryRequest, Occurrence, Source, Summary, User, ValidationRecord } from './types'
 import {
   InvalidDashboardResponse, isCount, isOccurrence, isPageOf, isRecord, isSource, normalizeSummary, parseUser, type Page,
@@ -28,7 +29,17 @@ export function dashboardApi(base: string, expire: () => void) {
     const { token } = await request<{ token: string }>('/auth/csrf')
     return request<T>(path, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-XSRF-TOKEN': token }, body: JSON.stringify(body) })
   }
+  const darkPath = (network: number) => `/dashboard/networks/${network}/dark`
   return {
+    async darkRows(network: number, query: string, page: number, size: number, signal: AbortSignal) {
+      const params = new URLSearchParams(query)
+      params.set('page', String(page))
+      params.set('size', String(size))
+      const result = await request<Page<DarkRow>>(darkPath(network) + '?' + params, { signal })
+      if (!isPageOf(result, isDarkRow)) throw new InvalidDashboardResponse('Invalid dARK page')
+      return result
+    },
+    darkCsvUrl: (network: number, query: string) => base + darkPath(network) + '/export.csv' + (query && '?' + query),
     async me(signal: AbortSignal) {
       try {
         return parseUser(await request<User>('/me', { signal }))
