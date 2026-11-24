@@ -16,8 +16,8 @@ Each switch applies to every repository in the dashboard. Harvester controls whi
 | --- | --- | --- | --- |
 | Harvests | `historic_module.active` | `true` | Harvest history, trends, comparisons, and CSV export. |
 | Validations | `validation_module.active` | `true` | Validation reports. When Harvests is also enabled, its history links to available diagnostics. |
-| dARK identifiers | `dark_module.active` | `false` | Read-only identifier report with filters and a full CSV download. |
-| Statistics | `statistics_module.active` | `false` | Usage statistics. Each repository needs a provider ID to display figures. See [Usage statistics](#usage-statistics). |
+| dARK identifiers | `dark_module.active` | `true` | Read-only identifier report with filters and a full CSV download. |
+| Statistics | `statistics_module.active` | `true` | Usage statistics. Each repository needs a provider ID to display figures. See [Usage statistics](#usage-statistics). |
 
 1. In the template, find the module and change only its `active` value. Use the JSON boolean `true` to enable it or `false` to disable it. Keep the module's other settings so you can turn it back on later. Omitting the entire module also disables it.
 2. Build and publish the dashboard to apply the template. To apply a change immediately to an existing deployment, edit `assets/data/appConfig.json` under each of the three published language directories (`es`, `en`, and `pt`). Keep the template in sync because the next build regenerates those copies.

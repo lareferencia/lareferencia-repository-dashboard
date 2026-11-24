@@ -5,9 +5,9 @@
     "active": true,
     "portalService": "https://www.lareferencia.info/vufind/Record/"
   },
-  "dark_module": { "active": false },
+  "dark_module": { "active": true },
   "statistics_module": {
-    "active": false,
+    "active": true,
     "historic_stats": {
       "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.1.6/dist/assets/chunks/historic-widget.js",
       "is_national_aggregator": false,
