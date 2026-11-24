@@ -1,5 +1,6 @@
 export default {
   dark: 'Identificadores dARK',
+  darkNaanMissing: 'NAAN sin configurar',
   darkGuide: 'Consulta los ARK asignados al repositorio, su estado y su última actualización.',
   openDark: 'Ver identificadores',
   darkSearch: 'Buscar por ARK o identificador OAI',

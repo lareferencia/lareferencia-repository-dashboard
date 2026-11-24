@@ -2,6 +2,7 @@ import type es from './es'
 
 export default {
   dark: 'Identificadores dARK',
+  darkNaanMissing: 'NAAN não configurado',
   darkGuide: 'Consulte os ARKs atribuídos ao repositório, seu estado e a última atualização.',
   openDark: 'Ver identificadores',
   darkSearch: 'Buscar por ARK ou identificador OAI',

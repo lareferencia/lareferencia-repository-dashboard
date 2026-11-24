@@ -35,9 +35,16 @@ export default function DarkReport({ api, source, selector }: { api: DashboardAp
     queryKey: ['dark', source.id, query, page, size],
     queryFn: ({ signal }) => api.darkRows(source.id, query, page, size, signal),
   })
+  const naan = String(source.attributes?.ark_naan ?? '').trim()
   return <Stack spacing={2}>
     <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" gap={2}>
-      <Box><Typography variant="overline">{source.acronym}</Typography><Typography component="h1" variant="h4">{t('dark')}</Typography></Box>
+      <Box>
+        <Typography variant="overline">{source.acronym}</Typography>
+        <Typography component="h1" variant="h4">{t('dark')}</Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ mt: .5 }}>
+          {naan ? `NAAN: ${naan}` : t('darkNaanMissing')}
+        </Typography>
+      </Box>
       <Box sx={{ width: { md: '40%' }, maxWidth: 450 }}>{selector}</Box>
     </Stack>
     <DarkFilters apply={value => { setQuery(value); setPage(0) }} />

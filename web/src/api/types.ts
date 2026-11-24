@@ -11,7 +11,7 @@ export type Source = {
   acronym: string
   name: string
   institutionName?: string | null
-  attributes?: { stats_source_id?: string | number | null }
+  attributes?: { ark_naan?: string | number | null; stats_source_id?: string | number | null }
 }
 
 // Nullable measurements are common in historical snapshots. Zero is a measured value.
