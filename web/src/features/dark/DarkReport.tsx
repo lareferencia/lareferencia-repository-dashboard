@@ -1,5 +1,4 @@
-import FileDownloadOutlined from '@mui/icons-material/FileDownloadOutlined'
-import { Alert, Box, Button, Chip, LinearProgress, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material'
+import { Alert, Box, Chip, LinearProgress, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material'
 import { useQuery } from '@tanstack/react-query'
 import { useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -36,6 +35,7 @@ export default function DarkReport({ api, source, selector }: { api: DashboardAp
     queryFn: ({ signal }) => api.darkRows(source.id, query, page, size, signal),
   })
   const naan = String(source.attributes?.ark_naan ?? '').trim()
+  const csvUrl = result.isSuccess && result.data.totalElements > 0 ? api.darkCsvUrl(source.id, query) : undefined
   return <Stack spacing={2}>
     <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" gap={2}>
       <Box>
@@ -47,14 +47,13 @@ export default function DarkReport({ api, source, selector }: { api: DashboardAp
       </Box>
       <Box sx={{ width: { md: '40%' }, maxWidth: 450 }}>{selector}</Box>
     </Stack>
-    <DarkFilters apply={value => { setQuery(value); setPage(0) }} />
+    <DarkFilters apply={value => { setQuery(value); setPage(0) }} csvUrl={csvUrl} />
     {result.isPending ? <LinearProgress /> : result.isError ? <ReadError retry={() => void result.refetch()} /> :
       result.data.totalElements === 0 ? <Alert severity="info">{t(query ? 'noMatches' : 'darkEmpty')}</Alert> :
         <Paper variant="outlined" sx={{ overflow: 'hidden' }}>
-          <Stack direction="row" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={1} sx={{ p: 2 }}>
-            <Typography component="h2" variant="h6">{t('total')} · {result.data.totalElements.toLocaleString(i18n.language)}</Typography>
-            <Button href={api.darkCsvUrl(source.id, query)} download startIcon={<FileDownloadOutlined />}>{t('darkCsv')}</Button>
-          </Stack>
+          <Typography component="h2" variant="h6" sx={{ p: 2 }}>
+            {t('total')} · {result.data.totalElements.toLocaleString(i18n.language)}
+          </Typography>
           <Identifiers rows={result.data.content} />
           <TablePagination component="div" count={result.data.totalElements} page={page} rowsPerPage={size}
             rowsPerPageOptions={[25, 50, 100]} onPageChange={(_, next) => setPage(next)}

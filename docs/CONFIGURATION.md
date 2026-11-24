@@ -39,7 +39,7 @@ Set `"dark_module": { "active": true }` and open **dARK identifiers** for a repo
 
 The report shows each assigned ARK, its OAI identifier, the last tracking state recorded by Harvester, and the last update in UTC. Network read permissions apply to the report and its CSV. Each row must have an ARK and a recorded source network. Historical imports without source provenance appear once the staging worker records their network. Sharing a NAAN does not grant access to another network's records.
 
-Select a state, enter part of an ARK or OAI identifier, or set either end of the update date range. Both dates include the entire UTC day. Select **Apply**, then **Download results as CSV** to download every matching row across pages. Use **Clear filters** to download all assigned identifiers. CSV timestamps use UTC, and state codes use their English API names.
+Select a state, enter part of an ARK or OAI identifier, or set either date under **Last updated (UTC)**. Each date includes the entire UTC day. Select **Apply**, then use **Download all results (CSV)** in the filter panel to download every matching row across pages. Use **Clear filters** to download all assigned identifiers. CSV timestamps use UTC, and state codes use their English API names.
 
 ## Usage statistics
 
